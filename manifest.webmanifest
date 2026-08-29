@@ -1,12 +1,13 @@
 {
   "name": "PL收集梦想生活",
   "short_name": "PL档案",
-  "description": "TRPG PL档案、模组、开团计划与跑团记录整理工具",
+  "description": "本地优先的跑团 PL、模组、开团计划与跑团记录管理工具。",
   "lang": "zh-CN",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#fbf4ef",
+  "orientation": "any",
+  "background_color": "#f4f3ee",
   "theme_color": "#f4f3ee",
   "icons": [
     {
