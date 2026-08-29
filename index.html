@@ -2834,6 +2834,427 @@
       .global-search-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.onboarding-backdrop{padding:5px}.global-search-modal,.import-preview-modal,.migration-wizard-modal,.onboarding-modal{max-height:calc(100dvh - 10px);border-radius:15px}.global-search-modal{height:calc(100dvh - 10px)}
       .global-search-result{grid-template-columns:44px minmax(0,1fr) auto}.import-preview-counts,.import-mode-grid,.onboarding-steps{grid-template-columns:1fr}.merge-options-panel>label:not(.check-row){align-items:flex-start;flex-direction:column}.merge-options-panel select{width:100%}.migration-wizard-body article{grid-template-columns:34px minmax(0,1fr)}.migration-wizard-body article button{grid-column:1/-1;width:100%}.trash-row{grid-template-columns:1fr}.trash-row-actions{justify-content:flex-end}
     }
+
+
+    /* =========================================================
+       v7.10 可用性修复：设置结构、内容遮挡、快捷栏一致性
+       ========================================================= */
+
+    /* 设置现在有 4 个垂直区域：标题 / 搜索 / 主体 / 底部操作。
+       v7.9 仍按 3 行网格排版，搜索栏误吃掉了整个弹性高度。 */
+    .settings-modal{
+      grid-template-rows:auto auto minmax(0,1fr) auto!important;
+    }
+    .settings-search-wrap{
+      min-height:0!important;
+      height:auto!important;
+      align-self:stretch;
+      z-index:3;
+      flex:0 0 auto;
+    }
+    .settings-search{
+      min-height:38px;
+      height:38px;
+      box-sizing:border-box;
+    }
+    .settings-modal-body{
+      grid-row:auto!important;
+      min-height:0!important;
+      height:auto!important;
+      overflow:hidden!important;
+    }
+    .settings-layout{
+      min-height:0!important;
+      height:100%!important;
+      max-height:none!important;
+      overflow:hidden!important;
+    }
+    .settings-nav,
+    .settings-panels{
+      min-height:0!important;
+      height:100%!important;
+      box-sizing:border-box;
+    }
+    .settings-panels{
+      scroll-padding-top:12px;
+    }
+    .settings-panels>[data-settings-panel]{
+      margin-top:0!important;
+    }
+    .settings-modal>.modal-foot{
+      z-index:4;
+      background:var(--t-surface);
+    }
+
+    /* 左侧设置导航统一文字基线和字号，选中态只靠背景/颜色区分。 */
+    .settings-nav button{
+      font-family:inherit!important;
+      font-size:10px!important;
+      font-weight:700!important;
+      line-height:1.25!important;
+      letter-spacing:0!important;
+    }
+
+    /* 页面右侧快捷栏：所有图形/汉字使用同一字号、字重和基线。
+       “快速新建”仍保留强调色，但不再单独放大。 */
+    .scroll-rail-btn,
+    .scroll-rail-btn.privacy-toggle,
+    .global-create-rail{
+      width:38px!important;
+      height:38px!important;
+      padding:0!important;
+      font-family:inherit!important;
+      font-size:13px!important;
+      font-weight:720!important;
+      line-height:1!important;
+      letter-spacing:0!important;
+      text-align:center!important;
+    }
+    .scroll-rail-btn.privacy-toggle{
+      font-size:13px!important;
+      font-weight:720!important;
+    }
+    .global-create-rail{
+      font-size:13px!important;
+      font-weight:760!important;
+    }
+
+    /* 弹窗打开后所有悬浮全局工具彻底不参与视觉层级，避免穿透/遮盖。 */
+    body.modal-scroll-locked .scroll-rail,
+    body.modal-scroll-locked .compact-app-bar,
+    body.modal-scroll-locked .mobile-bottom-nav{
+      visibility:hidden!important;
+    }
+
+    @media(max-width:760px){
+      .settings-modal{
+        grid-template-rows:auto auto minmax(0,1fr) auto!important;
+      }
+      .settings-search-wrap{padding:7px 8px!important}
+      .settings-search{height:38px!important}
+      .settings-layout{
+        grid-template-columns:1fr!important;
+        grid-template-rows:auto minmax(0,1fr)!important;
+      }
+      .settings-nav{
+        height:auto!important;
+        min-height:0!important;
+      }
+      .settings-panels{
+        height:100%!important;
+        min-height:0!important;
+      }
+    }
+
+
+    /* =========================================================
+       v7.11 手机设置与触控体验优化
+       根结构：标题 / 主体 / 底部。主体内部再分为章节导航 + 右侧主区，
+       右侧主区固定为 搜索 / 内容 两行，避免任何 WebView 将搜索栏覆盖到章节导航。
+       ========================================================= */
+    html{
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+    }
+    button,[role="button"],summary,label,.layout-btn,.view-tab{
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+    }
+    :where(button,input,select,textarea,summary,[tabindex]):focus-visible{
+      outline:2px solid var(--t-focus)!important;
+      outline-offset:2px;
+    }
+
+    .settings-modal{
+      grid-template-rows:auto minmax(0,1fr) auto!important;
+    }
+    .settings-modal-body{
+      min-height:0!important;
+      height:100%!important;
+      overflow:hidden!important;
+      padding:0!important;
+    }
+    .settings-layout{
+      display:grid!important;
+      grid-template-columns:170px minmax(0,1fr)!important;
+      grid-template-rows:minmax(0,1fr)!important;
+      min-height:0!important;
+      height:100%!important;
+      max-height:none!important;
+      overflow:hidden!important;
+    }
+    .settings-nav{
+      min-height:0!important;
+      height:100%!important;
+      overflow-y:auto!important;
+      overflow-x:hidden!important;
+      overscroll-behavior:contain;
+      box-sizing:border-box;
+    }
+    .settings-main{
+      min-width:0;
+      min-height:0;
+      height:100%;
+      display:grid;
+      grid-template-rows:auto minmax(0,1fr);
+      overflow:hidden;
+      background:var(--t-surface);
+    }
+    .settings-search-wrap{
+      position:relative!important;
+      z-index:5!important;
+      min-height:0!important;
+      height:auto!important;
+      padding:9px 12px!important;
+      border-bottom:1px solid var(--t-line)!important;
+      background:var(--t-surface)!important;
+      box-sizing:border-box;
+    }
+    .settings-search{
+      min-height:40px!important;
+      height:40px!important;
+      box-sizing:border-box;
+    }
+    .settings-search input{
+      font-size:16px!important;
+      line-height:1.2!important;
+    }
+    .settings-search-results{
+      top:54px!important;
+      max-height:min(52vh,420px);
+      overflow:auto;
+      overscroll-behavior:contain;
+    }
+    .settings-panels{
+      min-width:0!important;
+      min-height:0!important;
+      height:100%!important;
+      overflow-y:auto!important;
+      overflow-x:hidden!important;
+      overscroll-behavior:contain!important;
+      -webkit-overflow-scrolling:touch;
+      scroll-padding:12px 0 96px;
+      padding:12px!important;
+      box-sizing:border-box;
+    }
+
+    @media(hover:none), (pointer:coarse){
+      .btn:hover:not(:disabled),.theme-card:hover,.card:hover,.native-module-card:hover,.ho-entry:hover{transform:none!important}
+      .btn:active:not(:disabled),.theme-card:active,.layout-btn:active,.view-tab:active{
+        transform:scale(.985)!important;
+        transition-duration:.06s!important;
+      }
+    }
+
+    @media(max-width:760px){
+      .settings-modal{
+        width:100%!important;
+        height:100dvh!important;
+        max-height:100dvh!important;
+        border-radius:0!important;
+        border-left:0!important;
+        border-right:0!important;
+        grid-template-rows:auto minmax(0,1fr) auto!important;
+      }
+      .settings-modal>.modal-head{
+        padding:calc(10px + env(safe-area-inset-top)) 12px 9px!important;
+      }
+      .settings-modal>.modal-head h2{font-size:18px!important}
+      .settings-modal>.modal-head .sub{
+        font-size:10px!important;
+        line-height:1.4!important;
+        -webkit-line-clamp:2;
+      }
+      .settings-layout{
+        grid-template-columns:1fr!important;
+        grid-template-rows:auto minmax(0,1fr)!important;
+        height:100%!important;
+      }
+      .settings-nav{
+        position:relative!important;
+        z-index:7!important;
+        display:flex!important;
+        align-items:center!important;
+        gap:5px!important;
+        height:48px!important;
+        min-height:48px!important;
+        padding:6px 8px!important;
+        overflow-x:auto!important;
+        overflow-y:hidden!important;
+        border-right:0!important;
+        border-bottom:1px solid var(--t-line)!important;
+        background:color-mix(in srgb,var(--t-surface-2) 72%,var(--t-surface))!important;
+        scrollbar-width:none;
+        overscroll-behavior-x:contain;
+        scroll-snap-type:x proximity;
+        -webkit-overflow-scrolling:touch;
+      }
+      .settings-nav::-webkit-scrollbar{display:none}
+      .settings-nav button{
+        flex:0 0 auto!important;
+        min-height:36px!important;
+        height:36px!important;
+        padding:0 12px!important;
+        border-radius:10px!important;
+        font-size:11px!important;
+        font-weight:720!important;
+        line-height:1!important;
+        white-space:nowrap!important;
+        scroll-snap-align:center;
+      }
+      .settings-main{
+        min-height:0!important;
+        height:100%!important;
+        grid-template-rows:auto minmax(0,1fr)!important;
+      }
+      .settings-search-wrap{
+        z-index:6!important;
+        padding:7px 8px!important;
+        background:var(--t-surface)!important;
+      }
+      .settings-search{
+        min-height:42px!important;
+        height:42px!important;
+        border-radius:12px!important;
+      }
+      .settings-search-results{
+        left:8px!important;
+        right:8px!important;
+        top:52px!important;
+        max-height:46vh!important;
+      }
+      .settings-panels{
+        min-height:0!important;
+        height:100%!important;
+        padding:9px 10px calc(20px + env(safe-area-inset-bottom))!important;
+        scroll-padding-top:10px!important;
+        scroll-padding-bottom:110px!important;
+      }
+      .settings-section{
+        margin-bottom:10px!important;
+        padding:12px!important;
+        border-radius:15px!important;
+      }
+      .theme-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr))!important;
+        gap:8px!important;
+      }
+      .theme-card{
+        min-height:118px!important;
+        padding:10px!important;
+        border-radius:14px!important;
+      }
+      .theme-card-name{font-size:12px!important}
+      .theme-card-desc{font-size:9px!important;line-height:1.4!important;min-height:26px}
+      .theme-swatches{height:22px!important;margin-top:8px!important}
+      .settings-modal>.modal-foot{
+        padding:9px 10px calc(9px + env(safe-area-inset-bottom))!important;
+        gap:8px!important;
+      }
+      .settings-modal>.modal-foot .foot-right{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important}
+      .settings-modal>.modal-foot .btn{min-height:46px!important;font-size:13px!important}
+      .settings-warning{font-size:9px!important;line-height:1.35!important;max-width:46%}
+    }
+    @media(max-width:359px){
+      .theme-grid{grid-template-columns:1fr!important}
+      .settings-nav button{padding-inline:10px!important}
+    }
+
+
+
+    /* =========================================================
+       v7.12 手机日程与触控手感
+       ========================================================= */
+    .mobile-label,.records-create-toggle,.mobile-week-agenda{display:none}
+    .records-quick-actions,.records-create-panel{display:flex;align-items:center;gap:7px}
+    .records-create-panel .text-input{width:240px}
+
+    .compact-score-strip{position:relative;min-width:0}
+    .compact-swipe-hint{display:none}
+
+    @media(max-width:760px){
+      /* 1. 手机周历改为“周日期条 + 当天早中晚”纵向日程。 */
+      body[data-planner-view="week"] .planner-sidebar{order:1}
+      body[data-planner-view="week"] .planner-calendar{position:relative;top:auto;order:2}
+      .planner-layout{display:flex!important;flex-direction:column;gap:9px!important}
+      .planner-sidebar{width:100%!important;min-width:0!important;max-width:none!important;resize:none!important;position:relative!important;top:auto!important;max-height:360px!important;padding:8px!important;border-radius:15px!important}
+      .planner-calendar{position:relative!important;top:auto!important;width:100%}
+      .week-panel .calendar-head{display:grid;grid-template-columns:1fr;gap:7px;padding:9px 10px!important}
+      .week-panel .calendar-head-main span{display:none}
+      .week-panel .calendar-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;width:100%}
+      .week-panel .calendar-nav .btn{min-height:36px;padding:6px 8px;font-size:10px}
+      .week-calendar-scroll{display:none!important}
+      .mobile-week-agenda{display:grid;gap:9px;padding:9px}
+      .mobile-week-days{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(44px,1fr);gap:5px;overflow-x:auto;padding:1px 0 5px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+      .mobile-week-days::-webkit-scrollbar{display:none}
+      .mobile-week-day{position:relative;min-width:44px;min-height:58px;display:grid;place-items:center;align-content:center;gap:1px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface);color:var(--t-muted);scroll-snap-align:center}
+      .mobile-week-day span{font-size:8px}.mobile-week-day strong{font-size:16px;line-height:1;color:var(--t-text-2)}.mobile-week-day em{position:absolute;right:4px;top:4px;min-width:15px;height:15px;display:grid;place-items:center;padding:0 3px;border-radius:999px;background:var(--t-surface-3);font-size:7px;font-style:normal;color:var(--t-muted)}
+      .mobile-week-day.today{border-color:color-mix(in srgb,var(--t-accent) 45%,var(--t-line));background:var(--t-accent-soft)}
+      .mobile-week-day.selected{border-color:var(--t-accent);background:var(--t-surface);box-shadow:0 0 0 2px color-mix(in srgb,var(--t-accent) 13%,transparent)}
+      .mobile-week-day.selected strong{color:var(--t-accent-strong)}
+      .mobile-selected-day{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 2px 0}.mobile-selected-day strong{font-size:12px}.mobile-selected-day span{font-size:8.5px;color:var(--t-muted)}
+      .mobile-dayparts{display:grid;gap:8px}
+      .mobile-daypart-row{display:grid;grid-template-columns:56px minmax(0,1fr);gap:7px;padding:8px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-surface)}
+      .mobile-daypart-row.pick-ready{border-color:color-mix(in srgb,var(--t-accent) 52%,var(--t-line));box-shadow:inset 3px 0 0 var(--t-accent)}
+      .mobile-daypart-row.full{background:color-mix(in srgb,var(--t-surface-2) 82%,var(--t-surface))}
+      .mobile-daypart-label{grid-row:1/3;display:grid;align-content:start;gap:5px;padding:4px 4px 0 1px;border-right:1px solid var(--t-line)}
+      .mobile-daypart-label>div{display:grid;gap:1px}.mobile-daypart-label strong{font-size:12px;color:var(--t-text-2)}.mobile-daypart-label span{font-size:7.5px;color:var(--t-muted)}.mobile-daypart-label em{width:max-content;padding:2px 5px;border-radius:999px;background:var(--t-surface-3);font-size:7px;font-style:normal;color:var(--t-muted)}
+      .mobile-daypart-events{display:grid;gap:5px;min-width:0}
+      .mobile-calendar-event{display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:4px;align-items:stretch;min-width:0;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);overflow:hidden}
+      .mobile-calendar-event-main{min-width:0;display:grid;gap:2px;padding:7px 8px;border:0;background:transparent;text-align:left;color:inherit}.mobile-calendar-event-main strong{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mobile-calendar-event-main span{font-size:7.5px;color:var(--t-muted)}
+      .mobile-calendar-event-remove{border:0;border-left:1px solid var(--t-line);background:transparent;color:var(--t-faint);font-size:15px}.mobile-calendar-event-remove:active{background:var(--t-danger-soft);color:var(--t-danger)}
+      .mobile-daypart-empty{padding:8px;border:1px dashed var(--t-line);border-radius:9px;color:var(--t-faint);font-size:8.5px;text-align:center}
+      .mobile-daypart-add{grid-column:2;min-height:34px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface-2);color:var(--t-accent-strong);font-size:9px;font-weight:720}.mobile-daypart-add:disabled{opacity:.48;color:var(--t-muted)}.mobile-daypart-row.pick-ready .mobile-daypart-add{background:var(--t-accent-soft);border-color:color-mix(in srgb,var(--t-accent) 38%,var(--t-line))}
+      .calendar-picked{margin:7px 9px 0;padding:7px 9px;border-radius:10px;font-size:8.5px}
+
+      /* 2. 跑团记录顶部：默认只有展开 / 收起 / 新建三键，需要时再展开输入。 */
+      .records-toolbar{gap:7px!important;padding:9px 10px!important}
+      .records-toolbar .records-toolbar-actions{display:grid!important;grid-template-columns:1fr!important;gap:6px!important;width:100%}
+      .records-quick-actions{display:grid!important;grid-template-columns:1fr 1fr 1.15fr;gap:6px;width:100%}
+      .records-quick-actions .btn{min-height:38px!important;padding:6px 8px!important;font-size:10px!important}
+      .desktop-label{display:none}.mobile-label{display:inline}.records-create-toggle{display:inline-flex!important;align-items:center;justify-content:center}
+      .records-create-panel{display:none!important;grid-template-columns:minmax(0,1fr) auto;gap:6px;width:100%;padding-top:1px}
+      .records-toolbar.is-create-open .records-create-panel{display:grid!important}
+      .records-create-panel .text-input{width:100%!important;min-width:0!important;min-height:42px!important;font-size:16px!important}
+      .records-create-panel .btn{min-height:42px!important;padding-inline:11px!important;font-size:10px!important;white-space:nowrap}
+
+      /* 3. 简表评分胶囊：只有确实能横滑时才显示渐隐和一次性提示。 */
+      .compact-score-strip{grid-column:1/-1;grid-row:2;position:relative;min-width:0;overflow:hidden;border-radius:10px}
+      .compact-score-strip .compact-scores{grid-column:auto;grid-row:auto;padding-right:34px!important;overscroll-behavior-x:contain}
+      .compact-score-strip.is-scrollable::before,.compact-score-strip.is-scrollable::after{content:"";position:absolute;top:0;bottom:3px;width:34px;z-index:2;pointer-events:none;opacity:0;transition:opacity .15s ease}
+      .compact-score-strip::before{left:0;background:linear-gradient(90deg,var(--t-surface),transparent)}
+      .compact-score-strip::after{right:0;background:linear-gradient(270deg,var(--t-surface),transparent)}
+      .compact-score-strip.can-scroll-left::before,.compact-score-strip.can-scroll-right::after{opacity:1}
+      .compact-swipe-hint{position:absolute;right:4px;top:50%;z-index:3;display:none;transform:translateY(-50%);padding:4px 8px;border:1px solid color-mix(in srgb,var(--t-accent) 25%,var(--t-line));border-radius:999px;background:color-mix(in srgb,var(--t-accent-soft) 90%,var(--t-surface));box-shadow:0 4px 12px var(--t-shadow-soft);color:var(--t-accent-strong);font-size:8.5px;font-weight:760;letter-spacing:.03em;white-space:nowrap;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+      .compact-score-strip.is-scrollable .compact-swipe-hint{display:block;animation:compactSwipeHintIn .28s ease both,compactSwipeHintPulse 1.15s ease-in-out .3s 2}.compact-swipe-hint.dismissed,.compact-swipe-hint.auto-faded{opacity:0!important;transform:translate(8px,-50%)!important}
+      @keyframes compactSwipeHintIn{from{opacity:0;transform:translate(6px,-50%)}to{opacity:1;transform:translateY(-50%)}}
+      @keyframes compactSwipeHintPulse{0%,100%{margin-right:0}50%{margin-right:4px}}
+
+      /* 5. 向下滚动时收薄固定工具；向上滚动立即恢复。 */
+      .sticky-searchbar,.module-sidebar{transition:top .18s ease,min-height .18s ease,padding .18s ease,border-radius .18s ease,box-shadow .18s ease,opacity .18s ease}
+      .sticky-searchbar,.records-search.sticky-searchbar{top:calc(env(safe-area-inset-top) + 8px)!important}
+      .module-sidebar{top:calc(env(safe-area-inset-top) + 62px)!important}
+      body.mobile-chrome-condensed .sticky-searchbar{top:calc(env(safe-area-inset-top) + 8px)!important;min-height:40px!important;padding:3px 6px!important;border-radius:11px!important;box-shadow:0 4px 12px rgba(43,49,45,.05)!important}
+      body.mobile-chrome-condensed .records-search.sticky-searchbar{top:calc(env(safe-area-inset-top) + 8px)!important;min-height:40px!important;margin-top:4px!important}
+      body.mobile-chrome-condensed .module-sidebar{top:calc(env(safe-area-inset-top) + 54px)!important;padding:4px!important;border-radius:11px!important}
+      body.mobile-chrome-condensed .module-tab{min-height:37px!important;padding:6px 8px!important}
+
+      /* 6. 软键盘出现时：释放底部空间、隐藏固定导航，并让弹窗跟随可视视口。 */
+      body.mobile-keyboard-open .mobile-bottom-nav,body.mobile-keyboard-open .mobile-tools-sheet,body.mobile-keyboard-open .scroll-rail,body.mobile-keyboard-open .quick-create-menu{display:none!important}
+      body.mobile-keyboard-open .shell{padding-bottom:18px!important}
+      body.mobile-keyboard-open .overlay,
+      body.mobile-keyboard-open .plan-editor-backdrop,
+      body.mobile-keyboard-open .native-module-editor-backdrop,
+      body.mobile-keyboard-open .module-advanced-backdrop,
+      body.mobile-keyboard-open .ho-organizer-backdrop,
+      body.mobile-keyboard-open .secure-backup-backdrop{
+        top:var(--mobile-visible-top,0px)!important;bottom:auto!important;height:var(--mobile-visible-height,100svh)!important;max-height:var(--mobile-visible-height,100svh)!important
+      }
+      body.mobile-keyboard-open .profile-modal-wrap,body.mobile-keyboard-open .settings-modal,body.mobile-keyboard-open .plan-editor-drawer{height:100%!important;max-height:100%!important}
+      body.mobile-keyboard-open .native-module-editor{height:100%!important;max-height:100%!important}
+      body.mobile-keyboard-open .modal-body,body.mobile-keyboard-open .settings-panels,body.mobile-keyboard-open .plan-editor-drawer-body,body.mobile-keyboard-open .native-module-editor-body{scroll-padding-bottom:92px!important}
+      body.mobile-keyboard-open .modal-foot,body.mobile-keyboard-open .native-module-editor-foot,body.mobile-keyboard-open .plan-editor-footer{z-index:30!important;background:var(--t-surface-glass)!important;box-shadow:0 -8px 22px var(--t-shadow-soft)!important}
+    }
 </style>
 </head>
 <body>
@@ -2862,7 +3283,7 @@
                 </div>
                 <div class="guide-item">
                   <span class="guide-no">02</span>
-                  <div><strong>安排最近要跑的团</strong><span>切换到“开团计划”：左侧列出各桌，右侧是月历与周历；电脑可把计划拖到周历的早 / 中 / 晚，手机可先点“安排”再点时段。</span></div>
+                  <div><strong>安排最近要跑的团</strong><span>切换到“开团计划”：左侧列出各桌，右侧是月历与周历；电脑可把计划拖到周历的早 / 中 / 晚；手机周视图会按当天显示早 / 中 / 晚，先点“安排”再选择时段。</span></div>
                 </div>
                 <div class="guide-item">
                   <span class="guide-no">03</span>
@@ -3057,16 +3478,21 @@
       </section>
 
       <section id="recordsView" class="records-view" hidden>
-        <div class="view-toolbar records-toolbar">
+        <div id="recordsToolbar" class="view-toolbar records-toolbar">
           <div class="view-toolbar-title">
             <strong>跑团记录表</strong>
             <span>这里是已归档跑团数据的唯一维护入口。模组档案中的“经历”只读取这里的关联记录；日期、KP、PL、Log、感想等请统一在这里修改。</span>
           </div>
           <div class="view-toolbar-actions records-toolbar-actions">
-            <button id="expandAllRecordsBtn" class="btn small" type="button">全部展开</button>
-            <button id="collapseAllRecordsBtn" class="btn small" type="button">全部收起</button>
-            <input id="newModuleNameInput" class="text-input" placeholder="输入模组名称">
-            <button id="createModuleRecordBtn" class="btn primary" type="button">＋ 新建模组 / 第一桌</button>
+            <div class="records-quick-actions" aria-label="跑团记录快捷操作">
+              <button id="expandAllRecordsBtn" class="btn small" type="button"><span class="desktop-label">全部展开</span><span class="mobile-label">展开</span></button>
+              <button id="collapseAllRecordsBtn" class="btn small" type="button"><span class="desktop-label">全部收起</span><span class="mobile-label">收起</span></button>
+              <button id="recordsCreateToggleBtn" class="btn small records-create-toggle" type="button" aria-expanded="false" aria-controls="recordsCreatePanel">＋ 新建</button>
+            </div>
+            <div id="recordsCreatePanel" class="records-create-panel">
+              <input id="newModuleNameInput" class="text-input" placeholder="输入模组名称" autocomplete="off">
+              <button id="createModuleRecordBtn" class="btn primary" type="button">建立第一桌</button>
+            </div>
           </div>
         </div>
         <label class="search records-search sticky-searchbar"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、日期或 Log……"></label>
@@ -3079,7 +3505,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">使用说明与免责声明</span>
             </span>
-            <span class="footer-meta-inline">v7.9 · 2026-08-29 21:40 · 作者：番茄</span>
+            <span class="footer-meta-inline">v7.12 · 2026-08-29 20:52 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3094,7 +3520,7 @@
               档案可能包含联系方式等个人信息，请妥善保管并谨慎导出、截图或共享；数据主要保存在当前浏览器本机，
               清理浏览器数据、设备损坏或更换使用环境都可能造成丢失，建议定期导出备份。
             </p>
-            <div class="footer-meta">版本：v7.9　·　更新时间：2026-08-29 21:40（UTC+8）　·　作者：番茄</div>
+            <div class="footer-meta">版本：v7.12　·　更新时间：2026-08-29 20:52（UTC+8）　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3107,7 +3533,7 @@
         <div class="scroll-rail-divider" aria-hidden="true"></div>
         <button id="globalSearchBtn" class="scroll-rail-btn" type="button" aria-label="全局搜索" title="全局搜索（Ctrl+K）">⌕</button>
         <div class="scroll-rail-divider" aria-hidden="true"></div>
-        <button id="shareModeBtn" class="scroll-rail-btn" type="button" aria-pressed="false" aria-label="开启分享模式" title="分享模式">享</button>
+        <button id="shareModeBtn" class="scroll-rail-btn" type="button" aria-pressed="false" aria-label="开启分享模式" title="分享模式">分</button>
         <div class="scroll-rail-divider" aria-hidden="true"></div>
         <button id="privacyMaskBtn" class="scroll-rail-btn privacy-toggle" type="button" aria-pressed="false" aria-label="开启 PL 姓名、联系方式与个人资料磨砂" title="磨砂隐私">隐</button>
         <div class="scroll-rail-divider" aria-hidden="true"></div>
@@ -3267,10 +3693,6 @@
         <div><h2 id="settingsTitle">设置</h2><div class="sub">这里管理界面主题、评分字段、综合评分权重，以及整套档案的导入和导出。</div></div>
         <button type="button" id="closeSettingsBtn" class="close" aria-label="关闭">×</button>
       </header>
-      <div class="settings-search-wrap">
-        <label class="settings-search"><span>⌕</span><input id="settingsSearchInput" type="search" placeholder="搜索设置，例如：主题、备份、默认展开……" autocomplete="off"></label>
-        <div id="settingsSearchResults" class="settings-search-results" hidden></div>
-      </div>
       <div class="modal-body settings-modal-body">
         <div class="settings-layout">
           <aside class="settings-nav" aria-label="设置章节">
@@ -3280,7 +3702,12 @@
             <button type="button" data-settings-target="behavior">显示与行为</button>
             <button type="button" data-settings-target="data">数据与备份</button>
           </aside>
-          <div class="settings-panels">
+          <div class="settings-main">
+            <div class="settings-search-wrap">
+              <label class="settings-search"><span>⌕</span><input id="settingsSearchInput" type="search" placeholder="搜索设置，例如：主题、备份、默认展开……" autocomplete="off"></label>
+              <div id="settingsSearchResults" class="settings-search-results" hidden></div>
+            </div>
+            <div class="settings-panels">
         <section class="settings-section theme-settings" data-settings-panel="appearance">
           <h3>界面主题</h3>
           <div class="section-help">选择后会立即预览整套页面；点击“保存设置”才正式保存。新增“番茄园”是偏暖的红绿主题，用番茄果肉红与叶片绿做点缀，整体仍保持低刺激与高级感。夜航是为昏暗环境设计的低亮度方案，使用深蓝绿与暖灰白，不采用大面积纯黑。</div>
@@ -3364,7 +3791,7 @@
             <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动保留一份数据</span></article>
             <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持时可安装到设备</span></article>
             <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期备份</span></article>
-            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v7.9</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
+            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v7.12</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
           </div>
 
           <div id="inheritanceStatusNote" class="inheritance-status-note"></div>
@@ -3428,9 +3855,9 @@
           </section>
 
           <section class="friendly-data-block version-update-block">
-            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v7.9 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
+            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v7.12 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
             <div id="releaseNotesBox" class="release-notes-box">
-              <strong>v7.9</strong><span>增加回收站、跨页面同步保护、导入合并、全局搜索、分享模式、设备迁移与更完整的键盘操作。</span>
+              <strong>v7.12</strong><span>优化手机日程、跑团记录快捷操作、评分横滑提示、滚动工具栏与软键盘适配。</span>
             </div>
           </section>
           <details class="friend-safety-notes">
@@ -3442,6 +3869,7 @@
             </div>
           </details>
         </section>
+            </div>
           </div>
         </div>
       </div>
@@ -3534,7 +3962,7 @@
   <div id="toast" class="toast"></div>
 
 <script>
-/* PL收集梦想生活 v7.9 · 作者：番茄
+/* PL收集梦想生活 v7.12 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3551,7 +3979,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "7.9";
+const APP_UI_VERSION = "7.12";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -4951,7 +5379,7 @@ const els = {
   grid:document.getElementById("profileGrid"),count:document.getElementById("countText"),search:document.getElementById("searchInput"),sort:document.getElementById("sortSelect"),cardLayout:document.getElementById("cardLayoutBtn"),compactLayout:document.getElementById("compactLayoutBtn"),
   planBoard:document.getElementById("planBoard"),planSearch:document.getElementById("planSearchInput"),planCount:document.getElementById("planCountText"),planMonth:document.getElementById("planMonthCalendar"),planWeek:document.getElementById("planWeekCalendar"),newPlan:document.getElementById("newPlanBtn"),plannerWeekMode:document.getElementById("plannerWeekModeBtn"),plannerMonthMode:document.getElementById("plannerMonthModeBtn"),
   planEditorBackdrop:document.getElementById("planEditorBackdrop"),planEditorDrawer:document.getElementById("planEditorDrawer"),planEditorTitle:document.getElementById("planEditorTitle"),planEditorContent:document.getElementById("planEditorContent"),closePlanEditor:document.getElementById("closePlanEditorBtn"),
-  recordsBoard:document.getElementById("recordsBoard"),recordsSearch:document.getElementById("recordsSearchInput"),newModuleName:document.getElementById("newModuleNameInput"),createModuleRecord:document.getElementById("createModuleRecordBtn"),expandAllRecords:document.getElementById("expandAllRecordsBtn"),collapseAllRecords:document.getElementById("collapseAllRecordsBtn"),
+  recordsBoard:document.getElementById("recordsBoard"),recordsSearch:document.getElementById("recordsSearchInput"),recordsToolbar:document.getElementById("recordsToolbar"),recordsCreateToggle:document.getElementById("recordsCreateToggleBtn"),recordsCreatePanel:document.getElementById("recordsCreatePanel"),newModuleName:document.getElementById("newModuleNameInput"),createModuleRecord:document.getElementById("createModuleRecordBtn"),expandAllRecords:document.getElementById("expandAllRecordsBtn"),collapseAllRecords:document.getElementById("collapseAllRecordsBtn"),
   newBtn:document.getElementById("newBtn"),settingsBtn:document.getElementById("settingsBtn"),overlay:document.getElementById("overlay"),globalCreate:document.getElementById("globalCreateBtn"),quickCreateMenu:document.getElementById("quickCreateMenu"),mobileBottomNav:document.getElementById("mobileBottomNav"),mobileToolsSheet:document.getElementById("mobileToolsSheet"),hoOrganizerBackdrop:document.getElementById("hoOrganizerBackdrop"),hoOrganizerTitle:document.getElementById("hoOrganizerTitle"),hoOrganizerSubtitle:document.getElementById("hoOrganizerSubtitle"),hoOrganizerStats:document.getElementById("hoOrganizerStats"),hoOrganizerNotice:document.getElementById("hoOrganizerNotice"),hoOrganizerBoard:document.getElementById("hoOrganizerBoard"),hoShowEmptyColumns:document.getElementById("hoShowEmptyColumns"),hoImageExport:document.getElementById("hoImageExportBtn"),hoImageExportMenu:document.getElementById("hoImageExportMenu"),copyHoOrganizer:document.getElementById("copyHoOrganizerBtn"),closeHoOrganizer:document.getElementById("closeHoOrganizerBtn"),closeHoOrganizerFoot:document.getElementById("closeHoOrganizerFootBtn"),
   autoSaveHeroStatus:document.getElementById("autoSaveHeroStatus"),autoSaveHeroText:document.getElementById("autoSaveHeroText"),dataSafetyBanner:document.getElementById("dataSafetyBanner"),dataSafetyBannerTitle:document.getElementById("dataSafetyBannerTitle"),dataSafetyBannerText:document.getElementById("dataSafetyBannerText"),dataSafetyBackupNow:document.getElementById("dataSafetyBackupNowBtn"),dataSafetyDismiss:document.getElementById("dataSafetyDismissBtn"),
   profileModalWrap:document.getElementById("profileModalWrap"),profileModal:document.getElementById("profileModal"),settingsModal:document.getElementById("settingsModal"),settingsPanels:document.querySelector(".settings-panels"),modalTitle:document.getElementById("modalTitle"),
@@ -5334,6 +5762,7 @@ function renderProfiles(){
   }
   const visibleRows=sorted.slice(0,profileRenderLimit);
   els.grid.innerHTML=(compact?visibleRows.map(compactRowHTML).join(""):visibleRows.map(cardHTML).join(""))+(sorted.length>visibleRows.length?`<div class="load-more-row"><button type="button" class="btn" data-load-more-profiles>显示更多（${visibleRows.length}/${sorted.length}）</button></div>`:"");
+  requestAnimationFrame(refreshCompactScoreHints);
 }
 
 
@@ -5580,7 +6009,7 @@ function compactRowHTML(p){
       ${roleDegreeHTML(roleStats,true)}
     </div>
     <div class="compact-total"><strong>${fmtScore(total)}</strong><span>${total===null?"暂无评分":"/10 综合"}</span></div>
-    <div class="compact-scores" title="横向滚动查看全部单项分数">${scores}</div>
+    <div class="compact-score-strip"><div class="compact-scores" title="横向滚动查看全部单项分数">${scores}</div><span class="compact-swipe-hint" aria-hidden="true">‹ 左右滑 ›</span></div>
     <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">HO整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":`<button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
 }
@@ -6403,12 +6832,13 @@ function plannerWeekHTML(){
   const start=parseLocalISODate(weekStart),end=new Date(start);end.setDate(start.getDate()+6);
   const weekLabel=`${start.getMonth()+1}月${start.getDate()}日 – ${end.getMonth()+1}月${end.getDate()}日`;
   const picked=runPlans.find(p=>p.id===plannerPickedPlanId);
-  const pickedHtml=picked?`<div class="calendar-picked"><span>正在安排 <strong>${escapeHTML(plannerPlanLabel(picked))}</strong> · 点一个空格即可添加</span><button type="button" data-clear-plan-pick aria-label="取消安排模式">×</button></div>`:"";
+  const pickedHtml=picked?`<div class="calendar-picked"><span>正在安排 <strong>${escapeHTML(plannerPlanLabel(picked))}</strong> · 点一个空时段即可添加</span><button type="button" data-clear-plan-pick aria-label="取消安排模式">×</button></div>`:"";
   const weekday=["周一","周二","周三","周四","周五","周六","周日"];
   const days=Array.from({length:7},(_,i)=>{
     const iso=addLocalDays(weekStart,i),d=parseLocalISODate(iso);
-    return {iso,d,label:weekday[i]};
+    return {iso,d,label:weekday[i],count:calendarSlotsForDate(iso).length};
   });
+
   const heads=days.map(({iso,d,label})=>`<button class="week-day-head-cell ${iso===today?"today":""} ${iso===plannerSelectedDate?"selected":""}" type="button" data-calendar-day="${iso}"><strong>${label}</strong><span>${d.getMonth()+1}/${d.getDate()}${iso===today?" · 今天":""}</span></button>`).join("");
   const rows=PLAN_DAYPARTS.map(part=>{
     const cells=days.map(({iso})=>{
@@ -6423,11 +6853,39 @@ function plannerWeekHTML(){
     }).join("");
     return `<div class="week-time-label"><strong>${part.label}</strong><span>${part.hint}</span></div>${cells}`;
   }).join("");
+
+  const selected=days.find(x=>x.iso===plannerSelectedDate)||days[0];
+  const selectedDateLabel=`${selected.d.getMonth()+1}月${selected.d.getDate()}日 · ${selected.label}${selected.iso===today?" · 今天":""}`;
+  const dayButtons=days.map(({iso,d,label,count})=>`<button class="mobile-week-day ${iso===plannerSelectedDate?"selected":""} ${iso===today?"today":""}" type="button" data-calendar-day="${iso}" data-week-day="${iso}">
+      <span>${label.replace("周","")}</span><strong>${d.getDate()}</strong>${count?`<em>${count}</em>`:""}
+    </button>`).join("");
+  const mobileRows=PLAN_DAYPARTS.map(part=>{
+    const events=calendarSlotsForDate(selected.iso).filter(x=>slotDaypart(x.slot)===part.key);
+    const full=events.length>=MAX_RUNS_PER_DAYPART;
+    const eventHtml=events.map(({plan,slot})=>`<div class="mobile-calendar-event" data-week-event-plan="${escapeHTML(plan.id)}" data-week-event-slot="${escapeHTML(slot.id)}">
+      <button class="mobile-calendar-event-main" type="button" data-week-event-plan="${escapeHTML(plan.id)}">
+        <strong>${escapeHTML(plannerPlanLabel(plan))}</strong><span>${part.label} · 已安排</span>
+      </button>
+      <button class="mobile-calendar-event-remove" type="button" data-unschedule-event data-unschedule-plan-id="${escapeHTML(plan.id)}" data-unschedule-slot-id="${escapeHTML(slot.id)}" aria-label="取消这次安排">×</button>
+    </div>`).join("");
+    const emptyHint=events.length?"":`<div class="mobile-daypart-empty">${picked?`点这里安排「${escapeHTML(plannerPlanLabel(picked))}」`:`先在计划列表点“安排”`}</div>`;
+    return `<section class="mobile-daypart-row ${picked&&!full?"pick-ready":""} ${full?"full":""}" data-calendar-date="${selected.iso}" data-daypart="${part.key}">
+      <div class="mobile-daypart-label"><div><strong>${part.label}</strong><span>${part.hint}</span></div><em>${events.length}/${MAX_RUNS_PER_DAYPART}</em></div>
+      <div class="mobile-daypart-events">${eventHtml}${emptyHint}</div>
+      <button class="mobile-daypart-add" type="button" data-calendar-date="${selected.iso}" data-daypart="${part.key}" ${full?"disabled":""}>${full?"本时段已满":picked?`＋ 安排到${part.label}`:"＋ 添加安排"}</button>
+    </section>`;
+  }).join("");
+
   return `<header class="calendar-head">
-      <div class="calendar-head-main"><strong>${weekLabel}</strong><span>每个早 / 中 / 晚最多 2 场；已有安排点 × 取消，拖动即可改期</span></div>
+      <div class="calendar-head-main"><strong>${weekLabel}</strong><span>每个早 / 中 / 晚最多 2 场；电脑拖动改期，手机按日期查看当天时段</span></div>
       <div class="calendar-nav"><button class="btn small" type="button" data-week-shift="-1">‹ 上周</button><button class="btn small" type="button" data-calendar-today>本周</button><button class="btn small" type="button" data-week-shift="1">下周 ›</button></div>
     </header>
     ${pickedHtml}
+    <div class="mobile-week-agenda">
+      <div class="mobile-week-days">${dayButtons}</div>
+      <div class="mobile-selected-day"><strong>${selectedDateLabel}</strong><span>${selected.count?`当天 ${selected.count} 场安排`:"当天暂无安排"}</span></div>
+      <div class="mobile-dayparts">${mobileRows}</div>
+    </div>
     <div class="week-calendar-scroll"><div class="week-board"><div class="week-corner"></div>${heads}${rows}</div></div>`;
 }
 
@@ -6818,6 +7276,7 @@ function createFirstRunRecord(){
     selectedModuleName=existingRecord.moduleName;
     els.newModuleName.value="";
     renderRunRecords({preservePageScroll:true,centerSelected:true});
+    closeRecordsCreatePanel();
     showToast(`已存在模组“${existingRecord.moduleName}”，已为你定位；新增桌请使用“＋ 新增一桌”`);
     return;
   }
@@ -6836,6 +7295,7 @@ function createFirstRunRecord(){
   els.newModuleName.value="";
   renderRunRecords({preservePageScroll:true,centerSelected:true});
   renderProfiles();
+  closeRecordsCreatePanel();
   showToast(existingModule?"已在现有模组档案下建立第一桌":"已建立模组与第一桌");
 }
 
@@ -6940,9 +7400,17 @@ function openSettings(){
 
 function activateSettingsPanel(key){
   activeSettingsPanel=key||"appearance";
-  document.querySelectorAll(".settings-nav [data-settings-target]").forEach(btn=>btn.classList.toggle("active",btn.dataset.settingsTarget===activeSettingsPanel));
+  let activeBtn=null;
+  document.querySelectorAll(".settings-nav [data-settings-target]").forEach(btn=>{
+    const active=btn.dataset.settingsTarget===activeSettingsPanel;
+    btn.classList.toggle("active",active);
+    if(active)activeBtn=btn;
+  });
   document.querySelectorAll("[data-settings-panel]").forEach(panel=>panel.hidden=panel.dataset.settingsPanel!==activeSettingsPanel);
   if(els.settingsPanels)els.settingsPanels.scrollTop=0;
+  if(activeBtn&&window.matchMedia("(max-width:760px)").matches){
+    requestAnimationFrame(()=>activeBtn.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"}));
+  }
 }
 function syncBehaviorSettingsUI(){
   if(!settingsDraft)return;
@@ -7838,7 +8306,7 @@ function setSelectedModuleRecordsCollapsed(collapsed){
   renderRunRecords({preservePageScroll:true,centerSelected:false});
 }
 
-/* ---------- v7.9 长期使用增强 ---------- */
+/* ---------- v7.9+ 长期使用增强 ---------- */
 let trashEntries=[];
 let lastUndoTrashId="";
 let undoToastTimer=null;
@@ -8114,7 +8582,7 @@ function focusSettingsSearchResult(key,q){activateSettingsPanel(key);const panel
 
 /* 分享模式 */
 const SHARE_MUTATION_SELECTOR='#newBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-native-module-edit],[data-native-module-delete],[data-record-edit],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],#settingsBtn,[data-open-settings]';
-function updateShareModeUI(){document.body.classList.toggle("share-mode",shareModeEnabled);const btn=document.getElementById("shareModeBtn");if(btn){btn.textContent=shareModeEnabled?"退":"享";btn.setAttribute("aria-pressed",shareModeEnabled?"true":"false");btn.title=shareModeEnabled?"退出分享模式":"分享模式";}document.querySelectorAll("[data-mobile-share]").forEach(x=>x.textContent=shareModeEnabled?"退 退出分享模式":"享 分享模式");}
+function updateShareModeUI(){document.body.classList.toggle("share-mode",shareModeEnabled);const btn=document.getElementById("shareModeBtn");if(btn){btn.textContent=shareModeEnabled?"退":"分";btn.setAttribute("aria-pressed",shareModeEnabled?"true":"false");btn.title=shareModeEnabled?"退出分享模式":"分享模式";}document.querySelectorAll("[data-mobile-share]").forEach(x=>x.textContent=shareModeEnabled?"退 退出分享模式":"分享 分享模式");}
 function toggleShareMode(force){shareModeEnabled=typeof force==="boolean"?force:!shareModeEnabled;try{sessionStorage.setItem(SHARE_MODE_SESSION_KEY,shareModeEnabled?"1":"0");}catch(err){}updateShareModeUI();showToast(shareModeEnabled?"已开启分享模式：敏感资料与编辑入口已隐藏":"已退出分享模式");}
 function initShareMode(){try{shareModeEnabled=sessionStorage.getItem(SHARE_MODE_SESSION_KEY)==="1";}catch(err){}updateShareModeUI();document.addEventListener("click",e=>{if(!shareModeEnabled)return;const blocked=e.target.closest(SHARE_MUTATION_SELECTOR);if(!blocked)return;e.preventDefault();e.stopImmediatePropagation();showToast("分享模式下已关闭编辑操作");},true);}
 
@@ -8152,7 +8620,7 @@ function handleGlobalKeys(e){
 window.addEventListener("beforeunload",e=>{if(!hasUnsavedWork())return;e.preventDefault();e.returnValue="";});
 
 /* 包装主要弹窗，记录焦点与未保存修改 */
-const v79OpenSettings=openSettings;openSettings=function(){rememberDialogOpener(els.settingsModal);v79OpenSettings();setTimeout(()=>document.getElementById("settingsSearchInput")?.focus({preventScroll:true}),30);renderTrashBin();};
+const v79OpenSettings=openSettings;openSettings=function(){rememberDialogOpener(els.settingsModal);v79OpenSettings();if(!window.matchMedia("(max-width:760px)").matches)setTimeout(()=>document.getElementById("settingsSearchInput")?.focus({preventScroll:true}),30);renderTrashBin();};
 const v79CloseSettings=closeSettings;closeSettings=function(force=false){const result=v79CloseSettings(force);setTimeout(()=>restoreDialogOpener(els.settingsModal),20);return result;};
 const v79OpenEditor=openEditor;openEditor=function(...args){rememberDialogOpener(els.profileModal);return v79OpenEditor(...args);};
 const v79CloseEditor=closeEditor;closeEditor=function(revert=true){if(revert&&!suppressDirtyPrompt&&profileDraftDirty()&&!confirm("这份 PL 档案有尚未保存的修改，确定放弃吗？"))return;const result=v79CloseEditor(revert);setTimeout(()=>restoreDialogOpener(els.profileModal),20);return result;};
@@ -8175,7 +8643,7 @@ const v79CloseImportPreview=closeImportPreview;closeImportPreview=function(){con
 const v79OpenMigrationWizard=openMigrationWizard;openMigrationWizard=function(){rememberDialogOpener(document.querySelector(".migration-wizard-modal"));return v79OpenMigrationWizard();};
 const v79CloseMigrationWizard=closeMigrationWizard;closeMigrationWizard=function(){const d=document.querySelector(".migration-wizard-modal"),result=v79CloseMigrationWizard();setTimeout(()=>restoreDialogOpener(d),20);return result;};
 
-/* 统一模态表面识别，包含 v7.9 新界面 */
+/* 统一模态表面识别，包含长期使用增强界面 */
 const v78AnyModalSurfaceOpen=anyModalSurfaceOpen;anyModalSurfaceOpen=function(){return v78AnyModalSurfaceOpen()||["globalSearchBackdrop","importPreviewBackdrop","migrationWizardBackdrop","onboardingBackdrop"].some(id=>{const el=document.getElementById(id);return el&&!el.hidden;});};
 
 function initV79(){
@@ -8269,7 +8737,12 @@ els.planBoard.addEventListener("click",e=>{
   if(pick){
     plannerPickedPlanId=plannerPickedPlanId===pick.dataset.pickPlan?null:pick.dataset.pickPlan;
     renderRunPlans();
-    if(plannerPickedPlanId)showToast(mobileMedia.matches?"已进入安排模式，点周历的早 / 中 / 晚":"已进入安排模式：点周历格，或直接拖过去");
+    if(plannerPickedPlanId){
+      showToast(mobileMedia.matches?"已进入安排模式，选择当天的早 / 中 / 晚":"已进入安排模式：点周历格，或直接拖过去");
+      if(mobileMedia.matches)requestAnimationFrame(()=>{
+        els.planWeek.querySelector(".mobile-week-agenda")?.scrollIntoView({behavior:preferredScrollBehavior(),block:"start"});
+      });
+    }
     return;
   }
   const archive=e.target.closest("[data-archive-plan-row]");
@@ -8430,7 +8903,8 @@ els.plansView.addEventListener("click",e=>{
   const event=e.target.closest("[data-week-event-plan]");
   if(event){openPlanEditor(event.dataset.weekEventPlan);return;}
   const zone=e.target.closest("[data-calendar-date][data-daypart]");
-  if(zone&&plannerPickedPlanId)schedulePlanOnDaypart(plannerPickedPlanId,zone.dataset.calendarDate,zone.dataset.daypart);
+  if(zone&&plannerPickedPlanId){schedulePlanOnDaypart(plannerPickedPlanId,zone.dataset.calendarDate,zone.dataset.daypart);return;}
+  if(zone&&mobileMedia.matches&&e.target.closest(".mobile-daypart-add,.mobile-daypart-empty"))showToast("先在计划列表点击“安排”，再选择时段");
 });
 
 els.planWeek.addEventListener("dragstart",e=>{
@@ -8470,6 +8944,7 @@ els.planWeek.addEventListener("drop",e=>{
 });
 
 els.recordsSearch.addEventListener("input",debouncedRecordRender);
+els.recordsCreateToggle.addEventListener("click",()=>setRecordsCreateOpen(!els.recordsToolbar.classList.contains("is-create-open")));
 els.createModuleRecord.addEventListener("click",createFirstRunRecord);
 els.newModuleName.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();createFirstRunRecord();}});
 
@@ -8857,6 +9332,7 @@ if(window.visualViewport){
 els.overlay.addEventListener("click",e=>{if(e.target!==els.overlay)return;if(!els.settingsModal.hidden)closeSettings();else closeEditor(true);});
 document.addEventListener("keydown",e=>{
   if(e.key!=="Escape")return;
+  if(els.recordsToolbar?.classList.contains("is-create-open")&&!anyModalSurfaceOpen()){closeRecordsCreatePanel();return;}
   if(!els.secureBackupBackdrop.hidden){closeSecureBackup();return;}
   if(!els.hoOrganizerBackdrop.hidden){closeHoOrganizer();return;}
   if(!els.moduleAdvancedBackdrop.hidden){closeModuleAdvancedEditor();return;}
@@ -8896,10 +9372,112 @@ function initHeroHelpState(){
   }
 }
 
+
+/* ---------- v7.12 手机触控与输入体验 ---------- */
+function setRecordsCreateOpen(open){
+  if(!els.recordsToolbar||!els.recordsCreateToggle)return;
+  const next=Boolean(open);
+  els.recordsToolbar.classList.toggle("is-create-open",next);
+  els.recordsCreateToggle.setAttribute("aria-expanded",next?"true":"false");
+  els.recordsCreateToggle.textContent=next?"收起新建":"＋ 新建";
+  if(next&&mobileMedia.matches){
+    requestAnimationFrame(()=>{try{els.newModuleName.focus({preventScroll:true});}catch(err){els.newModuleName.focus();}});
+  }
+}
+function closeRecordsCreatePanel(){setRecordsCreateOpen(false);}
+
+function refreshCompactScoreHints(){
+  document.querySelectorAll(".compact-score-strip").forEach(wrap=>{
+    const scroller=wrap.querySelector(".compact-scores"),hint=wrap.querySelector(".compact-swipe-hint");
+    if(!scroller)return;
+    const update=()=>{
+      const overflow=scroller.scrollWidth>scroller.clientWidth+4;
+      wrap.classList.toggle("is-scrollable",overflow);
+      wrap.classList.toggle("can-scroll-left",overflow&&scroller.scrollLeft>5);
+      wrap.classList.toggle("can-scroll-right",overflow&&scroller.scrollLeft<scroller.scrollWidth-scroller.clientWidth-5);
+      if(hint&&scroller.scrollLeft>8)hint.classList.add("dismissed");
+    };
+    update();
+    if(!scroller.dataset.hintBound){
+      scroller.dataset.hintBound="1";
+      scroller.addEventListener("scroll",update,{passive:true});
+      scroller.addEventListener("pointerdown",()=>hint?.classList.add("dismissed"),{passive:true});
+      setTimeout(()=>hint?.classList.add("auto-faded"),3200);
+    }
+  });
+}
+
+let mobileChromeLastY=window.scrollY;
+let mobileChromeRaf=0;
+function updateSmartMobileChrome(){
+  if(!mobileMedia.matches){document.body.classList.remove("mobile-chrome-condensed");mobileChromeLastY=window.scrollY;return;}
+  if(anyModalSurfaceOpen()||document.body.classList.contains("mobile-keyboard-open")){document.body.classList.remove("mobile-chrome-condensed");mobileChromeLastY=window.scrollY;return;}
+  const y=Math.max(0,window.scrollY),delta=y-mobileChromeLastY;
+  if(y<110)document.body.classList.remove("mobile-chrome-condensed");
+  else if(delta>10)document.body.classList.add("mobile-chrome-condensed");
+  else if(delta<-8)document.body.classList.remove("mobile-chrome-condensed");
+  mobileChromeLastY=y;
+}
+function initSmartMobileChrome(){
+  window.addEventListener("scroll",()=>{
+    if(mobileChromeRaf)return;
+    mobileChromeRaf=requestAnimationFrame(()=>{mobileChromeRaf=0;updateSmartMobileChrome();});
+  },{passive:true});
+  mobileMedia.addEventListener?.("change",updateSmartMobileChrome);
+  updateSmartMobileChrome();
+}
+
+let mobileKeyboardBaseHeight=0;
+function activeElementIsEditable(){
+  const a=document.activeElement;
+  return Boolean(a&&a.matches?.('input:not([type="button"]):not([type="checkbox"]):not([type="radio"]),textarea,select,[contenteditable="true"]'));
+}
+function ensureAnyFocusedControlVisible(){
+  if(!mobileMedia.matches||!activeElementIsEditable())return;
+  const active=document.activeElement,vv=window.visualViewport;
+  const top=vv?.offsetTop||0,bottom=top+(vv?.height||window.innerHeight);
+  const r=active.getBoundingClientRect(),safeTop=top+18,safeBottom=bottom-86;
+  if(r.top>=safeTop&&r.bottom<=safeBottom)return;
+  try{active.scrollIntoView({block:r.bottom>safeBottom?"center":"nearest",inline:"nearest",behavior:"auto"});}catch(err){}
+}
+function applyMobileKeyboardVisualState(open,visibleHeight,offsetTop=0){
+  const h=Math.max(280,Number(visibleHeight)||window.innerHeight),top=Math.max(0,Number(offsetTop)||0);
+  document.documentElement.style.setProperty("--mobile-visible-height",`${Math.round(h)}px`);
+  document.documentElement.style.setProperty("--mobile-visible-top",`${Math.round(top)}px`);
+  document.body.classList.toggle("mobile-keyboard-open",Boolean(open));
+  if(open)document.body.classList.remove("mobile-chrome-condensed");
+  requestAnimationFrame(()=>{if(open)ensureAnyFocusedControlVisible();});
+}
+function mobileVisibleViewportHeight(){
+  const vv=window.visualViewport,inner=Number(window.innerHeight)||0,visual=Number(vv?.height)||0;
+  if(inner&&visual)return Math.min(inner,visual);
+  return visual||inner||600;
+}
+function updateMobileKeyboardState(){
+  if(!mobileMedia.matches){applyMobileKeyboardVisualState(false,window.innerHeight,0);return;}
+  const vv=window.visualViewport,visible=mobileVisibleViewportHeight();
+  if(!mobileKeyboardBaseHeight||(!activeElementIsEditable()&&visible>mobileKeyboardBaseHeight-70))mobileKeyboardBaseHeight=Math.max(mobileKeyboardBaseHeight,visible);
+  const delta=Math.max(0,mobileKeyboardBaseHeight-visible);
+  const open=activeElementIsEditable()&&delta>110;
+  applyMobileKeyboardVisualState(open,visible,vv?.offsetTop||0);
+}
+function initMobileKeyboardUX(){
+  const vv=window.visualViewport;
+  mobileKeyboardBaseHeight=mobileVisibleViewportHeight();
+  vv?.addEventListener("resize",updateMobileKeyboardState,{passive:true});
+  vv?.addEventListener("scroll",updateMobileKeyboardState,{passive:true});
+  window.addEventListener("resize",()=>setTimeout(updateMobileKeyboardState,30),{passive:true});
+  window.addEventListener("orientationchange",()=>setTimeout(()=>{mobileKeyboardBaseHeight=window.visualViewport?.height||window.innerHeight;updateMobileKeyboardState();},180),{passive:true});
+  document.addEventListener("focusin",e=>{if(mobileMedia.matches&&e.target.matches?.('input,textarea,select,[contenteditable="true"]'))setTimeout(updateMobileKeyboardState,80);});
+  document.addEventListener("focusout",()=>setTimeout(updateMobileKeyboardState,120));
+  updateMobileKeyboardState();
+}
 // 初始渲染
 initDisclaimerState();
 initHeroHelpState();
 initMobileUX();
+initSmartMobileChrome();
+initMobileKeyboardUX();
 initProfileCardCollapseState();
 initPlannerUIPreferences();
 applyTheme(settings.theme);
