@@ -1,0 +1,25 @@
+{
+  "name": "PL收集梦想生活",
+  "short_name": "PL档案",
+  "description": "TRPG PL档案、模组、开团计划与跑团记录整理工具",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf4ef",
+  "theme_color": "#f4f3ee",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
