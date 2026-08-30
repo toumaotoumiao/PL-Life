@@ -259,7 +259,9 @@
     .view-toolbar-title strong{display:block;font-size:15px;color:#353a36}.view-toolbar-title span{display:block;margin-top:4px;font-size:11px;line-height:1.55;color:#7c807b}
     .view-toolbar-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}.view-toolbar-actions input{width:240px;min-height:40px}
     .profiles-toolbar .view-toolbar-actions .btn{min-width:118px}
-    .records-search{margin:0 0 12px}.records-search.sticky-searchbar{display:flex;top:60px;padding:7px 9px}
+    .records-search-row{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;margin-top:1px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--t-line) 72%,transparent)}
+    .records-search{margin:0;min-width:0}
+    .records-search-row .search-result-count{margin:0;min-width:max-content;text-align:right}
     .records-board{display:grid;grid-template-columns:220px minmax(0,1fr);gap:12px;align-items:start}
     .module-sidebar{position:sticky;top:118px;display:grid;gap:6px;padding:8px;border:1px solid #dcded8;border-radius:17px;background:rgba(249,250,247,.82);max-height:calc(100vh - 120px);overflow:auto}
     .module-tab{width:100%;min-height:44px;border:1px solid transparent;background:transparent;border-radius:12px;padding:9px 10px;text-align:left;cursor:pointer;transition:.15s ease}
@@ -547,7 +549,7 @@
       .compact-scores{grid-column:1/-1;grid-row:2;display:flex;overflow-x:auto;gap:5px;padding:1px 0 4px;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none}.compact-scores::-webkit-scrollbar{display:none}
       .compact-score{flex:0 0 auto;scroll-snap-align:start;font-size:9.5px;padding:5px 7px;border:1px solid #e0e3dd;border-radius:999px;background:#f7f8f5}.compact-actions{grid-column:1/-1;grid-row:3;display:flex;justify-content:flex-end;gap:6px;padding-top:2px}.compact-actions .btn{min-height:36px}
 
-      .records-search.sticky-searchbar{top:calc(env(safe-area-inset-top) + 56px);min-height:48px;margin:8px 0 7px;padding:6px 9px}.records-board{display:block}
+      .records-board{display:block}
       .module-sidebar{position:sticky;top:calc(env(safe-area-inset-top) + 112px);z-index:20;display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;max-height:none;margin:0 0 8px;padding:6px;border-radius:14px;background:rgba(247,248,244,.96);box-shadow:0 6px 16px rgba(44,50,46,.06);-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none}.module-sidebar::-webkit-scrollbar{display:none}
       .module-tab{flex:0 0 auto;min-width:126px;max-width:180px;min-height:43px;padding:8px 10px;scroll-snap-align:center}.module-tab-name{font-size:11px}.module-tab-count{font-size:8.5px}
       .module-detail{border-radius:16px}.module-detail-head{align-items:flex-start;flex-direction:column;gap:8px;padding:11px}.module-detail-name{font-size:14px}.module-actions{width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none}.module-actions::-webkit-scrollbar{display:none}.module-actions .btn{flex:0 0 auto}
@@ -1688,6 +1690,11 @@
     .week-slot.full .week-slot-add{border-color:transparent!important;color:var(--t-warning)!important;font-size:9px}
     .week-slot.full.pick-ready{background:color-mix(in srgb,var(--t-warning-soft) 72%,var(--t-surface))}
     .month-mini-parts i.double{height:5px;box-shadow:0 0 0 1px color-mix(in srgb,var(--t-accent) 28%,transparent)}
+    .month-mini-parts i.triple{height:6px;box-shadow:0 0 0 1px color-mix(in srgb,var(--t-accent) 38%,transparent)}
+    .month-mini-parts i.full-cap{height:7px;background:var(--t-warning);box-shadow:0 0 0 1px color-mix(in srgb,var(--t-warning) 34%,transparent)}
+    .week-slot.occupancy-3 .calendar-event,.week-slot.occupancy-4 .calendar-event{padding-top:5px;padding-bottom:5px}
+    .week-slot.occupancy-4 .calendar-event-time{display:none}
+    .week-slot.occupancy-4 .calendar-event-name{margin-top:0}
 
     @media(max-width:760px){
       .card-top-side{gap:5px}
@@ -2826,7 +2833,7 @@
     .run-badge{max-width:min(100%,360px);overflow:hidden;text-overflow:ellipsis}
     .plan-row-titleline{overflow:hidden}
     .plan-row-table{flex:0 1 42%;min-width:0;max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .module-tab{min-width:0;max-width:100%;overflow:hidden}
+    @media(min-width:761px){.module-tab{min-width:0;max-width:100%;overflow:hidden}}
     .module-tab-meta{min-width:0;max-width:100%;overflow:hidden}
     .module-tab-meta>*{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .module-detail-title{flex:1 1 0;max-width:100%;overflow:hidden}
@@ -2954,7 +2961,7 @@
 
       /* 手机顶部重复入口收起；搜索不再使用 sticky 覆盖布局。 */
       #settingsBtn,#newBtn,#newNativeModuleBtn,#newPlanBtn,#createModuleRecordBtn{display:none!important}
-      .sticky-searchbar,.records-search.sticky-searchbar{position:relative!important;top:auto!important;z-index:auto!important}
+      .sticky-searchbar{position:relative!important;top:auto!important;z-index:auto!important}
       .toolbar{grid-template-columns:minmax(0,1fr) auto!important;grid-template-rows:auto auto auto!important}
       .toolbar .search{grid-column:1/-1!important;grid-row:1!important}.toolbar .sort-select{grid-column:1/2!important;grid-row:2!important}.profile-layout-switch{grid-column:2/3!important;grid-row:2!important;position:relative!important;z-index:1!important}.count{grid-column:1/-1!important;grid-row:3!important;text-align:left!important;padding-left:2px!important}
 
@@ -2988,7 +2995,7 @@
     html [hidden]{display:none!important}
     @media(max-width:760px){body.modal-scroll-locked .mobile-side-rail{display:none!important}}
   </style>
-  <style id="v804-ux-refinement">
+  <style id="v806-ux-refinement">
     html[data-theme]{--status-success-bg:color-mix(in srgb,var(--t-success) 12%,var(--t-surface));--status-success-line:color-mix(in srgb,var(--t-success) 34%,var(--t-line));--status-info-bg:color-mix(in srgb,var(--t-muted) 8%,var(--t-surface));--status-info-line:color-mix(in srgb,var(--t-muted) 24%,var(--t-line));--status-warning-bg:var(--t-warning-soft);--status-warning-line:var(--t-warning-line);--status-danger-bg:var(--t-danger-soft);--status-danger-line:var(--t-danger-line)}
     html[data-theme] :is(.view-tab,.compact-nav button,.layout-btn).active{background:color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface))!important;color:var(--t-accent-strong)!important;border-color:color-mix(in srgb,var(--t-accent) 24%,var(--t-line))!important;box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 14%,transparent),0 1px 5px var(--t-shadow-soft)!important}
     html[data-theme] .settings-nav button.active{background:color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface))!important;color:var(--t-accent-strong)!important;box-shadow:inset 3px 0 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}
@@ -2996,10 +3003,53 @@
     html[data-theme] .native-module-ho-buttons button.active,html[data-theme] .global-search-result.active{background:color-mix(in srgb,var(--t-accent-soft) 86%,var(--t-surface))!important;color:var(--t-accent-strong)!important;border-color:color-mix(in srgb,var(--t-accent) 28%,var(--t-line))!important;box-shadow:inset 0 -2px 0 var(--t-accent)!important}
     .search,.settings-search,.global-search-box{position:relative}.search input,.settings-search input,.global-search-box input{min-width:0;padding-right:30px}.search-clear{flex:0 0 auto;display:grid;place-items:center;width:28px;height:28px;min-width:28px;min-height:28px;margin-left:-2px;padding:0;border:0;border-radius:9px;background:transparent;color:var(--t-muted);font:700 18px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;touch-action:manipulation;transition:background .12s ease,color .12s ease,transform .12s ease}.search-clear:hover{background:var(--t-surface-3);color:var(--t-ink)}.search-clear:active{transform:scale(.92)}.search-clear[hidden]{display:none!important}input[type="search"]::-webkit-search-cancel-button{display:none}
     .select-affordance{display:flex;align-items:center;gap:7px;min-width:0;min-height:var(--ui-control-h);padding:0 8px 0 10px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-input);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--t-surface) 92%,transparent);transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}.select-affordance:focus-within{border-color:var(--t-line-strong);box-shadow:0 0 0 3px var(--t-focus)}.select-affordance-label{flex:0 0 auto;font-size:9px;font-weight:760;color:var(--t-faint);letter-spacing:.02em;white-space:nowrap}.select-affordance>.sort-select{flex:1 1 auto;width:auto;min-width:0;max-width:none!important;border:0!important;border-radius:0!important;padding-left:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}.toolbar>.select-affordance{max-width:340px}.module-native-controls>.select-affordance{width:100%;max-width:100%}
-    .count,.search-result-count{font-variant-numeric:tabular-nums}.search-result-count{margin:6px 2px 0;color:var(--t-muted);font-size:9.5px;line-height:1.35;white-space:nowrap}.records-search + .search-result-count{margin-bottom:8px}
+    .count,.search-result-count{font-variant-numeric:tabular-nums}.search-result-count{margin:6px 2px 0;color:var(--t-muted);font-size:9.5px;line-height:1.35;white-space:nowrap}.records-search-row .search-result-count{margin:0;align-self:center}
     html[data-theme] :is(.status-ok,.plan-row-status.active,.integrity-ok){background:var(--status-success-bg)!important;border-color:var(--status-success-line)!important;color:var(--t-success)!important}html[data-theme] :is(.plan-row-status.upcoming,.record-summary-chip.archive,.archived-schedule-label,.record-view-archive){background:var(--status-info-bg)!important;border-color:var(--status-info-line)!important;color:var(--t-muted)!important}html[data-theme] :is(.pending-badge,.plan-row-status.overdue,.legacy-duration-note,.record-legacy-badge,.integrity-item.warn){background:var(--status-warning-bg)!important;border-color:var(--status-warning-line)!important;color:var(--t-warning)!important}html[data-theme] :is(.integrity-item.error,.settings-warning.error){background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)!important}.plan-row-status.unscheduled{background:var(--t-surface-3)!important;border-color:var(--t-line)!important;color:var(--t-muted)!important}
     .plan-row-status,.month-event,.week-day-head-cell span,.week-time-label span,.calendar-event-time,.week-slot-capacity,.record-summary-chip,.record-section-note,.module-tab-meta,.table-record-time,.record-view-fact span,.record-view-section-title span,.record-view-note span,.native-module-score span,.native-module-row-main span,.native-module-row-tags span,.global-search-result-type,.integrity-item small,.trash-row-main span,.assignment-mini-label,.participant-empty-panel span,.module-ho-inline-label,.compact-save-status,.updated-chip,.runs-role-summary{font-size:9px!important}
-    @media(max-width:760px){html[data-theme] .settings-nav button.active{box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}html[data-theme] .module-tab.active{box-shadow:inset 0 -2px 0 var(--t-accent),0 2px 8px var(--t-shadow-soft)!important}.toolbar>.select-affordance{grid-column:1/2!important;grid-row:2!important;width:100%;max-width:none}.toolbar>.select-affordance>.sort-select{font-size:16px!important}.select-affordance-label{font-size:9.5px}.search-clear{width:34px;height:34px;min-width:34px;min-height:34px;border-radius:10px}.search-result-count{font-size:10px}}
+    @media(max-width:760px){.records-search-row{grid-template-columns:1fr;gap:5px;padding-top:8px}.records-search-row .search-result-count{text-align:left;margin:0 2px!important}.records-search{min-height:46px}
+    html[data-theme] .settings-nav button.active{box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}html[data-theme] .module-tab.active{box-shadow:inset 0 -2px 0 var(--t-accent),0 2px 8px var(--t-shadow-soft)!important}.toolbar>.select-affordance{grid-column:1/2!important;grid-row:2!important;width:100%;max-width:none}.toolbar>.select-affordance>.sort-select{font-size:16px!important}.select-affordance-label{font-size:9.5px}.search-clear{width:34px;height:34px;min-width:34px;min-height:34px;border-radius:10px}.search-result-count{font-size:10px}}
+  
+
+    /* ---------- v8.0.6：固定层级令牌，统一关键悬浮/弹窗的有效层级 ---------- */
+    :root{--z-sticky:120;--z-appbar:220;--z-rail:260;--z-popover:340;--z-overlay:600;--z-submodal:720;--z-dialog:820;--z-toast:920}
+    .view-switch,.sticky-searchbar,.module-sidebar{z-index:var(--z-sticky)!important}
+    .compact-app-bar{z-index:var(--z-appbar)!important}
+    .scroll-rail,.mobile-side-rail,.mobile-bottom-nav,.profile-action-rail{z-index:var(--z-rail)!important}
+    .quick-create-menu,.mobile-tools-sheet{z-index:var(--z-popover)!important}
+    .overlay,.native-module-editor-backdrop,.module-advanced-backdrop,.plan-editor-backdrop,.ho-organizer-backdrop,.global-search-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.onboarding-backdrop{z-index:var(--z-overlay)!important}
+    .secure-backup-backdrop{z-index:var(--z-submodal)!important}
+    .action-dialog-backdrop{z-index:var(--z-dialog)!important}
+    .toast,.app-update-banner,.external-sync-banner,.undo-delete-toast{z-index:var(--z-toast)!important}
+
+    /* ---------- 搜索反馈 ---------- */
+    .search-hit{background:color-mix(in srgb,var(--t-accent) 16%,transparent);color:inherit;border-radius:3px;padding:0 1px;box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--t-accent) 34%,transparent)}
+    .empty-actions{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:5px}
+    .global-search-empty{display:grid;justify-items:center;gap:9px}
+    .global-search-empty .btn{width:auto}
+
+    /* ---------- 手机排序：闭合态短标签，原生下拉仍保留完整选项 ---------- */
+    .select-affordance-value{display:none;min-width:0}
+    .profile-sort-affordance{position:relative}
+
+    /* ---------- 高频辅助字再提升一档；保持装饰性微字不被全局放大 ---------- */
+    .module-tab-count,.plan-row-meta,.native-module-runline,.native-module-row-stats,.record-view-person>span:last-child,.profile-meta,.compact-meta,.run-item,.run-mini-meta{font-size:9px!important}
+    .ho-column-kicker,.ho-column-count small,.ho-status,.ho-entry-role,.ho-entry-character span,.ho-entry-meta{font-size:8.5px!important}
+
+    @media(max-width:760px){
+      /* 最终手机不变量：记录模组标签保持可点宽度，防止后置防撑破规则把它压成 0。 */
+      .module-tab{flex:0 0 auto!important;min-width:145px!important;max-width:180px!important;overflow:hidden!important}
+      .module-sidebar{z-index:var(--z-sticky)!important}
+
+      .profile-sort-affordance{min-height:42px!important;padding-right:27px!important;overflow:hidden}
+      .profile-sort-affordance>.sort-select{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:100%!important;margin:0!important;padding:0!important;opacity:0!important;cursor:pointer!important;z-index:2!important}
+      .profile-sort-affordance>.select-affordance-label{position:relative;z-index:1;font-size:9.5px!important}
+      .profile-sort-affordance>.select-affordance-value{display:block;position:relative;z-index:1;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--t-ink);font-size:13.5px;font-weight:650;line-height:1.2;pointer-events:none}
+      .profile-sort-affordance::after{content:"⌄";position:absolute;right:9px;top:50%;z-index:1;transform:translateY(-52%);color:var(--t-muted);font-size:12px;pointer-events:none}
+
+      .module-tab-meta,.table-record-time,.record-summary-chip,.plan-row-status,.plan-row-meta,.native-module-runline,.native-module-row-stats,.record-view-fact span,.record-view-person>span:last-child,.updated-chip{font-size:9.5px!important}
+      .ho-column-kicker,.ho-column-count small,.ho-status,.ho-entry-role,.ho-entry-character span,.ho-entry-meta{font-size:9px!important}
+      .empty-actions .btn{min-height:40px!important}
+    }
   </style>
 
 </head>
@@ -3235,8 +3285,10 @@
             <input id="newModuleNameInput" class="text-input" placeholder="输入模组名称">
             <button id="createModuleRecordBtn" class="btn primary" type="button">＋ 新建模组 / 第一桌</button>
           </div>
+          <div class="records-search-row">
+            <label class="search records-search"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、日期或 Log……"></label>
+          </div>
         </div>
-        <label class="search records-search sticky-searchbar"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、日期或 Log……"></label>
         <div id="recordsBoard" class="records-board"></div>
       </section>
       <footer class="site-footer">
@@ -3246,7 +3298,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">使用说明与免责声明</span>
             </span>
-            <span class="footer-meta-inline">v8.0.4 · 2026-08-30 15:12 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.0.7 · 2026-08-30 16:15 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3261,7 +3313,7 @@
               档案可能包含联系方式等个人信息，请妥善保管并谨慎导出、截图或共享；数据主要保存在当前浏览器本机，
               清理浏览器数据、设备损坏或更换使用环境都可能造成丢失，建议定期导出备份。
             </p>
-            <div class="footer-meta">版本：v8.0.4　·　更新时间：2026-08-30 15:12（UTC+8）　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.0.7　·　更新时间：2026-08-30 16:15（UTC+8）　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3535,7 +3587,7 @@
             <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动保留一份数据</span></article>
             <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持时可安装到设备</span></article>
             <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期备份</span></article>
-            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.0.4</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
+            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.0.7</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
           </div>
 
           <div id="inheritanceStatusNote" class="inheritance-status-note"></div>
@@ -3599,9 +3651,9 @@
           </section>
 
           <section class="friendly-data-block version-update-block">
-            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.0.4 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
+            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.0.7 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
             <div id="releaseNotesBox" class="release-notes-box">
-              <strong>v8.0.4</strong><span>高频体验整理：统一主导航、设置、显示模式和记录侧栏的选中态；为六类搜索增加一键清空与 Esc 清空；强化排序/筛选识别；搜索时显示结果/总量；统一正常、信息、待处理、风险四类状态色，并提升高频小字可读性。</span>
+              <strong>v8.0.7</strong><span>计划时段容量升级：开团计划周历的早 / 中 / 晚每个时段由最多 2 场提升为最多 4 场；容量提示、满载判断、拖动改期与数据完整性检查同步改为 4 场；四场堆叠时自动压缩重复时段文字，保证周历仍清楚可读。</span><strong>v8.0.6</strong><span>布局稳定与搜索反馈：修复手机跑团记录模组标签宽度被后置样式覆盖；统一关键悬浮层级；手机 PL 排序改用短标签显示、下拉仍保留完整选项；无结果页增加清空/重置操作；搜索结果自动高亮命中词；继续提升日期、状态、身份等高频小字可读性，并收口搜索、侧栏、弹窗相关手机样式。</span><strong>v8.0.5</strong><span>跑团记录搜索位置修正：把记录搜索框收回“跑团记录表”工具区，取消记录页搜索框的独立悬浮/吸顶布局；搜索结果数量与搜索框同行显示，记录目录与桌次内容从工具区下方正常开始，避免搜索栏压住内容。</span><strong>v8.0.4</strong><span>高频体验整理：统一主导航、设置、显示模式和记录侧栏的选中态；为六类搜索增加一键清空与 Esc 清空；强化排序/筛选识别；搜索时显示结果/总量；统一正常、信息、待处理、风险四类状态色，并提升高频小字可读性。</span>
             </div>
           </section>
           <details class="friend-safety-notes">
@@ -3706,7 +3758,7 @@
   <div id="toast" class="toast"></div>
 
 <script>
-/* PL收集梦想生活 v8.0.4 · 作者：番茄
+/* PL收集梦想生活 v8.0.7 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3725,7 +3777,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.0.4";
+const APP_UI_VERSION = "8.0.7";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5414,6 +5466,7 @@ function renderSortOptions(){
   const valid=[...els.sort.options].some(o=>o.value===current);
   settings.sortMode=valid?current:"total_desc";
   els.sort.value=settings.sortMode;
+  if(typeof syncProfileSortAffordance==="function")syncProfileSortAffordance();
 }
 
 function sortProfiles(list){
@@ -5524,11 +5577,12 @@ function renderProfiles(){
   els.grid.classList.toggle("compact-grid",compact);
 
   if(!sorted.length){
-    els.grid.innerHTML=`<div class="empty"><strong>${profiles.length?"没有找到匹配档案":"还没有 PL 档案"}</strong>${profiles.length?"换个关键词试试。":"点击上方“＋ 新建 PL”开始记录。"}</div>`;
+    els.grid.innerHTML=`<div class="empty"><strong>${profiles.length?"没有找到匹配档案":"还没有 PL 档案"}</strong><span>${profiles.length?"换个关键词试试。":"点击上方“＋ 新建 PL”开始记录。"}</span>${profiles.length&&q?`<div class="empty-actions"><button type="button" class="btn small" data-empty-clear-search="searchInput">清空搜索</button></div>`:""}</div>`;
     return;
   }
   const visibleRows=sorted.slice(0,profileRenderLimit);
   els.grid.innerHTML=(compact?visibleRows.map(compactRowHTML).join(""):visibleRows.map(cardHTML).join(""))+(sorted.length>visibleRows.length?`<div class="load-more-row"><button type="button" class="btn" data-load-more-profiles>显示更多（${visibleRows.length}/${sorted.length}）</button></div>`:"");
+  applySearchHighlights(els.grid,q);
 }
 
 
@@ -6334,7 +6388,7 @@ function calendarSlotsForDate(dateStr){
 function plannerPlanLabel(plan){
   return `${plan.moduleName||"未命名模组"}${plan.tableName?` · ${plan.tableName}`:""}`;
 }
-const MAX_RUNS_PER_DAYPART=2;
+const MAX_RUNS_PER_DAYPART=4;
 function daypartDefaults(daypart){ return daypartInfo(daypart); }
 function daypartOccupancy(dateStr,daypart,exceptPlanId="",exceptSlotId=""){
   let count=0;
@@ -6540,7 +6594,7 @@ function renderPlanList(){
   els.planCount.textContent=q?`${filtered.length} / ${runPlans.length} 个${visibleUnscheduled?` · ${visibleUnscheduled} 未排期`:""}`:`${runPlans.length} 个${unscheduled?` · ${unscheduled} 未排期`:""}`;
 
   if(!filtered.length){
-    els.planBoard.innerHTML=`<div class="empty"><strong>${runPlans.length?"没有找到匹配计划":"还没有开团计划"}</strong>${runPlans.length?"换个关键词试试。":"点击上方“＋ 新建开团计划”，建立后再安排到周历。"}</div>`;
+    els.planBoard.innerHTML=`<div class="empty"><strong>${runPlans.length?"没有找到匹配计划":"还没有开团计划"}</strong><span>${runPlans.length?"换个关键词试试。":"点击上方“＋ 新建开团计划”，建立后再安排到周历。"}</span>${runPlans.length&&q?`<div class="empty-actions"><button type="button" class="btn small" data-empty-clear-search="planSearchInput">清空搜索</button></div>`:""}</div>`;
     return;
   }
 
@@ -6554,6 +6608,7 @@ function renderPlanList(){
     <header class="plan-group-head"><span>${g.label}</span><span class="plan-group-count">${g.items.length}</span></header>
     ${g.items.map(planListItemHTML).join("")}
   </section>`).join("");
+  applySearchHighlights(els.planBoard,q);
 }
 function planListItemHTML(plan){
   const status=planStatusInfo(plan),next=status.nextSlot;
@@ -6595,7 +6650,7 @@ function plannerMonthHTML(){
       const partCounts=PLAN_DAYPARTS.map(part=>events.filter(x=>slotDaypart(x.slot)===part.key).length);
       days.push(`<button class="month-day mini ${outside?"outside":""} ${iso===today?"today":""} ${iso===plannerSelectedDate?"selected":""} ${inSelectedWeek?"in-selected-week":""}" type="button" data-calendar-day="${iso}" title="${events.length?`${events.length} 个安排`:"无安排"}">
         <span class="month-day-no"><span>${d.getDate()}</span>${iso===today?'<span class="month-today-dot"></span>':""}</span>
-        <span class="month-mini-parts">${partCounts.map((count,index)=>`<i class="${count?"has-event":""} ${count>=2?"double":""}" title="${PLAN_DAYPARTS[index].label}${count?` · ${count}场`:""}"></i>`).join("")}</span>
+        <span class="month-mini-parts">${partCounts.map((count,index)=>`<i class="${count?"has-event":""} ${count>=MAX_RUNS_PER_DAYPART?"full-cap":count===3?"triple":count===2?"double":""}" title="${PLAN_DAYPARTS[index].label}${count?` · ${count}场`:""}"></i>`).join("")}</span>
       </button>`);
     }else{
       const eventHtml=events.slice(0,2).map(({plan,slot})=>`<div class="month-event">${escapeHTML(daypartInfo(slot.daypart).label)} ${escapeHTML(plan.moduleName||"未命名")}</div>`).join("");
@@ -6639,17 +6694,18 @@ function plannerWeekHTML(){
     const cells=days.map(({iso})=>{
       const events=calendarSlotsForDate(iso).filter(x=>slotDaypart(x.slot)===part.key);
       const full=events.length>=MAX_RUNS_PER_DAYPART;
+      const occupancyClass=`occupancy-${Math.min(events.length,MAX_RUNS_PER_DAYPART)}`;
       const eventHtml=events.map(({plan,slot})=>`<div class="calendar-event" draggable="true" data-week-event-plan="${escapeHTML(plan.id)}" data-week-event-slot="${escapeHTML(slot.id)}" title="拖动可改期；点击可编辑计划">
         <div class="calendar-event-time">${part.label}</div>
         <div class="calendar-event-name">${escapeHTML(plannerPlanLabel(plan))}</div>
         <button class="calendar-event-remove" type="button" data-unschedule-event data-unschedule-plan-id="${escapeHTML(plan.id)}" data-unschedule-slot-id="${escapeHTML(slot.id)}" aria-label="取消这次安排" title="取消这次安排">×</button>
       </div>`).join("");
-      return `<div class="week-slot ${picked&&!full?"pick-ready":""} ${full?"full":""}" data-calendar-date="${iso}" data-daypart="${part.key}"><span class="week-slot-capacity">${events.length}/${MAX_RUNS_PER_DAYPART}</span><span class="week-slot-add">${full?"已满":"＋"}</span><div class="week-slot-events">${eventHtml}</div></div>`;
+      return `<div class="week-slot ${occupancyClass} ${picked&&!full?"pick-ready":""} ${full?"full":""}" data-calendar-date="${iso}" data-daypart="${part.key}"><span class="week-slot-capacity">${events.length}/${MAX_RUNS_PER_DAYPART}</span><span class="week-slot-add">${full?"已满":"＋"}</span><div class="week-slot-events">${eventHtml}</div></div>`;
     }).join("");
     return `<div class="week-time-label"><strong>${part.label}</strong><span>${part.hint}</span></div>${cells}`;
   }).join("");
   return `<header class="calendar-head">
-      <div class="calendar-head-main"><strong>${weekLabel}</strong><span>每个早 / 中 / 晚最多 2 场；已有安排点 × 取消，拖动即可改期</span></div>
+      <div class="calendar-head-main"><strong>${weekLabel}</strong><span>每个早 / 中 / 晚最多 4 场；已有安排点 × 取消，拖动即可改期</span></div>
       <div class="calendar-nav"><button class="btn small" type="button" data-week-shift="-1">‹ 上周</button><button class="btn small" type="button" data-calendar-today>本周</button><button class="btn small" type="button" data-week-shift="1">下周 ›</button></div>
     </header>
     ${pickedHtml}
@@ -6854,7 +6910,7 @@ function renderRunRecords(options={}){
   updateRecordsSearchCount(visibleGroups,allGroups,q);
 
   if(!visibleGroups.length){
-    els.recordsBoard.innerHTML=`<div class="empty" style="grid-column:1/-1"><strong>${runRecords.length?"没有找到匹配记录":"还没有跑团记录"}</strong>${runRecords.length?"换个关键词试试。":"在上方输入模组名称，建立第一桌记录。"}</div>`;
+    els.recordsBoard.innerHTML=`<div class="empty" style="grid-column:1/-1"><strong>${runRecords.length?"没有找到匹配记录":"还没有跑团记录"}</strong><span>${runRecords.length?"换个关键词试试。":"在上方输入模组名称，建立第一桌记录。"}</span>${runRecords.length&&q?`<div class="empty-actions"><button type="button" class="btn small" data-empty-clear-search="recordsSearchInput">清空搜索</button></div>`:""}</div>`;
     return;
   }
 
@@ -6882,6 +6938,7 @@ function renderRunRecords(options={}){
   </section>`;
 
   els.recordsBoard.innerHTML=sidebar+detail;
+  applySearchHighlights(els.recordsBoard,q);
   requestAnimationFrame(()=>{
     if(preservePageScroll)window.scrollTo({left:pageX,top:pageY,behavior:"auto"});
     if(centerSelected)centerActiveModuleInSidebar();
@@ -7354,7 +7411,7 @@ function dataIntegrityReport(){
   runRecords.forEach(r=>checkRun(r,"跑团记录"));runPlans.forEach(p=>checkRun(p,"开团计划"));
   const capacity=new Map();
   runPlans.forEach(p=>(p.timeSlots||[]).filter(s=>s.date).forEach(s=>{const key=`${s.date}|${s.daypart}`;capacity.set(key,(capacity.get(key)||0)+1);}));
-  capacity.forEach((count,key)=>{if(count>2){const [date,part]=key.split("|");add("warn",`${date} ${daypartLabel(part)}安排了 ${count} 场`,`当前设置每个时段最多排两场`);}});
+  capacity.forEach((count,key)=>{if(count>MAX_RUNS_PER_DAYPART){const [date,part]=key.split("|");add("warn",`${date} ${daypartLabel(part)}安排了 ${count} 场`,`当前设置每个时段最多排 ${MAX_RUNS_PER_DAYPART} 场`);}});
   return {checkedAt:Date.now(),issues,errors:issues.filter(x=>x.level==="error").length,warnings:issues.filter(x=>x.level==="warn").length};
 }
 function renderDataIntegrity(report=dataIntegrityReport(),showList=false){
@@ -7639,7 +7696,9 @@ function renderNativeModules(){
   const compact=normalizeUiSettings(settings.ui).moduleLayout==="compact";
   els.moduleNativeGrid.classList.toggle("compact",compact);
   const visibleRows=rows.slice(0,moduleRenderLimit);
-  els.moduleNativeGrid.innerHTML=rows.length?visibleRows.map(m=>nativeModuleCardHTML(m,compact)).join("")+(rows.length>visibleRows.length?`<div class="load-more-row"><button type="button" class="btn" data-load-more-modules>显示更多（${visibleRows.length}/${rows.length}）</button></div>`:""):`<div class="empty native-empty"><strong>${modules.length?"没有匹配模组":"还没有模组档案"}</strong><span>${modules.length?"调整搜索或筛选条件。":"点击“＋ 新建模组”开始建立档案。"}</span><button class="btn primary small" type="button" data-native-empty-create>＋ 新建模组</button></div>`;
+  const moduleHasStructuredFilters=Boolean(moduleNativeHo||moduleNativeLocation);
+  els.moduleNativeGrid.innerHTML=rows.length?visibleRows.map(m=>nativeModuleCardHTML(m,compact)).join("")+(rows.length>visibleRows.length?`<div class="load-more-row"><button type="button" class="btn" data-load-more-modules>显示更多（${visibleRows.length}/${rows.length}）</button></div>`:""):`<div class="empty native-empty"><strong>${modules.length?"没有匹配模组":"还没有模组档案"}</strong><span>${modules.length?"调整搜索或筛选条件。":"点击“＋ 新建模组”开始建立档案。"}</span>${modules.length?`<div class="empty-actions">${moduleNativeQuery?`<button type="button" class="btn small" data-empty-clear-search="moduleNativeSearch">清空搜索</button>`:""}${moduleHasStructuredFilters?`<button type="button" class="btn small" data-reset-module-filters>重置筛选</button>`:""}<button class="btn primary small" type="button" data-native-empty-create>＋ 新建模组</button></div>`:`<button class="btn primary small" type="button" data-native-empty-create>＋ 新建模组</button>`}</div>`;
+  applySearchHighlights(els.moduleNativeGrid,moduleNativeQuery);
   applyUiPreferences(settings);
 }
 async function copyTextCompat(text){
@@ -8307,9 +8366,9 @@ dataIntegrityReport=function(){
     capacity.get(key).push(p.id);
   }));
   capacity.forEach((ids,key)=>{
-    if(ids.length>2){
+    if(ids.length>MAX_RUNS_PER_DAYPART){
       const [date,part]=key.split("|");
-      add("warn",`${date} ${daypartLabel(part)}安排了 ${ids.length} 场`,`每个时段最多安排两场`,{view:"plans",date});
+      add("warn",`${date} ${daypartLabel(part)}安排了 ${ids.length} 场`,`每个时段最多安排 ${MAX_RUNS_PER_DAYPART} 场`,{view:"plans",date});
     }
   });
 
@@ -8327,14 +8386,14 @@ function maybeShowOnboarding(){let done=false;try{done=localStorage.getItem(ONBO
 /* 全局搜索 */
 function buildGlobalSearchRows(q){q=String(q||"").trim().toLowerCase();if(!q)return [];
   const rows=[];profiles.forEach(p=>{const hay=profileSearchText(p);if(hay.includes(q))rows.push({type:"PL",title:displayProfileName(p),meta:`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id}});});modules.forEach(m=>{if(moduleSearchText(m).includes(q))rows.push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}});});runPlans.forEach(p=>{const hay=[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),...(p.timeSlots||[]).map(s=>s.date)].join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}});});runRecords.forEach(r=>{const hay=[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate,r.logUrl].join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"记录",title:recordDisplayLabel(r,runRecords),meta:[r.startDate,kpDisplayText(r)].filter(Boolean).join(" · "),action:{view:"records",id:r.id,moduleName:r.moduleName}});});return rows.slice(0,40);}
-function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,globalSearchRows.length-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨四个页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">没有找到匹配内容。</div>`;return;}box.innerHTML=globalSearchRows.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("");}
+function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,globalSearchRows.length-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨四个页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">没有找到匹配内容。<button type="button" class="btn small" data-empty-clear-search="globalSearchInput">清空搜索</button></div>`;return;}box.innerHTML=globalSearchRows.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("");applySearchHighlights(box,q.trim().toLowerCase());}
 function openGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=false;globalSearchActiveIndex=0;document.getElementById("globalSearchInput").value="";renderGlobalSearch();syncModalPageScrollLock();setTimeout(()=>document.getElementById("globalSearchInput").focus(),30);}
 function closeGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=true;syncModalPageScrollLock();}
 function activateGlobalSearchResult(index){const r=globalSearchRows[index];if(!r)return;closeGlobalSearch();if(r.action.view==="profiles"){switchView("profiles");els.search.value="";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(r.action.id)}"],.compact-row[data-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="modules"){switchView("modules");els.moduleNativeSearch.value="";renderNativeModules();requestAnimationFrame(()=>document.querySelector(`[data-native-module-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="plans"){switchView("plans");requestAnimationFrame(()=>document.querySelector(`[data-plan-row="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else{const rec=runRecords.find(x=>x.id===r.action.id);if(rec){selectedModuleName=rec.moduleName;setRunRecordCollapsed(rec.id,false);}switchView("records");requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}}
 
 /* 设置搜索 */
 const SETTINGS_LABELS={appearance:"外观","pl-rating":"PL评价","module-rating":"模组评价",behavior:"显示与行为",data:"数据与备份"};
-function renderSettingsSearch(){const input=document.getElementById("settingsSearchInput"),box=document.getElementById("settingsSearchResults"),q=input.value.trim().toLowerCase();if(!q){box.hidden=true;box.innerHTML="";return;}const rows=[];document.querySelectorAll("[data-settings-panel]").forEach(panel=>{const text=(panel.textContent||"").replace(/\s+/g," ").trim(),low=text.toLowerCase();if(!low.includes(q))return;const at=low.indexOf(q),snippet=text.slice(Math.max(0,at-24),Math.min(text.length,at+q.length+46));rows.push({key:panel.dataset.settingsPanel,label:SETTINGS_LABELS[panel.dataset.settingsPanel]||panel.dataset.settingsPanel,snippet});});box.hidden=false;box.innerHTML=rows.length?rows.map((r,i)=>`<button type="button" data-settings-search-target="${r.key}" data-settings-search-query="${escapeHTML(q)}"><strong>${r.label}</strong><span>${escapeHTML(r.snippet)}</span></button>`).join(""):`<button type="button" disabled><strong>没有找到相关设置</strong><span>换个关键词试试。</span></button>`;}
+function renderSettingsSearch(){const input=document.getElementById("settingsSearchInput"),box=document.getElementById("settingsSearchResults"),q=input.value.trim().toLowerCase();if(!q){box.hidden=true;box.innerHTML="";return;}const rows=[];document.querySelectorAll("[data-settings-panel]").forEach(panel=>{const text=(panel.textContent||"").replace(/\s+/g," ").trim(),low=text.toLowerCase();if(!low.includes(q))return;const at=low.indexOf(q),snippet=text.slice(Math.max(0,at-24),Math.min(text.length,at+q.length+46));rows.push({key:panel.dataset.settingsPanel,label:SETTINGS_LABELS[panel.dataset.settingsPanel]||panel.dataset.settingsPanel,snippet});});box.hidden=false;box.innerHTML=rows.length?rows.map((r,i)=>`<button type="button" data-settings-search-target="${r.key}" data-settings-search-query="${escapeHTML(q)}"><strong>${r.label}</strong><span>${escapeHTML(r.snippet)}</span></button>`).join(""):`<button type="button" data-empty-clear-search="settingsSearchInput"><strong>没有找到相关设置</strong><span>清空搜索并显示全部设置</span></button>`;if(rows.length)applySearchHighlights(box,q);}
 function focusSettingsSearchResult(key,q){activateSettingsPanel(key);const panel=document.querySelector(`[data-settings-panel="${CSS.escape(key)}"]`);if(!panel)return;const candidates=[...panel.querySelectorAll("h3,strong,label,summary,button")],target=candidates.find(el=>(el.textContent||"").toLowerCase().includes(String(q||"").toLowerCase()))||panel;requestAnimationFrame(()=>{target.scrollIntoView({block:"center",behavior:"smooth"});target.classList.add("settings-search-flash");setTimeout(()=>target.classList.remove("settings-search-flash"),1400);});document.getElementById("settingsSearchResults").hidden=true;}
 
 /* 分享模式 */
@@ -9205,16 +9264,30 @@ updateCompactAppBar();
 switchView(currentView,{historyMode:"replace",restoreScroll:true});
 syncModalPageScrollLock();
 initV79();
-/* v8.0.4 高频搜索与筛选易用性 */
+/* v8.0.7 计划时段四场容量与周历密度适配 */
 const PRIMARY_SEARCH_INPUT_IDS=["searchInput","moduleNativeSearch","planSearchInput","recordsSearchInput","settingsSearchInput","globalSearchInput"];
 function clearSearchControl(input,{refocus=true}={}){if(!input||!input.value)return false;input.value="";input.dispatchEvent(new Event("input",{bubbles:true}));if(refocus)requestAnimationFrame(()=>input.focus({preventScroll:true}));return true}
 function installSearchClearButton(input){if(!input||input.dataset.clearButtonReady==="1")return;const host=input.closest("label")||input.parentElement;if(!host)return;input.dataset.clearButtonReady="1";const btn=document.createElement("button");btn.type="button";btn.className="search-clear";btn.textContent="×";btn.title="清空搜索";btn.setAttribute("aria-label","清空搜索");const sync=()=>{btn.hidden=!input.value};btn.addEventListener("pointerdown",e=>e.preventDefault());btn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();clearSearchControl(input)});input.addEventListener("input",sync,{passive:true});input.addEventListener("keydown",e=>{if(e.key==="Escape"&&input.value){e.preventDefault();e.stopPropagation();clearSearchControl(input)}});host.appendChild(btn);sync()}
 function wrapSelectAffordance(id,label){const select=document.getElementById(id);if(!select||select.parentElement?.classList.contains("select-affordance"))return;const wrap=document.createElement("label");wrap.className="select-affordance";const prefix=document.createElement("span");prefix.className="select-affordance-label";prefix.textContent=label;select.parentNode.insertBefore(wrap,select);wrap.append(prefix,select)}
 function ensureRecordsSearchCount(){if(document.getElementById("recordsSearchCount"))return;const search=els.recordsSearch?.closest("label");if(!search)return;const count=document.createElement("div");count.id="recordsSearchCount";count.className="search-result-count";count.setAttribute("aria-live","polite");search.insertAdjacentElement("afterend",count)}
 function updateRecordsSearchCount(visibleGroups,allGroups,q){const el=document.getElementById("recordsSearchCount");if(!el)return;el.textContent=q?`${visibleGroups.length} / ${allGroups.length} 个模组命中`:`${allGroups.length} 个模组 · ${runRecords.length} 桌`}
-function initV804SearchUX(){PRIMARY_SEARCH_INPUT_IDS.map(id=>document.getElementById(id)).filter(Boolean).forEach(installSearchClearButton);wrapSelectAffordance("sortSelect","排序");wrapSelectAffordance("moduleNativeHoFilter","HO");wrapSelectAffordance("moduleNativeLocationFilter","地点");wrapSelectAffordance("moduleNativeSort","排序");ensureRecordsSearchCount();if(currentView==="records")renderRunRecords({preservePageScroll:true})}
+function applySearchHighlights(root,rawQuery){
+  if(!root)return;
+  root.querySelectorAll("mark.search-hit").forEach(mark=>mark.replaceWith(document.createTextNode(mark.textContent||"")));
+  const q=String(rawQuery||"").trim();if(!q)return;
+  const needle=q.toLocaleLowerCase(),nodes=[];
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(node){const parent=node.parentElement;if(!parent||!node.nodeValue?.trim())return NodeFilter.FILTER_REJECT;if(parent.closest("mark.search-hit,script,style,input,textarea,select,option,[contenteditable='true']"))return NodeFilter.FILTER_REJECT;return node.nodeValue.toLocaleLowerCase().includes(needle)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+  while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(node=>{const text=node.nodeValue,low=text.toLocaleLowerCase();let cursor=0,index=low.indexOf(needle),matched=false;const frag=document.createDocumentFragment();while(index>=0){matched=true;if(index>cursor)frag.append(document.createTextNode(text.slice(cursor,index)));const mark=document.createElement("mark");mark.className="search-hit";mark.textContent=text.slice(index,index+q.length);frag.append(mark);cursor=index+q.length;index=low.indexOf(needle,cursor);}if(matched){if(cursor<text.length)frag.append(document.createTextNode(text.slice(cursor)));node.replaceWith(frag);}});
+}
+const PROFILE_SORT_SHORT_LABELS={total_desc:"评分 高→低",total_asc:"评分 低→高",role_kp_desc:"KP度 高→低",role_pl_desc:"PL度 高→低",updated_desc:"最近更新",name_asc:"名字 A→Z"};
+function shortProfileSortLabel(){const value=els.sort?.value||"",opt=els.sort?.selectedOptions?.[0];if(PROFILE_SORT_SHORT_LABELS[value])return PROFILE_SORT_SHORT_LABELS[value];return String(opt?.textContent||"排序").replace(/（默认）/g,"").replace(/：高\s*→\s*低/g," 高→低").replace(/：低\s*→\s*高/g," 低→高").replace(/综合评分/g,"评分").trim();}
+function syncProfileSortAffordance(){const wrap=els.sort?.closest(".select-affordance");if(!wrap)return;wrap.classList.add("profile-sort-affordance");let value=wrap.querySelector(".select-affordance-value");if(!value){value=document.createElement("span");value.className="select-affordance-value";value.setAttribute("aria-hidden","true");wrap.insertBefore(value,els.sort);}value.textContent=shortProfileSortLabel();if(els.sort.dataset.shortLabelReady!=="1"){els.sort.dataset.shortLabelReady="1";els.sort.addEventListener("change",syncProfileSortAffordance);}}
+function resetModuleStructuredFilters(){if(els.moduleNativeHoFilter)els.moduleNativeHoFilter.value="";if(els.moduleNativeLocationFilter)els.moduleNativeLocationFilter.value="";moduleNativeHo="";moduleNativeLocation="";moduleRenderLimit=MODULE_RENDER_BATCH;renderNativeModules();}
+function initV806SearchUX(){PRIMARY_SEARCH_INPUT_IDS.map(id=>document.getElementById(id)).filter(Boolean).forEach(installSearchClearButton);wrapSelectAffordance("sortSelect","排序");wrapSelectAffordance("moduleNativeHoFilter","HO");wrapSelectAffordance("moduleNativeLocationFilter","地点");wrapSelectAffordance("moduleNativeSort","排序");syncProfileSortAffordance();ensureRecordsSearchCount();if(currentView==="records")renderRunRecords({preservePageScroll:true})}
 document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;const active=PRIMARY_SEARCH_INPUT_IDS.includes(e.target?.id)?e.target:document.activeElement;if(active&&PRIMARY_SEARCH_INPUT_IDS.includes(active.id)&&active.value){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();clearSearchControl(active)}},true);
-initV804SearchUX();
+document.addEventListener("click",e=>{const clear=e.target.closest?.("[data-empty-clear-search]");if(clear){const input=document.getElementById(clear.dataset.emptyClearSearch);if(input){e.preventDefault();clearSearchControl(input);}}const reset=e.target.closest?.("[data-reset-module-filters]");if(reset){e.preventDefault();resetModuleStructuredFilters();}},true);
+initV806SearchUX();
 
 </script>
 </body>
