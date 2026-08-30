@@ -2988,6 +2988,20 @@
     html [hidden]{display:none!important}
     @media(max-width:760px){body.modal-scroll-locked .mobile-side-rail{display:none!important}}
   </style>
+  <style id="v804-ux-refinement">
+    html[data-theme]{--status-success-bg:color-mix(in srgb,var(--t-success) 12%,var(--t-surface));--status-success-line:color-mix(in srgb,var(--t-success) 34%,var(--t-line));--status-info-bg:color-mix(in srgb,var(--t-muted) 8%,var(--t-surface));--status-info-line:color-mix(in srgb,var(--t-muted) 24%,var(--t-line));--status-warning-bg:var(--t-warning-soft);--status-warning-line:var(--t-warning-line);--status-danger-bg:var(--t-danger-soft);--status-danger-line:var(--t-danger-line)}
+    html[data-theme] :is(.view-tab,.compact-nav button,.layout-btn).active{background:color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface))!important;color:var(--t-accent-strong)!important;border-color:color-mix(in srgb,var(--t-accent) 24%,var(--t-line))!important;box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 14%,transparent),0 1px 5px var(--t-shadow-soft)!important}
+    html[data-theme] .settings-nav button.active{background:color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface))!important;color:var(--t-accent-strong)!important;box-shadow:inset 3px 0 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}
+    html[data-theme] .module-tab.active{background:color-mix(in srgb,var(--t-accent-soft) 72%,var(--t-surface))!important;border-color:color-mix(in srgb,var(--t-accent) 28%,var(--t-line))!important;color:var(--t-accent-strong)!important;box-shadow:inset 3px 0 0 var(--t-accent),0 3px 12px var(--t-shadow-soft)!important}
+    html[data-theme] .native-module-ho-buttons button.active,html[data-theme] .global-search-result.active{background:color-mix(in srgb,var(--t-accent-soft) 86%,var(--t-surface))!important;color:var(--t-accent-strong)!important;border-color:color-mix(in srgb,var(--t-accent) 28%,var(--t-line))!important;box-shadow:inset 0 -2px 0 var(--t-accent)!important}
+    .search,.settings-search,.global-search-box{position:relative}.search input,.settings-search input,.global-search-box input{min-width:0;padding-right:30px}.search-clear{flex:0 0 auto;display:grid;place-items:center;width:28px;height:28px;min-width:28px;min-height:28px;margin-left:-2px;padding:0;border:0;border-radius:9px;background:transparent;color:var(--t-muted);font:700 18px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;touch-action:manipulation;transition:background .12s ease,color .12s ease,transform .12s ease}.search-clear:hover{background:var(--t-surface-3);color:var(--t-ink)}.search-clear:active{transform:scale(.92)}.search-clear[hidden]{display:none!important}input[type="search"]::-webkit-search-cancel-button{display:none}
+    .select-affordance{display:flex;align-items:center;gap:7px;min-width:0;min-height:var(--ui-control-h);padding:0 8px 0 10px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-input);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--t-surface) 92%,transparent);transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}.select-affordance:focus-within{border-color:var(--t-line-strong);box-shadow:0 0 0 3px var(--t-focus)}.select-affordance-label{flex:0 0 auto;font-size:9px;font-weight:760;color:var(--t-faint);letter-spacing:.02em;white-space:nowrap}.select-affordance>.sort-select{flex:1 1 auto;width:auto;min-width:0;max-width:none!important;border:0!important;border-radius:0!important;padding-left:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}.toolbar>.select-affordance{max-width:340px}.module-native-controls>.select-affordance{width:100%;max-width:100%}
+    .count,.search-result-count{font-variant-numeric:tabular-nums}.search-result-count{margin:6px 2px 0;color:var(--t-muted);font-size:9.5px;line-height:1.35;white-space:nowrap}.records-search + .search-result-count{margin-bottom:8px}
+    html[data-theme] :is(.status-ok,.plan-row-status.active,.integrity-ok){background:var(--status-success-bg)!important;border-color:var(--status-success-line)!important;color:var(--t-success)!important}html[data-theme] :is(.plan-row-status.upcoming,.record-summary-chip.archive,.archived-schedule-label,.record-view-archive){background:var(--status-info-bg)!important;border-color:var(--status-info-line)!important;color:var(--t-muted)!important}html[data-theme] :is(.pending-badge,.plan-row-status.overdue,.legacy-duration-note,.record-legacy-badge,.integrity-item.warn){background:var(--status-warning-bg)!important;border-color:var(--status-warning-line)!important;color:var(--t-warning)!important}html[data-theme] :is(.integrity-item.error,.settings-warning.error){background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)!important}.plan-row-status.unscheduled{background:var(--t-surface-3)!important;border-color:var(--t-line)!important;color:var(--t-muted)!important}
+    .plan-row-status,.month-event,.week-day-head-cell span,.week-time-label span,.calendar-event-time,.week-slot-capacity,.record-summary-chip,.record-section-note,.module-tab-meta,.table-record-time,.record-view-fact span,.record-view-section-title span,.record-view-note span,.native-module-score span,.native-module-row-main span,.native-module-row-tags span,.global-search-result-type,.integrity-item small,.trash-row-main span,.assignment-mini-label,.participant-empty-panel span,.module-ho-inline-label,.compact-save-status,.updated-chip,.runs-role-summary{font-size:9px!important}
+    @media(max-width:760px){html[data-theme] .settings-nav button.active{box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}html[data-theme] .module-tab.active{box-shadow:inset 0 -2px 0 var(--t-accent),0 2px 8px var(--t-shadow-soft)!important}.toolbar>.select-affordance{grid-column:1/2!important;grid-row:2!important;width:100%;max-width:none}.toolbar>.select-affordance>.sort-select{font-size:16px!important}.select-affordance-label{font-size:9.5px}.search-clear{width:34px;height:34px;min-width:34px;min-height:34px;border-radius:10px}.search-result-count{font-size:10px}}
+  </style>
+
 </head>
 <body>
   
@@ -3232,7 +3246,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">使用说明与免责声明</span>
             </span>
-            <span class="footer-meta-inline">v8.0.3 · 2026-08-30 14:59 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.0.4 · 2026-08-30 15:12 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3247,7 +3261,7 @@
               档案可能包含联系方式等个人信息，请妥善保管并谨慎导出、截图或共享；数据主要保存在当前浏览器本机，
               清理浏览器数据、设备损坏或更换使用环境都可能造成丢失，建议定期导出备份。
             </p>
-            <div class="footer-meta">版本：v8.0.3　·　更新时间：2026-08-30 14:59（UTC+8）　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.0.4　·　更新时间：2026-08-30 15:12（UTC+8）　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3521,7 +3535,7 @@
             <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动保留一份数据</span></article>
             <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持时可安装到设备</span></article>
             <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期备份</span></article>
-            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.0.3</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
+            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.0.4</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
           </div>
 
           <div id="inheritanceStatusNote" class="inheritance-status-note"></div>
@@ -3585,9 +3599,9 @@
           </section>
 
           <section class="friendly-data-block version-update-block">
-            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.0.3 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
+            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.0.4 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
             <div id="releaseNotesBox" class="release-notes-box">
-              <strong>v8.0.3</strong><span>视觉一致性修正：统一深色强调底的高对比前景色，修复主题变量命名不一致导致的黑字/失效选中态与归档提示样式；同步修正高级模组工具残留的未定义表面变量，并略微提升紧凑导航小字可读性。</span>
+              <strong>v8.0.4</strong><span>高频体验整理：统一主导航、设置、显示模式和记录侧栏的选中态；为六类搜索增加一键清空与 Esc 清空；强化排序/筛选识别；搜索时显示结果/总量；统一正常、信息、待处理、风险四类状态色，并提升高频小字可读性。</span>
             </div>
           </section>
           <details class="friend-safety-notes">
@@ -3692,7 +3706,7 @@
   <div id="toast" class="toast"></div>
 
 <script>
-/* PL收集梦想生活 v8.0.3 · 作者：番茄
+/* PL收集梦想生活 v8.0.4 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3711,7 +3725,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.0.3";
+const APP_UI_VERSION = "8.0.4";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5504,7 +5518,7 @@ function renderProfiles(){
     return profileSearchText(p).includes(q);
   });
   const sorted=sortProfiles(filtered);
-  els.count.textContent=`${sorted.length} 位 PL`;
+  els.count.textContent=q?`${sorted.length} / ${profiles.length} 位 PL`:`${profiles.length} 位 PL`;
   syncProfileLayoutButtons();
   const compact=effectiveProfileLayout()==="compact";
   els.grid.classList.toggle("compact-grid",compact);
@@ -6522,7 +6536,8 @@ function renderPlanList(){
   const q=els.planSearch.value.trim().toLowerCase();
   const filtered=runPlans.filter(p=>planMatchesSearch(p,q)).sort(compareRunPlans);
   const unscheduled=runPlans.filter(p=>planStatusInfo(p).key==="unscheduled").length;
-  els.planCount.textContent=`${filtered.length} 个${unscheduled?` · ${unscheduled} 未排期`:""}`;
+  const visibleUnscheduled=filtered.filter(p=>planStatusInfo(p).key==="unscheduled").length;
+  els.planCount.textContent=q?`${filtered.length} / ${runPlans.length} 个${visibleUnscheduled?` · ${visibleUnscheduled} 未排期`:""}`:`${runPlans.length} 个${unscheduled?` · ${unscheduled} 未排期`:""}`;
 
   if(!filtered.length){
     els.planBoard.innerHTML=`<div class="empty"><strong>${runPlans.length?"没有找到匹配计划":"还没有开团计划"}</strong>${runPlans.length?"换个关键词试试。":"点击上方“＋ 新建开团计划”，建立后再安排到周历。"}</div>`;
@@ -6836,6 +6851,7 @@ function renderRunRecords(options={}){
   const q=els.recordsSearch.value.trim().toLowerCase();
   const allGroups=groupedRunRecords();
   const visibleGroups=allGroups.filter(([moduleName,list])=>list.some(r=>recordMatchesSearch(r,moduleName,q)));
+  updateRecordsSearchCount(visibleGroups,allGroups,q);
 
   if(!visibleGroups.length){
     els.recordsBoard.innerHTML=`<div class="empty" style="grid-column:1/-1"><strong>${runRecords.length?"没有找到匹配记录":"还没有跑团记录"}</strong>${runRecords.length?"换个关键词试试。":"在上方输入模组名称，建立第一桌记录。"}</div>`;
@@ -7611,12 +7627,14 @@ function renderNativeModules(){
     return (b.updatedAt||0)-(a.updatedAt||0);
   });
 
-  const totalRuns=modules.reduce((s,m)=>s+moduleRunCount(m),0);
-  const kp=modules.reduce((s,m)=>s+moduleSideStats(m.id).kp,0),pl=modules.reduce((s,m)=>s+moduleSideStats(m.id).pl,0);
-  const scores=modules.map(moduleComputedScore).filter(v=>v!==null);
+  const filterActive=Boolean(moduleNativeQuery||moduleNativeHo||moduleNativeLocation);
+  const statsRows=filterActive?rows:modules;
+  const totalRuns=statsRows.reduce((s,m)=>s+moduleRunCount(m),0);
+  const kp=statsRows.reduce((s,m)=>s+moduleSideStats(m.id).kp,0),pl=statsRows.reduce((s,m)=>s+moduleSideStats(m.id).pl,0);
+  const scores=statsRows.map(moduleComputedScore).filter(v=>v!==null);
   const avg=scores.length?scores.reduce((a,b)=>a+b,0)/scores.length:null;
-  const hasHo=modules.filter(m=>m.hoSystem==="has").length;
-  els.moduleNativeStats.innerHTML=`<strong>${modules.length} 模组</strong><span>${totalRuns} 桌经历</span><span>KP ${kp}</span><span>PL ${pl}</span><span>${hasHo} 个有HO</span><span>均分 ${avg===null?"—":avg.toFixed(1)}</span>`;
+  const hasHo=statsRows.filter(m=>m.hoSystem==="has").length;
+  els.moduleNativeStats.innerHTML=`<strong>${filterActive?`${rows.length} / ${modules.length} 模组`:`${modules.length} 模组`}</strong><span>${totalRuns} 桌经历</span><span>KP ${kp}</span><span>PL ${pl}</span><span>${hasHo} 个有HO</span><span>均分 ${avg===null?"—":avg.toFixed(1)}</span>`;
 
   const compact=normalizeUiSettings(settings.ui).moduleLayout==="compact";
   els.moduleNativeGrid.classList.toggle("compact",compact);
@@ -9187,6 +9205,17 @@ updateCompactAppBar();
 switchView(currentView,{historyMode:"replace",restoreScroll:true});
 syncModalPageScrollLock();
 initV79();
+/* v8.0.4 高频搜索与筛选易用性 */
+const PRIMARY_SEARCH_INPUT_IDS=["searchInput","moduleNativeSearch","planSearchInput","recordsSearchInput","settingsSearchInput","globalSearchInput"];
+function clearSearchControl(input,{refocus=true}={}){if(!input||!input.value)return false;input.value="";input.dispatchEvent(new Event("input",{bubbles:true}));if(refocus)requestAnimationFrame(()=>input.focus({preventScroll:true}));return true}
+function installSearchClearButton(input){if(!input||input.dataset.clearButtonReady==="1")return;const host=input.closest("label")||input.parentElement;if(!host)return;input.dataset.clearButtonReady="1";const btn=document.createElement("button");btn.type="button";btn.className="search-clear";btn.textContent="×";btn.title="清空搜索";btn.setAttribute("aria-label","清空搜索");const sync=()=>{btn.hidden=!input.value};btn.addEventListener("pointerdown",e=>e.preventDefault());btn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();clearSearchControl(input)});input.addEventListener("input",sync,{passive:true});input.addEventListener("keydown",e=>{if(e.key==="Escape"&&input.value){e.preventDefault();e.stopPropagation();clearSearchControl(input)}});host.appendChild(btn);sync()}
+function wrapSelectAffordance(id,label){const select=document.getElementById(id);if(!select||select.parentElement?.classList.contains("select-affordance"))return;const wrap=document.createElement("label");wrap.className="select-affordance";const prefix=document.createElement("span");prefix.className="select-affordance-label";prefix.textContent=label;select.parentNode.insertBefore(wrap,select);wrap.append(prefix,select)}
+function ensureRecordsSearchCount(){if(document.getElementById("recordsSearchCount"))return;const search=els.recordsSearch?.closest("label");if(!search)return;const count=document.createElement("div");count.id="recordsSearchCount";count.className="search-result-count";count.setAttribute("aria-live","polite");search.insertAdjacentElement("afterend",count)}
+function updateRecordsSearchCount(visibleGroups,allGroups,q){const el=document.getElementById("recordsSearchCount");if(!el)return;el.textContent=q?`${visibleGroups.length} / ${allGroups.length} 个模组命中`:`${allGroups.length} 个模组 · ${runRecords.length} 桌`}
+function initV804SearchUX(){PRIMARY_SEARCH_INPUT_IDS.map(id=>document.getElementById(id)).filter(Boolean).forEach(installSearchClearButton);wrapSelectAffordance("sortSelect","排序");wrapSelectAffordance("moduleNativeHoFilter","HO");wrapSelectAffordance("moduleNativeLocationFilter","地点");wrapSelectAffordance("moduleNativeSort","排序");ensureRecordsSearchCount();if(currentView==="records")renderRunRecords({preservePageScroll:true})}
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;const active=PRIMARY_SEARCH_INPUT_IDS.includes(e.target?.id)?e.target:document.activeElement;if(active&&PRIMARY_SEARCH_INPUT_IDS.includes(active.id)&&active.value){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();clearSearchControl(active)}},true);
+initV804SearchUX();
+
 </script>
 </body>
 </html>
