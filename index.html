@@ -2778,7 +2778,7 @@
 
     body.share-mode .contact,body.share-mode .profile-meta,body.share-mode .note-inline,body.share-mode .native-module-note,body.share-mode .record-view-fact:nth-child(3),body.share-mode .record-view-extra,body.share-mode .record-extra-details,body.share-mode .run-card-body a,body.share-mode .run-card-body div:has(a){display:none!important}
     body.share-mode .attr-text{font-size:0}body.share-mode .attr-text::after{content:"评分说明已在分享模式隐藏";font-size:8px;color:var(--t-faint)}
-    body.share-mode #newBtn,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
+    body.share-mode #newBtn,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
     body.share-mode #shareModeBtn{background:var(--t-success)!important;color:#fff!important;opacity:1!important}
 
     .integrity-item-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.integrity-item-actions button{min-height:28px}
@@ -2989,6 +2989,10 @@
       .theme-grid{grid-template-columns:1fr!important}
     }
 
+
+    /* v8.1.0 长期可靠性与高频操作统一 */
+    .editor-state-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}.editor-state-chip{display:inline-flex;align-items:center;min-height:25px;padding:4px 8px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);color:var(--t-muted);font-size:9px;font-weight:760;letter-spacing:.01em}.editor-state-chip.dirty{background:var(--status-warning-bg);border-color:var(--status-warning-line);color:var(--t-warning)}.editor-state-chip.saved{background:var(--status-success-bg);border-color:var(--status-success-line);color:var(--t-success)}.editor-return-btn{min-height:28px;padding:4px 9px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface);color:var(--t-accent-strong);font-size:9px;font-weight:720}.editor-return-btn:hover{background:var(--t-accent-soft)}.settings-foot-status{display:flex;align-items:center;gap:8px;min-width:0}.settings-foot-status .settings-warning{min-width:0}.friendly-head-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}.version-runtime-details{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;padding:8px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);color:var(--t-muted);font-size:9px}.interaction-self-check-results{display:grid;gap:6px;margin-top:8px}.self-check-summary{padding:9px 10px;border-radius:10px;font-size:10px;font-weight:760}.self-check-summary.ok{background:var(--status-success-bg);color:var(--t-success);border:1px solid var(--status-success-line)}.self-check-summary.warn{background:var(--status-warning-bg);color:var(--t-warning);border:1px solid var(--status-warning-line)}.self-check-list{display:grid;gap:5px}.self-check-row{display:grid;grid-template-columns:22px minmax(0,1fr);gap:7px;align-items:start;padding:7px 8px;border-radius:9px;background:var(--t-surface-2);font-size:9px}.self-check-row>b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--t-surface);border:1px solid var(--t-line)}.self-check-row.error>b{background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)}.self-check-row.warn>b{background:var(--status-warning-bg);border-color:var(--status-warning-line);color:var(--t-warning)}.self-check-row.ok>b{background:var(--status-success-bg);border-color:var(--status-success-line);color:var(--t-success)}.self-check-row span{color:var(--t-muted);line-height:1.5}.undo-toast{position:fixed;left:50%;bottom:max(22px,calc(env(safe-area-inset-bottom) + 16px));z-index:var(--z-toast);transform:translateX(-50%);display:flex;align-items:center;gap:10px;max-width:min(92vw,620px);padding:9px 10px 9px 13px;border:1px solid var(--t-line-strong);border-radius:13px;background:color-mix(in srgb,var(--t-ink) 92%,var(--t-surface));color:var(--t-surface);box-shadow:0 14px 36px rgba(20,28,24,.22);font-size:10px}.undo-toast[hidden]{display:none!important}.undo-toast button{min-height:32px;padding:5px 10px;border:1px solid color-mix(in srgb,var(--t-surface) 28%,transparent);border-radius:9px;background:color-mix(in srgb,var(--t-surface) 14%,transparent);color:inherit;font-weight:800}.week-board.density-compact .week-slot,.week-board.density-compact .week-time-label{min-height:50px}.week-board.density-compact .week-slot{padding:3px}.week-board.density-compact .week-slot-events{gap:3px}.week-board.density-compact .calendar-event{padding:4px 18px 4px 6px;min-height:0}.week-board.density-compact .calendar-event-time{font-size:7px!important}.week-board.density-compact .calendar-event-name{font-size:8.5px;line-height:1.15}.week-board.density-comfortable .week-slot,.week-board.density-comfortable .week-time-label{min-height:64px}.profile-rail-btn.save:disabled{opacity:.42;filter:saturate(.55);cursor:default}.native-module-editor-foot .btn.primary:disabled{opacity:.48;cursor:default}
+    @media(max-width:760px){.editor-state-line{margin-top:4px}.editor-state-chip,.editor-return-btn{font-size:9.5px;min-height:30px}.settings-foot-status{align-items:flex-start;flex-direction:column;gap:4px}.friendly-data-head{align-items:flex-start}.friendly-head-actions{width:100%;justify-content:flex-start}.version-runtime-details{display:grid;grid-template-columns:1fr}.undo-toast{bottom:calc(76px + env(safe-area-inset-bottom));font-size:10px}.week-board.density-compact .week-slot,.week-board.density-compact .week-time-label{min-height:48px}.week-board.density-comfortable .week-slot,.week-board.density-comfortable .week-time-label{min-height:58px}}
 </style>
   <style id="v808-interaction-reliability">
     /* PL 编辑器是复合模态：正文与快捷操作栏都必须参与触摸与键盘交互。 */
@@ -3063,7 +3067,48 @@
       .ho-column-kicker,.ho-column-count small,.ho-status,.ho-entry-role,.ho-entry-character span,.ho-entry-meta{font-size:9px!important}
       .empty-actions .btn{min-height:40px!important}
     }
-  </style>
+  
+    /* v8.1.2 · 移动端信息架构与长期使用优化 */
+    .planner-mobile-section-switch{display:none}
+    .compact-score-more{flex:0 0 auto;min-height:30px;padding:4px 9px;border:1px dashed var(--t-line-strong);border-radius:999px;background:var(--t-surface-2);color:var(--t-accent-strong);font-size:9.5px;font-weight:750;cursor:pointer}
+    .global-search-progress{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 11px;border-top:1px solid var(--t-line);color:var(--t-muted);font-size:9.5px}
+    .data-safety-group{border:1px solid var(--t-line);border-radius:15px;background:var(--t-surface-2);overflow:hidden}
+    .data-safety-group+.data-safety-group{margin-top:9px}
+    .data-safety-group>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:58px;padding:10px 12px;cursor:pointer;background:var(--t-surface-2)}
+    .data-safety-group>summary::-webkit-details-marker{display:none}
+    .data-safety-group-title{display:grid;gap:2px;min-width:0}.data-safety-group-title strong{font-size:12px;color:var(--t-ink)}.data-safety-group-title small{font-size:9px;color:var(--t-muted);line-height:1.4}
+    .data-safety-group-chevron{font-size:18px;color:var(--t-muted);transition:transform .16s var(--ease)}.data-safety-group[open] .data-safety-group-chevron{transform:rotate(90deg)}
+    .data-safety-group-body{display:grid;gap:9px;padding:0 9px 9px}.data-safety-group-body>.friendly-data-block,.data-safety-group-body>.data-health-grid{margin:0}
+    .data-safety-group-body>.inheritance-status-note:empty,.data-safety-group-body>.storage-context-note:empty{display:none}
+    @media(max-width:760px){
+      .planner-mobile-section-switch{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 8px;padding:4px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2);position:sticky;top:0;z-index:var(--z-sticky,30)}
+      .planner-mobile-section-switch button{min-height:42px;border:0;border-radius:9px;background:transparent;color:var(--t-muted);font-size:11px;font-weight:750}.planner-mobile-section-switch button.active{background:var(--t-accent-soft);color:var(--t-accent-strong);box-shadow:inset 0 0 0 1px var(--t-line-strong)}
+      .planner-mobile-section-switch span{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:4px;padding:0 5px;border-radius:999px;background:var(--t-surface);font-size:8.5px}
+      .plans-view[data-mobile-section="calendar"] .planner-sidebar{display:none!important}.plans-view[data-mobile-section="queue"] .planner-calendar{display:none!important}
+      .plans-view[data-mobile-section="queue"] .planner-sidebar{margin-bottom:0}
+      .records-toolbar .records-toolbar-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important}
+      #expandAllRecordsBtn,#collapseAllRecordsBtn{width:100%!important;min-height:40px!important}
+      #newModuleNameInput{grid-column:1/2!important;grid-row:2!important;width:100%!important;order:initial!important;min-height:44px!important}
+      #createModuleRecordBtn{display:block!important;grid-column:2/3!important;grid-row:2!important;width:100%!important;min-height:44px!important;font-size:0!important;padding-inline:8px!important}
+      #createModuleRecordBtn::after{content:"＋ 新建";font-size:11px;font-weight:750}
+      .records-search-row{padding-top:7px!important}.records-search{min-height:44px!important}
+      .compact-scores{overflow:visible!important;flex-wrap:wrap!important;scroll-snap-type:none!important;padding-right:0!important}
+      .compact-score{max-width:calc(50% - 3px);overflow:hidden;text-overflow:ellipsis}.compact-score-more{min-height:34px}
+      .search,.settings-search,.global-search-box{min-height:44px!important}.search input,.settings-search input,.global-search-box input{min-height:42px!important}
+      .planner-view-switch .layout-btn{min-width:42px!important;min-height:42px!important}
+      .unrated-summary .link-btn,.rating-null-toggle{min-height:42px!important;padding-block:8px!important}
+      input[type="range"]{min-height:42px!important}
+      .settings-nav{scrollbar-width:none;box-shadow:inset -18px 0 15px -17px color-mix(in srgb,var(--t-accent) 65%,transparent)}.settings-nav::-webkit-scrollbar{display:none}
+      .data-safety-group>summary{min-height:62px}.data-safety-group-body{padding:0 7px 7px}
+      .data-health-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:360px){
+      .settings-nav{padding-right:24px!important}.settings-nav button{min-height:40px!important}
+      .planner-mobile-section-switch{margin-inline:0}
+      .global-search-progress{align-items:flex-start;flex-direction:column}.global-search-progress .btn{width:100%}
+      .footer-meta-inline{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;max-width:132px!important}
+    }
+</style>
 
 </head>
 <body>
@@ -3215,7 +3260,7 @@
         <div id="nativeModuleEditorBackdrop" class="native-module-editor-backdrop" hidden>
           <section class="native-module-editor" role="dialog" aria-modal="true" aria-labelledby="nativeModuleEditorTitle">
             <header class="native-module-editor-head">
-              <div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>常用资料直接在统一主界面维护；高级评分体系与Excel留在“高级工具”。</span></div>
+              <div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>常用资料直接在统一主界面维护；高级评分体系与Excel留在“高级工具”。</span><div class="editor-state-line"><span id="moduleEditStatus" class="editor-state-chip clean">未修改</span></div></div>
               <button id="closeNativeModuleEditorBtn" class="icon-close" type="button" aria-label="关闭">×</button>
             </header>
             <div id="nativeModuleEditorContent" class="native-module-editor-body"></div>
@@ -3250,6 +3295,11 @@
             </div>
             <button id="newPlanBtn" class="btn primary" type="button">＋ 新建开团计划</button>
           </div>
+        </div>
+
+        <div id="plannerMobileSectionSwitch" class="planner-mobile-section-switch" role="group" aria-label="手机计划页面区域">
+          <button id="plannerMobileCalendarBtn" class="active" type="button" data-planner-mobile-section="calendar" aria-pressed="true">日历</button>
+          <button id="plannerMobileQueueBtn" type="button" data-planner-mobile-section="queue" aria-pressed="false">待排计划 <span id="plannerMobileQueueCount">0</span></button>
         </div>
 
         <div class="planner-layout">
@@ -3311,7 +3361,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">使用说明与免责声明</span>
             </span>
-            <span class="footer-meta-inline">v8.0.9 · 2026-08-30 16:56 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.2 · 2026-08-30 23:58 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3326,7 +3376,7 @@
               档案可能包含联系方式等个人信息，请妥善保管并谨慎导出、截图或共享；数据主要保存在当前浏览器本机，
               清理浏览器数据、设备损坏或更换使用环境都可能造成丢失，建议定期导出备份。
             </p>
-            <div class="footer-meta">版本：v8.0.9　·　更新时间：2026-08-30 16:56（UTC+8）　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.2　·　更新时间：2026-08-30 23:58（UTC+8）　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3421,7 +3471,7 @@
     <div id="profileModalWrap" class="profile-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <section id="profileModal" class="modal">
       <header class="modal-head">
-        <div><h2 id="modalTitle">编辑 PL</h2><div class="sub">内置评分已改为行为锚定：优先看可观察行为、出现频率和实际结果；个性化备注会同步显示在主页面。</div></div>
+        <div><h2 id="modalTitle">编辑 PL</h2><div class="sub">内置评分已改为行为锚定：优先看可观察行为、出现频率和实际结果；个性化备注会同步显示在主页面。</div><div class="editor-state-line"><span id="profileEditStatus" class="editor-state-chip clean">未修改</span><button id="profileReturnBtn" class="editor-return-btn" type="button" hidden>← 返回原位置</button></div></div>
         <button type="button" id="closeProfileBtn" class="close" aria-label="关闭">×</button>
       </header>
       <div class="modal-body">
@@ -3583,107 +3633,90 @@
           <div class="section-help">这些设置只改变你看到和操作页面的方式，不修改任何 PL、模组或跑团记录内容。</div>
           <div class="behavior-setting-list">
             <label><span><strong>开团计划默认视图</strong><small>只显示月视图或周视图中的一种，减少重复信息。</small></span><select id="plannerDefaultViewSetting" class="setting-input"><option value="week">周视图</option><option value="month">月视图</option></select></label>
+            <label><span><strong>计划周历密度</strong><small>自动会在同一时段达到 3–4 场时收紧卡片；也可以固定舒适或紧凑。</small></span><select id="plannerDensitySetting" class="setting-input"><option value="auto">自动</option><option value="comfortable">舒适</option><option value="compact">紧凑</option></select></label>
             <label><span><strong>跑团记录默认状态</strong><small>查看模式更紧凑；需要修改时单桌进入编辑。</small></span><select id="recordDefaultModeSetting" class="setting-input"><option value="view">查看模式</option><option value="edit">编辑模式</option></select></label>
             <label><span><strong>跑团记录默认展开</strong><small>长模组建议只展开最新一桌。</small></span><select id="recordDefaultExpandSetting" class="setting-input"><option value="latest">仅最新一桌</option><option value="all">全部展开</option></select></label>
             <label><span><strong>PL跑团足迹默认</strong><small>默认收起可以让一屏显示更多PL。</small></span><select id="profileFootprintSetting" class="setting-input"><option value="closed">收起</option><option value="open">展开</option></select></label>
           </div>
         </section>
 
-        <section class="settings-section data-safety-section" data-settings-panel="data">
-          <div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案会自动保存在当前浏览器。建议定期导出备份，重要数据可以使用密码加密保存。</div></div><span id="dataSafetyOverallBadge" class="data-safety-overall-badge">检查中</span></div>
-
-          <div class="data-health-grid compact-health-grid">
-            <article class="data-health-card"><span class="data-health-label">自动保存</span><strong id="localSaveHealthValue">检查中</strong><span id="localSaveHealthSub">正在确认保存状态</span></article>
-            <article class="data-health-card"><span class="data-health-label">当前档案</span><strong id="dataScaleHealthValue">—</strong><span id="dataScaleHealthSub">PL / 模组 / 计划 / 记录</span></article>
-            <article class="data-health-card"><span class="data-health-label">恢复点</span><strong id="recoveryHealthValue">检查中</strong><span id="recoveryHealthSub">用于误操作后的恢复</span></article>
-            <article class="data-health-card"><span class="data-health-label">档案完整性</span><strong id="dataIntegrityHealthValue">待检查</strong><span id="dataIntegrityHealthSub">检查关联与重复数据</span></article>
-            <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动保留一份数据</span></article>
-            <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持时可安装到设备</span></article>
-            <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期备份</span></article>
-            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.0.9</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
-          </div>
-
-          <div id="inheritanceStatusNote" class="inheritance-status-note"></div>
-          <div id="storageContextNote" class="storage-context-note"></div>
-          <div hidden><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div>
-
-          <section class="friendly-data-block">
-            <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用，恢复点用于误操作，完整备份用于跨设备保管。</span></div></div>
-            <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>到期时只显示提醒。</small></span><select id="backupReminderDaysSelect" class="setting-input" aria-label="完整备份提醒周期"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
-            <div class="data-safety-action-row">
-              <button type="button" id="runStorageCheckBtn" class="btn small">检查保存状态</button>
-              <button type="button" id="createRecoveryBtn" class="btn small">创建恢复点</button>
-              <button type="button" id="restoreRecoveryBtn" class="btn small">恢复最近记录</button>
-              <button type="button" id="requestPersistentStorageBtn" class="btn small">浏览器数据保留</button>
-              <button type="button" id="installAppBtn" class="btn small">安装到设备</button>
-            </div>
-          </section>
-
-
-          <section class="friendly-data-block">
-            <div class="friendly-data-head"><div><strong>回收站</strong><span>删除内容会在当前浏览器保留 30 天，可在这里恢复。</span></div><button type="button" id="emptyTrashBtn" class="btn small danger-soft">清空回收站</button></div>
-            <div id="trashBinList" class="trash-bin-list"></div>
-          </section>
-          <section class="friendly-data-block">
-            <div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联、日程冲突等常见问题。</span></div><button type="button" id="runDataIntegrityBtn" class="btn small">立即检查</button></div>
-            <div id="dataIntegrityResults" class="data-integrity-results" hidden></div>
-          </section>
-
-          <section class="friendly-data-block">
-            <div class="friendly-data-head"><div><strong>备份与迁移</strong><span>密码加密备份适合长期保管；普通备份方便快速恢复。</span></div></div>
-            <div class="backup-box unified-backup-box friendly-backup-grid">
-              <button type="button" id="exportBtn" class="btn">↓ 导出完整备份</button>
-              <button type="button" id="exportEncryptedBtn" class="btn primary-soft">↓ 导出密码加密备份</button>
-              <button type="button" id="importBtn" class="btn">↑ 导入完整备份</button>
-              <button type="button" id="importEncryptedBtn" class="btn primary-soft">↑ 导入密码加密备份</button>
-              <button type="button" id="importLegacyModuleBtn" class="btn">↑ 合并旧模组档案</button>
-              <input id="importFile" class="file-input" type="file" accept=".json,.html,application/json,text/html">
-              <input id="encryptedImportFile" class="file-input" type="file" accept=".plbackup,.json,application/json">
-              <input id="legacyModuleImportFile" class="file-input" type="file" accept=".json,.html,application/json,text/html">
-            </div>
-            <details class="secondary-tools-details">
-              <summary>其他备份方式</summary>
-              <div class="secondary-tools-body">
-                <button type="button" id="exportPortableBtn" class="btn small danger-soft">导出含数据便携 HTML</button>
-                <button type="button" id="relayUpgradeBtn" class="btn small danger-soft">把当前数据带入新版 HTML</button>
-                <button type="button" id="restoreUpgradeGuardBtn" class="btn small">恢复升级前数据</button>
-                <input id="relayUpgradeFile" class="file-input" type="file" accept=".html,text/html">
-                <p>这些文件可能包含姓名、联系方式、备注等资料，请只用于自己的备份和升级。</p>
-              </div>
-            </details>
-          </section>
-
-
-          <section class="friendly-data-block">
-            <div class="friendly-data-head"><div><strong>设备迁移</strong><span>把档案从一台设备安全带到另一台设备，不需要账号或云同步。</span></div></div>
-            <div class="device-migration-actions">
-              <button type="button" id="openMigrationExportBtn" class="btn primary-soft">旧设备：生成迁移包</button>
-              <button type="button" id="openMigrationImportBtn" class="btn">新设备：导入迁移包</button>
-              <input id="migrationImportFile" class="file-input" type="file" accept=".plmove,.plbackup,.json,application/json">
-            </div>
-          </section>
-
-          <section class="friendly-data-block version-update-block">
-            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.0.9 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
-            <div id="releaseNotesBox" class="release-notes-box">
-              <strong>v8.0.9</strong><span>未修改误提示修复：PL 编辑器打开后建立“实际显示状态”的基准快照，关闭时只比较真正会保存的业务字段；跑团记录草稿比较忽略 createdAt / updatedAt 等非业务时间戳，解决打开档案什么都没改却提示“放弃未保存修改”的问题，并确保改动后再恢复原值不会误报。</span><strong>v8.0.8</strong><span>交互可靠性全面修复：修复 PL 编辑器底部“顶部 / 底部 / 保存 / 取消 / 删除”被模态焦点隔离机制设为 inert、导致手机上看得见却点不到的问题；把 PL 编辑器视为“正文 + 快捷操作栏”的复合交互区域，并统一修正触摸命中、键盘焦点范围与复合模态交互语义。</span><strong>v8.0.7</strong><span>计划时段容量升级：开团计划周历的早 / 中 / 晚每个时段由最多 2 场提升为最多 4 场；容量提示、满载判断、拖动改期与数据完整性检查同步改为 4 场；四场堆叠时自动压缩重复时段文字，保证周历仍清楚可读。</span><strong>v8.0.6</strong><span>布局稳定与搜索反馈：修复手机跑团记录模组标签宽度被后置样式覆盖；统一关键悬浮层级；手机 PL 排序改用短标签显示、下拉仍保留完整选项；无结果页增加清空/重置操作；搜索结果自动高亮命中词；继续提升日期、状态、身份等高频小字可读性，并收口搜索、侧栏、弹窗相关手机样式。</span><strong>v8.0.5</strong><span>跑团记录搜索位置修正：把记录搜索框收回“跑团记录表”工具区，取消记录页搜索框的独立悬浮/吸顶布局；搜索结果数量与搜索框同行显示，记录目录与桌次内容从工具区下方正常开始，避免搜索栏压住内容。</span><strong>v8.0.4</strong><span>高频体验整理：统一主导航、设置、显示模式和记录侧栏的选中态；为六类搜索增加一键清空与 Esc 清空；强化排序/筛选识别；搜索时显示结果/总量；统一正常、信息、待处理、风险四类状态色，并提升高频小字可读性。</span>
-            </div>
-          </section>
-          <details class="friend-safety-notes">
-            <summary>免责与注意事项</summary>
-            <div>
-              <p>评分、备注与排序属于个人跑团记录，仅用于整理、复盘和开团参考，不代表对玩家能力、人格或现实表现的客观评价。</p>
-              <p>浏览器数据可能因清理缓存、更换设备或浏览器故障而丢失，请定期导出完整备份。</p>
-              <p>备份文件和截图可能包含个人资料，请妥善保管。分享给他人时，请分享空白程序，不要分享含真实档案的数据文件。</p>
-            </div>
-          </details>
-        </section>
+        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案会自动保存在当前浏览器。建议定期导出备份，重要数据可以使用密码加密保存。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group daily" open=""><summary><span class="data-safety-group-title"><strong>日常保护</strong><small>保存状态、恢复点和常用保护操作</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><div class="data-health-grid compact-health-grid">
+<article class="data-health-card"><span class="data-health-label">自动保存</span><strong id="localSaveHealthValue">检查中</strong><span id="localSaveHealthSub">正在确认保存状态</span></article>
+<article class="data-health-card"><span class="data-health-label">当前档案</span><strong id="dataScaleHealthValue">—</strong><span id="dataScaleHealthSub">PL / 模组 / 计划 / 记录</span></article>
+<article class="data-health-card"><span class="data-health-label">恢复点</span><strong id="recoveryHealthValue">检查中</strong><span id="recoveryHealthSub">用于误操作后的恢复</span></article>
+<article class="data-health-card"><span class="data-health-label">档案完整性</span><strong id="dataIntegrityHealthValue">待检查</strong><span id="dataIntegrityHealthSub">检查关联与重复数据</span></article>
+<article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动保留一份数据</span></article>
+<article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持时可安装到设备</span></article>
+<article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期备份</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.2</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
+</div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用，恢复点用于误操作，完整备份用于跨设备保管。</span></div></div>
+<label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>到期时只显示提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
+<div class="data-safety-action-row">
+<button class="btn small" id="runStorageCheckBtn" type="button">检查保存状态</button>
+<button class="btn small" id="createRecoveryBtn" type="button">创建恢复点</button>
+<button class="btn small" id="restoreRecoveryBtn" type="button">恢复最近记录</button>
+<button class="btn small" id="requestPersistentStorageBtn" type="button">浏览器数据保留</button>
+<button class="btn small" id="installAppBtn" type="button">安装到设备</button>
+</div>
+</section></div></details><details class="data-safety-group recovery"><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>完整备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>备份与迁移</strong><span>密码加密备份适合长期保管；普通备份方便快速恢复。</span></div></div>
+<div class="backup-box unified-backup-box friendly-backup-grid">
+<button class="btn" id="exportBtn" type="button">↓ 导出完整备份</button>
+<button class="btn primary-soft" id="exportEncryptedBtn" type="button">↓ 导出密码加密备份</button>
+<button class="btn" id="importBtn" type="button">↑ 导入完整备份</button>
+<button class="btn primary-soft" id="importEncryptedBtn" type="button">↑ 导入密码加密备份</button>
+<button class="btn" id="importLegacyModuleBtn" type="button">↑ 合并旧模组档案</button>
+<input accept=".json,.html,application/json,text/html" class="file-input" id="importFile" type="file"/>
+<input accept=".plbackup,.json,application/json" class="file-input" id="encryptedImportFile" type="file"/>
+<input accept=".json,.html,application/json,text/html" class="file-input" id="legacyModuleImportFile" type="file"/>
+</div>
+<details class="secondary-tools-details">
+<summary>其他备份方式</summary>
+<div class="secondary-tools-body">
+<button class="btn small danger-soft" id="exportPortableBtn" type="button">导出含数据便携 HTML</button>
+<button class="btn small danger-soft" id="relayUpgradeBtn" type="button">把当前数据带入新版 HTML</button>
+<button class="btn small" id="restoreUpgradeGuardBtn" type="button">恢复升级前数据</button>
+<input accept=".html,text/html" class="file-input" id="relayUpgradeFile" type="file"/>
+<p>这些文件可能包含姓名、联系方式、备注等资料，请只用于自己的备份和升级。</p>
+</div>
+</details>
+</section><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>设备迁移</strong><span>把档案从一台设备安全带到另一台设备，不需要账号或云同步。</span></div></div>
+<div class="device-migration-actions">
+<button class="btn primary-soft" id="openMigrationExportBtn" type="button">旧设备：生成迁移包</button>
+<button class="btn" id="openMigrationImportBtn" type="button">新设备：导入迁移包</button>
+<input accept=".plmove,.plbackup,.json,application/json" class="file-input" id="migrationImportFile" type="file"/>
+</div>
+</section><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>回收站</strong><span>删除内容会在当前浏览器保留 30 天，可在这里恢复。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
+<div class="trash-bin-list" id="trashBinList"></div>
+</section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查程序版本、离线缓存并重新加载程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.1.2 · 正在确认离线与更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">重新加载程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.2</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">最后检查：尚未</span></div>
+<div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.2</strong><span>移动端信息架构与长期使用优化：手机计划页拆分“日历 / 待排计划”，安排后自动回到日历；压缩跑团记录顶部工具区；新增桌次支持最近一步撤销；手机 PL 简要评分收束为前四项并可展开；全局搜索纳入感想、备注、HO补充并支持分批继续显示；数据与备份按日常保护、恢复迁移、版本更新、高级诊断分层；扩大触控命中；修正新手引导关闭语义；极窄屏设置导航增加滑动提示；新增深度自检并保持数据结构兼容。</span><strong>v8.1.1</strong><span>数据防丢与交互安全：分享模式从入口层彻底阻断敏感编辑；修复设置取消误绕过未保存确认；空白新建计划关闭时自动清理；计划与跑团记录文本改为防抖自动保存，并在切后台/关闭页面时强制落盘；编辑草稿同步强制写入；跑团记录获得最近一步撤销；隐藏删除按钮退出键盘焦点；离线缓存仅在页面导航失败时回退首页。</span><strong>v8.1.0</strong><span>长期可靠性升级：新增界面与交互自检、编辑器统一基准快照与可视化未保存状态、异常退出草稿恢复、开团计划最近一步撤销、周历自动/舒适/紧凑密度、关联页面精确返回、强制刷新程序文件及版本/缓存状态显示，并进一步集中移动端交互规则。</span><strong>v8.0.9</strong><span>未修改误提示修复：PL 编辑器打开后建立“实际显示状态”的基准快照，关闭时只比较真正会保存的业务字段；跑团记录草稿比较忽略 createdAt / updatedAt 等非业务时间戳，解决打开档案什么都没改却提示“放弃未保存修改”的问题，并确保改动后再恢复原值不会误报。</span><strong>v8.0.8</strong><span>交互可靠性全面修复：修复 PL 编辑器底部“顶部 / 底部 / 保存 / 取消 / 删除”被模态焦点隔离机制设为 inert、导致手机上看得见却点不到的问题；把 PL 编辑器视为“正文 + 快捷操作栏”的复合交互区域，并统一修正触摸命中、键盘焦点范围与复合模态交互语义。</span><strong>v8.0.7</strong><span>计划时段容量升级：开团计划周历的早 / 中 / 晚每个时段由最多 2 场提升为最多 4 场；容量提示、满载判断、拖动改期与数据完整性检查同步改为 4 场；四场堆叠时自动压缩重复时段文字，保证周历仍清楚可读。</span><strong>v8.0.6</strong><span>布局稳定与搜索反馈：修复手机跑团记录模组标签宽度被后置样式覆盖；统一关键悬浮层级；手机 PL 排序改用短标签显示、下拉仍保留完整选项；无结果页增加清空/重置操作；搜索结果自动高亮命中词；继续提升日期、状态、身份等高频小字可读性，并收口搜索、侧栏、弹窗相关手机样式。</span><strong>v8.0.5</strong><span>跑团记录搜索位置修正：把记录搜索框收回“跑团记录表”工具区，取消记录页搜索框的独立悬浮/吸顶布局；搜索结果数量与搜索框同行显示，记录目录与桌次内容从工具区下方正常开始，避免搜索栏压住内容。</span><strong>v8.0.4</strong><span>高频体验整理：统一主导航、设置、显示模式和记录侧栏的选中态；为六类搜索增加一键清空与 Esc 清空；强化排序/筛选识别；搜索时显示结果/总量；统一正常、信息、待处理、风险四类状态色，并提升高频小字可读性。</span>
+</div>
+</section></div></details><details class="data-safety-group advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>档案完整性、界面自检和低频说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联、日程冲突等常见问题。</span></div><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button></div>
+<div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
+</section><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>界面与交互自检</strong><span>快速自检当前界面；深度自检会依次检查四个主页面和主要编辑器，结束后恢复当前位置。</span></div><div class="friendly-head-actions"><button class="btn small" id="runInteractionSelfCheckBtn" type="button">运行界面自检</button><button class="btn small" hidden="" id="copyInteractionSelfCheckBtn" type="button">复制诊断结果</button><button class="btn small primary-soft" id="runDeepInteractionSelfCheckBtn" type="button">深度自检</button></div></div>
+<div class="interaction-self-check-results" hidden="" id="interactionSelfCheckResults"></div>
+</section><details class="friend-safety-notes">
+<summary>免责与注意事项</summary>
+<div>
+<p>评分、备注与排序属于个人跑团记录，仅用于整理、复盘和开团参考，不代表对玩家能力、人格或现实表现的客观评价。</p>
+<p>浏览器数据可能因清理缓存、更换设备或浏览器故障而丢失，请定期导出完整备份。</p>
+<p>备份文件和截图可能包含个人资料，请妥善保管。分享给他人时，请分享空白程序，不要分享含真实档案的数据文件。</p>
+</div>
+</details></div></details></section>
             </div>
           </div>
         </div>
       </div>
       <footer class="modal-foot">
-        <div id="settingsWarning" class="settings-warning" role="status" aria-live="polite"></div>
+        <div class="settings-foot-status"><span id="settingsEditStatus" class="editor-state-chip clean">未修改</span><div id="settingsWarning" class="settings-warning" role="status" aria-live="polite"></div></div>
         <div class="foot-right"><button type="button" id="cancelSettingsBtn" class="btn">取消</button><button type="button" id="saveSettingsBtn" class="btn primary">保存设置</button></div>
       </footer>
     </section>
@@ -3759,19 +3792,20 @@
 
   <div id="onboardingBackdrop" class="onboarding-backdrop" hidden>
     <section class="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
-      <header><div><span class="onboarding-kicker">欢迎使用</span><h2 id="onboardingTitle">三步开始整理跑团档案</h2><p>所有内容默认保存在当前浏览器；可以随时导出备份。</p></div><button id="skipOnboardingBtn" class="close" type="button" aria-label="跳过引导">×</button></header>
+      <header><div><span class="onboarding-kicker">欢迎使用</span><h2 id="onboardingTitle">三步开始整理跑团档案</h2><p>所有内容默认保存在当前浏览器；可以随时导出备份。</p></div><button id="skipOnboardingBtn" class="close" type="button" aria-label="暂时关闭引导">×</button></header>
       <div class="onboarding-steps">
         <article><span>01</span><strong>建立 PL</strong><p>记录常用资料与评价；新建档案的评分默认都是“无”。</p></article>
         <article><span>02</span><strong>建立模组或计划</strong><p>为桌次关联 KP、PL、PC 和 HO；计划可以直接安排到日历。</p></article>
         <article><span>03</span><strong>跑完后归档</strong><p>跑团记录是桌次数据的统一来源，PL 与模组经历会自动联动。</p></article>
       </div>
-      <footer><button id="onboardingLaterBtn" class="btn" type="button">不再提示</button><button id="onboardingStartBtn" class="btn primary" type="button">开始建立第一个 PL</button></footer>
+      <footer><button id="onboardingLaterBtn" class="btn" type="button">不再提示</button><button id="onboardingStartBtn" class="btn primary" type="button">新增第一位玩家档案</button></footer>
     </section>
   </div>
   <div id="toast" class="toast"></div>
+  <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.0.9 · 作者：番茄
+/* PL收集梦想生活 v8.1.2 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3790,7 +3824,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.0.9";
+const APP_UI_VERSION = "8.1.2";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -3867,6 +3901,7 @@ function normalizeModuleArchiveSettings(raw){
 function defaultUiSettings(){
   return {
     plannerView:"week",
+    plannerDensity:"auto",
     recordDefaultMode:"view",
     recordDefaultExpand:"latest",
     profileFootprintsOpen:false,
@@ -3877,6 +3912,7 @@ function normalizeUiSettings(raw){
   const src=raw&&typeof raw==="object"?raw:{};
   return {
     plannerView:src.plannerView==="month"?"month":"week",
+    plannerDensity:["auto","comfortable","compact"].includes(src.plannerDensity)?src.plannerDensity:"auto",
     recordDefaultMode:src.recordDefaultMode==="edit"?"edit":"view",
     recordDefaultExpand:src.recordDefaultExpand==="all"?"all":"latest",
     profileFootprintsOpen:Boolean(src.profileFootprintsOpen),
@@ -3967,6 +4003,19 @@ let editingId = null;
 let draft = null;
 let runRecordsDraft = null;
 let profileEditorBaseline = null;
+let settingsEditorBaseline = null;
+let nativeModuleEditorBaseline = null;
+let editorDraftTimer = 0;
+let planInputSaveTimer = 0;
+let planInputPending = null;
+let recordInputSaveTimer = 0;
+let recordInputPending = null;
+const transientPlanIds = new Set();
+const newPlanSessionIds = new Set();
+let linkedReturnContext = null;
+let planUndoEntry = null;
+let lastInteractionSelfCheckText = "";
+const EDITOR_DRAFT_KEY = "trpg_unified_editor_drafts_v1";
 let settingsDraft = null;
 let currentView = "profiles";
 let selectedModuleName = "";
@@ -3986,6 +4035,11 @@ let plannerPickedPlanId = null;
 let plannerDraggedPlanId = null;
 let plannerDraggedSchedule = null;
 let plannerViewMode = settings.ui?.plannerView || "week";
+let plannerMobileSection = "calendar";
+const PLANNER_MOBILE_SECTION_KEY = "trpg_planner_mobile_section_v1";
+let expandedCompactScoreIds = new Set();
+let globalSearchVisibleCount = 40;
+const GLOBAL_SEARCH_BATCH = 40;
 let recordEditingIds = new Set();
 let activeSettingsPanel = "appearance";
 let moduleNativeQuery = "";
@@ -4008,6 +4062,7 @@ function applyUiPreferences(source=settings){
   plannerViewMode=ui.plannerView;
 
   document.body.dataset.plannerView=plannerViewMode;
+  document.body.dataset.planDensity=ui.plannerDensity;
   if(els?.plannerWeekMode&&els?.plannerMonthMode){
     els.plannerWeekMode.classList.toggle("active",plannerViewMode==="week");
     els.plannerWeekMode.setAttribute("aria-pressed",plannerViewMode==="week"?"true":"false");
@@ -4488,6 +4543,33 @@ function makeBlankRunPlan(){
     id:uid(),moduleName:"",tableName:"",kp:"",kpProfileId:"",logUrl:"",plIds:[],participantAssignments:[],
     kpc:normalizeKpc(null),sharedHoNote:"",legacyHoSlots:0,timeSlots:[],createdAt:now,updatedAt:now
   });
+}
+function isMeaningfulRunPlan(plan){
+  if(!plan)return false;
+  const p=normalizeRunPlan(plan,new Set(profiles.map(x=>x.id)));
+  const assignmentMeaningful=(p.participantAssignments||[]).some(a=>String(a.pcName||"").trim()||normalizePcHoMode(a.hoMode)||String(a.hoCustom||"").trim());
+  const k=normalizeKpc(p.kpc);
+  return Boolean(p.moduleId||p.moduleName||p.tableName||p.kp||p.kpProfileId||p.logUrl||p.sharedHoNote||p.plIds.length||assignmentMeaningful||k.enabled||k.pcName||normalizePcHoMode(k.hoMode)||k.hoCustom||(p.timeSlots||[]).some(s=>s.date));
+}
+function queuePlanInputMutation(planId,mutator,label="计划内容已自动保存"){
+  if(planInputPending&&planInputPending.planId!==planId)flushPlanInputSave();
+  const i=runPlans.findIndex(p=>p.id===planId);if(i<0)return false;
+  if(!planInputPending)planInputPending={planId,before:clone(runPlans[i]),label,wasTransient:transientPlanIds.has(planId)};
+  try{mutator(runPlans[i]);runPlans[i].updatedAt=Date.now();}catch(err){console.error(err);return false;}
+  clearTimeout(planInputSaveTimer);planInputSaveTimer=setTimeout(()=>flushPlanInputSave(),420);return true;
+}
+function flushPlanInputSave(){
+  clearTimeout(planInputSaveTimer);planInputSaveTimer=0;const pending=planInputPending;planInputPending=null;if(!pending)return false;
+  const i=runPlans.findIndex(p=>p.id===pending.planId);if(i<0)return false;
+  const valid=new Set(profiles.map(p=>p.id)),before=normalizeRunPlan(pending.before,valid),current=normalizeRunPlan(runPlans[i],valid);
+  const comparable=x=>{const y=clone(x);delete y.updatedAt;return JSON.stringify(y);};
+  runPlans[i]=current;if(comparable(before)===comparable(current))return false;
+  current.updatedAt=Date.now();runPlans[i]=current;
+  if(pending.wasTransient&&!isMeaningfulRunPlan(current)){return false;}
+  if(!saveState()){runPlans[i]=before;renderRunPlans();return false;}
+  if(pending.wasTransient)transientPlanIds.delete(pending.planId);
+  setPlanUndo({type:"replace-plan",planId:pending.planId,before,label:pending.label,removeIfBlank:pending.wasTransient});
+  renderRunPlans();return true;
 }
 
 function normalizeRunRecord(raw, validProfileIds=null){
@@ -5224,7 +5306,7 @@ const els = {
   quickRunModule:document.getElementById("quickRunModuleInput"),quickRunName:document.getElementById("quickRunNameInput"),quickRunKp:document.getElementById("quickRunKpInput"),quickRunStart:document.getElementById("quickRunStartInput"),quickRunEnd:document.getElementById("quickRunEndInput"),quickRunLog:document.getElementById("quickRunLogInput"),createLinkedRun:document.getElementById("createLinkedRunBtn"),
   editRuns:document.getElementById("editRuns"),
   save:document.getElementById("saveBtn"),cancel:document.getElementById("cancelBtn"),closeProfile:document.getElementById("closeProfileBtn"),modalDelete:document.getElementById("modalDeleteBtn"),
-  closeSettings:document.getElementById("closeSettingsBtn"),cancelSettings:document.getElementById("cancelSettingsBtn"),saveSettings:document.getElementById("saveSettingsBtn"),themePicker:document.getElementById("themePicker"),fieldList:document.getElementById("fieldList"),weightTotal:document.getElementById("weightTotal"),settingsWarning:document.getElementById("settingsWarning"),addField:document.getElementById("addFieldBtn"),equalize:document.getElementById("equalizeBtn"),exportBtn:document.getElementById("exportBtn"),exportEncrypted:document.getElementById("exportEncryptedBtn"),exportPortable:document.getElementById("exportPortableBtn"),importBtn:document.getElementById("importBtn"),importEncrypted:document.getElementById("importEncryptedBtn"),importLegacyModule:document.getElementById("importLegacyModuleBtn"),importFile:document.getElementById("importFile"),encryptedImportFile:document.getElementById("encryptedImportFile"),legacyModuleImportFile:document.getElementById("legacyModuleImportFile"),dataSafetyOverallBadge:document.getElementById("dataSafetyOverallBadge"),localSaveHealthValue:document.getElementById("localSaveHealthValue"),localSaveHealthSub:document.getElementById("localSaveHealthSub"),dataScaleHealthValue:document.getElementById("dataScaleHealthValue"),dataScaleHealthSub:document.getElementById("dataScaleHealthSub"),recoveryHealthValue:document.getElementById("recoveryHealthValue"),recoveryHealthSub:document.getElementById("recoveryHealthSub"),storageModeHealthValue:document.getElementById("storageModeHealthValue"),storageModeHealthSub:document.getElementById("storageModeHealthSub"),exportHealthValue:document.getElementById("exportHealthValue"),exportHealthSub:document.getElementById("exportHealthSub"),dataIntegrityHealthValue:document.getElementById("dataIntegrityHealthValue"),dataIntegrityHealthSub:document.getElementById("dataIntegrityHealthSub"),upgradeGuardHealthValue:document.getElementById("upgradeGuardHealthValue"),upgradeGuardHealthSub:document.getElementById("upgradeGuardHealthSub"),pwaHealthValue:document.getElementById("pwaHealthValue"),pwaHealthSub:document.getElementById("pwaHealthSub"),inheritanceStatusNote:document.getElementById("inheritanceStatusNote"),storageContextNote:document.getElementById("storageContextNote"),backupReminderDays:document.getElementById("backupReminderDaysSelect"),runStorageCheck:document.getElementById("runStorageCheckBtn"),createRecovery:document.getElementById("createRecoveryBtn"),restoreRecovery:document.getElementById("restoreRecoveryBtn"),requestPersistentStorage:document.getElementById("requestPersistentStorageBtn"),installApp:document.getElementById("installAppBtn"),runDataIntegrity:document.getElementById("runDataIntegrityBtn"),dataIntegrityResults:document.getElementById("dataIntegrityResults"),relayUpgrade:document.getElementById("relayUpgradeBtn"),relayUpgradeFile:document.getElementById("relayUpgradeFile"),restoreUpgradeGuard:document.getElementById("restoreUpgradeGuardBtn"),plannerDefaultViewSetting:document.getElementById("plannerDefaultViewSetting"),recordDefaultModeSetting:document.getElementById("recordDefaultModeSetting"),recordDefaultExpandSetting:document.getElementById("recordDefaultExpandSetting"),profileFootprintSetting:document.getElementById("profileFootprintSetting"),moduleRatingSystemSummary:document.getElementById("moduleRatingSystemSummary"),openModuleAdvancedSettings:document.getElementById("openModuleAdvancedSettingsBtn"),secureBackupBackdrop:document.getElementById("secureBackupBackdrop"),secureBackupTitle:document.getElementById("secureBackupTitle"),secureBackupSubtitle:document.getElementById("secureBackupSubtitle"),secureBackupPassword:document.getElementById("secureBackupPassword"),secureBackupPasswordConfirm:document.getElementById("secureBackupPasswordConfirm"),secureBackupConfirmRow:document.getElementById("secureBackupConfirmRow"),secureBackupHint:document.getElementById("secureBackupHint"),closeSecureBackup:document.getElementById("closeSecureBackupBtn"),cancelSecureBackup:document.getElementById("cancelSecureBackupBtn"),confirmSecureBackup:document.getElementById("confirmSecureBackupBtn"),toast:document.getElementById("toast"),scrollTop:document.getElementById("scrollTopBtn"),scrollBottom:document.getElementById("scrollBottomBtn"),privacyMask:document.getElementById("privacyMaskBtn"),profileScrollTop:document.getElementById("profileScrollTopBtn"),profileScrollBottom:document.getElementById("profileScrollBottomBtn")
+  closeSettings:document.getElementById("closeSettingsBtn"),cancelSettings:document.getElementById("cancelSettingsBtn"),saveSettings:document.getElementById("saveSettingsBtn"),themePicker:document.getElementById("themePicker"),fieldList:document.getElementById("fieldList"),weightTotal:document.getElementById("weightTotal"),settingsWarning:document.getElementById("settingsWarning"),addField:document.getElementById("addFieldBtn"),equalize:document.getElementById("equalizeBtn"),exportBtn:document.getElementById("exportBtn"),exportEncrypted:document.getElementById("exportEncryptedBtn"),exportPortable:document.getElementById("exportPortableBtn"),importBtn:document.getElementById("importBtn"),importEncrypted:document.getElementById("importEncryptedBtn"),importLegacyModule:document.getElementById("importLegacyModuleBtn"),importFile:document.getElementById("importFile"),encryptedImportFile:document.getElementById("encryptedImportFile"),legacyModuleImportFile:document.getElementById("legacyModuleImportFile"),dataSafetyOverallBadge:document.getElementById("dataSafetyOverallBadge"),localSaveHealthValue:document.getElementById("localSaveHealthValue"),localSaveHealthSub:document.getElementById("localSaveHealthSub"),dataScaleHealthValue:document.getElementById("dataScaleHealthValue"),dataScaleHealthSub:document.getElementById("dataScaleHealthSub"),recoveryHealthValue:document.getElementById("recoveryHealthValue"),recoveryHealthSub:document.getElementById("recoveryHealthSub"),storageModeHealthValue:document.getElementById("storageModeHealthValue"),storageModeHealthSub:document.getElementById("storageModeHealthSub"),exportHealthValue:document.getElementById("exportHealthValue"),exportHealthSub:document.getElementById("exportHealthSub"),dataIntegrityHealthValue:document.getElementById("dataIntegrityHealthValue"),dataIntegrityHealthSub:document.getElementById("dataIntegrityHealthSub"),upgradeGuardHealthValue:document.getElementById("upgradeGuardHealthValue"),upgradeGuardHealthSub:document.getElementById("upgradeGuardHealthSub"),pwaHealthValue:document.getElementById("pwaHealthValue"),pwaHealthSub:document.getElementById("pwaHealthSub"),inheritanceStatusNote:document.getElementById("inheritanceStatusNote"),storageContextNote:document.getElementById("storageContextNote"),backupReminderDays:document.getElementById("backupReminderDaysSelect"),runStorageCheck:document.getElementById("runStorageCheckBtn"),createRecovery:document.getElementById("createRecoveryBtn"),restoreRecovery:document.getElementById("restoreRecoveryBtn"),requestPersistentStorage:document.getElementById("requestPersistentStorageBtn"),installApp:document.getElementById("installAppBtn"),runDataIntegrity:document.getElementById("runDataIntegrityBtn"),dataIntegrityResults:document.getElementById("dataIntegrityResults"),relayUpgrade:document.getElementById("relayUpgradeBtn"),relayUpgradeFile:document.getElementById("relayUpgradeFile"),restoreUpgradeGuard:document.getElementById("restoreUpgradeGuardBtn"),plannerDefaultViewSetting:document.getElementById("plannerDefaultViewSetting"),plannerDensitySetting:document.getElementById("plannerDensitySetting"),recordDefaultModeSetting:document.getElementById("recordDefaultModeSetting"),recordDefaultExpandSetting:document.getElementById("recordDefaultExpandSetting"),profileFootprintSetting:document.getElementById("profileFootprintSetting"),moduleRatingSystemSummary:document.getElementById("moduleRatingSystemSummary"),openModuleAdvancedSettings:document.getElementById("openModuleAdvancedSettingsBtn"),secureBackupBackdrop:document.getElementById("secureBackupBackdrop"),secureBackupTitle:document.getElementById("secureBackupTitle"),secureBackupSubtitle:document.getElementById("secureBackupSubtitle"),secureBackupPassword:document.getElementById("secureBackupPassword"),secureBackupPasswordConfirm:document.getElementById("secureBackupPasswordConfirm"),secureBackupConfirmRow:document.getElementById("secureBackupConfirmRow"),secureBackupHint:document.getElementById("secureBackupHint"),closeSecureBackup:document.getElementById("closeSecureBackupBtn"),cancelSecureBackup:document.getElementById("cancelSecureBackupBtn"),confirmSecureBackup:document.getElementById("confirmSecureBackupBtn"),toast:document.getElementById("toast"),scrollTop:document.getElementById("scrollTopBtn"),scrollBottom:document.getElementById("scrollBottomBtn"),privacyMask:document.getElementById("privacyMaskBtn"),profileScrollTop:document.getElementById("profileScrollTopBtn"),profileScrollBottom:document.getElementById("profileScrollBottomBtn")
 };
 
 /* ---------- 10. 通用工具：文本转义、读取字段、评分说明、加权总分等 ---------- */
@@ -5562,6 +5644,8 @@ function initMobileUX(){
   try{
     const saved=localStorage.getItem(MOBILE_PROFILE_LAYOUT_KEY);
     mobileProfileLayout=saved==="cards"?"cards":"compact";
+    const plannerSaved=localStorage.getItem(PLANNER_MOBILE_SECTION_KEY);
+    plannerMobileSection=plannerSaved==="queue"?"queue":"calendar";
   }catch(err){
     mobileProfileLayout="compact";
     console.warn("无法读取手机端档案视图偏好",err);
@@ -5727,6 +5811,7 @@ function renderHoOrganizer(){
   }).join("");
 }
 function openHoOrganizer(profileId){
+  if(shareModeBlock("HO 整理"))return false;
   const p=profileById(String(profileId||""));if(!p)return;
   hoOrganizerProfileId=p.id;hoOrganizerFilter="all";hoOrganizerShowEmpty=false;
   els.hoOrganizerBackdrop.hidden=false;document.body.classList.add("ho-organizer-open");syncModalPageScrollLock();renderHoOrganizer();
@@ -5828,10 +5913,14 @@ function compactRowHTML(p){
   const roleStats=profileRoleStats(p.id,runSource);
   const age=calculateAge(p.birthDate);
   const personalMeta=[p.gender&&`性别 ${p.gender}`,age!==null&&`${age}岁`].filter(Boolean).join(" · ");
-  const scores=settings.fields.filter(f=>f.key!=="kpPlSide").map(f=>{
+  const scoreFields=settings.fields.filter(f=>f.key!=="kpPlSide");
+  const scoreExpanded=expandedCompactScoreIds.has(String(p.id));
+  const shownFields=mobileMedia.matches&&!scoreExpanded?scoreFields.slice(0,4):scoreFields;
+  const scores=shownFields.map(f=>{
     const score=profileRatingScore(p,f.key);
     return `<span class="compact-score ${score===null?"is-unrated":""}">${escapeHTML(f.label)} <b>${score===null?"无":score}</b></span>`;
   }).join("");
+  const scoreMore=mobileMedia.matches&&scoreFields.length>4?`<button type="button" class="compact-score-more" data-toggle-compact-scores="${escapeHTML(p.id)}">${scoreExpanded?"收起":`更多 ${scoreFields.length-4} 项`}</button>`:"";
   return `<article class="compact-row ${roleStats.total?"role-tinted":""}" style="${roleCardStyle(roleStats)}" data-id="${escapeHTML(p.id)}">
     <div class="compact-person">
       <div class="compact-name">${profileNameHTML(p,"privacy-compact-name")}${isSelfProfile(p)?`<span class="self-badge">本人</span>`:""}</div>
@@ -5843,7 +5932,7 @@ function compactRowHTML(p){
       ${roleDegreeHTML(roleStats,true)}
     </div>
     <div class="compact-total"><strong>${fmtScore(total)}</strong><span>${total===null?"暂无评分":"/10 综合"}</span></div>
-    <div class="compact-scores" title="横向滚动查看全部单项分数">${scores}</div>
+    <div class="compact-scores" title="查看单项评分">${scores}${scoreMore}</div>
     <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">HO整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":`<button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
 }
@@ -6008,7 +6097,9 @@ function closeOverlay(){
 }
 
 /* ---------- 15. PL 编辑器：使用 runRecordsDraft 保证“取消”不会误改中央跑团记录 ---------- */
-function openEditor(id=null,focusRuns=false){
+function openEditor(id=null,focusRuns=false,returnContext=null){
+  if(shareModeBlock("PL 编辑"))return false;
+  linkedReturnContext=returnContext||null;
   editingId=id;
   const src=id?profiles.find(p=>p.id===id):null;
   draft=normalizeProfile(src?clone(src):makeBlankProfile());
@@ -6016,7 +6107,8 @@ function openEditor(id=null,focusRuns=false){
 
   els.modalTitle.innerHTML=draftTitleHTML();
   const editingSelf=isSelfProfile(draft);
-  els.modalDelete.style.visibility=(id&&!editingSelf)?"visible":"hidden";
+  els.modalDelete.hidden=!(id&&!editingSelf);
+  els.modalDelete.style.visibility="";
   els.name.value=editingSelf?SELF_DEFAULT_NAME:draft.name;
   els.name.disabled=editingSelf;
   els.name.title=editingSelf?"本人档案名称固定为“我”，用于自动关联历史 KP / PL 记录。":"";
@@ -6026,7 +6118,10 @@ function openEditor(id=null,focusRuns=false){
   els.quickRunModule.value="";els.quickRunName.value="";els.quickRunKp.value="";els.quickRunStart.value="";els.quickRunEnd.value="";els.quickRunLog.value="";
   renderSliderEditor();renderEditRuns();
   captureProfileEditorBaseline();
+  updateAllEditorStateIndicators();
+  updateLinkedReturnButton();
   showOverlay("profile");
+  setTimeout(()=>void offerEditorDraftRecovery("profile"),80);
 
   setTimeout(()=>{
     if(focusRuns){
@@ -6046,8 +6141,10 @@ async function closeEditor(revert=true){
   if(revert&&!suppressDirtyPrompt&&profileDraftDirty()&&!await appConfirm("这份 PL 档案有尚未保存的修改，确定放弃吗？",{title:"放弃未保存修改？",confirmText:"放弃修改",danger:true}))return false;
   cancelMobileEditorRestore();
   mobileEditorLastScrollTop=0;
-  if(revert){draft=null;editingId=null;runRecordsDraft=null;profileEditorBaseline=null;renderProfiles();}
+  if(revert){clearEditorDraft("profile");draft=null;editingId=null;runRecordsDraft=null;profileEditorBaseline=null;renderProfiles();}
   closeOverlay();
+  updateAllEditorStateIndicators();
+  if(linkedReturnContext){const ctx=linkedReturnContext;linkedReturnContext=null;restoreLinkedReturnContext(ctx);}
   return true;
 }
 
@@ -6441,7 +6538,7 @@ function schedulePlanOnDaypart(planId,dateStr,daypart){
     slot.date=dateStr;
     slot.daypart=part.key;
     if(!blank)target.timeSlots.push(slot);
-  });
+  },{undoLabel:`已安排 ${dateStr} ${part.label} · ${plannerPlanLabel(plan)}`});
   if(ok)showToast(`已安排：${plannerPlanLabel(plan)} · ${dateStr} ${part.label}`);
 }
 
@@ -6461,7 +6558,7 @@ function movePlanSlotToDaypart(planId,slotId,dateStr,daypart){
   const ok=mutateRunPlan(planId,target=>{
     const slot=target.timeSlots.find(s=>s.id===slotId);
     if(slot){slot.date=dateStr;slot.daypart=part.key;}
-  });
+  },{undoLabel:`已改期到 ${dateStr} ${part.label} · ${plannerPlanLabel(plan)}`});
   if(ok)showToast(`已改期：${plannerPlanLabel(plan)} · ${dateStr} ${part.label}`);
 }
 
@@ -6470,7 +6567,7 @@ function unschedulePlanSlot(planId,slotId){
   if(!plan)return;
   const slot=plan.timeSlots.find(s=>s.id===slotId);
   const text=slot?formatPlanSlot(slot):"";
-  const ok=mutateRunPlan(planId,target=>{target.timeSlots=target.timeSlots.filter(s=>s.id!==slotId);});
+  const ok=mutateRunPlan(planId,target=>{target.timeSlots=target.timeSlots.filter(s=>s.id!==slotId);},{undoLabel:`已取消 ${text||"这次安排"} · ${plannerPlanLabel(plan)}`});
   if(ok)showToast(`已取消安排${text?`：${text}`:""}`);
 }
 
@@ -6554,7 +6651,9 @@ function restoreViewScroll(view){const y=Math.max(0,Number(viewSessionState[view
 function writeViewHistory(view,mode="push"){if(!history?.replaceState)return;const state={tag:HISTORY_STATE_TAG,view};try{if(mode==="replace")history.replaceState(state,"",location.href);else if(mode==="push"&&history.state?.view!==view)history.pushState(state,"",location.href);}catch(err){}}
 function switchView(view,{historyMode="push",restoreScroll=true}={}){
   const next=view==="records"?"records":view==="plans"?"plans":view==="modules"?"modules":"profiles";
-  if(currentView&&currentView!==next)captureCurrentViewState(currentView);
+  const changing=currentView&&currentView!==next;
+  if(changing)captureCurrentViewState(currentView);
+  if(next==="plans"&&changing&&mobileMedia.matches)plannerMobileSection="calendar";
   currentView=next;applyViewSessionInputs(currentView);
   els.profilesView.hidden=currentView!=="profiles";els.modulesView.hidden=currentView!=="modules";els.plansView.hidden=currentView!=="plans";els.recordsView.hidden=currentView!=="records";
   [[els.profilesViewBtn,"profiles"],[els.modulesViewBtn,"modules"],[els.plansViewBtn,"plans"],[els.recordsViewBtn,"records"]].forEach(([btn,key])=>{btn.classList.toggle("active",currentView===key);btn.setAttribute("aria-pressed",currentView===key?"true":"false");});
@@ -6597,10 +6696,24 @@ function recordMatchesSearch(r,moduleName,q){
   return [moduleName,r.tableName,kpTextLabel(r),r.kp,r.startDate,r.endDate,r.legacyDuration,r.logUrl,r.actualDuration,r.thoughts,r.runNotes,[participantDisplaySummary(r),hoAssignmentSummary(r),r.sharedHoNote].filter(Boolean).join(' '),...plNames,...slots].join(" ").toLowerCase().includes(q);
 }
 
+function applyPlannerMobileSectionUI(){
+  const view=els.plansView;if(!view)return;
+  const section=plannerMobileSection==="queue"?"queue":"calendar";
+  view.dataset.mobileSection=section;
+  document.querySelectorAll("[data-planner-mobile-section]").forEach(btn=>{const active=btn.dataset.plannerMobileSection===section;btn.classList.toggle("active",active);btn.setAttribute("aria-pressed",active?"true":"false");});
+  const badge=document.getElementById("plannerMobileQueueCount");if(badge)badge.textContent=String(runPlans.length);
+}
+function setPlannerMobileSection(section,{persist=true,scroll=true}={}){
+  plannerMobileSection=section==="queue"?"queue":"calendar";
+  if(persist){try{localStorage.setItem(PLANNER_MOBILE_SECTION_KEY,plannerMobileSection);}catch(err){}}
+  applyPlannerMobileSectionUI();
+  if(scroll&&mobileMedia.matches)requestAnimationFrame(()=>els.plansView?.scrollIntoView({block:"start",behavior:preferredScrollBehavior()}));
+}
 function renderRunPlans(){
   ensurePlannerDateState();
   renderPlanList();
   renderPlannerCalendars();
+  applyPlannerMobileSectionUI();
 }
 function renderPlanList(){
   const q=els.planSearch.value.trim().toLowerCase();
@@ -6608,6 +6721,7 @@ function renderPlanList(){
   const unscheduled=runPlans.filter(p=>planStatusInfo(p).key==="unscheduled").length;
   const visibleUnscheduled=filtered.filter(p=>planStatusInfo(p).key==="unscheduled").length;
   els.planCount.textContent=q?`${filtered.length} / ${runPlans.length} 个${visibleUnscheduled?` · ${visibleUnscheduled} 未排期`:""}`:`${runPlans.length} 个${unscheduled?` · ${unscheduled} 未排期`:""}`;
+  const mobileCount=document.getElementById("plannerMobileQueueCount");if(mobileCount)mobileCount.textContent=String(runPlans.length);
 
   if(!filtered.length){
     els.planBoard.innerHTML=`<div class="empty"><strong>${runPlans.length?"没有找到匹配计划":"还没有开团计划"}</strong><span>${runPlans.length?"换个关键词试试。":"点击上方“＋ 新建开团计划”，建立后再安排到周历。"}</span>${runPlans.length&&q?`<div class="empty-actions"><button type="button" class="btn small" data-empty-clear-search="planSearchInput">清空搜索</button></div>`:""}</div>`;
@@ -6705,6 +6819,9 @@ function plannerWeekHTML(){
     const iso=addLocalDays(weekStart,i),d=parseLocalISODate(iso);
     return {iso,d,label:weekday[i]};
   });
+  const maxWeekOccupancy=Math.max(0,...days.flatMap(({iso})=>PLAN_DAYPARTS.map(part=>calendarSlotsForDate(iso).filter(x=>slotDaypart(x.slot)===part.key).length)));
+  const densitySetting=normalizeUiSettings(settings.ui).plannerDensity;
+  const effectiveDensity=densitySetting==="compact"||densitySetting==="auto"&&maxWeekOccupancy>=3?"compact":"comfortable";
   const heads=days.map(({iso,d,label})=>`<button class="week-day-head-cell ${iso===today?"today":""} ${iso===plannerSelectedDate?"selected":""}" type="button" data-calendar-day="${iso}"><strong>${label}</strong><span>${d.getMonth()+1}/${d.getDate()}${iso===today?" · 今天":""}</span></button>`).join("");
   const rows=PLAN_DAYPARTS.map(part=>{
     const cells=days.map(({iso})=>{
@@ -6725,25 +6842,34 @@ function plannerWeekHTML(){
       <div class="calendar-nav"><button class="btn small" type="button" data-week-shift="-1">‹ 上周</button><button class="btn small" type="button" data-calendar-today>本周</button><button class="btn small" type="button" data-week-shift="1">下周 ›</button></div>
     </header>
     ${pickedHtml}
-    <div class="week-calendar-scroll"><div class="week-board"><div class="week-corner"></div>${heads}${rows}</div></div>`;
+    <div class="week-calendar-scroll"><div class="week-board density-${effectiveDensity}"><div class="week-corner"></div>${heads}${rows}</div></div>`;
 }
 
 function mutateRunPlan(planId,mutator,options={}){
+  if(planInputPending?.planId===planId)flushPlanInputSave();
   const index=runPlans.findIndex(p=>p.id===planId);if(index<0)return false;
-  const before=clone(runPlans[index]);mutator(runPlans[index]);
-  runPlans[index]=normalizeRunPlan(runPlans[index],new Set(profiles.map(p=>p.id)));runPlans[index].updatedAt=Date.now();
+  const before=clone(runPlans[index]),wasTransient=transientPlanIds.has(planId);mutator(runPlans[index]);
+  runPlans[index]=normalizeRunPlan(runPlans[index],new Set(profiles.map(p=>p.id)));
+  const comparable=x=>{const y=clone(x);delete y.updatedAt;return JSON.stringify(y);};
+  if(comparable(before)===comparable(runPlans[index]))return false;
+  runPlans[index].updatedAt=Date.now();
+  if(wasTransient&&!isMeaningfulRunPlan(runPlans[index])){renderRunPlans();if(editingPlanId===planId&&options.rerenderEditor!==false)renderPlanEditor();return true;}
   if(!saveState()){runPlans[index]=before;renderRunPlans();return false;}
+  if(wasTransient)transientPlanIds.delete(planId);
+  setPlanUndo({type:"replace-plan",planId,before,label:options.undoLabel||`已更新：${plannerPlanLabel(runPlans[index])}`,removeIfBlank:wasTransient});
   renderRunPlans();
   if(editingPlanId===planId&&options.rerenderEditor!==false)renderPlanEditor();
   return true;
 }
 function createRunPlan(){
+  if(shareModeBlock("新建计划"))return false;
   const created=makeBlankRunPlan();
   runPlans.push(created);
-  if(!saveState()){runPlans=runPlans.filter(p=>p.id!==created.id);return;}
+  transientPlanIds.add(created.id);
+  newPlanSessionIds.add(created.id);
   renderRunPlans();
   openPlanEditor(created.id);
-  showToast("已新建开团计划");
+  showToast("已新建开团计划 · 完全空白时关闭不会留下记录");
 }
 
 function addProfileToPlan(planId,profileId){
@@ -6753,7 +6879,7 @@ function addProfileToPlan(planId,profileId){
     plan.participantAssignments=normalizeParticipantAssignments(plan.participantAssignments,plan.plIds);
   }))showToast(`已加入计划：${displayProfileName(profile)}`);
 }
-function removeProfileFromPlan(planId,profileId){const profile=profiles.find(p=>p.id===profileId);if(!profile)return;mutateRunPlan(planId,plan=>{plan.plIds=plan.plIds.filter(id=>id!==profileId);plan.participantAssignments=normalizeParticipantAssignments(plan.participantAssignments,plan.plIds);});}
+function removeProfileFromPlan(planId,profileId){const profile=profiles.find(p=>p.id===profileId);if(!profile)return;mutateRunPlan(planId,plan=>{plan.plIds=plan.plIds.filter(id=>id!==profileId);plan.participantAssignments=normalizeParticipantAssignments(plan.participantAssignments,plan.plIds);},{undoLabel:`已从计划移除 ${displayProfileName(profile)}`});}
 async function archiveRunPlan(planId){
   const plan=runPlans.find(p=>p.id===planId);if(!plan)return;
   const moduleName=plan.moduleName.trim();
@@ -6785,6 +6911,7 @@ async function archiveRunPlan(planId){
 }
 
 function openPlanEditor(planId){
+  if(shareModeBlock("计划编辑"))return false;
   if(!runPlans.some(p=>p.id===planId))return;
   editingPlanId=planId;
   renderPlanEditor();
@@ -6794,6 +6921,16 @@ function openPlanEditor(planId){
   requestAnimationFrame(()=>els.planEditorDrawer?.focus?.({preventScroll:true}));
 }
 function closePlanEditor(){
+  const closingId=editingPlanId;
+  if(closingId&&planInputPending?.planId===closingId)flushPlanInputSave();
+  if(closingId&&newPlanSessionIds.has(closingId)){
+    const plan=runPlans.find(p=>p.id===closingId);
+    if(!isMeaningfulRunPlan(plan)){runPlans=runPlans.filter(p=>p.id!==closingId);transientPlanIds.delete(closingId);newPlanSessionIds.delete(closingId);saveState();renderRunPlans();}
+    else{if(saveState())transientPlanIds.delete(closingId);newPlanSessionIds.delete(closingId);}
+  }else if(closingId&&transientPlanIds.has(closingId)){
+    const plan=runPlans.find(p=>p.id===closingId);if(!isMeaningfulRunPlan(plan)){runPlans=runPlans.filter(p=>p.id!==closingId);transientPlanIds.delete(closingId);renderRunPlans();}
+    else if(saveState())transientPlanIds.delete(closingId);
+  }
   editingPlanId=null;
   els.planEditorBackdrop.hidden=true;
   document.body.classList.remove("plan-editor-open");
@@ -7099,6 +7236,7 @@ function recordTableHTML(r,index){
   </article>`;
 }
 function createFirstRunRecord(){
+  if(shareModeBlock("新增跑团记录"))return false;
   const requestedName=els.newModuleName.value.trim();
   if(!requestedName){showToast("请先填写模组名称");return;}
 
@@ -7126,6 +7264,7 @@ function createFirstRunRecord(){
   els.newModuleName.value="";
   renderRunRecords({preservePageScroll:true,centerSelected:true});
   renderProfiles();
+  setPlanUndo({type:"remove-created-record",recordId:created.id,label:existingModule?"已新增第一桌":"已新增模组第一桌"});
   showToast(existingModule?"已在现有模组档案下建立第一桌":"已建立模组与第一桌");
 }
 
@@ -7134,7 +7273,7 @@ function addTableToModule(moduleName){
   runRecords.push(created);
   selectedModuleName=moduleName;
   if(!saveState()){runRecords=runRecords.filter(r=>r.id!==created.id);return;}
-  renderRunRecords({preservePageScroll:true,centerSelected:true});showToast("已新增一桌");
+  renderRunRecords({preservePageScroll:true,centerSelected:true});setPlanUndo({type:"remove-created-record",recordId:created.id,label:"已新增一桌"});showToast("已新增一桌");
 }
 
 async function renameModule(moduleName){
@@ -7170,27 +7309,43 @@ async function renameModule(moduleName){
   showToast("模组名称已在计划与历史记录中联动更新");
 }
 
+function mutateRunRecord(recordId,mutator,options={}){
+  if(recordInputPending?.recordId===recordId)flushRecordInputSave();
+  const i=runRecords.findIndex(r=>r.id===recordId);if(i<0)return false;const before=clone(runRecords[i]);
+  mutator(runRecords[i]);runRecords[i]=normalizeRunRecord(runRecords[i],new Set(profiles.map(p=>p.id)));
+  const comparable=x=>{const y=clone(x);delete y.updatedAt;return JSON.stringify(y);};if(comparable(before)===comparable(runRecords[i]))return false;
+  runRecords[i].updatedAt=Date.now();const ids=[...new Set([...(before.plIds||[]),before.kpProfileId,...(runRecords[i].plIds||[]),runRecords[i].kpProfileId].filter(Boolean))];touchProfiles(ids);
+  if(!saveState()){runRecords[i]=before;return false;}
+  setPlanUndo({type:"replace-record",recordId,before,label:options.undoLabel||`已更新：${recordDisplayLabel(runRecords[i],runRecords)}`});
+  if(options.render!==false){renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});}
+  return true;
+}
+function queueRecordInputMutation(recordId,mutator,label="跑团记录已自动保存"){
+  if(recordInputPending&&recordInputPending.recordId!==recordId)flushRecordInputSave();
+  const i=runRecords.findIndex(r=>r.id===recordId);if(i<0)return false;if(!recordInputPending)recordInputPending={recordId,before:clone(runRecords[i]),label};
+  try{mutator(runRecords[i]);runRecords[i].updatedAt=Date.now();}catch(err){console.error(err);return false;}clearTimeout(recordInputSaveTimer);recordInputSaveTimer=setTimeout(()=>flushRecordInputSave(),420);return true;
+}
+function flushRecordInputSave(){
+  clearTimeout(recordInputSaveTimer);recordInputSaveTimer=0;const pending=recordInputPending;recordInputPending=null;if(!pending)return false;const i=runRecords.findIndex(r=>r.id===pending.recordId);if(i<0)return false;
+  const valid=new Set(profiles.map(p=>p.id)),before=normalizeRunRecord(pending.before,valid),current=normalizeRunRecord(runRecords[i],valid),comparable=x=>{const y=clone(x);delete y.updatedAt;return JSON.stringify(y);};runRecords[i]=current;if(comparable(before)===comparable(current))return false;
+  current.updatedAt=Date.now();runRecords[i]=current;const ids=[...new Set([...(before.plIds||[]),before.kpProfileId,...(current.plIds||[]),current.kpProfileId].filter(Boolean))];touchProfiles(ids);
+  if(!saveState()){runRecords[i]=before;return false;}setPlanUndo({type:"replace-record",recordId:pending.recordId,before,label:pending.label});renderProfiles();return true;
+}
+
 function addProfileToRecord(recordId,profileId){
-  const rec=runRecords.find(r=>r.id===recordId);
-  const p=profiles.find(p=>p.id===profileId);
-  if(!rec||!p||rec.plIds.includes(profileId))return;
-  rec.plIds.push(profileId);rec.participantAssignments=normalizeParticipantAssignments(rec.participantAssignments,rec.plIds);rec.updatedAt=Date.now();p.updatedAt=Date.now();
-  if(!saveState())return;
-  renderRunRecords();renderProfiles();showToast(`已关联 ${displayProfileName(p)}`);
+  const rec=runRecords.find(r=>r.id===recordId),p=profiles.find(p=>p.id===profileId);if(!rec||!p||rec.plIds.includes(profileId))return;
+  if(mutateRunRecord(recordId,r=>{r.plIds.push(profileId);r.participantAssignments=normalizeParticipantAssignments(r.participantAssignments,r.plIds);},{undoLabel:`已关联 ${displayProfileName(p)}`}))showToast(`已关联 ${displayProfileName(p)}`);
 }
 
 async function removeProfileFromRecord(recordId,profileId){
-  const rec=runRecords.find(r=>r.id===recordId);
-  const p=profiles.find(p=>p.id===profileId);
-  if(!rec||!p)return;
+  const rec=runRecords.find(r=>r.id===recordId),p=profiles.find(p=>p.id===profileId);if(!rec||!p)return;
   if(!await appConfirm(`从“${recordDisplayLabel(rec,runRecords)}”移除 ${displayProfileName(p)} 吗？\n\n只会解除这桌关联，不会删除 PL 档案。`,{title:"解除跑团关联？",confirmText:"解除关联",danger:true}))return;
-  rec.plIds=rec.plIds.filter(id=>id!==profileId);rec.participantAssignments=normalizeParticipantAssignments(rec.participantAssignments,rec.plIds);rec.updatedAt=Date.now();p.updatedAt=Date.now();
-  if(!saveState())return;
-  renderRunRecords();renderProfiles();showToast("已解除跑团关联");
+  if(mutateRunRecord(recordId,r=>{r.plIds=r.plIds.filter(id=>id!==profileId);r.participantAssignments=normalizeParticipantAssignments(r.participantAssignments,r.plIds);},{undoLabel:`已解除 ${displayProfileName(p)} 的跑团关联`}))showToast("已解除跑团关联");
 }
 
 /* ---------- 19. 设置窗口：使用 settingsDraft 暂存修改，保存后才正式生效 ---------- */
 function openSettings(){
+  if(shareModeBlock("设置"))return false;
   settingsDraft=normalizeSettings(clone(settings));
   applyTheme(settingsDraft.theme);
   renderSettings();
@@ -7200,7 +7355,10 @@ function openSettings(){
   updateDataSafetyUI();
   renderDataIntegrity(dataIntegrityReport(),false);
   renderTrashBin();
+  settingsEditorBaseline=JSON.stringify(normalizeSettings(clone(settingsDraft)));
+  updateAllEditorStateIndicators();
   showOverlay("settings");
+  setTimeout(()=>void offerEditorDraftRecovery("settings"),80);
   if(!window.matchMedia("(max-width:760px)").matches)setTimeout(()=>document.getElementById("settingsSearchInput")?.focus({preventScroll:true}),30);
 }
 
@@ -7222,6 +7380,7 @@ function syncBehaviorSettingsUI(){
   if(!settingsDraft)return;
   const ui=normalizeUiSettings(settingsDraft.ui);
   if(els.plannerDefaultViewSetting)els.plannerDefaultViewSetting.value=ui.plannerView;
+  if(els.plannerDensitySetting)els.plannerDensitySetting.value=ui.plannerDensity;
   if(els.recordDefaultModeSetting)els.recordDefaultModeSetting.value=ui.recordDefaultMode;
   if(els.recordDefaultExpandSetting)els.recordDefaultExpandSetting.value=ui.recordDefaultExpand;
   if(els.profileFootprintSetting)els.profileFootprintSetting.value=ui.profileFootprintsOpen?"open":"closed";
@@ -7245,7 +7404,9 @@ async function closeSettings(force=false){
   if(!force && hasUnsavedSettings() && !await appConfirm("设置中还有尚未保存的修改，确定放弃这些修改并关闭吗？",{title:"放弃设置修改？",confirmText:"放弃修改",danger:true}))return false;
   // 主题在设置中是即时预览；未保存关闭时恢复正式设置中的主题。
   applyTheme(settings.theme);
-  settingsDraft=null;
+  clearEditorDraft("settings");
+  settingsDraft=null;settingsEditorBaseline=null;
+  updateAllEditorStateIndicators();
   closeOverlay();
 }
 function activeWeightSum(source=settingsDraft){ return source.fields.filter(f=>f.includeInTotal).reduce((s,f)=>s+Math.max(0,Number(f.weight)||0),0); }
@@ -7302,6 +7463,8 @@ function updateSettingsFooterState(){
   else if(dirty)els.settingsWarning.textContent="有尚未保存的设置修改。";
   else els.settingsWarning.textContent="设置已与当前档案同步。";
   els.saveSettings.disabled=!valid||!dirty;
+  updateAllEditorStateIndicators();
+  scheduleEditorDraft("settings");
 }
 /* ---------- 21. 权重辅助：把参与综合评分的字段平均分配到总计 100% ---------- */
 function equalizeWeights(){
@@ -7342,7 +7505,8 @@ function saveSettings(){
 
   applyTheme(settings.theme);
   applyUiPreferences(settings);
-  settingsDraft=null;
+  clearEditorDraft("settings");
+  settingsDraft=null;settingsEditorBaseline=null;
   renderSortOptions();
   renderProfiles();
   renderRunPlans();
@@ -7355,7 +7519,7 @@ function saveSettings(){
 /* ---------- 24. 删除档案：二次确认后删除并立即保存 ---------- */
 function hasUnsavedSettings(){
   if(!settingsDraft)return false;
-  return JSON.stringify(normalizeSettings(clone(settingsDraft)))!==JSON.stringify(normalizeSettings(clone(settings)));
+  try{const current=JSON.stringify(normalizeSettings(clone(settingsDraft)));return settingsEditorBaseline!==null?current!==settingsEditorBaseline:current!==JSON.stringify(normalizeSettings(clone(settings)));}catch(err){return true;}
 }
 
 function bytesToBase64(bytes){let s="";for(let i=0;i<bytes.length;i+=0x8000)s+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(s);}
@@ -7766,20 +7930,25 @@ function nativeModuleEditorFormHTML(m){
   </div>`;
 }
 function openNativeModuleEditor(id=""){
+  if(shareModeBlock("模组编辑"))return false;
   const m=id?moduleById(String(id)):null;
   nativeModuleEditingId=m?.id||"";
   nativeModuleDraft=m?clone(m):normalizeRichModule({id:uid(),name:"",createdAt:Date.now(),updatedAt:Date.now()},settings.moduleArchive);
   els.nativeModuleEditorTitle.textContent=m?`编辑：${m.name}`:"新建模组";
   els.nativeModuleEditorContent.innerHTML=nativeModuleEditorFormHTML(nativeModuleDraft);
+  nativeModuleEditorBaseline=JSON.stringify(moduleDirtySnapshot(nativeModuleDraft));
+  updateAllEditorStateIndicators();
   els.nativeModuleEditorBackdrop.hidden=false;
+  setTimeout(()=>void offerEditorDraftRecovery("module"),80);
   document.body.classList.add("native-module-editor-open");
   syncModalPageScrollLock();
   setTimeout(()=>els.nativeModuleEditorContent.querySelector('[data-native-module-field="name"]')?.focus(),30);
 }
 async function closeNativeModuleEditor(revert=true){
   if(revert&&!suppressDirtyPrompt&&nativeModuleDraftDirty()&&!await appConfirm("模组资料有尚未保存的修改，确定放弃吗？",{title:"放弃未保存修改？",confirmText:"放弃修改",danger:true}))return false;
-  if(revert)nativeModuleDraft=null;
-  nativeModuleEditingId="";
+  if(revert){clearEditorDraft("module");nativeModuleDraft=null;}
+  nativeModuleEditingId="";nativeModuleEditorBaseline=null;
+  updateAllEditorStateIndicators();
   els.nativeModuleEditorBackdrop.hidden=true;
   document.body.classList.remove("native-module-editor-open");
   syncModalPageScrollLock();
@@ -7815,6 +7984,7 @@ function saveNativeModuleEditor(){
   }
 
   const wasEditing=Boolean(nativeModuleEditingId);
+  clearEditorDraft("module");nativeModuleEditorBaseline=null;
   moduleFrameDirty=true;
   closeNativeModuleEditor(false);
   nativeModuleDraft=null;
@@ -7826,6 +7996,7 @@ function createNativeModule(){
   openNativeModuleEditor();
 }
 function openModuleAdvancedEditor(moduleId=""){
+  if(shareModeBlock("高级模组工具"))return false;
   els.moduleAdvancedBackdrop.hidden=false;
   document.body.classList.add("module-advanced-open");
   syncModalPageScrollLock();
@@ -8139,6 +8310,7 @@ let trashEntries=[];
 let lastUndoTrashId="";
 let undoToastTimer=null;
 let shareModeEnabled=false;
+function shareModeBlock(label="敏感编辑"){if(!shareModeEnabled)return false;showToast(`分享模式下已关闭${label}`);return true;}
 let pendingUpdateRegistration=null;
 let pendingExternalSync=null;
 let syncChannel=null;
@@ -8289,8 +8461,7 @@ function moduleDirtySnapshot(module){
 function nativeModuleDraftDirty(){
   if(!nativeModuleDraft)return false;
   try{syncNativeModuleDraftFromForm();}catch(err){}
-  const original=nativeModuleEditingId?moduleById(nativeModuleEditingId):normalizeRichModule({id:"",name:"",createdAt:0,updatedAt:0},settings.moduleArchive);
-  try{return JSON.stringify(moduleDirtySnapshot(nativeModuleDraft))!==JSON.stringify(moduleDirtySnapshot(original));}catch(err){return true;}
+  try{const current=JSON.stringify(moduleDirtySnapshot(nativeModuleDraft));if(nativeModuleEditorBaseline!==null)return current!==nativeModuleEditorBaseline;const original=nativeModuleEditingId?moduleById(nativeModuleEditingId):normalizeRichModule({id:"",name:"",createdAt:0,updatedAt:0},settings.moduleArchive);return current!==JSON.stringify(moduleDirtySnapshot(original));}catch(err){return true;}
 }
 function hasUnsavedWork(){return hasUnsavedSettings()||profileDraftDirty()||nativeModuleDraftDirty();}
 function announceStateSaved(){lastObservedSaveAt=currentSaveMetaTime();try{syncChannel?.postMessage({type:"saved",tabId:tabInstanceId,savedAt:lastObservedSaveAt});}catch(err){}}
@@ -8420,24 +8591,25 @@ function locateIntegrityIssue(issue){if(!issue?.action)return;closeSettings(true
 async function fixIntegrityIssue(issue){if(!issue?.fix)return;const f=issue.fix,rows=f.view==="records"?runRecords:runPlans,run=rows.find(x=>x.id===f.runId);if(!run)return;try{try{await createSafetySnapshot("before-integrity-fix");}catch(snapshotErr){console.warn("当前问题数据无法建立标准恢复点，将直接执行安全修复",snapshotErr);}if(f.type==="clearModule")run.moduleId="";if(f.type==="clearKp")run.kpProfileId="";if(f.type==="dedupePl")run.plIds=[...new Set(run.plIds||[])];if(f.type==="removeMissingPl"){const valid=new Set(profiles.map(p=>p.id));run.plIds=(run.plIds||[]).filter(id=>valid.has(id));run.participantAssignments=(run.participantAssignments||[]).filter(a=>valid.has(a.plId));}if(f.type==="dedupeAssignments"){const seen=new Set();run.participantAssignments=(run.participantAssignments||[]).filter(a=>a.plId&&!seen.has(a.plId)&&seen.add(a.plId));}if(f.type==="removeOrphanAssignments"){const valid=new Set(run.plIds||[]);run.participantAssignments=(run.participantAssignments||[]).filter(a=>valid.has(a.plId));}if(f.type==="fillAssignments")run.participantAssignments=normalizeParticipantAssignments(run.participantAssignments,run.plIds);run.updatedAt=Date.now();saveState();renderAllPrimaryViews();renderDataIntegrity(dataIntegrityReport(),true);showToast("已完成安全修复");}catch(err){console.error(err);appNotice("修复失败，请使用恢复点后重试。");}}
 
 /* 新手引导 */
-function finishOnboarding(startProfile=false){try{localStorage.setItem(ONBOARDING_KEY,"1");}catch(err){}document.getElementById("onboardingBackdrop").hidden=true;syncModalPageScrollLock();if(startProfile){switchView("profiles");openEditor();}}
+function closeOnboardingTemporarily(){document.getElementById("onboardingBackdrop").hidden=true;syncModalPageScrollLock();}
+function finishOnboarding(startProfile=false){try{localStorage.setItem(ONBOARDING_KEY,"1");}catch(err){}closeOnboardingTemporarily();if(startProfile){switchView("profiles");openEditor();}}
 function maybeShowOnboarding(){let done=false;try{done=localStorage.getItem(ONBOARDING_KEY)==="1";}catch(err){}if(done||hasMeaningfulData()||startupDataReport.source!=="fresh")return;setTimeout(()=>{document.getElementById("onboardingBackdrop").hidden=false;syncModalPageScrollLock();requestAnimationFrame(()=>document.getElementById("onboardingStartBtn")?.focus());},450);}
 
 /* 全局搜索 */
 function buildGlobalSearchRows(q){q=String(q||"").trim().toLowerCase();if(!q)return [];
-  const rows=[];profiles.forEach(p=>{const hay=profileSearchText(p);if(hay.includes(q))rows.push({type:"PL",title:displayProfileName(p),meta:`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id}});});modules.forEach(m=>{if(moduleSearchText(m).includes(q))rows.push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}});});runPlans.forEach(p=>{const hay=[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),...(p.timeSlots||[]).map(s=>s.date)].join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}});});runRecords.forEach(r=>{const hay=[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate,r.logUrl].join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"记录",title:recordDisplayLabel(r,runRecords),meta:[r.startDate,kpDisplayText(r)].filter(Boolean).join(" · "),action:{view:"records",id:r.id,moduleName:r.moduleName}});});return rows.slice(0,40);}
-function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,globalSearchRows.length-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨四个页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">没有找到匹配内容。<button type="button" class="btn small" data-empty-clear-search="globalSearchInput">清空搜索</button></div>`;return;}box.innerHTML=globalSearchRows.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("");applySearchHighlights(box,q.trim().toLowerCase());}
-function openGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=false;globalSearchActiveIndex=0;document.getElementById("globalSearchInput").value="";renderGlobalSearch();syncModalPageScrollLock();setTimeout(()=>document.getElementById("globalSearchInput").focus(),30);}
+  const rows=[];profiles.forEach(p=>{const hay=profileSearchText(p);if(hay.includes(q))rows.push({type:"PL",title:displayProfileName(p),meta:`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id}});});modules.forEach(m=>{if(moduleSearchText(m).includes(q))rows.push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}});});runPlans.forEach(p=>{const hay=[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),p.sharedHoNote,...(p.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),p.kpc?.pcName,p.kpc?.hoCustom,...(p.timeSlots||[]).map(s=>s.date)].join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}});});runRecords.forEach(r=>{const hay=[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate,r.logUrl,r.actualDuration,r.thoughts,r.runNotes,r.sharedHoNote,hoAssignmentSummary(r),...(r.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),r.kpc?.pcName,r.kpc?.hoCustom].join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"记录",title:recordDisplayLabel(r,runRecords),meta:[r.startDate,kpDisplayText(r),r.thoughts&&String(r.thoughts).slice(0,30)].filter(Boolean).join(" · "),action:{view:"records",id:r.id,moduleName:r.moduleName}});});return rows;}
+function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);const shown=Math.min(globalSearchVisibleCount,globalSearchRows.length);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,shown-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨四个页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">没有找到匹配内容。<button type="button" class="btn small" data-empty-clear-search="globalSearchInput">清空搜索</button></div>`;return;}const visible=globalSearchRows.slice(0,shown);box.innerHTML=visible.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("")+`<div class="global-search-progress"><span>显示 ${visible.length} / ${globalSearchRows.length} 条结果</span>${visible.length<globalSearchRows.length?`<button type="button" class="btn small" data-global-search-more>继续显示</button>`:""}</div>`;applySearchHighlights(box,q.trim().toLowerCase());}
+function openGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=false;globalSearchActiveIndex=0;globalSearchVisibleCount=GLOBAL_SEARCH_BATCH;document.getElementById("globalSearchInput").value="";renderGlobalSearch();syncModalPageScrollLock();setTimeout(()=>document.getElementById("globalSearchInput").focus(),30);}
 function closeGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=true;syncModalPageScrollLock();}
 function activateGlobalSearchResult(index){const r=globalSearchRows[index];if(!r)return;closeGlobalSearch();if(r.action.view==="profiles"){switchView("profiles");els.search.value="";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(r.action.id)}"],.compact-row[data-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="modules"){switchView("modules");els.moduleNativeSearch.value="";renderNativeModules();requestAnimationFrame(()=>document.querySelector(`[data-native-module-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="plans"){switchView("plans");requestAnimationFrame(()=>document.querySelector(`[data-plan-row="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else{const rec=runRecords.find(x=>x.id===r.action.id);if(rec){selectedModuleName=rec.moduleName;setRunRecordCollapsed(rec.id,false);}switchView("records");requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}}
 
 /* 设置搜索 */
 const SETTINGS_LABELS={appearance:"外观","pl-rating":"PL评价","module-rating":"模组评价",behavior:"显示与行为",data:"数据与备份"};
 function renderSettingsSearch(){const input=document.getElementById("settingsSearchInput"),box=document.getElementById("settingsSearchResults"),q=input.value.trim().toLowerCase();if(!q){box.hidden=true;box.innerHTML="";return;}const rows=[];document.querySelectorAll("[data-settings-panel]").forEach(panel=>{const text=(panel.textContent||"").replace(/\s+/g," ").trim(),low=text.toLowerCase();if(!low.includes(q))return;const at=low.indexOf(q),snippet=text.slice(Math.max(0,at-24),Math.min(text.length,at+q.length+46));rows.push({key:panel.dataset.settingsPanel,label:SETTINGS_LABELS[panel.dataset.settingsPanel]||panel.dataset.settingsPanel,snippet});});box.hidden=false;box.innerHTML=rows.length?rows.map((r,i)=>`<button type="button" data-settings-search-target="${r.key}" data-settings-search-query="${escapeHTML(q)}"><strong>${r.label}</strong><span>${escapeHTML(r.snippet)}</span></button>`).join(""):`<button type="button" data-empty-clear-search="settingsSearchInput"><strong>没有找到相关设置</strong><span>清空搜索并显示全部设置</span></button>`;if(rows.length)applySearchHighlights(box,q);}
-function focusSettingsSearchResult(key,q){activateSettingsPanel(key);const panel=document.querySelector(`[data-settings-panel="${CSS.escape(key)}"]`);if(!panel)return;const candidates=[...panel.querySelectorAll("h3,strong,label,summary,button")],target=candidates.find(el=>(el.textContent||"").toLowerCase().includes(String(q||"").toLowerCase()))||panel;requestAnimationFrame(()=>{target.scrollIntoView({block:"center",behavior:"smooth"});target.classList.add("settings-search-flash");setTimeout(()=>target.classList.remove("settings-search-flash"),1400);});document.getElementById("settingsSearchResults").hidden=true;}
+function focusSettingsSearchResult(key,q){activateSettingsPanel(key);const panel=document.querySelector(`[data-settings-panel="${CSS.escape(key)}"]`);if(!panel)return;const candidates=[...panel.querySelectorAll("h3,strong,label,summary,button")],target=candidates.find(el=>(el.textContent||"").toLowerCase().includes(String(q||"").toLowerCase()))||panel;requestAnimationFrame(()=>{const group=target.closest("details.data-safety-group,details.settings-collapsible");if(group)group.open=true;target.scrollIntoView({block:"center",behavior:"smooth"});target.classList.add("settings-search-flash");setTimeout(()=>target.classList.remove("settings-search-flash"),1400);});document.getElementById("settingsSearchResults").hidden=true;}
 
 /* 分享模式 */
-const SHARE_MUTATION_SELECTOR='#newBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-native-module-edit],[data-native-module-delete],[data-record-edit],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],#settingsBtn,[data-open-settings]';
+const SHARE_MUTATION_SELECTOR='#newBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-native-module-edit],[data-native-module-delete],[data-record-edit],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],#settingsBtn,[data-open-settings]';
 function updateShareModeUI(){document.body.classList.toggle("share-mode",shareModeEnabled);const btn=document.getElementById("shareModeBtn");if(btn){btn.textContent=shareModeEnabled?"退":"分";btn.setAttribute("aria-pressed",shareModeEnabled?"true":"false");btn.title=shareModeEnabled?"退出分享模式":"分享模式";}document.querySelectorAll("[data-mobile-share]").forEach(x=>x.textContent=shareModeEnabled?"退 退出分享模式":"分享 分享模式");}
 function toggleShareMode(force){shareModeEnabled=typeof force==="boolean"?force:!shareModeEnabled;try{sessionStorage.setItem(SHARE_MODE_SESSION_KEY,shareModeEnabled?"1":"0");}catch(err){}updateShareModeUI();showToast(shareModeEnabled?"已开启分享模式：敏感资料与编辑入口已隐藏":"已退出分享模式");}
 function initShareMode(){try{shareModeEnabled=sessionStorage.getItem(SHARE_MODE_SESSION_KEY)==="1";}catch(err){}updateShareModeUI();document.addEventListener("click",e=>{if(!shareModeEnabled)return;const blocked=e.target.closest(SHARE_MUTATION_SELECTOR);if(!blocked)return;e.preventDefault();e.stopImmediatePropagation();showToast("分享模式下已关闭编辑操作");},true);}
@@ -8457,7 +8629,7 @@ function updateVersionStatus(text){const sub=document.getElementById("appVersion
 function showAppUpdate(reg){pendingUpdateRegistration=reg;document.getElementById("appUpdateBanner").hidden=false;updateVersionStatus("发现新版本，可安全更新");}
 async function applyAppUpdate(){const reg=pendingUpdateRegistration;if(!reg?.waiting){showToast("新版仍在准备，请稍后再试");return;}try{const payload=buildCanonicalArchive(false);if(hasMeaningfulData(archiveCountsFromPayload(payload)))await createSafetySnapshot("before-app-update");localStorage.setItem(APP_UPDATE_JUST_APPLIED_KEY,"1");let reloading=false;navigator.serviceWorker.addEventListener("controllerchange",()=>{if(reloading)return;reloading=true;location.reload();},{once:true});reg.waiting.postMessage({type:"SKIP_WAITING"});}catch(err){console.error(err);appNotice("更新前保护失败，请先导出一次备份后再更新。");}}
 registerOfflineApp=async function(){if(!("serviceWorker" in navigator)||!/^https?:$/.test(location.protocol)){updatePwaUI();updateVersionStatus("网页模式");return;}try{const reg=await navigator.serviceWorker.register("./sw.js",{scope:"./"});await navigator.serviceWorker.ready;serviceWorkerReady=true;if(reg.waiting&&navigator.serviceWorker.controller)showAppUpdate(reg);reg.addEventListener("updatefound",()=>{const worker=reg.installing;if(!worker)return;worker.addEventListener("statechange",()=>{if(worker.state==="installed"&&navigator.serviceWorker.controller)showAppUpdate(reg);});});await reg.update();if(!pendingUpdateRegistration)updateVersionStatus(isStandaloneApp()?"应用已安装，离线可用":"离线已准备");}catch(err){console.warn("离线功能初始化失败",err);serviceWorkerReady=false;updateVersionStatus("在线使用正常，离线功能暂不可用");}updatePwaUI();};
-async function checkAppUpdate(){if(!("serviceWorker" in navigator)){showToast("当前浏览器不支持应用更新检查");return;}const reg=await navigator.serviceWorker.getRegistration("./");if(!reg){await registerOfflineApp();return;}await reg.update();setTimeout(()=>{if(!pendingUpdateRegistration)showToast("当前已经是最新版本");},700);}
+async function checkAppUpdate(){markVersionCheckTime();if(!("serviceWorker" in navigator)){showToast("当前浏览器不支持应用更新检查");updateRuntimeVersionDetails();return;}const reg=await navigator.serviceWorker.getRegistration("./");if(!reg){await registerOfflineApp();updateRuntimeVersionDetails();return;}await reg.update();setTimeout(()=>{if(!pendingUpdateRegistration)showToast("当前已经是最新版本");updateRuntimeVersionDetails();},700);}
 
 /* 焦点、快捷键与离开保护 */
 function visibleDialog(){const candidates=["#secureBackupBackdrop","#importPreviewBackdrop","#migrationWizardBackdrop","#globalSearchBackdrop","#onboardingBackdrop","#hoOrganizerBackdrop","#moduleAdvancedBackdrop","#nativeModuleEditorBackdrop","#planEditorBackdrop","#actionDialogBackdrop"].map(s=>document.querySelector(s)).filter(el=>el&&!el.hidden);if(candidates.length)return candidates[candidates.length-1].querySelector('[role="dialog"]')||candidates[candidates.length-1];if(els.overlay?.classList.contains("open"))return !els.settingsModal.hidden?els.settingsModal:els.profileModal;return null;}
@@ -8502,13 +8674,13 @@ function closeTopSurfaceFromSystemBack(){
   if(!document.getElementById("globalSearchBackdrop")?.hidden){restorePoppedSurfaceGuard("globalSearchBackdrop");closeGlobalSearch();return true;}
   if(!document.getElementById("importPreviewBackdrop")?.hidden){restorePoppedSurfaceGuard("importPreviewBackdrop");closeImportPreview();return true;}
   if(!document.getElementById("migrationWizardBackdrop")?.hidden){restorePoppedSurfaceGuard("migrationWizardBackdrop");closeMigrationWizard();return true;}
-  if(!document.getElementById("onboardingBackdrop")?.hidden){restorePoppedSurfaceGuard("onboardingBackdrop");finishOnboarding(false);return true;}
+  if(!document.getElementById("onboardingBackdrop")?.hidden){restorePoppedSurfaceGuard("onboardingBackdrop");closeOnboardingTemporarily();return true;}
   if(els.secureBackupBackdrop&&!els.secureBackupBackdrop.hidden){restorePoppedSurfaceGuard("secureBackupBackdrop");closeSecureBackup();return true;}
   if(els.hoOrganizerBackdrop&&!els.hoOrganizerBackdrop.hidden){restorePoppedSurfaceGuard("hoOrganizerBackdrop");closeHoOrganizer();return true;}
   if(els.moduleAdvancedBackdrop&&!els.moduleAdvancedBackdrop.hidden){restorePoppedSurfaceGuard("moduleAdvancedBackdrop");closeModuleAdvancedEditor();return true;}
   if(els.nativeModuleEditorBackdrop&&!els.nativeModuleEditorBackdrop.hidden){restorePoppedSurfaceGuard("nativeModuleEditorBackdrop");void closeNativeModuleEditor(true);return true;}
   if(els.planEditorBackdrop&&!els.planEditorBackdrop.hidden){restorePoppedSurfaceGuard("planEditorBackdrop");closePlanEditor();return true;}
-  if(els.overlay?.classList.contains("open")){restorePoppedSurfaceGuard("overlay");if(!els.settingsModal.hidden)void closeSettings(false);else void closeEditor(true);return true;}
+  if(els.overlay?.classList.contains("open")){restorePoppedSurfaceGuard("overlay");if(!els.settingsModal.hidden)void closeSettings(false);else if(linkedReturnContext)void closeEditor(true);else void closeEditor(true);return true;}
   return false;
 }
 function initSystemBackNavigation(){
@@ -8522,18 +8694,18 @@ function initSystemBackNavigation(){
     const target=e.state?.tag===HISTORY_STATE_TAG?e.state.view:"";
     if(target&&target!==currentView)switchView(target,{historyMode:"none",restoreScroll:true});
   });
-  window.addEventListener("pagehide",()=>captureCurrentViewState(currentView));
-  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")captureCurrentViewState(currentView)});
+  window.addEventListener("pagehide",()=>{flushPendingInteractionSaves();captureCurrentViewState(currentView);});
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden"){flushPendingInteractionSaves();captureCurrentViewState(currentView);}});
 }
 
 function handleGlobalKeys(e){
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();if(document.getElementById("globalSearchBackdrop").hidden)openGlobalSearch();else document.getElementById("globalSearchInput").focus();return;}
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="s"){const d=visibleDialog();if(!d)return;e.preventDefault();if(d===els.settingsModal)els.saveSettings.click();else if(d===els.profileModal)els.save.click();else if(d.closest?.("#nativeModuleEditorBackdrop"))els.saveNativeModuleEditor.click();else if(d.closest?.("#planEditorBackdrop"))showToast("开团计划会自动保存");return;}
-  const globalOpen=!document.getElementById("globalSearchBackdrop").hidden;if(globalOpen&&["ArrowDown","ArrowUp","Enter"].includes(e.key)){e.preventDefault();if(e.key==="ArrowDown")globalSearchActiveIndex=Math.min(globalSearchRows.length-1,globalSearchActiveIndex+1);if(e.key==="ArrowUp")globalSearchActiveIndex=Math.max(0,globalSearchActiveIndex-1);if(e.key==="Enter"){activateGlobalSearchResult(globalSearchActiveIndex);return;}renderGlobalSearch();document.querySelector('.global-search-result.active')?.scrollIntoView({block:"nearest"});return;}
-  if(e.key==="Escape"){const custom=["onboardingBackdrop","globalSearchBackdrop","importPreviewBackdrop","migrationWizardBackdrop"].find(id=>!document.getElementById(id).hidden);if(custom){e.preventDefault();e.stopImmediatePropagation();if(custom==="onboardingBackdrop")finishOnboarding(false);if(custom==="globalSearchBackdrop")closeGlobalSearch();if(custom==="importPreviewBackdrop")closeImportPreview();if(custom==="migrationWizardBackdrop")closeMigrationWizard();return;}}
+  const globalOpen=!document.getElementById("globalSearchBackdrop").hidden;if(globalOpen&&["ArrowDown","ArrowUp","Enter"].includes(e.key)){e.preventDefault();if(e.key==="ArrowDown")globalSearchActiveIndex=Math.min(Math.min(globalSearchVisibleCount,globalSearchRows.length)-1,globalSearchActiveIndex+1);if(e.key==="ArrowUp")globalSearchActiveIndex=Math.max(0,globalSearchActiveIndex-1);if(e.key==="Enter"){activateGlobalSearchResult(globalSearchActiveIndex);return;}renderGlobalSearch();document.querySelector('.global-search-result.active')?.scrollIntoView({block:"nearest"});return;}
+  if(e.key==="Escape"){const custom=["onboardingBackdrop","globalSearchBackdrop","importPreviewBackdrop","migrationWizardBackdrop"].find(id=>!document.getElementById(id).hidden);if(custom){e.preventDefault();e.stopImmediatePropagation();if(custom==="onboardingBackdrop")closeOnboardingTemporarily();if(custom==="globalSearchBackdrop")closeGlobalSearch();if(custom==="importPreviewBackdrop")closeImportPreview();if(custom==="migrationWizardBackdrop")closeMigrationWizard();return;}}
   if(e.key==="Tab"){const d=visibleDialog();if(!d)return;const list=focusablesIn(d);if(!list.length)return;const first=list[0],last=list[list.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
 }
-window.addEventListener("beforeunload",e=>{if(!hasUnsavedWork())return;e.preventDefault();e.returnValue="";});
+window.addEventListener("beforeunload",e=>{flushPendingInteractionSaves();if(!hasUnsavedWork())return;e.preventDefault();e.returnValue="";});
 
 /* 包装主要弹窗，记录焦点与未保存修改 */
 /* v8.0 模态焦点 + 返回键生命周期：统一监听开关状态，不再逐个包裹 open / close 函数。 */
@@ -8570,10 +8742,10 @@ function initV79(){
   ["globalSearchBackdrop","importPreviewBackdrop","migrationWizardBackdrop","onboardingBackdrop"].forEach(id=>{const el=document.getElementById(id);watchModalSurface(el);new MutationObserver(()=>{syncDialogInert();}).observe(el,{attributes:true,attributeFilter:["hidden","class"]});});
   [els.overlay,els.planEditorBackdrop,els.nativeModuleEditorBackdrop,els.moduleAdvancedBackdrop,els.hoOrganizerBackdrop,els.secureBackupBackdrop].forEach(el=>new MutationObserver(syncDialogInert).observe(el,{attributes:true,attributeFilter:["hidden","class"]}));
   document.addEventListener("keydown",handleGlobalKeys,true);
-  document.getElementById("globalSearchInput").addEventListener("input",()=>{clearTimeout(globalSearchTimer);globalSearchTimer=setTimeout(renderGlobalSearch,70);});
+  document.getElementById("globalSearchInput").addEventListener("input",()=>{globalSearchVisibleCount=GLOBAL_SEARCH_BATCH;globalSearchActiveIndex=0;clearTimeout(globalSearchTimer);globalSearchTimer=setTimeout(renderGlobalSearch,70);});
   document.getElementById("settingsSearchInput").addEventListener("input",()=>{clearTimeout(settingsSearchTimer);settingsSearchTimer=setTimeout(renderSettingsSearch,80);});
   document.getElementById("settingsSearchResults").addEventListener("click",e=>{const b=e.target.closest("[data-settings-search-target]");if(b)focusSettingsSearchResult(b.dataset.settingsSearchTarget,b.dataset.settingsSearchQuery);});
-  document.getElementById("globalSearchResults").addEventListener("click",e=>{const b=e.target.closest("[data-global-result]");if(b)activateGlobalSearchResult(Number(b.dataset.globalResult));});
+  document.getElementById("globalSearchResults").addEventListener("click",e=>{const more=e.target.closest("[data-global-search-more]");if(more){globalSearchVisibleCount+=GLOBAL_SEARCH_BATCH;renderGlobalSearch();return;}const b=e.target.closest("[data-global-result]");if(b)activateGlobalSearchResult(Number(b.dataset.globalResult));});
   document.getElementById("globalSearchBtn").addEventListener("click",openGlobalSearch);document.getElementById("shareModeBtn").addEventListener("click",()=>toggleShareMode());
   document.querySelector("[data-mobile-search]")?.addEventListener("click",()=>{toggleMobileTools(false);openGlobalSearch();});document.querySelector("[data-mobile-share]")?.addEventListener("click",()=>{toggleMobileTools(false);toggleShareMode();});
   document.getElementById("closeGlobalSearchBtn").addEventListener("click",closeGlobalSearch);document.getElementById("globalSearchBackdrop").addEventListener("click",e=>{if(e.target.id==="globalSearchBackdrop")closeGlobalSearch();});
@@ -8584,15 +8756,105 @@ function initV79(){
   document.getElementById("closeImportPreviewBtn").addEventListener("click",closeImportPreview);document.getElementById("cancelImportPreviewBtn").addEventListener("click",closeImportPreview);document.getElementById("confirmImportPreviewBtn").addEventListener("click",()=>void executeImportPreview());document.getElementById("importPreviewBackdrop").addEventListener("click",e=>{if(e.target.id==="importPreviewBackdrop")closeImportPreview();});
   document.querySelectorAll('input[name="importMode"]').forEach(r=>r.addEventListener("change",()=>{document.getElementById("mergeOptionsPanel").hidden=document.querySelector('input[name="importMode"]:checked')?.value!=="merge";}));
   document.getElementById("openMigrationExportBtn").addEventListener("click",openMigrationWizard);document.getElementById("openMigrationImportBtn").addEventListener("click",openMigrationWizard);document.getElementById("closeMigrationWizardBtn").addEventListener("click",closeMigrationWizard);document.getElementById("closeMigrationWizardFootBtn").addEventListener("click",closeMigrationWizard);document.getElementById("migrationWizardBackdrop").addEventListener("click",e=>{if(e.target.id==="migrationWizardBackdrop")closeMigrationWizard();});document.getElementById("migrationWizardExportBtn").addEventListener("click",openMigrationExport);document.getElementById("migrationWizardImportBtn").addEventListener("click",openMigrationImportFile);document.getElementById("migrationImportFile").addEventListener("change",async e=>{const file=e.target.files?.[0];if(file){try{closeMigrationWizard();await loadMigrationFile(file);}catch(err){appNotice(err.message||"迁移包无法读取");}finally{e.target.value="";}}});
-  document.getElementById("skipOnboardingBtn").addEventListener("click",()=>finishOnboarding(false));document.getElementById("onboardingLaterBtn").addEventListener("click",()=>finishOnboarding(false));document.getElementById("onboardingStartBtn").addEventListener("click",()=>finishOnboarding(true));
+  document.getElementById("skipOnboardingBtn").addEventListener("click",closeOnboardingTemporarily);document.getElementById("onboardingLaterBtn").addEventListener("click",()=>finishOnboarding(false));document.getElementById("onboardingStartBtn").addEventListener("click",()=>finishOnboarding(true));
   document.getElementById("applyExternalSyncBtn").addEventListener("click",()=>applyExternalState(true));document.getElementById("dismissExternalSyncBtn").addEventListener("click",()=>{document.getElementById("externalSyncBanner").hidden=true;});
-  document.getElementById("applyAppUpdateBtn").addEventListener("click",()=>void applyAppUpdate());document.getElementById("laterAppUpdateBtn").addEventListener("click",()=>{document.getElementById("appUpdateBanner").hidden=true;});document.getElementById("checkAppUpdateBtn").addEventListener("click",()=>void checkAppUpdate());
+  document.getElementById("applyAppUpdateBtn").addEventListener("click",()=>void applyAppUpdate());document.getElementById("laterAppUpdateBtn").addEventListener("click",()=>{document.getElementById("appUpdateBanner").hidden=true;});document.getElementById("checkAppUpdateBtn").addEventListener("click",()=>void checkAppUpdate());document.getElementById("forceReloadAppBtn")?.addEventListener("click",()=>void forceReloadProgramFiles());document.getElementById("runInteractionSelfCheckBtn")?.addEventListener("click",()=>void runInteractionSelfCheck());
+  document.getElementById("runDeepInteractionSelfCheckBtn")?.addEventListener("click",()=>void runDeepInteractionSelfCheck());document.getElementById("copyInteractionSelfCheckBtn")?.addEventListener("click",()=>void copyInteractionSelfCheck());document.getElementById("undoToastBtn")?.addEventListener("click",undoLastPlanAction);
   els.grid.addEventListener("click",e=>{const b=e.target.closest("[data-load-more-profiles]");if(b){profileRenderLimit+=PROFILE_RENDER_BATCH;renderProfiles();}});
   els.moduleNativeGrid.addEventListener("click",e=>{const b=e.target.closest("[data-load-more-modules]");if(b){moduleRenderLimit+=MODULE_RENDER_BATCH;renderNativeModules();}});
   try{if(localStorage.getItem(APP_UPDATE_JUST_APPLIED_KEY)==="1"){localStorage.removeItem(APP_UPDATE_JUST_APPLIED_KEY);setTimeout(()=>showToast(`已更新到 v${APP_UI_VERSION}`),500);}}catch(err){}
   maybeShowOnboarding();syncDialogInert();updateVersionStatus(serviceWorkerReady?"离线已准备":"正在确认离线状态");
 }
 /* ---------- 27. 页面事件：新建、搜索、排序、编辑、保存、设置、导入导出等 ---------- */
+
+/* ---------- v8.1.1 数据防丢与交互安全：统一草稿落盘、自动保存、撤销与分享保护 ---------- */
+function editorDirty(kind){if(kind==="profile")return profileDraftDirty();if(kind==="module")return nativeModuleDraftDirty();if(kind==="settings")return hasUnsavedSettings();return false;}
+function editorStatusElement(kind){return document.getElementById(kind==="profile"?"profileEditStatus":kind==="module"?"moduleEditStatus":"settingsEditStatus");}
+function setEditorStatus(kind,state,text){const el=editorStatusElement(kind);if(!el)return;el.classList.remove("clean","dirty","saved");el.classList.add(state);el.textContent=text;}
+function updateAllEditorStateIndicators(){
+  if(draft){const d=profileDraftDirty();setEditorStatus("profile",d?"dirty":"clean",d?"● 有未保存修改":"未修改");if(els.save)els.save.disabled=!d;}
+  if(nativeModuleDraft){const d=nativeModuleDraftDirty();setEditorStatus("module",d?"dirty":"clean",d?"● 有未保存修改":"未修改");if(els.saveNativeModuleEditor)els.saveNativeModuleEditor.disabled=!d;}
+  if(settingsDraft){const d=hasUnsavedSettings();setEditorStatus("settings",d?"dirty":"clean",d?"● 有未保存修改":"未修改");}
+}
+function readEditorDraftStore(){try{const x=JSON.parse(localStorage.getItem(EDITOR_DRAFT_KEY)||"{}");return x&&typeof x==="object"?x:{};}catch(err){return {};}}
+function writeEditorDraftStore(store){try{localStorage.setItem(EDITOR_DRAFT_KEY,JSON.stringify(store));}catch(err){}}
+function clearEditorDraft(kind){const store=readEditorDraftStore();if(store[kind]){delete store[kind];writeEditorDraftStore(store);}}
+function currentEditorDraftPayload(kind){
+  if(kind==="profile"&&draft)return {kind,editingId:editingId||"",savedAt:Date.now(),data:{draft:clone(draft),runRecordsDraft:clone(runRecordsDraft||[])}};
+  if(kind==="module"&&nativeModuleDraft)return {kind,editingId:nativeModuleEditingId||"",savedAt:Date.now(),data:{draft:clone(nativeModuleDraft)}};
+  if(kind==="settings"&&settingsDraft)return {kind,editingId:"settings",savedAt:Date.now(),data:{draft:clone(settingsDraft)}};
+  return null;
+}
+function flushEditorDraftNow(){clearTimeout(editorDraftTimer);editorDraftTimer=0;try{const store=readEditorDraftStore();for(const kind of ["profile","module","settings"]){const active=(kind==="profile"&&draft)||(kind==="module"&&nativeModuleDraft)||(kind==="settings"&&settingsDraft);if(!active)continue;if(!editorDirty(kind)){delete store[kind];continue;}const payload=currentEditorDraftPayload(kind);if(payload)store[kind]=payload;}writeEditorDraftStore(store);}catch(err){}}
+function scheduleEditorDraft(kind){clearTimeout(editorDraftTimer);editorDraftTimer=setTimeout(flushEditorDraftNow,450);}
+function flushPendingInteractionSaves(){try{flushPlanInputSave();}catch(err){}try{flushRecordInputSave();}catch(err){}try{flushEditorDraftNow();}catch(err){}}
+function applyProfileDraftToForm(){if(!draft)return;const self=isSelfProfile(draft);els.name.value=self?SELF_DEFAULT_NAME:draft.name;els.name.disabled=self;els.contact.value=draft.contact||"";els.birthDate.value=draft.birthDate||"";els.startDate.value=draft.startDate||"";els.gender.value=draft.gender||"";els.usualRpLength.value=draft.usualRpLength||"";els.rpLengthMin.value=draft.rpLengthMin||"";els.rpLengthMax.value=draft.rpLengthMax||"";renderSliderEditor();renderEditRuns();updateAllEditorStateIndicators();}
+async function offerEditorDraftRecovery(kind){
+  const row=readEditorDraftStore()[kind];if(!row||!row.data||Date.now()-Number(row.savedAt||0)>7*86400000)return false;
+  const expected=kind==="profile"?(editingId||""):kind==="module"?(nativeModuleEditingId||""):"settings";if(String(row.editingId||"")!==String(expected))return false;
+  if(!await appConfirm(`发现 ${formatSafetyDateTime(row.savedAt)} 留下的未保存编辑草稿。要恢复到刚才的编辑状态吗？`,{title:"恢复上次未保存编辑？",confirmText:"恢复草稿"})){clearEditorDraft(kind);return false;}
+  try{
+    if(kind==="profile"){draft=normalizeProfile(clone(row.data.draft));runRecordsDraft=clone(row.data.runRecordsDraft||runRecords).map(r=>normalizeRunRecord(r));applyProfileDraftToForm();}
+    else if(kind==="module"){nativeModuleDraft=normalizeRichModule(clone(row.data.draft),settings.moduleArchive);els.nativeModuleEditorContent.innerHTML=nativeModuleEditorFormHTML(nativeModuleDraft);updateAllEditorStateIndicators();}
+    else if(kind==="settings"){settingsDraft=normalizeSettings(clone(row.data.draft));applyTheme(settingsDraft.theme);renderSettings();syncBehaviorSettingsUI();renderModuleRatingSettingsSummary();activateSettingsPanel(activeSettingsPanel||"appearance");updateAllEditorStateIndicators();}
+    showToast("已恢复上次未保存编辑");return true;
+  }catch(err){console.error(err);clearEditorDraft(kind);return false;}
+}
+function onAnyEditorInput(e){
+  if(els.overlay?.classList.contains("open")&&!els.profileModalWrap.hidden&&e.target.closest("#profileModalWrap")){setTimeout(()=>{updateAllEditorStateIndicators();scheduleEditorDraft("profile");},0);return;}
+  if(els.nativeModuleEditorBackdrop&&!els.nativeModuleEditorBackdrop.hidden&&e.target.closest("#nativeModuleEditorBackdrop")){setTimeout(()=>{updateAllEditorStateIndicators();scheduleEditorDraft("module");},0);return;}
+  if(els.overlay?.classList.contains("open")&&!els.settingsModal.hidden&&e.target.closest("#settingsModal")){setTimeout(()=>{updateAllEditorStateIndicators();scheduleEditorDraft("settings");},0);}
+}
+document.addEventListener("input",onAnyEditorInput,true);document.addEventListener("change",onAnyEditorInput,true);document.addEventListener("click",e=>{if(e.target.closest("#sliderSection,#profileRunsEditor,#nativeModuleEditorBackdrop,#settingsModal"))setTimeout(()=>onAnyEditorInput(e),0);},true);
+
+function captureLinkedReturnContext(view,extra={}){captureCurrentViewState(view);return {view,scrollY:window.scrollY,selectedModuleName:selectedModuleName||"",plannerSelectedDate,plannerMonthCursor,...extra,label:view==="plans"?"开团计划":view==="records"?"跑团记录":"原位置"};}
+function updateLinkedReturnButton(){const btn=document.getElementById("profileReturnBtn");if(!btn)return;btn.hidden=!linkedReturnContext;if(linkedReturnContext)btn.textContent=`← 返回${linkedReturnContext.label||"原位置"}`;}
+function restoreLinkedReturnContext(ctx){if(!ctx)return;const view=ctx.view||"profiles";setTimeout(()=>{if(ctx.selectedModuleName!==undefined)selectedModuleName=ctx.selectedModuleName;if(ctx.plannerSelectedDate)plannerSelectedDate=ctx.plannerSelectedDate;if(ctx.plannerMonthCursor)plannerMonthCursor=ctx.plannerMonthCursor;switchView(view,{historyMode:"replace",restoreScroll:false});requestAnimationFrame(()=>requestAnimationFrame(()=>{window.scrollTo({top:Math.max(0,Number(ctx.scrollY)||0),behavior:"auto"});if(view==="records"&&ctx.recordId){setRunRecordCollapsed(ctx.recordId,false);renderRunRecords({preservePageScroll:true,centerSelected:false});document.querySelector(`[data-record-id="${CSS.escape(ctx.recordId)}"]`)?.scrollIntoView({block:"center"});}if(view==="plans"&&ctx.planId){document.querySelector(`[data-plan-row="${CSS.escape(ctx.planId)}"]`)?.scrollIntoView({block:"center"});}}));},80);}
+
+function setPlanUndo(entry){planUndoEntry={...entry,createdAt:Date.now()};const box=document.getElementById("undoToast"),text=document.getElementById("undoToastText");if(!box||!text)return;text.textContent=entry.label||"计划已更新";box.hidden=false;clearTimeout(setPlanUndo._t);setPlanUndo._t=setTimeout(()=>{box.hidden=true;planUndoEntry=null;},7000);}
+function undoLastPlanAction(){const entry=planUndoEntry;if(!entry)return;planUndoEntry=null;document.getElementById("undoToast").hidden=true;clearTimeout(setPlanUndo._t);
+  if(entry.type==="replace-plan"){const i=runPlans.findIndex(p=>p.id===entry.planId);if(i<0)return;const restored=normalizeRunPlan(clone(entry.before),new Set(profiles.map(p=>p.id)));if(entry.removeIfBlank&&!isMeaningfulRunPlan(restored)){runPlans.splice(i,1);transientPlanIds.delete(entry.planId);newPlanSessionIds.delete(entry.planId);}else runPlans[i]=restored;if(!saveState())return;renderRunPlans();if(editingPlanId===entry.planId){if(runPlans.some(p=>p.id===entry.planId))renderPlanEditor();else closePlanEditor();}showToast("已撤销刚才的计划操作");return;}
+  if(entry.type==="replace-record"){const i=runRecords.findIndex(r=>r.id===entry.recordId);if(i<0)return;runRecords[i]=normalizeRunRecord(clone(entry.before),new Set(profiles.map(p=>p.id)));touchProfiles([...(runRecords[i].plIds||[]),runRecords[i].kpProfileId].filter(Boolean));if(!saveState())return;renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});showToast("已撤销刚才的跑团记录操作");return;}
+  if(entry.type==="remove-created-record"){const i=runRecords.findIndex(r=>r.id===entry.recordId);if(i<0)return;const removed=runRecords[i];runRecords.splice(i,1);touchProfiles([...(removed.plIds||[]),removed.kpProfileId].filter(Boolean));if(!saveState()){runRecords.splice(i,0,removed);return;}const groups=groupedRunRecords();if(!groups.some(([name])=>name===selectedModuleName))selectedModuleName=groups[0]?.[0]||"";renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});showToast("已撤销刚才新增的桌次");}
+}
+
+function markVersionCheckTime(){try{localStorage.setItem("trpg_last_version_check",String(Date.now()));}catch(err){}}
+async function currentCacheVersion(){try{if(!("caches" in window))return "不可用";const keys=await caches.keys(),own=keys.filter(k=>k.startsWith("tomato-pl-")).sort();return own.length?own[own.length-1].replace("tomato-pl-",""):"暂无";}catch(err){return "读取失败";}}
+async function updateRuntimeVersionDetails(){const cache=await currentCacheVersion();const c=document.getElementById("cacheVersionDetail"),l=document.getElementById("lastVersionCheckDetail");if(c)c.textContent=`离线缓存：${cache}`;let t=0;try{t=Number(localStorage.getItem("trpg_last_version_check")||0);}catch(err){}if(l)l.textContent=`最后检查：${t?formatSafetyDateTime(t):"尚未"}`;}
+async function forceReloadProgramFiles(){if(!await appConfirm("将重新获取 GitHub 上最新的程序文件并清理本工具的旧离线缓存。PL、模组、计划和跑团记录仍保存在浏览器中，不会删除。",{title:"重新加载程序文件？",confirmText:"重新加载"}))return;try{const payload=buildCanonicalArchive(false);if(hasMeaningfulData(archiveCountsFromPayload(payload)))await createSafetySnapshot("before-force-program-reload");if("caches" in window){const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith("tomato-pl-")).map(k=>caches.delete(k)));}const regs="serviceWorker" in navigator?await navigator.serviceWorker.getRegistrations():[];await Promise.all(regs.filter(r=>String(r.scope||"").startsWith(location.origin+location.pathname.replace(/[^/]*$/,""))).map(r=>r.unregister()));const u=new URL(location.href);u.searchParams.set("_program_refresh",Date.now());location.replace(u.toString());}catch(err){console.error(err);appNotice("重新加载失败。你的本机档案没有被删除，可以稍后重试。");}}
+
+function checkClickableTarget(el,label,issues){if(!el||el.hidden||!el.getClientRects().length)return;const r=el.getBoundingClientRect();if(r.bottom<=0||r.top>=innerHeight||r.right<=0||r.left>=innerWidth)return;const x=Math.min(innerWidth-2,Math.max(1,r.left+r.width/2)),y=Math.min(innerHeight-2,Math.max(1,r.top+r.height/2));const hit=document.elementFromPoint(x,y);if(!hit||!(hit===el||el.contains(hit)||hit.contains(el)))issues.push({level:"error",title:`${label} 可能被其他层遮挡`,detail:`中心命中：${hit?.id||hit?.className||hit?.tagName||"未知"}`});if(el.closest("[inert]"))issues.push({level:"error",title:`${label} 被交互隔离`,detail:"元素位于 inert 区域内"});if(getComputedStyle(el).pointerEvents==="none")issues.push({level:"error",title:`${label} 无法接收点击`,detail:"pointer-events: none"});}
+async function runInteractionSelfCheck(){
+  const issues=[],oks=[];const hiddenBad=[...document.querySelectorAll("[hidden]")].filter(el=>{const cs=getComputedStyle(el),r=el.getBoundingClientRect();return cs.display!=="none"&&r.width>1&&r.height>1;});if(hiddenBad.length)issues.push({level:"error",title:`有 ${hiddenBad.length} 个隐藏界面仍占据布局`,detail:hiddenBad.slice(0,5).map(x=>x.id||x.className||x.tagName).join("、")});else oks.push("隐藏界面状态正常");
+  const overflow=Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth);if(overflow>2)issues.push({level:"warn",title:`页面横向溢出 ${overflow}px`,detail:"建议检查当前视口下的固定栏或长内容"});else oks.push("页面无异常横向溢出");
+  const ids=[...document.querySelectorAll("[id]")].map(x=>x.id),dups=[...new Set(ids.filter((id,i)=>ids.indexOf(id)!==i))];if(dups.length)issues.push({level:"error",title:`发现 ${dups.length} 个重复元素编号`,detail:dups.slice(0,8).join("、")});else oks.push("元素编号唯一");
+  const active=visibleDialog();if(active){const buttons=focusablesIn(active).filter(x=>x.matches("button")).slice(0,8);buttons.forEach((b,i)=>checkClickableTarget(b,b.textContent.trim()||b.getAttribute("aria-label")||`按钮${i+1}`,issues));if(!issues.some(x=>x.title.includes("遮挡")||x.title.includes("隔离")||x.title.includes("点击")))oks.push("当前弹窗主要按钮可点击");}
+  try{const k="__trpg_selfcheck__"+Date.now(),v=Math.random().toString(36);localStorage.setItem(k,v);if(localStorage.getItem(k)!==v)throw new Error("回读不一致");localStorage.removeItem(k);oks.push("本地存储读写正常");}catch(err){issues.push({level:"error",title:"本地存储读写失败",detail:String(err.message||err)});}
+  try{const db=await openRecoveryDb();db.close();oks.push("恢复点数据库可访问");}catch(err){issues.push({level:"warn",title:"恢复点数据库暂不可用",detail:String(err.message||err)});}
+  const cache=await currentCacheVersion();if(/^v?8\.1\.2$/.test(cache)||cache==="暂无"||cache==="不可用")oks.push(`离线缓存状态：${cache}`);else issues.push({level:"warn",title:"页面版本与离线缓存可能不同步",detail:`页面 v${APP_UI_VERSION} · 缓存 ${cache}`});
+  const smoke=runBuiltInRegressionSmoke();issues.push(...smoke.issues);oks.push(...smoke.oks);
+  const box=document.getElementById("interactionSelfCheckResults"),copy=document.getElementById("copyInteractionSelfCheckBtn");const errors=issues.filter(x=>x.level==="error").length,warns=issues.length-errors;box.hidden=false;box.innerHTML=`<div class="self-check-summary ${issues.length?"warn":"ok"}">${issues.length?`发现 ${errors} 项异常 · ${warns} 项提醒`:`✓ 全部正常 · ${oks.length} 项通过`}</div><div class="self-check-list">${[...issues.map(x=>({status:x.level==="error"?"!":"•",...x})),...oks.map(x=>({level:"ok",status:"✓",title:x,detail:""}))].map(x=>`<div class="self-check-row ${x.level}"><b>${x.status}</b><span><strong>${escapeHTML(x.title)}</strong>${x.detail?`<br>${escapeHTML(x.detail)}`:""}</span></div>`).join("")}</div>`;lastInteractionSelfCheckText=[`PL收集梦想生活 v${APP_UI_VERSION} 界面自检`,`时间：${new Date().toLocaleString("zh-CN")}`,`视口：${innerWidth}×${innerHeight}`,`页面：${currentView}`,"",...issues.map(x=>`[${x.level}] ${x.title}${x.detail?` — ${x.detail}`:""}`),...oks.map(x=>`[ok] ${x}`)].join("\n");if(copy)copy.hidden=false;showToast(issues.length?"自检完成：发现需要确认的项目":"界面与交互自检全部通过");}
+function runBuiltInRegressionSmoke(){const issues=[],oks=[];try{const views=[els.profilesView,els.modulesView,els.plansView,els.recordsView],visible=views.filter(v=>v&&!v.hidden);if(visible.length!==1)issues.push({level:"error",title:"主页面显示状态异常",detail:`当前同时显示 ${visible.length} 个主页面`});else oks.push("四个主页面互斥显示正常");const modalCount=[els.overlay?.classList.contains("open"),els.planEditorBackdrop&&!els.planEditorBackdrop.hidden,els.nativeModuleEditorBackdrop&&!els.nativeModuleEditorBackdrop.hidden].filter(Boolean).length;if(modalCount>1)issues.push({level:"warn",title:"多个主编辑界面同时打开",detail:`检测到 ${modalCount} 个主编辑界面`});else oks.push("主编辑界面互斥正常");if(els.modalDelete?.hidden||els.modalDelete?.getClientRects().length===0)oks.push("隐藏删除按钮不会进入键盘焦点");if(typeof shareModeBlock==="function")oks.push("分享模式具备入口层交互保护");}catch(err){issues.push({level:"warn",title:"内置回归检查未完成",detail:String(err.message||err)});}return {issues,oks};}
+async function copyInteractionSelfCheck(){if(!lastInteractionSelfCheckText)return;try{await navigator.clipboard.writeText(lastInteractionSelfCheckText);showToast("诊断结果已复制");}catch(err){const ta=document.createElement("textarea");ta.value=lastInteractionSelfCheckText;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();showToast("诊断结果已复制");}}
+async function runDeepInteractionSelfCheck(){
+  if(settingsDraft&&hasUnsavedSettings()){appNotice("请先保存或取消当前设置修改，再运行深度自检。","深度自检暂未开始");return;}
+  const btn=document.getElementById("runDeepInteractionSelfCheckBtn"),originalText=btn?.textContent||"深度自检";if(btn){btn.disabled=true;btn.textContent="检查中…";}
+  const original={view:currentView,scrollY:window.scrollY,selectedModuleName,plannerSelectedDate,plannerMonthCursor,plannerMobileSection,settingsScroll:els.settingsPanels?.scrollTop||0};
+  const issues=[],oks=[];let oldShare=shareModeEnabled;
+  try{
+    closeSettings(true);await new Promise(r=>setTimeout(r,30));
+    for(const view of ["profiles","modules","plans","records"]){switchView(view,{historyMode:"none",restoreScroll:false});await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));const visible=[els.profilesView,els.modulesView,els.plansView,els.recordsView].filter(v=>!v.hidden).length;if(visible!==1)issues.push({level:"error",title:`${view} 页面互斥异常`,detail:`显示 ${visible} 个主页面`});else oks.push(`${view} 页面切换正常`);const overflow=Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth);if(overflow>2)issues.push({level:"warn",title:`${view} 页面横向溢出 ${overflow}px`,detail:"请检查当前宽度下的固定栏或长内容"});}
+    const profile=profiles.find(isSelfProfile)||profiles[0];if(profile){openEditor(profile.id);await new Promise(r=>requestAnimationFrame(r));if(profileDraftDirty())issues.push({level:"error",title:"PL 编辑器打开即被判定为已修改",detail:displayProfileName(profile)});else oks.push("PL 编辑器无修改打开/关闭正常");suppressDirtyPrompt=true;await closeEditor(true);suppressDirtyPrompt=false;}else oks.push("PL 编辑器检查跳过：暂无档案");
+    const mod=modules[0];if(mod){openNativeModuleEditor(mod.id);await new Promise(r=>requestAnimationFrame(r));if(nativeModuleDraftDirty())issues.push({level:"error",title:"模组编辑器打开即被判定为已修改",detail:mod.name||"未命名"});else oks.push("模组编辑器无修改打开/关闭正常");suppressDirtyPrompt=true;await closeNativeModuleEditor(true);suppressDirtyPrompt=false;}else oks.push("模组编辑器检查跳过：暂无模组");
+    const plan=runPlans[0];if(plan){openPlanEditor(plan.id);await new Promise(r=>requestAnimationFrame(r));if(els.planEditorBackdrop.hidden)issues.push({level:"error",title:"计划编辑器无法打开",detail:plannerPlanLabel(plan)});else oks.push("计划编辑器打开/关闭正常");closePlanEditor();}else oks.push("计划编辑器检查跳过：暂无计划");
+    toggleShareMode(true);const blockedProfile=profile?openEditor(profile.id)===false:true;const blockedSettings=openSettings()===false;if(blockedProfile&&blockedSettings)oks.push("分享模式入口保护正常");else issues.push({level:"error",title:"分享模式入口保护不完整",detail:"敏感编辑器存在旁路"});toggleShareMode(oldShare);
+  }catch(err){console.error(err);issues.push({level:"error",title:"深度自检执行中断",detail:String(err.message||err)});try{toggleShareMode(oldShare);}catch(e){}}
+  finally{try{selectedModuleName=original.selectedModuleName;plannerSelectedDate=original.plannerSelectedDate;plannerMonthCursor=original.plannerMonthCursor;plannerMobileSection=original.plannerMobileSection;switchView(original.view,{historyMode:"none",restoreScroll:false});window.scrollTo({top:original.scrollY,behavior:"auto"});openSettings();activateSettingsPanel("data");const advanced=document.querySelector(".data-safety-group.advanced");if(advanced)advanced.open=true;requestAnimationFrame(()=>{if(els.settingsPanels)els.settingsPanels.scrollTop=original.settingsScroll;});}catch(err){}if(btn){btn.disabled=false;btn.textContent=originalText;}}
+  const box=document.getElementById("interactionSelfCheckResults"),copy=document.getElementById("copyInteractionSelfCheckBtn");const errors=issues.filter(x=>x.level==="error").length,warns=issues.length-errors;box.hidden=false;box.innerHTML=`<div class="self-check-summary ${issues.length?"warn":"ok"}">${issues.length?`深度自检：${errors} 项异常 · ${warns} 项提醒`:`✓ 深度自检通过 · ${oks.length} 项`}</div><div class="self-check-list">${[...issues.map(x=>({status:x.level==="error"?"!":"•",...x})),...oks.map(x=>({level:"ok",status:"✓",title:x,detail:""}))].map(x=>`<div class="self-check-row ${x.level}"><b>${x.status}</b><span><strong>${escapeHTML(x.title)}</strong>${x.detail?`<br>${escapeHTML(x.detail)}`:""}</span></div>`).join("")}</div>`;lastInteractionSelfCheckText=[`PL收集梦想生活 v${APP_UI_VERSION} 深度自检`,`时间：${new Date().toLocaleString("zh-CN")}`,`视口：${innerWidth}×${innerHeight}`,"",...issues.map(x=>`[${x.level}] ${x.title}${x.detail?` — ${x.detail}`:""}`),...oks.map(x=>`[ok] ${x}`)].join("\n");if(copy)copy.hidden=false;showToast(issues.length?"深度自检完成：发现需要确认的项目":"深度自检全部通过");
+}
+
+setTimeout(()=>void updateRuntimeVersionDetails(),300);
+
 els.newBtn.addEventListener("click",()=>openEditor());els.settingsBtn.addEventListener("click",openSettings);els.search.addEventListener("input",()=>{profileRenderLimit=PROFILE_RENDER_BATCH;debouncedProfileRender();});
 els.cardLayout.addEventListener("click",()=>setProfileLayout("cards"));
 els.compactLayout.addEventListener("click",()=>setProfileLayout("compact"));
@@ -8650,10 +8912,13 @@ els.planSearch.addEventListener("input",debouncedPlanRender);
 els.expandAllRecords.addEventListener("click",()=>setSelectedModuleRecordsCollapsed(false));
 els.collapseAllRecords.addEventListener("click",()=>setSelectedModuleRecordsCollapsed(true));
 
+document.getElementById("plannerMobileSectionSwitch")?.addEventListener("click",e=>{const btn=e.target.closest("[data-planner-mobile-section]");if(!btn)return;setPlannerMobileSection(btn.dataset.plannerMobileSection);});
+
 els.planBoard.addEventListener("click",e=>{
   const pick=e.target.closest("[data-pick-plan]");
   if(pick){
     plannerPickedPlanId=plannerPickedPlanId===pick.dataset.pickPlan?null:pick.dataset.pickPlan;
+    if(plannerPickedPlanId&&mobileMedia.matches)setPlannerMobileSection("calendar",{persist:false,scroll:false});
     renderRunPlans();
     if(plannerPickedPlanId)showToast(mobileMedia.matches?"已进入安排模式，点周历的早 / 中 / 晚":"已进入安排模式：点周历格，或直接拖过去");
     return;
@@ -8683,6 +8948,17 @@ els.planEditorBackdrop.addEventListener("click",e=>{
   if(e.target===els.planEditorBackdrop)closePlanEditor();
 });
 els.closePlanEditor.addEventListener("click",closePlanEditor);
+els.planEditorContent.addEventListener("input",e=>{
+  const wrap=e.target.closest("[data-editor-plan-id]");const planId=wrap?.dataset.editorPlanId;if(!planId)return;
+  if(e.target.matches("[data-plan-editor-field]")){
+    const field=e.target.dataset.planEditorField;if(!["moduleName","tableName","kp","logUrl","sharedHoNote"].includes(field))return;const value=e.target.value;
+    queuePlanInputMutation(planId,plan=>{plan[field]=value;if(field==="kp")plan.kpProfileId=isSelfKP(value)?selfProfileId():"";},`已自动保存：${field==="moduleName"?"模组名称":field==="tableName"?"桌名":field==="kp"?"KP":field==="logUrl"?"Log":"HO补充"}`);
+    if(field==="moduleName")els.planEditorTitle.textContent=value.trim()||"新建开团计划";return;
+  }
+  if(e.target.matches("[data-plan-pc-name]")){const id=e.target.dataset.planPcName,value=e.target.value;queuePlanInputMutation(planId,plan=>mutateParticipantAssignment(plan,id,a=>{a.pcName=value;}),"已自动保存 PC 名");return;}
+  if(e.target.matches("[data-plan-pc-ho-custom]")){const id=e.target.dataset.planPcHoCustom,value=e.target.value;queuePlanInputMutation(planId,plan=>{if(id==="__kpc__")mutateKpcAssignment(plan,k=>{k.enabled=true;k.hoMode="custom";k.hoCustom=value;});else mutateParticipantAssignment(plan,id,a=>{a.hoMode="custom";a.hoCustom=value;});},"已自动保存 HO");return;}
+  if(e.target.matches("[data-plan-kpc-name]")){const value=e.target.value;queuePlanInputMutation(planId,plan=>mutateKpcAssignment(plan,k=>{k.enabled=true;k.pcName=value;}),"已自动保存 KPC");}
+});
 els.planEditorContent.addEventListener("change",e=>{
   const wrap=e.target.closest("[data-editor-plan-id]");
   const planId=wrap?.dataset.editorPlanId;if(!planId)return;
@@ -8692,39 +8968,9 @@ els.planEditorContent.addEventListener("change",e=>{
     return;
   }
 
-  if(e.target.matches("[data-plan-editor-field]")){
-    const field=e.target.dataset.planEditorField;
-    if(!["moduleName","tableName","kp","logUrl","sharedHoNote"].includes(field))return;
-    const nextValue=e.target.value.trim();
-    mutateRunPlan(planId,plan=>{
-      plan[field]=nextValue;
-      if(field==="kp")plan.kpProfileId=isSelfKP(plan[field])?selfProfileId():"";
-    },{rerenderEditor:false});
-    if(field==="moduleName"){
-      els.planEditorTitle.textContent=nextValue||"新建开团计划";
-      setTimeout(()=>{if(editingPlanId===planId)renderPlanEditor();},0);
-    }
+  if(e.target.matches("[data-plan-editor-field],[data-plan-pc-name],[data-plan-pc-ho-custom],[data-plan-kpc-name]")){
+    if(planInputPending?.planId===planId)flushPlanInputSave();
     return;
-  }
-
-  if(e.target.matches("[data-plan-pc-name]")){
-    const profileId=e.target.dataset.planPcName,value=e.target.value.trim();
-    mutateRunPlan(planId,plan=>{mutateParticipantAssignment(plan,profileId,a=>{a.pcName=value;});},{rerenderEditor:false});
-    return;
-  }
-
-  if(e.target.matches("[data-plan-pc-ho-custom]")){
-    const profileId=e.target.dataset.planPcHoCustom,value=e.target.value.trim();
-    mutateRunPlan(planId,plan=>{
-      if(profileId==="__kpc__")mutateKpcAssignment(plan,k=>{k.enabled=true;k.hoMode="custom";k.hoCustom=value;});
-      else mutateParticipantAssignment(plan,profileId,a=>{a.hoMode="custom";a.hoCustom=value;});
-    },{rerenderEditor:false});
-    return;
-  }
-
-  if(e.target.matches("[data-plan-kpc-name]")){
-    const value=e.target.value.trim();
-    mutateRunPlan(planId,plan=>{mutateKpcAssignment(plan,k=>{k.enabled=true;k.pcName=value;});},{rerenderEditor:false});
   }
 });
 
@@ -8768,13 +9014,13 @@ els.planEditorContent.addEventListener("click",e=>{
   }
 
   if(e.target.closest("[data-editor-arrange]")){
-    plannerPickedPlanId=planId;closePlanEditor();renderRunPlans();
+    plannerPickedPlanId=planId;if(mobileMedia.matches)setPlannerMobileSection("calendar",{persist:false,scroll:false});closePlanEditor();renderRunPlans();
     requestAnimationFrame(()=>els.planWeek.scrollIntoView({behavior:preferredScrollBehavior(),block:"center"}));
     showToast("已进入安排模式：在周历点一个早 / 中 / 晚");return;
   }
 
   const jump=e.target.closest("[data-editor-jump-date]");
-  if(jump){setPlannerSelectedDate(jump.dataset.editorJumpDate);closePlanEditor();requestAnimationFrame(()=>els.planWeek.scrollIntoView({behavior:preferredScrollBehavior(),block:"center"}));return;}
+  if(jump){setPlannerSelectedDate(jump.dataset.editorJumpDate);if(mobileMedia.matches)setPlannerMobileSection("calendar",{persist:false,scroll:false});closePlanEditor();requestAnimationFrame(()=>els.planWeek.scrollIntoView({behavior:preferredScrollBehavior(),block:"center"}));return;}
 
   const removeSlot=e.target.closest("[data-editor-remove-slot]");
   if(removeSlot){unschedulePlanSlot(planId,removeSlot.dataset.editorRemoveSlot);return;}
@@ -8789,7 +9035,7 @@ els.planEditorContent.addEventListener("click",e=>{
   if(removePl){removeProfileFromPlan(planId,removePl.dataset.editorRemovePl);return;}
 
   const openProfile=e.target.closest("[data-editor-open-profile]");
-  if(openProfile){closePlanEditor();switchView("profiles");openEditor(openProfile.dataset.editorOpenProfile,true);return;}
+  if(openProfile){const ctx=captureLinkedReturnContext("plans",{planId});closePlanEditor();switchView("profiles");openEditor(openProfile.dataset.editorOpenProfile,true,ctx);return;}
 
   if(e.target.closest("[data-editor-delete-plan]")){deleteRunPlan(planId);return;}
   if(e.target.closest("[data-editor-archive]")){archiveRunPlan(planId);return;}
@@ -8860,75 +9106,32 @@ els.recordsSearch.addEventListener("input",debouncedRecordRender);
 els.createModuleRecord.addEventListener("click",createFirstRunRecord);
 els.newModuleName.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();createFirstRunRecord();}});
 
+els.recordsBoard.addEventListener("input",e=>{
+  const recordEl=e.target.closest("[data-record-id]");if(!recordEl)return;const recordId=recordEl.dataset.recordId;
+  if(e.target.matches("[data-record-field]")){
+    const field=e.target.dataset.recordField;if(!["tableName","kp","logUrl","sharedHoNote","actualDuration","thoughts","runNotes"].includes(field))return;const value=e.target.value;
+    queueRecordInputMutation(recordId,r=>{r[field]=value;if(field==="kp")r.kpProfileId=isSelfKP(value)?selfProfileId():"";},`已自动保存：${field==="thoughts"?"跑后感想":field==="runNotes"?"本桌备注":"跑团记录"}`);return;
+  }
+  if(e.target.matches("[data-record-pc-name]")){const id=e.target.dataset.recordPcName,value=e.target.value;queueRecordInputMutation(recordId,r=>mutateParticipantAssignment(r,id,a=>{a.pcName=value;}),"已自动保存 PC 名");return;}
+  if(e.target.matches("[data-record-pc-ho-custom]")){const id=e.target.dataset.recordPcHoCustom,value=e.target.value;queueRecordInputMutation(recordId,r=>{if(id==="__kpc__")mutateKpcAssignment(r,k=>{k.enabled=true;k.hoMode="custom";k.hoCustom=value;});else mutateParticipantAssignment(r,id,a=>{a.hoMode="custom";a.hoCustom=value;});},"已自动保存 HO");return;}
+  if(e.target.matches("[data-record-kpc-name]")){const value=e.target.value;queueRecordInputMutation(recordId,r=>mutateKpcAssignment(r,k=>{k.enabled=true;k.pcName=value;}),"已自动保存 KPC");}
+});
+
 els.recordsBoard.addEventListener("change",e=>{
-  const recordEl=e.target.closest("[data-record-id]");
-  if(!recordEl)return;
-  const rec=runRecords.find(r=>r.id===recordEl.dataset.recordId);
-  if(!rec)return;
-
-  if(e.target.matches("[data-record-kp-profile]")){
-    const oldKp=rec.kpProfileId;
-    rec.kpProfileId=e.target.value;
-    rec.updatedAt=Date.now();
-    touchProfiles([...rec.plIds,oldKp,rec.kpProfileId].filter(Boolean));
-    if(!saveState())return;
-    renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});
-    return;
+  const recordEl=e.target.closest("[data-record-id]");if(!recordEl)return;const recordId=recordEl.dataset.recordId,rec=runRecords.find(r=>r.id===recordId);if(!rec)return;
+  if(e.target.matches("[data-record-field],[data-record-pc-name],[data-record-pc-ho-custom],[data-record-kpc-name]")){
+    const field=e.target.dataset.recordField;if(field==="startDate"||field==="endDate"){
+      const next=e.target.value.trim();if(field==="startDate"&&next&&rec.endDate&&rec.endDate<next){appNotice("开始时间不能晚于结束时间。请先调整结束时间。");e.target.value=rec.startDate;return;}if(field==="endDate"&&next&&rec.startDate&&next<rec.startDate){appNotice("结束时间不能早于开始时间。请先调整开始时间。");e.target.value=rec.endDate;return;}
+      mutateRunRecord(recordId,r=>{r[field]=next;if(next)r.legacyDuration="";},{undoLabel:`已更新${field==="startDate"?"开始":"结束"}日期`});return;
+    }
+    if(recordInputPending?.recordId===recordId)flushRecordInputSave();return;
   }
-
-  if(e.target.matches("[data-record-pc-name]")){
-    const profileId=e.target.dataset.recordPcName,value=e.target.value.trim();
-    mutateParticipantAssignment(rec,profileId,a=>{a.pcName=value;});
-    rec.updatedAt=Date.now();
-    if(!saveState())return;
-    renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});
-    return;
-  }
-
-  if(e.target.matches("[data-record-pc-ho-custom]")){
-    const profileId=e.target.dataset.recordPcHoCustom,value=e.target.value.trim();
-    if(profileId==="__kpc__")mutateKpcAssignment(rec,k=>{k.enabled=true;k.hoMode="custom";k.hoCustom=value;});
-    else mutateParticipantAssignment(rec,profileId,a=>{a.hoMode="custom";a.hoCustom=value;});
-    rec.updatedAt=Date.now();
-    if(!saveState())return;
-    renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});
-    return;
-  }
-
-  if(e.target.matches("[data-record-kpc-name]")){
-    const value=e.target.value.trim();
-    mutateKpcAssignment(rec,k=>{k.enabled=true;k.pcName=value;});
-    rec.updatedAt=Date.now();
-    if(!saveState())return;
-    renderRunRecords({preservePageScroll:true,centerSelected:false});
-    return;
-  }
-
-  if(!e.target.matches("[data-record-field]"))return;
-  const field=e.target.dataset.recordField;
-  if(!["tableName","kp","startDate","endDate","logUrl","sharedHoNote","actualDuration","thoughts","runNotes"].includes(field))return;
-  const next=e.target.value.trim();
-
-  if(field==="startDate"&&next&&rec.endDate&&rec.endDate<next){
-    appNotice("开始时间不能晚于结束时间。请先调整结束时间。");e.target.value=rec.startDate;return;
-  }
-  if(field==="endDate"&&next&&rec.startDate&&next<rec.startDate){
-    appNotice("结束时间不能早于开始时间。请先调整开始时间。");e.target.value=rec.endDate;return;
-  }
-
-  const oldKp=rec.kpProfileId;
-  rec[field]=next;
-  if(field==="kp")rec.kpProfileId=isSelfKP(next)?selfProfileId():"";
-  if((field==="startDate"||field==="endDate")&&next)rec.legacyDuration="";
-  rec.updatedAt=Date.now();
-  touchProfiles([...rec.plIds,oldKp,rec.kpProfileId].filter(Boolean));
-  if(!saveState())return;
-  renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});
+  if(e.target.matches("[data-record-kp-profile]")){const value=e.target.value;mutateRunRecord(recordId,r=>{r.kpProfileId=value;},{undoLabel:"已更新 KP 关联"});return;}
 });
 
 els.recordsBoard.addEventListener("click",e=>{
   const moduleTab=e.target.closest("[data-select-module]");
-  if(moduleTab){selectedModuleName=moduleTab.dataset.selectModule;renderRunRecords({preservePageScroll:true,centerSelected:true});return;}
+  if(moduleTab){flushRecordInputSave();selectedModuleName=moduleTab.dataset.selectModule;renderRunRecords({preservePageScroll:true,centerSelected:true});return;}
   const addTable=e.target.closest("[data-add-table]");
   if(addTable){addTableToModule(addTable.dataset.addTable);return;}
   const rename=e.target.closest("[data-rename-module]");
@@ -8951,6 +9154,7 @@ els.recordsBoard.addEventListener("click",e=>{
   }
   const doneMode=e.target.closest("[data-record-done]");
   if(doneMode){
+    if(recordInputPending?.recordId===recordId)flushRecordInputSave();
     recordEditingIds.delete(recordId);
     renderRunRecords({preservePageScroll:true,centerSelected:false});
     return;
@@ -8974,30 +9178,12 @@ els.recordsBoard.addEventListener("click",e=>{
   }
 
   const kpcToggle=e.target.closest("[data-record-kpc-toggle]");
-  if(kpcToggle){
-    const current=normalizeKpc(rec.kpc);
-    rec.kpc=current.enabled?normalizeKpc(null):{...current,enabled:true};
-    rec.updatedAt=Date.now();
-    if(!saveState())return;
-    renderRunRecords({preservePageScroll:true,centerSelected:false});
-    return;
-  }
+  if(kpcToggle){mutateRunRecord(recordId,r=>{const current=normalizeKpc(r.kpc);r.kpc=current.enabled?normalizeKpc(null):{...current,enabled:true};},{undoLabel:"已更新 KPC"});return;}
 
   const hoBtn=e.target.closest("[data-record-pc-ho]");
   if(hoBtn){
-    const profileId=hoBtn.dataset.recordPcHo,kind=hoBtn.dataset.hoKind||"",number=normalizePcHoNumber(hoBtn.dataset.hoNumber);
-    if(kind==="number"&&hoNumberInUseByOther(rec,number,profileId)){showToast(`HO${number} 已分配给本桌其他角色`);return;}
-    const apply=a=>{
-      a.hoMode=kind;
-      a.hoNumber=kind==="number"?number:0;
-      if(kind!=="custom")a.hoCustom="";
-    };
-    if(profileId==="__kpc__")mutateKpcAssignment(rec,k=>{k.enabled=true;apply(k);});
-    else mutateParticipantAssignment(rec,profileId,apply);
-    rec.updatedAt=Date.now();
-    if(!saveState())return;
-    renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});
-    return;
+    const profileId=hoBtn.dataset.recordPcHo,kind=hoBtn.dataset.hoKind||"",number=normalizePcHoNumber(hoBtn.dataset.hoNumber);if(kind==="number"&&hoNumberInUseByOther(rec,number,profileId)){showToast(`HO${number} 已分配给本桌其他角色`);return;}
+    mutateRunRecord(recordId,r=>{const apply=a=>{a.hoMode=kind;a.hoNumber=kind==="number"?number:0;if(kind!=="custom")a.hoCustom="";};if(profileId==="__kpc__")mutateKpcAssignment(r,k=>{k.enabled=true;apply(k);});else mutateParticipantAssignment(r,profileId,apply);},{undoLabel:"已更新 HO 分配"});return;
   }
 
   const delRecord=e.target.closest("[data-delete-record]");
@@ -9014,7 +9200,7 @@ els.recordsBoard.addEventListener("click",e=>{
   if(removePl){removeProfileFromRecord(recordId,removePl.dataset.removePl);return;}
 
   const openProfile=e.target.closest("[data-open-profile]");
-  if(openProfile){switchView("profiles");openEditor(openProfile.dataset.openProfile,true);return;}
+  if(openProfile){const ctx=captureLinkedReturnContext("records",{recordId});switchView("profiles");openEditor(openProfile.dataset.openProfile,true,ctx);return;}
 });
 
 document.addEventListener("click",e=>{
@@ -9042,12 +9228,13 @@ document.addEventListener("click",e=>{
 });
 
 els.globalCreate.addEventListener("click",e=>{e.stopPropagation();toggleQuickCreateMenu();});
-[els.plannerDefaultViewSetting,els.recordDefaultModeSetting,els.recordDefaultExpandSetting,els.profileFootprintSetting].forEach(control=>{
+[els.plannerDefaultViewSetting,els.plannerDensitySetting,els.recordDefaultModeSetting,els.recordDefaultExpandSetting,els.profileFootprintSetting].forEach(control=>{
   control?.addEventListener("change",()=>{
     if(!settingsDraft)return;
     settingsDraft.ui=normalizeUiSettings({
       ...settingsDraft.ui,
       plannerView:els.plannerDefaultViewSetting.value,
+      plannerDensity:els.plannerDensitySetting?.value||"auto",
       recordDefaultMode:els.recordDefaultModeSetting.value,
       recordDefaultExpand:els.recordDefaultExpandSetting.value,
       profileFootprintsOpen:els.profileFootprintSetting.value==="open"
@@ -9061,7 +9248,7 @@ els.openModuleAdvancedSettings?.addEventListener("click",()=>{
   openModuleAdvancedEditor();
 });
 els.sort.addEventListener("change",()=>{settings.sortMode=els.sort.value;saveState();renderProfiles();});
-els.grid.addEventListener("click",e=>{const actionEl=e.target.closest("[data-action]");const card=e.target.closest(".card,.compact-row");if(actionEl){e.stopPropagation();const id=actionEl.dataset.id,action=actionEl.dataset.action;if(action==="edit")openEditor(id);if(action==="runs")openEditor(id,true);if(action==="ho-organizer")openHoOrganizer(id);if(action==="delete")deleteProfile(id);if(action==="toggle"){expandedCards.has(id)?expandedCards.delete(id):expandedCards.add(id);renderProfiles();}if(action==="collapse-card"){toggleProfileCardCollapse(id);}return;}if(e.target.closest(".runs"))return;if(card)openEditor(card.dataset.id);});
+els.grid.addEventListener("click",e=>{const scoreToggle=e.target.closest("[data-toggle-compact-scores]");if(scoreToggle){e.stopPropagation();const id=String(scoreToggle.dataset.toggleCompactScores);expandedCompactScoreIds.has(id)?expandedCompactScoreIds.delete(id):expandedCompactScoreIds.add(id);renderProfiles();return;}const actionEl=e.target.closest("[data-action]");const card=e.target.closest(".card,.compact-row");if(actionEl){e.stopPropagation();const id=actionEl.dataset.id,action=actionEl.dataset.action;if(action==="edit")openEditor(id);if(action==="runs")openEditor(id,true);if(action==="ho-organizer")openHoOrganizer(id);if(action==="delete")deleteProfile(id);if(action==="toggle"){expandedCards.has(id)?expandedCards.delete(id):expandedCards.add(id);renderProfiles();}if(action==="collapse-card"){toggleProfileCardCollapse(id);}return;}if(e.target.closest(".runs"))return;if(card)openEditor(card.dataset.id);});
 
 
 els.closeHoOrganizer.addEventListener("click",closeHoOrganizer);
@@ -9151,13 +9338,16 @@ els.save.addEventListener("click",()=>{
   if(!tx)return;
 
   const linkedCount=tx.linkedIds.size;
+  clearEditorDraft("profile");
   draft=null;editingId=null;runRecordsDraft=null;profileEditorBaseline=null;
   closeOverlay();
   renderProfiles();
   renderRunRecords();
+  updateAllEditorStateIndicators();
+  if(linkedReturnContext){const ctx=linkedReturnContext;linkedReturnContext=null;restoreLinkedReturnContext(ctx);}
 
   showToast(linkedCount?`档案已保存，并确认关联 ${linkedCount} 桌跑团记录`:"档案已保存");
-});els.cancel.addEventListener("click",()=>closeEditor(true));els.closeProfile.addEventListener("click",()=>closeEditor(true));els.modalDelete.addEventListener("click",()=>{if(editingId)deleteProfile(editingId,true);});
+});els.cancel.addEventListener("click",()=>closeEditor(true));els.closeProfile.addEventListener("click",()=>closeEditor(true));document.getElementById("profileReturnBtn")?.addEventListener("click",()=>void closeEditor(true));els.modalDelete.addEventListener("click",()=>{if(editingId)deleteProfile(editingId,true);});
 
 els.closeSecureBackup.addEventListener("click",closeSecureBackup);
 els.cancelSecureBackup.addEventListener("click",closeSecureBackup);
@@ -9167,7 +9357,7 @@ els.secureBackupPassword.addEventListener("keydown",e=>{if(e.key==="Enter")void 
 els.secureBackupPasswordConfirm.addEventListener("keydown",e=>{if(e.key==="Enter")void confirmSecureBackupAction();});
 
 // 设置事件
-els.closeSettings.addEventListener("click",closeSettings);els.cancelSettings.addEventListener("click",closeSettings);
+els.closeSettings.addEventListener("click",()=>void closeSettings(false));els.cancelSettings.addEventListener("click",()=>void closeSettings(false));
 els.themePicker.addEventListener("click",e=>{
   const btn=e.target.closest("[data-theme-choice]");
   if(!btn||!settingsDraft)return;
