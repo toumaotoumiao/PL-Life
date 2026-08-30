@@ -2990,6 +2990,19 @@
     }
 
 </style>
+  <style id="v808-interaction-reliability">
+    /* PL 编辑器是复合模态：正文与快捷操作栏都必须参与触摸与键盘交互。 */
+    #profileActionRail{pointer-events:auto!important}
+    #profileActionRail .profile-rail-btn{pointer-events:auto!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    #profileActionRail[data-v79-inert],#profileActionRail [data-v79-inert]{pointer-events:none!important}
+    @media(min-width:761px) and (max-width:1600px){
+      .shell{box-sizing:border-box;padding-right:58px!important}
+    }
+    @media(max-width:760px){
+      #profileActionRail{isolation:isolate;contain:layout style;transform:translateZ(0)}
+      #profileActionRail .profile-rail-btn{position:relative;z-index:1}
+    }
+  </style>
 
   <style id="semantic-hidden-invariant">
     html [hidden]{display:none!important}
@@ -3298,7 +3311,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">使用说明与免责声明</span>
             </span>
-            <span class="footer-meta-inline">v8.0.7 · 2026-08-30 16:15 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.0.8 · 2026-08-30 16:31 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3313,7 +3326,7 @@
               档案可能包含联系方式等个人信息，请妥善保管并谨慎导出、截图或共享；数据主要保存在当前浏览器本机，
               清理浏览器数据、设备损坏或更换使用环境都可能造成丢失，建议定期导出备份。
             </p>
-            <div class="footer-meta">版本：v8.0.7　·　更新时间：2026-08-30 16:15（UTC+8）　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.0.8　·　更新时间：2026-08-30 16:31（UTC+8）　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3405,8 +3418,8 @@
   
   <div id="overlay" class="overlay" aria-hidden="true">
     
-    <div id="profileModalWrap" class="profile-modal-wrap">
-    <section id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div id="profileModalWrap" class="profile-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <section id="profileModal" class="modal">
       <header class="modal-head">
         <div><h2 id="modalTitle">编辑 PL</h2><div class="sub">内置评分已改为行为锚定：优先看可观察行为、出现频率和实际结果；个性化备注会同步显示在主页面。</div></div>
         <button type="button" id="closeProfileBtn" class="close" aria-label="关闭">×</button>
@@ -3587,7 +3600,7 @@
             <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动保留一份数据</span></article>
             <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持时可安装到设备</span></article>
             <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期备份</span></article>
-            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.0.7</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
+            <article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.0.8</strong><span id="appVersionHealthSub">正在确认更新状态</span></article>
           </div>
 
           <div id="inheritanceStatusNote" class="inheritance-status-note"></div>
@@ -3651,9 +3664,9 @@
           </section>
 
           <section class="friendly-data-block version-update-block">
-            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.0.7 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
+            <div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">当前版本 v8.0.8 · 正在确认离线与更新状态</span></div><button type="button" id="checkAppUpdateBtn" class="btn small">检查更新</button></div>
             <div id="releaseNotesBox" class="release-notes-box">
-              <strong>v8.0.7</strong><span>计划时段容量升级：开团计划周历的早 / 中 / 晚每个时段由最多 2 场提升为最多 4 场；容量提示、满载判断、拖动改期与数据完整性检查同步改为 4 场；四场堆叠时自动压缩重复时段文字，保证周历仍清楚可读。</span><strong>v8.0.6</strong><span>布局稳定与搜索反馈：修复手机跑团记录模组标签宽度被后置样式覆盖；统一关键悬浮层级；手机 PL 排序改用短标签显示、下拉仍保留完整选项；无结果页增加清空/重置操作；搜索结果自动高亮命中词；继续提升日期、状态、身份等高频小字可读性，并收口搜索、侧栏、弹窗相关手机样式。</span><strong>v8.0.5</strong><span>跑团记录搜索位置修正：把记录搜索框收回“跑团记录表”工具区，取消记录页搜索框的独立悬浮/吸顶布局；搜索结果数量与搜索框同行显示，记录目录与桌次内容从工具区下方正常开始，避免搜索栏压住内容。</span><strong>v8.0.4</strong><span>高频体验整理：统一主导航、设置、显示模式和记录侧栏的选中态；为六类搜索增加一键清空与 Esc 清空；强化排序/筛选识别；搜索时显示结果/总量；统一正常、信息、待处理、风险四类状态色，并提升高频小字可读性。</span>
+              <strong>v8.0.8</strong><span>交互可靠性全面修复：修复 PL 编辑器底部“顶部 / 底部 / 保存 / 取消 / 删除”被模态焦点隔离机制设为 inert、导致手机上看得见却点不到的问题；把 PL 编辑器视为“正文 + 快捷操作栏”的复合交互区域，并统一修正触摸命中、键盘焦点范围与复合模态交互语义。</span><strong>v8.0.7</strong><span>计划时段容量升级：开团计划周历的早 / 中 / 晚每个时段由最多 2 场提升为最多 4 场；容量提示、满载判断、拖动改期与数据完整性检查同步改为 4 场；四场堆叠时自动压缩重复时段文字，保证周历仍清楚可读。</span><strong>v8.0.6</strong><span>布局稳定与搜索反馈：修复手机跑团记录模组标签宽度被后置样式覆盖；统一关键悬浮层级；手机 PL 排序改用短标签显示、下拉仍保留完整选项；无结果页增加清空/重置操作；搜索结果自动高亮命中词；继续提升日期、状态、身份等高频小字可读性，并收口搜索、侧栏、弹窗相关手机样式。</span><strong>v8.0.5</strong><span>跑团记录搜索位置修正：把记录搜索框收回“跑团记录表”工具区，取消记录页搜索框的独立悬浮/吸顶布局；搜索结果数量与搜索框同行显示，记录目录与桌次内容从工具区下方正常开始，避免搜索栏压住内容。</span><strong>v8.0.4</strong><span>高频体验整理：统一主导航、设置、显示模式和记录侧栏的选中态；为六类搜索增加一键清空与 Esc 清空；强化排序/筛选识别；搜索时显示结果/总量；统一正常、信息、待处理、风险四类状态色，并提升高频小字可读性。</span>
             </div>
           </section>
           <details class="friend-safety-notes">
@@ -3758,7 +3771,7 @@
   <div id="toast" class="toast"></div>
 
 <script>
-/* PL收集梦想生活 v8.0.7 · 作者：番茄
+/* PL收集梦想生活 v8.0.8 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3777,7 +3790,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.0.7";
+const APP_UI_VERSION = "8.0.8";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -8421,10 +8434,30 @@ async function checkAppUpdate(){if(!("serviceWorker" in navigator)){showToast("�
 
 /* 焦点、快捷键与离开保护 */
 function visibleDialog(){const candidates=["#secureBackupBackdrop","#importPreviewBackdrop","#migrationWizardBackdrop","#globalSearchBackdrop","#onboardingBackdrop","#hoOrganizerBackdrop","#moduleAdvancedBackdrop","#nativeModuleEditorBackdrop","#planEditorBackdrop","#actionDialogBackdrop"].map(s=>document.querySelector(s)).filter(el=>el&&!el.hidden);if(candidates.length)return candidates[candidates.length-1].querySelector('[role="dialog"]')||candidates[candidates.length-1];if(els.overlay?.classList.contains("open"))return !els.settingsModal.hidden?els.settingsModal:els.profileModal;return null;}
-function syncDialogInert(){document.querySelectorAll("[data-v79-inert]").forEach(el=>{el.inert=false;el.removeAttribute("data-v79-inert");});const active=visibleDialog();if(!active)return;let node=active;while(node&&node!==document.body){const parent=node.parentElement;if(!parent)break;[...parent.children].forEach(sib=>{if(sib!==node&&sib instanceof HTMLElement&&!['externalSyncBanner','appUpdateBanner','undoDeleteToast'].includes(sib.id)){sib.inert=true;sib.setAttribute("data-v79-inert","");}});node=parent;}}
+function dialogInteractionRoot(active){
+  if(active===els.profileModal&&els.profileModalWrap&&!els.profileModalWrap.hidden)return els.profileModalWrap;
+  return active;
+}
+function syncDialogInert(){
+  document.querySelectorAll("[data-v79-inert]").forEach(el=>{el.inert=false;el.removeAttribute("data-v79-inert");});
+  const active=visibleDialog();if(!active)return;
+  let node=dialogInteractionRoot(active);
+  while(node&&node!==document.body){
+    const parent=node.parentElement;if(!parent)break;
+    [...parent.children].forEach(sib=>{
+      if(sib!==node&&sib instanceof HTMLElement&&!['externalSyncBanner','appUpdateBanner','undoDeleteToast'].includes(sib.id)){
+        sib.inert=true;sib.setAttribute("data-v79-inert","");
+      }
+    });
+    node=parent;
+  }
+}
 function rememberDialogOpener(dialog){if(dialog&&!dialogOpeners.has(dialog))dialogOpeners.set(dialog,document.activeElement);}
 function restoreDialogOpener(dialog){const opener=dialogOpeners.get(dialog);dialogOpeners.delete(dialog);if(opener&&document.contains(opener)&&typeof opener.focus==="function")setTimeout(()=>{const active=typeof visibleDialog==="function"?visibleDialog():null;if(active&&!active.contains(opener))return;try{opener.focus({preventScroll:true});}catch(err){opener.focus();}},20);}
-function focusablesIn(root){return [...root.querySelectorAll('button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(el=>!el.hidden&&el.getClientRects().length&&!el.closest('[inert]'));}
+function focusablesIn(root){
+  const scope=dialogInteractionRoot(root)||root;
+  return [...scope.querySelectorAll('button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(el=>!el.hidden&&el.getClientRects().length&&!el.closest('[inert]'));
+}
 function profileCtrlSave(){if(!els.overlay.classList.contains("open")||els.profileModalWrap.hidden)return false;els.save.click();return true;}
 function restorePoppedSurfaceGuard(id){try{history.pushState({tag:HISTORY_STATE_TAG,view:currentView,modal:id},"",location.href);}catch(err){}}
 function topOpenHistorySurfaceId(){
