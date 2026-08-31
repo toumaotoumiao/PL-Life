@@ -1,5 +1,5 @@
 const CACHE_PREFIX="tomato-pl-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.2`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.4`;
 const APP_SHELL=["./","./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 
 self.addEventListener("install",event=>{
@@ -24,8 +24,10 @@ self.addEventListener("fetch",event=>{
       if(response&&response.ok){
         const copy=response.clone();
         caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy));
+        return response;
       }
-      return response;
+      const cached=await caches.match(event.request);
+      return cached||response;
     }catch(err){
       const cached=await caches.match(event.request);
       if(cached)return cached;
