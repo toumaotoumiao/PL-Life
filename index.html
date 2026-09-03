@@ -2779,7 +2779,7 @@
 
     body.share-mode .contact,body.share-mode .profile-meta,body.share-mode .note-inline,body.share-mode .native-module-note,body.share-mode .record-view-fact:nth-child(3),body.share-mode .record-view-extra,body.share-mode .record-extra-details,body.share-mode .run-card-body a,body.share-mode .run-card-body div:has(a){display:none!important}
     body.share-mode .attr-text{font-size:0}body.share-mode .attr-text::after{content:"评分说明已在分享模式隐藏";font-size:8px;color:var(--t-faint)}
-    body.share-mode #newBtn,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
+    body.share-mode #newBtn,body.share-mode #blacklistBtn,body.share-mode #profileStatusSection,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-action="add-blacklist"],body.share-mode [data-action="remove-blacklist"],body.share-mode [data-editor-add-blacklist-pl],body.share-mode [data-editor-blacklist-kp],body.share-mode .blacklist-plan-picker,body.share-mode .blacklist-plan-warning,body.share-mode .blacklist-badge,body.share-mode .plan-blacklist-risk,body.share-mode .calendar-risk-badge,body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
     body.share-mode #shareModeBtn{background:var(--t-success)!important;color:#fff!important;opacity:1!important}
 
     .integrity-item-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.integrity-item-actions button{min-height:28px}
@@ -2995,6 +2995,16 @@
     /* v8.1.0 长期可靠性与高频操作统一 */
     .editor-state-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}.editor-state-chip{display:inline-flex;align-items:center;min-height:25px;padding:4px 8px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);color:var(--t-muted);font-size:9px;font-weight:760;letter-spacing:.01em}.editor-state-chip.dirty{background:var(--status-warning-bg);border-color:var(--status-warning-line);color:var(--t-warning)}.editor-state-chip.saved{background:var(--status-success-bg);border-color:var(--status-success-line);color:var(--t-success)}.editor-return-btn{min-height:28px;padding:4px 9px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface);color:var(--t-accent-strong);font-size:9px;font-weight:720}.editor-return-btn:hover{background:var(--t-accent-soft)}.settings-foot-status{display:flex;align-items:center;gap:8px;min-width:0}.settings-foot-status .settings-warning{min-width:0}.friendly-head-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}.version-runtime-details{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;padding:8px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);color:var(--t-muted);font-size:9px}.interaction-self-check-results{display:grid;gap:6px;margin-top:8px}.self-check-summary{padding:9px 10px;border-radius:10px;font-size:10px;font-weight:760}.self-check-summary.ok{background:var(--status-success-bg);color:var(--t-success);border:1px solid var(--status-success-line)}.self-check-summary.warn{background:var(--status-warning-bg);color:var(--t-warning);border:1px solid var(--status-warning-line)}.self-check-list{display:grid;gap:5px}.self-check-row{display:grid;grid-template-columns:22px minmax(0,1fr);gap:7px;align-items:start;padding:7px 8px;border-radius:9px;background:var(--t-surface-2);font-size:9px}.self-check-row>b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--t-surface);border:1px solid var(--t-line)}.self-check-row.error>b{background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)}.self-check-row.warn>b{background:var(--status-warning-bg);border-color:var(--status-warning-line);color:var(--t-warning)}.self-check-row.ok>b{background:var(--status-success-bg);border-color:var(--status-success-line);color:var(--t-success)}.self-check-row span{color:var(--t-muted);line-height:1.5}.undo-toast{position:fixed;left:50%;bottom:max(22px,calc(env(safe-area-inset-bottom) + 16px));z-index:var(--z-toast);transform:translateX(-50%);display:flex;align-items:center;gap:10px;max-width:min(92vw,620px);padding:9px 10px 9px 13px;border:1px solid var(--t-line-strong);border-radius:13px;background:color-mix(in srgb,var(--t-ink) 92%,var(--t-surface));color:var(--t-surface);box-shadow:0 14px 36px rgba(20,28,24,.22);font-size:10px}.undo-toast[hidden]{display:none!important}.undo-toast button{min-height:32px;padding:5px 10px;border:1px solid color-mix(in srgb,var(--t-surface) 28%,transparent);border-radius:9px;background:color-mix(in srgb,var(--t-surface) 14%,transparent);color:inherit;font-weight:800}.week-board.density-compact .week-slot,.week-board.density-compact .week-time-label{min-height:50px}.week-board.density-compact .week-slot{padding:3px}.week-board.density-compact .week-slot-events{gap:3px}.week-board.density-compact .calendar-event{padding:4px 18px 4px 6px;min-height:0}.week-board.density-compact .calendar-event-time{font-size:7px!important}.week-board.density-compact .calendar-event-name{font-size:8.5px;line-height:1.15}.week-board.density-comfortable .week-slot,.week-board.density-comfortable .week-time-label{min-height:64px}.profile-rail-btn.save:disabled{opacity:.42;filter:saturate(.55);cursor:default}.native-module-editor-foot .btn.primary:disabled{opacity:.48;cursor:default}
     @media(max-width:760px){.editor-state-line{margin-top:4px}.editor-state-chip,.editor-return-btn{font-size:9.5px;min-height:30px}.settings-foot-status{align-items:flex-start;flex-direction:column;gap:4px}.friendly-data-head{align-items:flex-start}.friendly-head-actions{width:100%;justify-content:flex-start}.version-runtime-details{display:grid;grid-template-columns:1fr}.undo-toast{bottom:calc(76px + env(safe-area-inset-bottom));font-size:10px}.week-board.density-compact .week-slot,.week-board.density-compact .week-time-label{min-height:48px}.week-board.density-comfortable .week-slot,.week-board.density-comfortable .week-time-label{min-height:58px}}
+
+    /* ---------- PL 黑名单 ---------- */
+    .blacklist-badge{display:inline-flex;align-items:center;min-height:20px;margin-left:6px;padding:2px 7px;border:1px solid var(--status-danger-line);border-radius:999px;background:var(--status-danger-bg);color:var(--t-danger);font-size:8px;font-weight:800;vertical-align:middle}.blacklist-badge.compact{min-height:17px;padding:1px 5px;font-size:7px}
+    .btn.danger-soft{border-color:var(--status-danger-line);background:var(--status-danger-bg);color:var(--t-danger)}
+    .blacklist-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,390px),1fr))!important;gap:12px!important}.blacklist-card{display:grid;gap:11px;padding:16px;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface-glass);box-shadow:0 5px 18px var(--t-shadow-soft)}.blacklist-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.blacklist-card-name{font-size:15px;font-weight:820;color:var(--t-ink)}.blacklist-contact{display:flex;align-items:center;gap:7px;margin-top:6px;color:var(--t-muted);font-size:9px}.blacklist-contact strong{color:var(--t-text-2);font-size:10px}.blacklist-added{color:var(--t-muted);font-size:8px;white-space:nowrap}.blacklist-reason{padding:10px 11px;border:1px solid var(--status-danger-line);border-radius:12px;background:color-mix(in srgb,var(--status-danger-bg) 62%,var(--t-surface));}.blacklist-reason>span{display:block;margin-bottom:4px;color:var(--t-danger);font-size:8px;font-weight:800}.blacklist-reason p{margin:0;white-space:pre-wrap;word-break:break-word;color:var(--t-text-2);font-size:10px;line-height:1.55}.blacklist-archive{border-top:1px solid var(--t-line);padding-top:8px}.blacklist-archive>summary,.blacklist-inner-details>summary{cursor:pointer;color:var(--t-accent-strong);font-size:9px;font-weight:760}.blacklist-archive-body{display:grid;gap:9px;margin-top:9px}.blacklist-archive-section{display:grid;gap:4px;padding:9px;border-radius:10px;background:var(--t-surface-2);font-size:9px}.blacklist-archive-section>strong{color:var(--t-text-2)}.blacklist-archive-section>span{color:var(--t-muted);line-height:1.5}.blacklist-inner-details{padding:7px 9px;border:1px solid var(--t-line);border-radius:10px}.blacklist-rating-grid,.blacklist-run-list,.blacklist-history-list{display:grid;gap:5px;margin-top:7px}.blacklist-rating-row{display:grid;grid-template-columns:minmax(90px,1fr) auto;gap:5px 9px;padding:6px 0;border-bottom:1px solid var(--t-line);font-size:8.5px}.blacklist-rating-row:last-child{border-bottom:0}.blacklist-rating-row small{grid-column:1/-1;color:var(--t-muted)}.blacklist-run-row,.blacklist-history-row{display:grid;gap:3px;padding:7px 0;border-bottom:1px solid var(--t-line);font-size:8.5px}.blacklist-run-row:last-child,.blacklist-history-row:last-child{border-bottom:0}.blacklist-run-row span,.blacklist-history-row span,.blacklist-history-row small,.blacklist-history-empty{color:var(--t-muted)}.blacklist-card-actions{display:flex;justify-content:flex-end;gap:6px;flex-wrap:wrap}.profile-status-editor{margin:10px 0;padding:11px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-surface-2)}.profile-status-editor-main{display:flex;align-items:center;justify-content:space-between;gap:10px}.profile-status-editor-main>div{display:grid;gap:3px}.profile-status-editor-main strong{color:var(--t-success);font-size:11px}.profile-status-editor-main strong.is-blacklisted{color:var(--t-danger)}.profile-status-editor-main>div>span:last-child{color:var(--t-muted);font-size:8.5px}.profile-status-history{margin-top:9px;border-top:1px solid var(--t-line);padding-top:7px}.profile-status-history>summary{cursor:pointer;color:var(--t-muted);font-size:9px}.blacklist-plan-warning{margin-top:7px;padding:8px 9px;border:1px solid var(--status-danger-line);border-radius:10px;background:var(--status-danger-bg);color:var(--t-danger);font-size:8.5px;line-height:1.45}.blacklist-plan-picker{margin-top:7px;padding:7px 8px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2)}.blacklist-plan-picker>summary{cursor:pointer;color:var(--t-muted);font-size:8.5px}.blacklist-plan-picker-row{display:flex;gap:6px;margin-top:7px}.blacklist-plan-picker-row select{min-width:0;flex:1}.action-dialog-textarea{resize:vertical;min-height:110px;line-height:1.5}
+    @media(max-width:760px){.blacklist-grid{grid-template-columns:1fr!important}.blacklist-card{padding:13px}.blacklist-card-head{align-items:flex-start}.blacklist-plan-picker-row{display:grid;grid-template-columns:1fr}.profile-status-editor-main{align-items:flex-start;flex-direction:column}.profile-status-editor-main .btn{width:100%}}
+
+
+    .plan-blacklist-risk,.calendar-risk-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:5px;padding:1px 5px;border:1px solid var(--status-danger-line);border-radius:999px;background:var(--status-danger-bg);color:var(--t-danger);font-size:7px;font-weight:850}.plan-list-item.has-blacklist-risk{border-color:color-mix(in srgb,var(--t-danger) 32%,var(--t-line))}.calendar-event.has-blacklist-risk{border-color:color-mix(in srgb,var(--t-danger) 40%,var(--t-line-strong));box-shadow:inset 2px 0 0 color-mix(in srgb,var(--t-danger) 55%,transparent)}.calendar-risk-badge{margin-left:3px;padding:0 3px;font-size:6px}
+
 </style>
   <style id="v808-interaction-reliability">
     /* PL 编辑器是复合模态：正文与快捷操作栏都必须参与触摸与键盘交互。 */
@@ -3070,8 +3080,8 @@
       .empty-actions .btn{min-height:40px!important}
     }
   
-    /* v8.1.4.3 · 继承 UX 文案统一；兼容 v8.1.4 数据结构 */
-    /* v8.1.4.3 · 归档回退与重复模组治理 */
+    /* v8.1.4.4 · 继承 UX 文案统一；兼容 v8.1.4 数据结构 */
+    /* v8.1.4.4 · 黑名单与排团风险提示 */
     .plan-module-picker{position:relative;display:grid;gap:6px;grid-column:1/-1}
     .plan-module-picker-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
     .plan-module-picker-state{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:20px;color:var(--t-muted);font-size:8.8px;line-height:1.4}
@@ -3230,10 +3240,11 @@
         
         <div class="view-toolbar profiles-toolbar">
           <div class="view-toolbar-title">
-            <strong>PL 档案</strong>
-            <span>管理 PL 档案，支持搜索、评分排序、视图切换和跑团记录联动。</span>
+            <strong id="profilesToolbarTitle">PL 档案</strong>
+            <span id="profilesToolbarSubtitle">管理 PL 档案，支持搜索、评分排序、视图切换和跑团记录联动。</span>
           </div>
           <div class="view-toolbar-actions">
+            <button id="blacklistBtn" class="btn" type="button">黑名单</button>
             <button id="newBtn" class="btn primary" type="button">＋ 新建 PL</button>
           </div>
         </div>
@@ -3394,7 +3405,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.4.3 · 2026-09-03 18:35 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.4.4 · 2026-09-03 20:35 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3406,7 +3417,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.4.3　·　更新时间：2026-09-03 18:35（UTC+8）　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.4.4　·　更新时间：2026-09-03 20:35（UTC+8）　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3509,6 +3520,14 @@
           <label><span class="field-label">姓名</span><input id="nameInput" class="text-input" placeholder="输入姓名或常用称呼" autocomplete="off"></label>
           <label><span class="field-label">联系方式</span><input id="contactInput" class="text-input" placeholder="输入联系方式（可选）" autocomplete="off"></label>
         </div>
+
+        <section id="profileStatusSection" class="profile-status-editor">
+          <div class="profile-status-editor-main">
+            <div><span class="field-label">档案状态</span><strong id="profileStatusValue">正常</strong><span id="profileStatusDetail">当前可正常用于开团计划。</span></div>
+            <button id="profileStatusActionBtn" class="btn small" type="button">加入黑名单</button>
+          </div>
+          <details id="profileStatusHistory" class="profile-status-history" hidden><summary>状态历史</summary><div id="profileStatusHistoryBody"></div></details>
+        </section>
 
         
         <div class="profile-extra-grid">
@@ -3679,7 +3698,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.3</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.4</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -3723,10 +3742,10 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.3 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.3</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">最后检查：未检查</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">最后检查：未检查</span></div>
 <div class="release-notes-box" id="releaseNotesBox">
-<strong>v8.1.4.3</strong><span>新增跑团记录退回计划、重复模组合并与单桌关联修正。</span>
+<strong>v8.1.4.4</strong><span>新增 PL 黑名单、状态历史与排团风险提示。</span>
 <strong>v8.1.4.2</strong><span>强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。</span>
 <strong>v8.1.4</strong><span>增强多标签页并发保存，避免竞态覆盖；保持 v18 数据结构兼容。</span>
 <strong>v8.1.3</strong><span>增强保存冲突、恢复点、回收站与大档案保护。</span>
@@ -3848,7 +3867,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.4.3 · 作者：番茄
+/* PL收集梦想生活 v8.1.4.4 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3867,7 +3886,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.4.3";
+const APP_UI_VERSION = "8.1.4.4";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -4067,6 +4086,7 @@ let lastInteractionSelfCheckText = "";
 const EDITOR_DRAFT_KEY = "trpg_unified_editor_drafts_v1";
 let settingsDraft = null;
 let currentView = "profiles";
+let profileListMode = "active";
 let selectedModuleName = "";
 let privacyMaskEnabled = false;
 let mobileProfileLayout = null;
@@ -4500,7 +4520,7 @@ function participantAssignmentRowHTML(entity,profile,scope,removeAttr,openAttr){
   const summary=[a.pcName,includeHo&&pcHoText(a)].filter(Boolean).join(" · ")||(includeHo?"未填写PC / HO":"未填写PC");
   return `<div class="participant-assignment-row ${includeHo?"has-ho":"no-ho"}" data-assignment-pl-id="${escapeHTML(id)}">
     <div class="assignment-person">
-      <button class="participant-open assignment-name" type="button" ${openAttr}="${escapeHTML(id)}">${profileNameHTML(profile,"privacy-chip-name")}</button>
+      <button class="participant-open assignment-name" type="button" ${openAttr}="${escapeHTML(id)}">${profileNameHTML(profile,"privacy-chip-name")}${!shareModeEnabled&&isBlacklistedProfile(profile)?`<span class="blacklist-badge compact">黑名单</span>`:""}</button>
       <span class="assignment-summary">${escapeHTML(summary)}</span>
     </div>
     ${pcNameInputHTML(entity,id,scope)}
@@ -4678,6 +4698,19 @@ function legacyRpLengthData(raw){
   return b?{usual:b[0],min:b[1],max:b[2]}:{usual:"",min:"",max:""};
 }
 
+function normalizeBlacklist(raw){
+  const source=raw?.blacklist&&typeof raw.blacklist==="object"?raw.blacklist:{};
+  const history=(Array.isArray(source.history)?source.history:[]).map(item=>({
+    addedAt:Number(item?.addedAt||0),removedAt:Number(item?.removedAt||0),reason:String(item?.reason||"").trim()
+  })).filter(item=>item.addedAt||item.removedAt||item.reason);
+  return {
+    active:Boolean(source.active),reason:String(source.reason||"").trim(),
+    addedAt:Number(source.addedAt||0),removedAt:Number(source.removedAt||0),history
+  };
+}
+function isBlacklistedProfile(profile){return Boolean(profile?.blacklist?.active);}
+function blacklistHistoryText(profile){return normalizeBlacklist(profile).history.map(item=>item.reason).filter(Boolean).join(" ");}
+
 function normalizeProfileWithSettings(raw, st){
   const scores={...(raw?.scores||{})},notes={...(raw?.notes||{})};
   const legacyLength=legacyRpLengthData(raw);
@@ -4696,6 +4729,7 @@ function normalizeProfileWithSettings(raw, st){
     usualRpLength:legacyLength.usual,
     rpLengthMin:legacyLength.min,
     rpLengthMax:legacyLength.max,
+    blacklist:normalizeBlacklist(raw),
     scores,notes,
     createdAt:Number(raw?.createdAt||Date.now()),
     updatedAt:Number(raw?.updatedAt||Date.now())
@@ -4736,6 +4770,7 @@ function canonicalProfileFromRuntime(p){
       }
     },
     ratings,
+    blacklist:normalizeBlacklist(p),
     createdAt:Number(p?.createdAt||Date.now()),
     updatedAt:Number(p?.updatedAt||Date.now())
   };
@@ -4758,6 +4793,7 @@ function runtimeProfileFromCanonical(raw,st){
     usualRpLength:raw?.trpg?.rpLength?.usual,
     rpLengthMin:raw?.trpg?.rpLength?.min,
     rpLengthMax:raw?.trpg?.rpLength?.max,
+    blacklist:raw?.blacklist,
     scores,notes,
     createdAt:raw?.createdAt,
     updatedAt:raw?.updatedAt
@@ -5355,14 +5391,14 @@ const els = {
   compactAppBar:document.getElementById("compactAppBar"),compactSaveStatus:document.getElementById("compactSaveStatus"),
   moduleNativeStats:document.getElementById("moduleNativeStats"),moduleNativeSearch:document.getElementById("moduleNativeSearch"),moduleNativeHoFilter:document.getElementById("moduleNativeHoFilter"),moduleNativeLocationFilter:document.getElementById("moduleNativeLocationFilter"),moduleNativeSort:document.getElementById("moduleNativeSort"),moduleNativeGrid:document.getElementById("moduleNativeGrid"),newNativeModule:document.getElementById("newNativeModuleBtn"),openModuleAdvanced:document.getElementById("openModuleAdvancedBtn"),moduleCardsLayout:document.getElementById("moduleCardsLayoutBtn"),moduleCompactLayout:document.getElementById("moduleCompactLayoutBtn"),nativeModuleEditorBackdrop:document.getElementById("nativeModuleEditorBackdrop"),nativeModuleEditorTitle:document.getElementById("nativeModuleEditorTitle"),nativeModuleEditorContent:document.getElementById("nativeModuleEditorContent"),closeNativeModuleEditor:document.getElementById("closeNativeModuleEditorBtn"),cancelNativeModuleEditor:document.getElementById("cancelNativeModuleEditorBtn"),saveNativeModuleEditor:document.getElementById("saveNativeModuleEditorBtn"),moduleAdvancedBackdrop:document.getElementById("moduleAdvancedBackdrop"),closeModuleAdvanced:document.getElementById("closeModuleAdvancedBtn"),
   profilesViewBtn:document.getElementById("profilesViewBtn"),modulesViewBtn:document.getElementById("modulesViewBtn"),plansViewBtn:document.getElementById("plansViewBtn"),recordsViewBtn:document.getElementById("recordsViewBtn"),
-  grid:document.getElementById("profileGrid"),count:document.getElementById("countText"),search:document.getElementById("searchInput"),sort:document.getElementById("sortSelect"),cardLayout:document.getElementById("cardLayoutBtn"),compactLayout:document.getElementById("compactLayoutBtn"),
+  grid:document.getElementById("profileGrid"),count:document.getElementById("countText"),search:document.getElementById("searchInput"),sort:document.getElementById("sortSelect"),cardLayout:document.getElementById("cardLayoutBtn"),compactLayout:document.getElementById("compactLayoutBtn"),blacklistBtn:document.getElementById("blacklistBtn"),profilesToolbarTitle:document.getElementById("profilesToolbarTitle"),profilesToolbarSubtitle:document.getElementById("profilesToolbarSubtitle"),
   planBoard:document.getElementById("planBoard"),planSearch:document.getElementById("planSearchInput"),planCount:document.getElementById("planCountText"),planMonth:document.getElementById("planMonthCalendar"),planWeek:document.getElementById("planWeekCalendar"),newPlan:document.getElementById("newPlanBtn"),plannerWeekMode:document.getElementById("plannerWeekModeBtn"),plannerMonthMode:document.getElementById("plannerMonthModeBtn"),
   planEditorBackdrop:document.getElementById("planEditorBackdrop"),planEditorDrawer:document.getElementById("planEditorDrawer"),planEditorTitle:document.getElementById("planEditorTitle"),planEditorContent:document.getElementById("planEditorContent"),closePlanEditor:document.getElementById("closePlanEditorBtn"),
   recordsBoard:document.getElementById("recordsBoard"),recordsSearch:document.getElementById("recordsSearchInput"),newModuleName:document.getElementById("newModuleNameInput"),createModuleRecord:document.getElementById("createModuleRecordBtn"),expandAllRecords:document.getElementById("expandAllRecordsBtn"),collapseAllRecords:document.getElementById("collapseAllRecordsBtn"),
   newBtn:document.getElementById("newBtn"),settingsBtn:document.getElementById("settingsBtn"),overlay:document.getElementById("overlay"),globalCreate:document.getElementById("globalCreateBtn"),quickCreateMenu:document.getElementById("quickCreateMenu"),mobileBottomNav:document.getElementById("mobileBottomNav"),mobileToolsSheet:document.getElementById("mobileToolsSheet"),hoOrganizerBackdrop:document.getElementById("hoOrganizerBackdrop"),hoOrganizerTitle:document.getElementById("hoOrganizerTitle"),hoOrganizerSubtitle:document.getElementById("hoOrganizerSubtitle"),hoOrganizerStats:document.getElementById("hoOrganizerStats"),hoOrganizerNotice:document.getElementById("hoOrganizerNotice"),hoOrganizerBoard:document.getElementById("hoOrganizerBoard"),hoShowEmptyColumns:document.getElementById("hoShowEmptyColumns"),hoImageExport:document.getElementById("hoImageExportBtn"),hoImageExportMenu:document.getElementById("hoImageExportMenu"),copyHoOrganizer:document.getElementById("copyHoOrganizerBtn"),closeHoOrganizer:document.getElementById("closeHoOrganizerBtn"),closeHoOrganizerFoot:document.getElementById("closeHoOrganizerFootBtn"),
   autoSaveHeroStatus:document.getElementById("autoSaveHeroStatus"),autoSaveHeroText:document.getElementById("autoSaveHeroText"),dataSafetyBanner:document.getElementById("dataSafetyBanner"),dataSafetyBannerTitle:document.getElementById("dataSafetyBannerTitle"),dataSafetyBannerText:document.getElementById("dataSafetyBannerText"),dataSafetyBackupNow:document.getElementById("dataSafetyBackupNowBtn"),dataSafetyDismiss:document.getElementById("dataSafetyDismissBtn"),
   profileModalWrap:document.getElementById("profileModalWrap"),profileModal:document.getElementById("profileModal"),settingsModal:document.getElementById("settingsModal"),settingsPanels:document.querySelector(".settings-panels"),modalTitle:document.getElementById("modalTitle"),
-  name:document.getElementById("nameInput"),contact:document.getElementById("contactInput"),
+  name:document.getElementById("nameInput"),contact:document.getElementById("contactInput"),profileStatusValue:document.getElementById("profileStatusValue"),profileStatusDetail:document.getElementById("profileStatusDetail"),profileStatusAction:document.getElementById("profileStatusActionBtn"),profileStatusHistory:document.getElementById("profileStatusHistory"),profileStatusHistoryBody:document.getElementById("profileStatusHistoryBody"),
   birthDate:document.getElementById("birthDateInput"),startDate:document.getElementById("startDateInput"),gender:document.getElementById("genderInput"),
   usualRpLength:document.getElementById("usualRpLengthInput"),rpLengthMin:document.getElementById("rpLengthMinInput"),rpLengthMax:document.getElementById("rpLengthMaxInput"),
   sliderSection:document.getElementById("sliderSection"),
@@ -5750,28 +5786,66 @@ function initMobileUX(){
   if(typeof mobileMedia.addEventListener==="function")mobileMedia.addEventListener("change",handleMobileChange);
   else mobileMedia.addListener(handleMobileChange);
 }
+function formatBlacklistDate(ts){return ts?formatDateTime(ts):"—";}
+function blacklistHistoryHTML(profile){
+  const rows=[...normalizeBlacklist(profile).history].sort((a,b)=>(b.addedAt||0)-(a.addedAt||0));
+  if(!rows.length)return `<span class="blacklist-history-empty">暂无历史状态。</span>`;
+  return rows.map(item=>`<div class="blacklist-history-row"><strong>${escapeHTML(formatBlacklistDate(item.addedAt))}</strong><span>${escapeHTML(item.reason||"未填写原因")}</span><small>${item.removedAt?`移出：${escapeHTML(formatBlacklistDate(item.removedAt))}`:"当前黑名单"}</small></div>`).join("");
+}
+function blacklistCardHTML(p){
+  const b=normalizeBlacklist(p),roleStats=profileRoleStats(p.id),runs=profileRunRecords(p.id,runRecords),total=weightedScore(p);
+  const age=calculateAge(p.birthDate),runningDuration=formatRunningDuration(p.startDate),meta=[p.birthDate&&`出生：${p.birthDate}${age!==null?`（${age}岁）`:""}`,p.startDate&&`开始跑团：${p.startDate}${runningDuration?`（${runningDuration}）`:""}`,p.gender&&`性别：${p.gender}`,rpLengthText(p)].filter(Boolean);
+  const ratingRows=settings.fields.filter(f=>f.key!=="kpPlSide").map(f=>{const score=profileRatingScore(p,f.key),note=String(p.notes?.[f.key]||"").trim();return `<div class="blacklist-rating-row"><span>${escapeHTML(f.label)}</span><strong>${score===null?"无":`${score}/10`}</strong>${note?`<small>${escapeHTML(note)}</small>`:""}</div>`;}).join("");
+  const runRows=runs.map(r=>`<div class="blacklist-run-row"><strong>${escapeHTML(recordDisplayLabel(r,runRecords))}</strong><span>${escapeHTML([formatRunDateRange(r),kpDisplayText(r)&&`KP ${kpDisplayText(r)}`,participantPcHoSummary(r,p.id)].filter(Boolean).join(" · "))}</span></div>`).join("")||`<span class="blacklist-history-empty">暂无跑团记录。</span>`;
+  return `<article class="blacklist-card" data-id="${escapeHTML(p.id)}">
+    <div class="blacklist-card-head"><div><div class="blacklist-card-name">${profileNameHTML(p,"privacy-card-name")}<span class="blacklist-badge">黑名单</span></div><div class="blacklist-contact"><span>联系方式</span><strong>${profileContactHTML(p,"privacy-card-contact")}</strong></div></div><span class="blacklist-added">加入：${escapeHTML(formatBlacklistDate(b.addedAt))}</span></div>
+    <div class="blacklist-reason"><span>黑名单原因</span><p>${escapeHTML(b.reason||"未填写原因")}</p></div>
+    <details class="blacklist-archive"><summary>展开档案</summary><div class="blacklist-archive-body">
+      <div class="blacklist-archive-section"><strong>基本资料</strong><span>${meta.length?meta.map(x=>escapeHTML(x)).join(" · "):"暂无补充资料"}</span></div>
+      <div class="blacklist-archive-section"><strong>历史统计</strong><span>综合评分 ${fmtScore(total)}${total===null?"（待评分）":"/10"} · KP ${roleStats.kpCount} · PL ${roleStats.plCount} · ${runs.length} 桌记录</span>${roleDegreeHTML(roleStats,true)}</div>
+      <details class="blacklist-inner-details"><summary>评分明细</summary><div class="blacklist-rating-grid">${ratingRows}</div></details>
+      <details class="blacklist-inner-details"><summary>跑团足迹</summary><div class="blacklist-run-list">${runRows}</div></details>
+      <details class="blacklist-inner-details"><summary>状态历史</summary><div class="blacklist-history-list">${blacklistHistoryHTML(p)}</div></details>
+    </div></details>
+    <div class="blacklist-card-actions"><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑档案</button><button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button></div>
+  </article>`;
+}
+function syncProfileListModeUI(){
+  const blackCount=profiles.filter(isBlacklistedProfile).length,inBlacklist=profileListMode==="blacklist";
+  if(els.blacklistBtn){els.blacklistBtn.hidden=shareModeEnabled;els.blacklistBtn.textContent=inBlacklist?"← PL 档案":`黑名单${blackCount?` ${blackCount}`:""}`;els.blacklistBtn.classList.toggle("active",inBlacklist);}
+  if(els.newBtn)els.newBtn.hidden=inBlacklist;
+  if(els.profilesToolbarTitle)els.profilesToolbarTitle.textContent=inBlacklist?"黑名单":"PL 档案";
+  if(els.profilesToolbarSubtitle)els.profilesToolbarSubtitle.textContent=inBlacklist?"保留历史档案，重点显示联系方式、加入原因和状态记录。":"管理 PL 档案，支持搜索、评分排序、视图切换和跑团记录联动。";
+  if(els.search)els.search.placeholder=inBlacklist?"搜索姓名、联系方式或黑名单原因":"搜索姓名、联系方式、模组或备注";
+  if(els.sort){const sortWrap=els.sort.closest(".select-affordance");if(sortWrap){els.sort.hidden=false;sortWrap.hidden=inBlacklist;}else els.sort.hidden=inBlacklist;}
+  els.cardLayout?.parentElement?.toggleAttribute("hidden",inBlacklist);
+}
+
 function renderProfiles(){
+  syncProfileListModeUI();
   const q=els.search.value.trim().toLowerCase();
   const source=profiles.map(p => (draft && editingId===p.id ? draft : p));
-  const filtered=source.filter(p=>{
-    if(!q)return true;
-    return profileSearchText(p).includes(q);
-  });
-  const sorted=sortProfiles(filtered);
-  els.count.textContent=q?`${sorted.length} / ${profiles.length} 位 PL`:`${profiles.length} 位 PL`;
+  const modeRows=source.filter(p=>profileListMode==="blacklist"?isBlacklistedProfile(p):!isBlacklistedProfile(p));
+  const filtered=modeRows.filter(p=>!q||profileSearchText(p).includes(q));
+  const sorted=profileListMode==="blacklist"?[...filtered].sort((a,b)=>(b.blacklist?.addedAt||0)-(a.blacklist?.addedAt||0)||(b.updatedAt||0)-(a.updatedAt||0)):sortProfiles(filtered);
+  els.count.textContent=q?`${sorted.length} / ${modeRows.length} 位 PL`:`${modeRows.length} 位 PL`;
   syncProfileLayoutButtons();
   const compact=effectiveProfileLayout()==="compact";
-  els.grid.classList.toggle("compact-grid",compact);
+  els.grid.classList.toggle("compact-grid",profileListMode!=="blacklist"&&compact);
+  els.grid.classList.toggle("blacklist-grid",profileListMode==="blacklist");
 
   if(!sorted.length){
-    els.grid.innerHTML=`<div class="empty"><strong>${profiles.length?"无匹配结果":"暂无 PL 档案"}</strong><span>${profiles.length?"请调整搜索关键词。":"点击“＋ 新建 PL”开始记录。"}</span>${profiles.length&&q?`<div class="empty-actions"><button type="button" class="btn small" data-empty-clear-search="searchInput">清除搜索</button></div>`:""}</div>`;
+    const hasModeRows=modeRows.length>0;
+    const title=hasModeRows?"无匹配结果":profileListMode==="blacklist"?"黑名单为空":"暂无 PL 档案";
+    const detail=hasModeRows?"请调整搜索关键词。":profileListMode==="blacklist"?"可从 PL 档案将人员加入黑名单。":"点击“＋ 新建 PL”开始记录。";
+    els.grid.innerHTML=`<div class="empty"><strong>${title}</strong><span>${detail}</span>${hasModeRows&&q?`<div class="empty-actions"><button type="button" class="btn small" data-empty-clear-search="searchInput">清除搜索</button></div>`:""}</div>`;
     return;
   }
   const visibleRows=sorted.slice(0,profileRenderLimit);
-  els.grid.innerHTML=(compact?visibleRows.map(compactRowHTML).join(""):visibleRows.map(cardHTML).join(""))+(sorted.length>visibleRows.length?`<div class="load-more-row"><button type="button" class="btn" data-load-more-profiles>显示更多（${visibleRows.length}/${sorted.length}）</button></div>`:"");
+  const content=profileListMode==="blacklist"?visibleRows.map(blacklistCardHTML).join(""):(compact?visibleRows.map(compactRowHTML).join(""):visibleRows.map(cardHTML).join(""));
+  els.grid.innerHTML=content+(sorted.length>visibleRows.length?`<div class="load-more-row"><button type="button" class="btn" data-load-more-profiles>显示更多（${visibleRows.length}/${sorted.length}）</button></div>`:"");
   applySearchHighlights(els.grid,q);
 }
-
 
 /* ---------- PL HO 整理：从统一跑团数据生成 ---------- */
 const HO_ORGANIZER_PALETTE=[
@@ -6010,9 +6084,10 @@ function compactRowHTML(p){
     return `<span class="compact-score ${score===null?"is-unrated":""}">${escapeHTML(f.label)} <b>${score===null?"无":score}</b></span>`;
   }).join("");
   const scoreMore=mobileMedia.matches&&scoreFields.length>4?`<button type="button" class="compact-score-more" data-toggle-compact-scores="${escapeHTML(p.id)}">${scoreExpanded?"收起":`更多 ${scoreFields.length-4} 项`}</button>`:"";
-  return `<article class="compact-row ${roleStats.total?"role-tinted":""}" style="${roleCardStyle(roleStats)}" data-id="${escapeHTML(p.id)}">
+  const blacklisted=isBlacklistedProfile(p);
+  return `<article class="compact-row ${roleStats.total?"role-tinted":""} ${blacklisted?"is-blacklisted":""}" style="${roleCardStyle(roleStats)}" data-id="${escapeHTML(p.id)}">
     <div class="compact-person">
-      <div class="compact-name">${profileNameHTML(p,"privacy-compact-name")}${isSelfProfile(p)?`<span class="self-badge">本人</span>`:""}</div>
+      <div class="compact-name">${profileNameHTML(p,"privacy-compact-name")}${isSelfProfile(p)?`<span class="self-badge">本人</span>`:""}${blacklisted?`<span class="blacklist-badge">黑名单</span>`:""}</div>
       <div class="compact-meta">
         ${profileContactHTML(p,"privacy-compact-contact")}
         ${personalMeta?`<span aria-hidden="true"> · </span>${sensitiveHTML(personalMeta,"privacy-compact-personal")}`:""}
@@ -6022,7 +6097,7 @@ function compactRowHTML(p){
     </div>
     <div class="compact-total"><strong>${fmtScore(total)}</strong><span>${total===null?"待评分":"/10 综合"}</span></div>
     <div class="compact-scores" title="查看单项评分">${scores}${scoreMore}</div>
-    <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">HO 整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":`<button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
+    <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">HO 整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":blacklisted?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
 }
 
@@ -6092,7 +6167,7 @@ function cardHTML(p){
   return `<article class="card ${live?"live":""} ${cardCollapsed?"is-collapsed":""} ${roleStats.total?"role-tinted":""}" style="${roleCardStyle(roleStats)}" data-id="${escapeHTML(p.id)}">
     <div class="card-top">
       <div class="person">
-        <div class="name">${profileNameHTML(p,"privacy-card-name")}${isSelfProfile(p)?`<span class="self-badge">本人</span>`:""}</div>
+        <div class="name">${profileNameHTML(p,"privacy-card-name")}${isSelfProfile(p)?`<span class="self-badge">本人</span>`:""}${isBlacklistedProfile(p)?`<span class="blacklist-badge">黑名单</span>`:""}</div>
         <div class="contact">${profileContactHTML(p,"privacy-card-contact")}</div>
         ${privateMetaText?`<div class="profile-meta"><div class="profile-meta-row">${sensitiveHTML(privateMetaText,"privacy-profile-meta")}</div></div>`:""}
         ${rpLength?`<div class="rp-length-card">${rpLength}</div>`:""}
@@ -6121,10 +6196,69 @@ function cardHTML(p){
         <div class="run-list">${runCards}</div>
       </details>
     </div>
-    <div class="card-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}"><span class="ho-mini-dot"></span>HO 整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":`<button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
+    <div class="card-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}"><span class="ho-mini-dot"></span>HO 整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":isBlacklistedProfile(p)?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
 }
 
+
+function setBlacklistStateOnProfile(profile,active,reason=""){
+  const next=normalizeBlacklist(profile),now=Date.now();
+  if(active){
+    const text=String(reason||"").trim();if(!text)return false;
+    next.active=true;next.reason=text;next.addedAt=now;next.removedAt=0;
+    next.history.push({addedAt:now,removedAt:0,reason:text});
+  }else{
+    next.active=false;next.removedAt=now;
+    for(let i=next.history.length-1;i>=0;i--){if(!next.history[i].removedAt){next.history[i].removedAt=now;break;}}
+  }
+  profile.blacklist=next;profile.updatedAt=now;return true;
+}
+async function addProfileToBlacklist(profileId){
+  const p=profileById(profileId);if(!p||isSelfProfile(p)||isBlacklistedProfile(p))return false;
+  const reason=await appTextarea(`填写将“${displayProfileName(p)}”加入黑名单的原因。此信息会保存在档案中。`,"",{title:"加入黑名单",confirmText:"加入黑名单",danger:true,placeholder:"填写黑名单原因（必填）"});
+  if(reason===null)return false;if(!reason.trim()){appNotice("请填写黑名单原因。","无法加入");return false;}
+  try{await createSafetySnapshot("before-profile-blacklist");}catch(err){console.error(err);appNotice("无法创建操作前恢复点。为避免数据风险，本次操作已取消。","未加入黑名单");return false;}
+  const before=clone(profiles),beforeMode=profileListMode;
+  setBlacklistStateOnProfile(p,true,reason);
+  if(!saveState()){profiles=before;renderProfiles();return false;}
+  profileListMode="active";renderProfiles();renderRunPlans();renderRunRecords({preservePageScroll:true,centerSelected:false});
+  const pending=runPlans.filter(plan=>plan.kpProfileId===profileId||(plan.plIds||[]).includes(profileId));
+  if(pending.length){const viewPlans=await appConfirm(`已加入黑名单。该 PL 仍参与 ${pending.length} 个未完成计划，计划中已标记“黑名单”。`,{title:"已加入黑名单",confirmText:"查看计划",cancelText:"稍后处理"});if(viewPlans){switchView("plans");els.planSearch.value=rawProfileName(p);renderRunPlans();}}else showToast("已加入黑名单");
+  setPlanUndo({type:"profile-blacklist-state",profileId,before:before.find(x=>x.id===profileId),label:`${displayProfileName(p)} 已加入黑名单`});
+  return true;
+}
+async function removeProfileFromBlacklist(profileId){
+  const p=profileById(profileId);if(!p||!isBlacklistedProfile(p))return false;
+  if(!await appConfirm(`将“${displayProfileName(p)}”移出黑名单？\n\n档案与历史黑名单记录会继续保留。`,{title:"移出黑名单？",confirmText:"移出黑名单"}))return false;
+  try{await createSafetySnapshot("before-profile-blacklist-remove");}catch(err){console.error(err);appNotice("无法创建操作前恢复点。为避免数据风险，本次操作已取消。","未移出黑名单");return false;}
+  const before=clone(profiles);setBlacklistStateOnProfile(p,false);
+  if(!saveState()){profiles=before;renderProfiles();return false;}
+  renderProfiles();renderRunPlans();renderRunRecords({preservePageScroll:true,centerSelected:false});
+  setPlanUndo({type:"profile-blacklist-state",profileId,before:before.find(x=>x.id===profileId),label:`${displayProfileName(p)} 已移出黑名单`});
+  return true;
+}
+function renderProfileStatusEditor(){
+  if(!draft||!els.profileStatusValue)return;
+  const b=normalizeBlacklist(draft),active=b.active;
+  els.profileStatusValue.textContent=active?"黑名单":"正常";
+  els.profileStatusValue.classList.toggle("is-blacklisted",active);
+  els.profileStatusDetail.textContent=active?`原因：${b.reason||"未填写"}`:"当前可正常用于开团计划。";
+  els.profileStatusAction.textContent=active?"移出黑名单":"加入黑名单";
+  els.profileStatusAction.classList.toggle("danger",!active);
+  els.profileStatusAction.disabled=isSelfProfile(draft);
+  const rows=blacklistHistoryHTML(draft);const hasHistory=b.history.length>0;
+  els.profileStatusHistory.hidden=!hasHistory;if(hasHistory)els.profileStatusHistoryBody.innerHTML=rows;
+}
+async function toggleDraftBlacklist(){
+  if(!draft||isSelfProfile(draft))return;
+  if(isBlacklistedProfile(draft)){
+    if(!await appConfirm("将该 PL 移出黑名单？保存档案后生效，历史记录会保留。",{title:"移出黑名单？",confirmText:"移出黑名单"}))return;
+    setBlacklistStateOnProfile(draft,false);renderProfileStatusEditor();livePreview();updateAllEditorStateIndicators();scheduleEditorDraft("profile");return;
+  }
+  const reason=await appTextarea("填写黑名单原因。保存档案后生效。","",{title:"加入黑名单",confirmText:"加入黑名单",danger:true,placeholder:"填写黑名单原因（必填）"});
+  if(reason===null)return;if(!reason.trim()){appNotice("请填写黑名单原因。","无法加入");return;}
+  setBlacklistStateOnProfile(draft,true,reason);renderProfileStatusEditor();livePreview();updateAllEditorStateIndicators();scheduleEditorDraft("profile");
+}
 
 /* ---------- v7.8 弹窗滚动管理：任何模态界面打开时锁住背景页面 ---------- */
 let modalPageScrollState=null;
@@ -6204,6 +6338,7 @@ function openEditor(id=null,focusRuns=false,returnContext=null){
   els.contact.value=draft.contact;
   els.birthDate.value=draft.birthDate;els.startDate.value=draft.startDate;els.gender.value=draft.gender;
   els.usualRpLength.value=draft.usualRpLength;els.rpLengthMin.value=draft.rpLengthMin;els.rpLengthMax.value=draft.rpLengthMax;
+  renderProfileStatusEditor();
   els.quickRunModule.value="";els.quickRunName.value="";els.quickRunKp.value="";els.quickRunStart.value="";els.quickRunEnd.value="";els.quickRunLog.value="";
   renderSliderEditor();renderEditRuns();
   captureProfileEditorBaseline();
@@ -6775,7 +6910,7 @@ function captureCurrentViewState(view=currentView){
   if(!view||viewStateApplying)return;
   const base=viewSessionState[view]&&typeof viewSessionState[view]==="object"?viewSessionState[view]:{};
   const next={...base,scrollY:Math.max(0,Math.round(window.scrollY||0))};
-  if(view==="profiles"){next.search=els.search?.value||"";next.sort=els.sort?.value||settings.sortMode||"";next.layout=effectiveProfileLayout();}
+  if(view==="profiles"){next.search=els.search?.value||"";next.sort=els.sort?.value||settings.sortMode||"";next.layout=effectiveProfileLayout();next.mode=profileListMode;}
   if(view==="modules"){next.search=els.moduleNativeSearch?.value||"";next.ho=els.moduleNativeHoFilter?.value||"";next.location=els.moduleNativeLocationFilter?.value||"";next.sort=els.moduleNativeSort?.value||"updated";next.layout=normalizeUiSettings(settings.ui).moduleLayout;}
   if(view==="plans"){next.search=els.planSearch?.value||"";next.calendar=plannerViewMode;}
   if(view==="records"){next.search=els.recordsSearch?.value||"";next.module=selectedModuleName||"";}
@@ -6784,7 +6919,7 @@ function captureCurrentViewState(view=currentView){
 function applyViewSessionInputs(view){
   const s=viewSessionState[view]||{};viewStateApplying=true;
   try{
-    if(view==="profiles"){if(els.search)els.search.value=s.search||"";if(s.sort&&els.sort){els.sort.value=s.sort;if(els.sort.value===s.sort)settings.sortMode=s.sort;}}
+    if(view==="profiles"){if(els.search)els.search.value=s.search||"";if(s.sort&&els.sort){els.sort.value=s.sort;if(els.sort.value===s.sort)settings.sortMode=s.sort;}if(["active","blacklist"].includes(s.mode))profileListMode=s.mode;}
     if(view==="modules"){if(els.moduleNativeSearch)els.moduleNativeSearch.value=s.search||"";if(els.moduleNativeHoFilter)els.moduleNativeHoFilter.value=s.ho||"";if(els.moduleNativeLocationFilter)els.moduleNativeLocationFilter.value=s.location||"";if(els.moduleNativeSort)els.moduleNativeSort.value=s.sort||"updated";}
     if(view==="plans"){if(els.planSearch)els.planSearch.value=s.search||"";if(s.calendar&&["week","month"].includes(s.calendar)){plannerViewMode=s.calendar;document.body.dataset.plannerView=plannerViewMode;}}
     if(view==="records"){if(els.recordsSearch)els.recordsSearch.value=s.search||"";if(typeof s.module==="string")selectedModuleName=s.module;}
@@ -6883,6 +7018,12 @@ function renderPlanList(){
   </section>`).join("");
   applySearchHighlights(els.planBoard,q);
 }
+function planBlacklistedProfiles(plan){
+  if(shareModeEnabled)return [];
+  const ids=new Set([...(plan?.plIds||[]),plan?.kpProfileId].filter(Boolean));
+  return [...ids].map(profileById).filter(p=>p&&isBlacklistedProfile(p));
+}
+function planBlacklistRiskLabel(plan){const rows=planBlacklistedProfiles(plan);return rows.length?`黑名单 ${rows.length}`:"";}
 function planListItemHTML(plan){
   const status=planStatusInfo(plan),next=status.nextSlot;
   const participants=plan.plIds.length;
@@ -6890,10 +7031,11 @@ function planListItemHTML(plan){
   const nextText=status.key==="active"?`今天 · ${daypartInfo(next?.daypart).label}`:next?formatPlanSlot(next):status.key==="overdue"?"已过全部安排":"尚未安排";
   const title=plan.moduleName||"未命名模组";
   const table=plan.tableName?`<span class="plan-row-table"> · ${escapeHTML(plan.tableName)}</span>`:"";
-  return `<article class="plan-list-item ${picked?"picked":""} ${status.key==="active"?"active-now":""}" data-plan-row="${escapeHTML(plan.id)}">
+  const blacklistRisk=planBlacklistedProfiles(plan);
+  return `<article class="plan-list-item ${picked?"picked":""} ${status.key==="active"?"active-now":""} ${blacklistRisk.length?"has-blacklist-risk":""}" data-plan-row="${escapeHTML(plan.id)}">
     <button class="plan-drag-grip" type="button" draggable="true" data-drag-plan="${escapeHTML(plan.id)}" aria-label="拖动安排 ${escapeHTML(title)}" title="拖到周历安排">⠿</button>
     <button class="plan-row-main" type="button" data-open-plan-editor="${escapeHTML(plan.id)}" title="编辑计划">
-      <div class="plan-row-titleline"><span class="plan-row-title">${escapeHTML(title)}${table}</span><span class="plan-row-status ${status.key}">${status.label}</span></div>
+      <div class="plan-row-titleline"><span class="plan-row-title">${escapeHTML(title)}${table}${blacklistRisk.length?`<span class="plan-blacklist-risk">黑名单 ${blacklistRisk.length}</span>`:""}</span><span class="plan-row-status ${status.key}">${status.label}</span></div>
       <div class="plan-row-meta"><span class="plan-row-next">${escapeHTML(nextText)}</span><span>· KP ${kpDisplayHTML(plan,"privacy-chip-name")}</span><span>· ${participants} PL</span>${assignmentCoverageText(plan)?`<span class="plan-row-ho">· ${escapeHTML(assignmentCoverageText(plan))}</span>`:""}</div>
     </button>
     <div class="plan-row-actions">
@@ -6971,11 +7113,11 @@ function plannerWeekHTML(){
       const events=calendarSlotsForDate(iso).filter(x=>slotDaypart(x.slot)===part.key);
       const full=events.length>=MAX_RUNS_PER_DAYPART;
       const occupancyClass=`occupancy-${Math.min(events.length,MAX_RUNS_PER_DAYPART)}`;
-      const eventHtml=events.map(({plan,slot})=>`<div class="calendar-event" draggable="true" data-week-event-plan="${escapeHTML(plan.id)}" data-week-event-slot="${escapeHTML(slot.id)}" title="拖动改期或排序；拖出日历取消；点击编辑">
-        <div class="calendar-event-time">${part.label}</div>
+      const eventHtml=events.map(({plan,slot})=>{const risk=planBlacklistedProfiles(plan);return `<div class="calendar-event ${risk.length?"has-blacklist-risk":""}" draggable="true" data-week-event-plan="${escapeHTML(plan.id)}" data-week-event-slot="${escapeHTML(slot.id)}" title="${risk.length?`包含 ${risk.length} 位黑名单人员；`:""}拖动改期或排序；拖出日历取消；点击编辑">
+        <div class="calendar-event-time">${part.label}${risk.length?`<span class="calendar-risk-badge">黑</span>`:""}</div>
         <div class="calendar-event-name">${escapeHTML(plannerPlanLabel(plan))}</div>
         <button class="calendar-event-remove" type="button" data-unschedule-event data-unschedule-plan-id="${escapeHTML(plan.id)}" data-unschedule-slot-id="${escapeHTML(slot.id)}" aria-label="取消安排" title="取消安排">×</button>
-      </div>`).join("");
+      </div>`;}).join("");
       return `<div class="week-slot ${occupancyClass} ${picked&&!full?"pick-ready":""} ${full?"full":""}" data-calendar-date="${iso}" data-daypart="${part.key}"><span class="week-slot-capacity">${events.length}/${MAX_RUNS_PER_DAYPART}</span><span class="week-slot-add">${full?"已满":"＋"}</span><div class="week-slot-events">${eventHtml}</div></div>`;
     }).join("");
     return `<div class="week-time-label"><strong>${part.label}</strong><span>${part.hint}</span></div>${cells}`;
@@ -7149,9 +7291,12 @@ function renderPlanEditor(){
   if(!editingPlanId)return;
   const plan=runPlans.find(p=>p.id===editingPlanId);
   if(!plan){closePlanEditor();return;}
-  const profileOptions=[...profiles].sort((a,b)=>(a.name||"").localeCompare(b.name||"","zh-CN"));
+  const currentKpProfile=profileById(plan.kpProfileId);
+  const profileOptions=profiles.filter(p=>!isBlacklistedProfile(p)||p.id===plan.kpProfileId).sort((a,b)=>(a.name||"").localeCompare(b.name||"","zh-CN"));
+  const blacklistedKpOptions=profiles.filter(p=>isBlacklistedProfile(p)&&p.id!==plan.kpProfileId).sort((a,b)=>(a.name||"").localeCompare(b.name||"","zh-CN"));
   const participants=plan.plIds.map(id=>profiles.find(p=>p.id===id)).filter(Boolean);
-  const available=profiles.filter(p=>!plan.plIds.includes(p.id)).sort((a,b)=>(a.name||"").localeCompare(b.name||"","zh-CN"));
+  const available=profiles.filter(p=>!isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)).sort((a,b)=>(a.name||"").localeCompare(b.name||"","zh-CN"));
+  const blacklistedAvailable=profiles.filter(p=>isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)).sort((a,b)=>(a.name||"").localeCompare(b.name||"","zh-CN"));
   const kpProfile=linkedKpProfile(plan);
   const schedules=sortedPlanSlots(plan).filter(s=>s.date);
   const status=planStatusInfo(plan);
@@ -7177,11 +7322,13 @@ function renderPlanEditor(){
       <div class="plan-editor-kp">
         <select class="plan-participant-select" data-plan-editor-kp-profile>
           <option value="">自定义 / 外部 KP</option>
-          ${profileOptions.map(p=>`<option value="${escapeHTML(p.id)}" ${plan.kpProfileId===p.id?"selected":""}>${escapeHTML(selfOptionLabel(p))}</option>`).join("")}
+          ${profileOptions.map(p=>`<option value="${escapeHTML(p.id)}" ${plan.kpProfileId===p.id?"selected":""}>${escapeHTML(selfOptionLabel(p))}${isBlacklistedProfile(p)?"（黑名单）":""}</option>`).join("")}
         </select>
         <input class="text-input" data-plan-editor-field="kp" value="${escapeHTML(plan.kp)}" placeholder="${kpProfile?`已关联：${escapeHTML(displayProfileName(kpProfile))}`:"输入 KP 名称"}" ${kpProfile?"disabled":""}>
       </div>
       <div class="plan-editor-help">PL 档案可直接选作本桌 KP；KPC 不计入 PL 人数。</div>
+      ${currentKpProfile&&isBlacklistedProfile(currentKpProfile)?`<div class="blacklist-plan-warning">当前 KP 在黑名单中：${escapeHTML(currentKpProfile.blacklist?.reason||"未填写原因")}</div>`:""}
+      ${blacklistedKpOptions.length?`<details class="blacklist-plan-picker"><summary>从黑名单选择 KP</summary><div class="blacklist-plan-picker-row"><select class="plan-participant-select" data-editor-blacklist-kp-select><option value="">选择黑名单 PL…</option>${blacklistedKpOptions.map(p=>`<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))}</option>`).join("")}</select><button class="btn small" type="button" data-editor-blacklist-kp>设为 KP</button></div></details>`:""}
       ${kpcEditorHTML(plan,"plan")}
     </section>
 
@@ -7191,11 +7338,13 @@ function renderPlanEditor(){
         ${moduleHoInlineControlHTML(plan)}
       </div>
       ${legacyHoMigrationNote(plan)}
+      ${participants.some(isBlacklistedProfile)?`<div class="blacklist-plan-warning">本桌包含 ${participants.filter(isBlacklistedProfile).length} 位黑名单 PL。请确认后续安排。</div>`:""}
       <div class="participant-assignment-list">
         ${participants.length?participants.map(p=>participantAssignmentRowHTML(plan,p,"plan","data-editor-remove-pl","data-editor-open-profile")).join(""):`<span class="plan-editor-empty">未关联 PL。</span>`}
       </div>
       ${moduleHoSystemForEntity(plan)==="has"?`<label class="shared-ho-note"><span class="field-label">共通 HO / 补充（可选）</span><input class="text-input" data-plan-editor-field="sharedHoNote" value="${escapeHTML(plan.sharedHoNote||"")}" placeholder="输入共通 HO 或补充说明"></label>`:""}
       <div class="plan-editor-add"><select class="plan-participant-select" data-editor-add-pl-select><option value="">选择已有 PL…</option>${available.map(p=>`<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))}</option>`).join("")}</select><button class="btn small" type="button" data-editor-add-pl ${available.length?"":"disabled"}>＋ 添加</button></div>
+      ${blacklistedAvailable.length?`<details class="blacklist-plan-picker"><summary>从黑名单添加 PL</summary><div class="blacklist-plan-picker-row"><select class="plan-participant-select" data-editor-add-blacklist-pl-select><option value="">选择黑名单 PL…</option>${blacklistedAvailable.map(p=>`<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))} · ${escapeHTML(String(p.blacklist?.reason||"未填写原因").slice(0,28))}</option>`).join("")}</select><button class="btn small" type="button" data-editor-add-blacklist-pl>仍然添加</button></div></details>`:""}
     </section>
 
     <section class="plan-editor-block">
@@ -7884,28 +8033,29 @@ function ensureActionDialog(){
   let back=document.getElementById("actionDialogBackdrop");
   if(!back){
     back=document.createElement("div");back.id="actionDialogBackdrop";back.className="action-dialog-backdrop";back.hidden=true;
-    back.innerHTML=`<section class="action-dialog" role="dialog" aria-modal="true" aria-labelledby="actionDialogTitle"><h3 id="actionDialogTitle">请确认</h3><div id="actionDialogMessage" class="action-dialog-message"></div><input id="actionDialogInput" class="action-dialog-input" hidden><select id="actionDialogSelect" class="action-dialog-select" hidden></select><div class="action-dialog-actions"><button id="actionDialogCancel" class="btn" type="button">取消</button><button id="actionDialogConfirm" class="btn primary" type="button">确认</button></div></section>`;
+    back.innerHTML=`<section class="action-dialog" role="dialog" aria-modal="true" aria-labelledby="actionDialogTitle"><h3 id="actionDialogTitle">请确认</h3><div id="actionDialogMessage" class="action-dialog-message"></div><input id="actionDialogInput" class="action-dialog-input" hidden><textarea id="actionDialogTextarea" class="action-dialog-input action-dialog-textarea" rows="5" hidden></textarea><select id="actionDialogSelect" class="action-dialog-select" hidden></select><div class="action-dialog-actions"><button id="actionDialogCancel" class="btn" type="button">取消</button><button id="actionDialogConfirm" class="btn primary" type="button">确认</button></div></section>`;
     document.body.appendChild(back);
   }
   if(back.dataset.bound!=="1"){
     back.dataset.bound="1";
     back.addEventListener("click",e=>{if(e.target===back)finishActionDialog(null)});
     back.querySelector("#actionDialogCancel")?.addEventListener("click",()=>finishActionDialog(null));
-    back.querySelector("#actionDialogConfirm")?.addEventListener("click",()=>{const input=back.querySelector("#actionDialogInput"),select=back.querySelector("#actionDialogSelect");finishActionDialog(!input.hidden?input.value:!select.hidden?select.value:true)});
+    back.querySelector("#actionDialogConfirm")?.addEventListener("click",()=>{const input=back.querySelector("#actionDialogInput"),textarea=back.querySelector("#actionDialogTextarea"),select=back.querySelector("#actionDialogSelect");finishActionDialog(!textarea.hidden?textarea.value:!input.hidden?input.value:!select.hidden?select.value:true)});
   }
   return back;
 }
 function finishActionDialog(value){const back=document.getElementById("actionDialogBackdrop");if(!back||back.hidden)return;back.hidden=true;syncModalPageScrollLock();const resolve=actionDialogResolver;actionDialogResolver=null;resolve?.(value);}
-function openActionDialog(message,{title="请确认",confirmText="确认",cancelText="取消",danger=false,input=false,value="",selectOptions=null,selectValue=""}={}){
-  const back=ensureActionDialog(),msg=back.querySelector("#actionDialogMessage"),field=back.querySelector("#actionDialogInput"),select=back.querySelector("#actionDialogSelect"),ok=back.querySelector("#actionDialogConfirm"),cancel=back.querySelector("#actionDialogCancel");
+function openActionDialog(message,{title="请确认",confirmText="确认",cancelText="取消",danger=false,input=false,textarea=false,value="",placeholder="",selectOptions=null,selectValue=""}={}){
+  const back=ensureActionDialog(),msg=back.querySelector("#actionDialogMessage"),field=back.querySelector("#actionDialogInput"),area=back.querySelector("#actionDialogTextarea"),select=back.querySelector("#actionDialogSelect"),ok=back.querySelector("#actionDialogConfirm"),cancel=back.querySelector("#actionDialogCancel");
   if(actionDialogResolver)finishActionDialog(null);const useSelect=Array.isArray(selectOptions)&&selectOptions.length>0;
   back.querySelector("#actionDialogTitle").textContent=title;msg.textContent=String(message||"");ok.textContent=confirmText;cancel.textContent=cancelText;cancel.hidden=!cancelText;ok.classList.toggle("danger",danger);
-  field.hidden=!input;field.value=input?String(value||""):"";select.hidden=!useSelect;select.innerHTML=useSelect?selectOptions.map(o=>`<option value="${escapeHTML(String(o.value??""))}">${escapeHTML(String(o.label??o.value??""))}</option>`).join(""):"";if(useSelect)select.value=String(selectValue||selectOptions[0]?.value||"");
-  back.hidden=false;syncModalPageScrollLock();const focusTarget=input?field:useSelect?select:ok;
+  field.hidden=!input;field.value=input?String(value||""):"";field.placeholder=input?String(placeholder||""):"";area.hidden=!textarea;area.value=textarea?String(value||""):"";area.placeholder=textarea?String(placeholder||""):"";select.hidden=!useSelect;select.innerHTML=useSelect?selectOptions.map(o=>`<option value="${escapeHTML(String(o.value??""))}">${escapeHTML(String(o.label??o.value??""))}</option>`).join(""):"";if(useSelect)select.value=String(selectValue||selectOptions[0]?.value||"");
+  back.hidden=false;syncModalPageScrollLock();const focusTarget=textarea?area:input?field:useSelect?select:ok;
   return new Promise(resolve=>{actionDialogResolver=resolve;requestAnimationFrame(()=>{try{focusTarget.focus({preventScroll:true})}catch(err){focusTarget.focus()}})});
 }
 async function appConfirm(message,opts={}){return (await openActionDialog(message,opts))===true;}
 async function appPrompt(message,value="",opts={}){const result=await openActionDialog(message,{...opts,input:true,value,confirmText:opts.confirmText||"确定"});return typeof result==="string"?result:null;}
+async function appTextarea(message,value="",opts={}){const result=await openActionDialog(message,{...opts,textarea:true,value,confirmText:opts.confirmText||"确定"});return typeof result==="string"?result:null;}
 async function appSelect(message,options,value="",opts={}){const result=await openActionDialog(message,{...opts,selectOptions:options,selectValue:value,confirmText:opts.confirmText||"确定"});return typeof result==="string"?result:null;}
 function appNotice(message,title="提示"){void openActionDialog(message,{title,confirmText:"知道了",cancelText:""});}
 
@@ -8602,7 +8752,8 @@ function profileSearchText(p){
   const key=String(p.id||"");const cached=profileSearchCache.get(key);if(cached)return cached;
   const related=recordsForProfileView(p);
   const runText=related.flatMap(r=>[r.moduleName,r.tableName,r.startDate,r.endDate,r.legacyDuration,kpTextLabel(r),r.kp,r.logUrl,participantDisplaySummary(r),hoAssignmentSummary(r),r.sharedHoNote]);
-  const value=[p.name,p.contact,p.birthDate,p.startDate,p.gender,p.usualRpLength,p.rpLengthMin,p.rpLengthMax,...runText,...Object.values(p.notes||{})].join(" ").toLowerCase();
+  const blacklistSearch=isBlacklistedProfile(p)?[p.blacklist?.reason,blacklistHistoryText(p)]:[];
+  const value=[p.name,p.contact,p.birthDate,p.startDate,p.gender,p.usualRpLength,p.rpLengthMin,p.rpLengthMax,...blacklistSearch,...runText,...Object.values(p.notes||{})].join(" ").toLowerCase();
   profileSearchCache.set(key,value);return value;
 }
 function moduleSearchText(m){if(shareModeEnabled)return [m.name,m.author,m.source,m.location,m.era,m.players,m.duration,m.nature].join(" ").toLowerCase();const key=String(m.id||"");const cached=moduleSearchCache.get(key);if(cached)return cached;const value=[m.name,m.author,m.source,m.location,m.era,m.players,m.duration,m.nature,m.notes,m.rules,m.recommendedSkills,m.cardRequirements,m.recommendedOccupations,m.background,m.recruitmentNotes].join(" ").toLowerCase();moduleSearchCache.set(key,value);return value;}
@@ -8740,7 +8891,7 @@ function profileDirtySnapshot(profile){
   const p=normalizeProfile(profile);
   return {
     systemRole:String(p.systemRole||""),name:String(p.name||""),contact:String(p.contact||""),birthDate:String(p.birthDate||""),startDate:String(p.startDate||""),gender:String(p.gender||""),
-    usualRpLength:String(p.usualRpLength||""),rpLengthMin:String(p.rpLengthMin||""),rpLengthMax:String(p.rpLengthMax||""),scores:clone(p.scores||{}),notes:clone(p.notes||{})
+    usualRpLength:String(p.usualRpLength||""),rpLengthMin:String(p.rpLengthMin||""),rpLengthMax:String(p.rpLengthMax||""),blacklist:normalizeBlacklist(p),scores:clone(p.scores||{}),notes:clone(p.notes||{})
   };
 }
 function profileRunDraftDirtySnapshot(records){
@@ -8936,11 +9087,11 @@ function maybeShowOnboarding(){let done=false;try{done=localStorage.getItem(ONBO
 
 /* 全局搜索 */
 function buildGlobalSearchRows(q){q=String(q||"").trim().toLowerCase();if(!q)return [];
-  const rows=[];profiles.forEach(p=>{const hay=profileSearchText(p);if(hay.includes(q))rows.push({type:"PL",title:displayProfileName(p),meta:`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id}});});modules.forEach(m=>{if(moduleSearchText(m).includes(q))rows.push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}});});runPlans.forEach(p=>{const hay=(shareModeEnabled?[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),...(p.timeSlots||[]).map(s=>s.date)]:[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),p.sharedHoNote,...(p.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),p.kpc?.pcName,p.kpc?.hoCustom,...(p.timeSlots||[]).map(s=>s.date)]).join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}});});runRecords.forEach(r=>{const hay=(shareModeEnabled?[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate]:[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate,r.logUrl,r.actualDuration,r.thoughts,r.runNotes,r.sharedHoNote,hoAssignmentSummary(r),...(r.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),r.kpc?.pcName,r.kpc?.hoCustom]).join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"记录",title:recordDisplayLabel(r,runRecords),meta:(shareModeEnabled?[r.startDate,kpDisplayText(r)]:[r.startDate,kpDisplayText(r),r.thoughts&&String(r.thoughts).slice(0,30)]).filter(Boolean).join(" · "),action:{view:"records",id:r.id,moduleName:r.moduleName}});});return rows;}
+  const rows=[];profiles.forEach(p=>{const hay=profileSearchText(p);if(hay.includes(q)){const black=!shareModeEnabled&&isBlacklistedProfile(p);rows.push({type:black?"PL · 黑名单":"PL",title:displayProfileName(p),meta:black&&!shareModeEnabled?[rawProfileContact(p),p.blacklist?.reason].filter(Boolean).join(" · "):`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id,blacklist:black}});}});modules.forEach(m=>{if(moduleSearchText(m).includes(q))rows.push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}});});runPlans.forEach(p=>{const hay=(shareModeEnabled?[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),...(p.timeSlots||[]).map(s=>s.date)]:[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),p.sharedHoNote,...(p.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),p.kpc?.pcName,p.kpc?.hoCustom,...(p.timeSlots||[]).map(s=>s.date)]).join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}});});runRecords.forEach(r=>{const hay=(shareModeEnabled?[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate]:[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate,r.logUrl,r.actualDuration,r.thoughts,r.runNotes,r.sharedHoNote,hoAssignmentSummary(r),...(r.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),r.kpc?.pcName,r.kpc?.hoCustom]).join(" ").toLowerCase();if(hay.includes(q))rows.push({type:"记录",title:recordDisplayLabel(r,runRecords),meta:(shareModeEnabled?[r.startDate,kpDisplayText(r)]:[r.startDate,kpDisplayText(r),r.thoughts&&String(r.thoughts).slice(0,30)]).filter(Boolean).join(" · "),action:{view:"records",id:r.id,moduleName:r.moduleName}});});return rows;}
 function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);const shown=Math.min(globalSearchVisibleCount,globalSearchRows.length);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,shown-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨四个页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">无匹配结果。<button type="button" class="btn small" data-empty-clear-search="globalSearchInput">清除搜索</button></div>`;return;}const visible=globalSearchRows.slice(0,shown);box.innerHTML=visible.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("")+`<div class="global-search-progress"><span>显示 ${visible.length} / ${globalSearchRows.length} 条结果</span>${visible.length<globalSearchRows.length?`<button type="button" class="btn small" data-global-search-more>继续显示</button>`:""}</div>`;applySearchHighlights(box,q.trim().toLowerCase());}
 function openGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=false;globalSearchActiveIndex=0;globalSearchVisibleCount=GLOBAL_SEARCH_BATCH;document.getElementById("globalSearchInput").value="";renderGlobalSearch();syncModalPageScrollLock();setTimeout(()=>document.getElementById("globalSearchInput").focus(),30);}
 function closeGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=true;syncModalPageScrollLock();}
-function activateGlobalSearchResult(index){const r=globalSearchRows[index];if(!r)return;closeGlobalSearch();if(r.action.view==="profiles"){switchView("profiles");els.search.value="";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(r.action.id)}"],.compact-row[data-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="modules"){switchView("modules");els.moduleNativeSearch.value="";renderNativeModules();requestAnimationFrame(()=>document.querySelector(`[data-native-module-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="plans"){switchView("plans");requestAnimationFrame(()=>document.querySelector(`[data-plan-row="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else{const rec=runRecords.find(x=>x.id===r.action.id);if(rec){selectedModuleName=rec.moduleName;setRunRecordCollapsed(rec.id,false);}switchView("records");requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}}
+function activateGlobalSearchResult(index){const r=globalSearchRows[index];if(!r)return;closeGlobalSearch();if(r.action.view==="profiles"){profileListMode=r.action.blacklist?"blacklist":"active";switchView("profiles");els.search.value="";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(r.action.id)}"],.compact-row[data-id="${CSS.escape(r.action.id)}"],.blacklist-card[data-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="modules"){switchView("modules");els.moduleNativeSearch.value="";renderNativeModules();requestAnimationFrame(()=>document.querySelector(`[data-native-module-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="plans"){switchView("plans");requestAnimationFrame(()=>document.querySelector(`[data-plan-row="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else{const rec=runRecords.find(x=>x.id===r.action.id);if(rec){selectedModuleName=rec.moduleName;setRunRecordCollapsed(rec.id,false);}switchView("records");requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}}
 
 /* 设置搜索 */
 const SETTINGS_LABELS={appearance:"外观","pl-rating":"PL 评分","module-rating":"模组评分",behavior:"显示设置",data:"数据与备份"};
@@ -8948,9 +9099,9 @@ function renderSettingsSearch(){const input=document.getElementById("settingsSea
 function focusSettingsSearchResult(key,q){activateSettingsPanel(key);const panel=document.querySelector(`[data-settings-panel="${CSS.escape(key)}"]`);if(!panel)return;const candidates=[...panel.querySelectorAll("h3,strong,label,summary,button")],target=candidates.find(el=>(el.textContent||"").toLowerCase().includes(String(q||"").toLowerCase()))||panel;requestAnimationFrame(()=>{const group=target.closest("details.data-safety-group,details.settings-collapsible");if(group)group.open=true;target.scrollIntoView({block:"center",behavior:"smooth"});target.classList.add("settings-search-flash");setTimeout(()=>target.classList.remove("settings-search-flash"),1400);});document.getElementById("settingsSearchResults").hidden=true;}
 
 /* 分享模式 */
-const SHARE_MUTATION_SELECTOR='#newBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],#settingsBtn,[data-open-settings]';
+const SHARE_MUTATION_SELECTOR='#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],#settingsBtn,[data-open-settings]';
 function updateShareModeUI(){document.body.classList.toggle("share-mode",shareModeEnabled);const btn=document.getElementById("shareModeBtn");if(btn){btn.textContent=shareModeEnabled?"退":"分";btn.setAttribute("aria-pressed",shareModeEnabled?"true":"false");btn.title=shareModeEnabled?"退出分享模式":"分享模式";}document.querySelectorAll("[data-mobile-share]").forEach(x=>x.textContent=shareModeEnabled?"退 退出分享模式":"分享 分享模式");}
-function toggleShareMode(force){shareModeEnabled=typeof force==="boolean"?force:!shareModeEnabled;try{sessionStorage.setItem(SHARE_MODE_SESSION_KEY,shareModeEnabled?"1":"0");}catch(err){}profileSearchCache.clear();moduleSearchCache.clear();updateShareModeUI();renderAllPrimaryViews();if(!document.getElementById("globalSearchBackdrop").hidden)renderGlobalSearch();showToast(shareModeEnabled?"已开启分享模式：敏感资料、敏感搜索命中与编辑入口已隐藏":"已退出分享模式");}
+function toggleShareMode(force){shareModeEnabled=typeof force==="boolean"?force:!shareModeEnabled;if(shareModeEnabled&&profileListMode==="blacklist")profileListMode="active";try{sessionStorage.setItem(SHARE_MODE_SESSION_KEY,shareModeEnabled?"1":"0");}catch(err){}profileSearchCache.clear();moduleSearchCache.clear();updateShareModeUI();renderAllPrimaryViews();if(!document.getElementById("globalSearchBackdrop").hidden)renderGlobalSearch();showToast(shareModeEnabled?"已开启分享模式：敏感资料、敏感搜索命中与编辑入口已隐藏":"已退出分享模式");}
 function initShareMode(){try{shareModeEnabled=sessionStorage.getItem(SHARE_MODE_SESSION_KEY)==="1";}catch(err){}updateShareModeUI();document.addEventListener("click",e=>{if(!shareModeEnabled)return;const blocked=e.target.closest(SHARE_MUTATION_SELECTOR);if(!blocked)return;e.preventDefault();e.stopImmediatePropagation();showToast("分享模式下已关闭编辑操作");},true);}
 
 /* 设备迁移 */
@@ -9127,7 +9278,7 @@ function currentEditorDraftPayload(kind){
 function flushEditorDraftNow(){clearTimeout(editorDraftTimer);editorDraftTimer=0;try{const store=readEditorDraftStore();for(const kind of ["profile","module","settings"]){const active=(kind==="profile"&&draft)||(kind==="module"&&nativeModuleDraft)||(kind==="settings"&&settingsDraft);if(!active)continue;if(!editorDirty(kind)){delete store[kind];continue;}const payload=currentEditorDraftPayload(kind);if(payload)store[kind]=payload;}writeEditorDraftStore(store);}catch(err){}}
 function scheduleEditorDraft(kind){clearTimeout(editorDraftTimer);editorDraftTimer=setTimeout(flushEditorDraftNow,450);}
 function flushPendingInteractionSaves(){try{flushPlanInputSave();}catch(err){}try{flushRecordInputSave();}catch(err){}try{flushEditorDraftNow();}catch(err){}}
-function applyProfileDraftToForm(){if(!draft)return;const self=isSelfProfile(draft);els.name.value=self?SELF_DEFAULT_NAME:draft.name;els.name.disabled=self;els.contact.value=draft.contact||"";els.birthDate.value=draft.birthDate||"";els.startDate.value=draft.startDate||"";els.gender.value=draft.gender||"";els.usualRpLength.value=draft.usualRpLength||"";els.rpLengthMin.value=draft.rpLengthMin||"";els.rpLengthMax.value=draft.rpLengthMax||"";renderSliderEditor();renderEditRuns();updateAllEditorStateIndicators();}
+function applyProfileDraftToForm(){if(!draft)return;const self=isSelfProfile(draft);els.name.value=self?SELF_DEFAULT_NAME:draft.name;els.name.disabled=self;els.contact.value=draft.contact||"";els.birthDate.value=draft.birthDate||"";els.startDate.value=draft.startDate||"";els.gender.value=draft.gender||"";els.usualRpLength.value=draft.usualRpLength||"";els.rpLengthMin.value=draft.rpLengthMin||"";els.rpLengthMax.value=draft.rpLengthMax||"";renderProfileStatusEditor();renderSliderEditor();renderEditRuns();updateAllEditorStateIndicators();}
 async function offerEditorDraftRecovery(kind){
   const row=readEditorDraftStore()[kind];if(!row||!row.data||Date.now()-Number(row.savedAt||0)>7*86400000)return false;
   const expected=kind==="profile"?(editingId||""):kind==="module"?(nativeModuleEditingId||""):"settings";if(String(row.editingId||"")!==String(expected))return false;
@@ -9152,6 +9303,7 @@ function restoreLinkedReturnContext(ctx){if(!ctx)return;const view=ctx.view||"pr
 
 function setPlanUndo(entry){planUndoEntry={...entry,createdAt:Date.now()};const box=document.getElementById("undoToast"),text=document.getElementById("undoToastText");if(!box||!text)return;text.textContent=entry.label||"计划已更新";box.hidden=false;clearTimeout(setPlanUndo._t);setPlanUndo._t=setTimeout(()=>{box.hidden=true;planUndoEntry=null;},7000);}
 function undoLastPlanAction(){const entry=planUndoEntry;if(!entry)return;planUndoEntry=null;document.getElementById("undoToast").hidden=true;clearTimeout(setPlanUndo._t);
+  if(entry.type==="profile-blacklist-state"){const i=profiles.findIndex(p=>p.id===entry.profileId);if(i<0)return;const current=clone(profiles[i]);profiles[i]=normalizeProfile(clone(entry.before));if(!saveState()){profiles[i]=current;return;}renderProfiles();renderRunPlans();renderRunRecords({preservePageScroll:true,centerSelected:false});showToast("已撤销黑名单状态变更");return;}
   if(entry.type==="replace-plan"){const i=runPlans.findIndex(p=>p.id===entry.planId);if(i<0)return;const restored=normalizeRunPlan(clone(entry.before),new Set(profiles.map(p=>p.id)));if(entry.removeIfBlank&&!isMeaningfulRunPlan(restored)){runPlans.splice(i,1);transientPlanIds.delete(entry.planId);newPlanSessionIds.delete(entry.planId);}else runPlans[i]=restored;if(!saveState())return;renderRunPlans();if(editingPlanId===entry.planId){if(runPlans.some(p=>p.id===entry.planId))renderPlanEditor();else closePlanEditor();}showToast("已撤销刚才的计划操作");return;}
   if(entry.type==="replace-plans"){const old=clone(runPlans),valid=new Set(profiles.map(p=>p.id));for(const snap of entry.plans||[]){const i=runPlans.findIndex(p=>p.id===snap.id);if(i>=0)runPlans[i]=normalizeRunPlan(clone(snap),valid);}if(!saveState()){runPlans=old;return;}renderRunPlans();if(editingPlanId)renderPlanEditor();showToast("已撤销刚才的排期调整");return;}
   if(entry.type==="replace-plan-and-remove-module"){const oldPlans=clone(runPlans),oldModules=clone(modules),i=runPlans.findIndex(p=>p.id===entry.planId);if(i>=0)runPlans[i]=normalizeRunPlan(clone(entry.before),new Set(profiles.map(p=>p.id)));modules=modules.filter(m=>m.id!==entry.moduleId);if(!saveState()){runPlans=oldPlans;modules=oldModules;return;}renderNativeModules();renderRunPlans();if(editingPlanId===entry.planId)renderPlanEditor();showToast("已撤销模组创建与关联");return;}
@@ -9333,11 +9485,19 @@ els.planEditorContent.addEventListener("change",e=>{
 
 els.planEditorContent.addEventListener("focusin",e=>{if(e.target.matches("[data-plan-module-query]")){const wrap=e.target.closest("[data-editor-plan-id]");if(wrap)updatePlanModulePicker(wrap.dataset.editorPlanId,{open:true});}});
 els.planEditorContent.addEventListener("focusout",e=>{if(e.target.matches("[data-plan-module-query]")){const wrap=e.target.closest("[data-editor-plan-id]");if(wrap)setTimeout(()=>{const options=wrap.querySelector("[data-plan-module-options]");if(options&&!wrap.contains(document.activeElement))options.hidden=true;},140);}});
-els.planEditorContent.addEventListener("click",e=>{
+els.planEditorContent.addEventListener("click",async e=>{
   const wrap=e.target.closest("[data-editor-plan-id]");
   const planId=wrap?.dataset.editorPlanId||editingPlanId;if(!planId)return;
   const moduleChoice=e.target.closest("[data-plan-module-select]");if(moduleChoice){e.preventDefault();linkPlanToModule(planId,moduleChoice.dataset.planModuleSelect);return;}
   if(e.target.closest("[data-plan-module-create]")){e.preventDefault();createAndLinkModuleForPlan(planId);return;}
+  if(e.target.closest("[data-editor-add-blacklist-pl]")){
+    e.preventDefault();const select=els.planEditorContent.querySelector("[data-editor-add-blacklist-pl-select]"),profileId=select?.value,p=profileById(profileId);if(!p)return;
+    if(await appConfirm(`“${displayProfileName(p)}”当前在黑名单中。\n\n原因：${p.blacklist?.reason||"未填写"}\n\n仍要加入本桌吗？`,{title:"添加黑名单 PL？",confirmText:"仍然添加",danger:true}))addProfileToPlan(planId,profileId);return;
+  }
+  if(e.target.closest("[data-editor-blacklist-kp]")){
+    e.preventDefault();const select=els.planEditorContent.querySelector("[data-editor-blacklist-kp-select]"),profileId=select?.value,p=profileById(profileId);if(!p)return;
+    if(await appConfirm(`“${displayProfileName(p)}”当前在黑名单中。\n\n原因：${p.blacklist?.reason||"未填写"}\n\n仍要设为本桌 KP 吗？`,{title:"选择黑名单 KP？",confirmText:"仍然设为 KP",danger:true}))mutateRunPlan(planId,plan=>{plan.kpProfileId=p.id;plan.kp=rawProfileName(p);},{undoLabel:`已更新 KP · ${displayProfileName(p)}`});return;
+  }
   if(e.target.closest("[data-plan-clear-postrun]")){e.preventDefault();mutateRunPlan(planId,plan=>{plan.postRunDraft=normalizePostRunDraft(null);},{undoLabel:"已清除保留的跑后补充"});return;}
 
   if(e.target.closest("[data-editor-close]")){closePlanEditor();return;}
@@ -9638,7 +9798,7 @@ els.openModuleAdvancedSettings?.addEventListener("click",()=>{
   openModuleAdvancedEditor();
 });
 els.sort.addEventListener("change",()=>{settings.sortMode=els.sort.value;saveState();renderProfiles();});
-els.grid.addEventListener("click",e=>{const scoreToggle=e.target.closest("[data-toggle-compact-scores]");if(scoreToggle){e.stopPropagation();const id=String(scoreToggle.dataset.toggleCompactScores);expandedCompactScoreIds.has(id)?expandedCompactScoreIds.delete(id):expandedCompactScoreIds.add(id);renderProfiles();return;}const actionEl=e.target.closest("[data-action]");const card=e.target.closest(".card,.compact-row");if(actionEl){e.stopPropagation();const id=actionEl.dataset.id,action=actionEl.dataset.action;if(action==="edit")openEditor(id);if(action==="runs")openEditor(id,true);if(action==="ho-organizer")openHoOrganizer(id);if(action==="delete")deleteProfile(id);if(action==="toggle"){expandedCards.has(id)?expandedCards.delete(id):expandedCards.add(id);renderProfiles();}if(action==="collapse-card"){toggleProfileCardCollapse(id);}return;}if(e.target.closest(".runs"))return;if(card)openEditor(card.dataset.id);});
+els.grid.addEventListener("click",e=>{const scoreToggle=e.target.closest("[data-toggle-compact-scores]");if(scoreToggle){e.stopPropagation();const id=String(scoreToggle.dataset.toggleCompactScores);expandedCompactScoreIds.has(id)?expandedCompactScoreIds.delete(id):expandedCompactScoreIds.add(id);renderProfiles();return;}const actionEl=e.target.closest("[data-action]");const card=e.target.closest(".card,.compact-row,.blacklist-card");if(actionEl){e.stopPropagation();const id=actionEl.dataset.id,action=actionEl.dataset.action;if(action==="add-blacklist"){void addProfileToBlacklist(id);return;}if(action==="remove-blacklist"){void removeProfileFromBlacklist(id);return;}if(action==="edit")openEditor(id);if(action==="runs")openEditor(id,true);if(action==="ho-organizer")openHoOrganizer(id);if(action==="delete")deleteProfile(id);if(action==="toggle"){expandedCards.has(id)?expandedCards.delete(id):expandedCards.add(id);renderProfiles();}if(action==="collapse-card"){toggleProfileCardCollapse(id);}return;}if(e.target.closest(".runs,.blacklist-archive,.blacklist-inner-details"))return;if(card)openEditor(card.dataset.id);});
 
 
 els.closeHoOrganizer.addEventListener("click",closeHoOrganizer);
@@ -9677,6 +9837,9 @@ els.profileModalWrap.addEventListener("wheel",e=>{
   e.preventDefault();
   els.profileModal.scrollTop+=e.deltaY;
 },{passive:false});
+els.blacklistBtn?.addEventListener("click",()=>{profileListMode=profileListMode==="blacklist"?"active":"blacklist";profileRenderLimit=PROFILE_RENDER_BATCH;els.search.value="";renderProfiles();});
+els.profileStatusAction?.addEventListener("click",()=>void toggleDraftBlacklist());
+
 // PL 编辑事件
 els.name.addEventListener("input",()=>{if(!draft)return;draft.name=els.name.value;els.modalTitle.innerHTML=draftTitleHTML();livePreview();});
 [els.contact,els.birthDate,els.startDate,els.gender,els.usualRpLength,els.rpLengthMin,els.rpLengthMax].forEach(el=>{
@@ -9713,7 +9876,7 @@ els.editRuns.addEventListener("click",e=>{
   if(!btn||!draft)return;
   unlinkRunFromDraft(btn.dataset.unlinkRun);
 });
-els.save.addEventListener("click",()=>{
+els.save.addEventListener("click",async()=>{
   if(!draft)return;
   syncDraftBasics();
   draft.name=draft.name.trim();draft.contact=draft.contact.trim();draft.gender=draft.gender.trim();
@@ -9724,6 +9887,10 @@ els.save.addEventListener("click",()=>{
     return;
   }
 
+  const originalProfile=editingId?profileById(editingId):null;
+  const originalProfileSnapshot=originalProfile?clone(originalProfile):null;
+  const blacklistChanged=originalProfile?JSON.stringify(normalizeBlacklist(originalProfile))!==JSON.stringify(normalizeBlacklist(draft)):isBlacklistedProfile(draft);
+  if(blacklistChanged){try{await createSafetySnapshot("before-profile-blacklist-editor-save");}catch(err){console.error(err);appNotice("无法创建操作前恢复点。黑名单状态变更尚未保存。","保存已取消");return;}}
   const tx=commitProfileSaveTransaction();
   if(!tx)return;
 
@@ -9736,7 +9903,10 @@ els.save.addEventListener("click",()=>{
   updateAllEditorStateIndicators();
   if(linkedReturnContext){const ctx=linkedReturnContext;linkedReturnContext=null;restoreLinkedReturnContext(ctx);}
 
-  showToast(linkedCount?`档案已保存，并确认关联 ${linkedCount} 桌跑团记录`:"档案已保存");
+  if(blacklistChanged&&originalProfileSnapshot){
+    const savedProfile=profileById(tx.profile.id);setPlanUndo({type:"profile-blacklist-state",profileId:tx.profile.id,before:originalProfileSnapshot,label:`${displayProfileName(savedProfile)} 黑名单状态已更新`});
+    if(isBlacklistedProfile(savedProfile)){const pending=runPlans.filter(plan=>plan.kpProfileId===savedProfile.id||(plan.plIds||[]).includes(savedProfile.id));if(pending.length){const viewPlans=await appConfirm(`档案已保存。该 PL 仍参与 ${pending.length} 个未完成计划，计划中已标记“黑名单”。`,{title:"黑名单状态已更新",confirmText:"查看计划",cancelText:"稍后处理"});if(viewPlans){switchView("plans");els.planSearch.value=rawProfileName(savedProfile);renderRunPlans();}}}
+  }else showToast(linkedCount?`档案已保存，并确认关联 ${linkedCount} 桌跑团记录`:"档案已保存");
 });els.cancel.addEventListener("click",()=>closeEditor(true));els.closeProfile.addEventListener("click",()=>closeEditor(true));document.getElementById("profileReturnBtn")?.addEventListener("click",()=>void closeEditor(true));els.modalDelete.addEventListener("click",()=>{if(editingId)deleteProfile(editingId,true);});
 
 els.closeSecureBackup.addEventListener("click",closeSecureBackup);
