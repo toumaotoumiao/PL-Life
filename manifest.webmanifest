@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#f4f3ee",
   "theme_color": "#f4f3ee",
-  "description": "本地优先的 TRPG PL、模组、开团计划与跑团记录档案工具。",
+  "description": "本地优先的 TRPG PL、模组、开团计划与跑团记录管理工具。",
   "icons": [
     {
       "src": "./icon-192.png",
