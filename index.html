@@ -2949,7 +2949,7 @@
       .theme-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
       .theme-card{min-height:118px!important;padding:10px!important;border-radius:14px!important}
       .theme-card-name{font-size:12px!important}.theme-card-desc{font-size:9px!important;line-height:1.4!important;min-height:26px}.theme-swatches{height:22px!important;margin-top:8px!important}
-      .settings-modal>.modal-foot{flex:0 0 auto!important;position:relative!important;z-index:4!important;padding:9px 10px calc(9px + env(safe-area-inset-bottom))!important;gap:8px!important}
+      .settings-modal>.modal-foot{flex:0 0 auto!important;position:relative!important;z-index:4!important;display:grid!important;grid-template-columns:1fr!important;padding:9px 10px calc(9px + env(safe-area-inset-bottom))!important;gap:7px!important}.settings-modal>.modal-foot .settings-foot-status{width:100%!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:7px!important}.settings-modal>.modal-foot .settings-warning{flex:1 1 auto!important;max-width:none!important;min-width:0!important}
       .settings-modal>.modal-foot .foot-right{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important}
       .settings-modal>.modal-foot .btn{min-height:46px!important;font-size:13px!important}.settings-warning{font-size:9px!important;line-height:1.35!important;max-width:46%}
 
@@ -3004,6 +3004,30 @@
 
 
     .plan-blacklist-risk,.calendar-risk-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:5px;padding:1px 5px;border:1px solid var(--status-danger-line);border-radius:999px;background:var(--status-danger-bg);color:var(--t-danger);font-size:7px;font-weight:850}.plan-list-item.has-blacklist-risk{border-color:color-mix(in srgb,var(--t-danger) 32%,var(--t-line))}.calendar-event.has-blacklist-risk{border-color:color-mix(in srgb,var(--t-danger) 40%,var(--t-line-strong));box-shadow:inset 2px 0 0 color-mix(in srgb,var(--t-danger) 55%,transparent)}.calendar-risk-badge{margin-left:3px;padding:0 3px;font-size:6px}
+
+
+    /* 修复 friendly-data-head 的通用按钮组：避免被“直接子 div 使用 grid”规则误伤。 */
+    .friendly-data-head>.friendly-head-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+    @media(max-width:760px){.friendly-data-head>.friendly-head-actions{width:100%;justify-content:flex-start}}
+
+    /* v8.1.4.5 · 设置弹窗版本区自适应 */
+    .version-update-block{min-width:0;max-width:100%;overflow:hidden}
+    .version-update-block .friendly-data-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px;min-width:0}
+    .version-update-block .friendly-data-head>div:first-child{min-width:0}
+    .version-update-block .friendly-data-head span{overflow-wrap:anywhere;line-height:1.45}
+    .version-update-block .friendly-data-head>.friendly-head-actions{display:flex;align-items:center;gap:6px;min-width:0;max-width:100%;justify-self:end;align-self:start;flex-wrap:nowrap}
+    .version-update-block .friendly-data-head>.friendly-head-actions .btn{white-space:nowrap}
+    .version-runtime-details{min-width:0;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px!important;margin:8px 0!important;padding:8px!important}
+    .version-runtime-details span{display:block;min-width:0;padding:6px 7px;border-radius:8px;background:var(--t-surface);overflow-wrap:anywhere;line-height:1.4}
+    .startup-auto-check{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;padding:8px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);font-size:8.8px;color:var(--t-muted)}
+    .startup-auto-check strong{flex:0 0 auto;color:var(--t-ink);font-size:9.4px}.startup-auto-check span{min-width:0;text-align:right;overflow-wrap:anywhere}
+    .version-history-details{min-width:0;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface)}
+    .version-history-details>summary{display:flex;align-items:center;justify-content:space-between;gap:8px;list-style:none;min-height:38px;padding:8px 10px;cursor:pointer;font-size:9.5px;font-weight:760;color:var(--t-text-2)}
+    .version-history-details>summary::-webkit-details-marker{display:none}.version-history-details>summary::after{content:"展开";font-size:8.3px;font-weight:600;color:var(--t-muted)}.version-history-details[open]>summary::after{content:"收起"}
+    .release-notes-box{display:grid!important;grid-template-columns:max-content minmax(0,1fr)!important;align-items:start!important;gap:7px 11px!important;min-width:0!important;margin:0!important;padding:8px 10px 10px!important;border-top:1px solid var(--t-line);border-radius:0!important;background:transparent!important;overflow:hidden!important}
+    .release-notes-box strong{white-space:nowrap;line-height:1.45}.release-notes-box span{min-width:0;overflow-wrap:anywhere;line-height:1.45}
+    @media(max-width:980px){.version-runtime-details{grid-template-columns:repeat(2,minmax(0,1fr))}.version-update-block .friendly-data-head{grid-template-columns:1fr}.version-update-block .friendly-data-head>.friendly-head-actions{justify-self:start;width:100%;justify-content:flex-start}}
+    @media(max-width:520px){.version-update-block .friendly-data-head>.friendly-head-actions{display:grid!important;grid-template-columns:1fr 1fr;width:100%}.version-update-block .friendly-data-head>.friendly-head-actions .btn{width:100%;min-width:0;white-space:normal}.version-runtime-details{grid-template-columns:1fr}.startup-auto-check{align-items:flex-start;flex-direction:column}.startup-auto-check span{text-align:left}.release-notes-box{grid-template-columns:1fr!important;gap:2px!important}.release-notes-box strong{margin-top:5px}.release-notes-box strong:first-child{margin-top:0}}
 
 </style>
   <style id="v808-interaction-reliability">
@@ -3080,8 +3104,8 @@
       .empty-actions .btn{min-height:40px!important}
     }
   
-    /* v8.1.4.4 · 继承 UX 文案统一；兼容 v8.1.4 数据结构 */
-    /* v8.1.4.4 · 黑名单与排团风险提示 */
+    /* v8.1.4.6 · 编辑器脏状态检测修复与使用说明补充；兼容 v18 数据结构 */
+    /* v8.1.4.6 · 编辑器脏状态检测修复与使用说明补充 */
     .plan-module-picker{position:relative;display:grid;gap:6px;grid-column:1/-1}
     .plan-module-picker-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
     .plan-module-picker-state{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:20px;color:var(--t-muted);font-size:8.8px;line-height:1.4}
@@ -3170,7 +3194,7 @@
                 <span class="hero-help-chevron">›</span>
                 <span class="hero-help-title">使用说明</span>
               </span>
-              <span class="hero-help-meta">5 步快速上手</span>
+              <span class="hero-help-meta">6 项快速指引</span>
             </summary>
             <div class="hero-help-body">
               <div class="hero-guide">
@@ -3193,6 +3217,10 @@
                 <div class="guide-item">
                   <span class="guide-no">05</span>
                   <div><strong>自动保存与备份</strong><span>数据自动保存在当前浏览器，并定期创建恢复点。请定期导出完整备份。</span></div>
+                </div>
+                <div class="guide-item">
+                  <span class="guide-no">06</span>
+                  <div><strong>问题反馈</strong><span>有问题联系企鹅：3353671383 / 群号：1121544966</span></div>
                 </div>
               </div>
             </div>
@@ -3405,7 +3433,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.4.4 · 2026-09-03 20:35 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.4.6 · 2026-09-04 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3417,7 +3445,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.4.4　·　更新时间：2026-09-03 20:35（UTC+8）　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.4.6　·　更新时间：2026-09-04　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3698,7 +3726,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.4</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.6</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -3742,23 +3770,22 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">最后检查：未检查</span></div>
-<div class="release-notes-box" id="releaseNotesBox">
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.6 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.6</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
+<details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.4.6</strong><span>修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span>
+<strong>v8.1.4.5</strong><span>修复设置页版本区适配；新增每次启动自动检查。</span>
 <strong>v8.1.4.4</strong><span>新增 PL 黑名单、状态历史与排团风险提示。</span>
+<strong>v8.1.4.3</strong><span>新增跑团记录退回计划、同名模组合并与关联治理。</span>
 <strong>v8.1.4.2</strong><span>强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。</span>
+<strong>v8.1.4.1</strong><span>统一企业级 UX 文案与术语。</span>
 <strong>v8.1.4</strong><span>增强多标签页并发保存，避免竞态覆盖；保持 v18 数据结构兼容。</span>
 <strong>v8.1.3</strong><span>增强保存冲突、恢复点、回收站与大档案保护。</span>
 <strong>v8.1.2</strong><span>优化移动端计划、跑团记录、搜索与数据管理。</span>
 <strong>v8.1.1</strong><span>增强分享模式、草稿保存、撤销与离线缓存安全。</span>
 <strong>v8.1.0</strong><span>新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span>
-<strong>v8.0.9</strong><span>修复未修改状态误判。</span>
-<strong>v8.0.8</strong><span>修复移动端 PL 编辑器操作栏点击问题。</span>
-<strong>v8.0.7</strong><span>计划时段容量提升至 4 场。</span>
-<strong>v8.0.6</strong><span>优化移动端布局、筛选反馈与悬浮层级。</span>
-<strong>v8.0.5</strong><span>调整跑团记录搜索布局。</span>
-<strong>v8.0.4</strong><span>统一导航、筛选、状态和搜索反馈。</span>
-</div>
+</div></details>
 </section></div></details><details class="data-safety-group advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。</span></div><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button></div>
 <div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
@@ -3867,7 +3894,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.4.4 · 作者：番茄
+/* PL收集梦想生活 v8.1.4.6 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3886,7 +3913,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.4.4";
+const APP_UI_VERSION = "8.1.4.6";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5344,7 +5371,7 @@ function renderBackupReminderBanner(){if(!els?.dataSafetyBanner)return;const inf
 function dismissBackupReminder(){try{localStorage.setItem(BACKUP_REMINDER_DISMISS_KEY,String(Date.now()+86400000))}catch(err){}renderBackupReminderBanner()}
 
 function updateDataSafetyUI(){const sm=currentSaveMeta(),em=safeReadLocalMeta(LAST_EXPORT_META_KEY),c=currentDataCounts();if(els?.compactSaveStatus)els.compactSaveStatus.textContent=sm?.savedAt?`已保存 ${formatSafetyShortTime(sm.savedAt)}`:"保存状态待确认";if(els?.autoSaveHeroStatus){els.autoSaveHeroStatus.classList.remove("warn","error");if(sm?.savedAt){els.autoSaveHeroText.textContent=`已本地保存 ${formatSafetyShortTime(sm.savedAt)}`;els.autoSaveHeroStatus.title=`最近成功写入：${formatSafetyDateTime(sm.savedAt)}`}else{els.autoSaveHeroText.textContent="本地保存状态待确认";els.autoSaveHeroStatus.classList.add("warn")}}if(els?.localSaveHealthValue){els.localSaveHealthValue.textContent=sm?.savedAt?"保存已校验":"未确认";els.localSaveHealthSub.textContent=sm?.savedAt?`最近成功写入并回读：${formatSafetyDateTime(sm.savedAt)}`:"尚未完成保存校验";els.dataScaleHealthValue.textContent=`${c.profiles} PL · ${c.modules} 模组`;els.dataScaleHealthSub.textContent=`${c.plans} 计划 · ${c.records} 跑团记录`;els.exportHealthValue.textContent=em?.exportedAt?formatSafetyDateTime(em.exportedAt):"未导出";els.exportHealthSub.textContent=em?.exportedAt?`${em.kind||"完整备份"}`:"建议尽快导出首次完整备份";els.inheritanceStatusNote.innerHTML=getInheritanceStatusHTML();els.storageContextNote.innerHTML=currentStorageContextText();els.backupReminderDays.value=String(getBackupReminderDays());els.dataSafetyOverallBadge.textContent=sm?.savedAt?"本地保存正常":"需要检查";els.dataSafetyOverallBadge.className=`data-safety-overall-badge ${sm?.savedAt?"ok":"warn"}`;void updateRecoveryHealth();void updatePersistentStorageStatus();updateStorageDiagnosticsUI();updateArchiveSizeHealth()}renderBackupReminderBanner();updateUpgradeGuardUI();updatePwaUI();if(!lastIntegrityReport)renderDataIntegrity(dataIntegrityReport(),false);}
-function initDataSafetyUX(){updateDataSafetyUI();void runStorageDiagnostics(false);if(startupDataReport.inherited||startupDataReport.migrated||(startupDataReport.source==="current"&&startupDataReport.sourceAppVersion&&startupDataReport.sourceAppVersion!==APP_UI_VERSION))setTimeout(()=>showToast(startupDataReport.inherited?"已继承旧版本数据":"旧版本数据已升级"),180)}
+function initDataSafetyUX(){updateDataSafetyUI();if(startupDataReport.inherited||startupDataReport.migrated||(startupDataReport.source==="current"&&startupDataReport.sourceAppVersion&&startupDataReport.sourceAppVersion!==APP_UI_VERSION))setTimeout(()=>showToast(startupDataReport.inherited?"已继承旧版本数据":"旧版本数据已升级"),180)}
 function saveState(options={}){
   if(pendingExternalSync&&!options.allowExternalOverwrite&&!suppressDirtyPrompt){const b=document.getElementById("externalSyncBanner");if(b)b.hidden=false;showToast("检测到其他标签页更新，请先处理同步");return false;}
   if(!options.allowExternalOverwrite&&!suppressDirtyPrompt){const unseen=unseenStoredSaveMeta();if(unseen){markExternalSyncConflict(unseen,"其他标签页已更新。为避免覆盖，请选择同步其他页面或保留本页。");return false;}}
@@ -6611,6 +6638,8 @@ function livePreview(){
   syncDraftBasics();
   draft.updatedAt=Date.now();
   if(editingId)renderProfiles();
+  updateAllEditorStateIndicators();
+  scheduleEditorDraft("profile");
 }
 
 
@@ -9118,8 +9147,22 @@ async function loadMigrationFile(file){guardImportFile(file,MAX_IMPORT_FILE_BYTE
 function updateVersionStatus(text){const sub=document.getElementById("appVersionHealthSub"),summary=document.getElementById("versionUpdateSummary");if(sub)sub.textContent=text;if(summary)summary.textContent=`当前版本 v${APP_UI_VERSION} · ${text}`;}
 function showAppUpdate(reg){pendingUpdateRegistration=reg;document.getElementById("appUpdateBanner").hidden=false;updateVersionStatus("发现新版本，可安全更新");}
 async function applyAppUpdate(){const reg=pendingUpdateRegistration;if(!reg?.waiting){showToast("新版仍在准备，请稍后再试");return;}try{const payload=buildCanonicalArchive(false);if(hasMeaningfulData(archiveCountsFromPayload(payload)))await createSafetySnapshot("before-app-update");localStorage.setItem(APP_UPDATE_JUST_APPLIED_KEY,"1");let reloading=false;navigator.serviceWorker.addEventListener("controllerchange",()=>{if(reloading)return;reloading=true;location.reload();},{once:true});reg.waiting.postMessage({type:"SKIP_WAITING"});}catch(err){console.error(err);appNotice("更新前保护失败，请先导出一次备份后再更新。");}}
-registerOfflineApp=async function(){if(!("serviceWorker" in navigator)||!/^https?:$/.test(location.protocol)){updatePwaUI();updateVersionStatus("网页模式");return;}try{const reg=await navigator.serviceWorker.register("./sw.js",{scope:"./"});await navigator.serviceWorker.ready;serviceWorkerReady=true;if(reg.waiting&&navigator.serviceWorker.controller)showAppUpdate(reg);reg.addEventListener("updatefound",()=>{const worker=reg.installing;if(!worker)return;worker.addEventListener("statechange",()=>{if(worker.state==="installed"&&navigator.serviceWorker.controller)showAppUpdate(reg);});});await reg.update();if(!pendingUpdateRegistration)updateVersionStatus(isStandaloneApp()?"应用已安装，离线可用":"离线已准备");}catch(err){console.warn("离线功能初始化失败",err);serviceWorkerReady=false;updateVersionStatus("在线使用正常，离线功能暂不可用");}updatePwaUI();};
-async function checkAppUpdate(){markVersionCheckTime();if(!("serviceWorker" in navigator)){showToast("当前浏览器不支持应用更新检查");updateRuntimeVersionDetails();return;}const reg=await navigator.serviceWorker.getRegistration("./");if(!reg){await registerOfflineApp();updateRuntimeVersionDetails();return;}await reg.update();setTimeout(()=>{if(!pendingUpdateRegistration)showToast("当前已经是最新版本");updateRuntimeVersionDetails();},700);}
+function setStartupCheckDetail(text){const el=document.getElementById("startupCheckDetail");if(el)el.textContent=text;}
+registerOfflineApp=async function({markCheck=true}={}){if(!("serviceWorker" in navigator)||!/^https?:$/.test(location.protocol)){updatePwaUI();updateVersionStatus("网页模式");if(markCheck){markVersionCheckTime();await updateRuntimeVersionDetails();}return null;}try{const reg=await navigator.serviceWorker.register("./sw.js",{scope:"./"});await navigator.serviceWorker.ready;serviceWorkerReady=true;if(reg.waiting&&navigator.serviceWorker.controller)showAppUpdate(reg);reg.addEventListener("updatefound",()=>{const worker=reg.installing;if(!worker)return;worker.addEventListener("statechange",()=>{if(worker.state==="installed"&&navigator.serviceWorker.controller)showAppUpdate(reg);});});await reg.update();if(markCheck)markVersionCheckTime();if(!pendingUpdateRegistration)updateVersionStatus(isStandaloneApp()?"应用已安装，离线可用":"离线已准备");await updateRuntimeVersionDetails();updatePwaUI();return reg;}catch(err){console.warn("离线功能初始化失败",err);serviceWorkerReady=false;updateVersionStatus("在线使用正常，离线功能暂不可用");if(markCheck)markVersionCheckTime();await updateRuntimeVersionDetails();updatePwaUI();return null;}};
+async function checkAppUpdate({silent=false}={}){markVersionCheckTime();if(!("serviceWorker" in navigator)){if(!silent)showToast("当前浏览器不支持应用更新检查");await updateRuntimeVersionDetails();return false;}const reg=await navigator.serviceWorker.getRegistration("./");if(!reg){await registerOfflineApp({markCheck:true});if(!silent&&!pendingUpdateRegistration)showToast("当前已经是最新版本");return true;}try{await reg.update();markVersionCheckTime();await updateRuntimeVersionDetails();if(!silent)setTimeout(()=>{if(!pendingUpdateRegistration)showToast("当前已经是最新版本");},450);return true;}catch(err){console.warn("更新检查失败",err);await updateRuntimeVersionDetails();if(!silent)showToast("暂时无法检查更新，请稍后重试");return false;}}
+async function runStartupAutoChecks(){
+  setStartupCheckDetail("启动检查：进行中");
+  const integrity=renderDataIntegrity(dataIntegrityReport(),false);
+  const tasks=[runStorageDiagnostics(false),updateRecoveryHealth(),updatePersistentStorageStatus(),registerOfflineApp({markCheck:true})];
+  const results=await Promise.allSettled(tasks);
+  updateUpgradeGuardUI();updateArchiveSizeHealth();updateStorageDiagnosticsUI();updatePwaUI();await updateRuntimeVersionDetails();
+  const storageBad=storageDiagnostics?.checked&&(!storageDiagnostics.localStorage||!storageDiagnostics.indexedDb);
+  const failed=results.filter(x=>x.status==="rejected").length;
+  const notices=Number(integrity?.errors||0)+Number(integrity?.warnings||0)+(storageBad?1:0)+failed;
+  setStartupCheckDetail(notices?`启动检查：完成 · ${notices} 项提醒`:"启动检查：全部正常");
+  try{localStorage.setItem("tomato_pl_last_startup_check_v1",String(Date.now()));}catch(err){}
+}
+
 
 /* 焦点、快捷键与离开保护 */
 function visibleDialog(){const candidates=["#secureBackupBackdrop","#importPreviewBackdrop","#migrationWizardBackdrop","#globalSearchBackdrop","#onboardingBackdrop","#hoOrganizerBackdrop","#moduleAdvancedBackdrop","#nativeModuleEditorBackdrop","#planEditorBackdrop","#actionDialogBackdrop"].map(s=>document.querySelector(s)).filter(el=>el&&!el.hidden);if(candidates.length)return candidates[candidates.length-1].querySelector('[role="dialog"]')||candidates[candidates.length-1];if(els.overlay?.classList.contains("open"))return !els.settingsModal.hidden?els.settingsModal:els.profileModal;return null;}
@@ -9290,12 +9333,29 @@ async function offerEditorDraftRecovery(kind){
     showToast("已恢复上次未保存编辑");return true;
   }catch(err){console.error(err);clearEditorDraft(kind);return false;}
 }
-function onAnyEditorInput(e){
-  if(els.overlay?.classList.contains("open")&&!els.profileModalWrap.hidden&&e.target.closest("#profileModalWrap")){setTimeout(()=>{updateAllEditorStateIndicators();scheduleEditorDraft("profile");},0);return;}
-  if(els.nativeModuleEditorBackdrop&&!els.nativeModuleEditorBackdrop.hidden&&e.target.closest("#nativeModuleEditorBackdrop")){setTimeout(()=>{updateAllEditorStateIndicators();scheduleEditorDraft("module");},0);return;}
-  if(els.overlay?.classList.contains("open")&&!els.settingsModal.hidden&&e.target.closest("#settingsModal")){setTimeout(()=>{updateAllEditorStateIndicators();scheduleEditorDraft("settings");},0);}
+function editorKindFromEventTarget(target){
+  if(!(target instanceof Element))return "";
+  // 在事件捕获阶段先记录所属编辑器。部分按钮点击后会立即重绘内部 DOM，
+  // 若等重绘结束后再通过 target.closest() 判断，旧节点已脱离文档，会漏掉“已修改”状态。
+  if(els.overlay?.classList.contains("open")&&!els.profileModalWrap.hidden&&target.closest("#profileModalWrap"))return "profile";
+  if(els.nativeModuleEditorBackdrop&&!els.nativeModuleEditorBackdrop.hidden&&target.closest("#nativeModuleEditorBackdrop"))return "module";
+  if(els.overlay?.classList.contains("open")&&!els.settingsModal.hidden&&target.closest("#settingsModal"))return "settings";
+  return "";
 }
-document.addEventListener("input",onAnyEditorInput,true);document.addEventListener("change",onAnyEditorInput,true);document.addEventListener("click",e=>{if(e.target.closest("#sliderSection,#profileRunsEditor,#nativeModuleEditorBackdrop,#settingsModal"))setTimeout(()=>onAnyEditorInput(e),0);},true);
+function queueEditorStateRefresh(kind){
+  if(!kind)return;
+  setTimeout(()=>{
+    if(kind==="profile"&&!draft)return;
+    if(kind==="module"&&!nativeModuleDraft)return;
+    if(kind==="settings"&&!settingsDraft)return;
+    updateAllEditorStateIndicators();
+    scheduleEditorDraft(kind);
+  },0);
+}
+function onAnyEditorInput(e){queueEditorStateRefresh(editorKindFromEventTarget(e.target));}
+document.addEventListener("input",onAnyEditorInput,true);
+document.addEventListener("change",onAnyEditorInput,true);
+document.addEventListener("click",onAnyEditorInput,true);
 
 function captureLinkedReturnContext(view,extra={}){captureCurrentViewState(view);return {view,scrollY:window.scrollY,selectedModuleName:selectedModuleName||"",plannerSelectedDate,plannerMonthCursor,...extra,label:view==="plans"?"开团计划":view==="records"?"跑团记录":"原位置"};}
 function updateLinkedReturnButton(){const btn=document.getElementById("profileReturnBtn");if(!btn)return;btn.hidden=!linkedReturnContext;if(linkedReturnContext)btn.textContent=`← 返回${linkedReturnContext.label||"原位置"}`;}
@@ -9373,6 +9433,8 @@ els.nativeModuleEditorContent.addEventListener("click",async e=>{
     syncNativeModuleDraftFromForm();
     nativeModuleDraft.hoSystem=normalizeModuleHoSystem(ho.dataset.nativeEditorHo);
     els.nativeModuleEditorContent.innerHTML=nativeModuleEditorFormHTML(nativeModuleDraft);
+    updateAllEditorStateIndicators();
+    scheduleEditorDraft("module");
     return;
   }
   if(e.target.closest("[data-open-native-advanced]")){
@@ -10063,7 +10125,7 @@ applyUiPreferences(settings);
 const startupNeedsPersistence=startupDataReport.inherited||startupDataReport.embedded||startupDataReport.migrated||(startupDataReport.source==="current"&&String(startupDataReport.sourceAppVersion||"")!==APP_UI_VERSION)||(startupDataReport.source==="fresh"&&hasMeaningfulData());
 if(startupNeedsPersistence)saveState({allowExternalOverwrite:true});
 initDataSafetyUX();
-void registerOfflineApp();
+void runStartupAutoChecks();
 renderSortOptions();
 initDialogFocusLifecycle();
 initSystemBackNavigation();
