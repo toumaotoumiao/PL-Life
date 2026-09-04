@@ -2623,7 +2623,7 @@
 
     .ho-organizer-backdrop{position:fixed;inset:0;z-index:1460;padding:18px;background:rgba(25,30,27,.32);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
     .ho-organizer-backdrop[hidden]{display:none!important}
-    .ho-organizer-modal{width:min(1280px,100%);height:min(850px,calc(100dvh - 36px));margin:auto;display:grid;grid-template-rows:auto auto auto minmax(0,1fr) auto;overflow:hidden;border:1px solid var(--t-line);border-radius:22px;background:var(--t-surface);box-shadow:0 26px 80px rgba(0,0,0,.19)}
+    .ho-organizer-modal{width:min(1280px,100%);height:min(850px,calc(100dvh - 36px));margin:auto;display:grid;grid-template-rows:auto auto auto auto minmax(0,1fr) auto;overflow:hidden;border:1px solid var(--t-line);border-radius:22px;background:var(--t-surface);box-shadow:0 26px 80px rgba(0,0,0,.19)}
     .ho-organizer-head{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:18px 20px 15px;border-bottom:1px solid color-mix(in srgb,var(--t-line) 75%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--t-accent-soft) 50%,var(--t-surface)),var(--t-surface));overflow:hidden}
     .ho-organizer-head::after{content:none!important}
     .ho-organizer-title-wrap{position:relative;z-index:1;display:grid;gap:4px;min-width:0}
@@ -2632,6 +2632,10 @@
     .ho-organizer-eyebrow::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--t-accent);box-shadow:9px 0 0 color-mix(in srgb,var(--t-accent) 42%,transparent)}
     .ho-organizer-head h2{margin:0;font-size:22px;line-height:1.2;color:var(--t-ink)}
     .ho-organizer-head p{margin:1px 0 0;font-size:9.5px;color:var(--t-muted);max-width:620px}
+    .run-organizer-mode-tabs{display:flex;align-items:center;gap:4px;padding:7px 13px;border-bottom:1px solid var(--t-line);background:var(--t-surface)}
+    .run-organizer-mode-tabs button{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:5px 12px;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--t-muted);font-size:9px;font-weight:760}
+    .run-organizer-mode-tabs button.active{border-color:var(--t-line);background:var(--t-accent-soft);color:var(--t-accent-strong);box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--t-accent) 50%,transparent)}
+    .run-organizer-mode-tabs .mode-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:18px;padding:0 6px;border-radius:999px;background:color-mix(in srgb,var(--t-surface) 72%,transparent);font-size:7.5px;font-weight:820}
 
     .ho-organizer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 13px;border-bottom:1px solid var(--t-line);background:color-mix(in srgb,var(--t-surface-2) 58%,var(--t-surface))}
     .ho-organizer-stats{display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--t-muted);font-size:8.6px}
@@ -2643,6 +2647,7 @@
     .ho-view-filter button{min-height:29px;padding:4px 10px;border:0;border-radius:8px;background:transparent;color:var(--t-muted);font-size:8.6px;font-weight:730}
     .ho-view-filter button.active{background:var(--t-accent-soft);color:var(--t-accent-strong)}
     .ho-empty-toggle{display:flex;align-items:center;gap:5px;color:var(--t-muted);font-size:8.6px;white-space:nowrap}.ho-empty-toggle input{accent-color:var(--t-accent)}
+    .kp-sort-wrap{display:flex;align-items:center;gap:5px;color:var(--t-muted);font-size:8.6px;white-space:nowrap}.kp-sort-wrap select{min-height:32px;padding:4px 28px 4px 9px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-ink);font-size:8.6px}
 
     .ho-organizer-notice{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:8px 14px;background:color-mix(in srgb,var(--t-surface-2) 72%,transparent);color:var(--t-muted);font-size:8.6px}.ho-organizer-notice strong{color:var(--t-warning)}
     /* 单行横向看板：栏目永不向下一行压叠；栏位过多时横向滚动。 */
@@ -2670,6 +2675,24 @@
     .ho-entry-character{display:flex;align-items:baseline;gap:5px;min-width:0}.ho-entry-character span{font-size:7px;color:var(--t-faint)}.ho-entry-character strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px;color:var(--t-text-2);font-weight:650}
     .ho-entry-meta{display:flex;gap:5px;justify-content:space-between;color:var(--t-faint);font-size:7.6px}.ho-entry-meta span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
+    .ho-organizer-board.kp-mode{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));align-content:start;gap:10px;overflow:auto}
+    .kp-module-group{min-width:0;border:1px solid var(--t-line);border-radius:15px;background:var(--t-surface);box-shadow:0 7px 20px var(--t-shadow-soft);overflow:hidden}
+    .kp-module-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:12px 13px 10px;border-bottom:1px solid var(--t-line);background:linear-gradient(180deg,color-mix(in srgb,var(--t-accent-soft) 62%,var(--t-surface)),var(--t-surface))}
+    .kp-module-title{display:grid;gap:3px;min-width:0}.kp-module-title strong{font-size:12.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.kp-module-title span{font-size:7.8px;color:var(--t-muted)}
+    .kp-module-count{display:grid;justify-items:end;gap:2px;flex:0 0 auto;color:var(--t-muted);font-size:7.4px}.kp-module-count strong{font-size:13px;color:var(--t-accent-strong)}
+    .kp-module-body{display:grid;gap:7px;padding:8px}
+    .kp-module-body[hidden]{display:none!important}
+    .kp-module-head-side{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex:0 0 auto}
+    .kp-detail-toggle{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:28px;padding:4px 8px;border:1px solid var(--t-line);border-radius:8px;background:color-mix(in srgb,var(--t-surface) 88%,transparent);color:var(--t-muted);font-size:8px;font-weight:760;cursor:pointer;white-space:nowrap}
+    .kp-detail-toggle:hover{border-color:var(--t-accent);color:var(--t-accent-strong);background:var(--t-accent-soft)}
+    .kp-detail-toggle .chevron{display:inline-block;font-size:10px;line-height:1;transition:transform .16s ease}
+    .kp-detail-toggle[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+    .kp-module-group.is-collapsed .kp-module-head{border-bottom-color:transparent}
+    .kp-entry{width:100%;display:grid;gap:6px;padding:9px 10px;border:1px solid color-mix(in srgb,var(--t-line) 72%,transparent);border-radius:10px;background:var(--t-surface-2);text-align:left;color:var(--t-ink);transition:border-color .14s ease,transform .1s ease,box-shadow .14s ease}
+    .kp-entry:hover{border-color:var(--t-accent);transform:translateY(-1px);box-shadow:0 5px 13px var(--t-shadow-soft)}
+    .kp-entry-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.kp-entry-top strong{margin-left:auto;font-size:8.8px;color:var(--t-text-2)}
+    .kp-entry-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--t-faint);font-size:7.7px}.kp-entry-meta span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
     .ho-organizer-empty{flex:1 0 100%;min-height:240px;display:grid;place-items:center;align-content:center;gap:5px;border:1px dashed var(--t-line);border-radius:16px;background:var(--t-surface);color:var(--t-muted)}
     .ho-organizer-empty strong{font-size:13px;color:var(--t-ink)}.ho-organizer-empty span{font-size:9px}
     .ho-organizer-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px;border-top:1px solid var(--t-line)}.ho-organizer-foot>span{font-size:8.6px;color:var(--t-muted)}
@@ -2687,8 +2710,9 @@
 
     @media(max-width:760px){
       .ho-organizer-backdrop{padding:5px}.ho-organizer-modal{height:calc(100dvh - 10px);border-radius:17px}.ho-organizer-head{padding:14px 13px 11px}.ho-organizer-head h2{font-size:18px}
-      .ho-organizer-toolbar{align-items:flex-start;padding:8px}.ho-organizer-toolbar-actions{width:100%;justify-content:space-between}
-      .ho-organizer-board{gap:8px;padding:8px;scroll-snap-type:x proximity}.ho-column{flex:0 0 172px;min-width:172px;max-width:172px;scroll-snap-align:start}.ho-column-head{padding:12px 9px 9px}.ho-column-title-stack strong{font-size:11.8px}.ho-column-body{padding:7px;gap:7px}.ho-entry{padding:8px 9px}.ho-organizer-foot{padding:8px}.ho-organizer-foot>span{max-width:70%;font-size:7.8px}
+      .run-organizer-mode-tabs{padding:6px 8px}.run-organizer-mode-tabs button{flex:1;justify-content:center}
+      .ho-organizer-toolbar{align-items:flex-start;padding:8px}.ho-organizer-toolbar-actions{width:100%;justify-content:space-between}.kp-sort-wrap{flex:1}.kp-sort-wrap select{width:100%}
+      .ho-organizer-board{gap:8px;padding:8px;scroll-snap-type:x proximity}.ho-organizer-board.kp-mode{display:grid;grid-template-columns:1fr;scroll-snap-type:none}.ho-column{flex:0 0 172px;min-width:172px;max-width:172px;scroll-snap-align:start}.ho-column-head{padding:12px 9px 9px}.ho-column-title-stack strong{font-size:11.8px}.ho-column-body{padding:7px;gap:7px}.ho-entry{padding:8px 9px}.ho-organizer-foot{padding:8px}.ho-organizer-foot>span{max-width:70%;font-size:7.8px}
     }
 
 
@@ -3104,8 +3128,84 @@
       .empty-actions .btn{min-height:40px!important}
     }
   
-    /* v8.1.4.6 · 编辑器脏状态检测修复与使用说明补充；兼容 v18 数据结构 */
-    /* v8.1.4.6 · 编辑器脏状态检测修复与使用说明补充 */
+    /* v8.1.4.8 · 跑团整理响应式统一：PL / KP 共用卡片式布局，移除横向 HO 看板。 */
+    .ho-organizer-board.pl-mode,
+    .ho-organizer-board.kp-mode{
+      display:grid!important;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      grid-auto-flow:row;
+      grid-auto-rows:max-content;
+      align-content:start;
+      align-items:start;
+      gap:10px;
+      overflow:auto;
+      scroll-snap-type:none!important;
+    }
+    .ho-organizer-board.pl-mode .ho-module-group,
+    .ho-organizer-board.kp-mode .kp-module-group{
+      align-self:start;
+      height:auto;
+      min-height:0;
+      min-width:0;
+      max-width:none;
+      position:relative;
+      z-index:0;
+      overflow:hidden;
+    }
+    .ho-module-group{border-color:color-mix(in srgb,var(--ho-border) 66%,var(--t-line) 34%)}
+    .ho-module-head{border-bottom-color:color-mix(in srgb,var(--ho-border) 58%,var(--t-line) 42%);background:linear-gradient(180deg,color-mix(in srgb,var(--ho-bg) 58%,var(--t-surface)),var(--t-surface))}
+    .ho-module-head::before{content:"";position:absolute;left:13px;right:13px;top:0;height:3px;border-radius:0 0 999px 999px;background:linear-gradient(90deg,var(--ho-dot),color-mix(in srgb,var(--ho-title) 48%,white 52%));opacity:.82}
+    .ho-module-head{position:relative}
+    .ho-module-title strong,.ho-module-count strong{color:var(--ho-title)}
+    .ho-module-body{display:grid;gap:7px;padding:8px;min-height:0}
+    .ho-module-body .ho-entry{margin:0}
+    .ho-entry{width:100%;display:grid;gap:6px;padding:9px 10px;border:1px solid color-mix(in srgb,var(--t-line) 72%,transparent);border-radius:10px;background:var(--t-surface-2);text-align:left;color:var(--t-ink);transition:border-color .14s ease,transform .1s ease,box-shadow .14s ease}
+    .ho-entry:hover{border-color:var(--ho-dot);transform:translateY(-1px);box-shadow:0 5px 13px var(--t-shadow-soft)}
+    .ho-entry-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+    .ho-entry-top strong{flex:1 1 120px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9.7px;font-weight:735;color:var(--t-ink)}
+    .ho-entry-character{display:flex;align-items:center;gap:5px;min-width:0;color:var(--t-text-2)}
+    .ho-entry-character span{flex:0 0 auto}.ho-entry-character strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .ho-entry-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--t-faint)}
+    .ho-entry-meta span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .kp-module-body{min-height:0}
+
+    @media(max-width:980px){
+      .ho-organizer-toolbar{display:grid;grid-template-columns:1fr;align-items:start}
+      .ho-organizer-toolbar-actions{width:100%;justify-content:flex-start}
+    }
+    @media(max-width:760px){
+      .ho-organizer-board.pl-mode,.ho-organizer-board.kp-mode{grid-template-columns:1fr!important;gap:8px;padding:8px}
+      .ho-organizer-board.pl-mode .ho-module-group,.ho-organizer-board.kp-mode .kp-module-group{width:100%;min-width:0;max-width:none}
+      .ho-organizer-toolbar-actions{display:grid;grid-template-columns:1fr;align-items:stretch;gap:7px}
+      .ho-view-filter{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+      .ho-view-filter button{width:100%}
+      .kp-sort-wrap{width:100%;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center}
+      .kp-sort-wrap select{width:100%;min-width:0}
+      .ho-empty-toggle{width:100%;min-height:32px;justify-content:flex-start;padding:0 4px}
+      .ho-image-export-wrap{width:100%}.ho-image-export-wrap>#hoImageExportBtn,#copyHoOrganizerBtn{width:100%}
+      .ho-organizer-stats{width:100%}
+      .ho-organizer-stats span{min-height:28px}
+      .ho-organizer-notice{padding:7px 10px}
+    }
+    @media(max-width:430px){
+      .ho-organizer-backdrop{padding:0}
+      .ho-organizer-modal{height:100dvh;border-radius:0;border-left:0;border-right:0}
+      .ho-organizer-head{padding:12px 12px 10px}.ho-organizer-head h2{font-size:18px}
+      .run-organizer-mode-tabs{padding:6px}.run-organizer-mode-tabs button{min-width:0;padding:5px 7px}
+      .ho-organizer-toolbar{padding:7px}
+      .ho-organizer-stats{gap:5px}.ho-organizer-stats span{padding:4px 7px}
+      .kp-module-head,.ho-module-head{padding:11px 11px 9px}
+      .kp-module-head-side{gap:6px}
+      .kp-detail-toggle{min-height:30px;padding:4px 7px}
+      .kp-module-title strong,.ho-module-title strong{font-size:12px}
+      .kp-module-count strong,.ho-module-count strong{font-size:12px}
+      .kp-module-body,.ho-module-body{padding:7px;gap:6px}
+      .kp-entry,.ho-entry{padding:8px 9px}
+      .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
+    }
+
+    /* v8.1.4.9 · KP 详情折叠与图片导出；兼容 v18 数据结构 */
+    /* v8.1.4.9 · 跑团整理响应式统一与 KP 图片导出 */
     .plan-module-picker{position:relative;display:grid;gap:6px;grid-column:1/-1}
     .plan-module-picker-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
     .plan-module-picker-state{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:20px;color:var(--t-muted);font-size:8.8px;line-height:1.4}
@@ -3433,7 +3533,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.4.6 · 2026-09-04 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.4.9 · 2026-09-05 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3445,7 +3545,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.4.6　·　更新时间：2026-09-04　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.4.9　·　更新时间：2026-09-05　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3470,29 +3570,35 @@
         <section class="ho-organizer-modal" role="dialog" aria-modal="true" aria-labelledby="hoOrganizerTitle">
           <header class="ho-organizer-head">
             <div class="ho-organizer-title-wrap">
-              <span class="ho-organizer-eyebrow">PL · HO 管理</span>
-              <h2 id="hoOrganizerTitle">HO 整理</h2>
-              <p id="hoOrganizerSubtitle">自动汇总跑团记录与开团计划，不重复保存数据。</p>
+              <span class="ho-organizer-eyebrow">PL / KP · 跑团整理</span>
+              <h2 id="hoOrganizerTitle">跑团整理</h2>
+              <p id="hoOrganizerSubtitle">自动汇总参团与带团记录，不重复保存数据。</p>
             </div>
             <button id="closeHoOrganizerBtn" class="icon-close" type="button" aria-label="关闭">×</button>
           </header>
 
+          <div class="run-organizer-mode-tabs" role="tablist" aria-label="跑团整理视图">
+            <button type="button" class="active" data-run-organizer-mode="pl" role="tab" aria-selected="true">PL 参团 <span class="mode-count" data-run-organizer-count="pl">0</span></button>
+            <button type="button" data-run-organizer-mode="kp" role="tab" aria-selected="false">KP 带团 <span class="mode-count" data-run-organizer-count="kp">0</span></button>
+          </div>
+
           <div class="ho-organizer-toolbar">
             <div id="hoOrganizerStats" class="ho-organizer-stats"></div>
             <div class="ho-organizer-toolbar-actions">
-              <div class="ho-view-filter" role="group" aria-label="HO 整理范围">
+              <div class="ho-view-filter" role="group" aria-label="记录范围">
                 <button type="button" class="active" data-ho-filter="all">全部</button>
                 <button type="button" data-ho-filter="record">已结团</button>
                 <button type="button" data-ho-filter="plan">计划中</button>
               </div>
-              <label class="ho-empty-toggle"><input id="hoShowEmptyColumns" type="checkbox"><span>显示空 HO 列</span></label>
+              <label class="ho-empty-toggle ho-only-control"><input id="hoShowEmptyColumns" type="checkbox"><span>显示空 HO 列</span></label>
               <div class="ho-image-export-wrap">
                 <button id="hoImageExportBtn" class="btn small" type="button" aria-expanded="false">导出图片 ▾</button>
                 <div id="hoImageExportMenu" class="ho-image-export-menu" hidden>
-                  <button type="button" data-ho-image-style="wide"><strong>宽幅 PNG</strong><span>横向展示全部 HO，适合电脑或群聊</span></button>
-                  <button type="button" data-ho-image-style="long"><strong>长图 PNG</strong><span>按 HO 分组纵向展示，适合手机</span></button>
+                  <button type="button" data-ho-image-style="wide"><strong>宽幅 PNG</strong><span>横向整理当前结果，适合电脑或群聊</span></button>
+                  <button type="button" data-ho-image-style="long"><strong>长图 PNG</strong><span>纵向整理当前结果，适合手机查看</span></button>
                 </div>
               </div>
+              <label id="kpOrganizerSortWrap" class="kp-sort-wrap" hidden><span>排序</span><select id="kpOrganizerSort"><option value="recent">最近带团</option><option value="count">带团次数</option><option value="name">模组名称</option></select></label>
               <button id="copyHoOrganizerBtn" class="btn small" type="button">复制结果</button>
             </div>
           </div>
@@ -3726,7 +3832,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.6</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.9</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -3770,10 +3876,13 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.6 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.6</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.9 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.9</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.4.9</strong><span>KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。</span>
+<strong>v8.1.4.8</strong><span>统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。</span>
+<strong>v8.1.4.7</strong><span>新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span>
 <strong>v8.1.4.6</strong><span>修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span>
 <strong>v8.1.4.5</strong><span>修复设置页版本区适配；新增每次启动自动检查。</span>
 <strong>v8.1.4.4</strong><span>新增 PL 黑名单、状态历史与排团风险提示。</span>
@@ -3894,7 +4003,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.4.6 · 作者：番茄
+/* PL收集梦想生活 v8.1.4.9 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -3913,7 +4022,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.4.6";
+const APP_UI_VERSION = "8.1.4.9";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -4155,6 +4264,9 @@ let lastIntegrityReport = null;
 let hoOrganizerProfileId = "";
 let hoOrganizerFilter = "all";
 let hoOrganizerShowEmpty = false;
+let hoOrganizerMode = "pl";
+let kpOrganizerSort = "recent";
+const kpOrganizerExpandedKeys = new Set();
 
 function applyUiPreferences(source=settings){
   const ui=normalizeUiSettings(source?.ui);
@@ -5422,7 +5534,7 @@ const els = {
   planBoard:document.getElementById("planBoard"),planSearch:document.getElementById("planSearchInput"),planCount:document.getElementById("planCountText"),planMonth:document.getElementById("planMonthCalendar"),planWeek:document.getElementById("planWeekCalendar"),newPlan:document.getElementById("newPlanBtn"),plannerWeekMode:document.getElementById("plannerWeekModeBtn"),plannerMonthMode:document.getElementById("plannerMonthModeBtn"),
   planEditorBackdrop:document.getElementById("planEditorBackdrop"),planEditorDrawer:document.getElementById("planEditorDrawer"),planEditorTitle:document.getElementById("planEditorTitle"),planEditorContent:document.getElementById("planEditorContent"),closePlanEditor:document.getElementById("closePlanEditorBtn"),
   recordsBoard:document.getElementById("recordsBoard"),recordsSearch:document.getElementById("recordsSearchInput"),newModuleName:document.getElementById("newModuleNameInput"),createModuleRecord:document.getElementById("createModuleRecordBtn"),expandAllRecords:document.getElementById("expandAllRecordsBtn"),collapseAllRecords:document.getElementById("collapseAllRecordsBtn"),
-  newBtn:document.getElementById("newBtn"),settingsBtn:document.getElementById("settingsBtn"),overlay:document.getElementById("overlay"),globalCreate:document.getElementById("globalCreateBtn"),quickCreateMenu:document.getElementById("quickCreateMenu"),mobileBottomNav:document.getElementById("mobileBottomNav"),mobileToolsSheet:document.getElementById("mobileToolsSheet"),hoOrganizerBackdrop:document.getElementById("hoOrganizerBackdrop"),hoOrganizerTitle:document.getElementById("hoOrganizerTitle"),hoOrganizerSubtitle:document.getElementById("hoOrganizerSubtitle"),hoOrganizerStats:document.getElementById("hoOrganizerStats"),hoOrganizerNotice:document.getElementById("hoOrganizerNotice"),hoOrganizerBoard:document.getElementById("hoOrganizerBoard"),hoShowEmptyColumns:document.getElementById("hoShowEmptyColumns"),hoImageExport:document.getElementById("hoImageExportBtn"),hoImageExportMenu:document.getElementById("hoImageExportMenu"),copyHoOrganizer:document.getElementById("copyHoOrganizerBtn"),closeHoOrganizer:document.getElementById("closeHoOrganizerBtn"),closeHoOrganizerFoot:document.getElementById("closeHoOrganizerFootBtn"),
+  newBtn:document.getElementById("newBtn"),settingsBtn:document.getElementById("settingsBtn"),overlay:document.getElementById("overlay"),globalCreate:document.getElementById("globalCreateBtn"),quickCreateMenu:document.getElementById("quickCreateMenu"),mobileBottomNav:document.getElementById("mobileBottomNav"),mobileToolsSheet:document.getElementById("mobileToolsSheet"),hoOrganizerBackdrop:document.getElementById("hoOrganizerBackdrop"),hoOrganizerTitle:document.getElementById("hoOrganizerTitle"),hoOrganizerSubtitle:document.getElementById("hoOrganizerSubtitle"),hoOrganizerStats:document.getElementById("hoOrganizerStats"),hoOrganizerNotice:document.getElementById("hoOrganizerNotice"),hoOrganizerBoard:document.getElementById("hoOrganizerBoard"),hoShowEmptyColumns:document.getElementById("hoShowEmptyColumns"),kpOrganizerSortWrap:document.getElementById("kpOrganizerSortWrap"),kpOrganizerSort:document.getElementById("kpOrganizerSort"),hoImageExport:document.getElementById("hoImageExportBtn"),hoImageExportMenu:document.getElementById("hoImageExportMenu"),copyHoOrganizer:document.getElementById("copyHoOrganizerBtn"),closeHoOrganizer:document.getElementById("closeHoOrganizerBtn"),closeHoOrganizerFoot:document.getElementById("closeHoOrganizerFootBtn"),
   autoSaveHeroStatus:document.getElementById("autoSaveHeroStatus"),autoSaveHeroText:document.getElementById("autoSaveHeroText"),dataSafetyBanner:document.getElementById("dataSafetyBanner"),dataSafetyBannerTitle:document.getElementById("dataSafetyBannerTitle"),dataSafetyBannerText:document.getElementById("dataSafetyBannerText"),dataSafetyBackupNow:document.getElementById("dataSafetyBackupNowBtn"),dataSafetyDismiss:document.getElementById("dataSafetyDismissBtn"),
   profileModalWrap:document.getElementById("profileModalWrap"),profileModal:document.getElementById("profileModal"),settingsModal:document.getElementById("settingsModal"),settingsPanels:document.querySelector(".settings-panels"),modalTitle:document.getElementById("modalTitle"),
   name:document.getElementById("nameInput"),contact:document.getElementById("contactInput"),profileStatusValue:document.getElementById("profileStatusValue"),profileStatusDetail:document.getElementById("profileStatusDetail"),profileStatusAction:document.getElementById("profileStatusActionBtn"),profileStatusHistory:document.getElementById("profileStatusHistory"),profileStatusHistoryBody:document.getElementById("profileStatusHistoryBody"),
@@ -5958,52 +6070,120 @@ function hoOrganizerEntryHTML(entry){
     <div class="ho-entry-meta">${entry.tableName?`<span>${escapeHTML(entry.tableName)}</span>`:""}<span>${escapeHTML(entry.dateText)}</span></div>
   </button>`;
 }
-function renderHoOrganizer(){
-  if(!hoOrganizerProfileId)return;
-  const profile=profileById(hoOrganizerProfileId);
-  if(!profile){closeHoOrganizer();return;}
-  const all=hoOrganizerEntriesForProfile(profile.id);
-  const filtered=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter);
-  const cols=hoOrganizerColumnDefinitions(filtered,hoOrganizerShowEmpty);
-  const done=all.filter(e=>e.kind==="record").length;
-  const planned=all.filter(e=>e.kind==="plan").length;
-  const known=all.filter(e=>!["none","unset"].includes(e.column.key)).length;
-  const none=all.filter(e=>e.column.key==="none").length;
-  const unset=all.filter(e=>e.column.key==="unset").length;
-
-  els.hoOrganizerTitle.textContent=`${displayProfileName(profile)} · HO 整理`;
-  els.hoOrganizerSubtitle.textContent=`自动汇总该 PL 作为 PC / KPC 的 ${all.length} 条模组经历；纯 KP 记录不会进入 HO 列。`;
-  els.hoOrganizerStats.innerHTML=`<span><strong>${all.length}</strong> 条</span><span>已结团 ${done}</span><span>计划中 ${planned}</span><span>有 HO ${known}</span><span>无 HO ${none}</span>${unset?`<span class="warn">HO 未记录 ${unset}</span>`:""}`;
-  els.hoOrganizerNotice.innerHTML=unset
-    ?`<strong>${unset} 条经历的 HO 还没记录。</strong><span>“HO 未记录”与“无 HO”分开显示，避免将未知状态记为无 HO。</span>`
-    :`<span>数据来自跑团记录与开团计划；修改 PC / HO 请打开对应桌次。</span>`;
-
-  document.querySelectorAll("[data-ho-filter]").forEach(btn=>btn.classList.toggle("active",btn.dataset.hoFilter===hoOrganizerFilter));
-  els.hoShowEmptyColumns.checked=hoOrganizerShowEmpty;
-
-  if(!filtered.length){
-    els.hoOrganizerBoard.innerHTML=`<div class="ho-organizer-empty"><strong>${all.length?"当前筛选无结果":"暂无可整理的 HO 记录"}</strong><span>${all.length?"请调整筛选范围。":"在跑团记录或开团计划中关联该 PL 与 PC 后，此处将自动显示。"}</span></div>`;
-    return;
+function organizerIsProfileKp(run,profile){
+  if(!run||!profile)return false;
+  if(String(run.kpProfileId||"")===String(profile.id))return true;
+  return !run.kpProfileId&&isSelfProfile(profile)&&isSelfKP(run.kp);
+}
+function kpOrganizerParticipantCount(run){
+  const linked=(run?.plIds||[]).map(String),known=new Set(linked.map(id=>normalizedEntityNameKey(profileNameById(id))).filter(Boolean));
+  let total=linked.length;
+  const extras=[...(Array.isArray(run?.legacyPlNames)?run.legacyPlNames:[]),...splitLegacyParticipantText(run?.participantText||"")];
+  extras.forEach(name=>{const key=normalizedEntityNameKey(name);if(key&&!known.has(key)){known.add(key);total++;}});
+  return total;
+}
+function kpOrganizerDateInfo(kind,run){
+  if(kind==="record"){
+    const slots=(run.sessionSlots||[]).map(s=>s.date).filter(Boolean).sort();
+    const key=run.endDate||run.startDate||slots[slots.length-1]||"";
+    return {key,text:formatRunDateRange(run)||slots[0]||"日期未填"};
   }
+  const slots=(run.timeSlots||[]).map(s=>s.date).filter(Boolean).sort();
+  return {key:slots[0]||"",text:slots[0]||"尚未排期"};
+}
+function kpOrganizerEntriesForProfile(profileId){
+  const profile=profileById(profileId);if(!profile)return [];
+  const out=[];
+  [["record",runRecords],["plan",runPlans]].forEach(([kind,list])=>list.forEach(run=>{
+    if(!organizerIsProfileKp(run,profile))return;
+    const mod=moduleForRunEntity(run),date=kpOrganizerDateInfo(kind,run),status=hoOrganizerStatusFor(kind,run);
+    const moduleName=String(run.moduleName||mod?.name||"未命名模组").trim()||"未命名模组";
+    out.push({
+      id:`${kind}:${run.id}`,kind,runId:run.id,moduleId:String(run.moduleId||mod?.id||""),
+      moduleKey:String(run.moduleId||mod?.id||"")?`id:${String(run.moduleId||mod?.id)}`:`name:${normalizedEntityNameKey(moduleName)}`,
+      moduleName,tableName:String(run.tableName||"").trim(),status,dateText:date.text,dateKey:date.key,
+      plCount:kpOrganizerParticipantCount(run),updatedAt:Number(run.updatedAt||run.createdAt||0)
+    });
+  }));
+  return out.sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt||a.moduleName.localeCompare(b.moduleName,"zh-CN"));
+}
+function kpOrganizerGroups(entries){
+  const map=new Map();
+  entries.forEach(e=>{
+    if(!map.has(e.moduleKey))map.set(e.moduleKey,{key:e.moduleKey,moduleId:e.moduleId,moduleName:e.moduleName,entries:[]});
+    map.get(e.moduleKey).entries.push(e);
+  });
+  const groups=[...map.values()].map(g=>{
+    const records=g.entries.filter(e=>e.kind==="record"),plans=g.entries.filter(e=>e.kind==="plan");
+    const lastDone=records.map(e=>e.dateKey).filter(Boolean).sort().at(-1)||"";
+    const lastAny=g.entries.map(e=>e.dateKey).filter(Boolean).sort().at(-1)||"";
+    return {...g,done:records.length,planned:plans.length,lastDone,lastAny,totalPl:records.reduce((n,e)=>n+e.plCount,0)};
+  });
+  groups.sort((a,b)=>{
+    if(kpOrganizerSort==="count")return b.done-a.done||b.planned-a.planned||a.moduleName.localeCompare(b.moduleName,"zh-CN");
+    if(kpOrganizerSort==="name")return a.moduleName.localeCompare(b.moduleName,"zh-CN");
+    return (b.lastDone||b.lastAny||"").localeCompare(a.lastDone||a.lastAny||"")||(b.lastAny||"").localeCompare(a.lastAny||"")||a.moduleName.localeCompare(b.moduleName,"zh-CN");
+  });
+  return groups;
+}
+function kpOrganizerEntryHTML(entry){
+  return `<button class="kp-entry" type="button" data-ho-open-kind="${escapeHTML(entry.kind)}" data-ho-open-id="${escapeHTML(entry.runId)}" title="打开对应${entry.kind==="record"?"跑团记录":"开团计划"}">
+    <div class="kp-entry-top"><span class="ho-status ${escapeHTML(entry.status.key)}">${escapeHTML(entry.status.label)}</span><span>${escapeHTML(entry.dateText)}</span><strong>${entry.plCount} PL</strong></div>
+    <div class="kp-entry-meta"><span>${entry.tableName?escapeHTML(entry.tableName):"未填写桌名"}</span><span>${entry.kind==="record"?"跑团记录":"开团计划"}</span></div>
+  </button>`;
+}
+function renderPlOrganizer(profile){
+  const all=hoOrganizerEntriesForProfile(profile.id),filtered=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter),cols=hoOrganizerColumnDefinitions(filtered,hoOrganizerShowEmpty);
+  const done=all.filter(e=>e.kind==="record").length,planned=all.filter(e=>e.kind==="plan").length,known=all.filter(e=>!["none","unset"].includes(e.column.key)).length,none=all.filter(e=>e.column.key==="none").length,unset=all.filter(e=>e.column.key==="unset").length;
+  els.hoOrganizerSubtitle.textContent=`自动汇总该 PL 作为 PC / KPC 的 ${all.length} 条经历；纯 KP 记录请切换到“KP 带团”。`;
+  els.hoOrganizerStats.innerHTML=`<span><strong>${all.length}</strong> 条</span><span>已结团 ${done}</span><span>计划中 ${planned}</span><span>有 HO ${known}</span><span>无 HO ${none}</span>${unset?`<span class="warn">HO 未记录 ${unset}</span>`:""}`;
+  els.hoOrganizerNotice.innerHTML=unset?`<strong>${unset} 条经历的 HO 还没记录。</strong><span>“HO 未记录”与“无 HO”分开显示，避免将未知状态记为无 HO。</span>`:`<span>数据来自跑团记录与开团计划；修改 PC / HO 请打开对应桌次。</span>`;
+  els.hoOrganizerBoard.classList.remove("kp-mode");
+  els.hoOrganizerBoard.classList.add("pl-mode");
+  if(!filtered.length){els.hoOrganizerBoard.innerHTML=`<div class="ho-organizer-empty"><strong>${all.length?"当前筛选无结果":"暂无可整理的 PL 参团记录"}</strong><span>${all.length?"请调整筛选范围。":"在跑团记录或开团计划中关联该 PL 与 PC 后，此处将自动显示。"}</span></div>`;return;}
   els.hoOrganizerBoard.innerHTML=cols.map((col,ci)=>{
-    const p=HO_ORGANIZER_PALETTE[ci%HO_ORGANIZER_PALETTE.length];
-    const rows=filtered.filter(e=>e.column.key===col.key);
-    return `<section class="ho-column" style="--ho-dot:${p.dot};--ho-bg:${p.bg};--ho-border:${p.border};--ho-title:${p.title}">
-      <header class="ho-column-head">
-        <div class="ho-column-head-main">
-          <span class="ho-column-emblem"><span class="ho-column-emblem-core"></span></span>
-          <div class="ho-column-title-stack"><span class="ho-column-kicker">HO 分组</span><strong>${escapeHTML(col.label)}</strong></div>
-        </div>
-        <span class="ho-column-count"><strong>${rows.length}</strong><small>条</small></span>
-      </header>
-      <div class="ho-column-body">${rows.length?rows.map(hoOrganizerEntryHTML).join(""):`<div class="ho-column-empty">暂无记录</div>`}</div>
-    </section>`;
+    const p=HO_ORGANIZER_PALETTE[ci%HO_ORGANIZER_PALETTE.length],rows=filtered.filter(e=>e.column.key===col.key),rowDone=rows.filter(e=>e.kind==="record").length,rowPlan=rows.filter(e=>e.kind==="plan").length;
+    const summary=[rowDone&&`已结团 ${rowDone}`,rowPlan&&`计划 ${rowPlan}`].filter(Boolean).join(" · ")||"暂无记录";
+    return `<section class="kp-module-group ho-module-group" style="--ho-dot:${p.dot};--ho-bg:${p.bg};--ho-border:${p.border};--ho-title:${p.title}"><header class="kp-module-head ho-module-head"><div class="kp-module-title ho-module-title"><strong>${escapeHTML(col.label)}</strong><span>HO 分组 · ${escapeHTML(summary)}</span></div><div class="kp-module-count ho-module-count"><strong>${rows.length} 条</strong><span>${rowDone?`已跑 ${rowDone} 条`:rowPlan?`计划 ${rowPlan} 条`:""}</span></div></header><div class="kp-module-body ho-module-body">${rows.length?rows.map(hoOrganizerEntryHTML).join(""):`<div class="ho-column-empty">暂无记录</div>`}</div></section>`;
   }).join("");
 }
+function renderKpOrganizer(profile){
+  const all=kpOrganizerEntriesForProfile(profile.id),filtered=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter),groups=kpOrganizerGroups(filtered);
+  const records=all.filter(e=>e.kind==="record"),plans=all.filter(e=>e.kind==="plan"),moduleCount=new Set(records.map(e=>e.moduleKey)).size,totalPl=records.reduce((n,e)=>n+e.plCount,0);
+  els.hoOrganizerSubtitle.textContent=`按模组汇总 ${records.length} 桌已带团记录与 ${plans.length} 条开团计划；带团次数仅统计跑团记录。`;
+  els.hoOrganizerStats.innerHTML=`<span><strong>${records.length}</strong> 已带团</span><span>计划中 ${plans.length}</span><span>已带模组 ${moduleCount}</span><span>已带 PL ${totalPl} 人次</span>`;
+  els.hoOrganizerNotice.innerHTML=`<span>已带团与 PL 人次仅按跑团记录统计；计划中的桌次单独显示，不计入已带团次数。模组详情默认折叠，按需展开查看桌次。</span>`;
+  els.hoOrganizerBoard.classList.remove("pl-mode");
+  els.hoOrganizerBoard.classList.add("kp-mode");
+  if(!filtered.length){els.hoOrganizerBoard.innerHTML=`<div class="ho-organizer-empty"><strong>${all.length?"当前筛选无结果":"暂无 KP 带团记录"}</strong><span>${all.length?"请调整筛选范围。":"将该档案关联为跑团记录或开团计划的 KP 后，此处将自动汇总。"}</span></div>`;return;}
+  els.hoOrganizerBoard.innerHTML=groups.map(group=>{
+    const entries=[...group.entries].sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt),summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · "),recent=group.lastDone?`最近带团 ${group.lastDone}`:(group.lastAny?`最近计划 ${group.lastAny}`:"暂无日期"),expanded=kpOrganizerExpandedKeys.has(group.key);
+    return `<section class="kp-module-group ${expanded?"":"is-collapsed"}" data-kp-group-key="${escapeHTML(group.key)}"><header class="kp-module-head"><div class="kp-module-title"><strong>${escapeHTML(group.moduleName)}</strong><span>${escapeHTML(recent)}</span></div><div class="kp-module-head-side"><div class="kp-module-count"><strong>${escapeHTML(summary||`${entries.length} 条`)}</strong>${group.totalPl?`<span>${group.totalPl} PL 人次</span>`:""}</div><button class="kp-detail-toggle" type="button" data-kp-group-toggle="${escapeHTML(group.key)}" aria-expanded="${expanded?"true":"false"}" title="${expanded?"收起桌次详情":"展开桌次详情"}"><span>${expanded?"收起":"展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body" ${expanded?"":"hidden"}>${entries.map(kpOrganizerEntryHTML).join("")}</div></section>`;
+  }).join("");
+}
+function renderHoOrganizer(){
+  if(!hoOrganizerProfileId)return;
+  const profile=profileById(hoOrganizerProfileId);if(!profile){closeHoOrganizer();return;}
+  const plAll=hoOrganizerEntriesForProfile(profile.id),kpAll=kpOrganizerEntriesForProfile(profile.id),kpDone=kpAll.filter(e=>e.kind==="record").length;
+  els.hoOrganizerTitle.textContent=`${displayProfileName(profile)} · 跑团整理`;
+  document.querySelectorAll("[data-run-organizer-mode]").forEach(btn=>{const active=btn.dataset.runOrganizerMode===hoOrganizerMode;btn.classList.toggle("active",active);btn.setAttribute("aria-selected",String(active));});
+  document.querySelector('[data-run-organizer-count="pl"]')?.replaceChildren(document.createTextNode(String(plAll.length)));
+  document.querySelector('[data-run-organizer-count="kp"]')?.replaceChildren(document.createTextNode(String(kpDone)));
+  document.querySelectorAll("[data-ho-filter]").forEach(btn=>btn.classList.toggle("active",btn.dataset.hoFilter===hoOrganizerFilter));
+  els.hoShowEmptyColumns.checked=hoOrganizerShowEmpty;
+  document.querySelectorAll(".ho-only-control").forEach(el=>el.hidden=hoOrganizerMode!=="pl");
+  if(els.kpOrganizerSortWrap)els.kpOrganizerSortWrap.hidden=hoOrganizerMode!=="kp";
+  if(els.kpOrganizerSort)els.kpOrganizerSort.value=kpOrganizerSort;
+  toggleHoImageExportMenu(false);
+  const exportWide=els.hoImageExportMenu?.querySelector('[data-ho-image-style="wide"] span'),exportLong=els.hoImageExportMenu?.querySelector('[data-ho-image-style="long"] span');
+  if(exportWide)exportWide.textContent=hoOrganizerMode==="kp"?"按模组多列展示全部桌次，适合电脑或群聊":"横向展示全部 HO，适合电脑或群聊";
+  if(exportLong)exportLong.textContent=hoOrganizerMode==="kp"?"按模组纵向展示全部桌次，适合手机":"按 HO 分组纵向展示，适合手机";
+  if(hoOrganizerMode==="kp")renderKpOrganizer(profile);else renderPlOrganizer(profile);
+}
 function openHoOrganizer(profileId){
-  if(shareModeBlock("HO 整理"))return false;
+  if(shareModeBlock("跑团整理"))return false;
   const p=profileById(String(profileId||""));if(!p)return;
-  hoOrganizerProfileId=p.id;hoOrganizerFilter="all";hoOrganizerShowEmpty=false;
+  hoOrganizerProfileId=p.id;hoOrganizerFilter="all";hoOrganizerShowEmpty=false;hoOrganizerMode="pl";kpOrganizerSort="recent";kpOrganizerExpandedKeys.clear();
   els.hoOrganizerBackdrop.hidden=false;document.body.classList.add("ho-organizer-open");syncModalPageScrollLock();renderHoOrganizer();
 }
 function closeHoOrganizer(){
@@ -6025,7 +6205,7 @@ function hoExportTheme(){
   return {theme,bg:get("--t-bg","#f4f3ee"),surface:get("--t-surface","#fffdf9"),surface2:get("--t-surface-2","#f7f7f2"),ink:get("--t-ink","#2f3431"),text2:get("--t-text-2","#505651"),muted:get("--t-muted","#727873"),faint:get("--t-faint","#969b96"),line:get("--t-line","#dfe3de"),accent:get("--t-accent","#405249"),accentSoft:get("--t-accent-soft","#eaf0eb"),success:get("--t-success","#6b8a52"),warning:get("--t-warning","#a07245")};
 }
 function hoExportStatusColors(status,theme){if(status.key==="done")return {bg:"#fdf5e0",fg:"#8f6d25"};if(status.key==="scheduled")return {bg:"#e8f5e8",fg:"#527d52"};return {bg:"#e8f4fc",fg:"#567f99"};}
-function hoExportFilename(style){const p=profileById(hoOrganizerProfileId),name=String(displayProfileName(p)||"PL").replace(/[\\/:*?"<>|]/g,"_");const scope=hoOrganizerFilter==="record"?"已结团":hoOrganizerFilter==="plan"?"计划中":"全部";return `${name}_HO 整理_${style==="wide"?"宽幅":"长图"}_${scope}.png`;}
+function hoExportFilename(style){const p=profileById(hoOrganizerProfileId),name=String(displayProfileName(p)||"PL").replace(/[\\/:*?"<>|]/g,"_");const scope=hoOrganizerFilter==="record"?"已结团":hoOrganizerFilter==="plan"?"计划中":"全部",view=hoOrganizerMode==="kp"?"KP 带团整理":"HO 整理";return `${name}_${view}_${style==="wide"?"宽幅":"长图"}_${scope}.png`;}
 function drawHoExportHeader(ctx,w,profile,entries,theme){
   ctx.fillStyle=theme.surface;ctx.fillRect(0,0,w,132);
   ctx.fillStyle=theme.accent;ctx.beginPath();ctx.arc(42,34,8,0,Math.PI*2);ctx.fill();ctx.fillStyle=theme.success;ctx.beginPath();ctx.arc(55,34,8,0,Math.PI*2);ctx.fill();
@@ -6071,18 +6251,47 @@ function buildHoOrganizerCanvas(style="wide"){
   layout.forEach(item=>{const pal=palette[item.ci%palette.length];drawHoColumnHeader(ctx,item.x,item.y,item.w,item.col,item.rows.length,pal,theme);let cy=item.y+colHeadH+bodyPad;item.rows.forEach((entry,i)=>{const colIndex=item.gridCols===2?i%2:0,rowIndex=item.gridCols===2?Math.floor(i/2):i;const cx=item.x+bodyPad+colIndex*(item.cardW+cardGap),yy=cy+rowIndex*(cardH+cardGap);drawHoEntryCard(ctx,cx,yy,item.cardW,entry,theme);});if(!item.rows.length){ctx.fillStyle=theme.faint;ctx.font="500 13px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText("暂无记录",item.x+item.w/2,cy+36);ctx.textAlign="left";}});
   ctx.fillStyle=theme.faint;ctx.font="500 11px system-ui, sans-serif";ctx.fillText(`由 ${APP_NAME} v${APP_UI_VERSION} 自动整理 · ${new Date().toLocaleDateString("zh-CN")}`,pad,baseH-14);return canvas;
 }
+function drawKpExportHeader(ctx,w,profile,entries,theme){
+  ctx.fillStyle=theme.surface;ctx.fillRect(0,0,w,132);
+  ctx.fillStyle=theme.accent;ctx.beginPath();ctx.arc(42,34,8,0,Math.PI*2);ctx.fill();ctx.fillStyle=theme.success;ctx.beginPath();ctx.arc(55,34,8,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle=theme.muted;ctx.font="700 16px system-ui, sans-serif";ctx.fillText("KP · 带团整理",76,40);
+  ctx.fillStyle=theme.ink;ctx.font="800 34px system-ui, sans-serif";ctx.fillText(`${displayProfileName(profile)} · KP 带团`,36,82);
+  const done=entries.filter(e=>e.kind==="record").length,plan=entries.filter(e=>e.kind==="plan").length,moduleCount=new Set(entries.filter(e=>e.kind==="record").map(e=>e.moduleKey)).size,totalPl=entries.filter(e=>e.kind==="record").reduce((n,e)=>n+e.plCount,0);
+  ctx.fillStyle=theme.muted;ctx.font="500 16px system-ui, sans-serif";ctx.fillText(`已带团 ${done} 桌 · 计划中 ${plan} 桌 · 已带模组 ${moduleCount} · 已带 PL ${totalPl} 人次`,36,111);
+  ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(36,131.5);ctx.lineTo(w-36,131.5);ctx.stroke();return 132;
+}
+function drawKpExportEntry(ctx,x,y,w,entry,theme){
+  const h=72;canvasFillRound(ctx,x,y,w,h,11,theme.surface2,theme.line);const sc=hoExportStatusColors(entry.status,theme),pillW=58;canvasFillRound(ctx,x+12,y+10,pillW,22,11,sc.bg,"");ctx.fillStyle=sc.fg;ctx.font="700 10px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText(entry.status.label,x+12+pillW/2,y+25);ctx.textAlign="left";
+  ctx.fillStyle=theme.ink;ctx.font="700 14px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.dateText,w-158),x+82,y+25);ctx.fillStyle=theme.text2;ctx.font="750 12px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(`${entry.plCount} PL`,x+w-12,y+25);ctx.textAlign="left";
+  ctx.fillStyle=theme.faint;ctx.font="500 10px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.tableName||"未填写桌名",w-150),x+12,y+53);ctx.textAlign="right";ctx.fillText(entry.kind==="record"?"跑团记录":"开团计划",x+w-12,y+53);ctx.textAlign="left";return h;
+}
+function drawKpExportGroup(ctx,x,y,w,group,theme,entryCols=1){
+  const headH=78,pad=10,gap=8,entryH=72,entries=[...group.entries].sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt),rows=Math.max(1,Math.ceil(entries.length/entryCols)),bodyH=pad*2+rows*entryH+Math.max(0,rows-1)*gap,h=headH+bodyH;canvasFillRound(ctx,x,y,w,h,15,theme.surface,theme.line);
+  ctx.save();canvasRoundedRect(ctx,x,y,w,headH,15);ctx.clip();ctx.fillStyle=theme.accentSoft;ctx.fillRect(x,y,w,headH);ctx.restore();ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(x,y+headH+.5);ctx.lineTo(x+w,y+headH+.5);ctx.stroke();
+  ctx.fillStyle=theme.ink;ctx.font="800 18px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,group.moduleName,w-230),x+14,y+29);const recent=group.lastDone?`最近带团 ${group.lastDone}`:(group.lastAny?`最近计划 ${group.lastAny}`:"暂无日期");ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";ctx.fillText(recent,x+14,y+52);
+  const summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · ")||`${entries.length} 条`;ctx.fillStyle=theme.accent;ctx.font="800 15px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(summary,x+w-14,y+29);ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";if(group.totalPl)ctx.fillText(`${group.totalPl} PL 人次`,x+w-14,y+52);ctx.textAlign="left";
+  const cardW=(w-pad*2-gap*(entryCols-1))/entryCols;entries.forEach((entry,i)=>{const col=i%entryCols,row=Math.floor(i/entryCols),cx=x+pad+col*(cardW+gap),cy=y+headH+pad+row*(entryH+gap);drawKpExportEntry(ctx,cx,cy,cardW,entry,theme);});return h;
+}
+function buildKpOrganizerCanvas(style="wide"){
+  const profile=profileById(hoOrganizerProfileId);if(!profile)throw new Error("没有选择 PL");const all=kpOrganizerEntriesForProfile(profile.id),entries=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter);if(!entries.length)throw new Error("当前筛选无可导出的 KP 带团记录");const groups=kpOrganizerGroups(entries),theme=hoExportTheme(),pad=34,gap=18,headH=132;let baseW,baseH,layout=[];
+  if(style==="long"){baseW=1080;let y=headH+28;const w=baseW-pad*2;groups.forEach(group=>{const count=Math.max(1,group.entries.length),entryCols=count>1?2:1,rows=Math.ceil(count/entryCols),h=78+20+rows*72+Math.max(0,rows-1)*8;layout.push({group,x:pad,y,w,h,entryCols});y+=h+16;});baseH=y+22;}
+  else{baseW=1560;const cols=3,colW=(baseW-pad*2-gap*(cols-1))/cols;let y=headH+28;for(let i=0;i<groups.length;i+=cols){const row=groups.slice(i,i+cols).map((group,j)=>{const count=Math.max(1,group.entries.length),rows=count,h=78+20+rows*72+Math.max(0,rows-1)*8;return {group,x:pad+j*(colW+gap),y,w:colW,h,entryCols:1};});const rowH=Math.max(...row.map(x=>x.h));layout.push(...row);y+=rowH+16;}baseH=y+22;}
+  const maxDim=9000,safeScale=Math.min(2,maxDim/baseW,maxDim/baseH);if(safeScale<.5)throw new Error("当前记录较多，请先按已结团或计划中筛选后再导出");const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*safeScale);canvas.height=Math.round(baseH*safeScale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(safeScale,safeScale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);drawKpExportHeader(ctx,baseW,profile,entries,theme);layout.forEach(item=>drawKpExportGroup(ctx,item.x,item.y,item.w,item.group,theme,item.entryCols));ctx.fillStyle=theme.faint;ctx.font="500 11px system-ui, sans-serif";ctx.fillText(`由 ${APP_NAME} v${APP_UI_VERSION} 自动整理 · ${new Date().toLocaleDateString("zh-CN")}`,pad,baseH-14);return canvas;
+}
 async function exportHoOrganizerImage(style){
-  try{toggleHoImageExportMenu(false);const canvas=buildHoOrganizerCanvas(style);const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG 生成失败")),"image/png",1));downloadBlobFile(blob,hoExportFilename(style));showToast(style==="long"?"HO 长图已导出":"HO 宽幅图已导出");}catch(err){console.error(err);appNotice(`导出 HO 图片失败：${err.message||err}`)}
+  try{toggleHoImageExportMenu(false);const isKp=hoOrganizerMode==="kp",canvas=isKp?buildKpOrganizerCanvas(style):buildHoOrganizerCanvas(style);const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG 生成失败")),"image/png",1));downloadBlobFile(blob,hoExportFilename(style));showToast(isKp?(style==="long"?"KP 长图已导出":"KP 宽幅图已导出"):(style==="long"?"HO 长图已导出":"HO 宽幅图已导出"));}catch(err){console.error(err);appNotice(`导出${hoOrganizerMode==="kp"?" KP 带团":" HO"}图片失败：${err.message||err}`)}
 }
 function hoOrganizerText(profileId){
   const p=profileById(profileId);if(!p)return "";
-  const entries=hoOrganizerEntriesForProfile(profileId),cols=hoOrganizerColumnDefinitions(entries,false);
-  const lines=[`${displayProfileName(p)} · HO 整理`];
-  cols.forEach(col=>{
-    const rows=entries.filter(e=>e.column.key===col.key);if(!rows.length)return;
-    lines.push("",`【${col.label}】`);
-    rows.forEach(e=>lines.push(`${e.status.label}｜${e.moduleName}${e.tableName?` · ${e.tableName}`:""}｜${e.role}${e.pcName?`：${e.pcName}`:""}｜${e.dateText}`));
-  });
+  if(hoOrganizerMode==="kp"){
+    const all=kpOrganizerEntriesForProfile(profileId),filtered=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter),groups=kpOrganizerGroups(filtered);
+    const records=all.filter(e=>e.kind==="record"),plans=all.filter(e=>e.kind==="plan"),moduleCount=new Set(records.map(e=>e.moduleKey)).size,totalPl=records.reduce((n,e)=>n+e.plCount,0);
+    const lines=[`${displayProfileName(p)} · KP 带团整理`,`已带团 ${records.length} 桌 · 计划中 ${plans.length} 桌 · 已带模组 ${moduleCount} · 已带 PL ${totalPl} 人次`];
+    groups.forEach(g=>{lines.push("",`【${g.moduleName}】 已带 ${g.done} 桌${g.planned?` · 计划 ${g.planned} 桌`:""}`);g.entries.forEach(e=>lines.push(`${e.status.label}｜${e.dateText}｜${e.plCount} PL${e.tableName?`｜${e.tableName}`:""}`));});
+    return lines.join("\n");
+  }
+  const entries=hoOrganizerEntriesForProfile(profileId),cols=hoOrganizerColumnDefinitions(entries,false),lines=[`${displayProfileName(p)} · PL / HO 整理`];
+  cols.forEach(col=>{const rows=entries.filter(e=>e.column.key===col.key);if(!rows.length)return;lines.push("",`【${col.label}】`);rows.forEach(e=>lines.push(`${e.status.label}｜${e.moduleName}${e.tableName?` · ${e.tableName}`:""}｜${e.role}${e.pcName?`：${e.pcName}`:""}｜${e.dateText}`));});
   return lines.join("\n");
 }
 function openHoOrganizerSource(kind,id){
@@ -6124,7 +6333,7 @@ function compactRowHTML(p){
     </div>
     <div class="compact-total"><strong>${fmtScore(total)}</strong><span>${total===null?"待评分":"/10 综合"}</span></div>
     <div class="compact-scores" title="查看单项评分">${scores}${scoreMore}</div>
-    <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">HO 整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":blacklisted?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
+    <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">跑团整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":blacklisted?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
 }
 
@@ -6223,7 +6432,7 @@ function cardHTML(p){
         <div class="run-list">${runCards}</div>
       </details>
     </div>
-    <div class="card-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}"><span class="ho-mini-dot"></span>HO 整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":isBlacklistedProfile(p)?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
+    <div class="card-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}"><span class="ho-mini-dot"></span>跑团整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":isBlacklistedProfile(p)?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
 }
 
@@ -9867,11 +10076,15 @@ els.closeHoOrganizer.addEventListener("click",closeHoOrganizer);
 els.closeHoOrganizerFoot.addEventListener("click",closeHoOrganizer);
 els.hoOrganizerBackdrop.addEventListener("click",e=>{if(e.target===els.hoOrganizerBackdrop)closeHoOrganizer();});
 els.hoShowEmptyColumns.addEventListener("change",()=>{hoOrganizerShowEmpty=els.hoShowEmptyColumns.checked;renderHoOrganizer();});
+document.querySelector(".run-organizer-mode-tabs")?.addEventListener("click",e=>{const btn=e.target.closest("[data-run-organizer-mode]");if(!btn)return;hoOrganizerMode=btn.dataset.runOrganizerMode||"pl";hoOrganizerFilter="all";renderHoOrganizer();});
+els.kpOrganizerSort?.addEventListener("change",()=>{kpOrganizerSort=els.kpOrganizerSort.value||"recent";renderHoOrganizer();});
 document.querySelector(".ho-view-filter")?.addEventListener("click",e=>{
   const btn=e.target.closest("[data-ho-filter]");if(!btn)return;
   hoOrganizerFilter=btn.dataset.hoFilter||"all";renderHoOrganizer();
 });
 els.hoOrganizerBoard.addEventListener("click",e=>{
+  const toggle=e.target.closest("[data-kp-group-toggle]");
+  if(toggle){const key=String(toggle.dataset.kpGroupToggle||""),group=toggle.closest(".kp-module-group"),body=group?.querySelector(".kp-module-body"),expanded=!kpOrganizerExpandedKeys.has(key);if(expanded)kpOrganizerExpandedKeys.add(key);else kpOrganizerExpandedKeys.delete(key);group?.classList.toggle("is-collapsed",!expanded);if(body)body.hidden=!expanded;toggle.setAttribute("aria-expanded",expanded?"true":"false");toggle.setAttribute("title",expanded?"收起桌次详情":"展开桌次详情");const label=toggle.querySelector("span:first-child");if(label)label.textContent=expanded?"收起":"展开";return;}
   const item=e.target.closest("[data-ho-open-kind][data-ho-open-id]");if(!item)return;
   openHoOrganizerSource(item.dataset.hoOpenKind,item.dataset.hoOpenId);
 });
@@ -9879,7 +10092,7 @@ els.hoImageExport.addEventListener("click",e=>{e.stopPropagation();toggleHoImage
 els.hoImageExportMenu.addEventListener("click",e=>{const btn=e.target.closest("[data-ho-image-style]");if(!btn)return;void exportHoOrganizerImage(btn.dataset.hoImageStyle);});
 els.copyHoOrganizer.addEventListener("click",async()=>{
   if(!hoOrganizerProfileId)return;
-  const ok=await copyTextCompat(hoOrganizerText(hoOrganizerProfileId));showToast(ok?"HO 整理已复制":"复制失败");
+  const ok=await copyTextCompat(hoOrganizerText(hoOrganizerProfileId));showToast(ok?"跑团整理已复制":"复制失败");
 });
 
 /* 设置弹窗：鼠标位于左侧导航、标题或底部操作区时，滚轮仍用于滚动右侧设置内容。 */
