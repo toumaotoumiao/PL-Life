@@ -402,6 +402,10 @@
     body.privacy-mask .privacy-compact-personal{width:92px;padding:1px 6px}
     body.privacy-mask .privacy-chip-name{width:64px;padding:1px 6px}
     body.privacy-mask .privacy-title-name{width:98px;padding:1px 7px}
+    body.privacy-mask .privacy-score-main{display:block;width:112px;min-height:48px;padding:5px 7px;border-radius:10px}
+    body.privacy-mask .privacy-score-compact{display:block;width:62px;min-height:34px;padding:4px 6px;border-radius:9px}
+    body.privacy-mask .privacy-score-inline{width:92px;padding:2px 6px;border-radius:8px}
+    .privacy-score-content{display:block;width:100%}
 
     /* 输入框没有可包裹的内层文字，因此使用柔和雾面输入态作为视觉替代。 */
     body.privacy-mask #nameInput,
@@ -3210,7 +3214,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
-    /* v8.1.4.15 · 常用平台补充与问题反馈精简；数据结构保持 v20 */
+    /* v8.1.5.1 · 跑团偏好说明与多选快捷操作；数据结构保持 v20 */
     /* v8.1.4.10 · KP 已带 PL 去重人数统计与关闭按钮统一 */
     .plan-module-picker{position:relative;display:grid;gap:6px;grid-column:1/-1}
     .plan-module-picker-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
@@ -3283,7 +3287,7 @@
     }
 
 
-    /* ---------- v8.1.4.15 · 跑团偏好 / PL-KP 双栏与导出尺度 ---------- */
+    /* ---------- v8.1.5.1 · 跑团偏好多选快捷操作 ---------- */
     .self-intro-view{display:grid;gap:10px;min-width:0}
     .self-intro-toolbar .view-toolbar-actions{align-items:center}
     .self-intro-save-state{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 10px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-muted);white-space:nowrap}
@@ -3307,7 +3311,7 @@
     .self-intro-side-body{display:flex;flex:1;flex-direction:column;gap:0;padding:0 15px 16px}
     .self-intro-side .self-intro-section{padding-top:14px}.self-intro-side .self-intro-section+.self-intro-section{border-top:1px dashed color-mix(in srgb,var(--t-line) 76%,transparent);margin-top:14px}
     .self-intro-section{display:grid;gap:8px;padding-top:13px}.self-intro-card-body>.self-intro-section+.self-intro-section{border-top:1px dashed color-mix(in srgb,var(--t-line) 76%,transparent)}
-    .self-intro-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:22px}.self-intro-section-head strong{position:relative;font-size:12.5px;line-height:1.3;font-weight:850;color:var(--t-ink);padding-left:9px}.self-intro-section-head strong::before{content:"";position:absolute;left:0;top:50%;width:3px;height:13px;transform:translateY(-50%);border-radius:999px;background:var(--intro-side-color,var(--t-accent))}.self-intro-section-head span{font-size:8.5px;color:var(--t-muted)}
+    .self-intro-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:22px}.self-intro-section-head strong{position:relative;font-size:12.5px;line-height:1.3;font-weight:850;color:var(--t-ink);padding-left:9px}.self-intro-section-head strong::before{content:"";position:absolute;left:0;top:50%;width:3px;height:13px;transform:translateY(-50%);border-radius:999px;background:var(--intro-side-color,var(--t-accent))}.self-intro-section-head span{font-size:8.5px;color:var(--t-muted)}.self-intro-section-tools{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.intro-toggle-all{min-height:25px;padding:0 8px;border:1px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 28%,var(--t-line));border-radius:999px;background:color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 45%,var(--t-surface));color:var(--intro-side-color,var(--t-accent-strong));font-size:8px;font-weight:800;cursor:pointer;transition:background .14s ease,border-color .14s ease,transform .12s ease}.intro-toggle-all:hover{background:color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 78%,var(--t-surface));border-color:color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 50%,var(--t-line))}.intro-toggle-all:active{transform:translateY(1px)}.intro-toggle-all:focus-visible{outline:3px solid var(--t-focus);outline-offset:1px}.self-intro-credit{display:inline;font:inherit;color:var(--t-faint);margin-left:4px}.view-toolbar-title>span{line-height:1.55}
     .intro-chip-grid{display:flex;flex-wrap:wrap;gap:6px}.intro-chip{position:relative;display:inline-flex;align-items:center;min-height:32px}.intro-chip input{position:absolute;opacity:0;pointer-events:none}
     .intro-chip span{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:32px;padding:0 11px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-text-2);cursor:pointer;transition:background .15s ease,color .15s ease,border-color .15s ease,box-shadow .15s ease,transform .12s ease}
     .intro-chip span:hover,.intro-radio-grid span:hover{border-color:color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 38%,var(--t-line));background:color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 55%,var(--t-surface))}
@@ -3447,7 +3451,7 @@
         <div class="view-toolbar self-intro-toolbar">
           <div class="view-toolbar-title">
             <strong>跑团偏好</strong>
-            <span>整理常用信息、PL / KP 偏好、想跑团 / 可带团与协作边界。</span>
+            <span>整理常用信息、PL / KP 偏好、想跑团 / 可带团与协作边界。<small class="self-intro-credit">（参考了这些大人：@云染、@冒冒和不知名作者的偏好表格。欢迎补充。）</small></span>
           </div>
           <div class="view-toolbar-actions">
             <button id="selfIntroExportBtn" class="btn" type="button">导出图片</button>
@@ -3598,7 +3602,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.4.15 · 2026-09-05 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.5.1 · 2026-09-05 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3610,7 +3614,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.4.15　·　更新时间：2026-09-05　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.5.1　·　更新时间：2026-09-05　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3898,7 +3902,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.15</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.1</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -3942,10 +3946,14 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.15 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.15</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.1 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.1</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.5.1</strong><span>跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span>
+<strong>v8.1.5</strong><span>隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span>
+</div>
+<div class="version-history-item">
 <strong>v8.1.4.15</strong><span>常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。</span>
 <strong>v8.1.4.14</strong><span>重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。</span>
 <strong>v8.1.4.13</strong><span>“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。</span>
@@ -4075,7 +4083,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.4.15 · 作者：番茄
+/* PL收集梦想生活 v8.1.5 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4094,7 +4102,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.4.15";
+const APP_UI_VERSION = "8.1.5.1";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -6076,7 +6084,7 @@ function blacklistCardHTML(p){
     <div class="blacklist-reason"><span>黑名单原因</span><p>${escapeHTML(b.reason||"未填写原因")}</p></div>
     <details class="blacklist-archive"><summary>展开档案</summary><div class="blacklist-archive-body">
       <div class="blacklist-archive-section"><strong>基本资料</strong><span>${meta.length?meta.map(x=>escapeHTML(x)).join(" · "):"暂无补充资料"}</span></div>
-      <div class="blacklist-archive-section"><strong>历史统计</strong><span>综合评分 ${fmtScore(total)}${total===null?"（待评分）":"/10"} · KP ${roleStats.kpCount} · PL ${roleStats.plCount} · ${runs.length} 桌记录</span>${roleDegreeHTML(roleStats,true)}</div>
+      <div class="blacklist-archive-section"><strong>历史统计</strong><span><span class="privacy-sensitive privacy-score-inline"><span class="privacy-sensitive-text">综合评分 ${fmtScore(total)}${total===null?"（待评分）":"/10"}</span></span> · KP ${roleStats.kpCount} · PL ${roleStats.plCount} · ${runs.length} 桌记录</span>${roleDegreeHTML(roleStats,true)}</div>
       <details class="blacklist-inner-details"><summary>评分明细</summary><div class="blacklist-rating-grid">${ratingRows}</div></details>
       <details class="blacklist-inner-details"><summary>跑团足迹</summary><div class="blacklist-run-list">${runRows}</div></details>
       <details class="blacklist-inner-details"><summary>状态历史</summary><div class="blacklist-history-list">${blacklistHistoryHTML(p)}</div></details>
@@ -6472,7 +6480,7 @@ function compactRowHTML(p){
       </div>
       ${roleDegreeHTML(roleStats,true)}
     </div>
-    <div class="compact-total"><strong>${fmtScore(total)}</strong><span>${total===null?"待评分":"/10 综合"}</span></div>
+    <div class="compact-total"><span class="privacy-sensitive privacy-score-compact"><span class="privacy-sensitive-text privacy-score-content"><strong>${fmtScore(total)}</strong><span>${total===null?"待评分":"/10 综合"}</span></span></span></div>
     <div class="compact-scores" title="查看单项评分">${scores}${scoreMore}</div>
     <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">跑团整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":blacklisted?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
@@ -6553,8 +6561,10 @@ function cardHTML(p){
       <div class="card-top-side">
         <button type="button" class="card-collapse-btn" data-action="collapse-card" data-id="${escapeHTML(p.id)}" aria-expanded="${cardCollapsed?"false":"true"}" title="${cardCollapsed?"展开卡片":"收起卡片"}">${cardCollapsed?"⌄":"⌃"}</button>
         <div class="score-badge">
-          <div class="score-label">综合评分</div>
-          <div class="score-value">${fmtScore(total)} ${total===null?`<span class="score-unit">待评分</span>`:`<span class="score-unit">/10</span>`}</div>
+          <div class="privacy-sensitive privacy-score-main"><div class="privacy-sensitive-text privacy-score-content">
+            <div class="score-label">综合评分</div>
+            <div class="score-value">${fmtScore(total)} ${total===null?`<span class="score-unit">待评分</span>`:`<span class="score-unit">/10</span>`}</div>
+          </div></div>
           <span class="updated-chip">卡片更新时间：${formatDateTime(p.updatedAt)}</span>
           ${live?`<span class="live-tag">实时预览</span>`:""}
         </div>
@@ -7282,7 +7292,7 @@ function planMatchesSearch(plan,q){
 }
 
 
-/* ---------- v8.1.4.15 · 跑团偏好 / PL-KP 双栏与导出尺度 ---------- */
+/* ---------- v8.1.5.1 · 跑团偏好多选快捷操作 ---------- */
 const INTRO_OPTIONS={
   platforms:["QQ","微信","KOOK","Discord","FVTT","枭熊","DND Beyond","Roll20","回声岛","线下","其他"],formats:["文字","语音","面团","混合"],timeSlots:["上午","中午","下午","晚上","凌晨"],availability:["工作日","周末","整周"],
   eras:["1920s","现代","当代","历史","未来","其他"],regions:["中国","日本","欧美","其他"],structures:["线性","分支","框架","沙盒","密室","都市","茶番","秘密团","追逐","PVP"],elements:["情感体验","推理调查","原旨风味","探索行动","故事扮演","角色交互","时代风情","荒诞","养成","叙事诡计","血腥与精神污染"],
@@ -7314,6 +7324,8 @@ function ensureSelfIntroDraft(force=false){const self=selfProfileFrom();if(!self
 function selfIntroDirty(){if(!selfIntroDraft||!selfIntroBaseline)return false;return JSON.stringify(normalizeSelfIntro(selfIntroDraft))!==JSON.stringify(normalizeSelfIntro(selfIntroBaseline))||selfIntroPendingModules.length>0;}
 function selfIntroScaleText(path,value){const n=introScaleValue(value),labels=INTRO_SCALE_LABELS[path];if(labels?.[n-1])return labels[n-1];const meta=INTRO_SCALE_META[path]||["低","高"];if(n===1)return meta[0];if(n===5)return meta[1];if(n===3)return "适中";return n===2?`偏${meta[0]}`:`偏${meta[1]}`;}
 function introChipGroup(path,options){const selected=new Set(selfIntroPathGet(selfIntroDraft,path)||[]);return `<div class="intro-chip-grid">${options.map(v=>`<label class="intro-chip"><input type="checkbox" data-intro-array="${escapeHTML(path)}" value="${escapeHTML(v)}" ${selected.has(v)?"checked":""}><span>${escapeHTML(v)}</span></label>`).join("")}</div>`;}
+function introMultiSelectHead(title,path,options){const selected=new Set(selfIntroPathGet(selfIntroDraft,path)||[]),all=options.length>0&&options.every(v=>selected.has(v));return `<div class="self-intro-section-head"><strong>${escapeHTML(title)}</strong><span class="self-intro-section-tools"><span>可多选</span><button class="intro-toggle-all" type="button" data-intro-toggle-all="${escapeHTML(path)}">${all?"清空":"全选"}</button></span></div>`;}
+function syncIntroToggleAll(section,path){if(!section)return;const btn=section.querySelector(`[data-intro-toggle-all="${CSS.escape(path)}"]`);if(!btn)return;const boxes=[...section.querySelectorAll(`input[type="checkbox"][data-intro-array="${CSS.escape(path)}"]`)];btn.textContent=boxes.length&&boxes.every(box=>box.checked)?"清空":"全选";}
 function introRadioGroup(path,options){const value=String(selfIntroPathGet(selfIntroDraft,path)||"");return `<div class="intro-radio-grid">${options.map(([v,label])=>`<label><input type="radio" name="intro_${escapeHTML(path)}" data-intro-field="${escapeHTML(path)}" value="${escapeHTML(v)}" ${value===v?"checked":""}><span>${escapeHTML(label)}</span></label>`).join("")}</div>`;}
 function introScale(path,title){const value=introScaleValue(selfIntroPathGet(selfIntroDraft,path)),meta=INTRO_SCALE_META[path]||["低","高"],steps=[1,2,3,4,5].map(n=>{const text=selfIntroScaleText(path,n);return `<button class="intro-scale-step ${n===value?"is-active":""}" type="button" data-intro-scale-step="${escapeHTML(path)}" data-scale-value="${n}" aria-pressed="${n===value?"true":"false"}" aria-label="${escapeHTML(`${title}：${text}`)}" title="${escapeHTML(text)}"><span class="intro-scale-dot" aria-hidden="true"></span></button>`;}).join("");return `<div class="intro-scale" role="group" aria-label="${escapeHTML(title)}"><div class="intro-scale-head"><strong>${escapeHTML(title)}</strong><output data-intro-scale-output="${escapeHTML(path)}">${escapeHTML(selfIntroScaleText(path,value))}</output></div><div class="intro-scale-track">${steps}</div><div class="intro-scale-labels"><span>${escapeHTML(meta[0])}</span><span>中间</span><span>${escapeHTML(meta[1])}</span></div></div>`;}
 function currentOrPendingModule(ref){const id=String(ref?.moduleId||"");return modules.find(m=>m.id===id)||selfIntroPendingModules.find(m=>m.id===id)||null;}
@@ -7322,10 +7334,10 @@ function moduleIntentSection(kind,title,desc){const path=kind==="want"?"pl.wantM
 function boundaryLevelOptions(current){return SELF_INTRO_BOUNDARY_LEVELS.map(v=>`<option value="${escapeHTML(v)}" ${current===v?"selected":""}>${escapeHTML(v||"未设置")}</option>`).join("");}
 function introModulePrefsSections(side){const base=`${side}.modulePrefs`,mp=selfIntroPathGet(selfIntroDraft,base)||defaultIntroModulePrefs();return `
   <div class="self-intro-section intro-module-pref-title"><div class="self-intro-section-head"><strong>模组偏好</strong></div></div>
-  <div class="self-intro-section"><div class="self-intro-section-head"><strong>时代偏好</strong><span>可多选</span></div>${introChipGroup(`${base}.eras`,INTRO_OPTIONS.eras)}<input class="intro-field" data-intro-field="${base}.eraOther" placeholder="其他时代" value="${escapeHTML(mp.eraOther)}"></div>
-  <div class="self-intro-section"><div class="self-intro-section-head"><strong>地域偏好</strong><span>可多选</span></div>${introChipGroup(`${base}.regions`,INTRO_OPTIONS.regions)}<input class="intro-field" data-intro-field="${base}.regionOther" placeholder="其他地域" value="${escapeHTML(mp.regionOther)}"></div>
-  <div class="self-intro-section"><div class="self-intro-section-head"><strong>结构偏好</strong><span>可多选</span></div>${introChipGroup(`${base}.structures`,INTRO_OPTIONS.structures)}<input class="intro-field" data-intro-field="${base}.structureOther" placeholder="其他结构" value="${escapeHTML(mp.structureOther)}"></div>
-  <div class="self-intro-section"><div class="self-intro-section-head"><strong>要素偏好</strong><span>可多选</span></div>${introChipGroup(`${base}.elements`,INTRO_OPTIONS.elements)}<input class="intro-field" data-intro-field="${base}.elementOther" placeholder="其他偏好要素" value="${escapeHTML(mp.elementOther)}"></div>
+  <div class="self-intro-section">${introMultiSelectHead("时代偏好",`${base}.eras`,INTRO_OPTIONS.eras)}${introChipGroup(`${base}.eras`,INTRO_OPTIONS.eras)}<input class="intro-field" data-intro-field="${base}.eraOther" placeholder="其他时代" value="${escapeHTML(mp.eraOther)}"></div>
+  <div class="self-intro-section">${introMultiSelectHead("地域偏好",`${base}.regions`,INTRO_OPTIONS.regions)}${introChipGroup(`${base}.regions`,INTRO_OPTIONS.regions)}<input class="intro-field" data-intro-field="${base}.regionOther" placeholder="其他地域" value="${escapeHTML(mp.regionOther)}"></div>
+  <div class="self-intro-section">${introMultiSelectHead("结构偏好",`${base}.structures`,INTRO_OPTIONS.structures)}${introChipGroup(`${base}.structures`,INTRO_OPTIONS.structures)}<input class="intro-field" data-intro-field="${base}.structureOther" placeholder="其他结构" value="${escapeHTML(mp.structureOther)}"></div>
+  <div class="self-intro-section">${introMultiSelectHead("要素偏好",`${base}.elements`,INTRO_OPTIONS.elements)}${introChipGroup(`${base}.elements`,INTRO_OPTIONS.elements)}<input class="intro-field" data-intro-field="${base}.elementOther" placeholder="其他偏好要素" value="${escapeHTML(mp.elementOther)}"></div>
   <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="${base}.notes" placeholder="补充这一侧的模组口味，例如不吃的题材、特别想体验或带团的方向。">${escapeHTML(mp.notes)}</textarea></div>`;}
 function selfIntroDatalist(){const names=[...new Set([...modules,...selfIntroPendingModules].map(m=>m.name).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"zh-CN"));return `<datalist id="selfIntroModuleOptions">${names.map(n=>`<option value="${escapeHTML(n)}"></option>`).join("")}</datalist>`;}
 function renderSelfIntroView({reset=false}={}){
@@ -7334,8 +7346,8 @@ function renderSelfIntroView({reset=false}={}){
   els.selfIntroGrid.innerHTML=selfIntroDatalist()+`
     <details class="self-intro-card" open><summary><span>基本信息<small>平台、形式、时间与通用说明</small></span></summary><div class="self-intro-card-body">
       <div class="self-intro-section"><div class="self-intro-section-head"><strong>一句话介绍</strong><span>可写跑团年限、常用规则或个人定位</span></div><textarea class="intro-textarea" data-intro-field="bio" placeholder="例如：长期 COC / DND 玩家，文字与语音均可。">${escapeHTML(d.bio)}</textarea></div>
-      <div class="self-intro-section"><div class="self-intro-section-head"><strong>常用平台</strong><span>可多选</span></div>${introChipGroup("platforms",INTRO_OPTIONS.platforms)}<input class="intro-field" data-intro-field="platformOther" placeholder="其他平台或补充" value="${escapeHTML(d.platformOther)}"></div>
-      <div class="self-intro-section"><div class="self-intro-section-head"><strong>偏好形式</strong><span>可多选</span></div>${introChipGroup("formats",INTRO_OPTIONS.formats)}</div>
+      <div class="self-intro-section">${introMultiSelectHead("常用平台","platforms",INTRO_OPTIONS.platforms)}${introChipGroup("platforms",INTRO_OPTIONS.platforms)}<input class="intro-field" data-intro-field="platformOther" placeholder="其他平台或补充" value="${escapeHTML(d.platformOther)}"></div>
+      <div class="self-intro-section">${introMultiSelectHead("偏好形式","formats",INTRO_OPTIONS.formats)}${introChipGroup("formats",INTRO_OPTIONS.formats)}</div>
       <div class="self-intro-section"><div class="self-intro-section-head"><strong>常用跑团时间</strong></div><div class="intro-inline-group"><span class="intro-inline-label">时段</span>${introChipGroup("timeSlots",INTRO_OPTIONS.timeSlots)}</div><div class="intro-inline-group"><span class="intro-inline-label">日期</span>${introChipGroup("availability",INTRO_OPTIONS.availability)}</div><div class="intro-inline-group"><span class="intro-inline-label">频率</span>${introRadioGroup("frequency",[["随缘","有时间就跑"],["固定","固定时间"],["都可","均可"]])}</div></div>
       <div class="self-intro-section"><div class="self-intro-section-head"><strong>通用补充</strong></div><textarea class="intro-textarea" data-intro-field="generalNotes" placeholder="例如：常用规则、沟通习惯、时间限制等。">${escapeHTML(d.generalNotes)}</textarea></div>
     </div></details>
@@ -7344,7 +7356,7 @@ function renderSelfIntroView({reset=false}={}){
         <header class="self-intro-side-head"><div><span class="self-intro-side-kicker">PL · 玩家侧</span><strong>PL 偏好</strong><small>自己作为玩家时的模组口味、RP、行动、同桌偏好与想跑团。</small></div></header>
         <div class="self-intro-side-body">
           ${introModulePrefsSections("pl")}
-          <div class="self-intro-section"><div class="self-intro-section-head"><strong>跑团侧重</strong><span>可多选</span></div>${introChipGroup("pl.focus",INTRO_OPTIONS.plFocus)}<div class="self-intro-section-head"><strong>OC 与 PC</strong><span>单选</span></div>${introRadioGroup("pl.ocPcRelation",[["same","高度重叠"],["partial","部分重叠"],["separate","尽量分开"]])}</div>
+          <div class="self-intro-section">${introMultiSelectHead("跑团侧重","pl.focus",INTRO_OPTIONS.plFocus)}${introChipGroup("pl.focus",INTRO_OPTIONS.plFocus)}<div class="self-intro-section-head"><strong>OC 与 PC</strong><span>单选</span></div>${introRadioGroup("pl.ocPcRelation",[["same","高度重叠"],["partial","部分重叠"],["separate","尽量分开"]])}</div>
           <div class="self-intro-section intro-two-col">${introScale("pl.rpIntensity","RP 强度")}${introScale("pl.npcAttitude","对 NPC 的态度")}${introScale("pl.actionStyle","行动习惯")}${introScale("pl.originalFlavor","原旨风味")}${introScale("pl.socialStyle","桌面社交")}${introScale("pl.decisionStyle","决策参与")}${introScale("pl.cardLossAttitude","撕卡态度")}${introScale("pl.kpChatStyle","对 KP 模外交流")}${introScale("pl.kpMercyStyle","对 KP 放水 / 严格度")}</div>
           <div class="self-intro-section"><div class="self-intro-section-head"><strong>RP 风格</strong><span>自由描述</span></div><textarea class="intro-textarea" data-intro-field="pl.rpStyle" placeholder="例如：偏生活流、重人物关系、短句快速 RP 等。">${escapeHTML(d.pl.rpStyle)}</textarea></div>
           <div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>希望 KP / 同桌会做的事</span><textarea class="intro-textarea" data-intro-field="pl.wishes">${escapeHTML(d.pl.wishes)}</textarea></label><label class="intro-field-wrap"><span>希望 KP / 同桌避免的事</span><textarea class="intro-textarea" data-intro-field="pl.avoids">${escapeHTML(d.pl.avoids)}</textarea></label></div>
@@ -10392,9 +10404,9 @@ els.selfIntroView?.addEventListener("input",e=>{
   if(shareModeEnabled)return;ensureSelfIntroDraft();const t=e.target;if(t.matches("[data-intro-field]")&&!t.matches("input[type=radio]")){selfIntroPathSet(selfIntroDraft,t.dataset.introField,t.value);queueSelfIntroSave();return;}if(t.matches("[data-intro-number]")){const path=t.dataset.introNumber;selfIntroPathSet(selfIntroDraft,path,introScaleValue(t.value));const out=els.selfIntroView.querySelector(`[data-intro-scale-output="${CSS.escape(path)}"]`);if(out)out.textContent=selfIntroScaleText(path,t.value);queueSelfIntroSave();}
 });
 els.selfIntroView?.addEventListener("change",e=>{
-  if(shareModeEnabled)return;ensureSelfIntroDraft();const t=e.target;if(t.matches("[data-intro-array]")){const path=t.dataset.introArray,arr=new Set(selfIntroPathGet(selfIntroDraft,path)||[]);t.checked?arr.add(t.value):arr.delete(t.value);selfIntroPathSet(selfIntroDraft,path,[...arr]);queueSelfIntroSave(220);return;}if(t.matches("input[type=radio][data-intro-field],[data-intro-field]")){selfIntroPathSet(selfIntroDraft,t.dataset.introField,t.value);queueSelfIntroSave(220);return;}if(t.matches("[data-intro-boundary]")){selfIntroDraft.kp.boundaries[t.dataset.introBoundary]=t.value;queueSelfIntroSave(220);}
+  if(shareModeEnabled)return;ensureSelfIntroDraft();const t=e.target;if(t.matches("[data-intro-array]")){const path=t.dataset.introArray,arr=new Set(selfIntroPathGet(selfIntroDraft,path)||[]);t.checked?arr.add(t.value):arr.delete(t.value);selfIntroPathSet(selfIntroDraft,path,[...arr]);syncIntroToggleAll(t.closest(".self-intro-section"),path);queueSelfIntroSave(220);return;}if(t.matches("input[type=radio][data-intro-field],[data-intro-field]")){selfIntroPathSet(selfIntroDraft,t.dataset.introField,t.value);queueSelfIntroSave(220);return;}if(t.matches("[data-intro-boundary]")){selfIntroDraft.kp.boundaries[t.dataset.introBoundary]=t.value;queueSelfIntroSave(220);}
 });
-els.selfIntroView?.addEventListener("click",e=>{if(shareModeEnabled)return;const scale=e.target.closest("[data-intro-scale-step]");if(scale){ensureSelfIntroDraft();const path=scale.dataset.introScaleStep,value=introScaleValue(scale.dataset.scaleValue);selfIntroPathSet(selfIntroDraft,path,value);const card=scale.closest(".intro-scale");card?.querySelectorAll("[data-intro-scale-step]").forEach(btn=>{const active=Number(btn.dataset.scaleValue)===value;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",active?"true":"false");});const out=card?.querySelector(`[data-intro-scale-output="${CSS.escape(path)}"]`);if(out)out.textContent=selfIntroScaleText(path,value);queueSelfIntroSave(220);return;}const pick=e.target.closest("[data-intro-pick-module]");if(pick){pickSelfIntroModuleIntent(pick.dataset.introPickModule);return;}const add=e.target.closest("[data-intro-add-module]");if(add){addSelfIntroModuleIntent(add.dataset.introAddModule);return;}const rem=e.target.closest("[data-intro-remove-module]");if(rem){removeSelfIntroModuleIntent(rem.dataset.introRemoveModule,rem.dataset.moduleId,rem.dataset.moduleName);return;}});
+els.selfIntroView?.addEventListener("click",e=>{if(shareModeEnabled)return;const all=e.target.closest("[data-intro-toggle-all]");if(all){ensureSelfIntroDraft();const path=all.dataset.introToggleAll,section=all.closest(".self-intro-section"),boxes=[...section.querySelectorAll(`input[type="checkbox"][data-intro-array="${CSS.escape(path)}"]`)];if(!boxes.length)return;const clear=boxes.every(box=>box.checked);boxes.forEach(box=>{box.checked=!clear;});selfIntroPathSet(selfIntroDraft,path,clear?[]:boxes.map(box=>box.value));syncIntroToggleAll(section,path);queueSelfIntroSave(220);return;}const scale=e.target.closest("[data-intro-scale-step]");if(scale){ensureSelfIntroDraft();const path=scale.dataset.introScaleStep,value=introScaleValue(scale.dataset.scaleValue);selfIntroPathSet(selfIntroDraft,path,value);const card=scale.closest(".intro-scale");card?.querySelectorAll("[data-intro-scale-step]").forEach(btn=>{const active=Number(btn.dataset.scaleValue)===value;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",active?"true":"false");});const out=card?.querySelector(`[data-intro-scale-output="${CSS.escape(path)}"]`);if(out)out.textContent=selfIntroScaleText(path,value);queueSelfIntroSave(220);return;}const pick=e.target.closest("[data-intro-pick-module]");if(pick){pickSelfIntroModuleIntent(pick.dataset.introPickModule);return;}const add=e.target.closest("[data-intro-add-module]");if(add){addSelfIntroModuleIntent(add.dataset.introAddModule);return;}const rem=e.target.closest("[data-intro-remove-module]");if(rem){removeSelfIntroModuleIntent(rem.dataset.introRemoveModule,rem.dataset.moduleId,rem.dataset.moduleName);return;}});
 els.selfIntroView?.addEventListener("keydown",e=>{if(shareModeEnabled)return;const input=e.target.closest("[data-intro-module-input]");if(input&&e.key==="Enter"){e.preventDefault();addSelfIntroModuleIntent(input.dataset.introModuleInput);}});
 els.selfIntroExport?.addEventListener("click",()=>{void exportSelfIntroImage();});
 els.selfIntroSave?.addEventListener("click",()=>{if(shareModeBlock("跑团偏好编辑"))return;if(commitSelfIntroDraft()){showToast("跑团偏好已保存");renderSelfIntroView();}else appNotice("跑团偏好保存失败。请先导出备份或释放浏览器存储空间后重试。");});
