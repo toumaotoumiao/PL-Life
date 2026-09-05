@@ -1344,7 +1344,7 @@
     .plan-group-count{font-variant-numeric:tabular-nums;color:var(--t-faint)}
     .plan-list-item{
       display:grid;
-      grid-template-columns:22px minmax(0,1fr) auto;
+      grid-template-columns:52px minmax(0,1fr) auto;
       gap:7px;
       align-items:center;
       min-width:0;
@@ -1359,12 +1359,22 @@
     .plan-list-item.picked{border-color:var(--t-accent);background:var(--t-accent-soft);box-shadow:0 0 0 2px color-mix(in srgb,var(--t-accent) 13%,transparent)}
     .plan-list-item.active-now{border-color:color-mix(in srgb,var(--t-success) 52%,var(--t-line))}
     .plan-drag-grip{
-      width:22px;height:34px;display:grid;place-items:center;
-      border:0;border-radius:7px;background:transparent;color:var(--t-faint);
-      cursor:grab;user-select:none;font-size:14px;line-height:1
+      width:52px;min-height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+      border:1px dashed color-mix(in srgb,var(--t-accent) 42%,var(--t-line));border-radius:9px;
+      background:color-mix(in srgb,var(--t-accent-soft) 64%,var(--t-surface));color:var(--t-accent-strong);
+      cursor:grab;user-select:none;line-height:1;transition:.14s ease
     }
-    .plan-drag-grip:hover{background:var(--t-surface-3);color:var(--t-muted)}
-    .plan-drag-grip:active{cursor:grabbing}
+    .plan-drag-icon{font-size:15px;line-height:1}
+    .plan-drag-label{font-size:7.5px;font-weight:780;white-space:nowrap;letter-spacing:.01em}
+    .plan-drag-grip:hover{border-style:solid;border-color:var(--t-accent);background:var(--t-accent-soft);box-shadow:0 3px 10px var(--t-shadow-soft);transform:translateY(-1px)}
+    .plan-drag-grip:active{cursor:grabbing;transform:scale(.97)}
+    .planner-drag-hint{display:flex;align-items:center;gap:6px;margin:0 0 7px;padding:6px 8px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface-2);color:var(--t-muted);font-size:8.5px;line-height:1.35}
+    .planner-drag-hint strong{color:var(--t-accent-strong);font-weight:780}
+    .planner-drag-hint-mobile{display:none}
+    body.plan-dragging .plan-drag-grip{border-style:solid;border-color:var(--t-accent);background:var(--t-accent-soft)}
+    body.plan-dragging .week-slot{outline:1px dashed color-mix(in srgb,var(--t-accent) 62%,transparent);outline-offset:-3px}
+    body.plan-dragging .week-slot:not(.full) .week-slot-add{color:var(--t-accent-strong);font-weight:820}
+    body.plan-dragging .week-slot:not(.full) .week-slot-add::after{content:" 放这里";font-size:7px;font-weight:780;white-space:nowrap}
     .plan-row-main{
       min-width:0;border:0;background:transparent;padding:0;text-align:left;color:inherit;cursor:pointer
     }
@@ -1581,7 +1591,11 @@
       .planner-calendar{position:static}
       .plan-board{grid-template-columns:1fr}
       .plan-group{gap:5px}
-      .plan-list-item{grid-template-columns:20px minmax(0,1fr) auto;padding:8px 7px}
+      .plan-list-item{grid-template-columns:28px minmax(0,1fr) auto;padding:8px 7px}
+      .plan-drag-grip{width:28px;min-height:34px;border-style:solid;background:transparent}
+      .plan-drag-label{display:none}
+      .planner-drag-hint-desktop{display:none}
+      .planner-drag-hint-mobile{display:inline}
       .plan-row-action{min-width:46px;min-height:32px}
       .calendar-head{padding:8px;align-items:flex-start}
       .calendar-head-main span{display:none}
@@ -1673,9 +1687,9 @@
       background:var(--t-surface);color:var(--t-muted);font-size:9.5px;cursor:pointer
     }
     .rating-null-toggle:hover{border-color:var(--t-line-strong);color:var(--t-accent-strong)}
-    .slider-card.is-unrated{background:color-mix(in srgb,var(--t-surface-2) 84%,var(--t-surface))}
-    .slider-line.is-unrated{opacity:.34}
-    .slider-line input:disabled{cursor:not-allowed}
+    .rating-null-toggle.is-null{border-color:color-mix(in srgb,var(--t-accent) 34%,var(--t-line));background:var(--t-accent-soft);color:var(--t-accent-strong)}
+    .slider-card.is-rating-ready{background:color-mix(in srgb,var(--t-accent-soft) 18%,var(--t-surface-2))}
+    .slider-card.is-rating-ready .slider-line input{cursor:pointer}
     .role-derived-card{background:linear-gradient(135deg,color-mix(in srgb,var(--t-role-kp) 8%,var(--t-surface-2)),color-mix(in srgb,var(--t-role-pl) 8%,var(--t-surface-2)))}
     .auto-pill{background:var(--t-surface);color:var(--t-muted)}
     .derived-field-row .field-main{align-items:center}
@@ -3214,6 +3228,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.5.4 · 导航、评分直达与计划拖放可发现性优化。 */
     /* v8.1.5.3 · 全站图片导出统一：导出图沿用网页卡片视觉，不使用水果/emoji 装饰。 */
     /* v8.1.5.2 · 跑团整理视觉统一：PL / KP 使用同一套概览卡、折叠详情与响应式网格。 */
     .ho-organizer-board.pl-mode,.ho-organizer-board.kp-mode{
@@ -3499,10 +3514,10 @@
         </button>
         <nav class="compact-nav" aria-label="主界面快捷切换">
           <button type="button" data-view-target="profiles">PL</button>
-          <button type="button" data-view-target="selfIntro">我的</button>
           <button type="button" data-view-target="modules">模组</button>
           <button type="button" data-view-target="plans">计划</button>
           <button type="button" data-view-target="records">记录</button>
+          <button type="button" data-view-target="selfIntro">偏好</button>
         </nav>
         <div class="compact-actions">
           <span id="compactSaveStatus" class="compact-save-status">已保存</span>
@@ -3519,10 +3534,10 @@
       
       <nav class="view-switch" role="group" aria-label="主界面切换">
         <button id="profilesViewBtn" class="view-tab active" type="button" aria-pressed="true">PL 档案</button>
-        <button id="selfIntroViewBtn" class="view-tab" type="button" aria-pressed="false">跑团偏好</button>
         <button id="modulesViewBtn" class="view-tab" type="button" aria-pressed="false">模组档案</button>
         <button id="plansViewBtn" class="view-tab" type="button" aria-pressed="false">开团计划</button>
         <button id="recordsViewBtn" class="view-tab" type="button" aria-pressed="false">跑团记录</button>
+        <button id="selfIntroViewBtn" class="view-tab" type="button" aria-pressed="false">跑团偏好</button>
       </nav>
 
       <section id="profilesView" class="profiles-view">
@@ -3660,6 +3675,7 @@
               <div id="planCountText" class="count" aria-live="polite">0 个</div>
             </div>
             <label class="search plan-search"><span>⌕</span><input id="planSearchInput" placeholder="搜索模组、桌名、KP 或 PL"></label>
+            <div class="planner-drag-hint" aria-label="排期操作提示"><span class="planner-drag-hint-desktop">按住卡片左侧 <strong>“拖到日历”</strong> 可直接排期</span><span class="planner-drag-hint-mobile">点击 <strong>“安排”</strong> 后选择日历时段</span></div>
             <section id="planBoard" class="plan-board"></section>
           </aside>
 
@@ -3709,7 +3725,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.5.3 · 2026-09-05 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.5.4 · 2026-09-05 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3721,7 +3737,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.5.3　·　更新时间：2026-09-05　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.5.4　·　更新时间：2026-09-05　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3806,10 +3822,10 @@
       </nav>
       <nav id="mobileBottomNav" class="mobile-bottom-nav" aria-label="手机主导航">
         <button type="button" data-view-target="profiles"><span>PL</span><small>档案</small></button>
-        <button type="button" data-view-target="selfIntro"><span>我的</span><small>偏好</small></button>
         <button type="button" data-view-target="modules"><span>模组</span><small>档案</small></button>
         <button type="button" data-view-target="plans"><span>计划</span><small>排期</small></button>
         <button type="button" data-view-target="records"><span>记录</span><small>归档</small></button>
+        <button type="button" data-view-target="selfIntro"><span>偏好</span><small>我的</small></button>
       </nav>
       <div id="mobileToolsSheet" class="mobile-tools-sheet" hidden>
         <button type="button" data-mobile-search>⌕ 搜索</button>
@@ -4010,7 +4026,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.3</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.4</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4054,10 +4070,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.3 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.3</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.5.4</strong><span>调整主导航顺序，将“跑团偏好”移至最后；PL 评分改为打开即可直接操作、未操作保持“无”，并保留一键设为无；开团计划增强拖放入口与日历落点提示。</span>
 <strong>v8.1.5.3</strong><span>统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span>
 <strong>v8.1.5.2</strong><span>统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span>
 <strong>v8.1.5.1</strong><span>跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span>
@@ -4193,7 +4210,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.5 · 作者：番茄
+/* PL收集梦想生活 v8.1.5.4 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4212,7 +4229,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.5.3";
+const APP_UI_VERSION = "8.1.5.4";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5863,7 +5880,7 @@ function normalizeOptionalScore(value){
 }
 function scoreText(key, score, source=settings){
   const n=normalizeOptionalScore(score);
-  if(n===null)return "待评分 · 不计入综合评分";
+  if(n===null)return "无 · 不计入综合评分";
   const f=getField(key,source);
   return f ? f.labels[Math.round(n)-1] : "";
 }
@@ -6195,7 +6212,7 @@ function blacklistCardHTML(p){
     <div class="blacklist-reason"><span>黑名单原因</span><p>${escapeHTML(b.reason||"未填写原因")}</p></div>
     <details class="blacklist-archive"><summary>展开档案</summary><div class="blacklist-archive-body">
       <div class="blacklist-archive-section"><strong>基本资料</strong><span>${meta.length?meta.map(x=>escapeHTML(x)).join(" · "):"暂无补充资料"}</span></div>
-      <div class="blacklist-archive-section"><strong>历史统计</strong><span><span class="privacy-sensitive privacy-score-inline"><span class="privacy-sensitive-text">综合评分 ${fmtScore(total)}${total===null?"（待评分）":"/10"}</span></span> · KP ${roleStats.kpCount} · PL ${roleStats.plCount} · ${runs.length} 桌记录</span>${roleDegreeHTML(roleStats,true)}</div>
+      <div class="blacklist-archive-section"><strong>历史统计</strong><span><span class="privacy-sensitive privacy-score-inline"><span class="privacy-sensitive-text">综合评分 ${total===null?"无":`${fmtScore(total)}/10`}</span></span> · KP ${roleStats.kpCount} · PL ${roleStats.plCount} · ${runs.length} 桌记录</span>${roleDegreeHTML(roleStats,true)}</div>
       <details class="blacklist-inner-details"><summary>评分明细</summary><div class="blacklist-rating-grid">${ratingRows}</div></details>
       <details class="blacklist-inner-details"><summary>跑团足迹</summary><div class="blacklist-run-list">${runRows}</div></details>
       <details class="blacklist-inner-details"><summary>状态历史</summary><div class="blacklist-history-list">${blacklistHistoryHTML(p)}</div></details>
@@ -6612,7 +6629,7 @@ function compactRowHTML(p){
       </div>
       ${roleDegreeHTML(roleStats,true)}
     </div>
-    <div class="compact-total"><span class="privacy-sensitive privacy-score-compact"><span class="privacy-sensitive-text privacy-score-content"><strong>${fmtScore(total)}</strong><span>${total===null?"待评分":"/10 综合"}</span></span></span></div>
+    <div class="compact-total"><span class="privacy-sensitive privacy-score-compact"><span class="privacy-sensitive-text privacy-score-content"><strong>${total===null?"无":fmtScore(total)}</strong><span>${total===null?"综合评分":"/10 综合"}</span></span></span></div>
     <div class="compact-scores" title="查看单项评分">${scores}${scoreMore}</div>
     <div class="compact-actions"><button type="button" class="btn small ho-organizer-trigger" data-action="ho-organizer" data-id="${escapeHTML(p.id)}">跑团整理</button><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑</button>${isSelfProfile(p)?"":blacklisted?`<button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button>`:`<button type="button" class="btn small danger-soft" data-action="add-blacklist" data-id="${escapeHTML(p.id)}">加入黑名单</button><button type="button" class="btn small danger" data-action="delete" data-id="${escapeHTML(p.id)}">删除</button>`}</div>
   </article>`;
@@ -6695,7 +6712,7 @@ function cardHTML(p){
         <div class="score-badge">
           <div class="privacy-sensitive privacy-score-main"><div class="privacy-sensitive-text privacy-score-content">
             <div class="score-label">综合评分</div>
-            <div class="score-value">${fmtScore(total)} ${total===null?`<span class="score-unit">待评分</span>`:`<span class="score-unit">/10</span>`}</div>
+            <div class="score-value">${total===null?`无`:`${fmtScore(total)} <span class="score-unit">/10</span>`}</div>
           </div></div>
           <span class="updated-chip">卡片更新时间：${formatDateTime(p.updatedAt)}</span>
           ${live?`<span class="live-tag">实时预览</span>`:""}
@@ -6704,7 +6721,7 @@ function cardHTML(p){
     </div>
     ${ratedCount
       ?`<div class="rating-progress-row"><span>评分进度 ${ratedCount}/${ratingFields.length}</span><span>${ratingFields.length-ratedCount?`${ratingFields.length-ratedCount}项未评`:"已完成"}</span></div><div class="attrs">${attrs}</div>`
-      :`<div class="unrated-summary"><div><strong>待评分</strong><span>0/${ratingFields.length} 项 · “无”不会计入综合评分</span></div><button type="button" class="link-btn" data-action="edit" data-id="${escapeHTML(p.id)}">开始评分</button></div>`}
+      :`<div class="unrated-summary"><div><strong>无评分</strong><span>0/${ratingFields.length} 项 · 可直接开始评分</span></div><button type="button" class="link-btn" data-action="edit" data-id="${escapeHTML(p.id)}">开始评分</button></div>`}
     ${ratingFields.length>6&&ratedCount?`<div class="more-row"><button type="button" class="link-btn" data-action="toggle" data-id="${escapeHTML(p.id)}">${attrsExpanded?"收起属性":`显示全部 ${ratingFields.length} 项评分`}</button></div>`:""}
     <div class="runs">
       <details class="runs-details" ${settings.ui?.profileFootprintsOpen?"open":""}>
@@ -6904,16 +6921,16 @@ function renderSliderEditor(){
   const ratingCards=settings.fields.filter(f=>f.key!=="kpPlSide").map(f=>{
     const score=profileRatingScore(draft,f.key),rated=score!==null,note=draft.notes[f.key]||"";
     const rangeValue=rated?score:5;
-    return `<section class="slider-card ${rated?"":"is-unrated"}" data-rating-card="${escapeHTML(f.key)}">
+    return `<section class="slider-card ${rated?"":"is-rating-ready"}" data-rating-card="${escapeHTML(f.key)}">
       <div class="slider-title">
         <strong>${escapeHTML(f.label)}</strong>
         <span class="rating-head-actions">
           <span id="pill_${escapeHTML(f.key)}" class="score-pill">${rated?`${score}/10`:"无"}</span>
-          <button type="button" class="rating-null-toggle" data-rating-toggle="${escapeHTML(f.key)}">${rated?"设为无":"开始评分"}</button>
+          <button type="button" class="rating-null-toggle ${rated?"":"is-null"}" data-rating-toggle="${escapeHTML(f.key)}" title="将此项设为无">设为无</button>
         </span>
       </div>
-      <div id="desc_${escapeHTML(f.key)}" class="score-desc">${escapeHTML(scoreText(f.key,score))}</div>
-      <div class="slider-line ${rated?"":"is-unrated"}"><span>1</span><input type="range" min="1" max="10" step="1" value="${rangeValue}" data-score="${escapeHTML(f.key)}" aria-label="${escapeHTML(f.label)}评分" ${rated?"":"disabled"}><span>10</span></div>
+      <div id="desc_${escapeHTML(f.key)}" class="score-desc">${rated?escapeHTML(scoreText(f.key,score)):"直接拖动或点击刻度即可评分；未操作时保存为无"}</div>
+      <div class="slider-line"><span>1</span><input type="range" min="1" max="10" step="1" value="${rangeValue}" data-score="${escapeHTML(f.key)}" aria-label="${escapeHTML(f.label)}评分"><span>10</span></div>
       <input class="note-input" data-note="${escapeHTML(f.key)}" value="${escapeHTML(note)}" placeholder="个性化备注（会以括号形式显示在主页面）">
     </section>`;
   }).join("");
@@ -7773,7 +7790,7 @@ function planListItemHTML(plan){
   const table=plan.tableName?`<span class="plan-row-table"> · ${escapeHTML(plan.tableName)}</span>`:"";
   const blacklistRisk=planBlacklistedProfiles(plan);
   return `<article class="plan-list-item ${picked?"picked":""} ${status.key==="active"?"active-now":""} ${blacklistRisk.length?"has-blacklist-risk":""}" data-plan-row="${escapeHTML(plan.id)}">
-    <button class="plan-drag-grip" type="button" draggable="true" data-drag-plan="${escapeHTML(plan.id)}" aria-label="拖动安排 ${escapeHTML(title)}" title="拖到周历安排">⠿</button>
+    <button class="plan-drag-grip" type="button" draggable="true" data-drag-plan="${escapeHTML(plan.id)}" aria-label="拖动 ${escapeHTML(title)} 到日历安排" title="按住并拖到周历时段"><span class="plan-drag-icon">⠿</span><span class="plan-drag-label">拖到日历</span></button>
     <button class="plan-row-main" type="button" data-open-plan-editor="${escapeHTML(plan.id)}" title="编辑计划">
       <div class="plan-row-titleline"><span class="plan-row-title">${escapeHTML(title)}${table}${blacklistRisk.length?`<span class="plan-blacklist-risk">黑名单 ${blacklistRisk.length}</span>`:""}</span><span class="plan-row-status ${status.key}">${status.label}</span></div>
       <div class="plan-row-meta"><span class="plan-row-next">${escapeHTML(nextText)}</span><span>· KP ${kpDisplayHTML(plan,"privacy-chip-name")}</span><span>· ${participants} PL</span>${assignmentCoverageText(plan)?`<span class="plan-row-ho">· ${escapeHTML(assignmentCoverageText(plan))}</span>`:""}</div>
@@ -10651,25 +10668,20 @@ els.sliderSection.addEventListener("click",e=>{
   const btn=e.target.closest("[data-rating-toggle]");
   if(!btn||!draft)return;
   const key=btn.dataset.ratingToggle;
-  const current=profileRatingScore(draft,key);
-  draft.scores[key]=current===null?5:null;
+  draft.scores[key]=null;
 
   const card=btn.closest("[data-rating-card]");
-  const next=profileRatingScore(draft,key);
-  const rated=next!==null;
   const pill=card?.querySelector(`#pill_${CSS.escape(key)}`);
   const desc=card?.querySelector(`#desc_${CSS.escape(key)}`);
   const range=card?.querySelector(`[data-score="${CSS.escape(key)}"]`);
-  const line=card?.querySelector(".slider-line");
-  card?.classList.toggle("is-unrated",!rated);
-  line?.classList.toggle("is-unrated",!rated);
-  if(pill)pill.textContent=rated?`${next}/10`:"无";
-  if(desc)desc.textContent=scoreText(key,next);
-  if(range){range.disabled=!rated;range.value=String(rated?next:5);}
-  btn.textContent=rated?"设为无":"开始评分";
+  card?.classList.add("is-rating-ready");
+  btn.classList.add("is-null");
+  if(pill)pill.textContent="无";
+  if(desc)desc.textContent="直接拖动或点击刻度即可评分；未操作时保存为无";
+  if(range)range.value="5";
   livePreview();
 });
-els.sliderSection.addEventListener("input",e=>{if(!draft)return;if(e.target.matches("[data-score]")){const key=e.target.dataset.score,score=Number(e.target.value);draft.scores[key]=score;document.getElementById(`pill_${key}`).textContent=`${score}/10`;document.getElementById(`desc_${key}`).textContent=scoreText(key,score);livePreview();}if(e.target.matches("[data-note]")){draft.notes[e.target.dataset.note]=e.target.value;livePreview();}});
+els.sliderSection.addEventListener("input",e=>{if(!draft)return;if(e.target.matches("[data-score]")){const key=e.target.dataset.score,score=Number(e.target.value);draft.scores[key]=score;const card=e.target.closest("[data-rating-card]");card?.classList.remove("is-rating-ready");card?.querySelector("[data-rating-toggle]")?.classList.remove("is-null");document.getElementById(`pill_${key}`).textContent=`${score}/10`;document.getElementById(`desc_${key}`).textContent=scoreText(key,score);livePreview();}if(e.target.matches("[data-note]")){draft.notes[e.target.dataset.note]=e.target.value;livePreview();}});
 els.linkExistingRun.addEventListener("click",linkExistingRun);
 els.createLinkedRun.addEventListener("click",createLinkedRun);
 els.editRuns.addEventListener("click",e=>{
