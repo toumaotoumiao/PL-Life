@@ -226,7 +226,7 @@
     .profile-rail-btn.danger:hover:not(:disabled){background:#fff3f1;border-color:#dfc0bc;color:#944f48}
     .profile-rail-separator{height:1px;background:#e1e3dd;margin:1px 4px}
 
-    .modal-head{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px 14px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #ecece7;border-radius:26px 26px 0 0}.modal-head h2{margin:0;font-size:22px}.modal-head .sub{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.55}.close{width:40px;height:40px;flex:0 0 40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:#555c57;font-size:22px;line-height:1;transition:background .15s ease,border-color .15s ease,transform .15s ease}.close:hover{background:#f6f7f3;border-color:#cdd1ca;transform:translateY(-1px)}
+    .modal-head{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px 14px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #ecece7;border-radius:26px 26px 0 0}.modal-head h2{margin:0;font-size:22px}.modal-head .sub{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.55}.close{width:40px;height:40px;flex:0 0 40px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;border:1px solid var(--line);background:#fff;color:#626862;font-size:19px;line-height:1;box-shadow:0 3px 10px rgba(40,45,42,.035);transition:background .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease,transform .15s ease}.close:hover{background:#f6f7f3;border-color:#cdd1ca;color:#3f4741;box-shadow:0 6px 16px rgba(40,45,42,.06);transform:translateY(-1px)}.close:active{transform:translateY(0);box-shadow:0 2px 7px rgba(40,45,42,.04)}.close:focus-visible{outline:3px solid rgba(64,82,73,.13);outline-offset:2px}
     .modal-body{padding:20px 22px 18px;scroll-padding-top:82px;scroll-padding-bottom:92px}.basic{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.field-label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
     .profile-extra-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}
     .rp-length-editor{margin-bottom:14px;border:1px solid #dfe2dc;border-radius:18px;padding:14px;background:linear-gradient(135deg,#fafbf8,#f6f7f3)}
@@ -2616,6 +2616,12 @@
       .hero-actions{position:absolute;top:14px;right:13px;width:auto!important;justify-content:flex-end!important}
       #autoSaveHeroStatus{display:none!important}
     }
+    /* ---------- 通用弹窗关闭按钮：与当前控件风格统一 ---------- */
+    .icon-close{width:38px;height:38px;flex:0 0 38px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--t-line);border-radius:12px;background:color-mix(in srgb,var(--t-surface) 96%,transparent);color:var(--t-muted);font-size:18px;font-weight:500;line-height:1;box-shadow:0 3px 10px color-mix(in srgb,var(--t-shadow) 46%,transparent);transition:transform .15s var(--ease),border-color .15s ease,background .15s ease,color .15s ease,box-shadow .15s ease}
+    .icon-close:hover{transform:translateY(-1px);border-color:var(--t-line-strong);background:var(--t-surface-2);color:var(--t-ink);box-shadow:0 6px 16px color-mix(in srgb,var(--t-shadow) 58%,transparent)}
+    .icon-close:active{transform:translateY(0);box-shadow:0 2px 7px color-mix(in srgb,var(--t-shadow) 40%,transparent)}
+    .icon-close:focus-visible{outline:3px solid color-mix(in srgb,var(--t-accent) 20%,transparent);outline-offset:2px}
+
     /* ---------- PL · HO 整理 ---------- */
     .ho-organizer-trigger{color:var(--t-accent-strong)}
     .ho-mini-dot{position:relative;width:8px;height:8px;border-radius:3px;background:var(--t-accent);margin-right:7px;box-shadow:8px 0 0 color-mix(in srgb,var(--t-accent) 45%,transparent)}
@@ -3204,8 +3210,8 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
-    /* v8.1.4.9 · KP 详情折叠与图片导出；兼容 v18 数据结构 */
-    /* v8.1.4.9 · 跑团整理响应式统一与 KP 图片导出 */
+    /* v8.1.4.10 · KP 人数统计与弹窗风格统一；兼容 v18 数据结构 */
+    /* v8.1.4.10 · KP 已带 PL 去重人数统计与关闭按钮统一 */
     .plan-module-picker{position:relative;display:grid;gap:6px;grid-column:1/-1}
     .plan-module-picker-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
     .plan-module-picker-state{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:20px;color:var(--t-muted);font-size:8.8px;line-height:1.4}
@@ -3533,7 +3539,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.4.9 · 2026-09-05 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.4.10 · 2026-09-05 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3545,7 +3551,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.4.9　·　更新时间：2026-09-05　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.4.10　·　更新时间：2026-09-05　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3832,7 +3838,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.9</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.10</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -3876,10 +3882,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.9 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.9</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.10 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.10</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.4.10</strong><span>新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span>
 <strong>v8.1.4.9</strong><span>KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。</span>
 <strong>v8.1.4.8</strong><span>统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。</span>
 <strong>v8.1.4.7</strong><span>新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span>
@@ -4003,7 +4010,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.4.9 · 作者：番茄
+/* PL收集梦想生活 v8.1.4.10 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4022,7 +4029,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.4.9";
+const APP_UI_VERSION = "8.1.4.10";
 const DATA_SCHEMA_VERSION = 18;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -6075,13 +6082,18 @@ function organizerIsProfileKp(run,profile){
   if(String(run.kpProfileId||"")===String(profile.id))return true;
   return !run.kpProfileId&&isSelfProfile(profile)&&isSelfKP(run.kp);
 }
-function kpOrganizerParticipantCount(run){
-  const linked=(run?.plIds||[]).map(String),known=new Set(linked.map(id=>normalizedEntityNameKey(profileNameById(id))).filter(Boolean));
-  let total=linked.length;
+function kpOrganizerParticipantKeys(run){
+  const keys=[],seen=new Set(),add=key=>{if(key&&!seen.has(key)){seen.add(key);keys.push(key);}};
+  (run?.plIds||[]).forEach(rawId=>{const id=String(rawId||"").trim();if(!id)return;add(`id:${id}`);});
   const extras=[...(Array.isArray(run?.legacyPlNames)?run.legacyPlNames:[]),...splitLegacyParticipantText(run?.participantText||"")];
-  extras.forEach(name=>{const key=normalizedEntityNameKey(name);if(key&&!known.has(key)){known.add(key);total++;}});
-  return total;
+  extras.forEach(name=>{
+    const token=normalizePersonToken(name);if(!token)return;
+    const linked=profileByExactName(name);
+    add(linked?`id:${linked.id}`:`name:${token}`);
+  });
+  return keys;
 }
+function kpOrganizerParticipantCount(run){return kpOrganizerParticipantKeys(run).length;}
 function kpOrganizerDateInfo(kind,run){
   if(kind==="record"){
     const slots=(run.sessionSlots||[]).map(s=>s.date).filter(Boolean).sort();
@@ -6098,11 +6110,12 @@ function kpOrganizerEntriesForProfile(profileId){
     if(!organizerIsProfileKp(run,profile))return;
     const mod=moduleForRunEntity(run),date=kpOrganizerDateInfo(kind,run),status=hoOrganizerStatusFor(kind,run);
     const moduleName=String(run.moduleName||mod?.name||"未命名模组").trim()||"未命名模组";
+    const plKeys=kpOrganizerParticipantKeys(run);
     out.push({
       id:`${kind}:${run.id}`,kind,runId:run.id,moduleId:String(run.moduleId||mod?.id||""),
       moduleKey:String(run.moduleId||mod?.id||"")?`id:${String(run.moduleId||mod?.id)}`:`name:${normalizedEntityNameKey(moduleName)}`,
       moduleName,tableName:String(run.tableName||"").trim(),status,dateText:date.text,dateKey:date.key,
-      plCount:kpOrganizerParticipantCount(run),updatedAt:Number(run.updatedAt||run.createdAt||0)
+      plCount:plKeys.length,plKeys,updatedAt:Number(run.updatedAt||run.createdAt||0)
     });
   }));
   return out.sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt||a.moduleName.localeCompare(b.moduleName,"zh-CN"));
@@ -6117,7 +6130,7 @@ function kpOrganizerGroups(entries){
     const records=g.entries.filter(e=>e.kind==="record"),plans=g.entries.filter(e=>e.kind==="plan");
     const lastDone=records.map(e=>e.dateKey).filter(Boolean).sort().at(-1)||"";
     const lastAny=g.entries.map(e=>e.dateKey).filter(Boolean).sort().at(-1)||"";
-    return {...g,done:records.length,planned:plans.length,lastDone,lastAny,totalPl:records.reduce((n,e)=>n+e.plCount,0)};
+    return {...g,done:records.length,planned:plans.length,lastDone,lastAny,totalPl:records.reduce((n,e)=>n+e.plCount,0),uniquePl:new Set(records.flatMap(e=>e.plKeys||[])).size};
   });
   groups.sort((a,b)=>{
     if(kpOrganizerSort==="count")return b.done-a.done||b.planned-a.planned||a.moduleName.localeCompare(b.moduleName,"zh-CN");
@@ -6149,16 +6162,16 @@ function renderPlOrganizer(profile){
 }
 function renderKpOrganizer(profile){
   const all=kpOrganizerEntriesForProfile(profile.id),filtered=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter),groups=kpOrganizerGroups(filtered);
-  const records=all.filter(e=>e.kind==="record"),plans=all.filter(e=>e.kind==="plan"),moduleCount=new Set(records.map(e=>e.moduleKey)).size,totalPl=records.reduce((n,e)=>n+e.plCount,0);
+  const records=all.filter(e=>e.kind==="record"),plans=all.filter(e=>e.kind==="plan"),moduleCount=new Set(records.map(e=>e.moduleKey)).size,totalPl=records.reduce((n,e)=>n+e.plCount,0),uniquePl=new Set(records.flatMap(e=>e.plKeys||[])).size;
   els.hoOrganizerSubtitle.textContent=`按模组汇总 ${records.length} 桌已带团记录与 ${plans.length} 条开团计划；带团次数仅统计跑团记录。`;
-  els.hoOrganizerStats.innerHTML=`<span><strong>${records.length}</strong> 已带团</span><span>计划中 ${plans.length}</span><span>已带模组 ${moduleCount}</span><span>已带 PL ${totalPl} 人次</span>`;
-  els.hoOrganizerNotice.innerHTML=`<span>已带团与 PL 人次仅按跑团记录统计；计划中的桌次单独显示，不计入已带团次数。模组详情默认折叠，按需展开查看桌次。</span>`;
+  els.hoOrganizerStats.innerHTML=`<span><strong>${records.length}</strong> 已带团</span><span>计划中 ${plans.length}</span><span>已带模组 ${moduleCount}</span><span>已带 PL ${totalPl} 次</span><span>已带 PL ${uniquePl} 人</span>`;
+  els.hoOrganizerNotice.innerHTML=`<span>已带团、PL 次数与已带 PL 人数均仅按跑团记录统计；同一已关联 PL 跑多桌只计 1 人，旧文本姓名按姓名去重。计划中的桌次单独显示，不计入已带团次数。</span>`;
   els.hoOrganizerBoard.classList.remove("pl-mode");
   els.hoOrganizerBoard.classList.add("kp-mode");
   if(!filtered.length){els.hoOrganizerBoard.innerHTML=`<div class="ho-organizer-empty"><strong>${all.length?"当前筛选无结果":"暂无 KP 带团记录"}</strong><span>${all.length?"请调整筛选范围。":"将该档案关联为跑团记录或开团计划的 KP 后，此处将自动汇总。"}</span></div>`;return;}
   els.hoOrganizerBoard.innerHTML=groups.map(group=>{
     const entries=[...group.entries].sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt),summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · "),recent=group.lastDone?`最近带团 ${group.lastDone}`:(group.lastAny?`最近计划 ${group.lastAny}`:"暂无日期"),expanded=kpOrganizerExpandedKeys.has(group.key);
-    return `<section class="kp-module-group ${expanded?"":"is-collapsed"}" data-kp-group-key="${escapeHTML(group.key)}"><header class="kp-module-head"><div class="kp-module-title"><strong>${escapeHTML(group.moduleName)}</strong><span>${escapeHTML(recent)}</span></div><div class="kp-module-head-side"><div class="kp-module-count"><strong>${escapeHTML(summary||`${entries.length} 条`)}</strong>${group.totalPl?`<span>${group.totalPl} PL 人次</span>`:""}</div><button class="kp-detail-toggle" type="button" data-kp-group-toggle="${escapeHTML(group.key)}" aria-expanded="${expanded?"true":"false"}" title="${expanded?"收起桌次详情":"展开桌次详情"}"><span>${expanded?"收起":"展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body" ${expanded?"":"hidden"}>${entries.map(kpOrganizerEntryHTML).join("")}</div></section>`;
+    return `<section class="kp-module-group ${expanded?"":"is-collapsed"}" data-kp-group-key="${escapeHTML(group.key)}"><header class="kp-module-head"><div class="kp-module-title"><strong>${escapeHTML(group.moduleName)}</strong><span>${escapeHTML(recent)}</span></div><div class="kp-module-head-side"><div class="kp-module-count"><strong>${escapeHTML(summary||`${entries.length} 条`)}</strong>${group.totalPl?`<span>${group.totalPl} PL 次 · ${group.uniquePl} 人</span>`:""}</div><button class="kp-detail-toggle" type="button" data-kp-group-toggle="${escapeHTML(group.key)}" aria-expanded="${expanded?"true":"false"}" title="${expanded?"收起桌次详情":"展开桌次详情"}"><span>${expanded?"收起":"展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body" ${expanded?"":"hidden"}>${entries.map(kpOrganizerEntryHTML).join("")}</div></section>`;
   }).join("");
 }
 function renderHoOrganizer(){
@@ -6256,8 +6269,8 @@ function drawKpExportHeader(ctx,w,profile,entries,theme){
   ctx.fillStyle=theme.accent;ctx.beginPath();ctx.arc(42,34,8,0,Math.PI*2);ctx.fill();ctx.fillStyle=theme.success;ctx.beginPath();ctx.arc(55,34,8,0,Math.PI*2);ctx.fill();
   ctx.fillStyle=theme.muted;ctx.font="700 16px system-ui, sans-serif";ctx.fillText("KP · 带团整理",76,40);
   ctx.fillStyle=theme.ink;ctx.font="800 34px system-ui, sans-serif";ctx.fillText(`${displayProfileName(profile)} · KP 带团`,36,82);
-  const done=entries.filter(e=>e.kind==="record").length,plan=entries.filter(e=>e.kind==="plan").length,moduleCount=new Set(entries.filter(e=>e.kind==="record").map(e=>e.moduleKey)).size,totalPl=entries.filter(e=>e.kind==="record").reduce((n,e)=>n+e.plCount,0);
-  ctx.fillStyle=theme.muted;ctx.font="500 16px system-ui, sans-serif";ctx.fillText(`已带团 ${done} 桌 · 计划中 ${plan} 桌 · 已带模组 ${moduleCount} · 已带 PL ${totalPl} 人次`,36,111);
+  const doneEntries=entries.filter(e=>e.kind==="record"),done=doneEntries.length,plan=entries.filter(e=>e.kind==="plan").length,moduleCount=new Set(doneEntries.map(e=>e.moduleKey)).size,totalPl=doneEntries.reduce((n,e)=>n+e.plCount,0),uniquePl=new Set(doneEntries.flatMap(e=>e.plKeys||[])).size;
+  ctx.fillStyle=theme.muted;ctx.font="500 16px system-ui, sans-serif";ctx.fillText(`已带团 ${done} 桌 · 计划中 ${plan} 桌 · 已带模组 ${moduleCount} · 已带 PL ${totalPl} 次 · ${uniquePl} 人`,36,111);
   ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(36,131.5);ctx.lineTo(w-36,131.5);ctx.stroke();return 132;
 }
 function drawKpExportEntry(ctx,x,y,w,entry,theme){
@@ -6269,7 +6282,7 @@ function drawKpExportGroup(ctx,x,y,w,group,theme,entryCols=1){
   const headH=78,pad=10,gap=8,entryH=72,entries=[...group.entries].sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt),rows=Math.max(1,Math.ceil(entries.length/entryCols)),bodyH=pad*2+rows*entryH+Math.max(0,rows-1)*gap,h=headH+bodyH;canvasFillRound(ctx,x,y,w,h,15,theme.surface,theme.line);
   ctx.save();canvasRoundedRect(ctx,x,y,w,headH,15);ctx.clip();ctx.fillStyle=theme.accentSoft;ctx.fillRect(x,y,w,headH);ctx.restore();ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(x,y+headH+.5);ctx.lineTo(x+w,y+headH+.5);ctx.stroke();
   ctx.fillStyle=theme.ink;ctx.font="800 18px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,group.moduleName,w-230),x+14,y+29);const recent=group.lastDone?`最近带团 ${group.lastDone}`:(group.lastAny?`最近计划 ${group.lastAny}`:"暂无日期");ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";ctx.fillText(recent,x+14,y+52);
-  const summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · ")||`${entries.length} 条`;ctx.fillStyle=theme.accent;ctx.font="800 15px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(summary,x+w-14,y+29);ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";if(group.totalPl)ctx.fillText(`${group.totalPl} PL 人次`,x+w-14,y+52);ctx.textAlign="left";
+  const summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · ")||`${entries.length} 条`;ctx.fillStyle=theme.accent;ctx.font="800 15px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(summary,x+w-14,y+29);ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";if(group.totalPl)ctx.fillText(`${group.totalPl} PL 次 · ${group.uniquePl} 人`,x+w-14,y+52);ctx.textAlign="left";
   const cardW=(w-pad*2-gap*(entryCols-1))/entryCols;entries.forEach((entry,i)=>{const col=i%entryCols,row=Math.floor(i/entryCols),cx=x+pad+col*(cardW+gap),cy=y+headH+pad+row*(entryH+gap);drawKpExportEntry(ctx,cx,cy,cardW,entry,theme);});return h;
 }
 function buildKpOrganizerCanvas(style="wide"){
@@ -6285,9 +6298,9 @@ function hoOrganizerText(profileId){
   const p=profileById(profileId);if(!p)return "";
   if(hoOrganizerMode==="kp"){
     const all=kpOrganizerEntriesForProfile(profileId),filtered=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter),groups=kpOrganizerGroups(filtered);
-    const records=all.filter(e=>e.kind==="record"),plans=all.filter(e=>e.kind==="plan"),moduleCount=new Set(records.map(e=>e.moduleKey)).size,totalPl=records.reduce((n,e)=>n+e.plCount,0);
-    const lines=[`${displayProfileName(p)} · KP 带团整理`,`已带团 ${records.length} 桌 · 计划中 ${plans.length} 桌 · 已带模组 ${moduleCount} · 已带 PL ${totalPl} 人次`];
-    groups.forEach(g=>{lines.push("",`【${g.moduleName}】 已带 ${g.done} 桌${g.planned?` · 计划 ${g.planned} 桌`:""}`);g.entries.forEach(e=>lines.push(`${e.status.label}｜${e.dateText}｜${e.plCount} PL${e.tableName?`｜${e.tableName}`:""}`));});
+    const records=all.filter(e=>e.kind==="record"),plans=all.filter(e=>e.kind==="plan"),moduleCount=new Set(records.map(e=>e.moduleKey)).size,totalPl=records.reduce((n,e)=>n+e.plCount,0),uniquePl=new Set(records.flatMap(e=>e.plKeys||[])).size;
+    const lines=[`${displayProfileName(p)} · KP 带团整理`,`已带团 ${records.length} 桌 · 计划中 ${plans.length} 桌 · 已带模组 ${moduleCount} · 已带 PL ${totalPl} 次 · ${uniquePl} 人`];
+    groups.forEach(g=>{lines.push("",`【${g.moduleName}】 已带 ${g.done} 桌${g.planned?` · 计划 ${g.planned} 桌`:""} · PL ${g.totalPl} 次 · ${g.uniquePl} 人`);g.entries.forEach(e=>lines.push(`${e.status.label}｜${e.dateText}｜${e.plCount} PL${e.tableName?`｜${e.tableName}`:""}`));});
     return lines.join("\n");
   }
   const entries=hoOrganizerEntriesForProfile(profileId),cols=hoOrganizerColumnDefinitions(entries,false),lines=[`${displayProfileName(p)} · PL / HO 整理`];
