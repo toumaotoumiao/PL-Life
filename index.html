@@ -3210,7 +3210,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
-    /* v8.1.4.14 · 跑团偏好双栏末项对齐、标题层级强化、导出尺度可读性优化；数据结构保持 v20 */
+    /* v8.1.4.15 · 常用平台补充与问题反馈精简；数据结构保持 v20 */
     /* v8.1.4.10 · KP 已带 PL 去重人数统计与关闭按钮统一 */
     .plan-module-picker{position:relative;display:grid;gap:6px;grid-column:1/-1}
     .plan-module-picker-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
@@ -3283,7 +3283,7 @@
     }
 
 
-    /* ---------- v8.1.4.14 · 跑团偏好 / PL-KP 双栏与导出尺度 ---------- */
+    /* ---------- v8.1.4.15 · 跑团偏好 / PL-KP 双栏与导出尺度 ---------- */
     .self-intro-view{display:grid;gap:10px;min-width:0}
     .self-intro-toolbar .view-toolbar-actions{align-items:center}
     .self-intro-save-state{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 10px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-muted);white-space:nowrap}
@@ -3368,7 +3368,7 @@
                 </div>
                 <div class="guide-item">
                   <span class="guide-no">06</span>
-                  <div><strong>问题反馈</strong><span>有问题联系企鹅：3353671383 / 群号：1121544966</span></div>
+                  <div><strong>问题反馈</strong><span>有问题联系企鹅：3353671383</span></div>
                 </div>
               </div>
             </div>
@@ -3598,7 +3598,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.4.14 · 2026-09-05 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.4.15 · 2026-09-05 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3610,7 +3610,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.4.14　·　更新时间：2026-09-05　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.4.15　·　更新时间：2026-09-05　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3898,7 +3898,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.14</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.4.15</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -3942,10 +3942,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.14 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.14</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.4.15 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.4.15</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.4.15</strong><span>常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。</span>
 <strong>v8.1.4.14</strong><span>重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。</span>
 <strong>v8.1.4.13</strong><span>“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。</span>
 <strong>v8.1.4.12</strong><span>自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；多选选中态加强，并新增双栏图片导出。</span>
@@ -4074,7 +4075,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.4.14 · 作者：番茄
+/* PL收集梦想生活 v8.1.4.15 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4093,7 +4094,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.4.14";
+const APP_UI_VERSION = "8.1.4.15";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -7281,9 +7282,9 @@ function planMatchesSearch(plan,q){
 }
 
 
-/* ---------- v8.1.4.14 · 跑团偏好 / PL-KP 双栏与导出尺度 ---------- */
+/* ---------- v8.1.4.15 · 跑团偏好 / PL-KP 双栏与导出尺度 ---------- */
 const INTRO_OPTIONS={
-  platforms:["QQ","微信","KOOK","Discord","线下","其他"],formats:["文字","语音","面团","混合"],timeSlots:["上午","中午","下午","晚上","凌晨"],availability:["工作日","周末","整周"],
+  platforms:["QQ","微信","KOOK","Discord","FVTT","枭熊","DND Beyond","Roll20","回声岛","线下","其他"],formats:["文字","语音","面团","混合"],timeSlots:["上午","中午","下午","晚上","凌晨"],availability:["工作日","周末","整周"],
   eras:["1920s","现代","当代","历史","未来","其他"],regions:["中国","日本","欧美","其他"],structures:["线性","分支","框架","沙盒","密室","都市","茶番","秘密团","追逐","PVP"],elements:["情感体验","推理调查","原旨风味","探索行动","故事扮演","角色交互","时代风情","荒诞","养成","叙事诡计","血腥与精神污染"],
   plFocus:["RP","社交","OC","剧情","数值","探索","推理"]
 };
