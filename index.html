@@ -3214,6 +3214,113 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.5.3 · 全站图片导出统一：导出图沿用网页卡片视觉，不使用水果/emoji 装饰。 */
+    /* v8.1.5.2 · 跑团整理视觉统一：PL / KP 使用同一套概览卡、折叠详情与响应式网格。 */
+    .ho-organizer-board.pl-mode,.ho-organizer-board.kp-mode{
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:10px;
+    }
+    .run-summary-card{
+      --run-card-accent:var(--t-accent);
+      --run-card-accent-strong:var(--t-accent-strong);
+      min-width:0;
+      border:1px solid var(--t-line);
+      border-radius:15px;
+      background:var(--t-surface);
+      box-shadow:0 7px 20px var(--t-shadow-soft);
+      overflow:hidden;
+    }
+    .run-summary-card .kp-module-head{
+      position:relative;
+      min-height:64px;
+      padding:12px 12px 10px 14px;
+      border-bottom:1px solid var(--t-line);
+      background:linear-gradient(180deg,color-mix(in srgb,var(--t-accent-soft) 38%,var(--t-surface)),var(--t-surface));
+    }
+    .run-summary-card .kp-module-head::before{
+      content:"";
+      position:absolute;
+      left:0;top:11px;bottom:11px;
+      width:3px;
+      border-radius:0 999px 999px 0;
+      background:var(--run-card-accent);
+      opacity:.86;
+    }
+    .run-summary-card.ho-module-group{
+      border-color:var(--t-line);
+    }
+    .run-summary-card.ho-module-group .kp-module-head{
+      border-bottom-color:var(--t-line);
+      background:linear-gradient(180deg,color-mix(in srgb,var(--ho-bg) 24%,var(--t-surface)),var(--t-surface));
+    }
+    .run-summary-card.ho-module-group .kp-module-head::before{background:var(--ho-dot)}
+    .run-summary-card .kp-module-title{gap:2px}
+    .run-summary-card .kp-module-title strong{
+      font-size:12.5px;
+      line-height:1.25;
+      color:var(--t-ink);
+    }
+    .run-summary-card.ho-module-group .kp-module-title strong{color:var(--ho-title)}
+    .run-summary-card .kp-module-title span{
+      font-size:8px;
+      line-height:1.35;
+      color:var(--t-muted);
+    }
+    .run-summary-card .kp-module-count{
+      min-width:72px;
+      justify-items:end;
+    }
+    .run-summary-card .kp-module-count strong{
+      font-size:12.5px;
+      line-height:1.15;
+      color:var(--run-card-accent-strong);
+    }
+    .run-summary-card.ho-module-group .kp-module-count strong{color:var(--ho-title)}
+    .run-summary-card .kp-module-count span{
+      font-size:7.6px;
+      line-height:1.25;
+      color:var(--t-faint);
+      white-space:nowrap;
+    }
+    .run-summary-card .kp-detail-toggle{
+      min-height:29px;
+      padding:4px 8px;
+      border-radius:9px;
+      background:var(--t-surface);
+    }
+    .run-summary-card .kp-module-body,
+    .run-summary-card .ho-module-body{
+      display:grid;
+      gap:7px;
+      padding:8px;
+      background:color-mix(in srgb,var(--t-surface-2) 38%,var(--t-surface));
+    }
+    .run-summary-card .kp-entry,
+    .run-summary-card .ho-entry{
+      min-height:58px;
+      padding:9px 10px;
+      border:1px solid color-mix(in srgb,var(--t-line) 78%,transparent);
+      border-radius:10px;
+      background:var(--t-surface);
+      box-shadow:0 1px 0 color-mix(in srgb,var(--t-shadow-soft) 34%,transparent);
+    }
+    .run-summary-card .kp-entry:hover,
+    .run-summary-card .ho-entry:hover{
+      border-color:color-mix(in srgb,var(--run-card-accent) 54%,var(--t-line));
+      box-shadow:0 5px 13px var(--t-shadow-soft);
+    }
+    .run-summary-card.ho-module-group .ho-entry:hover{border-color:color-mix(in srgb,var(--ho-dot) 54%,var(--t-line))}
+    .run-summary-card.is-collapsed .kp-module-head{border-bottom-color:transparent}
+    .run-summary-card .ho-entry-top,.run-summary-card .kp-entry-top{min-height:20px}
+    .run-summary-card .ho-entry-character{font-size:8.5px}
+    .run-summary-card .ho-entry-meta,.run-summary-card .kp-entry-meta{font-size:8px}
+    @media(max-width:760px){
+      .ho-organizer-board.pl-mode,.ho-organizer-board.kp-mode{grid-template-columns:1fr!important}
+      .run-summary-card .kp-module-head{min-height:62px;padding:11px 10px 9px 13px}
+      .run-summary-card .kp-module-head-side{gap:6px}
+      .run-summary-card .kp-module-count{min-width:62px}
+    }
+
     /* v8.1.5.1 · 跑团偏好说明与多选快捷操作；数据结构保持 v20 */
     /* v8.1.4.10 · KP 已带 PL 去重人数统计与关闭按钮统一 */
     .plan-module-picker{position:relative;display:grid;gap:6px;grid-column:1/-1}
@@ -3602,7 +3709,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.5.1 · 2026-09-05 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.5.3 · 2026-09-05 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3614,7 +3721,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.5.1　·　更新时间：2026-09-05　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.5.3　·　更新时间：2026-09-05　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -3659,6 +3766,7 @@
                 <button type="button" data-ho-filter="record">已结团</button>
                 <button type="button" data-ho-filter="plan">计划中</button>
               </div>
+              <button id="toggleOrganizerAllBtn" class="btn small" type="button">展开全部</button>
               <label class="ho-empty-toggle ho-only-control"><input id="hoShowEmptyColumns" type="checkbox"><span>显示空 HO 列</span></label>
               <div class="ho-image-export-wrap">
                 <button id="hoImageExportBtn" class="btn small" type="button" aria-expanded="false">导出图片 ▾</button>
@@ -3902,7 +4010,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.1</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.3</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -3946,10 +4054,12 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.1 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.1</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.3 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.3</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.5.3</strong><span>统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span>
+<strong>v8.1.5.2</strong><span>统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span>
 <strong>v8.1.5.1</strong><span>跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span>
 <strong>v8.1.5</strong><span>隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span>
 </div>
@@ -4102,7 +4212,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.5.1";
+const APP_UI_VERSION = "8.1.5.3";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -4393,6 +4503,7 @@ let hoOrganizerFilter = "all";
 let hoOrganizerShowEmpty = false;
 let hoOrganizerMode = "pl";
 let kpOrganizerSort = "recent";
+const plOrganizerExpandedKeys = new Set();
 const kpOrganizerExpandedKeys = new Set();
 
 function applyUiPreferences(source=settings){
@@ -6284,16 +6395,18 @@ function kpOrganizerEntryHTML(entry){
 function renderPlOrganizer(profile){
   const all=hoOrganizerEntriesForProfile(profile.id),filtered=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter),cols=hoOrganizerColumnDefinitions(filtered,hoOrganizerShowEmpty);
   const done=all.filter(e=>e.kind==="record").length,planned=all.filter(e=>e.kind==="plan").length,known=all.filter(e=>!["none","unset"].includes(e.column.key)).length,none=all.filter(e=>e.column.key==="none").length,unset=all.filter(e=>e.column.key==="unset").length;
-  els.hoOrganizerSubtitle.textContent=`自动汇总该 PL 作为 PC / KPC 的 ${all.length} 条经历；纯 KP 记录请切换到“KP 带团”。`;
+  els.hoOrganizerSubtitle.textContent=`按 HO 分组整理 ${done} 条已结团经历与 ${planned} 条计划；点击分组展开桌次。`;
   els.hoOrganizerStats.innerHTML=`<span><strong>${all.length}</strong> 条</span><span>已结团 ${done}</span><span>计划中 ${planned}</span><span>有 HO ${known}</span><span>无 HO ${none}</span>${unset?`<span class="warn">HO 未记录 ${unset}</span>`:""}`;
-  els.hoOrganizerNotice.innerHTML=unset?`<strong>${unset} 条经历的 HO 还没记录。</strong><span>“HO 未记录”与“无 HO”分开显示，避免将未知状态记为无 HO。</span>`:`<span>数据来自跑团记录与开团计划；修改 PC / HO 请打开对应桌次。</span>`;
+  els.hoOrganizerNotice.innerHTML=unset?`<strong>${unset} 条经历的 HO 还没记录。</strong><span>“HO 未记录”与“无 HO”分开统计。</span>`:`<span>按 HO 快速查看参团经历；点击具体桌次可打开对应跑团记录或开团计划。</span>`;
   els.hoOrganizerBoard.classList.remove("kp-mode");
   els.hoOrganizerBoard.classList.add("pl-mode");
   if(!filtered.length){els.hoOrganizerBoard.innerHTML=`<div class="ho-organizer-empty"><strong>${all.length?"当前筛选无结果":"暂无可整理的 PL 参团记录"}</strong><span>${all.length?"请调整筛选范围。":"在跑团记录或开团计划中关联该 PL 与 PC 后，此处将自动显示。"}</span></div>`;return;}
   els.hoOrganizerBoard.innerHTML=cols.map((col,ci)=>{
     const p=HO_ORGANIZER_PALETTE[ci%HO_ORGANIZER_PALETTE.length],rows=filtered.filter(e=>e.column.key===col.key),rowDone=rows.filter(e=>e.kind==="record").length,rowPlan=rows.filter(e=>e.kind==="plan").length;
+    const dates=rows.map(e=>String(e.dateText||"")).filter(t=>/^\d{4}-\d{2}-\d{2}/.test(t)).sort(),recent=dates.at(-1)||"";
     const summary=[rowDone&&`已结团 ${rowDone}`,rowPlan&&`计划 ${rowPlan}`].filter(Boolean).join(" · ")||"暂无记录";
-    return `<section class="kp-module-group ho-module-group" style="--ho-dot:${p.dot};--ho-bg:${p.bg};--ho-border:${p.border};--ho-title:${p.title}"><header class="kp-module-head ho-module-head"><div class="kp-module-title ho-module-title"><strong>${escapeHTML(col.label)}</strong><span>HO 分组 · ${escapeHTML(summary)}</span></div><div class="kp-module-count ho-module-count"><strong>${rows.length} 条</strong><span>${rowDone?`已跑 ${rowDone} 条`:rowPlan?`计划 ${rowPlan} 条`:""}</span></div></header><div class="kp-module-body ho-module-body">${rows.length?rows.map(hoOrganizerEntryHTML).join(""):`<div class="ho-column-empty">暂无记录</div>`}</div></section>`;
+    const key=`pl:${col.key}`,expanded=plOrganizerExpandedKeys.has(key);
+    return `<section class="run-summary-card kp-module-group ho-module-group ${expanded?"":"is-collapsed"}" data-pl-group-key="${escapeHTML(key)}" style="--ho-dot:${p.dot};--ho-bg:${p.bg};--ho-border:${p.border};--ho-title:${p.title}"><header class="kp-module-head ho-module-head"><div class="kp-module-title ho-module-title"><strong>${escapeHTML(col.label)}</strong><span>${escapeHTML(recent?`最近记录 ${recent}`:"HO 分组")}</span></div><div class="kp-module-head-side"><div class="kp-module-count ho-module-count"><strong>${rows.length} 条</strong><span>${escapeHTML(summary)}</span></div><button class="kp-detail-toggle" type="button" data-pl-group-toggle="${escapeHTML(key)}" aria-expanded="${expanded?"true":"false"}" title="${expanded?"收起桌次详情":"展开桌次详情"}"><span>${expanded?"收起":"展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body ho-module-body" ${expanded?"":"hidden"}>${rows.length?rows.map(hoOrganizerEntryHTML).join(""):`<div class="ho-column-empty">暂无记录</div>`}</div></section>`;
   }).join("");
 }
 function renderKpOrganizer(profile){
@@ -6307,8 +6420,16 @@ function renderKpOrganizer(profile){
   if(!filtered.length){els.hoOrganizerBoard.innerHTML=`<div class="ho-organizer-empty"><strong>${all.length?"当前筛选无结果":"暂无 KP 带团记录"}</strong><span>${all.length?"请调整筛选范围。":"将该档案关联为跑团记录或开团计划的 KP 后，此处将自动汇总。"}</span></div>`;return;}
   els.hoOrganizerBoard.innerHTML=groups.map(group=>{
     const entries=[...group.entries].sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt),summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · "),recent=group.lastDone?`最近带团 ${group.lastDone}`:(group.lastAny?`最近计划 ${group.lastAny}`:"暂无日期"),expanded=kpOrganizerExpandedKeys.has(group.key);
-    return `<section class="kp-module-group ${expanded?"":"is-collapsed"}" data-kp-group-key="${escapeHTML(group.key)}"><header class="kp-module-head"><div class="kp-module-title"><strong>${escapeHTML(group.moduleName)}</strong><span>${escapeHTML(recent)}</span></div><div class="kp-module-head-side"><div class="kp-module-count"><strong>${escapeHTML(summary||`${entries.length} 条`)}</strong>${group.totalPl?`<span>${group.totalPl} PL 次 · ${group.uniquePl} 人</span>`:""}</div><button class="kp-detail-toggle" type="button" data-kp-group-toggle="${escapeHTML(group.key)}" aria-expanded="${expanded?"true":"false"}" title="${expanded?"收起桌次详情":"展开桌次详情"}"><span>${expanded?"收起":"展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body" ${expanded?"":"hidden"}>${entries.map(kpOrganizerEntryHTML).join("")}</div></section>`;
+    return `<section class="run-summary-card kp-module-group ${expanded?"":"is-collapsed"}" data-kp-group-key="${escapeHTML(group.key)}"><header class="kp-module-head"><div class="kp-module-title"><strong>${escapeHTML(group.moduleName)}</strong><span>${escapeHTML(recent)}</span></div><div class="kp-module-head-side"><div class="kp-module-count"><strong>${escapeHTML(summary||`${entries.length} 条`)}</strong>${group.totalPl?`<span>${group.totalPl} PL 次 · ${group.uniquePl} 人</span>`:""}</div><button class="kp-detail-toggle" type="button" data-kp-group-toggle="${escapeHTML(group.key)}" aria-expanded="${expanded?"true":"false"}" title="${expanded?"收起桌次详情":"展开桌次详情"}"><span>${expanded?"收起":"展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body" ${expanded?"":"hidden"}>${entries.map(kpOrganizerEntryHTML).join("")}</div></section>`;
   }).join("");
+}
+function updateRunOrganizerExpandAllControl(){
+  const btn=document.getElementById("toggleOrganizerAllBtn");if(!btn)return;
+  const selector=hoOrganizerMode==="kp"?"[data-kp-group-toggle]":"[data-pl-group-toggle]",toggles=[...els.hoOrganizerBoard.querySelectorAll(selector)];
+  btn.hidden=!toggles.length;if(!toggles.length)return;
+  const allExpanded=toggles.every(t=>t.getAttribute("aria-expanded")==="true");
+  btn.textContent=allExpanded?"收起全部":"展开全部";
+  btn.setAttribute("aria-label",allExpanded?"收起当前全部分组":"展开当前全部分组");
 }
 function renderHoOrganizer(){
   if(!hoOrganizerProfileId)return;
@@ -6328,11 +6449,12 @@ function renderHoOrganizer(){
   if(exportWide)exportWide.textContent=hoOrganizerMode==="kp"?"按模组多列展示全部桌次，适合电脑或群聊":"横向展示全部 HO，适合电脑或群聊";
   if(exportLong)exportLong.textContent=hoOrganizerMode==="kp"?"按模组纵向展示全部桌次，适合手机":"按 HO 分组纵向展示，适合手机";
   if(hoOrganizerMode==="kp")renderKpOrganizer(profile);else renderPlOrganizer(profile);
+  updateRunOrganizerExpandAllControl();
 }
 function openHoOrganizer(profileId){
   if(shareModeBlock("跑团整理"))return false;
   const p=profileById(String(profileId||""));if(!p)return;
-  hoOrganizerProfileId=p.id;hoOrganizerFilter="all";hoOrganizerShowEmpty=false;hoOrganizerMode="pl";kpOrganizerSort="recent";kpOrganizerExpandedKeys.clear();
+  hoOrganizerProfileId=p.id;hoOrganizerFilter="all";hoOrganizerShowEmpty=false;hoOrganizerMode="pl";kpOrganizerSort="recent";plOrganizerExpandedKeys.clear();kpOrganizerExpandedKeys.clear();
   els.hoOrganizerBackdrop.hidden=false;document.body.classList.add("ho-organizer-open");syncModalPageScrollLock();renderHoOrganizer();
 }
 function closeHoOrganizer(){
@@ -6347,88 +6469,98 @@ function toggleHoImageExportMenu(force){
 function canvasRoundedRect(ctx,x,y,w,h,r){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();}
 function canvasFillRound(ctx,x,y,w,h,r,fill,stroke=""){canvasRoundedRect(ctx,x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke();}}
 function canvasTextFit(ctx,text,maxWidth){let s=String(text||"");if(ctx.measureText(s).width<=maxWidth)return s;while(s.length>1&&ctx.measureText(s+"…").width>maxWidth)s=s.slice(0,-1);return s+"…";}
+function colorMixForCanvas(fg,bg,ratio=.12){const parse=x=>{const c=document.createElement("canvas").getContext("2d");c.fillStyle=x;const v=c.fillStyle;if(/^#/.test(v)){const h=v.slice(1),n=h.length===3?h.split("").map(ch=>ch+ch).join(""):h;return [parseInt(n.slice(0,2),16),parseInt(n.slice(2,4),16),parseInt(n.slice(4,6),16)];}const m=String(v).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);return m?[Number(m[1]),Number(m[2]),Number(m[3])]:null;};const a=parse(fg),b=parse(bg);if(!a||!b)return bg;const m=a.map((v,i)=>Math.round(v*ratio+b[i]*(1-ratio)));return `rgb(${m.join(",")})`;}
 function hoExportCurrentEntries(){const all=hoOrganizerEntriesForProfile(hoOrganizerProfileId);return all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter);}
 function hoExportTheme(){
   const cs=getComputedStyle(document.documentElement),theme=document.documentElement.dataset.theme||"mist";
   const get=(name,fallback)=>cs.getPropertyValue(name).trim()||fallback;
-  return {theme,bg:get("--t-bg","#f4f3ee"),surface:get("--t-surface","#fffdf9"),surface2:get("--t-surface-2","#f7f7f2"),ink:get("--t-ink","#2f3431"),text2:get("--t-text-2","#505651"),muted:get("--t-muted","#727873"),faint:get("--t-faint","#969b96"),line:get("--t-line","#dfe3de"),accent:get("--t-accent","#405249"),accentSoft:get("--t-accent-soft","#eaf0eb"),success:get("--t-success","#6b8a52"),warning:get("--t-warning","#a07245")};
+  return {theme,bg:get("--t-bg","#f4f3ee"),surface:get("--t-surface","#fffdf9"),surface2:get("--t-surface-2","#f7f7f2"),ink:get("--t-ink","#2f3431"),text2:get("--t-text-2","#505651"),muted:get("--t-muted","#727873"),faint:get("--t-faint","#969b96"),line:get("--t-line","#dfe3de"),accent:get("--t-accent","#405249"),accentStrong:get("--t-accent-strong","#34463d"),accentSoft:get("--t-accent-soft","#eaf0eb"),success:get("--t-success","#6b8a52"),warning:get("--t-warning","#a07245")};
 }
 function hoExportStatusColors(status,theme){if(status.key==="done")return {bg:"#fdf5e0",fg:"#8f6d25"};if(status.key==="scheduled")return {bg:"#e8f5e8",fg:"#527d52"};return {bg:"#e8f4fc",fg:"#567f99"};}
 function hoExportFilename(style){const p=profileById(hoOrganizerProfileId),name=String(displayProfileName(p)||"PL").replace(/[\\/:*?"<>|]/g,"_");const scope=hoOrganizerFilter==="record"?"已结团":hoOrganizerFilter==="plan"?"计划中":"全部",view=hoOrganizerMode==="kp"?"KP 带团整理":"HO 整理";return `${name}_${view}_${style==="wide"?"宽幅":"长图"}_${scope}.png`;}
-function drawHoExportHeader(ctx,w,profile,entries,theme){
-  ctx.fillStyle=theme.surface;ctx.fillRect(0,0,w,132);
-  ctx.fillStyle=theme.accent;ctx.beginPath();ctx.arc(42,34,8,0,Math.PI*2);ctx.fill();ctx.fillStyle=theme.success;ctx.beginPath();ctx.arc(55,34,8,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=theme.muted;ctx.font="700 16px system-ui, sans-serif";ctx.fillText("PL · HO 管理",76,40);
-  ctx.fillStyle=theme.ink;ctx.font="800 34px system-ui, sans-serif";ctx.fillText(`${displayProfileName(profile)} · HO 整理`,36,82);
-  const done=entries.filter(e=>e.kind==="record").length,plan=entries.filter(e=>e.kind==="plan").length,known=entries.filter(e=>!["none","unset"].includes(e.column.key)).length;
-  ctx.fillStyle=theme.muted;ctx.font="500 16px system-ui, sans-serif";ctx.fillText(`${entries.length} 条经历 · 已结团 ${done} · 计划中 ${plan} · 已记录 HO ${known}`,36,111);
-  ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(36,131.5);ctx.lineTo(w-36,131.5);ctx.stroke();
-  return 132;
+function drawUnifiedExportHeader(ctx,w,theme,{eyebrow="TRPG · 本地档案管理",title="",subtitle="",stats=[]}={}){
+  const x=34,y=24,cardW=w-68,cardH=138,innerX=x+20;
+  canvasFillRound(ctx,x,y,cardW,cardH,18,theme.surface,theme.line);
+  canvasFillRound(ctx,innerX,y+19,4,18,2,theme.accent,"");
+  ctx.fillStyle=theme.muted;ctx.font="750 13px system-ui, sans-serif";ctx.fillText(eyebrow,innerX+13,y+33);
+  ctx.fillStyle=theme.ink;ctx.font="800 31px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,title,cardW-40),innerX,y+69);
+  ctx.fillStyle=theme.muted;ctx.font="500 13px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,subtitle,cardW-40),innerX,y+93);
+  let px=innerX,py=y+106;ctx.font="650 10.5px system-ui, sans-serif";
+  for(const raw of stats){const text=String(raw||"");if(!text)continue;const pw=Math.ceil(ctx.measureText(text).width)+20;if(px+pw>x+cardW-18)break;canvasFillRound(ctx,px,py,pw,23,11.5,theme.surface2,theme.line);ctx.fillStyle=theme.text2;ctx.textAlign="center";ctx.fillText(text,px+pw/2,py+15.5);ctx.textAlign="left";px+=pw+7;}
+  return y+cardH+18;
 }
-function drawHoColumnHeader(ctx,x,y,w,col,count,palette,theme){
-  canvasFillRound(ctx,x,y,w,72,16,palette.bg,palette.border);
-  ctx.fillStyle=palette.dot;ctx.beginPath();ctx.arc(x+28,y+35,11,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=theme.success;ctx.beginPath();ctx.ellipse(x+29,y+21,7,4,-.45,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=palette.title;ctx.font="700 11px system-ui, sans-serif";ctx.fillText("HO 分组",x+50,y+27);
-  ctx.font="800 21px system-ui, sans-serif";ctx.fillText(col.label,x+50,y+51);
-  canvasFillRound(ctx,x+w-62,y+18,44,38,19,"rgba(255,255,255,.72)",palette.border);
-  ctx.fillStyle=palette.title;ctx.font="800 17px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText(String(count),x+w-40,y+38);ctx.font="600 9px system-ui, sans-serif";ctx.fillText("条",x+w-40,y+50);ctx.textAlign="left";
+function drawUnifiedExportFooter(ctx,w,y,theme){
+  ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(34,y-.5);ctx.lineTo(w-34,y-.5);ctx.stroke();
+  ctx.fillStyle=theme.faint;ctx.font="500 10.5px system-ui, sans-serif";ctx.fillText(`${APP_NAME} · v${APP_UI_VERSION} · ${new Date().toLocaleDateString("zh-CN")}`,34,y+18);
+  return y+30;
+}
+function drawRunExportGroupHead(ctx,x,y,w,{title="",subtitle="",summary="",meta="",accent="",soft=""},theme){
+  const h=70;
+  ctx.fillStyle=soft||theme.surface2;ctx.fillRect(x+1,y+1,w-2,h-1);
+  canvasFillRound(ctx,x+12,y+13,4,42,2,accent||theme.accent,"");
+  ctx.fillStyle=theme.ink;ctx.font="800 17px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,title,w-220),x+26,y+29);
+  ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,subtitle,w-220),x+26,y+51);
+  ctx.textAlign="right";ctx.fillStyle=accent||theme.accent;ctx.font="800 15px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,summary,180),x+w-14,y+29);
+  if(meta){ctx.fillStyle=theme.faint;ctx.font="500 9.5px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,meta,180),x+w-14,y+51);}ctx.textAlign="left";
+  ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(x,y+h+.5);ctx.lineTo(x+w,y+h+.5);ctx.stroke();
+  return h;
 }
 function drawHoEntryCard(ctx,x,y,w,entry,theme){
-  const h=96;canvasFillRound(ctx,x,y,w,h,12,theme.surface,theme.line);
-  const sc=hoExportStatusColors(entry.status,theme),pillW=52;canvasFillRound(ctx,x+12,y+11,pillW,22,11,sc.bg,"");ctx.fillStyle=sc.fg;ctx.font="700 10px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText(entry.status.label,x+12+pillW/2,y+26);ctx.textAlign="left";
-  let titleX=x+72;if(entry.role==="KPC"){canvasFillRound(ctx,titleX,y+11,42,22,11,theme.accentSoft,"");ctx.fillStyle=theme.accent;ctx.font="700 10px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText("KPC",titleX+21,y+26);ctx.textAlign="left";titleX+=50;}
-  ctx.fillStyle=theme.ink;ctx.font="750 15px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.moduleName,w-(titleX-x)-14),titleX,y+27);
-  ctx.fillStyle=theme.faint;ctx.font="500 11px system-ui, sans-serif";ctx.fillText("角色",x+12,y+53);ctx.fillStyle=theme.text2;ctx.font="650 13px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.pcName||"未记录PC",w-70),x+48,y+53);
-  ctx.fillStyle=theme.faint;ctx.font="500 10px system-ui, sans-serif";const meta=[entry.tableName,entry.dateText].filter(Boolean).join(" · ");ctx.fillText(canvasTextFit(ctx,meta,w-24),x+12,y+79);
+  const h=72;canvasFillRound(ctx,x,y,w,h,10,theme.surface,theme.line);
+  const sc=hoExportStatusColors(entry.status,theme),pillW=52;canvasFillRound(ctx,x+11,y+9,pillW,20,10,sc.bg,"");ctx.fillStyle=sc.fg;ctx.font="700 9.5px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText(entry.status.label,x+11+pillW/2,y+23);ctx.textAlign="left";
+  let titleX=x+72;if(entry.role==="KPC"){canvasFillRound(ctx,titleX,y+9,38,20,10,theme.accentSoft,"");ctx.fillStyle=theme.accent;ctx.font="700 9px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText("KPC",titleX+19,y+23);ctx.textAlign="left";titleX+=46;}
+  ctx.fillStyle=theme.ink;ctx.font="750 13.5px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.moduleName,w-(titleX-x)-12),titleX,y+24);
+  ctx.fillStyle=theme.text2;ctx.font="550 10.5px system-ui, sans-serif";const role=`角色：${entry.pcName||"未记录PC"}`;ctx.fillText(canvasTextFit(ctx,role,w-24),x+11,y+47);
+  ctx.fillStyle=theme.faint;ctx.font="500 9.5px system-ui, sans-serif";const meta=[entry.tableName,entry.dateText].filter(Boolean).join(" · ");ctx.fillText(canvasTextFit(ctx,meta,w-24),x+11,y+63);
   return h;
+}
+function drawHoExportGroup(ctx,x,y,w,col,rows,palette,theme,entryCols=1){
+  const headH=70,pad=9,gap=7,entryH=72,count=Math.max(rows.length,1),rowCount=Math.ceil(count/entryCols),bodyH=rows.length?(pad*2+rowCount*entryH+Math.max(0,rowCount-1)*gap):58,h=headH+bodyH;
+  canvasFillRound(ctx,x,y,w,h,15,theme.surface,theme.line);
+  const done=rows.filter(e=>e.kind==="record").length,plan=rows.filter(e=>e.kind==="plan").length,summary=`${rows.length} 条`,meta=[done&&`已结团 ${done}`,plan&&`计划 ${plan}`].filter(Boolean).join(" · ")||"暂无记录";
+  drawRunExportGroupHead(ctx,x,y,w,{title:col.label,subtitle:"HO 分组",summary,meta,accent:palette.dot,soft:colorMixForCanvas(palette.bg,theme.surface,.28)},theme);
+  if(!rows.length){ctx.fillStyle=theme.faint;ctx.font="500 11px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText("暂无记录",x+w/2,y+headH+34);ctx.textAlign="left";return h;}
+  const cardW=(w-pad*2-gap*(entryCols-1))/entryCols;rows.forEach((entry,i)=>{const colI=i%entryCols,rowI=Math.floor(i/entryCols),cx=x+pad+colI*(cardW+gap),cy=y+headH+pad+rowI*(entryH+gap);drawHoEntryCard(ctx,cx,cy,cardW,entry,theme);});return h;
 }
 function buildHoOrganizerCanvas(style="wide"){
   const profile=profileById(hoOrganizerProfileId);if(!profile)throw new Error("没有选择 PL");
   const entries=hoExportCurrentEntries();if(!entries.length)throw new Error("当前筛选无可导出的 HO 记录");
   const cols=hoOrganizerColumnDefinitions(entries,hoOrganizerShowEmpty);if(!cols.length)throw new Error("暂无可导出的 HO 分组");
-  const theme=hoExportTheme(),palette=HO_ORGANIZER_PALETTE;
-  const pad=34,gap=18,headH=132,colHeadH=72,cardH=96,cardGap=10,bodyPad=10;
-  let baseW,baseH,layout=[];
+  const theme=hoExportTheme(),palette=HO_ORGANIZER_PALETTE,pad=34,gap=16,headBottom=180;let baseW,baseH,layout=[];
+  const statDone=entries.filter(e=>e.kind==="record").length,statPlan=entries.filter(e=>e.kind==="plan").length,known=entries.filter(e=>!["none","unset"].includes(e.column.key)).length;
   if(style==="long"){
-    baseW=1080;let y=headH+28;const colW=baseW-pad*2;
-    cols.forEach((col,ci)=>{const rows=entries.filter(e=>e.column.key===col.key);const gridCols=rows.length>1?2:1,cardW=gridCols===2?(colW-bodyPad*2-cardGap)/2:colW-bodyPad*2;const rowsN=Math.max(1,Math.ceil(rows.length/gridCols));const sectionH=colHeadH+bodyPad*2+rowsN*cardH+Math.max(0,rowsN-1)*cardGap;layout.push({col,ci,rows,x:pad,y,w:colW,h:sectionH,gridCols,cardW});y+=sectionH+18;});baseH=y+22;
+    baseW=1080;let y=headBottom;const w=baseW-pad*2;
+    cols.forEach((col,ci)=>{const rows=entries.filter(e=>e.column.key===col.key),entryCols=rows.length>1?2:1,rowCount=Math.max(1,Math.ceil(Math.max(rows.length,1)/entryCols)),h=70+(rows.length?(18+rowCount*72+Math.max(0,rowCount-1)*7):58);layout.push({col,rows,ci,x:pad,y,w,h,entryCols});y+=h+14;});baseH=y+38;
   }else{
-    const colW=330;baseW=pad*2+cols.length*colW+Math.max(0,cols.length-1)*gap;const maxRows=Math.max(...cols.map(c=>entries.filter(e=>e.column.key===c.key).length),1);baseH=headH+28+colHeadH+bodyPad*2+maxRows*cardH+Math.max(0,maxRows-1)*cardGap+30;let x=pad;cols.forEach((col,ci)=>{const rows=entries.filter(e=>e.column.key===col.key);layout.push({col,ci,rows,x,y:headH+28,w:colW,h:baseH-headH-58,gridCols:1,cardW:colW-bodyPad*2});x+=colW+gap;});
+    baseW=1560;const gridCols=3,colW=(baseW-pad*2-gap*(gridCols-1))/gridCols;let y=headBottom;
+    for(let i=0;i<cols.length;i+=gridCols){const row=cols.slice(i,i+gridCols).map((col,j)=>{const rows=entries.filter(e=>e.column.key===col.key),rowCount=Math.max(rows.length,1),h=70+(rows.length?(18+rowCount*72+Math.max(0,rowCount-1)*7):58);return {col,rows,ci:i+j,x:pad+j*(colW+gap),y,w:colW,h,entryCols:1};});const rowH=Math.max(...row.map(v=>v.h));layout.push(...row);y+=rowH+14;}baseH=y+38;
   }
-  const maxDim=9000,scale=Math.max(1,Math.min(2,maxDim/baseW,maxDim/baseH));const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*scale);canvas.height=Math.round(baseH*scale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(scale,scale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);drawHoExportHeader(ctx,baseW,profile,entries,theme);
-  layout.forEach(item=>{const pal=palette[item.ci%palette.length];drawHoColumnHeader(ctx,item.x,item.y,item.w,item.col,item.rows.length,pal,theme);let cy=item.y+colHeadH+bodyPad;item.rows.forEach((entry,i)=>{const colIndex=item.gridCols===2?i%2:0,rowIndex=item.gridCols===2?Math.floor(i/2):i;const cx=item.x+bodyPad+colIndex*(item.cardW+cardGap),yy=cy+rowIndex*(cardH+cardGap);drawHoEntryCard(ctx,cx,yy,item.cardW,entry,theme);});if(!item.rows.length){ctx.fillStyle=theme.faint;ctx.font="500 13px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText("暂无记录",item.x+item.w/2,cy+36);ctx.textAlign="left";}});
-  ctx.fillStyle=theme.faint;ctx.font="500 11px system-ui, sans-serif";ctx.fillText(`由 ${APP_NAME} v${APP_UI_VERSION} 自动整理 · ${new Date().toLocaleDateString("zh-CN")}`,pad,baseH-14);return canvas;
-}
-function drawKpExportHeader(ctx,w,profile,entries,theme){
-  ctx.fillStyle=theme.surface;ctx.fillRect(0,0,w,132);
-  ctx.fillStyle=theme.accent;ctx.beginPath();ctx.arc(42,34,8,0,Math.PI*2);ctx.fill();ctx.fillStyle=theme.success;ctx.beginPath();ctx.arc(55,34,8,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=theme.muted;ctx.font="700 16px system-ui, sans-serif";ctx.fillText("KP · 带团整理",76,40);
-  ctx.fillStyle=theme.ink;ctx.font="800 34px system-ui, sans-serif";ctx.fillText(`${displayProfileName(profile)} · KP 带团`,36,82);
-  const doneEntries=entries.filter(e=>e.kind==="record"),done=doneEntries.length,plan=entries.filter(e=>e.kind==="plan").length,moduleCount=new Set(doneEntries.map(e=>e.moduleKey)).size,totalPl=doneEntries.reduce((n,e)=>n+e.plCount,0),uniquePl=new Set(doneEntries.flatMap(e=>e.plKeys||[])).size;
-  ctx.fillStyle=theme.muted;ctx.font="500 16px system-ui, sans-serif";ctx.fillText(`已带团 ${done} 桌 · 计划中 ${plan} 桌 · 已带模组 ${moduleCount} · 已带 PL ${totalPl} 次 · ${uniquePl} 人`,36,111);
-  ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(36,131.5);ctx.lineTo(w-36,131.5);ctx.stroke();return 132;
+  const maxDim=9000,scale=Math.min(2,maxDim/baseW,maxDim/baseH);if(scale<.5)throw new Error("当前记录较多，请先筛选后再导出");const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*scale);canvas.height=Math.round(baseH*scale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(scale,scale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);
+  drawUnifiedExportHeader(ctx,baseW,theme,{eyebrow:"PL · 玩家侧 · 跑团整理",title:`${displayProfileName(profile)} · PL 参团`,subtitle:"按 HO 分组整理已结团记录与开团计划。",stats:[`${entries.length} 条`, `已结团 ${statDone}`, `计划中 ${statPlan}`, `已记录 HO ${known}`]});
+  layout.forEach(item=>drawHoExportGroup(ctx,item.x,item.y,item.w,item.col,item.rows,palette[item.ci%palette.length],theme,item.entryCols));drawUnifiedExportFooter(ctx,baseW,baseH-32,theme);return canvas;
 }
 function drawKpExportEntry(ctx,x,y,w,entry,theme){
-  const h=72;canvasFillRound(ctx,x,y,w,h,11,theme.surface2,theme.line);const sc=hoExportStatusColors(entry.status,theme),pillW=58;canvasFillRound(ctx,x+12,y+10,pillW,22,11,sc.bg,"");ctx.fillStyle=sc.fg;ctx.font="700 10px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText(entry.status.label,x+12+pillW/2,y+25);ctx.textAlign="left";
-  ctx.fillStyle=theme.ink;ctx.font="700 14px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.dateText,w-158),x+82,y+25);ctx.fillStyle=theme.text2;ctx.font="750 12px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(`${entry.plCount} PL`,x+w-12,y+25);ctx.textAlign="left";
-  ctx.fillStyle=theme.faint;ctx.font="500 10px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.tableName||"未填写桌名",w-150),x+12,y+53);ctx.textAlign="right";ctx.fillText(entry.kind==="record"?"跑团记录":"开团计划",x+w-12,y+53);ctx.textAlign="left";return h;
+  const h=72;canvasFillRound(ctx,x,y,w,h,10,theme.surface,theme.line);const sc=hoExportStatusColors(entry.status,theme),pillW=56;canvasFillRound(ctx,x+11,y+9,pillW,20,10,sc.bg,"");ctx.fillStyle=sc.fg;ctx.font="700 9.5px system-ui, sans-serif";ctx.textAlign="center";ctx.fillText(entry.status.label,x+11+pillW/2,y+23);ctx.textAlign="left";
+  ctx.fillStyle=theme.ink;ctx.font="750 13.5px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.dateText,w-158),x+78,y+24);ctx.fillStyle=theme.text2;ctx.font="750 10.5px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(`${entry.plCount} PL`,x+w-11,y+24);ctx.textAlign="left";
+  ctx.fillStyle=theme.text2;ctx.font="550 10.5px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,entry.tableName||"未填写桌名",w-120),x+11,y+48);ctx.fillStyle=theme.faint;ctx.font="500 9.5px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(entry.kind==="record"?"跑团记录":"开团计划",x+w-11,y+48);ctx.textAlign="left";return h;
 }
 function drawKpExportGroup(ctx,x,y,w,group,theme,entryCols=1){
-  const headH=78,pad=10,gap=8,entryH=72,entries=[...group.entries].sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt),rows=Math.max(1,Math.ceil(entries.length/entryCols)),bodyH=pad*2+rows*entryH+Math.max(0,rows-1)*gap,h=headH+bodyH;canvasFillRound(ctx,x,y,w,h,15,theme.surface,theme.line);
-  ctx.save();canvasRoundedRect(ctx,x,y,w,headH,15);ctx.clip();ctx.fillStyle=theme.accentSoft;ctx.fillRect(x,y,w,headH);ctx.restore();ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(x,y+headH+.5);ctx.lineTo(x+w,y+headH+.5);ctx.stroke();
-  ctx.fillStyle=theme.ink;ctx.font="800 18px system-ui, sans-serif";ctx.fillText(canvasTextFit(ctx,group.moduleName,w-230),x+14,y+29);const recent=group.lastDone?`最近带团 ${group.lastDone}`:(group.lastAny?`最近计划 ${group.lastAny}`:"暂无日期");ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";ctx.fillText(recent,x+14,y+52);
-  const summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · ")||`${entries.length} 条`;ctx.fillStyle=theme.accent;ctx.font="800 15px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(summary,x+w-14,y+29);ctx.fillStyle=theme.muted;ctx.font="500 10px system-ui, sans-serif";if(group.totalPl)ctx.fillText(`${group.totalPl} PL 次 · ${group.uniquePl} 人`,x+w-14,y+52);ctx.textAlign="left";
+  const headH=70,pad=9,gap=7,entryH=72,entries=[...group.entries].sort((a,b)=>(b.dateKey||"").localeCompare(a.dateKey||"")||b.updatedAt-a.updatedAt),rows=Math.max(1,Math.ceil(entries.length/entryCols)),bodyH=pad*2+rows*entryH+Math.max(0,rows-1)*gap,h=headH+bodyH;canvasFillRound(ctx,x,y,w,h,15,theme.surface,theme.line);
+  const recent=group.lastDone?`最近带团 ${group.lastDone}`:(group.lastAny?`最近计划 ${group.lastAny}`:"暂无日期"),summary=[group.done&&`已带 ${group.done} 桌`,group.planned&&`计划 ${group.planned} 桌`].filter(Boolean).join(" · ")||`${entries.length} 条`,meta=group.totalPl?`${group.totalPl} PL 次 · ${group.uniquePl} 人`:"";
+  drawRunExportGroupHead(ctx,x,y,w,{title:group.moduleName,subtitle:recent,summary,meta,accent:theme.accent,soft:colorMixForCanvas(theme.accentSoft,theme.surface,.46)},theme);
   const cardW=(w-pad*2-gap*(entryCols-1))/entryCols;entries.forEach((entry,i)=>{const col=i%entryCols,row=Math.floor(i/entryCols),cx=x+pad+col*(cardW+gap),cy=y+headH+pad+row*(entryH+gap);drawKpExportEntry(ctx,cx,cy,cardW,entry,theme);});return h;
 }
 function buildKpOrganizerCanvas(style="wide"){
-  const profile=profileById(hoOrganizerProfileId);if(!profile)throw new Error("没有选择 PL");const all=kpOrganizerEntriesForProfile(profile.id),entries=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter);if(!entries.length)throw new Error("当前筛选无可导出的 KP 带团记录");const groups=kpOrganizerGroups(entries),theme=hoExportTheme(),pad=34,gap=18,headH=132;let baseW,baseH,layout=[];
-  if(style==="long"){baseW=1080;let y=headH+28;const w=baseW-pad*2;groups.forEach(group=>{const count=Math.max(1,group.entries.length),entryCols=count>1?2:1,rows=Math.ceil(count/entryCols),h=78+20+rows*72+Math.max(0,rows-1)*8;layout.push({group,x:pad,y,w,h,entryCols});y+=h+16;});baseH=y+22;}
-  else{baseW=1560;const cols=3,colW=(baseW-pad*2-gap*(cols-1))/cols;let y=headH+28;for(let i=0;i<groups.length;i+=cols){const row=groups.slice(i,i+cols).map((group,j)=>{const count=Math.max(1,group.entries.length),rows=count,h=78+20+rows*72+Math.max(0,rows-1)*8;return {group,x:pad+j*(colW+gap),y,w:colW,h,entryCols:1};});const rowH=Math.max(...row.map(x=>x.h));layout.push(...row);y+=rowH+16;}baseH=y+22;}
-  const maxDim=9000,safeScale=Math.min(2,maxDim/baseW,maxDim/baseH);if(safeScale<.5)throw new Error("当前记录较多，请先按已结团或计划中筛选后再导出");const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*safeScale);canvas.height=Math.round(baseH*safeScale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(safeScale,safeScale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);drawKpExportHeader(ctx,baseW,profile,entries,theme);layout.forEach(item=>drawKpExportGroup(ctx,item.x,item.y,item.w,item.group,theme,item.entryCols));ctx.fillStyle=theme.faint;ctx.font="500 11px system-ui, sans-serif";ctx.fillText(`由 ${APP_NAME} v${APP_UI_VERSION} 自动整理 · ${new Date().toLocaleDateString("zh-CN")}`,pad,baseH-14);return canvas;
+  const profile=profileById(hoOrganizerProfileId);if(!profile)throw new Error("没有选择 PL");const all=kpOrganizerEntriesForProfile(profile.id),entries=all.filter(e=>hoOrganizerFilter==="all"||e.kind===hoOrganizerFilter);if(!entries.length)throw new Error("当前筛选无可导出的 KP 带团记录");const groups=kpOrganizerGroups(entries),theme=hoExportTheme(),pad=34,gap=16,headBottom=180;let baseW,baseH,layout=[];
+  const doneEntries=entries.filter(e=>e.kind==="record"),done=doneEntries.length,plan=entries.filter(e=>e.kind==="plan").length,moduleCount=new Set(doneEntries.map(e=>e.moduleKey)).size,totalPl=doneEntries.reduce((n,e)=>n+e.plCount,0),uniquePl=new Set(doneEntries.flatMap(e=>e.plKeys||[])).size;
+  if(style==="long"){baseW=1080;let y=headBottom;const w=baseW-pad*2;groups.forEach(group=>{const count=Math.max(1,group.entries.length),entryCols=count>1?2:1,rows=Math.ceil(count/entryCols),h=70+18+rows*72+Math.max(0,rows-1)*7;layout.push({group,x:pad,y,w,h,entryCols});y+=h+14;});baseH=y+38;}
+  else{baseW=1560;const cols=3,colW=(baseW-pad*2-gap*(cols-1))/cols;let y=headBottom;for(let i=0;i<groups.length;i+=cols){const row=groups.slice(i,i+cols).map((group,j)=>{const count=Math.max(1,group.entries.length),rows=count,h=70+18+rows*72+Math.max(0,rows-1)*7;return {group,x:pad+j*(colW+gap),y,w:colW,h,entryCols:1};});const rowH=Math.max(...row.map(v=>v.h));layout.push(...row);y+=rowH+14;}baseH=y+38;}
+  const maxDim=9000,safeScale=Math.min(2,maxDim/baseW,maxDim/baseH);if(safeScale<.5)throw new Error("当前记录较多，请先按已结团或计划中筛选后再导出");const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*safeScale);canvas.height=Math.round(baseH*safeScale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(safeScale,safeScale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);
+  drawUnifiedExportHeader(ctx,baseW,theme,{eyebrow:"KP · 带团侧 · 跑团整理",title:`${displayProfileName(profile)} · KP 带团`,subtitle:"按模组汇总已经归档的带团记录与后续计划。",stats:[`已带团 ${done} 桌`,`计划中 ${plan} 桌`,`已带模组 ${moduleCount}`,`PL ${totalPl} 次`,`PL ${uniquePl} 人`]});
+  layout.forEach(item=>drawKpExportGroup(ctx,item.x,item.y,item.w,item.group,theme,item.entryCols));drawUnifiedExportFooter(ctx,baseW,baseH-32,theme);return canvas;
 }
 async function exportHoOrganizerImage(style){
-  try{toggleHoImageExportMenu(false);const isKp=hoOrganizerMode==="kp",canvas=isKp?buildKpOrganizerCanvas(style):buildHoOrganizerCanvas(style);const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG 生成失败")),"image/png",1));downloadBlobFile(blob,hoExportFilename(style));showToast(isKp?(style==="long"?"KP 长图已导出":"KP 宽幅图已导出"):(style==="long"?"HO 长图已导出":"HO 宽幅图已导出"));}catch(err){console.error(err);appNotice(`导出${hoOrganizerMode==="kp"?" KP 带团":" HO"}图片失败：${err.message||err}`)}
+  try{toggleHoImageExportMenu(false);const isKp=hoOrganizerMode==="kp",canvas=isKp?buildKpOrganizerCanvas(style):buildHoOrganizerCanvas(style);const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG 生成失败")),"image/png",1));downloadBlobFile(blob,hoExportFilename(style));showToast(isKp?(style==="long"?"KP 长图已导出":"KP 宽幅图已导出"):(style==="long"?"PL 长图已导出":"PL 宽幅图已导出"));}catch(err){console.error(err);appNotice(`导出${hoOrganizerMode==="kp"?" KP 带团":" PL 参团"}图片失败：${err.message||err}`)}
 }
 function hoOrganizerText(profileId){
   const p=profileById(profileId);if(!p)return "";
@@ -7462,16 +7594,15 @@ function drawIntroExportSection(ctx,x,y,w,section,theme,color){
   for(const row of section.scales||[])cy+=drawIntroExportScale(ctx,x+7,cy,w-14,row,theme,color);
   return h;
 }
-function buildSelfIntroExportCanvas(){ensureSelfIntroDraft();const d=normalizeSelfIntro(selfIntroDraft||selfProfileFrom()?.selfIntro),theme=hoExportTheme(),profile=selfProfileFrom();const baseW=1600,pad=44,gap=24,colW=(baseW-pad*2-gap)/2;const measure=document.createElement("canvas").getContext("2d");if(!measure)throw new Error("当前浏览器无法生成图片");const basic={title:"基本信息",lines:selfIntroExportBasicLines(d)},plSections=selfIntroExportSections(d,"pl"),kpSections=selfIntroExportSections(d,"kp");const basicH=measureIntroExportSection(measure,basic,baseW-pad*2),sectionGap=12;const colHeight=sections=>78+sections.reduce((n,sec)=>n+measureIntroExportSection(measure,sec,colW)+sectionGap,0);const leftH=colHeight(plSections),rightH=colHeight(kpSections),columnH=Math.max(leftH,rightH),headerH=142,baseH=headerH+22+basicH+24+columnH+52;const maxDim=9000,scale=Math.min(2,maxDim/baseW,maxDim/baseH);if(scale<.6)throw new Error("跑团偏好内容较多，建议精简超长补充文字后再导出");const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*scale);canvas.height=Math.round(baseH*scale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(scale,scale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);ctx.fillStyle=theme.surface;ctx.fillRect(0,0,baseW,headerH);ctx.fillStyle=theme.accent;ctx.beginPath();ctx.arc(pad+9,35,8,0,Math.PI*2);ctx.fill();ctx.fillStyle=theme.success;ctx.beginPath();ctx.arc(pad+31,35,8,0,Math.PI*2);ctx.fill();ctx.fillStyle=theme.muted;ctx.font="700 15px system-ui, sans-serif";ctx.fillText("PL / KP · 跑团偏好",pad+52,40);ctx.fillStyle=theme.ink;ctx.font="800 35px system-ui, sans-serif";ctx.fillText(`${displayProfileName(profile)||"我"} · 跑团偏好`,pad,85);ctx.fillStyle=theme.muted;ctx.font="500 15px system-ui, sans-serif";ctx.fillText("PL / KP 偏好与常用信息 · 由当前页面自动整理",pad,114);ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(pad,headerH-.5);ctx.lineTo(baseW-pad,headerH-.5);ctx.stroke();let y=headerH+22;drawIntroExportSection(ctx,pad,y,baseW-pad*2,basic,theme,theme.accent);y+=basicH+24;const drawColumn=(x,title,subtitle,sections,color,soft)=>{const h=columnH;canvasFillRound(ctx,x,y,colW,h,18,theme.surface,theme.line);ctx.fillStyle=soft;canvasRoundedRect(ctx,x,y,colW,66,18);ctx.fill();ctx.fillStyle=color;ctx.font="850 12px system-ui, sans-serif";ctx.fillText(title==="PL 偏好"?"PL · 玩家侧":"KP · 带团侧",x+17,y+23);ctx.fillStyle=theme.ink;ctx.font="800 23px system-ui, sans-serif";ctx.fillText(title,x+17,y+49);ctx.fillStyle=theme.muted;ctx.font="500 11px system-ui, sans-serif";ctx.textAlign="right";ctx.fillText(subtitle,x+colW-17,y+42);ctx.textAlign="left";let cy=y+78;const body=sections.slice(0,-1),last=sections.at(-1);for(const sec of body){const sh=drawIntroExportSection(ctx,x+12,cy,colW-24,sec,theme,color);cy+=sh+sectionGap;}if(last){const lastH=measureIntroExportSection(ctx,last,colW-24),lastY=y+h-sectionGap-lastH;drawIntroExportSection(ctx,x+12,Math.max(cy,lastY),colW-24,last,theme,color);}return h;};drawColumn(pad,"PL 偏好","玩家侧",plSections,theme.accent,theme.accentSoft);drawColumn(pad+colW+gap,"KP 偏好","带团侧",kpSections,theme.success,colorMixForCanvas(theme.success,theme.surface,.12));ctx.fillStyle=theme.faint;ctx.font="500 11px system-ui, sans-serif";ctx.fillText(`由 ${APP_NAME} v${APP_UI_VERSION} 自动整理 · ${new Date().toLocaleDateString("zh-CN")}`,pad,baseH-18);return canvas;}
-function colorMixForCanvas(fg,bg,ratio=.12){const parse=x=>{const c=document.createElement("canvas").getContext("2d");c.fillStyle=x;const v=c.fillStyle;if(/^#/.test(v)){const h=v.slice(1),n=h.length===3?h.split("").map(ch=>ch+ch).join(""):h;return [parseInt(n.slice(0,2),16),parseInt(n.slice(2,4),16),parseInt(n.slice(4,6),16)];}return null;};const a=parse(fg),b=parse(bg);if(!a||!b)return bg;const m=a.map((v,i)=>Math.round(v*ratio+b[i]*(1-ratio)));return `rgb(${m.join(",")})`;}
-async function exportSelfIntroImage(){try{const canvas=buildSelfIntroExportCanvas(),blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG 生成失败")),"image/png",1)),name=String(displayProfileName(selfProfileFrom())||"我").replace(/[\\/:*?"<>|]/g,"_");downloadBlobFile(blob,`${name}_PL-KP跑团偏好.png`);showToast("跑团偏好图片已导出");}catch(err){console.error(err);appNotice(`导出跑团偏好图片失败：${err.message||err}`);}}
-
-function updateSelfIntroSaveState(mode=""){
-  if(!els.selfIntroSaveState||!els.selfIntroSave)return;const dirty=selfIntroDirty();els.selfIntroSaveState.classList.remove("saving","error");
-  if(mode==="saving"){els.selfIntroSaveState.textContent="正在保存";els.selfIntroSaveState.classList.add("saving");}
-  else if(mode==="error"||selfIntroLastSaveError){els.selfIntroSaveState.textContent="保存失败，可重试";els.selfIntroSaveState.classList.add("error");}
-  else els.selfIntroSaveState.textContent=dirty?"有未保存修改":"已保存";
-  els.selfIntroSave.disabled=shareModeEnabled||!dirty;
+function buildSelfIntroExportCanvas(){
+  ensureSelfIntroDraft();const d=normalizeSelfIntro(selfIntroDraft||selfProfileFrom()?.selfIntro),theme=hoExportTheme(),profile=selfProfileFrom();const baseW=1600,pad=44,gap=24,colW=(baseW-pad*2-gap)/2;const measure=document.createElement("canvas").getContext("2d");if(!measure)throw new Error("当前浏览器无法生成图片");
+  const basic={title:"基本信息",lines:selfIntroExportBasicLines(d)},plSections=selfIntroExportSections(d,"pl"),kpSections=selfIntroExportSections(d,"kp"),basicH=measureIntroExportSection(measure,basic,baseW-pad*2),sectionGap=12;
+  const colHeight=sections=>76+sections.reduce((n,sec)=>n+measureIntroExportSection(measure,sec,colW-24)+sectionGap,0),leftH=colHeight(plSections),rightH=colHeight(kpSections),columnH=Math.max(leftH,rightH),headBottom=180,baseH=headBottom+basicH+24+columnH+52,maxDim=9000,scale=Math.min(2,maxDim/baseW,maxDim/baseH);if(scale<.6)throw new Error("跑团偏好内容较多，建议精简超长补充文字后再导出");
+  const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*scale);canvas.height=Math.round(baseH*scale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(scale,scale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);
+  drawUnifiedExportHeader(ctx,baseW,theme,{eyebrow:"PL / KP · 跑团偏好",title:`${displayProfileName(profile)||"我"} · 跑团偏好`,subtitle:"PL / KP 偏好、常用信息、协作边界与想跑 / 可带模组。",stats:["玩家侧与带团侧独立记录","当前页面完整导出"]});
+  let y=headBottom;drawIntroExportSection(ctx,pad,y,baseW-pad*2,basic,theme,theme.accent);y+=basicH+24;
+  const drawColumn=(x,title,sideLabel,sections,color,soft)=>{const h=columnH;canvasFillRound(ctx,x,y,colW,h,16,theme.surface,theme.line);canvasFillRound(ctx,x+14,y+15,4,38,2,color,"");ctx.fillStyle=theme.muted;ctx.font="750 10.5px system-ui, sans-serif";ctx.fillText(sideLabel,x+28,y+27);ctx.fillStyle=theme.ink;ctx.font="800 22px system-ui, sans-serif";ctx.fillText(title,x+28,y+50);ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(x+14,y+64.5);ctx.lineTo(x+colW-14,y+64.5);ctx.stroke();let cy=y+76;const body=sections.slice(0,-1),last=sections.at(-1);for(const sec of body){const sh=drawIntroExportSection(ctx,x+12,cy,colW-24,sec,theme,color);cy+=sh+sectionGap;}if(last){const lastH=measureIntroExportSection(ctx,last,colW-24),lastY=y+h-sectionGap-lastH;drawIntroExportSection(ctx,x+12,Math.max(cy,lastY),colW-24,last,theme,color);}return h;};
+  drawColumn(pad,"PL 偏好","PL · 玩家侧",plSections,theme.accent,theme.accentSoft);drawColumn(pad+colW+gap,"KP 偏好","KP · 带团侧",kpSections,theme.success,colorMixForCanvas(theme.success,theme.surface,.12));drawUnifiedExportFooter(ctx,baseW,baseH-32,theme);return canvas;
 }
 function queueSelfIntroSave(delay=700){clearTimeout(selfIntroSaveTimer);selfIntroLastSaveError="";updateSelfIntroSaveState();selfIntroSaveTimer=setTimeout(()=>commitSelfIntroDraft(),delay);}
 function reconcileSelfIntroIntentRefs(intro){for(const path of ["pl.wantModules","kp.canHostModules"]){const rows=selfIntroPathGet(intro,path)||[];for(const ref of rows){const mod=modules.find(m=>m.id===ref.moduleId);if(mod){ref.name=mod.name;continue;}const matches=modulesByNormalizedName(ref.name);if(matches.length===1){ref.moduleId=matches[0].id;ref.name=matches[0].name;}}}}
@@ -10469,9 +10600,17 @@ document.querySelector(".ho-view-filter")?.addEventListener("click",e=>{
   const btn=e.target.closest("[data-ho-filter]");if(!btn)return;
   hoOrganizerFilter=btn.dataset.hoFilter||"all";renderHoOrganizer();
 });
+document.getElementById("toggleOrganizerAllBtn")?.addEventListener("click",()=>{
+  const selector=hoOrganizerMode==="kp"?"[data-kp-group-toggle]":"[data-pl-group-toggle]",toggles=[...els.hoOrganizerBoard.querySelectorAll(selector)];if(!toggles.length)return;
+  const allExpanded=toggles.every(t=>t.getAttribute("aria-expanded")==="true"),set=hoOrganizerMode==="kp"?kpOrganizerExpandedKeys:plOrganizerExpandedKeys;
+  toggles.forEach(t=>{const key=String(hoOrganizerMode==="kp"?t.dataset.kpGroupToggle:t.dataset.plGroupToggle||"");if(!key)return;if(allExpanded)set.delete(key);else set.add(key);});
+  renderHoOrganizer();
+});
 els.hoOrganizerBoard.addEventListener("click",e=>{
-  const toggle=e.target.closest("[data-kp-group-toggle]");
-  if(toggle){const key=String(toggle.dataset.kpGroupToggle||""),group=toggle.closest(".kp-module-group"),body=group?.querySelector(".kp-module-body"),expanded=!kpOrganizerExpandedKeys.has(key);if(expanded)kpOrganizerExpandedKeys.add(key);else kpOrganizerExpandedKeys.delete(key);group?.classList.toggle("is-collapsed",!expanded);if(body)body.hidden=!expanded;toggle.setAttribute("aria-expanded",expanded?"true":"false");toggle.setAttribute("title",expanded?"收起桌次详情":"展开桌次详情");const label=toggle.querySelector("span:first-child");if(label)label.textContent=expanded?"收起":"展开";return;}
+  const plToggle=e.target.closest("[data-pl-group-toggle]");
+  if(plToggle){const key=String(plToggle.dataset.plGroupToggle||""),group=plToggle.closest(".run-summary-card"),body=group?.querySelector(".kp-module-body"),expanded=!plOrganizerExpandedKeys.has(key);if(expanded)plOrganizerExpandedKeys.add(key);else plOrganizerExpandedKeys.delete(key);group?.classList.toggle("is-collapsed",!expanded);if(body)body.hidden=!expanded;plToggle.setAttribute("aria-expanded",expanded?"true":"false");plToggle.setAttribute("title",expanded?"收起桌次详情":"展开桌次详情");const label=plToggle.querySelector("span:first-child");if(label)label.textContent=expanded?"收起":"展开";return;}
+  const kpToggle=e.target.closest("[data-kp-group-toggle]");
+  if(kpToggle){const key=String(kpToggle.dataset.kpGroupToggle||""),group=kpToggle.closest(".run-summary-card"),body=group?.querySelector(".kp-module-body"),expanded=!kpOrganizerExpandedKeys.has(key);if(expanded)kpOrganizerExpandedKeys.add(key);else kpOrganizerExpandedKeys.delete(key);group?.classList.toggle("is-collapsed",!expanded);if(body)body.hidden=!expanded;kpToggle.setAttribute("aria-expanded",expanded?"true":"false");kpToggle.setAttribute("title",expanded?"收起桌次详情":"展开桌次详情");const label=kpToggle.querySelector("span:first-child");if(label)label.textContent=expanded?"收起":"展开";return;}
   const item=e.target.closest("[data-ho-open-kind][data-ho-open-id]");if(!item)return;
   openHoOrganizerSource(item.dataset.hoOpenKind,item.dataset.hoOpenId);
 });
