@@ -3312,6 +3312,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.0 · 手机端全局稳定化：修复 PL 卡片头部挤压、窄屏控件溢出，并补回跑团偏好保存状态逻辑。 */
     /* v8.1.5.9 · 搜索体验统一：PL 添加改为单一可搜索下拉框，并为主要搜索框加入拼音首字母匹配。 */
     /* v8.1.5.8 · 开团计划 PL 添加器优化：添加区前置、支持名字搜索，并将下拉名单改为 A～Z（拼音 / 英文）排序。 */
     /* v8.1.5.7 · 开团计划编辑抽屉整体视觉精修：分区卡片层级、标题间距、状态标签、底部操作区与 HO 控件统一优化。 */
@@ -3503,6 +3504,7 @@
     .self-intro-toolbar .view-toolbar-actions{align-items:center}
     .self-intro-save-state{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 10px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-muted);white-space:nowrap}
     .self-intro-save-state.saving{color:var(--t-accent-strong);border-color:color-mix(in srgb,var(--t-accent) 36%,var(--t-line))}
+    .self-intro-save-state.dirty{color:var(--t-warning);border-color:color-mix(in srgb,var(--t-warning) 36%,var(--t-line));background:color-mix(in srgb,var(--t-warning-soft) 68%,var(--t-surface))}
     .self-intro-save-state.error{color:var(--t-danger);border-color:color-mix(in srgb,var(--t-danger) 38%,var(--t-line))}
     .self-intro-grid{display:grid;grid-template-columns:1fr;gap:12px;align-items:start;min-width:0}
     .self-intro-card{min-width:0;border:1px solid var(--t-line);border-radius:16px;background:var(--t-surface);box-shadow:0 8px 24px var(--t-shadow-soft);overflow:hidden}
@@ -3537,6 +3539,98 @@
     .intro-radio-grid{display:flex;flex-wrap:wrap;gap:6px}.intro-radio-grid label{position:relative}.intro-radio-grid input{position:absolute;opacity:0}.intro-radio-grid span{display:inline-flex;align-items:center;gap:5px;min-height:32px;padding:0 11px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-text-2);cursor:pointer;transition:.15s ease}.intro-radio-grid input:checked+span{background:var(--intro-side-color,var(--t-accent));border-color:var(--intro-side-color,var(--t-accent));color:var(--t-surface);font-weight:820;box-shadow:0 4px 12px color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 20%,transparent)}.intro-radio-grid input:checked+span::before{content:'●';font-size:7px}
     @media(max-width:900px){.self-intro-dual{grid-template-columns:1fr}.intro-two-col{grid-template-columns:1fr}}
     @media(max-width:760px){.self-intro-view{padding-right:var(--mobile-rail-safe)}.self-intro-toolbar .view-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}.self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1;width:100%;box-sizing:border-box}.self-intro-toolbar .view-toolbar-actions>.btn{width:100%;min-width:0}.self-intro-grid{gap:8px}.self-intro-card,.self-intro-side{border-radius:14px}.self-intro-card>summary{padding:12px}.self-intro-card-body{padding:0 11px 13px}.self-intro-side-head{padding:13px 12px}.self-intro-side-body{padding:0 11px 13px}.intro-boundary-row{grid-template-columns:1fr}.intro-intent-add{grid-template-columns:1fr}.intro-intent-actions{display:grid;grid-template-columns:1fr 1fr}.intro-intent-add .btn{width:100%}}
+
+    /* ---------- v8.1.6.0 · 手机端全局稳定化 ---------- */
+    @media(max-width:760px){
+      html{scrollbar-gutter:auto!important;overflow-x:hidden}
+      :root{--mobile-rail-safe:48px}
+      body{overflow-x:hidden;max-width:100vw}
+      .shell{width:calc(100% - 12px)!important;max-width:100%!important;margin-inline:auto!important}
+      .profiles-view,.self-intro-view,.modules-view,.plans-view,.records-view{width:100%;min-width:0;max-width:100%;padding-right:var(--mobile-rail-safe)!important}
+      .view-toolbar,.toolbar,.module-native-controls,.planner-layout,.planner-sidebar,.planner-calendar,.calendar-panel,.records-board,.module-detail,.table-record,.self-intro-grid,.self-intro-dual,.self-intro-card,.self-intro-side{min-width:0;max-width:100%}
+      input,textarea,select,button{max-width:100%}
+      .name,.contact,.profile-meta,.rp-length-card,.role-degree,.native-module-card,.native-module-row,.plan-list-item,.record-view-mode,.record-section,.table-record,.self-intro-section{min-width:0}
+      .name,.contact,.native-module-note,.native-module-row-main,.record-view-fact,.record-view-note,.module-detail-title,.plan-row-main,.participant-assignment-row,.intro-module-chip{overflow-wrap:anywhere}
+
+      /* PL 卡片：手机端改为“身份行 + 独立评分行”，彻底避免评分区挤压人物信息。 */
+      .card{min-width:0;max-width:100%;padding:13px!important;overflow:hidden}
+      .card-top{display:grid!important;grid-template-columns:minmax(0,1fr) 42px;grid-template-rows:auto auto;gap:8px 7px!important;align-items:start!important;padding-bottom:9px!important;margin-bottom:8px!important;min-width:0}
+      .card-top>.person{grid-column:1/2;grid-row:1;min-width:0;width:100%}
+      .card-top-side{display:contents!important}
+      .card-collapse-btn{grid-column:2/3;grid-row:1;justify-self:end;align-self:start;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;margin:0!important}
+      .score-badge{grid-column:1/-1;grid-row:2;width:100%!important;min-width:0!important;max-width:100%!important;display:grid!important;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:7px 10px;text-align:left!important;padding:8px 10px!important}
+      .score-badge .privacy-score-main{min-width:0;max-width:100%;justify-self:start}
+      .score-badge .privacy-score-content{min-width:0;max-width:100%}
+      .score-badge .score-label{font-size:9.5px!important;line-height:1.2}
+      .score-badge .score-value{font-size:22px!important;line-height:1.05;white-space:nowrap}
+      .score-badge .updated-chip{display:block!important;justify-self:end;align-self:center;width:auto!important;max-width:100%;margin:0!important;padding:4px 7px!important;white-space:normal!important;text-align:right;line-height:1.35;overflow-wrap:anywhere}
+      .score-badge .live-tag{grid-column:1/-1;justify-self:start;margin:0!important}
+      .rp-length-card,.role-degree{width:100%;max-width:100%;overflow-wrap:anywhere}
+      .role-degree-head{min-width:0}.role-degree-head>*{min-width:0}
+      .rating-progress-row{min-width:0;flex-wrap:wrap}
+      .unrated-summary{min-width:0}
+      .unrated-summary>div{min-width:0}
+      .runs,.runs-details,.run-list,.run-card{min-width:0;max-width:100%}
+      .runs-details>summary{min-width:0;gap:6px}
+      .runs-summary-left{min-width:0;overflow:hidden}
+      .runs-summary-left>span{min-width:0}
+      .runs-role-summary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .run-card>summary{min-width:0}.run-card-title{min-width:0;flex:1 1 auto}.run-card-badges{min-width:0}
+      .card-actions{display:flex;flex-wrap:wrap;gap:6px;min-width:0}.card-actions .btn{flex:0 1 auto;max-width:100%}
+
+      /* 顶部工具区：避免窄屏标题和操作互相争宽。 */
+      .self-intro-toolbar{grid-template-columns:1fr!important;align-items:stretch!important}
+      .self-intro-toolbar .view-toolbar-actions{justify-content:stretch!important}
+      .self-intro-toolbar .view-toolbar-actions>.btn{min-height:42px}
+      .profiles-toolbar,.modules-toolbar,.plans-toolbar,.records-toolbar{min-width:0}
+      .view-toolbar-title{min-width:0}
+      .view-toolbar-title strong{overflow-wrap:anywhere}
+
+      /* 模组 / 记录 / 计划卡片允许长文本自然收敛，不再撑开页面。 */
+      .native-module-card,.native-module-row,.module-detail,.plan-list-item,.table-record{overflow:hidden}
+      .native-module-card *,.native-module-row *,.module-detail *,.plan-list-item *,.table-record *{min-width:0}
+      .native-module-row-main strong,.module-detail-name,.plan-row-title,.record-view-fact strong{overflow:hidden;text-overflow:ellipsis}
+      .module-native-controls .select-affordance,.module-native-controls .sort-select{min-width:0!important}
+      .record-view-summary{min-width:0}.record-view-fact{min-width:0}
+      .record-view-person{min-width:0}.record-view-person>*{min-width:0;max-width:100%;overflow-wrap:anywhere}
+      .record-view-people{min-width:0}
+      .participant-assignment-list,.participant-assignment-row{min-width:0;max-width:100%}
+      .plan-editor-drawer,.native-module-editor,.settings-modal{max-width:100vw!important}
+
+      /* 右侧快捷栏稍微收窄，把更多宽度还给正文。 */
+      .mobile-side-rail{width:42px!important;right:max(4px,env(safe-area-inset-right))!important;gap:8px!important}
+      .mobile-side-rail button{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;border-radius:12px!important}
+
+      /* 底栏与正文不会互相覆盖；长页始终留出足够安全区。 */
+      .shell{padding-bottom:calc(82px + env(safe-area-inset-bottom))!important}
+      .site-footer{margin-bottom:4px!important}
+    }
+    @media(max-width:360px){
+      :root{--mobile-rail-safe:42px}
+      .shell{width:calc(100% - 10px)!important}
+      .profiles-view,.self-intro-view,.modules-view,.plans-view,.records-view{padding-right:var(--mobile-rail-safe)!important}
+      .mobile-side-rail{width:38px!important;gap:7px!important}
+      .mobile-side-rail button{width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;border-radius:11px!important;font-size:16px!important}
+      .card{padding:11px!important}
+      .card-top{grid-template-columns:minmax(0,1fr) 38px}
+      .card-collapse-btn{width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important}
+      .score-badge{grid-template-columns:1fr!important;gap:5px!important}
+      .score-badge .updated-chip{justify-self:start!important;text-align:left!important;width:100%!important}
+      .unrated-summary{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
+      .unrated-summary .link-btn{justify-self:start}
+      .card-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+      .card-actions .btn{width:100%!important;min-width:0!important}
+      .module-native-controls{grid-template-columns:minmax(0,1fr)!important}
+      .module-native-controls .search,.module-native-controls>*{grid-column:1/-1!important}
+      .records-toolbar .records-toolbar-actions{grid-template-columns:1fr 1fr!important}
+      #expandAllRecordsBtn{grid-column:1!important}
+      #collapseAllRecordsBtn{grid-column:2!important}
+      #newModuleNameInput,#createModuleRecordBtn{grid-column:1/-1!important;grid-row:auto!important}
+      .self-intro-toolbar .view-toolbar-actions{grid-template-columns:1fr 1fr!important}
+      .self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1!important}
+      .intro-intent-actions{grid-template-columns:1fr!important}
+      .mobile-bottom-nav button span{font-size:10.5px!important}.mobile-bottom-nav button small{font-size:9px!important}
+    }
 
 </style>
 
@@ -3814,7 +3908,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.5.9 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.0 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3826,7 +3920,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.5.9　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.0　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4115,7 +4209,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.9</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.0</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4159,10 +4253,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.9 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.9</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.0 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.0</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.0</strong><span>全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条；同步收敛模组、计划、记录、偏好与编辑器的窄屏宽度，并补回跑团偏好保存状态逻辑。</span>
 <strong>v8.1.5.9</strong><span>统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span>
 <strong>v8.1.5.8</strong><span>优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。</span>
 <strong>v8.1.5.7</strong><span>继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。</span>
@@ -4304,7 +4399,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.5.9 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.0 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4323,7 +4418,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.5.9";
+const APP_UI_VERSION = "8.1.6.0";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -7633,6 +7728,18 @@ function selfIntroPathGet(obj,path){return String(path||"").split(".").reduce((v
 function selfIntroPathSet(obj,path,value){const keys=String(path||"").split("."),last=keys.pop();let cur=obj;for(const key of keys){if(!cur[key]||typeof cur[key]!=="object")cur[key]={};cur=cur[key];}cur[last]=value;}
 function ensureSelfIntroDraft(force=false){const self=selfProfileFrom();if(!self)return null;if(force||!selfIntroDraft){selfIntroBaseline=normalizeSelfIntro(self.selfIntro);selfIntroDraft=clone(selfIntroBaseline);selfIntroPendingModules=[];selfIntroLastSaveError="";}return selfIntroDraft;}
 function selfIntroDirty(){if(!selfIntroDraft||!selfIntroBaseline)return false;return JSON.stringify(normalizeSelfIntro(selfIntroDraft))!==JSON.stringify(normalizeSelfIntro(selfIntroBaseline))||selfIntroPendingModules.length>0;}
+function updateSelfIntroSaveState(forcedState=""){
+  const chip=els?.selfIntroSaveState,saveBtn=els?.selfIntroSave;if(!chip)return;
+  const dirty=selfIntroDirty();
+  const state=forcedState||(selfIntroLastSaveError?"error":dirty?"dirty":"saved");
+  chip.classList.remove("saving","error","dirty","saved");
+  chip.classList.add(state);
+  if(state==="saving")chip.textContent="保存中…";
+  else if(state==="error")chip.textContent="保存失败";
+  else if(state==="dirty")chip.textContent="修改待保存";
+  else chip.textContent="已保存";
+  if(saveBtn){saveBtn.disabled=state==="saving"||(!dirty&&state!=="error");saveBtn.setAttribute("aria-disabled",saveBtn.disabled?"true":"false");}
+}
 function selfIntroScaleText(path,value){const n=introScaleValue(value),labels=INTRO_SCALE_LABELS[path];if(labels?.[n-1])return labels[n-1];const meta=INTRO_SCALE_META[path]||["低","高"];if(n===1)return meta[0];if(n===5)return meta[1];if(n===3)return "适中";return n===2?`偏${meta[0]}`:`偏${meta[1]}`;}
 function introChipGroup(path,options){const selected=new Set(selfIntroPathGet(selfIntroDraft,path)||[]);return `<div class="intro-chip-grid">${options.map(v=>`<label class="intro-chip"><input type="checkbox" data-intro-array="${escapeHTML(path)}" value="${escapeHTML(v)}" ${selected.has(v)?"checked":""}><span>${escapeHTML(v)}</span></label>`).join("")}</div>`;}
 function introMultiSelectHead(title,path,options){const selected=new Set(selfIntroPathGet(selfIntroDraft,path)||[]),all=options.length>0&&options.every(v=>selected.has(v));return `<div class="self-intro-section-head"><strong>${escapeHTML(title)}</strong><span class="self-intro-section-tools"><span>可多选</span><button class="intro-toggle-all" type="button" data-intro-toggle-all="${escapeHTML(path)}">${all?"清空":"全选"}</button></span></div>`;}
