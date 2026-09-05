@@ -1540,20 +1540,73 @@
     @keyframes planDrawerIn{from{transform:translateX(18px);opacity:.4}to{transform:none;opacity:1}}
     .plan-editor-drawer-head{
       display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-      padding:16px 17px 13px;border-bottom:1px solid var(--t-line);background:var(--t-surface-glass)
+      padding:17px 18px 14px;border-bottom:1px solid var(--t-line);
+      background:color-mix(in srgb,var(--t-surface-glass) 94%,var(--t-accent-soft));
+      box-shadow:0 1px 0 color-mix(in srgb,var(--t-surface) 80%,transparent)
     }
-    .plan-editor-drawer-title{font-size:17px;font-weight:800;color:var(--t-ink)}
-    .plan-editor-drawer-sub{margin-top:2px;font-size:9px;color:var(--t-muted)}
-    .plan-editor-drawer-body{overflow:auto;padding:14px 16px 22px}
-    .plan-editor-form{display:grid;gap:12px}
-    .plan-editor-block{display:grid;gap:8px;padding:12px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-surface-2)}
-    .plan-editor-block-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
-    .plan-editor-block-title{font-size:11px;font-weight:780;color:var(--t-text-2)}
-    .plan-editor-help{font-size:8.5px;color:var(--t-muted);line-height:1.45}
+    .plan-editor-drawer-title{font-size:18px;line-height:1.2;font-weight:820;letter-spacing:.005em;color:var(--t-ink)}
+    .plan-editor-drawer-sub{margin-top:3px;font-size:9.5px;color:var(--t-muted)}
+    .plan-editor-drawer-body{
+      overflow:auto;padding:15px 16px 22px;
+      background:linear-gradient(180deg,color-mix(in srgb,var(--t-bg) 48%,transparent),transparent 180px)
+    }
+    .plan-editor-form{display:grid;gap:14px}
+    .plan-editor-block{
+      position:relative;display:grid;gap:10px;padding:14px 13px 13px;
+      border:1px solid color-mix(in srgb,var(--t-line-strong) 72%,var(--t-line));border-radius:15px;
+      background:color-mix(in srgb,var(--t-surface) 72%,var(--t-surface-2));
+      box-shadow:0 5px 16px color-mix(in srgb,var(--t-shadow-soft) 76%,transparent),inset 0 1px 0 color-mix(in srgb,var(--t-surface) 88%,transparent)
+    }
+    .plan-editor-block::before{
+      content:"";position:absolute;left:13px;top:-1px;width:54px;height:2px;border-radius:0 0 999px 999px;
+      background:linear-gradient(90deg,var(--t-accent-strong),color-mix(in srgb,var(--t-accent) 46%,transparent));opacity:.62
+    }
+    .plan-editor-block-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-height:27px}
+    .plan-editor-block-title{
+      display:inline-grid;gap:6px;
+      font-size:14px;line-height:1.15;font-weight:820;letter-spacing:.012em;
+      color:var(--t-ink)
+    }
+    .plan-editor-block-title::after{
+      content:"";display:block;width:38px;max-width:100%;height:2px;border-radius:999px;
+      background:linear-gradient(90deg,var(--t-accent-strong) 0%,color-mix(in srgb,var(--t-accent) 70%,var(--t-surface)) 68%,transparent 100%)
+    }
+    .plan-editor-block-title + .plan-editor-help,.plan-editor-block-head .plan-editor-help{margin-top:7px}
+    .plan-editor-help{font-size:8.5px;color:var(--t-muted);line-height:1.5}
+    .plan-editor-block-head > .plan-row-status{
+      min-height:24px;padding:3px 8px;border-radius:999px;
+      box-shadow:inset 0 1px 0 color-mix(in srgb,var(--t-surface) 75%,transparent)
+    }
     .plan-editor-basic{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .plan-editor-basic .wide{grid-column:1/-1}
     .plan-editor-kp{display:grid;grid-template-columns:1fr 1fr;gap:7px}
     .plan-editor-kp .text-input,.plan-editor-kp select{min-width:0}
+    /* 人物下拉框：统一为圆润、轻量的产品级选择控件，去掉浏览器原生硬边与黑色箭头。 */
+    .plan-participant-select{
+      width:100%;min-width:0;min-height:42px;padding:0 42px 0 12px;
+      appearance:none;-webkit-appearance:none;
+      border:1px solid var(--t-line);border-radius:12px;
+      background-color:var(--t-input);color:var(--t-ink);
+      background-image:
+        linear-gradient(45deg,transparent 50%,var(--t-muted) 50%),
+        linear-gradient(135deg,var(--t-muted) 50%,transparent 50%),
+        linear-gradient(to left,color-mix(in srgb,var(--t-accent-soft) 72%,transparent) 0 34px,transparent 34px);
+      background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%,0 0;
+      background-size:5px 5px,5px 5px,100% 100%;background-repeat:no-repeat;
+      box-shadow:0 1px 2px var(--t-shadow-soft),inset 0 1px 0 color-mix(in srgb,var(--t-surface) 82%,transparent);
+      cursor:pointer;transition:border-color .16s ease,box-shadow .16s ease,background-color .16s ease,transform .16s ease
+    }
+    .plan-participant-select:hover:not(:disabled){
+      border-color:color-mix(in srgb,var(--t-accent) 52%,var(--t-line-strong));
+      background-color:color-mix(in srgb,var(--t-input) 94%,var(--t-accent-soft));
+      box-shadow:0 3px 10px var(--t-shadow-soft),inset 0 1px 0 color-mix(in srgb,var(--t-surface) 88%,transparent)
+    }
+    .plan-participant-select:focus{
+      border-color:var(--t-accent);
+      box-shadow:0 0 0 3px color-mix(in srgb,var(--t-accent) 14%,transparent),0 3px 10px var(--t-shadow-soft)
+    }
+    .plan-participant-select:disabled{opacity:.55;cursor:not-allowed;background-color:var(--t-surface-2)}
+    .plan-participant-select option{background:var(--t-surface);color:var(--t-ink)}
     .plan-editor-chips{display:flex;flex-wrap:wrap;gap:6px}
     .plan-editor-chip{
       display:inline-flex;align-items:center;min-height:29px;overflow:hidden;
@@ -1574,11 +1627,14 @@
     .plan-editor-schedule .remove:hover{background:var(--t-danger-soft);color:var(--t-danger)}
     .plan-editor-empty{font-size:9.5px;color:var(--t-muted)}
     .plan-editor-footer{
-      position:sticky;bottom:-22px;margin:4px -16px -22px;padding:11px 16px max(11px,env(safe-area-inset-bottom));
-      display:flex;align-items:center;justify-content:space-between;gap:8px;
-      border-top:1px solid var(--t-line);background:var(--t-surface-glass);backdrop-filter:blur(12px)
+      position:sticky;bottom:-22px;margin:5px -16px -22px;padding:12px 16px max(12px,env(safe-area-inset-bottom));
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      border-top:1px solid color-mix(in srgb,var(--t-line-strong) 74%,var(--t-line));
+      background:color-mix(in srgb,var(--t-surface-glass) 94%,var(--t-surface));
+      box-shadow:0 -8px 20px color-mix(in srgb,var(--t-shadow-soft) 70%,transparent);backdrop-filter:blur(14px)
     }
-    .plan-editor-footer-right{display:flex;gap:7px;justify-content:flex-end}
+    .plan-editor-footer-right{display:flex;gap:8px;justify-content:flex-end}
+    .plan-editor-footer-right .btn{min-height:42px;padding-inline:14px}
     .plan-editor-autosave{font-size:8.5px;color:var(--t-muted)}
 
     @media(max-width:980px){
@@ -1918,6 +1974,11 @@
     }
     .module-ho-inline.unset{
       border-color:color-mix(in srgb,var(--t-warning) 28%,var(--t-line))
+    }
+    .plan-editor-block .module-ho-inline{
+      background:color-mix(in srgb,var(--t-surface) 88%,var(--t-surface-2));
+      border-color:color-mix(in srgb,var(--t-line-strong) 72%,var(--t-line));
+      box-shadow:0 2px 7px color-mix(in srgb,var(--t-shadow-soft) 60%,transparent)
     }
     .module-ho-inline-hint{
       padding:0 4px;color:var(--t-warning);font-size:7.5px;white-space:nowrap
@@ -3228,6 +3289,9 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.5.7 · 开团计划编辑抽屉整体视觉精修：分区卡片层级、标题间距、状态标签、底部操作区与 HO 控件统一优化。 */
+    /* v8.1.5.6 · 开团计划编辑抽屉分区标题强化：标题字号增大，并加入主题色短划线，提升层级与区分度。 */
+    /* v8.1.5.5 · 开团计划人物下拉框视觉优化：圆角、主题化箭头、悬停与聚焦反馈。 */
     /* v8.1.5.4 · 导航、评分直达与计划拖放可发现性优化。 */
     /* v8.1.5.3 · 全站图片导出统一：导出图沿用网页卡片视觉，不使用水果/emoji 装饰。 */
     /* v8.1.5.2 · 跑团整理视觉统一：PL / KP 使用同一套概览卡、折叠详情与响应式网格。 */
@@ -3725,7 +3789,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.5.4 · 2026-09-05 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.5.7 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3737,7 +3801,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.5.4　·　更新时间：2026-09-05　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.5.7　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4026,7 +4090,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.4</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.5.7</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4070,10 +4134,13 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.5.7 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.5.7</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.5.7</strong><span>继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。</span>
+<strong>v8.1.5.6</strong><span>强化开团计划编辑抽屉中的分区标题：放大“基本信息”“KP / KPC”“PL / PC”等标题字号，并加入主题色短划线装饰，让层级更清晰、观感更精致。</span>
+<strong>v8.1.5.5</strong><span>优化开团计划中的人物下拉框：统一圆角与主题配色，替换浏览器原生黑色箭头，增加轻量悬停、聚焦反馈，并保持手机端触控尺寸。</span>
 <strong>v8.1.5.4</strong><span>调整主导航顺序，将“跑团偏好”移至最后；PL 评分改为打开即可直接操作、未操作保持“无”，并保留一键设为无；开团计划增强拖放入口与日历落点提示。</span>
 <strong>v8.1.5.3</strong><span>统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span>
 <strong>v8.1.5.2</strong><span>统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span>
@@ -4210,7 +4277,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.5.4 · 作者：番茄
+/* PL收集梦想生活 v8.1.5.7 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4229,7 +4296,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.5.4";
+const APP_UI_VERSION = "8.1.5.7";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
