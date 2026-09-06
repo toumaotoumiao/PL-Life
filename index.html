@@ -2827,7 +2827,7 @@
     .icon-close:hover{transform:translateY(-1px);border-color:var(--t-line-strong);background:var(--t-surface-2);color:var(--t-ink);box-shadow:0 6px 16px color-mix(in srgb,var(--t-shadow) 58%,transparent)}
     .icon-close:active{transform:translateY(0);box-shadow:0 2px 7px color-mix(in srgb,var(--t-shadow) 40%,transparent)}
     .icon-close:focus-visible{outline:3px solid color-mix(in srgb,var(--t-accent) 20%,transparent);outline-offset:2px}
-    /* v8.1.6.22 · 全站弹窗操作区 / 关闭按钮 / 导出按钮统一 */
+    /* v8.1.6.24 · 三级数据保护与浏览器外自动备份 */
     :is(.modal-head,.native-module-editor-head,.module-advanced-head,.plan-editor-drawer-head,.ho-organizer-head,.secure-backup-modal>header,.global-search-modal>header,.import-preview-modal>header,.migration-wizard-modal>header,.onboarding-modal>header)>.icon-close{
       width:38px;height:38px;flex:0 0 38px;border-radius:12px
     }
@@ -2996,6 +2996,25 @@
     .friendly-data-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.friendly-data-head>div{display:grid;gap:2px}.friendly-data-head strong{font-size:11px;color:var(--t-ink)}.friendly-data-head span{font-size:8.7px;color:var(--t-muted)}
     .compact-health-grid{grid-template-columns:repeat(auto-fit,minmax(135px,1fr))}.compact-health-grid .data-health-card{min-height:74px}.data-health-card strong.warn{color:var(--t-warning)}
     .friendly-backup-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.primary-soft{border-color:color-mix(in srgb,var(--t-accent) 30%,var(--t-line));background:var(--t-accent-soft);color:var(--t-accent-strong)}
+    .external-backup-block{display:grid;gap:10px}
+    .external-backup-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .external-backup-toggle-row,.external-backup-time-row,.external-backup-location{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px;padding:9px 10px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2)}
+    .external-backup-toggle-row>span,.external-backup-time-row>span,.external-backup-location>span{display:grid;gap:2px;min-width:0}
+    .external-backup-toggle-row strong,.external-backup-time-row strong,.external-backup-location strong{font-size:10px;color:var(--t-ink)}
+    .external-backup-toggle-row small,.external-backup-time-row small,.external-backup-location small{font-size:8.4px;line-height:1.45;color:var(--t-muted)}
+    .external-backup-toggle-row input[type="checkbox"]{width:20px;height:20px;accent-color:var(--t-accent);flex:0 0 auto}
+    .external-backup-time-row input[type="time"]{width:112px;min-height:38px;padding:6px 8px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-input);color:var(--t-ink)}
+    .external-backup-location{align-items:flex-start}
+    .external-backup-location-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;max-width:60%}
+    .external-backup-status{padding:9px 10px;border:1px solid var(--t-line);border-radius:11px;background:color-mix(in srgb,var(--t-surface-2) 76%,transparent);font-size:8.6px;line-height:1.55;color:var(--t-muted)}
+    .external-backup-status.ok{border-color:color-mix(in srgb,var(--t-success) 30%,var(--t-line));background:color-mix(in srgb,var(--t-success) 6%,var(--t-surface))}
+    .external-backup-status.warn{border-color:color-mix(in srgb,var(--t-warning) 34%,var(--t-line));background:color-mix(in srgb,var(--t-warning) 7%,var(--t-surface))}
+    .external-backup-support-badge{display:inline-flex;align-items:center;min-height:26px;padding:0 8px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface);color:var(--t-muted);font-size:8px;font-weight:760;white-space:nowrap}
+    .external-backup-support-badge.ok{color:var(--t-success);border-color:color-mix(in srgb,var(--t-success) 30%,var(--t-line));background:color-mix(in srgb,var(--t-success) 7%,var(--t-surface))}
+    .external-backup-support-badge.warn{color:var(--t-warning);border-color:color-mix(in srgb,var(--t-warning) 34%,var(--t-line));background:color-mix(in srgb,var(--t-warning) 7%,var(--t-surface))}
+    @media(max-width:760px){.external-backup-grid{grid-template-columns:1fr}.external-backup-location{display:grid}.external-backup-location-actions{max-width:none;width:100%;display:grid;grid-template-columns:1fr 1fr}.external-backup-location-actions .btn{width:100%}.external-backup-location-actions .btn:last-child:nth-child(3){grid-column:1/-1}}
+    @media(max-width:420px){.external-backup-location-actions{grid-template-columns:1fr}.external-backup-location-actions .btn:last-child:nth-child(3){grid-column:auto}}
+
     .secondary-tools-details{border:0;border-radius:10px;background:var(--t-surface-2)}.secondary-tools-details summary{padding:9px 10px;font-size:9px;font-weight:720;cursor:pointer}.secondary-tools-body{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:0 10px 10px}.secondary-tools-body p{width:100%;margin:3px 0 0;font-size:8.2px;color:var(--t-muted)}
     .friend-safety-notes{margin-top:10px;border:1px solid var(--t-warning-line);border-radius:12px;background:var(--t-warning-soft)}.friend-safety-notes summary{padding:9px 11px;font-size:9.5px;font-weight:760;cursor:pointer;color:var(--t-text-2)}.friend-safety-notes>div{padding:0 11px 10px}.friend-safety-notes p{margin:5px 0;font-size:8.6px;line-height:1.55;color:var(--t-muted)}
     .data-integrity-results{display:grid;gap:6px}.integrity-item{display:flex;gap:8px;padding:8px 9px;border-radius:9px;background:var(--t-surface-2)}.integrity-item>span{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:9px;font-weight:800}.integrity-item>div{display:grid;gap:2px}.integrity-item strong{font-size:9px}.integrity-item small{font-size:8px;color:var(--t-muted)}.integrity-item.error>span{background:var(--t-danger-soft);color:var(--t-danger)}.integrity-item.warn>span{background:var(--t-warning-soft);color:var(--t-warning)}.integrity-ok{padding:9px;border-radius:9px;background:color-mix(in srgb,var(--t-success) 10%,var(--t-surface));color:var(--t-success);font-size:9px;font-weight:700}
@@ -3706,7 +3725,7 @@
     .intro-scale{display:grid;gap:8px;padding:11px 12px;border:1px solid color-mix(in srgb,var(--t-line) 78%,transparent);border-radius:13px;background:color-mix(in srgb,var(--t-surface-2) 72%,var(--t-surface));transition:border-color .15s ease,box-shadow .15s ease}.intro-scale:hover{border-color:color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 24%,var(--t-line));box-shadow:0 5px 16px color-mix(in srgb,var(--t-shadow-soft) 72%,transparent)}.intro-scale-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.intro-scale-head strong{font-size:10.8px;font-weight:820;color:var(--t-text-2)}.intro-scale-head output{display:inline-flex;align-items:center;min-height:24px;padding:0 8px;border-radius:999px;background:color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 70%,var(--t-surface));color:var(--intro-side-color,var(--t-accent-strong));font-size:8.5px;font-weight:820;white-space:nowrap}.intro-scale-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;min-height:34px;padding:0 7px}.intro-scale-track::before{content:"";position:absolute;left:10%;right:10%;top:50%;height:2px;transform:translateY(-50%);border-radius:999px;background:color-mix(in srgb,var(--t-line-strong) 80%,var(--t-line));pointer-events:none}.intro-scale-step{position:relative;z-index:1;justify-self:center;display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer;transition:transform .13s ease,background .13s ease}.intro-scale-step:hover{background:color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 62%,transparent)}.intro-scale-step:focus-visible{outline:3px solid var(--t-focus);outline-offset:1px}.intro-scale-step:disabled{cursor:default;opacity:.68}.intro-scale-dot{display:block;width:10px;height:10px;border:2px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 48%,var(--t-line-strong));border-radius:50%;background:var(--t-surface);box-shadow:0 0 0 3px var(--t-surface);transition:width .13s ease,height .13s ease,background .13s ease,border-color .13s ease,box-shadow .13s ease}.intro-scale-step.is-active .intro-scale-dot{width:18px;height:18px;border-color:var(--intro-side-color,var(--t-accent));background:var(--intro-side-color,var(--t-accent));box-shadow:0 0 0 4px var(--t-surface),0 3px 10px color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 28%,transparent)}.intro-scale-labels{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:start;font-size:8px;line-height:1.35;color:var(--t-muted)}.intro-scale-labels span:nth-child(2){text-align:center}.intro-scale-labels span:last-child{text-align:right}.intro-module-pref-title{padding-bottom:2px}.intro-module-pref-title .self-intro-section-head strong,.intro-intent-section .self-intro-section-head strong{font-size:14px}.intro-intent-section{margin-top:auto!important;padding-top:18px!important;border-top:1px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 22%,var(--t-line))!important}.intro-intent-section .intro-intent-box{margin-top:2px}.intro-inline-group{display:grid;grid-template-columns:48px minmax(0,1fr);gap:8px;align-items:start}.intro-inline-label{padding-top:7px;font-size:8.5px;font-weight:780;color:var(--t-muted)}@media(max-width:520px){.intro-inline-group{grid-template-columns:1fr;gap:4px}.intro-inline-label{padding-top:0}}
     .intro-boundary-list{display:grid;gap:6px}.intro-boundary-row{display:grid;grid-template-columns:minmax(120px,1fr) minmax(130px,170px);gap:8px;align-items:center;padding:7px 8px;border:1px solid color-mix(in srgb,var(--t-line) 72%,transparent);border-radius:10px;background:var(--t-surface-2)}.intro-boundary-row span{font-size:9px;color:var(--t-text-2)}.intro-boundary-row select{min-height:34px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-text);padding:0 8px}
     .intro-subdetails{border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2);overflow:hidden}.intro-subdetails>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;color:var(--t-ink);font-size:11.5px;font-weight:850}.intro-subdetails>summary::-webkit-details-marker{display:none}.intro-subdetails>summary::after{content:'⌄';color:var(--t-muted)}.intro-subdetails[open]>summary::after{transform:rotate(180deg)}.intro-subdetails-body{display:grid;gap:10px;padding:0 10px 11px;border-top:1px solid var(--t-line)}
-    .intro-intent-box{display:grid;gap:8px}.intro-intent-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.intro-intent-actions{display:flex;gap:6px;align-items:stretch}.intro-intent-actions .btn{white-space:nowrap}.intro-module-chips{display:flex;flex-wrap:wrap;gap:6px}.intro-module-chip{display:inline-grid;grid-template-columns:auto auto;align-items:center;gap:5px;max-width:100%;padding:6px 7px 6px 9px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface-2)}.intro-module-chip>span{display:grid;gap:1px;min-width:0}.intro-module-chip strong{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.intro-module-chip small{font-size:7.5px;color:var(--t-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.intro-module-chip button{width:25px;height:25px;border:0;border-radius:8px;background:transparent;color:var(--t-muted);cursor:pointer}.intro-module-chip button:hover{background:var(--t-surface);color:var(--t-danger)}.intro-empty{padding:9px 10px;border:1px dashed var(--t-line);border-radius:10px;color:var(--t-muted);font-size:8.5px}.intro-helper{font-size:8.3px;line-height:1.55;color:var(--t-muted)}
+    .intro-intent-box{display:grid;gap:10px}.intro-intent-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.intro-intent-actions{display:flex;gap:6px;align-items:stretch}.intro-intent-actions .btn{white-space:nowrap}.intro-module-chips{display:grid;gap:8px}.intro-module-chip{display:grid;gap:8px;max-width:100%;padding:10px 11px;border:1px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 16%,var(--t-line));border-radius:14px;background:linear-gradient(180deg,color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 34%,var(--t-surface)),var(--t-surface-2))}.intro-module-chip-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:start}.intro-module-chip-main{display:grid;gap:2px;min-width:0}.intro-module-chip strong{font-size:10.2px;line-height:1.35;overflow:hidden;text-overflow:ellipsis}.intro-module-chip small{font-size:8px;color:var(--t-muted);line-height:1.45;overflow:hidden;text-overflow:ellipsis}.intro-module-chip-remove{width:28px;height:28px;border:1px solid color-mix(in srgb,var(--t-line) 82%,transparent);border-radius:10px;background:var(--t-surface);color:var(--t-muted);cursor:pointer;transition:background .14s ease,border-color .14s ease,color .14s ease}.intro-module-chip-remove:hover{background:color-mix(in srgb,var(--t-danger) 8%,var(--t-surface));border-color:color-mix(in srgb,var(--t-danger) 24%,var(--t-line));color:var(--t-danger)}.intro-module-note-field{display:grid;gap:5px}.intro-module-note-field span{font-size:8.2px;font-weight:780;color:var(--t-muted)}.intro-module-note-field .intro-textarea{min-height:64px;padding-top:8px;padding-bottom:8px;border-radius:11px;background:color-mix(in srgb,var(--t-surface) 68%,var(--t-surface-2))}.intro-intent-head-copy{flex:1 1 auto;min-width:0;display:grid;gap:2px}.intro-intent-head-copy>span{font-size:8.5px;color:var(--t-muted)}.intro-intent-head-actions{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.intro-intent-head-actions .image-export-btn{min-height:30px!important}.intro-empty{padding:9px 10px;border:1px dashed var(--t-line);border-radius:10px;color:var(--t-muted);font-size:8.5px}.intro-helper{font-size:8.3px;line-height:1.55;color:var(--t-muted)}
     .intro-radio-grid{display:flex;flex-wrap:wrap;gap:6px}.intro-radio-grid label{position:relative}.intro-radio-grid input{position:absolute;opacity:0}.intro-radio-grid span{display:inline-flex;align-items:center;gap:5px;min-height:32px;padding:0 11px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-text-2);cursor:pointer;transition:.15s ease}.intro-radio-grid input:checked+span{background:var(--intro-side-color,var(--t-accent));border-color:var(--intro-side-color,var(--t-accent));color:var(--t-surface);font-weight:820;box-shadow:0 4px 12px color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 20%,transparent)}.intro-radio-grid input:checked+span::before{content:'●';font-size:7px}
     @media(max-width:900px){.self-intro-dual{grid-template-columns:1fr}.intro-two-col{grid-template-columns:1fr}}
     @media(max-width:760px){.self-intro-view{padding-right:var(--mobile-rail-safe)}.self-intro-toolbar .view-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}.self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1;width:100%;box-sizing:border-box}.self-intro-toolbar .view-toolbar-actions>.btn{width:100%;min-width:0}.self-intro-grid{gap:8px}.self-intro-card,.self-intro-side{border-radius:14px}.self-intro-card>summary{padding:12px}.self-intro-card-body{padding:0 11px 13px}.self-intro-side-head{padding:13px 12px}.self-intro-side-body{padding:0 11px 13px}.intro-boundary-row{grid-template-columns:1fr}.intro-intent-add{grid-template-columns:1fr}.intro-intent-actions{display:grid;grid-template-columns:1fr 1fr}.intro-intent-add .btn{width:100%}}
@@ -4629,7 +4648,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.22 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.26 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4641,7 +4660,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.22　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.26　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4839,11 +4858,11 @@ body{font-size:var(--vu-body);line-height:1.5}
       <div class="modal-body settings-modal-body">
         <div class="settings-layout">
           <aside class="settings-nav" aria-label="设置章节">
+            <button type="button" data-settings-target="data">数据与备份</button>
             <button type="button" class="active" data-settings-target="appearance">外观</button>
             <button type="button" data-settings-target="pl-rating">PL 评分</button>
             <button type="button" data-settings-target="module-rating">模组评分</button>
             <button type="button" data-settings-target="behavior">显示设置</button>
-            <button type="button" data-settings-target="data">数据与备份</button>
           </aside>
           <div class="settings-main">
             <div class="settings-search-wrap">
@@ -4924,27 +4943,7 @@ body{font-size:var(--vu-body);line-height:1.5}
           </div>
         </section>
 
-        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group daily" open=""><summary><span class="data-safety-group-title"><strong>日常保护</strong><small>保存状态、恢复点和常用保护操作</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><div class="data-health-grid compact-health-grid">
-<article class="data-health-card"><span class="data-health-label">自动保存</span><strong id="localSaveHealthValue">检查中</strong><span id="localSaveHealthSub">正在检查</span></article>
-<article class="data-health-card"><span class="data-health-label">当前档案</span><strong id="dataScaleHealthValue">—</strong><span id="dataScaleHealthSub">PL / 模组 / 计划 / 记录</span></article>
-<article class="data-health-card" id="archiveSizeHealthCard"><span class="data-health-label">主档案体积</span><strong id="archiveSizeHealthValue">计算中</strong><span id="archiveSizeHealthSub">监测存储空间</span></article>
-<article class="data-health-card"><span class="data-health-label">恢复点</span><strong id="recoveryHealthValue">检查中</strong><span id="recoveryHealthSub">用于误操作恢复</span></article>
-<article class="data-health-card"><span class="data-health-label">档案完整性</span><strong id="dataIntegrityHealthValue">待检查</strong><span id="dataIntegrityHealthSub">检查关联、重复与冲突</span></article>
-<article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
-<article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
-<article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.19</strong><span id="appVersionHealthSub">正在检查</span></article>
-</div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
-<div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
-<label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
-<div class="data-safety-action-row">
-<button class="btn small" id="runStorageCheckBtn" type="button">检查保存状态</button>
-<button class="btn small" id="createRecoveryBtn" type="button">创建恢复点</button>
-<button class="btn small" id="restoreRecoveryBtn" type="button">恢复最近恢复点</button>
-<button class="btn small" id="requestPersistentStorageBtn" type="button">申请数据保留</button>
-<button class="btn small" id="installAppBtn" type="button">安装到设备</button>
-</div>
-</section></div></details><details class="data-safety-group recovery"><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" open=""><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>完整备份</strong><span>普通备份便于恢复；加密备份适合长期保管。</span></div></div>
 <div class="backup-box unified-backup-box friendly-backup-grid">
 <button class="btn" id="exportBtn" type="button">↓ 导出完整备份</button>
@@ -4976,11 +4975,49 @@ body{font-size:var(--vu-body);line-height:1.5}
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
+</section></div></details><details class="data-safety-group daily"><summary><span class="data-safety-group-title"><strong>日常保护</strong><small>保存状态、恢复点和常用保护操作</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><div class="data-health-grid compact-health-grid">
+<article class="data-health-card"><span class="data-health-label">自动保存</span><strong id="localSaveHealthValue">检查中</strong><span id="localSaveHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前档案</span><strong id="dataScaleHealthValue">—</strong><span id="dataScaleHealthSub">PL / 模组 / 计划 / 记录</span></article>
+<article class="data-health-card" id="archiveSizeHealthCard"><span class="data-health-label">主档案体积</span><strong id="archiveSizeHealthValue">计算中</strong><span id="archiveSizeHealthSub">监测存储空间</span></article>
+<article class="data-health-card"><span class="data-health-label">恢复点</span><strong id="recoveryHealthValue">检查中</strong><span id="recoveryHealthSub">用于误操作恢复</span></article>
+<article class="data-health-card"><span class="data-health-label">冗余副本</span><strong id="primaryMirrorHealthValue">检查中</strong><span id="primaryMirrorHealthSub">主档案的独立浏览器内副本</span></article>
+<article class="data-health-card"><span class="data-health-label">存储保护</span><strong id="persistentHealthValue">检查中</strong><span id="persistentHealthSub">降低浏览器自动回收概率</span></article>
+<article class="data-health-card"><span class="data-health-label">文件夹备份</span><strong id="externalBackupHealthValue">未设置</strong><span id="externalBackupHealthSub">浏览器外副本</span></article>
+<article class="data-health-card"><span class="data-health-label">档案完整性</span><strong id="dataIntegrityHealthValue">待检查</strong><span id="dataIntegrityHealthSub">检查关联、重复与冲突</span></article>
+<article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
+<article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
+<article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.26</strong><span id="appVersionHealthSub">正在检查</span></article>
+</div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
+<label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
+<label class="data-safety-select-row"><span><strong>恢复点保留数量</strong><small>超过数量后自动删除最旧恢复点。</small></span><select aria-label="恢复点保留数量" class="setting-input" id="recoveryKeepSelect"><option value="7">保留 7 个</option><option value="12">保留 12 个</option><option value="20">保留 20 个</option><option value="30">保留 30 个</option></select></label>
+<label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
+<div class="data-safety-action-row">
+<button class="btn small" id="runStorageCheckBtn" type="button">检查保存状态</button>
+<button class="btn small" id="createRecoveryBtn" type="button">创建恢复点</button>
+<button class="btn small" id="restoreRecoveryBtn" type="button">恢复最近恢复点</button>
+<button class="btn small" id="requestPersistentStorageBtn" type="button">开启存储保护</button>
+<button class="btn small" id="installAppBtn" type="button">安装到设备</button>
+</div>
+</section>
+<section class="friendly-data-block external-backup-block">
+<div class="friendly-data-head"><div><strong>浏览器外自动备份</strong><span>每天在指定时间把完整 JSON 备份写到你选择的电脑 / 手机文件夹。保存位置可随时更改。</span></div><span id="externalBackupSupportBadge" class="external-backup-support-badge">检查中</span></div>
+<div class="external-backup-grid">
+<label class="external-backup-toggle-row"><span><strong>启用固定时间备份</strong><small>页面或已安装的网页应用运行时会准时执行；错过后再次打开会补做。</small></span><input id="externalBackupEnabledToggle" type="checkbox" aria-label="启用浏览器外自动备份"></label>
+<label class="external-backup-time-row"><span><strong>每天备份时间</strong><small>按设备本地时间执行。</small></span><input id="externalBackupTimeInput" type="time" value="20:00" aria-label="每天自动备份时间"></label>
+</div>
+<div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未选择保存位置</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" id="reauthorizeExternalBackupBtn" type="button" hidden>重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
+<div id="externalBackupStatusNote" class="external-backup-status">浏览器只会显示被授权的文件夹名称，网页无法读取完整系统路径。外部备份文件不会因为清除本站缓存 / 网站数据而一起消失。</div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.19 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.19</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.26 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.26</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.26</strong><span>调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span>
+<strong>v8.1.6.25</strong><span>加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本；若主 localStorage 在浏览器更新或存储迁移后变空，启动时会自动检测冗余副本与恢复点并提示恢复。</span>
+<strong>v8.1.6.24</strong><span>数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护；新增浏览器外固定时间自动备份，可选择 / 更改电脑或手机保存位置，支持时自动写入“最新备份 + 每日备份”，页面关闭错过后再次打开会补做。</span>
+<strong>v8.1.6.23</strong><span>“想跑模组 / 可带模组”支持单独导出图片，并且可在每个模组下写备注；导出内容会带上对应备注，方便单独分享或留档。</span>
 <strong>v8.1.6.22</strong><span>继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。</span>
 <strong>v8.1.6.21</strong><span>统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。</span>
 <strong>v8.1.6.20</strong><span>个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span>
@@ -5170,7 +5207,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.6.19 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.26 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -5186,10 +5223,13 @@ const VIEW_SESSION_STATE_KEY = "tomato_pl_view_session_v1"; // 当前标签页�
 const HISTORY_STATE_TAG = "tomato-pl-v8"; // 浏览器 / 手机返回键的页面历史标记。
 const SAVE_META_KEY = "tomato_pl_save_meta_v1", FIRST_MEANINGFUL_SAVE_KEY = "tomato_pl_first_meaningful_save_v1", LAST_EXPORT_META_KEY = "tomato_pl_last_export_meta_v1";
 const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REMINDER_DISMISS_KEY = "tomato_pl_backup_reminder_dismiss_v1";
-const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
-const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24 * 60 * 60 * 1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
+const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_INTERVAL_HOURS_KEY = "tomato_pl_recovery_interval_hours_v1", RECOVERY_KEEP_KEY = "tomato_pl_recovery_keep_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
+const PRIMARY_MIRROR_DB_NAME = "tomato_pl_primary_mirror_v1", PRIMARY_MIRROR_DB_VERSION = 1, PRIMARY_MIRROR_STORE_NAME = "archives", PRIMARY_MIRROR_ID = "latest";
+const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEFAULT_BACKUP_REMINDER_DAYS = 7;
+const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1";
+const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.22";
+const APP_UI_VERSION = "8.1.6.26";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5366,7 +5406,7 @@ function normalizeStringArray(raw, allowed = null) {
 }
 function normalizeIntroModuleRefs(raw) {
     const seen = new Set();
-    return (Array.isArray(raw) ? raw : []).map(item => ({ moduleId: String((item === null || item === void 0 ? void 0 : item.moduleId) || ""), name: String((item === null || item === void 0 ? void 0 : item.name) || "").trim(), addedAt: Number((item === null || item === void 0 ? void 0 : item.addedAt) || 0) })).filter(item => { const key = item.moduleId || normalizedEntityNameKey(item.name); if (!key || seen.has(key))
+    return (Array.isArray(raw) ? raw : []).map(item => ({ moduleId: String((item === null || item === void 0 ? void 0 : item.moduleId) || ""), name: String((item === null || item === void 0 ? void 0 : item.name) || "").trim(), note: String((item === null || item === void 0 ? void 0 : item.note) || "").trim(), addedAt: Number((item === null || item === void 0 ? void 0 : item.addedAt) || 0) })).filter(item => { const key = item.moduleId || normalizedEntityNameKey(item.name); if (!key || seen.has(key))
         return false; seen.add(key); return true; });
 }
 function defaultIntroModulePrefs() { return { eras: [], eraOther: "", regions: [], regionOther: "", structures: [], structureOther: "", elements: [], elementOther: "", notes: "" }; }
@@ -6826,6 +6866,11 @@ function getBackupReminderDays() { try {
 catch (err) {
     return DEFAULT_BACKUP_REMINDER_DAYS;
 } }
+function getRecoveryIntervalHours() { try { const raw = localStorage.getItem(RECOVERY_INTERVAL_HOURS_KEY); if (raw === null) return DEFAULT_RECOVERY_AUTO_HOURS; const n = Number(raw); return [0, 6, 12, 24, 72].includes(n) ? n : DEFAULT_RECOVERY_AUTO_HOURS; } catch (err) { return DEFAULT_RECOVERY_AUTO_HOURS; } }
+function setRecoveryIntervalHours(hours) { const n = [0, 6, 12, 24, 72].includes(Number(hours)) ? Number(hours) : DEFAULT_RECOVERY_AUTO_HOURS; try { localStorage.setItem(RECOVERY_INTERVAL_HOURS_KEY, String(n)); } catch (err) { } updateDataSafetyUI(); if (n > 0) { try { const payload = buildCanonicalArchive(false); void maybeCreateRecoverySnapshot(payload); } catch (err) { } } }
+function getRecoveryMaxSnapshots() { try { const raw = localStorage.getItem(RECOVERY_KEEP_KEY); if (raw === null) return DEFAULT_RECOVERY_MAX_SNAPSHOTS; const n = Number(raw); return [7, 12, 20, 30].includes(n) ? n : DEFAULT_RECOVERY_MAX_SNAPSHOTS; } catch (err) { return DEFAULT_RECOVERY_MAX_SNAPSHOTS; } }
+function setRecoveryMaxSnapshots(count) { const n = [7, 12, 20, 30].includes(Number(count)) ? Number(count) : DEFAULT_RECOVERY_MAX_SNAPSHOTS; try { localStorage.setItem(RECOVERY_KEEP_KEY, String(n)); } catch (err) { } void trimRecoverySnapshots(); updateDataSafetyUI(); }
+async function trimRecoverySnapshots() { try { const all = await listRecoverySnapshots(), old = all.slice(getRecoveryMaxSnapshots()); if (!old.length) return; const db = await openRecoveryDb(); try { const tx = db.transaction(RECOVERY_STORE_NAME, "readwrite"), done = idbTxDone(tx), store = tx.objectStore(RECOVERY_STORE_NAME); old.forEach(x => store.delete(x.id)); await done; } finally { db.close(); } } catch (err) { console.warn("清理旧恢复点失败", err); } }
 function setBackupReminderDays(days) { const n = [0, 3, 7, 14, 30].includes(Number(days)) ? Number(days) : DEFAULT_BACKUP_REMINDER_DAYS; try {
     localStorage.setItem(BACKUP_REMINDER_DAYS_KEY, String(n));
 }
@@ -6844,6 +6889,17 @@ function openRecoveryDb() { return new Promise((resolve, reject) => { if (typeof
 } }; req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error || new Error("无法打开本地恢复存储")); }); }
 function idbRequest(req) { return new Promise((resolve, reject) => { req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error || new Error("本地恢复存储操作失败")); }); }
 function idbTxDone(tx) { return new Promise((resolve, reject) => { tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error || new Error("本地恢复存储写入失败")); tx.onabort = () => reject(tx.error || new Error("本地恢复存储操作已取消")); }); }
+function openPrimaryMirrorDb() { return new Promise((resolve, reject) => { if (typeof indexedDB === "undefined") { reject(new Error("当前浏览器不支持冗余副本存储")); return; } const req = indexedDB.open(PRIMARY_MIRROR_DB_NAME, PRIMARY_MIRROR_DB_VERSION); req.onupgradeneeded = () => { const db = req.result; if (!db.objectStoreNames.contains(PRIMARY_MIRROR_STORE_NAME)) db.createObjectStore(PRIMARY_MIRROR_STORE_NAME, { keyPath: "id" }); }; req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error || new Error("无法打开冗余副本存储")); }); }
+async function writePrimaryMirror(payload, saveMeta = null) { assertCanonicalIntegrity(payload); const row = { id: PRIMARY_MIRROR_ID, savedAt: Number((saveMeta === null || saveMeta === void 0 ? void 0 : saveMeta.savedAt) || Date.now()), appVersion: APP_UI_VERSION, schemaVersion: DATA_SCHEMA_VERSION, counts: archiveCountsFromPayload(payload), payload: JSON.parse(JSON.stringify(payload)) }; const db = await openPrimaryMirrorDb(); try { const tx = db.transaction(PRIMARY_MIRROR_STORE_NAME, "readwrite"), done = idbTxDone(tx); tx.objectStore(PRIMARY_MIRROR_STORE_NAME).put(row); await done; } finally { db.close(); } return row; }
+async function readPrimaryMirror() { const db = await openPrimaryMirrorDb(); try { const tx = db.transaction(PRIMARY_MIRROR_STORE_NAME, "readonly"), done = idbTxDone(tx), row = await idbRequest(tx.objectStore(PRIMARY_MIRROR_STORE_NAME).get(PRIMARY_MIRROR_ID)); await done; return row || null; } finally { db.close(); } }
+async function updatePrimaryMirrorHealth() { if (!(els === null || els === void 0 ? void 0 : els.primaryMirrorHealthValue)) return; try { const row = await readPrimaryMirror(); if (row && row.payload && rawArchiveIsMeaningful(row.payload)) { els.primaryMirrorHealthValue.textContent = "已同步"; els.primaryMirrorHealthSub.textContent = `最近：${formatSafetyDateTime(row.savedAt)} · 与主档案分开存储`; } else { els.primaryMirrorHealthValue.textContent = "待建立"; els.primaryMirrorHealthSub.textContent = "首次成功保存后自动建立"; } } catch (err) { els.primaryMirrorHealthValue.textContent = "不可用"; els.primaryMirrorHealthSub.textContent = "当前浏览器无法建立独立冗余副本"; } }
+let startupRedundantRecoveryChecked = false;
+async function maybeRecoverRedundantStartupData() { if (startupRedundantRecoveryChecked) return false; startupRedundantRecoveryChecked = true; let currentRaw = null; try { currentRaw = safeParseStoredJson(localStorage.getItem(STORAGE_KEY)); } catch (err) { } if (currentRaw && rawArchiveIsMeaningful(currentRaw)) return false; const candidates = []; try { const mirror = await readPrimaryMirror(); if (mirror && mirror.payload && rawArchiveIsMeaningful(mirror.payload)) candidates.push({ source: "冗余副本", at: Number(mirror.savedAt || 0), payload: mirror.payload, counts: mirror.counts || archiveCountsFromPayload(mirror.payload) }); } catch (err) { console.warn("读取主档案冗余副本失败", err); } try { const rows = await listRecoverySnapshots(); const latest = rows.find(row => row && row.payload && rawArchiveIsMeaningful(row.payload)); if (latest) candidates.push({ source: "恢复点", at: Number(latest.createdAt || 0), payload: latest.payload, counts: latest.counts || archiveCountsFromPayload(latest.payload) }); } catch (err) { } candidates.sort((a,b)=>b.at-a.at); const candidate = candidates[0]; if (!candidate) return false; const c = candidate.counts || archiveCountsFromPayload(candidate.payload); const ok = await appConfirm(`检测到当前浏览器的主档案为空或无法读取，但找到了${candidate.source}：
+
+${formatSafetyDateTime(candidate.at)}
+PL ${c.profiles} · 模组 ${c.modules} · 计划 ${c.plans} · 跑团记录 ${c.records}
+
+这通常发生在浏览器更新、存储迁移或主存储被清理后。是否恢复？`, { title: "发现可恢复的数据", confirmText: "恢复数据" }); if (!ok) return false; try { const incoming = isCanonicalArchive(candidate.payload) ? ensureSelfProfileAndLinks(hydrateCanonicalArchive(candidate.payload)) : ensureSelfProfileAndLinks(legacyStateFromRaw(candidate.payload)); if (!incoming) throw new Error("冗余副本无法识别"); settings = incoming.settings; profiles = incoming.profiles; runPlans = incoming.runPlans; runRecords = incoming.runRecords; modules = incoming.modules || []; settingsDraft = null; draft = null; editingId = null; runRecordsDraft = null; selectedModuleName = ""; selfIntroDraft = null; selfIntroBaseline = null; selfIntroPendingModules = []; if (!saveState({ allowExternalOverwrite: true })) throw new Error("恢复后的主档案写入失败"); try { localStorage.setItem(ONBOARDING_KEY, "1"); } catch (err) { } applyTheme(settings.theme); applyUiPreferences(settings); renderSortOptions(); renderAllPrimaryViews(); moduleFrameDirty = true; showToast(`已从${candidate.source}恢复数据`); return true; } catch (err) { console.error(err); appNotice(`恢复失败：${err.message || err}。如果已设置浏览器外自动备份，请从备份文件导入。`, "恢复失败"); return false; } }
 async function listRecoverySnapshots() { const db = await openRecoveryDb(); try {
     const tx = db.transaction(RECOVERY_STORE_NAME, "readonly"), done = idbTxDone(tx), rows = await idbRequest(tx.objectStore(RECOVERY_STORE_NAME).getAll());
     await done;
@@ -6859,7 +6915,7 @@ async function createRecoverySnapshot(payload, reason = "manual") { assertCanoni
 }
 finally {
     db.close();
-} const all = await listRecoverySnapshots(), old = all.slice(RECOVERY_MAX_SNAPSHOTS); if (old.length) {
+} const all = await listRecoverySnapshots(), old = all.slice(getRecoveryMaxSnapshots()); if (old.length) {
     db = await openRecoveryDb();
     try {
         const tx = db.transaction(RECOVERY_STORE_NAME, "readwrite"), done = idbTxDone(tx), store = tx.objectStore(RECOVERY_STORE_NAME);
@@ -6874,7 +6930,8 @@ async function maybeCreateRecoverySnapshot(payload) { if (!hasMeaningfulData(arc
     return false; let last = 0; try {
     last = Number(localStorage.getItem(RECOVERY_LAST_AUTO_KEY) || 0);
 }
-catch (err) { } if (last && Date.now() - last < RECOVERY_AUTO_INTERVAL)
+catch (err) { } const intervalHours = getRecoveryIntervalHours(); if (intervalHours <= 0)
+    return false; const intervalMs = intervalHours * 60 * 60 * 1000; if (last && Date.now() - last < intervalMs)
     return false; try {
     await createRecoverySnapshot(payload, "auto");
     localStorage.setItem(RECOVERY_LAST_AUTO_KEY, String(Date.now()));
@@ -6963,7 +7020,7 @@ async function updateRecoveryHealth() {
         if (rows.length) {
             const latest = rows[0];
             els.recoveryHealthValue.textContent = `${rows.length} 个 · ${formatSafetyShortTime(latest.createdAt)}`;
-            els.recoveryHealthSub.textContent = `最近：${formatSafetyDateTime(latest.createdAt)}`;
+            els.recoveryHealthSub.textContent = `最近：${formatSafetyDateTime(latest.createdAt)} · ${getRecoveryIntervalHours() ? `每 ${getRecoveryIntervalHours()} 小时自动` : "自动创建已关闭"}`;
             els.restoreRecovery.disabled = false;
             return;
         }
@@ -6972,12 +7029,12 @@ async function updateRecoveryHealth() {
     const row = fallbackSafetySnapshot();
     if (row) {
         els.recoveryHealthValue.textContent = "1 个 · 备用保护";
-        els.recoveryHealthSub.textContent = `最近：${formatSafetyDateTime(row.createdAt)}`;
+        els.recoveryHealthSub.textContent = `最近：${formatSafetyDateTime(row.createdAt)} · 备用恢复点`;
         els.restoreRecovery.disabled = false;
         return;
     }
     els.recoveryHealthValue.textContent = "暂无恢复点";
-    els.recoveryHealthSub.textContent = "保存数据后会自动创建";
+    els.recoveryHealthSub.textContent = getRecoveryIntervalHours() ? `有数据后每 ${getRecoveryIntervalHours()} 小时自动创建` : "自动创建已关闭，可手动创建";
     els.restoreRecovery.disabled = true;
 }
 function isLocalFileStorageContext(protocol = location.protocol) { return protocol === "file:"; }
@@ -6985,7 +7042,7 @@ function storagePersistenceApplicable(protocol = location.protocol) { var _a; re
 function currentStorageContextText() {
     if (isLocalFileStorageContext())
         return "当前为本地文件模式。请定期导出完整备份；使用固定网址时更新更稳定。";
-    return "本地保存环境正常。请定期导出完整备份。";
+    return "本地保存环境正常。存储保护可降低浏览器自动清理概率；浏览器外备份用于抵御手动清除网站数据。";
 }
 function getInheritanceStatusHTML() { const r = startupDataReport || {}; if (r.source === "legacy-local")
     return `<strong>已继承旧版本数据。</strong>`; if (r.embedded)
@@ -7085,25 +7142,31 @@ async function updatePersistentStorageStatus() {
     var _a;
     if (!(els === null || els === void 0 ? void 0 : els.requestPersistentStorage))
         return;
+    const setHealth = (value, sub) => { if (els.persistentHealthValue) els.persistentHealthValue.textContent = value; if (els.persistentHealthSub) els.persistentHealthSub.textContent = sub; };
     if (isLocalFileStorageContext()) {
         els.requestPersistentStorage.disabled = true;
         els.requestPersistentStorage.textContent = "本地文件模式不支持";
-        els.requestPersistentStorage.title = "数据保留功能仅支持网页地址";
+        els.requestPersistentStorage.title = "存储保护仅支持 HTTPS 网页地址";
+        setHealth("不可用", "本地文件模式无法申请");
         return;
     }
     if (!storagePersistenceApplicable() || !((_a = navigator.storage) === null || _a === void 0 ? void 0 : _a.persist)) {
         els.requestPersistentStorage.disabled = true;
-        els.requestPersistentStorage.textContent = "当前浏览器不支持此功能";
+        els.requestPersistentStorage.textContent = "当前浏览器不支持";
+        setHealth("浏览器不支持", "自动保存仍可使用");
         return;
     }
     try {
         const ok = await navigator.storage.persisted();
         els.requestPersistentStorage.disabled = ok;
-        els.requestPersistentStorage.textContent = ok ? "已开启数据保留" : "申请数据保留";
+        els.requestPersistentStorage.textContent = ok ? "存储保护已开启" : "开启存储保护";
+        els.requestPersistentStorage.title = ok ? "浏览器会优先保留本站数据；手动清除网站数据仍会删除" : "申请浏览器持久化存储，降低系统自动回收数据的概率";
+        setHealth(ok ? "已开启" : "未开启", ok ? "降低浏览器自动回收概率；手动清除仍会删除" : "建议开启；无法防止手动清除网站数据");
     }
     catch (err) {
         els.requestPersistentStorage.disabled = true;
-        els.requestPersistentStorage.textContent = "浏览器不支持此功能";
+        els.requestPersistentStorage.textContent = "浏览器不支持";
+        setHealth("检查失败", "可继续使用自动保存与外部备份");
     }
 }
 async function requestPersistentStorage() {
@@ -7119,12 +7182,42 @@ async function requestPersistentStorage() {
     try {
         const ok = await navigator.storage.persist();
         await updatePersistentStorageStatus();
-        showToast(ok ? "已开启：浏览器会优先保留此网页数据" : "未开启；自动保存仍可正常使用");
+        showToast(ok ? "存储保护已开启：浏览器会优先保留本站数据" : "浏览器未授予存储保护；自动保存仍可正常使用");
     }
     catch (err) {
         showToast("申请数据保留失败");
     }
 }
+let externalBackupTargetCache;
+let externalBackupInFlight = false;
+let externalBackupScheduleTimer = null;
+function externalBackupFolderApiSupported() { return Boolean(globalThis.isSecureContext && typeof window.showDirectoryPicker === "function"); }
+function externalBackupFileApiSupported() { return Boolean(globalThis.isSecureContext && typeof window.showSaveFilePicker === "function"); }
+function externalBackupSupported() { return externalBackupFolderApiSupported() || externalBackupFileApiSupported(); }
+function getExternalBackupEnabled() { try { return localStorage.getItem(EXTERNAL_BACKUP_ENABLED_KEY) === "1"; } catch (err) { return false; } }
+function setExternalBackupEnabled(enabled) { try { localStorage.setItem(EXTERNAL_BACKUP_ENABLED_KEY, enabled ? "1" : "0"); } catch (err) { } void updateExternalBackupUI(); if (enabled) void checkExternalBackupSchedule(); }
+function normalizeExternalBackupTime(value) { const s = String(value || "").trim(); return /^([01]\d|2[0-3]):[0-5]\d$/.test(s) ? s : "20:00"; }
+function getExternalBackupTime() { try { return normalizeExternalBackupTime(localStorage.getItem(EXTERNAL_BACKUP_TIME_KEY) || "20:00"); } catch (err) { return "20:00"; } }
+function setExternalBackupTime(value) { const t = normalizeExternalBackupTime(value); try { localStorage.setItem(EXTERNAL_BACKUP_TIME_KEY, t); } catch (err) { } void updateExternalBackupUI(); void checkExternalBackupSchedule(); }
+function getExternalBackupLastAt() { try { return Number(localStorage.getItem(EXTERNAL_BACKUP_LAST_KEY) || 0); } catch (err) { return 0; } }
+function setExternalBackupLastAt(ts, meta = null) { try { localStorage.setItem(EXTERNAL_BACKUP_LAST_KEY, String(Number(ts || Date.now()))); if (meta) localStorage.setItem(EXTERNAL_BACKUP_META_KEY, JSON.stringify(meta)); } catch (err) { } }
+function readExternalBackupMeta() { return safeReadLocalMeta(EXTERNAL_BACKUP_META_KEY) || null; }
+function openExternalBackupDb() { return new Promise((resolve, reject) => { if (typeof indexedDB === "undefined") { reject(new Error("当前浏览器不支持保存文件夹授权")); return; } const req = indexedDB.open(EXTERNAL_BACKUP_DB_NAME, EXTERNAL_BACKUP_DB_VERSION); req.onupgradeneeded = () => { const db = req.result; if (!db.objectStoreNames.contains(EXTERNAL_BACKUP_STORE_NAME)) db.createObjectStore(EXTERNAL_BACKUP_STORE_NAME, { keyPath: "id" }); }; req.onsuccess = () => resolve(req.result); req.onerror = () => reject(req.error || new Error("无法打开文件夹授权存储")); }); }
+async function saveExternalBackupTarget(target) { const db = await openExternalBackupDb(); try { const tx = db.transaction(EXTERNAL_BACKUP_STORE_NAME, "readwrite"), done = idbTxDone(tx); const row = { id: "target", kind: target.kind, handle: target.handle, selectedAt: Date.now(), displayName: String((target.handle && target.handle.name) || target.displayName || "已选择位置") }; tx.objectStore(EXTERNAL_BACKUP_STORE_NAME).put(row); await done; externalBackupTargetCache = row; return row; } finally { db.close(); } }
+async function loadExternalBackupTarget() { if (externalBackupTargetCache !== undefined) return externalBackupTargetCache; try { const db = await openExternalBackupDb(); try { const tx = db.transaction(EXTERNAL_BACKUP_STORE_NAME, "readonly"), done = idbTxDone(tx), row = await idbRequest(tx.objectStore(EXTERNAL_BACKUP_STORE_NAME).get("target")); await done; externalBackupTargetCache = row && row.handle ? row : null; return externalBackupTargetCache; } finally { db.close(); } } catch (err) { externalBackupTargetCache = null; return null; } }
+async function externalBackupPermission(target, request = false) { const handle = target && target.handle; if (!handle) return "denied"; try { const opts = { mode: "readwrite" }; if (typeof handle.queryPermission === "function") { let status = await handle.queryPermission(opts); if (status === "granted") return status; if (request && typeof handle.requestPermission === "function") status = await handle.requestPermission(opts); return status; } return "unknown"; } catch (err) { return "denied"; } }
+async function chooseExternalBackupTarget() { if (!externalBackupSupported()) { appNotice("当前浏览器不支持网页直接写入指定文件夹。UC、夸克及部分手机浏览器可能受限；你仍可使用“导出完整备份”。", "当前浏览器不支持自动文件夹备份"); return false; } try { let target = null; if (externalBackupFolderApiSupported()) { let handle; try { handle = await window.showDirectoryPicker({ id: "pl-life-external-backup", mode: "readwrite" }); } catch (err) { if (err && err.name === "AbortError") return false; handle = await window.showDirectoryPicker(); } target = { kind: "directory", handle }; } else { const handle = await window.showSaveFilePicker({ suggestedName: `${APP_NAME}_自动备份_最新.json`, types: [{ description: "JSON 完整备份", accept: { "application/json": [".json"] } }] }); target = { kind: "file", handle }; } const permission = await externalBackupPermission(target, true); if (permission === "denied") throw new Error("未获得写入权限"); await saveExternalBackupTarget(target); setExternalBackupEnabled(true); await updateExternalBackupUI(); const ok = await writeExternalBackupNow({ manual: true, reason: "location-selected" }); if (ok) showToast(target.kind === "directory" ? "保存文件夹已设置，并完成测试备份" : "备份文件已设置，并完成测试备份"); return ok; } catch (err) { if (err && err.name === "AbortError") return false; console.error(err); appNotice(`设置自动备份位置失败：${err.message || err}`); await updateExternalBackupUI(); return false; } }
+async function reauthorizeExternalBackup() { const target = await loadExternalBackupTarget(); if (!target) return chooseExternalBackupTarget(); const status = await externalBackupPermission(target, true); await updateExternalBackupUI(); if (status === "granted" || status === "unknown") { showToast("保存位置已重新授权"); return true; } showToast("未获得写入权限"); return false; }
+function externalBackupDueTimestamp(now = new Date()) { const t = getExternalBackupTime().split(":"), h = Number(t[0]), m = Number(t[1]); const scheduled = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0, 0); if (scheduled.getTime() > now.getTime()) scheduled.setDate(scheduled.getDate() - 1); return scheduled.getTime(); }
+function externalBackupStamp(date = new Date()) { return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`; }
+async function writeJsonToFileHandle(fileHandle, serialized) { const writable = await fileHandle.createWritable(); try { await writable.write(serialized); } finally { await writable.close(); } }
+async function cleanupExternalBackupDailyFiles(dirHandle, keep = 14) { if (!dirHandle || typeof dirHandle.entries !== "function" || typeof dirHandle.removeEntry !== "function") return; try { const rows = []; for await (const [name, handle] of dirHandle.entries()) { if (handle && handle.kind === "file" && name.startsWith(`${APP_NAME}_自动备份_`) && /^.*_\d{4}-\d{2}-\d{2}\.json$/.test(name)) rows.push(name); } rows.sort().reverse(); for (const name of rows.slice(keep)) { try { await dirHandle.removeEntry(name); } catch (err) { } } } catch (err) { console.warn("清理旧外部备份失败", err); } }
+function acquireExternalBackupLock() { const token = `${tabInstanceId}_${Date.now()}_${Math.random().toString(16).slice(2)}`; try { const old = safeReadLocalMeta(EXTERNAL_BACKUP_LOCK_KEY); if (old && Date.now() - Number(old.at || 0) < 120000) return ""; localStorage.setItem(EXTERNAL_BACKUP_LOCK_KEY, JSON.stringify({ token, at: Date.now() })); const verify = safeReadLocalMeta(EXTERNAL_BACKUP_LOCK_KEY); return verify && verify.token === token ? token : ""; } catch (err) { return token; } }
+function releaseExternalBackupLock(token) { if (!token) return; try { const row = safeReadLocalMeta(EXTERNAL_BACKUP_LOCK_KEY); if (row && row.token === token) localStorage.removeItem(EXTERNAL_BACKUP_LOCK_KEY); } catch (err) { } }
+async function writeExternalBackupNow({ manual = false, reason = "scheduled" } = {}) { if (externalBackupInFlight) return false; const target = await loadExternalBackupTarget(); if (!target || !target.handle) { if (manual) showToast("请先选择自动备份保存位置"); await updateExternalBackupUI(); return false; } const permission = await externalBackupPermission(target, manual); if (permission === "prompt" && !manual) { await updateExternalBackupUI(); return false; } if (permission === "denied") { if (manual) showToast("保存位置没有写入权限，请重新授权"); await updateExternalBackupUI(); return false; } const lock = acquireExternalBackupLock(); if (!lock) return false; externalBackupInFlight = true; try { const payload = buildCanonicalArchive(true); assertCanonicalIntegrity(payload); const serialized = JSON.stringify(payload, null, 2), now = new Date(), stamp = externalBackupStamp(now); if (target.kind === "directory") { const latest = await target.handle.getFileHandle(`${APP_NAME}_自动备份_最新.json`, { create: true }); await writeJsonToFileHandle(latest, serialized); const daily = await target.handle.getFileHandle(`${APP_NAME}_自动备份_${stamp}.json`, { create: true }); await writeJsonToFileHandle(daily, serialized); void cleanupExternalBackupDailyFiles(target.handle, 14); } else { await writeJsonToFileHandle(target.handle, serialized); } const at = Date.now(), meta = { backedUpAt: at, reason, kind: target.kind, locationName: String(target.handle.name || target.displayName || "已选择位置"), counts: archiveCountsFromPayload(payload), appVersion: APP_UI_VERSION, schemaVersion: DATA_SCHEMA_VERSION }; setExternalBackupLastAt(at, meta); markExportComplete("自动文件夹备份", payload); await updateExternalBackupUI(); if (manual) showToast("浏览器外完整备份已写入"); return true; } catch (err) { console.error("浏览器外自动备份失败", err); if (manual) appNotice(`写入外部备份失败：${err.message || err}`); await updateExternalBackupUI({ error: String(err.message || err) }); return false; } finally { externalBackupInFlight = false; releaseExternalBackupLock(lock); } }
+async function updateExternalBackupUI(options = {}) { if (!els.externalBackupSupportBadge) return; const supported = externalBackupSupported(), target = supported ? await loadExternalBackupTarget() : null, enabled = getExternalBackupEnabled(), time = getExternalBackupTime(), lastAt = getExternalBackupLastAt(); els.externalBackupEnabled.checked = enabled; els.externalBackupTime.value = time; els.externalBackupEnabled.disabled = !supported || !target; els.externalBackupTime.disabled = !supported || !target; els.externalBackupNow.disabled = !supported || !target; els.chooseExternalBackupFolder.disabled = !supported; els.externalBackupSupportBadge.className = `external-backup-support-badge ${supported ? "ok" : "warn"}`; els.externalBackupSupportBadge.textContent = supported ? (externalBackupFolderApiSupported() ? "支持文件夹自动写入" : "支持固定备份文件") : "当前浏览器不支持"; els.chooseExternalBackupFolder.textContent = target ? "更改保存位置" : (externalBackupFolderApiSupported() ? "选择保存文件夹" : "选择备份文件"); els.externalBackupLocationText.textContent = target ? `${target.kind === "directory" ? "文件夹" : "备份文件"}：${target.handle.name || target.displayName || "已授权位置"}` : "尚未选择保存位置"; const permission = target ? await externalBackupPermission(target, false) : "denied", needsAuth = Boolean(target && permission === "prompt"); els.reauthorizeExternalBackup.hidden = !needsAuth; if (els.externalBackupHealthValue) els.externalBackupHealthValue.textContent = !supported ? "浏览器不支持" : !target ? "未设置" : needsAuth ? "需重新授权" : enabled ? "已启用" : "已暂停"; if (els.externalBackupHealthSub) els.externalBackupHealthSub.textContent = lastAt ? `最近：${formatSafetyDateTime(lastAt)}` : target ? `每天 ${time} · 尚未写入` : "选择文件夹后可启用"; let note = "", cls = "external-backup-status"; if (!supported) { note = "当前浏览器无法由网页直接写入指定文件夹。UC、夸克及部分手机浏览器可能不支持；请继续使用“导出完整备份”。"; cls += " warn"; } else if (!target) { note = "请选择一个浏览器外的保存位置。网页只能看到你授权的文件夹 / 文件名称，无法读取完整系统路径。"; } else if (needsAuth) { note = "浏览器已记住保存位置，但本次会话需要重新授权后才能自动写入。点击“重新授权”即可。"; cls += " warn"; } else if (options.error) { note = `最近一次自动写入失败：${options.error}`; cls += " warn"; } else if (enabled) { note = `已启用：每天 ${time} 自动写入${target.kind === "directory" ? "“最新”备份 + 当日备份，并保留最近约 14 个日备份" : "所选备份文件"}。页面 / PWA 完全关闭时无法后台运行；再次打开后会补做最近一次到期备份。`; cls += " ok"; } else { note = `保存位置已授权，自动备份当前暂停。${lastAt ? `最近写入：${formatSafetyDateTime(lastAt)}。` : ""}`; } els.externalBackupStatusNote.className = cls; els.externalBackupStatusNote.textContent = note; }
+async function checkExternalBackupSchedule() { if (!getExternalBackupEnabled() || !externalBackupSupported() || !hasMeaningfulData()) return false; const due = externalBackupDueTimestamp(new Date()), last = getExternalBackupLastAt(); if (!due || last >= due) return false; const target = await loadExternalBackupTarget(); if (!target) { await updateExternalBackupUI(); return false; } const permission = await externalBackupPermission(target, false); if (permission === "prompt" || permission === "denied") { await updateExternalBackupUI(); return false; } return writeExternalBackupNow({ manual: false, reason: "scheduled" }); }
+function initExternalBackupScheduler() { if (externalBackupScheduleTimer) clearInterval(externalBackupScheduleTimer); externalBackupScheduleTimer = setInterval(() => { void checkExternalBackupSchedule(); }, 60000); document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") void checkExternalBackupSchedule(); }); window.addEventListener("focus", () => { void checkExternalBackupSchedule(); }); void updateExternalBackupUI(); setTimeout(() => { void checkExternalBackupSchedule(); }, 1200); }
 function backupReminderDueInfo() { const days = getBackupReminderDays(); if (days === 0 || !hasMeaningfulData())
     return { due: false }; const meta = safeReadLocalMeta(LAST_EXPORT_META_KEY); let base = Number((meta === null || meta === void 0 ? void 0 : meta.exportedAt) || 0); if (!base) {
     try {
@@ -7164,10 +7257,14 @@ function updateDataSafetyUI() { const sm = currentSaveMeta(), em = safeReadLocal
     els.inheritanceStatusNote.innerHTML = getInheritanceStatusHTML();
     els.storageContextNote.innerHTML = currentStorageContextText();
     els.backupReminderDays.value = String(getBackupReminderDays());
+    if (els.recoveryInterval) els.recoveryInterval.value = String(getRecoveryIntervalHours());
+    if (els.recoveryKeep) els.recoveryKeep.value = String(getRecoveryMaxSnapshots());
     els.dataSafetyOverallBadge.textContent = (sm === null || sm === void 0 ? void 0 : sm.savedAt) ? "本地保存正常" : "需要检查";
     els.dataSafetyOverallBadge.className = `data-safety-overall-badge ${(sm === null || sm === void 0 ? void 0 : sm.savedAt) ? "ok" : "warn"}`;
     void updateRecoveryHealth();
+    void updatePrimaryMirrorHealth();
     void updatePersistentStorageStatus();
+    void updateExternalBackupUI();
     updateStorageDiagnosticsUI();
     updateArchiveSizeHealth();
 } renderBackupReminderBanner(); updateUpgradeGuardUI(); updatePwaUI(); if (!lastIntegrityReport)
@@ -7235,6 +7332,7 @@ function saveState(options = {}) {
         rememberRecentLocalCommit(saveMeta, payload);
         observeSaveMeta(saveMeta);
         setStateBaseSaveMeta(saveMeta);
+        void writePrimaryMirror(payload, saveMeta).then(() => updatePrimaryMirrorHealth()).catch(err => console.warn("冗余副本写入失败", err));
         localStorage.setItem(LAST_APP_VERSION_KEY, APP_UI_VERSION);
         if (hasMeaningfulData(counts) && !localStorage.getItem(FIRST_MEANINGFUL_SAVE_KEY))
             localStorage.setItem(FIRST_MEANINGFUL_SAVE_KEY, String(Date.now()));
@@ -7306,7 +7404,7 @@ const els = {
     quickRunModule: document.getElementById("quickRunModuleInput"), quickRunName: document.getElementById("quickRunNameInput"), quickRunKp: document.getElementById("quickRunKpInput"), quickRunStart: document.getElementById("quickRunStartInput"), quickRunEnd: document.getElementById("quickRunEndInput"), quickRunLog: document.getElementById("quickRunLogInput"), createLinkedRun: document.getElementById("createLinkedRunBtn"),
     editRuns: document.getElementById("editRuns"),
     save: document.getElementById("saveBtn"), cancel: document.getElementById("cancelBtn"), closeProfile: document.getElementById("closeProfileBtn"), modalDelete: document.getElementById("modalDeleteBtn"),
-    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), recordDefaultExpandSetting: document.getElementById("recordDefaultExpandSetting"), profileFootprintSetting: document.getElementById("profileFootprintSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
+    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupTime: document.getElementById("externalBackupTimeInput"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), recordDefaultExpandSetting: document.getElementById("recordDefaultExpandSetting"), profileFootprintSetting: document.getElementById("profileFootprintSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
 };
 /* ---------- 10. 通用工具：文本转义、读取字段、评分说明、加权总分等 ---------- */
 function escapeHTML(v = "") { return String(v).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[ch])); }
@@ -9898,8 +9996,11 @@ function syncIntroToggleAll(section, path) { if (!section)
 function introRadioGroup(path, options) { const value = String(selfIntroPathGet(selfIntroDraft, path) || ""); return `<div class="intro-radio-grid">${options.map(([v, label]) => `<label><input type="radio" name="intro_${escapeHTML(path)}" data-intro-field="${escapeHTML(path)}" value="${escapeHTML(v)}" ${value === v ? "checked" : ""}><span>${escapeHTML(label)}</span></label>`).join("")}</div>`; }
 function introScale(path, title) { const value = introScaleValue(selfIntroPathGet(selfIntroDraft, path)), meta = INTRO_SCALE_META[path] || ["低", "高"], steps = [1, 2, 3, 4, 5].map(n => { const text = selfIntroScaleText(path, n); return `<button class="intro-scale-step ${n === value ? "is-active" : ""}" type="button" data-intro-scale-step="${escapeHTML(path)}" data-scale-value="${n}" aria-pressed="${n === value ? "true" : "false"}" aria-label="${escapeHTML(`${title}：${text}`)}" title="${escapeHTML(text)}"><span class="intro-scale-dot" aria-hidden="true"></span></button>`; }).join(""); return `<div class="intro-scale" role="group" aria-label="${escapeHTML(title)}"><div class="intro-scale-head"><strong>${escapeHTML(title)}</strong><output data-intro-scale-output="${escapeHTML(path)}">${escapeHTML(selfIntroScaleText(path, value))}</output></div><div class="intro-scale-track">${steps}</div><div class="intro-scale-labels"><span>${escapeHTML(meta[0])}</span><span>中间</span><span>${escapeHTML(meta[1])}</span></div></div>`; }
 function currentOrPendingModule(ref) { const id = String((ref === null || ref === void 0 ? void 0 : ref.moduleId) || ""); return modules.find(m => m.id === id) || selfIntroPendingModules.find(m => m.id === id) || null; }
-function moduleIntentCard(ref, kind) { const mod = currentOrPendingModule(ref), name = (mod === null || mod === void 0 ? void 0 : mod.name) || (ref === null || ref === void 0 ? void 0 : ref.name) || "未命名模组", pending = Boolean(selfIntroPendingModules.some(m => m.id === (ref === null || ref === void 0 ? void 0 : ref.moduleId))), meta = mod ? [mod.author, mod.era, mod.location].filter(Boolean).join(" · ") : ""; return `<div class="intro-module-chip"><span><strong>${escapeHTML(name)}</strong><small>${escapeHTML(pending ? "保存后新建模组档案" : meta || "已关联模组档案")}</small></span><button type="button" data-intro-remove-module="${escapeHTML(kind)}" data-module-id="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.moduleId) || "")}" data-module-name="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.name) || name)}" aria-label="移除">×</button></div>`; }
-function moduleIntentSection(kind, title, desc) { const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", rows = selfIntroPathGet(selfIntroDraft, path) || []; return `<div class="self-intro-section intro-intent-section"><div class="self-intro-section-head"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div><div class="intro-intent-box"><div class="intro-module-chips">${rows.length ? rows.map(r => moduleIntentCard(r, kind)).join("") : `<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" list="selfIntroModuleOptions" placeholder="输入模组名称或拼音首字母；匹配已有或新建"><div class="intro-intent-actions"><button class="btn" type="button" data-intro-pick-module="${escapeHTML(kind)}">选择已有</button><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div></div></div>`; }
+function selfIntroIntentNoteLabel(kind) { return kind === "host" ? "带团备注" : "备注"; }
+function selfIntroIntentNotePlaceholder(kind) { return kind === "host" ? "写这个模组的带团补充，例如擅长风格、改模方向、开团提醒。" : "写这个模组的补充，例如想跑原因、偏好版本、想体验的方向。"; }
+function selfIntroIntentRows(kind) { return selfIntroPathGet(selfIntroDraft, kind === "want" ? "pl.wantModules" : "kp.canHostModules") || []; }
+function moduleIntentCard(ref, kind) { const mod = currentOrPendingModule(ref), name = (mod === null || mod === void 0 ? void 0 : mod.name) || (ref === null || ref === void 0 ? void 0 : ref.name) || "未命名模组", pending = Boolean(selfIntroPendingModules.some(m => m.id === (ref === null || ref === void 0 ? void 0 : ref.moduleId))), meta = mod ? [mod.author, mod.era, mod.location].filter(Boolean).join(" · ") : "", note = String((ref === null || ref === void 0 ? void 0 : ref.note) || ""); return `<div class="intro-module-chip"><div class="intro-module-chip-head"><span class="intro-module-chip-main"><strong>${escapeHTML(name)}</strong><small>${escapeHTML(pending ? "保存后新建模组档案" : meta || "已关联模组档案")}</small></span><button class="intro-module-chip-remove" type="button" data-intro-remove-module="${escapeHTML(kind)}" data-module-id="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.moduleId) || "")}" data-module-name="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.name) || name)}" aria-label="移除">×</button></div><label class="intro-module-note-field"><span>${escapeHTML(selfIntroIntentNoteLabel(kind))}</span><textarea class="intro-textarea" data-intro-module-note="${escapeHTML(kind)}" data-module-id="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.moduleId) || "")}" data-module-name="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.name) || name)}" placeholder="${escapeHTML(selfIntroIntentNotePlaceholder(kind))}">${escapeHTML(note)}</textarea></label></div>`; }
+function moduleIntentSection(kind, title, desc) { const rows = selfIntroIntentRows(kind); return `<div class="self-intro-section intro-intent-section"><div class="self-intro-section-head"><div class="intro-intent-head-copy"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div><span class="intro-intent-head-actions"><button class="btn small image-export-btn" type="button" data-intro-export-intent="${escapeHTML(kind)}">导出图片</button></span></div><div class="intro-intent-box"><div class="intro-module-chips">${rows.length ? rows.map(r => moduleIntentCard(r, kind)).join("") : `<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" list="selfIntroModuleOptions" placeholder="输入模组名称或拼音首字母；匹配已有或新建"><div class="intro-intent-actions"><button class="btn" type="button" data-intro-pick-module="${escapeHTML(kind)}">选择已有</button><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div></div></div>`; }
 function boundaryLevelOptions(current) { return SELF_INTRO_BOUNDARY_LEVELS.map(v => `<option value="${escapeHTML(v)}" ${current === v ? "selected" : ""}>${escapeHTML(v || "未设置")}</option>`).join(""); }
 function introModulePrefsSections(side) {
     const base = `${side}.modulePrefs`, mp = selfIntroPathGet(selfIntroDraft, base) || defaultIntroModulePrefs();
@@ -9995,6 +10096,12 @@ function selfIntroExportScale(path, label, value) {
     const n = introScaleValue(value), meta = INTRO_SCALE_META[path] || ["低", "高"];
     return { label, path, value: n, current: selfIntroScaleText(path, n), left: meta[0], right: meta[1] };
 }
+function selfIntroExportIntentLines(rows, noteLabel = "备注") {
+    const list = Array.isArray(rows) ? rows : [];
+    if (!list.length)
+        return ["暂未添加"];
+    return list.map(ref => { const name = String((ref === null || ref === void 0 ? void 0 : ref.name) || "").trim() || "未命名模组", note = String((ref === null || ref === void 0 ? void 0 : ref.note) || "").trim(); return note ? `${name}｜${noteLabel}：${note}` : name; });
+}
 function selfIntroExportSections(d, side) {
     const isPl = side === "pl", x = d[side], sections = [];
     sections.push({ title: "模组偏好", lines: selfIntroExportModulePrefLines(x.modulePrefs) });
@@ -10016,7 +10123,7 @@ function selfIntroExportSections(d, side) {
             sections.push({ title: "同桌协作", lines: [...(String(x.wishes || "").trim() ? [`期望协作：${String(x.wishes).trim()}`] : []), ...(String(x.avoids || "").trim() ? [`需避免：${String(x.avoids).trim()}`] : [])] });
         if (String(x.notes || "").trim())
             sections.push({ title: "其他补充", lines: [String(x.notes).trim()] });
-        sections.push({ title: "想跑模组", lines: [(x.wantModules || []).map(r => r.name).filter(Boolean).join("、") || "暂未添加"] });
+        sections.push({ title: "想跑模组", lines: selfIntroExportIntentLines(x.wantModules, "备注") });
     }
     else {
         sections.push({ title: "带团方式", lines: [], scales: [
@@ -10033,7 +10140,7 @@ function selfIntroExportSections(d, side) {
             sections.push({ title: "协作边界与须知", lines: [...boundary, ...(x.issueThreshold ? [`同类问题累计：${x.issueThreshold} 次`] : []), ...(x.issueAction ? [`达到次数后：${x.issueAction}`] : []), ...(x.logReuse ? [`停止合作后 Log：${x.logReuse}`] : []), ...(x.futureContact ? [`后续约团：${x.futureContact}`] : []), ...(String(x.boundaryNotes || "").trim() ? [`补充：${String(x.boundaryNotes).trim()}`] : [])] });
         if (String(x.notes || "").trim())
             sections.push({ title: "其他补充", lines: [String(x.notes).trim()] });
-        sections.push({ title: "可带模组", lines: [(x.canHostModules || []).map(r => r.name).filter(Boolean).join("、") || "暂未添加"] });
+        sections.push({ title: "可带模组", lines: selfIntroExportIntentLines(x.canHostModules, "带团备注") });
     }
     return sections;
 }
@@ -10170,6 +10277,78 @@ async function exportSelfIntroImage() {
         return false;
     }
 }
+function drawSelfIntroIntentExportCards(ctx, x, y, w, rows, theme, color, kind) {
+    let cy = y;
+    const noteLabel = selfIntroIntentNoteLabel(kind);
+    rows.forEach((ref, index) => {
+        const name = String((ref === null || ref === void 0 ? void 0 : ref.name) || "").trim() || `模组 ${index + 1}`;
+        const note = String((ref === null || ref === void 0 ? void 0 : ref.note) || "").trim();
+        ctx.font = "500 15px system-ui, sans-serif";
+        const bodyLines = note ? canvasWrapLines(ctx, `${noteLabel}：${note}`, w - 34) : [noteLabel + "：未填写"];
+        const cardH = 66 + bodyLines.length * 22;
+        canvasFillRound(ctx, x, cy, w, cardH, 14, theme.surface2, theme.line);
+        ctx.fillStyle = color;
+        ctx.font = "800 18px system-ui, sans-serif";
+        ctx.fillText(String(index + 1).padStart(2, "0"), x + 16, cy + 30);
+        ctx.fillStyle = theme.ink;
+        ctx.fillText(name, x + 58, cy + 30);
+        ctx.fillStyle = theme.text2;
+        ctx.font = "500 15px system-ui, sans-serif";
+        bodyLines.forEach((line, lineIndex) => ctx.fillText(line, x + 18, cy + 57 + lineIndex * 22));
+        cy += cardH + 12;
+    });
+    return cy;
+}
+function buildSelfIntroIntentExportCanvas(kind) {
+    var _a;
+    ensureSelfIntroDraft();
+    const d = normalizeSelfIntro(selfIntroDraft || ((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro)), theme = hoExportTheme(), profile = selfProfileFrom();
+    const rows = kind === "want" ? d.pl.wantModules : d.kp.canHostModules;
+    if (!rows.length)
+        throw new Error(kind === "want" ? "想跑模组里还没有内容" : "可带模组里还没有内容");
+    const title = kind === "want" ? "想跑模组" : "可带模组", subtitle = kind === "want" ? "按当前个人偏好页中的想跑模组清单导出。" : "按当前个人偏好页中的可带模组清单导出。", accent = kind === "want" ? theme.accent : theme.success;
+    const baseW = 1320, pad = 44, contentW = baseW - pad * 2, headBottom = 180;
+    const measure = document.createElement("canvas").getContext("2d");
+    if (!measure)
+        throw new Error("当前浏览器无法生成图片");
+    let cardsH = 0;
+    rows.forEach(ref => {
+        const note = String((ref === null || ref === void 0 ? void 0 : ref.note) || "").trim();
+        measure.font = "500 15px system-ui, sans-serif";
+        const bodyLines = note ? canvasWrapLines(measure, `${selfIntroIntentNoteLabel(kind)}：${note}`, contentW - 34) : [selfIntroIntentNoteLabel(kind) + "：未填写"];
+        cardsH += 66 + bodyLines.length * 22 + 12;
+    });
+    const baseH = headBottom + cardsH + 54, maxDim = 9000, scale = Math.min(2, maxDim / baseW, maxDim / baseH);
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.round(baseW * scale);
+    canvas.height = Math.round(baseH * scale);
+    const ctx = canvas.getContext("2d");
+    if (!ctx)
+        throw new Error("当前浏览器无法生成图片");
+    ctx.scale(scale, scale);
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, baseW, baseH);
+    drawUnifiedExportHeader(ctx, baseW, theme, { eyebrow: "PL / KP · 个人偏好", title: `${displayProfileName(profile) || "我"} · ${title}`, subtitle, stats: [`模组 ${rows.length} 个`, kind === "want" ? "玩家侧清单" : "带团侧清单", privacyMaskEnabled ? "隐私模式：开启" : "隐私模式：关闭"] });
+    drawSelfIntroIntentExportCards(ctx, pad, headBottom, contentW, rows, theme, accent, kind);
+    drawUnifiedExportFooter(ctx, baseW, baseH - 32, theme);
+    return canvas;
+}
+async function exportSelfIntroIntentImage(kind) {
+    try {
+        const canvas = buildSelfIntroIntentExportCanvas(kind);
+        const blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error("PNG 生成失败")), "image/png", 1));
+        const profile = selfProfileFrom(), rawName = String(displayProfileName(profile) || "我").replace(/[\/:*?"<>|]/g, "_").trim() || "我";
+        const suffix = kind === "want" ? "想跑模组" : "可带模组";
+        downloadBlobFile(blob, `${rawName}_${suffix}.png`);
+        showToast(`${suffix}图片已导出`);
+        return true;
+    }
+    catch (err) {
+        console.error(err);
+        appNotice(`导出${kind === "want" ? "想跑模组" : "可带模组"}图片失败：${err.message || err}`);
+        return false;
+    }
+}
 function queueSelfIntroSave(delay = 700) { clearTimeout(selfIntroSaveTimer); selfIntroLastSaveError = ""; updateSelfIntroSaveState(); selfIntroSaveTimer = setTimeout(() => commitSelfIntroDraft(), delay); }
 function reconcileSelfIntroIntentRefs(intro) { for (const path of ["pl.wantModules", "kp.canHostModules"]) {
     const rows = selfIntroPathGet(intro, path) || [];
@@ -10287,7 +10466,7 @@ async function pickSelfIntroModuleIntent(kind) {
         showToast("该模组已在列表中");
         return;
     }
-    rows.push({ moduleId: mod.id, name: mod.name, addedAt: Date.now() });
+    rows.push({ moduleId: mod.id, name: mod.name, note: "", addedAt: Date.now() });
     selfIntroPathSet(selfIntroDraft, path, rows);
     renderSelfIntroView();
     queueSelfIntroSave(80);
@@ -10325,14 +10504,16 @@ async function addSelfIntroModuleIntent(kind) {
         showToast("该模组已在列表中");
         return;
     }
-    rows.push({ moduleId: mod.id, name: mod.name, addedAt: Date.now() });
+    rows.push({ moduleId: mod.id, name: mod.name, note: "", addedAt: Date.now() });
     selfIntroPathSet(selfIntroDraft, path, rows);
     renderSelfIntroView();
     queueSelfIntroSave(80);
 }
 function removeSelfIntroModuleIntent(kind, moduleId, moduleName) { ensureSelfIntroDraft(); const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", key = normalizedEntityNameKey(moduleName); const rows = (selfIntroPathGet(selfIntroDraft, path) || []).filter(r => !(moduleId && r.moduleId === moduleId) && !(key && normalizedEntityNameKey(r.name) === key)); selfIntroPathSet(selfIntroDraft, path, rows); const stillUsed = [...(selfIntroDraft.pl.wantModules || []), ...(selfIntroDraft.kp.canHostModules || [])].some(r => r.moduleId === moduleId); if (!stillUsed)
     selfIntroPendingModules = selfIntroPendingModules.filter(m => m.id !== moduleId); renderSelfIntroView(); queueSelfIntroSave(120); }
-function selfIntroSearchText() { var _a; const d = normalizeSelfIntro((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro), mps = [d.pl.modulePrefs, d.kp.modulePrefs]; return buildSearchIndex([d.bio, d.platformOther, d.generalNotes, d.pl.rpStyle, d.pl.wishes, d.pl.avoids, d.pl.notes, d.kp.wishes, d.kp.avoids, d.kp.notes, d.kp.boundaryNotes, ...d.platforms, ...d.formats, ...d.timeSlots, ...d.availability, ...mps.flatMap(mp => [mp.eraOther, mp.regionOther, mp.structureOther, mp.elementOther, mp.notes, ...mp.eras, ...mp.regions, ...mp.structures, ...mp.elements]), ...d.pl.focus, ...d.pl.wantModules.map(x => x.name), ...d.kp.canHostModules.map(x => x.name), ...Object.keys(d.kp.boundaries).filter(k => d.kp.boundaries[k])]); }
+function updateSelfIntroModuleIntentNote(kind, moduleId, moduleName, note) { ensureSelfIntroDraft(); const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", key = normalizedEntityNameKey(moduleName), rows = selfIntroPathGet(selfIntroDraft, path) || []; const row = rows.find(r => (moduleId && r.moduleId === moduleId) || (key && normalizedEntityNameKey(r.name) === key)); if (!row)
+    return; row.note = String(note || "").trim(); queueSelfIntroSave(); }
+function selfIntroSearchText() { var _a; const d = normalizeSelfIntro((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro), mps = [d.pl.modulePrefs, d.kp.modulePrefs]; return buildSearchIndex([d.bio, d.platformOther, d.generalNotes, d.pl.rpStyle, d.pl.wishes, d.pl.avoids, d.pl.notes, d.kp.wishes, d.kp.avoids, d.kp.notes, d.kp.boundaryNotes, ...d.platforms, ...d.formats, ...d.timeSlots, ...d.availability, ...mps.flatMap(mp => [mp.eraOther, mp.regionOther, mp.structureOther, mp.elementOther, mp.notes, ...mp.eras, ...mp.regions, ...mp.structures, ...mp.elements]), ...d.pl.focus, ...d.pl.wantModules.flatMap(x => [x.name, x.note]), ...d.kp.canHostModules.flatMap(x => [x.name, x.note]), ...Object.keys(d.kp.boundaries).filter(k => d.kp.boundaries[k])]); }
 function statsRunRoles(run) {
     const selfId = selfProfileId();
     const kp = Boolean((selfId && (run === null || run === void 0 ? void 0 : run.kpProfileId) === selfId) || (!(run === null || run === void 0 ? void 0 : run.kpProfileId) && isSelfKP(run === null || run === void 0 ? void 0 : run.kp)));
@@ -15116,7 +15297,8 @@ catch (err) { } closeOnboardingTemporarily(); if (startProfile) {
     switchView("profiles");
     openEditor();
 } }
-function maybeShowOnboarding() { let done = false; try {
+async function maybeShowOnboarding() { if (await maybeRecoverRedundantStartupData())
+    return; let done = false; try {
     done = localStorage.getItem(ONBOARDING_KEY) === "1";
 }
 catch (err) { } if (done || hasMeaningfulData() || startupDataReport.source !== "fresh")
@@ -15374,7 +15556,7 @@ catch (err) {
 async function runStartupAutoChecks() {
     setStartupCheckDetail("启动检查：进行中");
     const integrity = renderDataIntegrity(dataIntegrityReport(), false);
-    const tasks = [runStorageDiagnostics(false), updateRecoveryHealth(), updatePersistentStorageStatus(), registerOfflineApp({ markCheck: true })];
+    const tasks = [runStorageDiagnostics(false), updateRecoveryHealth(), updatePersistentStorageStatus(), updateExternalBackupUI(), registerOfflineApp({ markCheck: true })];
     const results = await Promise.allSettled(tasks);
     updateUpgradeGuardUI();
     updateArchiveSizeHealth();
@@ -17395,6 +17577,10 @@ els.recordsBoard.addEventListener("click", e => {
         return;
     ensureSelfIntroDraft();
     const t = e.target;
+    if (t.matches("[data-intro-module-note]")) {
+        updateSelfIntroModuleIntentNote(t.dataset.introModuleNote, t.dataset.moduleId, t.dataset.moduleName, t.value);
+        return;
+    }
     if (t.matches("[data-intro-field]") && !t.matches("input[type=radio]")) {
         selfIntroPathSet(selfIntroDraft, t.dataset.introField, t.value);
         queueSelfIntroSave();
@@ -17454,6 +17640,9 @@ els.recordsBoard.addEventListener("click", e => {
     if (out)
         out.textContent = selfIntroScaleText(path, value);
     queueSelfIntroSave(220);
+    return;
+} const exportIntent = e.target.closest("[data-intro-export-intent]"); if (exportIntent) {
+    void exportSelfIntroIntentImage(exportIntent.dataset.introExportIntent);
     return;
 } const pick = e.target.closest("[data-intro-pick-module]"); if (pick) {
     pickSelfIntroModuleIntent(pick.dataset.introPickModule);
@@ -17951,10 +18140,17 @@ els.importBtn.addEventListener("click", () => els.importFile.click());
 els.dataSafetyBackupNow.addEventListener("click", exportBackup);
 els.dataSafetyDismiss.addEventListener("click", dismissBackupReminder);
 els.backupReminderDays.addEventListener("change", () => setBackupReminderDays(els.backupReminderDays.value));
+els.recoveryInterval.addEventListener("change", () => setRecoveryIntervalHours(els.recoveryInterval.value));
+els.recoveryKeep.addEventListener("change", () => setRecoveryMaxSnapshots(els.recoveryKeep.value));
 els.runStorageCheck.addEventListener("click", () => void runStorageDiagnostics(true));
 els.createRecovery.addEventListener("click", createRecoveryNow);
 els.restoreRecovery.addEventListener("click", restoreLatestRecovery);
 els.requestPersistentStorage.addEventListener("click", requestPersistentStorage);
+els.externalBackupEnabled.addEventListener("change", async () => { if (els.externalBackupEnabled.checked && !(await loadExternalBackupTarget())) { els.externalBackupEnabled.checked = false; showToast("请先选择自动备份保存位置"); return; } setExternalBackupEnabled(els.externalBackupEnabled.checked); });
+els.externalBackupTime.addEventListener("change", () => setExternalBackupTime(els.externalBackupTime.value));
+els.chooseExternalBackupFolder.addEventListener("click", chooseExternalBackupTarget);
+els.reauthorizeExternalBackup.addEventListener("click", reauthorizeExternalBackup);
+els.externalBackupNow.addEventListener("click", () => { void writeExternalBackupNow({ manual: true, reason: "manual-test" }); });
 els.relayUpgrade.addEventListener("click", async () => { if (await appConfirm("将当前档案写入所选新版 HTML。生成文件包含真实数据，仅用于升级或备份。是否继续？", { title: "生成新版迁移文件？", confirmText: "继续" }))
     els.relayUpgradeFile.click(); });
 els.relayUpgradeFile.addEventListener("change", () => { var _a; const file = (_a = els.relayUpgradeFile.files) === null || _a === void 0 ? void 0 : _a[0]; if (file)
@@ -18125,6 +18321,7 @@ const startupNeedsPersistence = startupDataReport.inherited || startupDataReport
 if (startupNeedsPersistence)
     saveState({ allowExternalOverwrite: true });
 initDataSafetyUX();
+initExternalBackupScheduler();
 void runStartupAutoChecks();
 renderSortOptions();
 initDialogFocusLifecycle();
