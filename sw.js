@@ -1,5 +1,5 @@
 const CACHE_PREFIX="tomato-pl-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.6.17`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.6.18`;
 const APP_SHELL=["./","./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 
 self.addEventListener("install",event=>{
@@ -41,5 +41,5 @@ self.addEventListener("fetch",event=>{
 });
 
 self.addEventListener("message",event=>{
-  if(event.data?.type==="SKIP_WAITING")self.skipWaiting();
+  if(event.data&&event.data.type==="SKIP_WAITING")self.skipWaiting();
 });

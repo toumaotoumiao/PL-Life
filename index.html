@@ -3427,6 +3427,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.18 · 全端响应式修复：计划编辑抽屉改为自身宽度收敛，彻底消除人物/PC/HO 区域横向溢出，并复查电脑、平板、手机各主页面与编辑器。 */
     /* v8.1.6.17 · 开团计划身份配色：我做 KP 与我做 PL 的计划在列表、周历、月历中使用不同颜色，并提供文字标签。 */
     /* v8.1.6.16 · UC / 夸克兼容修复：移除会导致部分移动内核整段脚本停止的高风险语法/接口依赖，并增加兼容兜底与启动错误提示。 */
     /* v8.1.6.15 · 全站搜索逻辑优化：模组、计划、记录、全局与设置搜索按各自场景做精准匹配与相关性排序，保留拼音首字母支持。 */
@@ -3816,6 +3817,177 @@
       .mobile-bottom-nav button span{font-size:9.5px!important}.mobile-bottom-nav button small{font-size:7.5px!important}
     }
 
+
+
+    /* ---------- v8.1.6.18 · 全端响应式与编辑抽屉防横向溢出 ---------- */
+    /* 侧边编辑器的布局按“抽屉自身宽度”收敛，避免桌面大屏时因为视口媒体查询未触发而出现内部横向滚动。 */
+    .plan-editor-drawer{
+      width:min(660px,100vw)!important;
+      max-width:100vw!important;
+      overflow:hidden!important;
+    }
+    .plan-editor-drawer-body{
+      overflow-y:auto!important;
+      overflow-x:hidden!important;
+      min-width:0!important;
+      max-width:100%!important;
+      box-sizing:border-box!important;
+    }
+    .plan-editor-drawer .plan-editor-form,
+    .plan-editor-drawer .plan-editor-block,
+    .plan-editor-drawer .plan-editor-basic,
+    .plan-editor-drawer .plan-editor-kp,
+    .plan-editor-drawer .participants,
+    .plan-editor-drawer .participant-assignment-list,
+    .plan-editor-drawer .participant-assignment-row,
+    .plan-editor-drawer .assignment-person,
+    .plan-editor-drawer .assignment-pc-field,
+    .plan-editor-drawer .assignment-ho-field,
+    .plan-editor-drawer .plan-editor-add-panel,
+    .plan-editor-drawer .plan-pl-combobox,
+    .plan-editor-drawer .plan-pl-combobox-control,
+    .plan-editor-drawer .blacklist-plan-picker,
+    .plan-editor-drawer .blacklist-plan-picker-row,
+    .plan-editor-drawer .shared-ho-note,
+    .plan-editor-drawer .kpc-panel,
+    .plan-editor-drawer .kpc-fields,
+    .plan-editor-drawer .plan-editor-schedules,
+    .plan-editor-drawer .plan-editor-footer{
+      min-width:0!important;
+      max-width:100%!important;
+      box-sizing:border-box!important;
+    }
+    .plan-editor-drawer .plan-editor-block{overflow:visible!important}
+    .plan-editor-drawer .participant-assignment-row.has-ho{
+      grid-template-columns:minmax(0,.72fr) minmax(0,1.05fr) minmax(0,1.38fr) 28px!important;
+      gap:7px!important;
+      width:100%!important;
+    }
+    .plan-editor-drawer .participant-assignment-row.no-ho{
+      grid-template-columns:minmax(0,.8fr) minmax(0,2fr) 28px!important;
+      gap:7px!important;
+      width:100%!important;
+    }
+    .plan-editor-drawer .assignment-ho-chips{
+      grid-template-columns:repeat(4,minmax(0,1fr))!important;
+      width:100%!important;
+      min-width:0!important;
+    }
+    .plan-editor-drawer .assignment-ho-chip{
+      width:100%!important;
+      min-width:0!important;
+      padding-inline:3px!important;
+    }
+    .plan-editor-drawer .assignment-pc-input,
+    .plan-editor-drawer .assignment-ho-custom,
+    .plan-editor-drawer .text-input,
+    .plan-editor-drawer .plan-participant-select{
+      width:100%!important;
+      min-width:0!important;
+      max-width:100%!important;
+    }
+    .plan-editor-drawer .participants-head{
+      display:grid!important;
+      grid-template-columns:minmax(0,1fr) auto!important;
+      align-items:start!important;
+      gap:8px!important;
+    }
+    .plan-editor-drawer .participants-head-actions{
+      display:flex!important;
+      flex-wrap:wrap!important;
+      justify-content:flex-end!important;
+      min-width:0!important;
+      max-width:100%!important;
+      gap:6px!important;
+    }
+    .plan-editor-drawer .participant-add{
+      display:grid!important;
+      grid-template-columns:minmax(0,1fr) auto!important;
+      align-items:start!important;
+      min-width:min(100%,300px)!important;
+      max-width:100%!important;
+    }
+    .plan-editor-drawer .participant-add .plan-editor-add-panel{margin-top:0!important}
+    .plan-editor-drawer .plan-editor-block-head{flex-wrap:wrap!important}
+    .plan-editor-drawer .plan-module-picker-row{grid-template-columns:minmax(0,1fr) auto!important}
+    .plan-editor-drawer .blacklist-plan-picker-row{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important}
+    .plan-editor-drawer .kpc-fields.has-ho{
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr)!important;
+    }
+    .plan-editor-drawer .plan-editor-footer{
+      left:0!important;right:0!important;width:auto!important;
+      overflow:hidden!important;
+    }
+    .plan-editor-drawer .plan-editor-footer-right{min-width:0!important;flex-wrap:wrap!important}
+
+    /* 常规页面：能换行的操作区优先换行，不额外制造横向拖动。 */
+    .module-actions{flex-wrap:wrap!important;overflow-x:visible!important}
+    .compact-scores{flex-wrap:wrap!important;overflow-x:visible!important}
+    .table-record-footer-actions,.card-actions,.view-toolbar-actions{max-width:100%;min-width:0}
+
+    @media(max-width:980px){
+      .plan-editor-drawer{width:min(660px,96vw)!important}
+    }
+    @media(max-width:760px){
+      .plan-editor-drawer{width:100vw!important;max-width:100vw!important}
+      .plan-editor-drawer-head{padding-inline:14px!important}
+      .plan-editor-drawer-body{padding:10px 10px calc(18px + env(safe-area-inset-bottom))!important}
+      .plan-editor-drawer .plan-editor-form{gap:10px!important}
+      .plan-editor-drawer .plan-editor-block{padding:11px 10px!important;border-radius:13px!important}
+      .plan-editor-drawer .plan-editor-basic,
+      .plan-editor-drawer .plan-editor-kp{grid-template-columns:minmax(0,1fr)!important}
+      .plan-editor-drawer .plan-editor-basic .wide{grid-column:auto!important}
+      .plan-editor-drawer .participants-head{grid-template-columns:minmax(0,1fr)!important}
+      .plan-editor-drawer .participants-head-actions{justify-content:stretch!important;width:100%!important}
+      .plan-editor-drawer .module-ho-inline{width:100%!important;justify-content:flex-start!important}
+      .plan-editor-drawer .participant-add{grid-template-columns:minmax(0,1fr) auto!important;width:100%!important;min-width:0!important}
+      .plan-editor-drawer .participant-assignment-row.has-ho,
+      .plan-editor-drawer .participant-assignment-row.no-ho{
+        grid-template-columns:minmax(0,1fr) 30px!important;
+        align-items:start!important;
+      }
+      .plan-editor-drawer .participant-assignment-row .assignment-person,
+      .plan-editor-drawer .participant-assignment-row .assignment-pc-field,
+      .plan-editor-drawer .participant-assignment-row .assignment-ho-field{
+        grid-column:1!important;
+      }
+      .plan-editor-drawer .participant-assignment-row .assignment-remove{
+        grid-column:2!important;grid-row:1!important;
+      }
+      .plan-editor-drawer .assignment-ho-chips{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+      .plan-editor-drawer .plan-module-picker-row,
+      .plan-editor-drawer .blacklist-plan-picker-row,
+      .plan-editor-drawer .kpc-fields.has-ho{grid-template-columns:minmax(0,1fr)!important}
+      .plan-editor-drawer .plan-module-picker-row .btn,
+      .plan-editor-drawer .blacklist-plan-picker-row .btn{width:100%!important}
+      .plan-editor-drawer .plan-editor-footer{
+        margin-inline:-10px!important;padding-inline:10px!important;
+        display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important;
+      }
+      .plan-editor-drawer .plan-editor-footer>div:first-child{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
+      .plan-editor-drawer .plan-editor-footer-right{display:grid!important;grid-template-columns:1fr 1fr!important;width:100%!important}
+    }
+    @media(max-width:420px){
+      .plan-editor-drawer-body{padding-inline:8px!important}
+      .plan-editor-drawer .plan-editor-block{padding-inline:9px!important}
+      .plan-editor-drawer .participant-add{grid-template-columns:minmax(0,1fr)!important}
+      .plan-editor-drawer .participant-add>.btn{width:100%!important}
+      .plan-editor-drawer .assignment-ho-chips{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+      .plan-editor-drawer .plan-editor-footer{margin-inline:-8px!important;padding-inline:8px!important}
+      .plan-editor-drawer .plan-editor-footer-right{grid-template-columns:1fr 1fr!important}
+    }
+    @media(max-width:340px){
+      .plan-editor-drawer .assignment-ho-chips{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+      .plan-editor-drawer .plan-editor-footer-right{grid-template-columns:1fr 1fr!important}
+      .plan-editor-drawer .plan-editor-footer-right .btn{padding-inline:6px!important}
+    }
+    @media(max-width:760px){
+      .stats-table-wrap{overflow-x:hidden!important}
+      .stats-table{min-width:100%!important;width:100%!important;table-layout:auto!important}
+      .stats-table th,.stats-table td{padding:7px 5px!important;white-space:normal!important;overflow-wrap:anywhere}
+      .stats-table td.num{white-space:nowrap!important;text-align:right}
+    }
+
 </style>
 
 </head>
@@ -4132,7 +4304,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.17 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.18 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4144,7 +4316,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.17　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.18　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4434,7 +4606,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.17</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.18</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4478,10 +4650,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.17 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.17</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.18 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.18</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.18</strong><span>全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动；同时复查全部主页面、PL 编辑、模组编辑、设置与个人统计的横向溢出，并让可换行的操作区优先换行。</span>
 <strong>v8.1.6.17</strong><span>开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。</span>
 <strong>v8.1.6.16</strong><span>修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底，并下调主脚本语法目标，避免旧内核在初始化阶段直接停止执行。</span>
 <strong>v8.1.6.15</strong><span>统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果；跑团记录搜索会优先定位最相关模组，并在非模组关键词搜索时只显示命中的桌次；全局搜索按精准度跨页面排序；设置搜索增加常用功能词匹配。所有搜索继续支持拼音首字母。</span>
@@ -4666,7 +4839,7 @@
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.6.17 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.18 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4685,7 +4858,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24 * 60 * 60 * 1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.17";
+const APP_UI_VERSION = "8.1.6.18";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
