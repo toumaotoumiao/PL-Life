@@ -3714,6 +3714,24 @@
     .self-intro-side-body{display:flex;flex:1;flex-direction:column;gap:0;padding:0 15px 16px}
     .self-intro-side .self-intro-section{padding-top:14px}.self-intro-side .self-intro-section+.self-intro-section{border-top:1px dashed color-mix(in srgb,var(--t-line) 76%,transparent);margin-top:14px}
     .self-intro-section{display:grid;gap:8px;padding-top:13px}.self-intro-card-body>.self-intro-section+.self-intro-section{border-top:1px dashed color-mix(in srgb,var(--t-line) 76%,transparent)}
+    .intro-basics-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 18px;padding-top:8px}
+    .intro-basic-block{display:grid;gap:7px;padding:11px 0;min-width:0}
+    .intro-basic-block:nth-child(n+3){border-top:1px dashed color-mix(in srgb,var(--t-line) 72%,transparent)}
+    .intro-basic-wide{grid-column:1/-1}
+    .intro-basic-label{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:20px}
+    .intro-basic-label strong{font-size:11.5px;font-weight:830;color:var(--t-ink)}
+    .intro-basic-label span{font-size:8.5px;color:var(--t-muted)}
+    .intro-basic-block .intro-textarea{min-height:64px}
+    .intro-basic-block.bio .intro-textarea{min-height:56px}
+    .intro-schedule-grid{display:grid;gap:8px}
+    .intro-schedule-row{display:grid;grid-template-columns:56px minmax(0,1fr);gap:8px;align-items:start;min-width:0}
+    .intro-schedule-row>.intro-inline-label{padding-top:8px}
+    .intro-time-ranges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:2px}
+    .intro-time-range-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto minmax(0,1fr);gap:6px;align-items:center;padding:8px 9px;border:1px solid color-mix(in srgb,var(--t-line) 78%,transparent);border-radius:11px;background:color-mix(in srgb,var(--t-surface-2) 62%,var(--t-surface));min-width:0}
+    .intro-time-range-slot{min-width:34px;font-size:9px;font-weight:820;color:var(--t-text-2)}
+    .intro-time-range-sep{font-size:8px;color:var(--t-faint)}
+    .intro-time-select{width:100%;min-width:0;min-height:34px;padding:0 26px 0 8px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-text);font-size:9px}
+    .intro-time-help{grid-column:1/-1;font-size:8px;line-height:1.45;color:var(--t-muted);padding-left:42px}
     .self-intro-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:22px}.self-intro-section-head strong{position:relative;font-size:12.5px;line-height:1.3;font-weight:850;color:var(--t-ink);padding-left:9px}.self-intro-section-head strong::before{content:"";position:absolute;left:0;top:50%;width:3px;height:13px;transform:translateY(-50%);border-radius:999px;background:var(--intro-side-color,var(--t-accent))}.self-intro-section-head span{font-size:8.5px;color:var(--t-muted)}.self-intro-section-tools{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.intro-toggle-all{min-height:25px;padding:0 8px;border:1px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 28%,var(--t-line));border-radius:999px;background:color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 45%,var(--t-surface));color:var(--intro-side-color,var(--t-accent-strong));font-size:8px;font-weight:800;cursor:pointer;transition:background .14s ease,border-color .14s ease,transform .12s ease}.intro-toggle-all:hover{background:color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 78%,var(--t-surface));border-color:color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 50%,var(--t-line))}.intro-toggle-all:active{transform:translateY(1px)}.intro-toggle-all:focus-visible{outline:3px solid var(--t-focus);outline-offset:1px}.self-intro-credit{display:inline;font:inherit;color:var(--t-faint);margin-left:4px}.view-toolbar-title>span{line-height:1.55}
     .intro-chip-grid{display:flex;flex-wrap:wrap;gap:6px}.intro-chip{position:relative;display:inline-flex;align-items:center;min-height:32px}.intro-chip input{position:absolute;opacity:0;pointer-events:none}
     .intro-chip span{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:32px;padding:0 11px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-text-2);cursor:pointer;transition:background .15s ease,color .15s ease,border-color .15s ease,box-shadow .15s ease,transform .12s ease}
@@ -3727,8 +3745,31 @@
     .intro-subdetails{border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2);overflow:hidden}.intro-subdetails>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;color:var(--t-ink);font-size:11.5px;font-weight:850}.intro-subdetails>summary::-webkit-details-marker{display:none}.intro-subdetails>summary::after{content:'⌄';color:var(--t-muted)}.intro-subdetails[open]>summary::after{transform:rotate(180deg)}.intro-subdetails-body{display:grid;gap:10px;padding:0 10px 11px;border-top:1px solid var(--t-line)}
     .intro-intent-box{display:grid;gap:10px}.intro-intent-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.intro-intent-actions{display:flex;gap:6px;align-items:stretch}.intro-intent-actions .btn{white-space:nowrap}.intro-module-chips{display:grid;gap:8px}.intro-module-chip{display:grid;gap:8px;max-width:100%;padding:10px 11px;border:1px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 16%,var(--t-line));border-radius:14px;background:linear-gradient(180deg,color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 34%,var(--t-surface)),var(--t-surface-2))}.intro-module-chip-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:start}.intro-module-chip-main{display:grid;gap:2px;min-width:0}.intro-module-chip strong{font-size:10.2px;line-height:1.35;overflow:hidden;text-overflow:ellipsis}.intro-module-chip small{font-size:8px;color:var(--t-muted);line-height:1.45;overflow:hidden;text-overflow:ellipsis}.intro-module-chip-remove{width:28px;height:28px;border:1px solid color-mix(in srgb,var(--t-line) 82%,transparent);border-radius:10px;background:var(--t-surface);color:var(--t-muted);cursor:pointer;transition:background .14s ease,border-color .14s ease,color .14s ease}.intro-module-chip-remove:hover{background:color-mix(in srgb,var(--t-danger) 8%,var(--t-surface));border-color:color-mix(in srgb,var(--t-danger) 24%,var(--t-line));color:var(--t-danger)}.intro-module-note-field{display:grid;gap:5px}.intro-module-note-field span{font-size:8.2px;font-weight:780;color:var(--t-muted)}.intro-module-note-field .intro-textarea{min-height:64px;padding-top:8px;padding-bottom:8px;border-radius:11px;background:color-mix(in srgb,var(--t-surface) 68%,var(--t-surface-2))}.intro-intent-head-copy{flex:1 1 auto;min-width:0;display:grid;gap:2px}.intro-intent-head-copy>span{font-size:8.5px;color:var(--t-muted)}.intro-intent-head-actions{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.intro-intent-head-actions .image-export-btn{min-height:30px!important}.intro-empty{padding:9px 10px;border:1px dashed var(--t-line);border-radius:10px;color:var(--t-muted);font-size:8.5px}.intro-helper{font-size:8.3px;line-height:1.55;color:var(--t-muted)}
     .intro-radio-grid{display:flex;flex-wrap:wrap;gap:6px}.intro-radio-grid label{position:relative}.intro-radio-grid input{position:absolute;opacity:0}.intro-radio-grid span{display:inline-flex;align-items:center;gap:5px;min-height:32px;padding:0 11px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-text-2);cursor:pointer;transition:.15s ease}.intro-radio-grid input:checked+span{background:var(--intro-side-color,var(--t-accent));border-color:var(--intro-side-color,var(--t-accent));color:var(--t-surface);font-weight:820;box-shadow:0 4px 12px color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 20%,transparent)}.intro-radio-grid input:checked+span::before{content:'●';font-size:7px}
-    @media(max-width:900px){.self-intro-dual{grid-template-columns:1fr}.intro-two-col{grid-template-columns:1fr}}
+    @media(max-width:900px){.self-intro-dual{grid-template-columns:1fr}.intro-two-col{grid-template-columns:1fr}.intro-basics-layout{grid-template-columns:1fr}.intro-basic-wide{grid-column:auto}.intro-basic-block:nth-child(n+2){border-top:1px dashed color-mix(in srgb,var(--t-line) 72%,transparent)}.intro-time-ranges{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.intro-time-ranges{grid-template-columns:1fr}.intro-schedule-row{grid-template-columns:1fr;gap:4px}.intro-schedule-row>.intro-inline-label{padding-top:0}.intro-time-range-row{grid-template-columns:42px minmax(0,1fr) auto minmax(0,1fr)}.intro-time-help{padding-left:0}.intro-basic-label{align-items:flex-start;flex-direction:column;gap:2px}}
+    @media(max-width:360px){.intro-time-range-row{grid-template-columns:1fr 1fr;gap:5px}.intro-time-range-slot{grid-column:1/-1}.intro-time-range-sep{display:none}.intro-time-select{min-height:40px}}
     @media(max-width:760px){.self-intro-view{padding-right:var(--mobile-rail-safe)}.self-intro-toolbar .view-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}.self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1;width:100%;box-sizing:border-box}.self-intro-toolbar .view-toolbar-actions>.btn{width:100%;min-width:0}.self-intro-grid{gap:8px}.self-intro-card,.self-intro-side{border-radius:14px}.self-intro-card>summary{padding:12px}.self-intro-card-body{padding:0 11px 13px}.self-intro-side-head{padding:13px 12px}.self-intro-side-body{padding:0 11px 13px}.intro-boundary-row{grid-template-columns:1fr}.intro-intent-add{grid-template-columns:1fr}.intro-intent-actions{display:grid;grid-template-columns:1fr 1fr}.intro-intent-add .btn{width:100%}}
+
+    /* ---------- v8.1.6.28 · 个人偏好统一导出中心 ---------- */
+    .image-export-center{position:relative;min-width:0}
+    .self-intro-export-center{display:inline-flex}
+    .export-center-panel{box-sizing:border-box;position:fixed;right:24px;top:120px;z-index:var(--z-popover,340);width:520px;max-width:calc(100vw - 32px);max-height:calc(100vh - 132px);overflow:auto;overscroll-behavior:contain;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface);box-shadow:0 22px 54px var(--t-shadow);color:var(--t-text);text-align:left}
+    .export-center-panel[hidden]{display:none!important}
+    .export-center-head{position:sticky;top:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:15px 16px 13px;border-bottom:1px solid var(--t-line);background:var(--t-surface)}
+    .export-center-head>div{display:grid;gap:3px;min-width:0}.export-center-head strong{font-size:15px;color:var(--t-ink)}.export-center-head span{font-size:9.5px;line-height:1.45;color:var(--t-muted)}
+    .export-center-close{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface-2);color:var(--t-muted);font-size:17px;cursor:pointer}
+    .export-center-close:hover{border-color:var(--t-line-strong);color:var(--t-ink)}
+    .export-center-body{display:grid;gap:0;padding:0 15px}
+    .export-center-section{display:grid;gap:9px;padding:13px 0}.export-center-section+.export-center-section{border-top:1px dashed var(--t-line)}
+    .export-center-section-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.export-center-section-head strong{font-size:11.5px;color:var(--t-ink)}.export-center-section-head span{font-size:8.5px;color:var(--t-muted);text-align:right}
+    .export-preset-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.export-preset-grid button{min-height:36px;padding:0 8px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);color:var(--t-text-2);font-size:9.5px;font-weight:760;cursor:pointer}.export-preset-grid button:hover,.export-preset-grid button.active{border-color:var(--t-accent);background:var(--t-accent-soft);color:var(--t-accent-strong)}
+    .export-scope-list{display:grid;gap:6px}.export-scope-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:9px;align-items:center;min-height:48px;padding:7px 8px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface-2)}.export-scope-row.is-disabled{opacity:.68}.export-scope-check{display:grid;place-items:center;width:30px;height:30px}.export-scope-check input{width:16px;height:16px;accent-color:var(--t-accent)}.export-scope-copy{display:grid;gap:2px;min-width:0}.export-scope-copy strong{font-size:10.5px;color:var(--t-ink)}.export-scope-copy small{font-size:8.5px;line-height:1.35;color:var(--t-muted)}.export-scope-actions{display:flex;gap:4px}.export-scope-actions button{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-muted);cursor:pointer}.export-scope-actions button:disabled{opacity:.28;cursor:default}.export-scope-actions button:not(:disabled):hover{color:var(--t-accent-strong);border-color:var(--t-accent)}
+    .export-style-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.export-style-grid label{position:relative;min-width:0}.export-style-grid input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden}.export-style-grid label>span{display:grid;gap:2px;min-height:62px;padding:9px 10px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface-2);cursor:pointer}.export-style-grid strong{font-size:10px;color:var(--t-text-2)}.export-style-grid small{font-size:8.2px;line-height:1.35;color:var(--t-muted)}.export-style-grid input:checked+span{border-color:var(--t-accent);background:var(--t-accent-soft);box-shadow:inset 0 0 0 1px var(--t-accent)}.export-style-grid input:checked+span strong{color:var(--t-accent-strong)}
+    .export-option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.export-option-grid label{display:flex;align-items:center;gap:7px;min-height:36px;padding:0 9px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);font-size:9px;color:var(--t-text-2)}.export-option-grid input{width:15px;height:15px;accent-color:var(--t-accent)}
+    .export-center-summary{margin:0 0 13px;padding:10px 11px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface-2);font-size:9px;line-height:1.55;color:var(--t-muted)}.export-center-summary strong{color:var(--t-ink)}
+    .export-center-foot{position:sticky;bottom:0;z-index:2;display:flex;align-items:center;justify-content:flex-end;gap:7px;padding:11px 15px;border-top:1px solid var(--t-line);background:var(--t-surface)}.export-center-foot .btn{min-height:38px}.export-center-foot .image-export-btn{min-width:118px}
+    @media(max-width:760px){body.self-intro-export-open .mobile-side-rail,body.self-intro-export-open .mobile-bottom-nav{opacity:0!important;pointer-events:none!important}.self-intro-export-center{display:flex;width:100%}.self-intro-export-center>#selfIntroExportBtn{width:100%}.export-center-panel{position:fixed;left:12px;right:12px;top:auto;bottom:12px;width:auto;max-width:none;max-height:82vh;border-radius:18px}.export-center-head{padding:14px 14px 12px}.export-center-body{padding:0 13px}.export-center-foot{padding:10px 13px}.export-center-section-head{align-items:flex-start;flex-direction:column;gap:2px}.export-center-section-head span{text-align:left}.export-preset-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.export-style-grid{grid-template-columns:1fr}.export-style-grid label>span{min-height:48px}.export-option-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:430px){.export-option-grid{grid-template-columns:1fr}.export-scope-row{grid-template-columns:auto minmax(0,1fr)}.export-scope-actions{grid-column:2;justify-content:flex-end}.export-center-foot{display:grid;grid-template-columns:1fr 1fr}.export-center-foot .btn{width:100%;min-width:0}}
 
 
     /* ---------- v8.1.6.7 · 我的跑团统计 ---------- */
@@ -4472,7 +4513,52 @@ body{font-size:var(--vu-body);line-height:1.5}
             <span>整理常用信息、PL / KP 偏好、想跑模组、可带模组与协作边界。<small class="self-intro-credit">（参考来源：@云染、@冒冒及匿名作者的偏好表格；如有遗漏，欢迎补充来源信息。）</small></span>
           </div>
           <div class="view-toolbar-actions">
-            <button id="selfIntroExportBtn" class="btn image-export-btn" type="button">导出图片</button>
+            <div id="selfIntroExportCenter" class="image-export-center self-intro-export-center">
+              <button id="selfIntroExportBtn" class="btn image-export-btn has-menu" type="button" aria-expanded="false" aria-controls="selfIntroExportPanel">导出图片</button>
+              <div id="selfIntroExportPanel" class="export-center-panel" role="dialog" aria-label="个人偏好导出设置" hidden>
+                <div class="export-center-head">
+                  <div><strong>导出个人偏好</strong><span>选择区域、顺序和样式；既可以整页导出，也可以任意组合。</span></div>
+                  <button id="selfIntroExportPanelClose" class="export-center-close" type="button" aria-label="关闭导出设置">×</button>
+                </div>
+                <div class="export-center-body">
+                  <section class="export-center-section">
+                    <div class="export-center-section-head"><strong>快捷预设</strong><span>一键切换常用组合</span></div>
+                    <div class="export-preset-grid" role="group" aria-label="导出预设">
+                      <button type="button" data-self-intro-export-preset="all">全部</button>
+                      <button type="button" data-self-intro-export-preset="prefs">仅偏好</button>
+                      <button type="button" data-self-intro-export-preset="modules">仅模组</button>
+                      <button type="button" data-self-intro-export-preset="share">公开分享</button>
+                    </div>
+                  </section>
+                  <section class="export-center-section">
+                    <div class="export-center-section-head"><strong>导出范围与顺序</strong><span>勾选后可上下调整导出顺序</span></div>
+                    <div id="selfIntroExportScopeList" class="export-scope-list"></div>
+                  </section>
+                  <section class="export-center-section">
+                    <div class="export-center-section-head"><strong>导出样式</strong><span>同一份数据适配不同分享场景</span></div>
+                    <div class="export-style-grid" role="radiogroup" aria-label="导出样式">
+                      <label><input type="radio" name="selfIntroExportStyle" value="full"><span><strong>完整卡片</strong><small>信息最完整，适合留档</small></span></label>
+                      <label><input type="radio" name="selfIntroExportStyle" value="compact"><span><strong>紧凑长图</strong><small>减少留白，适合手机查看</small></span></label>
+                      <label><input type="radio" name="selfIntroExportStyle" value="share"><span><strong>分享简洁</strong><small>更克制，适合公开发送</small></span></label>
+                    </div>
+                  </section>
+                  <section class="export-center-section">
+                    <div class="export-center-section-head"><strong>导出选项</strong><span>只影响图片，不改动原始数据</span></div>
+                    <div class="export-option-grid">
+                      <label><input id="selfIntroExportHideEmpty" type="checkbox"><span>隐藏空白内容</span></label>
+                      <label><input id="selfIntroExportHideEmptyNotes" type="checkbox"><span>隐藏空备注</span></label>
+                      <label><input id="selfIntroExportShowHelp" type="checkbox"><span>显示区域说明</span></label>
+                      <label><input id="selfIntroExportHideIdentity" type="checkbox"><span>隐藏个人姓名</span></label>
+                    </div>
+                  </section>
+                  <div id="selfIntroExportSummary" class="export-center-summary" role="status" aria-live="polite"></div>
+                </div>
+                <div class="export-center-foot">
+                  <button id="selfIntroExportResetBtn" class="btn" type="button">恢复默认</button>
+                  <button id="selfIntroExportNowBtn" class="btn primary image-export-btn" type="button">导出图片</button>
+                </div>
+              </div>
+            </div>
             <span id="selfIntroSaveState" class="self-intro-save-state" role="status" aria-live="polite">已保存</span>
             <button id="selfIntroSaveBtn" class="btn primary" type="button">保存偏好</button>
           </div>
@@ -4648,7 +4734,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.26 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.28 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4660,7 +4746,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.26　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.28　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5014,6 +5100,8 @@ body{font-size:var(--vu-body);line-height:1.5}
 <div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.26</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.28</strong><span>个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式，以及隐藏空白、空备注、说明文字和个人姓名等选项；导出设置会记住上次选择，并同步优化电脑、平板和手机端弹层布局。</span>
+<strong>v8.1.6.27</strong><span>个人偏好前半部分改为更紧凑的“常用信息”布局；平台、形式、日期、频率与时间重新分组，选择上午 / 中午 / 下午 / 晚上 / 凌晨后可继续设置 30 分钟粒度的具体起止时间，并保持手机、平板和电脑自适应。</span>
 <strong>v8.1.6.26</strong><span>调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span>
 <strong>v8.1.6.25</strong><span>加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本；若主 localStorage 在浏览器更新或存储迁移后变空，启动时会自动检测冗余副本与恢复点并提示恢复。</span>
 <strong>v8.1.6.24</strong><span>数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护；新增浏览器外固定时间自动备份，可选择 / 更改电脑或手机保存位置，支持时自动写入“最新备份 + 每日备份”，页面关闭错过后再次打开会补做。</span>
@@ -5229,7 +5317,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.26";
+const APP_UI_VERSION = "8.1.6.28";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5411,9 +5499,26 @@ function normalizeIntroModuleRefs(raw) {
 }
 function defaultIntroModulePrefs() { return { eras: [], eraOther: "", regions: [], regionOther: "", structures: [], structureOther: "", elements: [], elementOther: "", notes: "" }; }
 function normalizeIntroModulePrefs(raw) { const x = raw && typeof raw === "object" ? raw : {}; return { eras: normalizeStringArray(x.eras), eraOther: String(x.eraOther || ""), regions: normalizeStringArray(x.regions), regionOther: String(x.regionOther || ""), structures: normalizeStringArray(x.structures), structureOther: String(x.structureOther || ""), elements: normalizeStringArray(x.elements), elementOther: String(x.elementOther || ""), notes: String(x.notes || "") }; }
+const INTRO_TIME_RANGE_DEFAULTS = {
+    "上午": ["08:00", "12:00"],
+    "中午": ["11:30", "14:00"],
+    "下午": ["12:00", "18:00"],
+    "晚上": ["18:00", "24:00"],
+    "凌晨": ["00:00", "04:00"]
+};
+function introClockMinutes(value) { const s = String(value || ""); if (s === "24:00") return 1440; const m = /^(\d{2}):(\d{2})$/.exec(s); if (!m) return -1; const h = Number(m[1]), min = Number(m[2]); return h >= 0 && h <= 23 && (min === 0 || min === 30) ? h * 60 + min : -1; }
+function normalizeIntroTimeRanges(raw, selectedSlots = []) {
+    const src = raw && typeof raw === "object" ? raw : {}, out = {};
+    for (const slot of selectedSlots) {
+        const def = INTRO_TIME_RANGE_DEFAULTS[slot] || ["", ""], item = src[slot] && typeof src[slot] === "object" ? src[slot] : null;
+        const start = item && introClockMinutes(item.start) >= 0 ? String(item.start) : def[0], end = item && introClockMinutes(item.end) >= 0 ? String(item.end) : def[1];
+        out[slot] = introClockMinutes(start) >= 0 && introClockMinutes(end) > introClockMinutes(start) ? { start, end } : { start: def[0], end: def[1] };
+    }
+    return out;
+}
 function defaultSelfIntro() {
     return {
-        bio: "", platforms: [], platformOther: "", formats: [], timeSlots: [], availability: [], frequency: "", generalNotes: "",
+        bio: "", platforms: [], platformOther: "", formats: [], timeSlots: [], timeRanges: {}, availability: [], frequency: "", generalNotes: "",
         pl: { modulePrefs: defaultIntroModulePrefs(), focus: [], ocPcRelation: "", rpIntensity: 3, rpStyle: "", npcAttitude: 3, actionStyle: 3, originalFlavor: 3, socialStyle: 3, decisionStyle: 3, cardLossAttitude: 3, kpChatStyle: 3, kpMercyStyle: 3, wishes: "", avoids: "", notes: "", wantModules: [] },
         kp: { modulePrefs: defaultIntroModulePrefs(), moduleAdaptation: 3, npcHandling: 3, plFreedom: 3, originalFlavor: 3, ruleStrictness: 3, wishes: "", avoids: "", notes: "", boundaries: Object.fromEntries(SELF_INTRO_BOUNDARY_ITEMS.map(k => [k, ""])), boundaryNotes: "", issueThreshold: "", issueAction: "", logReuse: "", futureContact: "", canHostModules: [] },
         updatedAt: 0
@@ -5429,8 +5534,9 @@ function normalizeSelfIntro(raw) {
         const val = String(((_a = kp.boundaries) === null || _a === void 0 ? void 0 : _a[key]) || "");
         boundaries[key] = SELF_INTRO_BOUNDARY_LEVELS.includes(val) ? val : "";
     }
+    const timeSlots = normalizeStringArray(src.timeSlots);
     return {
-        bio: String(src.bio || ""), platforms: normalizeStringArray(src.platforms), platformOther: String(src.platformOther || ""), formats: normalizeStringArray(src.formats), timeSlots: normalizeStringArray(src.timeSlots), availability: normalizeStringArray(src.availability), frequency: String(src.frequency || ""), generalNotes: String(src.generalNotes || ""),
+        bio: String(src.bio || ""), platforms: normalizeStringArray(src.platforms), platformOther: String(src.platformOther || ""), formats: normalizeStringArray(src.formats), timeSlots, timeRanges: normalizeIntroTimeRanges(src.timeRanges, timeSlots), availability: normalizeStringArray(src.availability), frequency: String(src.frequency || ""), generalNotes: String(src.generalNotes || ""),
         pl: { modulePrefs: normalizeIntroModulePrefs(plMp), focus: normalizeStringArray(pl.focus), ocPcRelation: String(pl.ocPcRelation || ""), rpIntensity: introScaleValue(pl.rpIntensity), rpStyle: String(pl.rpStyle || ""), npcAttitude: introScaleValue(pl.npcAttitude), actionStyle: introScaleValue(pl.actionStyle), originalFlavor: introScaleValue(pl.originalFlavor), socialStyle: introScaleValue(pl.socialStyle), decisionStyle: introScaleValue(pl.decisionStyle), cardLossAttitude: introScaleValue(pl.cardLossAttitude), kpChatStyle: introScaleValue(pl.kpChatStyle), kpMercyStyle: introScaleValue(pl.kpMercyStyle), wishes: String(pl.wishes || ""), avoids: String(pl.avoids || ""), notes: String(pl.notes || ""), wantModules: normalizeIntroModuleRefs(pl.wantModules) },
         kp: { modulePrefs: normalizeIntroModulePrefs(kpMp), moduleAdaptation: introScaleValue(kp.moduleAdaptation), npcHandling: introScaleValue(kp.npcHandling), plFreedom: introScaleValue(kp.plFreedom), originalFlavor: introScaleValue(kp.originalFlavor), ruleStrictness: introScaleValue(kp.ruleStrictness), wishes: String(kp.wishes || ""), avoids: String(kp.avoids || ""), notes: String(kp.notes || ""), boundaries, boundaryNotes: String(kp.boundaryNotes || ""), issueThreshold: String(kp.issueThreshold || ""), issueAction: String(kp.issueAction || ""), logReuse: String(kp.logReuse || ""), futureContact: String(kp.futureContact || ""), canHostModules: normalizeIntroModuleRefs(kp.canHostModules) },
         updatedAt: Number(src.updatedAt || 0)
@@ -5479,6 +5585,28 @@ let selfIntroBaseline = null;
 let selfIntroSaveTimer = 0;
 let selfIntroPendingModules = [];
 let selfIntroLastSaveError = "";
+const SELF_INTRO_EXPORT_PREF_KEY = "tomato_pl_self_intro_export_pref_v2";
+const SELF_INTRO_EXPORT_SCOPE_ORDER = ["common", "pl", "kp", "want", "host"];
+const SELF_INTRO_EXPORT_SCOPE_META = {
+    common: { label: "常用信息", desc: "介绍、平台、形式、日期、精确时段与通用补充" },
+    pl: { label: "PL 偏好", desc: "玩家侧模组偏好、RP 风格、行动与协作方式" },
+    kp: { label: "KP 偏好", desc: "带团侧模组处理、规则尺度、协作边界与须知" },
+    want: { label: "想跑模组", desc: "想跑清单及每个模组的备注" },
+    host: { label: "可带模组", desc: "可带清单及每个模组的带团备注" }
+};
+const SELF_INTRO_EXPORT_STYLE_META = {
+    full: { label: "完整卡片", desc: "信息完整，适合留档" },
+    compact: { label: "紧凑长图", desc: "减少留白，适合手机查看" },
+    share: { label: "分享简洁", desc: "视觉更克制，适合公开发送" }
+};
+function defaultSelfIntroExportState() { return { selected: [...SELF_INTRO_EXPORT_SCOPE_ORDER], order: [...SELF_INTRO_EXPORT_SCOPE_ORDER], style: "full", hideEmpty: true, hideEmptyNotes: true, showHelp: false, hideIdentity: false }; }
+function normalizeSelfIntroExportState(raw) {
+    const def = defaultSelfIntroExportState(), src = raw && typeof raw === "object" ? raw : {}, selected = Array.isArray(src.selected) ? src.selected.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.selected, orderRaw = Array.isArray(src.order) ? src.order.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.order, order = [...orderRaw, ...SELF_INTRO_EXPORT_SCOPE_ORDER.filter(id => !orderRaw.includes(id))];
+    return { selected: [...new Set(selected)], order: [...new Set(order)], style: SELF_INTRO_EXPORT_STYLE_META[src.style] ? src.style : def.style, hideEmpty: src.hideEmpty !== false, hideEmptyNotes: src.hideEmptyNotes !== false, showHelp: Boolean(src.showHelp), hideIdentity: Boolean(src.hideIdentity) };
+}
+function loadSelfIntroExportState() { try { return normalizeSelfIntroExportState(JSON.parse(localStorage.getItem(SELF_INTRO_EXPORT_PREF_KEY) || "null")); } catch (err) { return defaultSelfIntroExportState(); } }
+function saveSelfIntroExportState() { try { localStorage.setItem(SELF_INTRO_EXPORT_PREF_KEY, JSON.stringify(selfIntroExportState)); } catch (err) { } }
+let selfIntroExportState = loadSelfIntroExportState();
 let profileListMode = "active";
 let selectedModuleName = "";
 let privacyMaskEnabled = false;
@@ -7387,7 +7515,7 @@ const els = {
     compactAppBar: document.getElementById("compactAppBar"), compactSaveStatus: document.getElementById("compactSaveStatus"),
     moduleNativeStats: document.getElementById("moduleNativeStats"), moduleNativeSearch: document.getElementById("moduleNativeSearch"), moduleNativeHoFilter: document.getElementById("moduleNativeHoFilter"), moduleNativeLocationFilter: document.getElementById("moduleNativeLocationFilter"), moduleNativeSort: document.getElementById("moduleNativeSort"), moduleNativeGrid: document.getElementById("moduleNativeGrid"), newNativeModule: document.getElementById("newNativeModuleBtn"), openModuleAdvanced: document.getElementById("openModuleAdvancedBtn"), moduleCardsLayout: document.getElementById("moduleCardsLayoutBtn"), moduleCompactLayout: document.getElementById("moduleCompactLayoutBtn"), nativeModuleEditorBackdrop: document.getElementById("nativeModuleEditorBackdrop"), nativeModuleEditorTitle: document.getElementById("nativeModuleEditorTitle"), nativeModuleEditorContent: document.getElementById("nativeModuleEditorContent"), closeNativeModuleEditor: document.getElementById("closeNativeModuleEditorBtn"), cancelNativeModuleEditor: document.getElementById("cancelNativeModuleEditorBtn"), saveNativeModuleEditor: document.getElementById("saveNativeModuleEditorBtn"), moduleAdvancedBackdrop: document.getElementById("moduleAdvancedBackdrop"), closeModuleAdvanced: document.getElementById("closeModuleAdvancedBtn"),
     profilesViewBtn: document.getElementById("profilesViewBtn"), selfIntroViewBtn: document.getElementById("selfIntroViewBtn"), statsViewBtn: document.getElementById("statsViewBtn"), modulesViewBtn: document.getElementById("modulesViewBtn"), plansViewBtn: document.getElementById("plansViewBtn"), recordsViewBtn: document.getElementById("recordsViewBtn"),
-    selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
+    selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportHideEmpty: document.getElementById("selfIntroExportHideEmpty"), selfIntroExportHideEmptyNotes: document.getElementById("selfIntroExportHideEmptyNotes"), selfIntroExportShowHelp: document.getElementById("selfIntroExportShowHelp"), selfIntroExportHideIdentity: document.getElementById("selfIntroExportHideIdentity"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
     statsContent: document.getElementById("statsContent"), statsExport: document.getElementById("statsExportBtn"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
     grid: document.getElementById("profileGrid"), count: document.getElementById("countText"), search: document.getElementById("searchInput"), sort: document.getElementById("sortSelect"), cardLayout: document.getElementById("cardLayoutBtn"), compactLayout: document.getElementById("compactLayoutBtn"), blacklistBtn: document.getElementById("blacklistBtn"), profileCollapseActions: document.getElementById("profileCollapseActions"), collapseAllProfiles: document.getElementById("collapseAllProfilesBtn"), expandAllProfiles: document.getElementById("expandAllProfilesBtn"), profilesToolbarTitle: document.getElementById("profilesToolbarTitle"), profilesToolbarSubtitle: document.getElementById("profilesToolbarSubtitle"),
     planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"),
@@ -9994,13 +10122,18 @@ function syncIntroToggleAll(section, path) { if (!section)
     return; const btn = section.querySelector(`[data-intro-toggle-all="${CSS.escape(path)}"]`); if (!btn)
     return; const boxes = [...section.querySelectorAll(`input[type="checkbox"][data-intro-array="${CSS.escape(path)}"]`)]; btn.textContent = boxes.length && boxes.every(box => box.checked) ? "清空" : "全选"; }
 function introRadioGroup(path, options) { const value = String(selfIntroPathGet(selfIntroDraft, path) || ""); return `<div class="intro-radio-grid">${options.map(([v, label]) => `<label><input type="radio" name="intro_${escapeHTML(path)}" data-intro-field="${escapeHTML(path)}" value="${escapeHTML(v)}" ${value === v ? "checked" : ""}><span>${escapeHTML(label)}</span></label>`).join("")}</div>`; }
+function introTimeSelectOptions(selected, include24 = false) { let html = ""; for (let h = 0; h < 24; h++) { for (const min of [0, 30]) { const value = `${String(h).padStart(2, "0")}:${String(min).padStart(2, "0")}`; html += `<option value="${value}" ${selected === value ? "selected" : ""}>${value}</option>`; } } if (include24) html += `<option value="24:00" ${selected === "24:00" ? "selected" : ""}>24:00</option>`; return html; }
+function introTimeRangesHTML() { const slots = selfIntroPathGet(selfIntroDraft, "timeSlots") || [], ranges = selfIntroPathGet(selfIntroDraft, "timeRanges") || {}; if (!slots.length) return `<div class="intro-helper">选择“上午 / 中午 / 下午 / 晚上 / 凌晨”后，会出现对应的具体时间范围。</div>`; return `<div class="intro-time-ranges">${slots.map(slot => { const def = INTRO_TIME_RANGE_DEFAULTS[slot] || ["08:00", "12:00"], range = ranges[slot] || { start: def[0], end: def[1] }; return `<div class="intro-time-range-row"><span class="intro-time-range-slot">${escapeHTML(slot)}</span><select class="intro-time-select" data-intro-time-range-slot="${escapeHTML(slot)}" data-intro-time-range-side="start" aria-label="${escapeHTML(slot)}开始时间">${introTimeSelectOptions(range.start, false)}</select><span class="intro-time-range-sep">至</span><select class="intro-time-select" data-intro-time-range-slot="${escapeHTML(slot)}" data-intro-time-range-side="end" aria-label="${escapeHTML(slot)}结束时间">${introTimeSelectOptions(range.end, true)}</select></div>`; }).join("")}</div><div class="intro-time-help">每 30 分钟一档；新选择时段会自动填入建议范围，可随时修改。</div>`; }
+function updateIntroTimeRangesPanel() { const panel = els.selfIntroView && els.selfIntroView.querySelector("[data-intro-time-ranges]"); if (panel) panel.innerHTML = introTimeRangesHTML(); }
+function ensureIntroTimeRangeForSlot(slot) { if (!selfIntroDraft.timeRanges || typeof selfIntroDraft.timeRanges !== "object") selfIntroDraft.timeRanges = {}; if (!selfIntroDraft.timeRanges[slot]) { const def = INTRO_TIME_RANGE_DEFAULTS[slot] || ["08:00", "12:00"]; selfIntroDraft.timeRanges[slot] = { start: def[0], end: def[1] }; } }
+function updateIntroTimeRange(slot, side, value, field) { ensureSelfIntroDraft(); ensureIntroTimeRangeForSlot(slot); const range = selfIntroDraft.timeRanges[slot], previous = String(range[side] || ""); range[side] = String(value || ""); if (introClockMinutes(range.end) <= introClockMinutes(range.start)) { range[side] = previous; if (field) field.value = previous; showToast("结束时间需要晚于开始时间"); return false; } queueSelfIntroSave(220); return true; }
 function introScale(path, title) { const value = introScaleValue(selfIntroPathGet(selfIntroDraft, path)), meta = INTRO_SCALE_META[path] || ["低", "高"], steps = [1, 2, 3, 4, 5].map(n => { const text = selfIntroScaleText(path, n); return `<button class="intro-scale-step ${n === value ? "is-active" : ""}" type="button" data-intro-scale-step="${escapeHTML(path)}" data-scale-value="${n}" aria-pressed="${n === value ? "true" : "false"}" aria-label="${escapeHTML(`${title}：${text}`)}" title="${escapeHTML(text)}"><span class="intro-scale-dot" aria-hidden="true"></span></button>`; }).join(""); return `<div class="intro-scale" role="group" aria-label="${escapeHTML(title)}"><div class="intro-scale-head"><strong>${escapeHTML(title)}</strong><output data-intro-scale-output="${escapeHTML(path)}">${escapeHTML(selfIntroScaleText(path, value))}</output></div><div class="intro-scale-track">${steps}</div><div class="intro-scale-labels"><span>${escapeHTML(meta[0])}</span><span>中间</span><span>${escapeHTML(meta[1])}</span></div></div>`; }
 function currentOrPendingModule(ref) { const id = String((ref === null || ref === void 0 ? void 0 : ref.moduleId) || ""); return modules.find(m => m.id === id) || selfIntroPendingModules.find(m => m.id === id) || null; }
 function selfIntroIntentNoteLabel(kind) { return kind === "host" ? "带团备注" : "备注"; }
 function selfIntroIntentNotePlaceholder(kind) { return kind === "host" ? "写这个模组的带团补充，例如擅长风格、改模方向、开团提醒。" : "写这个模组的补充，例如想跑原因、偏好版本、想体验的方向。"; }
 function selfIntroIntentRows(kind) { return selfIntroPathGet(selfIntroDraft, kind === "want" ? "pl.wantModules" : "kp.canHostModules") || []; }
 function moduleIntentCard(ref, kind) { const mod = currentOrPendingModule(ref), name = (mod === null || mod === void 0 ? void 0 : mod.name) || (ref === null || ref === void 0 ? void 0 : ref.name) || "未命名模组", pending = Boolean(selfIntroPendingModules.some(m => m.id === (ref === null || ref === void 0 ? void 0 : ref.moduleId))), meta = mod ? [mod.author, mod.era, mod.location].filter(Boolean).join(" · ") : "", note = String((ref === null || ref === void 0 ? void 0 : ref.note) || ""); return `<div class="intro-module-chip"><div class="intro-module-chip-head"><span class="intro-module-chip-main"><strong>${escapeHTML(name)}</strong><small>${escapeHTML(pending ? "保存后新建模组档案" : meta || "已关联模组档案")}</small></span><button class="intro-module-chip-remove" type="button" data-intro-remove-module="${escapeHTML(kind)}" data-module-id="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.moduleId) || "")}" data-module-name="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.name) || name)}" aria-label="移除">×</button></div><label class="intro-module-note-field"><span>${escapeHTML(selfIntroIntentNoteLabel(kind))}</span><textarea class="intro-textarea" data-intro-module-note="${escapeHTML(kind)}" data-module-id="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.moduleId) || "")}" data-module-name="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.name) || name)}" placeholder="${escapeHTML(selfIntroIntentNotePlaceholder(kind))}">${escapeHTML(note)}</textarea></label></div>`; }
-function moduleIntentSection(kind, title, desc) { const rows = selfIntroIntentRows(kind); return `<div class="self-intro-section intro-intent-section"><div class="self-intro-section-head"><div class="intro-intent-head-copy"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div><span class="intro-intent-head-actions"><button class="btn small image-export-btn" type="button" data-intro-export-intent="${escapeHTML(kind)}">导出图片</button></span></div><div class="intro-intent-box"><div class="intro-module-chips">${rows.length ? rows.map(r => moduleIntentCard(r, kind)).join("") : `<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" list="selfIntroModuleOptions" placeholder="输入模组名称或拼音首字母；匹配已有或新建"><div class="intro-intent-actions"><button class="btn" type="button" data-intro-pick-module="${escapeHTML(kind)}">选择已有</button><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div></div></div>`; }
+function moduleIntentSection(kind, title, desc) { const rows = selfIntroIntentRows(kind); return `<div class="self-intro-section intro-intent-section"><div class="self-intro-section-head"><div class="intro-intent-head-copy"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div></div><div class="intro-intent-box"><div class="intro-module-chips">${rows.length ? rows.map(r => moduleIntentCard(r, kind)).join("") : `<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" list="selfIntroModuleOptions" placeholder="输入模组名称或拼音首字母；匹配已有或新建"><div class="intro-intent-actions"><button class="btn" type="button" data-intro-pick-module="${escapeHTML(kind)}">选择已有</button><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div></div></div>`; }
 function boundaryLevelOptions(current) { return SELF_INTRO_BOUNDARY_LEVELS.map(v => `<option value="${escapeHTML(v)}" ${current === v ? "selected" : ""}>${escapeHTML(v || "未设置")}</option>`).join(""); }
 function introModulePrefsSections(side) {
     const base = `${side}.modulePrefs`, mp = selfIntroPathGet(selfIntroDraft, base) || defaultIntroModulePrefs();
@@ -10026,12 +10159,13 @@ function renderSelfIntroView({ reset = false } = {}) {
         return;
     const boundaryRows = SELF_INTRO_BOUNDARY_ITEMS.map(key => { var _a; return `<label class="intro-boundary-row"><span>${escapeHTML(key)}</span><select data-intro-boundary="${escapeHTML(key)}">${boundaryLevelOptions(((_a = d.kp.boundaries) === null || _a === void 0 ? void 0 : _a[key]) || "")}</select></label>`; }).join("");
     els.selfIntroGrid.innerHTML = selfIntroDatalist() + `
-    <details class="self-intro-card" open><summary><span>基本信息<small>平台、形式、时间与通用说明</small></span></summary><div class="self-intro-card-body">
-      <div class="self-intro-section"><div class="self-intro-section-head"><strong>一句话介绍</strong><span>可写跑团年限、常用规则或个人定位</span></div><textarea class="intro-textarea" data-intro-field="bio" placeholder="例如：长期 COC / DND 玩家，文字与语音均可。">${escapeHTML(d.bio)}</textarea></div>
-      <div class="self-intro-section">${introMultiSelectHead("常用平台", "platforms", INTRO_OPTIONS.platforms)}${introChipGroup("platforms", INTRO_OPTIONS.platforms)}<input class="intro-field" data-intro-field="platformOther" placeholder="其他平台或补充" value="${escapeHTML(d.platformOther)}"></div>
-      <div class="self-intro-section">${introMultiSelectHead("偏好形式", "formats", INTRO_OPTIONS.formats)}${introChipGroup("formats", INTRO_OPTIONS.formats)}</div>
-      <div class="self-intro-section"><div class="self-intro-section-head"><strong>常用跑团时间</strong></div><div class="intro-inline-group"><span class="intro-inline-label">时段</span>${introChipGroup("timeSlots", INTRO_OPTIONS.timeSlots)}</div><div class="intro-inline-group"><span class="intro-inline-label">日期</span>${introChipGroup("availability", INTRO_OPTIONS.availability)}</div><div class="intro-inline-group"><span class="intro-inline-label">频率</span>${introRadioGroup("frequency", [["随缘", "有时间就跑"], ["固定", "固定时间"], ["都可", "均可"]])}</div></div>
-      <div class="self-intro-section"><div class="self-intro-section-head"><strong>通用补充</strong></div><textarea class="intro-textarea" data-intro-field="generalNotes" placeholder="例如：常用规则、沟通习惯、时间限制等。">${escapeHTML(d.generalNotes)}</textarea></div>
+    <details class="self-intro-card" open><summary><span>常用信息<small>平台、形式、时间、频率与通用说明集中整理</small></span></summary><div class="self-intro-card-body intro-basics-layout">
+      <div class="intro-basic-block bio"><div class="intro-basic-label"><strong>一句话介绍</strong><span>跑团年限、常用规则或个人定位</span></div><textarea class="intro-textarea" data-intro-field="bio" placeholder="例如：长期 COC / DND 玩家，文字与语音均可。">${escapeHTML(d.bio)}</textarea></div>
+      <div class="intro-basic-block"><div class="intro-basic-label"><strong>常用平台</strong><span>可多选</span></div>${introChipGroup("platforms", INTRO_OPTIONS.platforms)}<input class="intro-field" data-intro-field="platformOther" placeholder="其他平台或补充" value="${escapeHTML(d.platformOther)}"></div>
+      <div class="intro-basic-block"><div class="intro-basic-label"><strong>跑团形式</strong><span>可多选</span></div>${introChipGroup("formats", INTRO_OPTIONS.formats)}</div>
+      <div class="intro-basic-block"><div class="intro-basic-label"><strong>日期与频率</strong></div><div class="intro-schedule-grid"><div class="intro-schedule-row"><span class="intro-inline-label">日期</span>${introChipGroup("availability", INTRO_OPTIONS.availability)}</div><div class="intro-schedule-row"><span class="intro-inline-label">频率</span>${introRadioGroup("frequency", [["随缘", "有时间就跑"], ["固定", "固定时间"], ["都可", "均可"]])}</div></div></div>
+      <div class="intro-basic-block intro-basic-wide"><div class="intro-basic-label"><strong>常用跑团时间</strong><span>先选大致时段，再设置具体小时</span></div><div class="intro-schedule-grid"><div class="intro-schedule-row"><span class="intro-inline-label">时段</span>${introChipGroup("timeSlots", INTRO_OPTIONS.timeSlots)}</div><div data-intro-time-ranges>${introTimeRangesHTML()}</div></div></div>
+      <div class="intro-basic-block intro-basic-wide"><div class="intro-basic-label"><strong>通用补充</strong><span>规则、沟通习惯、时间限制等</span></div><textarea class="intro-textarea" data-intro-field="generalNotes" placeholder="例如：常用规则、沟通习惯、时间限制等。">${escapeHTML(d.generalNotes)}</textarea></div>
     </div></details>
     <div class="self-intro-dual">
       <section class="self-intro-side pl-side" aria-label="PL 偏好">
@@ -10149,205 +10283,274 @@ function selfIntroExportBasicLines(d) {
     return [
         ...(String(d.bio || "").trim() ? [`一句话介绍：${String(d.bio).trim()}`] : []),
         `常用平台：${[...(d.platforms || []), String(d.platformOther || "").trim()].filter(Boolean).join("、") || "未填写"}`,
-        `偏好形式：${join(d.formats)}`,
-        `常用时段：${join(d.timeSlots)}`,
+        `跑团形式：${join(d.formats)}`,
+        `常用时段：${(d.timeSlots || []).length ? d.timeSlots.map(slot => { const range = (d.timeRanges || {})[slot]; return range && range.start && range.end ? `${slot} ${range.start}–${range.end}` : slot; }).join("、") : "未填写"}`,
         `日期范围：${join(d.availability)}`,
         `跑团频率：${d.frequency || "未填写"}`,
         ...(String(d.generalNotes || "").trim() ? [`通用说明：${String(d.generalNotes).trim()}`] : [])
     ];
 }
-function measureIntroExportSection(ctx, section, w) {
-    ctx.font = "500 15px system-ui, sans-serif";
-    let lines = 0;
-    for (const text of section.lines || [])
-        lines += Math.max(1, canvasWrapLines(ctx, text, w - 34).length);
-    const scaleRows = (section.scales || []).length;
-    return 48 + lines * 23 + scaleRows * 68 + 18;
+function selfIntroExportStyleConfig(style) {
+    if (style === "compact") return { style, baseW: 1240, pad: 32, headBottom: 174, footerSpace: 48, groupGap: 12, sectionGap: 8, groupHeader: 58, sectionTitleFont: 15, bodyFont: 13, bodyLine: 20, sectionTop: 44, sectionBottom: 12, scaleHeight: 60, scaleLabelFont: 12, scaleValueFont: 11.5, scaleMetaFont: 9.5, moduleTitleFont: 16, moduleBodyFont: 13, moduleLine: 20, moduleMetaFont: 10.5, cardGap: 8, showModuleMeta: true };
+    if (style === "share") return { style, baseW: 1080, pad: 30, headBottom: 174, footerSpace: 48, groupGap: 14, sectionGap: 9, groupHeader: 60, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 48, sectionBottom: 14, scaleHeight: 64, scaleLabelFont: 13, scaleValueFont: 12, scaleMetaFont: 9.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 10.5, cardGap: 9, showModuleMeta: false };
+    return { style: "full", baseW: 1500, pad: 42, headBottom: 180, footerSpace: 52, groupGap: 18, sectionGap: 12, groupHeader: 68, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 50, sectionBottom: 16, scaleHeight: 68, scaleLabelFont: 14, scaleValueFont: 13, scaleMetaFont: 10.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 11, cardGap: 10, showModuleMeta: true };
 }
-function drawIntroExportScale(ctx, x, y, w, row, theme, color) {
-    const value = introScaleValue(row.value), left = x + 18, right = x + w - 18, trackY = y + 29;
+function selfIntroExportCleanLines(lines, state) {
+    const list = (lines || []).map(x => String(x || "").trim()).filter(Boolean);
+    if (!state.hideEmpty) return list;
+    return list.filter(line => line !== "暂未添加" && !/[：:]未填写$/.test(line));
+}
+function selfIntroExportSectionForState(section, state) {
+    const next = Object.assign({}, section, { lines: selfIntroExportCleanLines(section.lines, state), scales: [...(section.scales || [])] });
+    if (state.hideEmpty && !next.lines.length && !next.scales.length) return null;
+    return next;
+}
+function selfIntroExportGroupColor(id, theme) {
+    const cs = getComputedStyle(document.documentElement), get = (name, fallback) => cs.getPropertyValue(name).trim() || fallback;
+    if (id === "pl") return get("--t-info", "#6f99ab");
+    if (id === "kp" || id === "host") return theme.success;
+    if (id === "want") return get("--t-warning", theme.warning);
+    return theme.accent;
+}
+function selfIntroExportGroupHelp(id) {
+    return {
+        common: "常用信息、跑团时间与通用说明。",
+        pl: "作为 PL 时的模组偏好、RP 方式、行动与同桌协作习惯。",
+        kp: "作为 KP 时的带团处理、规则尺度、协作边界与须知。",
+        want: "想跑模组清单；可包含每个模组的个人备注。",
+        host: "可带模组清单；可包含每个模组的带团备注。"
+    }[id] || "";
+}
+function selfIntroExportGroupData(d, id, state) {
+    if (id === "common") {
+        const lines = selfIntroExportCleanLines(selfIntroExportBasicLines(d), state);
+        if (state.hideEmpty && !lines.length) return null;
+        return { id, kind: "lines", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, help: selfIntroExportGroupHelp(id), lines };
+    }
+    if (id === "pl" || id === "kp") {
+        const excluded = id === "pl" ? "想跑模组" : "可带模组";
+        const sections = selfIntroExportSections(d, id).filter(sec => sec.title !== excluded).map(sec => selfIntroExportSectionForState(sec, state)).filter(Boolean);
+        if (state.hideEmpty && !sections.length) return null;
+        return { id, kind: "sections", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, help: selfIntroExportGroupHelp(id), sections };
+    }
+    const rows = id === "want" ? d.pl.wantModules : d.kp.canHostModules;
+    if (state.hideEmpty && !rows.length) return null;
+    return { id, kind: "modules", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, help: selfIntroExportGroupHelp(id), rows: [...rows], noteLabel: id === "host" ? "带团备注" : "备注" };
+}
+function selfIntroExportEffectiveState(raw = selfIntroExportState) {
+    const state = normalizeSelfIntroExportState(raw);
+    if (state.style === "share") {
+        state.hideEmpty = true;
+        state.hideEmptyNotes = true;
+    }
+    return state;
+}
+function selfIntroExportSelectedIds(state = selfIntroExportState) {
+    const normalized = normalizeSelfIntroExportState(state), selected = new Set(normalized.selected);
+    return normalized.order.filter(id => selected.has(id));
+}
+function measureIntroExportSection(ctx, section, w, cfg) {
+    ctx.font = `500 ${cfg.bodyFont}px system-ui, sans-serif`;
+    let lines = 0;
+    for (const text of section.lines || []) lines += Math.max(1, canvasWrapLines(ctx, text, w - 34).length);
+    const scaleRows = (section.scales || []).length;
+    return cfg.sectionTop + lines * cfg.bodyLine + scaleRows * cfg.scaleHeight + cfg.sectionBottom;
+}
+function drawIntroExportScale(ctx, x, y, w, row, theme, color, cfg) {
+    const value = introScaleValue(row.value), left = x + 18, right = x + w - 18, trackY = y + Math.round(cfg.scaleHeight * .43);
     ctx.fillStyle = theme.text2;
-    ctx.font = "750 14px system-ui, sans-serif";
+    ctx.font = `750 ${cfg.scaleLabelFont}px system-ui, sans-serif`;
     ctx.textAlign = "left";
     ctx.fillText(row.label, left, y + 13);
     ctx.fillStyle = color;
-    ctx.font = "800 13px system-ui, sans-serif";
+    ctx.font = `800 ${cfg.scaleValueFont}px system-ui, sans-serif`;
     ctx.textAlign = "right";
     ctx.fillText(row.current, right, y + 13);
     ctx.textAlign = "left";
     ctx.strokeStyle = theme.line;
     ctx.lineWidth = 3;
     ctx.lineCap = "round";
-    ctx.beginPath();
-    ctx.moveTo(left, trackY);
-    ctx.lineTo(right, trackY);
-    ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(left, trackY); ctx.lineTo(right, trackY); ctx.stroke();
     for (let i = 1; i <= 5; i++) {
         const px = left + (right - left) * (i - 1) / 4, active = i === value;
-        ctx.beginPath();
-        ctx.arc(px, trackY, active ? 7 : 5, 0, Math.PI * 2);
-        ctx.fillStyle = active ? color : theme.surface;
-        ctx.fill();
-        ctx.strokeStyle = active ? color : theme.line;
-        ctx.lineWidth = 2;
-        ctx.stroke();
+        ctx.beginPath(); ctx.arc(px, trackY, active ? 7 : 5, 0, Math.PI * 2);
+        ctx.fillStyle = active ? color : theme.surface; ctx.fill();
+        ctx.strokeStyle = active ? color : theme.line; ctx.lineWidth = 2; ctx.stroke();
     }
-    ctx.font = "500 10.5px system-ui, sans-serif";
+    ctx.font = `500 ${cfg.scaleMetaFont}px system-ui, sans-serif`;
     ctx.fillStyle = theme.muted;
+    ctx.textAlign = "left"; ctx.fillText(row.left, left, y + cfg.scaleHeight - 12);
+    ctx.textAlign = "center"; ctx.fillText("中间", (left + right) / 2, y + cfg.scaleHeight - 12);
+    ctx.textAlign = "right"; ctx.fillText(row.right, right, y + cfg.scaleHeight - 12);
     ctx.textAlign = "left";
-    ctx.fillText(row.left, left, y + 52);
-    ctx.textAlign = "center";
-    ctx.fillText("中间", (left + right) / 2, y + 52);
-    ctx.textAlign = "right";
-    ctx.fillText(row.right, right, y + 52);
-    ctx.textAlign = "left";
-    return 68;
+    return cfg.scaleHeight;
 }
-function drawIntroExportSection(ctx, x, y, w, section, theme, color) {
-    const h = measureIntroExportSection(ctx, section, w);
-    canvasFillRound(ctx, x, y, w, h, 14, theme.surface2, theme.line);
+function drawIntroExportSection(ctx, x, y, w, section, theme, color, cfg) {
+    const h = measureIntroExportSection(ctx, section, w, cfg);
+    canvasFillRound(ctx, x, y, w, h, cfg.style === "compact" ? 11 : 14, theme.surface2, theme.line);
     ctx.fillStyle = color;
-    ctx.font = "800 17px system-ui, sans-serif";
+    ctx.font = `800 ${cfg.sectionTitleFont}px system-ui, sans-serif`;
     ctx.fillText(section.title, x + 16, y + 29);
-    let cy = y + 53;
+    let cy = y + cfg.sectionTop;
     ctx.fillStyle = theme.text2;
-    ctx.font = "500 15px system-ui, sans-serif";
+    ctx.font = `500 ${cfg.bodyFont}px system-ui, sans-serif`;
     for (const text of section.lines || []) {
         const lines = canvasWrapLines(ctx, text, w - 34);
-        for (const line of lines.length ? lines : [""]) {
-            ctx.fillText(line, x + 17, cy);
-            cy += 23;
-        }
+        for (const line of lines.length ? lines : [""]) { ctx.fillText(line, x + 17, cy); cy += cfg.bodyLine; }
     }
-    if ((section.lines || []).length && (section.scales || []).length)
-        cy += 4;
-    for (const row of section.scales || [])
-        cy += drawIntroExportScale(ctx, x + 7, cy, w - 14, row, theme, color);
+    if ((section.lines || []).length && (section.scales || []).length) cy += cfg.style === "compact" ? 2 : 4;
+    for (const row of section.scales || []) cy += drawIntroExportScale(ctx, x + 7, cy, w - 14, row, theme, color, cfg);
     return h;
 }
-function buildSelfIntroExportCanvas() {
+function selfIntroExportModuleMeta(ref) {
+    const mod = currentOrPendingModule(ref);
+    return mod ? [mod.author, mod.era, mod.location].filter(Boolean).join(" · ") : "";
+}
+function measureSelfIntroModuleCard(ctx, ref, w, cfg, state, noteLabel) {
+    const name = String((ref === null || ref === void 0 ? void 0 : ref.name) || "未命名模组").trim() || "未命名模组", meta = cfg.showModuleMeta ? selfIntroExportModuleMeta(ref) : "", note = String((ref === null || ref === void 0 ? void 0 : ref.note) || "").trim();
+    ctx.font = `800 ${cfg.moduleTitleFont}px system-ui, sans-serif`;
+    const nameLines = Math.max(1, canvasWrapLines(ctx, name, w - 82).length);
+    ctx.font = `500 ${cfg.moduleMetaFont}px system-ui, sans-serif`;
+    const metaLines = meta ? Math.max(1, canvasWrapLines(ctx, meta, w - 34).length) : 0;
+    ctx.font = `500 ${cfg.moduleBodyFont}px system-ui, sans-serif`;
+    const noteText = note ? `${noteLabel}：${note}` : (state.hideEmptyNotes ? "" : `${noteLabel}：未填写`), noteLines = noteText ? Math.max(1, canvasWrapLines(ctx, noteText, w - 34).length) : 0;
+    return { h: 22 + nameLines * (cfg.moduleTitleFont + 5) + metaLines * (cfg.moduleMetaFont + 5) + noteLines * cfg.moduleLine + 20, name, meta, noteText, nameLines, metaLines, noteLines };
+}
+function drawSelfIntroModuleCard(ctx, x, y, w, ref, index, theme, color, cfg, state, noteLabel) {
+    const m = measureSelfIntroModuleCard(ctx, ref, w, cfg, state, noteLabel);
+    canvasFillRound(ctx, x, y, w, m.h, cfg.style === "compact" ? 11 : 14, theme.surface2, theme.line);
+    canvasFillRound(ctx, x + 14, y + 15, 30, 26, 10, colorMixForCanvas(color, theme.surface, .16), "");
+    ctx.fillStyle = color; ctx.font = `800 ${Math.max(11, cfg.moduleMetaFont + 1)}px system-ui, sans-serif`; ctx.textAlign = "center"; ctx.fillText(String(index + 1).padStart(2, "0"), x + 29, y + 33); ctx.textAlign = "left";
+    let cy = y + 28;
+    ctx.fillStyle = theme.ink; ctx.font = `800 ${cfg.moduleTitleFont}px system-ui, sans-serif`;
+    const nameLines = canvasWrapLines(ctx, m.name, w - 82); nameLines.forEach((line, i) => ctx.fillText(line, x + 56, cy + i * (cfg.moduleTitleFont + 5))); cy += Math.max(1, nameLines.length) * (cfg.moduleTitleFont + 5);
+    if (m.meta) { ctx.fillStyle = theme.muted; ctx.font = `500 ${cfg.moduleMetaFont}px system-ui, sans-serif`; const metaLines = canvasWrapLines(ctx, m.meta, w - 34); metaLines.forEach(line => { ctx.fillText(line, x + 17, cy + 2); cy += cfg.moduleMetaFont + 5; }); }
+    if (m.noteText) { ctx.fillStyle = theme.text2; ctx.font = `500 ${cfg.moduleBodyFont}px system-ui, sans-serif`; const noteLines = canvasWrapLines(ctx, m.noteText, w - 34); noteLines.forEach(line => { ctx.fillText(line, x + 17, cy + 5); cy += cfg.moduleLine; }); }
+    return m.h;
+}
+function measureSelfIntroExportGroup(ctx, group, w, cfg, state) {
+    let h = cfg.groupHeader + (state.showHelp ? 18 : 0) + 16;
+    if (group.kind === "lines") {
+        ctx.font = `500 ${cfg.bodyFont}px system-ui, sans-serif`;
+        let lines = 0; for (const text of group.lines || []) lines += Math.max(1, canvasWrapLines(ctx, text, w - 48).length);
+        h += Math.max(cfg.bodyLine, lines * cfg.bodyLine) + 18;
+    } else if (group.kind === "sections") {
+        if (!group.sections.length) h += 42;
+        else group.sections.forEach((sec, i) => { h += measureIntroExportSection(ctx, sec, w - 28, cfg); if (i < group.sections.length - 1) h += cfg.sectionGap; });
+        h += 14;
+    } else {
+        if (!group.rows.length) h += 42;
+        else group.rows.forEach((ref, i) => { h += measureSelfIntroModuleCard(ctx, ref, w - 28, cfg, state, group.noteLabel).h; if (i < group.rows.length - 1) h += cfg.cardGap; });
+        h += 14;
+    }
+    return h;
+}
+function drawSelfIntroExportGroup(ctx, x, y, w, group, theme, cfg, state) {
+    const color = selfIntroExportGroupColor(group.id, theme), h = measureSelfIntroExportGroup(ctx, group, w, cfg, state);
+    canvasFillRound(ctx, x, y, w, h, cfg.style === "compact" ? 14 : 18, theme.surface, theme.line);
+    canvasFillRound(ctx, x + 15, y + 16, 4, state.showHelp ? 38 : 28, 2, color, "");
+    ctx.fillStyle = theme.ink; ctx.font = `800 ${cfg.style === "share" ? 23 : 21}px system-ui, sans-serif`; ctx.fillText(group.title, x + 29, y + 37);
+    let cy = y + cfg.groupHeader;
+    if (state.showHelp) { ctx.fillStyle = theme.muted; ctx.font = `500 ${Math.max(10, cfg.moduleMetaFont)}px system-ui, sans-serif`; ctx.fillText(canvasTextFit(ctx, group.help, w - 58), x + 29, y + 57); cy += 18; }
+    if (group.kind === "lines") {
+        ctx.fillStyle = theme.text2; ctx.font = `500 ${cfg.bodyFont}px system-ui, sans-serif`;
+        if (!group.lines.length) { ctx.fillStyle = theme.muted; ctx.fillText("暂无已填写内容", x + 24, cy + 18); }
+        else for (const text of group.lines) { const lines = canvasWrapLines(ctx, text, w - 48); for (const line of lines) { ctx.fillText(line, x + 24, cy + 18); cy += cfg.bodyLine; } }
+    } else if (group.kind === "sections") {
+        if (!group.sections.length) { ctx.fillStyle = theme.muted; ctx.font = `500 ${cfg.bodyFont}px system-ui, sans-serif`; ctx.fillText("暂无已填写内容", x + 24, cy + 18); }
+        else group.sections.forEach((sec, i) => { cy += drawIntroExportSection(ctx, x + 14, cy, w - 28, sec, theme, color, cfg); if (i < group.sections.length - 1) cy += cfg.sectionGap; });
+    } else {
+        if (!group.rows.length) { ctx.fillStyle = theme.muted; ctx.font = `500 ${cfg.bodyFont}px system-ui, sans-serif`; ctx.fillText("暂未添加模组", x + 24, cy + 18); }
+        else group.rows.forEach((ref, i) => { cy += drawSelfIntroModuleCard(ctx, x + 14, cy, w - 28, ref, i, theme, color, cfg, state, group.noteLabel); if (i < group.rows.length - 1) cy += cfg.cardGap; });
+    }
+    return h;
+}
+function createSelfIntroExportLayout(rawState = selfIntroExportState) {
     var _a;
     ensureSelfIntroDraft();
-    const d = normalizeSelfIntro(selfIntroDraft || ((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro)), theme = hoExportTheme(), profile = selfProfileFrom();
-    const baseW = 1600, pad = 44, gap = 24, colW = (baseW - pad * 2 - gap) / 2;
-    const measure = document.createElement("canvas").getContext("2d");
-    if (!measure)
-        throw new Error("当前浏览器无法生成图片");
-    const basic = { title: "基本信息", lines: selfIntroExportBasicLines(d) }, plSections = selfIntroExportSections(d, "pl"), kpSections = selfIntroExportSections(d, "kp"), basicH = measureIntroExportSection(measure, basic, baseW - pad * 2), sectionGap = 12;
-    const colHeight = sections => 76 + sections.reduce((n, sec) => n + measureIntroExportSection(measure, sec, colW - 24) + sectionGap, 0), leftH = colHeight(plSections), rightH = colHeight(kpSections), columnH = Math.max(leftH, rightH), headBottom = 180, baseH = headBottom + basicH + 24 + columnH + 52, maxDim = 9000, scale = Math.min(2, maxDim / baseW, maxDim / baseH);
-    if (scale < .6)
-        throw new Error("个人偏好内容较多，建议精简超长补充文字后再导出");
-    const canvas = document.createElement("canvas");
-    canvas.width = Math.round(baseW * scale);
-    canvas.height = Math.round(baseH * scale);
-    const ctx = canvas.getContext("2d");
-    if (!ctx)
-        throw new Error("当前浏览器无法生成图片");
-    ctx.scale(scale, scale);
-    ctx.fillStyle = theme.bg;
-    ctx.fillRect(0, 0, baseW, baseH);
-    drawUnifiedExportHeader(ctx, baseW, theme, { eyebrow: "PL / KP · 个人偏好", title: `${displayProfileName(profile) || "我"} · 个人偏好`, subtitle: "PL / KP 偏好、常用信息、协作边界、想跑模组与可带模组。", stats: ["玩家侧与带团侧独立记录", "当前页面完整导出"] });
-    let y = headBottom;
-    drawIntroExportSection(ctx, pad, y, baseW - pad * 2, basic, theme, theme.accent);
-    y += basicH + 24;
-    const drawColumn = (x, title, sideLabel, sections, color, soft) => { const h = columnH; canvasFillRound(ctx, x, y, colW, h, 16, theme.surface, theme.line); canvasFillRound(ctx, x + 14, y + 15, 4, 38, 2, color, ""); ctx.fillStyle = theme.muted; ctx.font = "750 10.5px system-ui, sans-serif"; ctx.fillText(sideLabel, x + 28, y + 27); ctx.fillStyle = theme.ink; ctx.font = "800 22px system-ui, sans-serif"; ctx.fillText(title, x + 28, y + 50); ctx.strokeStyle = theme.line; ctx.beginPath(); ctx.moveTo(x + 14, y + 64.5); ctx.lineTo(x + colW - 14, y + 64.5); ctx.stroke(); let cy = y + 76; const body = sections.slice(0, -1), last = sections[sections.length - 1]; for (const sec of body) {
-        const sh = drawIntroExportSection(ctx, x + 12, cy, colW - 24, sec, theme, color);
-        cy += sh + sectionGap;
-    } if (last) {
-        const lastH = measureIntroExportSection(ctx, last, colW - 24), lastY = y + h - sectionGap - lastH;
-        drawIntroExportSection(ctx, x + 12, Math.max(cy, lastY), colW - 24, last, theme, color);
-    } return h; };
-    drawColumn(pad, "PL 偏好", "PL · 玩家侧", plSections, theme.accent, theme.accentSoft);
-    drawColumn(pad + colW + gap, "KP 偏好", "KP · 带团侧", kpSections, theme.success, colorMixForCanvas(theme.success, theme.surface, .12));
-    drawUnifiedExportFooter(ctx, baseW, baseH - 32, theme);
+    const state = selfIntroExportEffectiveState(rawState), d = normalizeSelfIntro(selfIntroDraft || ((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro)), cfg = selfIntroExportStyleConfig(state.style), measure = document.createElement("canvas").getContext("2d");
+    if (!measure) throw new Error("当前浏览器无法生成图片");
+    const groups = selfIntroExportSelectedIds(state).map(id => selfIntroExportGroupData(d, id, state)).filter(Boolean), contentW = cfg.baseW - cfg.pad * 2;
+    let baseH = cfg.headBottom + cfg.footerSpace;
+    groups.forEach((group, i) => { baseH += measureSelfIntroExportGroup(measure, group, contentW, cfg, state); if (i < groups.length - 1) baseH += cfg.groupGap; });
+    return { state, d, cfg, groups, contentW, baseH };
+}
+function buildSelfIntroExportCanvas(rawState = selfIntroExportState) {
+    const layout = createSelfIntroExportLayout(rawState), { state, cfg, groups, baseH } = layout;
+    if (!groups.length) throw new Error("请至少选择一个有内容的导出区域");
+    const theme = hoExportTheme(), profile = selfProfileFrom(), maxDim = 9000, scale = Math.min(2, maxDim / cfg.baseW, maxDim / baseH);
+    if (scale < .55) throw new Error("当前组合内容过长，请减少导出区域或改用“紧凑长图”");
+    const canvas = document.createElement("canvas"); canvas.width = Math.round(cfg.baseW * scale); canvas.height = Math.round(baseH * scale);
+    const ctx = canvas.getContext("2d"); if (!ctx) throw new Error("当前浏览器无法生成图片");
+    ctx.scale(scale, scale); ctx.fillStyle = theme.bg; ctx.fillRect(0, 0, cfg.baseW, baseH);
+    const selectedLabels = groups.map(g => g.title), hideIdentity = state.hideIdentity || privacyMaskEnabled, title = hideIdentity ? "个人偏好" : `${displayProfileName(profile) || "我"} · 个人偏好`, styleLabel = SELF_INTRO_EXPORT_STYLE_META[state.style].label;
+    drawUnifiedExportHeader(ctx, cfg.baseW, theme, { eyebrow: "PL / KP · 个人偏好", title, subtitle: `导出范围：${selectedLabels.join("、")}`, stats: [`${groups.length} 个区域`, styleLabel, hideIdentity ? "个人姓名已隐藏" : "保留个人姓名"] });
+    let y = cfg.headBottom; groups.forEach((group, i) => { y += drawSelfIntroExportGroup(ctx, cfg.pad, y, layout.contentW, group, theme, cfg, state); if (i < groups.length - 1) y += cfg.groupGap; });
+    drawUnifiedExportFooter(ctx, cfg.baseW, baseH - 32, theme);
     return canvas;
 }
-async function exportSelfIntroImage() {
+function selfIntroExportFilename(state = selfIntroExportState) {
+    const normalized = selfIntroExportEffectiveState(state), profile = selfProfileFrom(), hideIdentity = normalized.hideIdentity || privacyMaskEnabled, name = hideIdentity ? "个人偏好" : (String(displayProfileName(profile) || "我").replace(/[\\/:*?"<>|]/g, "_").trim() || "我"), ids = selfIntroExportSelectedIds(normalized), scope = ids.length === 1 ? SELF_INTRO_EXPORT_SCOPE_META[ids[0]].label : ids.length === SELF_INTRO_EXPORT_SCOPE_ORDER.length ? "个人偏好" : "个人偏好_自定义组合";
+    return `${name}_${scope}.png`;
+}
+async function exportSelfIntroImage(state = selfIntroExportState) {
     try {
-        const canvas = buildSelfIntroExportCanvas();
-        const blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error("PNG 生成失败")), "image/png", 1));
-        const profile = selfProfileFrom(), rawName = String(displayProfileName(profile) || "我").replace(/[\/:*?"<>|]/g, "_").trim() || "我";
-        downloadBlobFile(blob, `${rawName}_个人偏好.png`);
-        showToast("个人偏好图片已导出");
-        return true;
-    }
-    catch (err) {
-        console.error(err);
-        appNotice(`导出个人偏好图片失败：${err.message || err}`);
-        return false;
-    }
+        const canvas = buildSelfIntroExportCanvas(state), blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error("PNG 生成失败")), "image/png", 1));
+        downloadBlobFile(blob, selfIntroExportFilename(state)); showToast("个人偏好图片已导出"); return true;
+    } catch (err) { console.error(err); appNotice(`导出个人偏好图片失败：${err.message || err}`); return false; }
 }
-function drawSelfIntroIntentExportCards(ctx, x, y, w, rows, theme, color, kind) {
-    let cy = y;
-    const noteLabel = selfIntroIntentNoteLabel(kind);
-    rows.forEach((ref, index) => {
-        const name = String((ref === null || ref === void 0 ? void 0 : ref.name) || "").trim() || `模组 ${index + 1}`;
-        const note = String((ref === null || ref === void 0 ? void 0 : ref.note) || "").trim();
-        ctx.font = "500 15px system-ui, sans-serif";
-        const bodyLines = note ? canvasWrapLines(ctx, `${noteLabel}：${note}`, w - 34) : [noteLabel + "：未填写"];
-        const cardH = 66 + bodyLines.length * 22;
-        canvasFillRound(ctx, x, cy, w, cardH, 14, theme.surface2, theme.line);
-        ctx.fillStyle = color;
-        ctx.font = "800 18px system-ui, sans-serif";
-        ctx.fillText(String(index + 1).padStart(2, "0"), x + 16, cy + 30);
-        ctx.fillStyle = theme.ink;
-        ctx.fillText(name, x + 58, cy + 30);
-        ctx.fillStyle = theme.text2;
-        ctx.font = "500 15px system-ui, sans-serif";
-        bodyLines.forEach((line, lineIndex) => ctx.fillText(line, x + 18, cy + 57 + lineIndex * 22));
-        cy += cardH + 12;
-    });
-    return cy;
+function selfIntroExportEstimatedHeight(state = selfIntroExportState) { try { return createSelfIntroExportLayout(state).baseH; } catch (err) { return 0; } }
+function selfIntroExportPresetKey(state = selfIntroExportState) {
+    const s = normalizeSelfIntroExportState(state), ids = selfIntroExportSelectedIds(s), eq = arr => ids.length === arr.length && ids.every((id, i) => id === arr[i]);
+    if (eq(SELF_INTRO_EXPORT_SCOPE_ORDER) && s.style === "full" && !s.hideIdentity) return "all";
+    if (eq(["common", "pl", "kp"])) return "prefs";
+    if (eq(["want", "host"])) return "modules";
+    if (eq(SELF_INTRO_EXPORT_SCOPE_ORDER) && s.style === "share" && s.hideIdentity) return "share";
+    return "";
 }
-function buildSelfIntroIntentExportCanvas(kind) {
-    var _a;
-    ensureSelfIntroDraft();
-    const d = normalizeSelfIntro(selfIntroDraft || ((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro)), theme = hoExportTheme(), profile = selfProfileFrom();
-    const rows = kind === "want" ? d.pl.wantModules : d.kp.canHostModules;
-    if (!rows.length)
-        throw new Error(kind === "want" ? "想跑模组里还没有内容" : "可带模组里还没有内容");
-    const title = kind === "want" ? "想跑模组" : "可带模组", subtitle = kind === "want" ? "按当前个人偏好页中的想跑模组清单导出。" : "按当前个人偏好页中的可带模组清单导出。", accent = kind === "want" ? theme.accent : theme.success;
-    const baseW = 1320, pad = 44, contentW = baseW - pad * 2, headBottom = 180;
-    const measure = document.createElement("canvas").getContext("2d");
-    if (!measure)
-        throw new Error("当前浏览器无法生成图片");
-    let cardsH = 0;
-    rows.forEach(ref => {
-        const note = String((ref === null || ref === void 0 ? void 0 : ref.note) || "").trim();
-        measure.font = "500 15px system-ui, sans-serif";
-        const bodyLines = note ? canvasWrapLines(measure, `${selfIntroIntentNoteLabel(kind)}：${note}`, contentW - 34) : [selfIntroIntentNoteLabel(kind) + "：未填写"];
-        cardsH += 66 + bodyLines.length * 22 + 12;
-    });
-    const baseH = headBottom + cardsH + 54, maxDim = 9000, scale = Math.min(2, maxDim / baseW, maxDim / baseH);
-    const canvas = document.createElement("canvas");
-    canvas.width = Math.round(baseW * scale);
-    canvas.height = Math.round(baseH * scale);
-    const ctx = canvas.getContext("2d");
-    if (!ctx)
-        throw new Error("当前浏览器无法生成图片");
-    ctx.scale(scale, scale);
-    ctx.fillStyle = theme.bg;
-    ctx.fillRect(0, 0, baseW, baseH);
-    drawUnifiedExportHeader(ctx, baseW, theme, { eyebrow: "PL / KP · 个人偏好", title: `${displayProfileName(profile) || "我"} · ${title}`, subtitle, stats: [`模组 ${rows.length} 个`, kind === "want" ? "玩家侧清单" : "带团侧清单", privacyMaskEnabled ? "隐私模式：开启" : "隐私模式：关闭"] });
-    drawSelfIntroIntentExportCards(ctx, pad, headBottom, contentW, rows, theme, accent, kind);
-    drawUnifiedExportFooter(ctx, baseW, baseH - 32, theme);
-    return canvas;
+function applySelfIntroExportPreset(key) {
+    const next = normalizeSelfIntroExportState(selfIntroExportState);
+    if (key === "prefs") { next.selected = ["common", "pl", "kp"]; next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.style = "full"; }
+    else if (key === "modules") { next.selected = ["want", "host"]; next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.style = "compact"; }
+    else if (key === "share") { next.selected = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.style = "share"; next.hideEmpty = true; next.hideEmptyNotes = true; next.showHelp = false; next.hideIdentity = true; }
+    else { Object.assign(next, defaultSelfIntroExportState()); }
+    selfIntroExportState = next; saveSelfIntroExportState(); renderSelfIntroExportCenter();
 }
-async function exportSelfIntroIntentImage(kind) {
-    try {
-        const canvas = buildSelfIntroIntentExportCanvas(kind);
-        const blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error("PNG 生成失败")), "image/png", 1));
-        const profile = selfProfileFrom(), rawName = String(displayProfileName(profile) || "我").replace(/[\/:*?"<>|]/g, "_").trim() || "我";
-        const suffix = kind === "want" ? "想跑模组" : "可带模组";
-        downloadBlobFile(blob, `${rawName}_${suffix}.png`);
-        showToast(`${suffix}图片已导出`);
-        return true;
+function moveSelfIntroExportScope(id, dir) {
+    const state = normalizeSelfIntroExportState(selfIntroExportState), idx = state.order.indexOf(id), next = idx + dir;
+    if (idx < 0 || next < 0 || next >= state.order.length) return;
+    [state.order[idx], state.order[next]] = [state.order[next], state.order[idx]]; selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
+}
+function renderSelfIntroExportCenter() {
+    if (!els.selfIntroExportScopes) return;
+    const state = normalizeSelfIntroExportState(selfIntroExportState), selected = new Set(state.selected);
+    els.selfIntroExportScopes.innerHTML = state.order.map((id, index) => { const meta = SELF_INTRO_EXPORT_SCOPE_META[id], checked = selected.has(id); return `<div class="export-scope-row ${checked ? "" : "is-disabled"}" data-export-scope-row="${escapeHTML(id)}"><label class="export-scope-check"><input type="checkbox" data-self-intro-export-scope="${escapeHTML(id)}" ${checked ? "checked" : ""} aria-label="导出${escapeHTML(meta.label)}"></label><span class="export-scope-copy"><strong>${escapeHTML(meta.label)}</strong><small>${escapeHTML(meta.desc)}</small></span><span class="export-scope-actions"><button type="button" data-self-intro-export-move="-1" data-export-scope-id="${escapeHTML(id)}" ${index === 0 ? "disabled" : ""} aria-label="上移${escapeHTML(meta.label)}">↑</button><button type="button" data-self-intro-export-move="1" data-export-scope-id="${escapeHTML(id)}" ${index === state.order.length - 1 ? "disabled" : ""} aria-label="下移${escapeHTML(meta.label)}">↓</button></span></div>`; }).join("");
+    document.querySelectorAll('input[name="selfIntroExportStyle"]').forEach(input => { input.checked = input.value === state.style; });
+    if (els.selfIntroExportHideEmpty) els.selfIntroExportHideEmpty.checked = state.hideEmpty;
+    if (els.selfIntroExportHideEmptyNotes) els.selfIntroExportHideEmptyNotes.checked = state.hideEmptyNotes;
+    if (els.selfIntroExportShowHelp) els.selfIntroExportShowHelp.checked = state.showHelp;
+    if (els.selfIntroExportHideIdentity) els.selfIntroExportHideIdentity.checked = state.hideIdentity;
+    const preset = selfIntroExportPresetKey(state); document.querySelectorAll("[data-self-intro-export-preset]").forEach(btn => btn.classList.toggle("active", btn.dataset.selfIntroExportPreset === preset));
+    const ids = selfIntroExportSelectedIds(state), est = selfIntroExportEstimatedHeight(state), effectiveHidden = state.hideIdentity || privacyMaskEnabled, lengthLabel = !est ? "无法估算" : est < 1500 ? "短图" : est < 2800 ? "中等长图" : est < 4600 ? "长图" : "超长图";
+    if (els.selfIntroExportSummary) els.selfIntroExportSummary.innerHTML = ids.length ? `<strong>本次将导出 ${ids.length} 个区域</strong> · ${escapeHTML(SELF_INTRO_EXPORT_STYLE_META[state.style].label)} · 预计${lengthLabel}${est ? `（约 ${Math.round(est)} px）` : ""}${effectiveHidden ? " · 个人姓名隐藏" : ""}${selfIntroDirty() ? " · 包含当前未保存修改" : ""}` : `<strong>尚未选择导出区域</strong> · 请至少勾选一个区域。`;
+    if (els.selfIntroExportNow) els.selfIntroExportNow.disabled = ids.length === 0;
+}
+function positionSelfIntroExportPanel() {
+    if (!els.selfIntroExportPanel || !els.selfIntroExport || els.selfIntroExportPanel.hidden) return;
+    const docW = document.documentElement.clientWidth || innerWidth, bodyW = document.body && document.body.clientWidth ? document.body.clientWidth : docW, panel = els.selfIntroExportPanel, viewportW = Math.min(docW, bodyW), viewportH = document.documentElement.clientHeight || innerHeight;
+    if (viewportW <= 760) {
+        panel.style.left = "12px"; panel.style.right = "12px"; panel.style.top = "auto"; panel.style.bottom = "12px"; panel.style.maxHeight = "82vh";
+        return;
     }
-    catch (err) {
-        console.error(err);
-        appNotice(`导出${kind === "want" ? "想跑模组" : "可带模组"}图片失败：${err.message || err}`);
-        return false;
-    }
+    const rect = els.selfIntroExport.getBoundingClientRect(), panelWidth = Math.min(520, viewportW - 24), maxRight = Math.max(12, viewportW - panelWidth - 12), right = Math.min(Math.max(12, viewportW - rect.right), maxRight), preferredTop = rect.bottom + 8, desiredHeight = Math.min(660, Math.max(360, viewportH * .74));
+    const top = Math.max(12, Math.min(preferredTop, viewportH - desiredHeight - 12));
+    panel.style.left = "auto"; panel.style.right = `${Math.round(right)}px`; panel.style.top = `${Math.round(top)}px`; panel.style.bottom = "auto"; panel.style.maxHeight = `${Math.max(280, Math.round(viewportH - top - 12))}px`;
+}
+function toggleSelfIntroExportCenter(force = null) {
+    if (!els.selfIntroExportPanel || !els.selfIntroExport) return;
+    const open = force === null ? els.selfIntroExportPanel.hidden : Boolean(force);
+    els.selfIntroExportPanel.hidden = !open; els.selfIntroExport.setAttribute("aria-expanded", open ? "true" : "false"); document.body.classList.toggle("self-intro-export-open", open);
+    if (open) { renderSelfIntroExportCenter(); positionSelfIntroExportPanel(); requestAnimationFrame(() => { positionSelfIntroExportPanel(); const first = els.selfIntroExportPanel.querySelector("button,input"); if (first && document.activeElement === els.selfIntroExport) first.focus(); }); }
 }
 function queueSelfIntroSave(delay = 700) { clearTimeout(selfIntroSaveTimer); selfIntroLastSaveError = ""; updateSelfIntroSaveState(); selfIntroSaveTimer = setTimeout(() => commitSelfIntroDraft(), delay); }
 function reconcileSelfIntroIntentRefs(intro) { for (const path of ["pl.wantModules", "kp.canHostModules"]) {
@@ -10513,7 +10716,7 @@ function removeSelfIntroModuleIntent(kind, moduleId, moduleName) { ensureSelfInt
     selfIntroPendingModules = selfIntroPendingModules.filter(m => m.id !== moduleId); renderSelfIntroView(); queueSelfIntroSave(120); }
 function updateSelfIntroModuleIntentNote(kind, moduleId, moduleName, note) { ensureSelfIntroDraft(); const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", key = normalizedEntityNameKey(moduleName), rows = selfIntroPathGet(selfIntroDraft, path) || []; const row = rows.find(r => (moduleId && r.moduleId === moduleId) || (key && normalizedEntityNameKey(r.name) === key)); if (!row)
     return; row.note = String(note || "").trim(); queueSelfIntroSave(); }
-function selfIntroSearchText() { var _a; const d = normalizeSelfIntro((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro), mps = [d.pl.modulePrefs, d.kp.modulePrefs]; return buildSearchIndex([d.bio, d.platformOther, d.generalNotes, d.pl.rpStyle, d.pl.wishes, d.pl.avoids, d.pl.notes, d.kp.wishes, d.kp.avoids, d.kp.notes, d.kp.boundaryNotes, ...d.platforms, ...d.formats, ...d.timeSlots, ...d.availability, ...mps.flatMap(mp => [mp.eraOther, mp.regionOther, mp.structureOther, mp.elementOther, mp.notes, ...mp.eras, ...mp.regions, ...mp.structures, ...mp.elements]), ...d.pl.focus, ...d.pl.wantModules.flatMap(x => [x.name, x.note]), ...d.kp.canHostModules.flatMap(x => [x.name, x.note]), ...Object.keys(d.kp.boundaries).filter(k => d.kp.boundaries[k])]); }
+function selfIntroSearchText() { var _a; const d = normalizeSelfIntro((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro), mps = [d.pl.modulePrefs, d.kp.modulePrefs]; return buildSearchIndex([d.bio, d.platformOther, d.generalNotes, d.pl.rpStyle, d.pl.wishes, d.pl.avoids, d.pl.notes, d.kp.wishes, d.kp.avoids, d.kp.notes, d.kp.boundaryNotes, ...d.platforms, ...d.formats, ...d.timeSlots, ...Object.values(d.timeRanges || {}).flatMap(r => [r.start, r.end]), ...d.availability, ...mps.flatMap(mp => [mp.eraOther, mp.regionOther, mp.structureOther, mp.elementOther, mp.notes, ...mp.eras, ...mp.regions, ...mp.structures, ...mp.elements]), ...d.pl.focus, ...d.pl.wantModules.flatMap(x => [x.name, x.note]), ...d.kp.canHostModules.flatMap(x => [x.name, x.note]), ...Object.keys(d.kp.boundaries).filter(k => d.kp.boundaries[k])]); }
 function statsRunRoles(run) {
     const selfId = selfProfileId();
     const kp = Boolean((selfId && (run === null || run === void 0 ? void 0 : run.kpProfileId) === selfId) || (!(run === null || run === void 0 ? void 0 : run.kpProfileId) && isSelfKP(run === null || run === void 0 ? void 0 : run.kp)));
@@ -17600,10 +17803,20 @@ els.recordsBoard.addEventListener("click", e => {
         return;
     ensureSelfIntroDraft();
     const t = e.target;
+    if (t.matches("[data-intro-time-range-slot]")) {
+        updateIntroTimeRange(t.dataset.introTimeRangeSlot, t.dataset.introTimeRangeSide, t.value, t);
+        return;
+    }
     if (t.matches("[data-intro-array]")) {
         const path = t.dataset.introArray, arr = new Set(selfIntroPathGet(selfIntroDraft, path) || []);
         t.checked ? arr.add(t.value) : arr.delete(t.value);
         selfIntroPathSet(selfIntroDraft, path, [...arr]);
+        if (path === "timeSlots") {
+            if (t.checked) ensureIntroTimeRangeForSlot(t.value);
+            const ranges = selfIntroDraft.timeRanges || {};
+            for (const key of Object.keys(ranges)) if (!arr.has(key)) delete ranges[key];
+            updateIntroTimeRangesPanel();
+        }
         syncIntroToggleAll(t.closest(".self-intro-section"), path);
         queueSelfIntroSave(220);
         return;
@@ -17641,9 +17854,6 @@ els.recordsBoard.addEventListener("click", e => {
         out.textContent = selfIntroScaleText(path, value);
     queueSelfIntroSave(220);
     return;
-} const exportIntent = e.target.closest("[data-intro-export-intent]"); if (exportIntent) {
-    void exportSelfIntroIntentImage(exportIntent.dataset.introExportIntent);
-    return;
 } const pick = e.target.closest("[data-intro-pick-module]"); if (pick) {
     pickSelfIntroModuleIntent(pick.dataset.introPickModule);
     return;
@@ -17659,8 +17869,28 @@ els.recordsBoard.addEventListener("click", e => {
     e.preventDefault();
     addSelfIntroModuleIntent(input.dataset.introModuleInput);
 } });
-(_o = els.selfIntroExport) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => { void exportSelfIntroImage(); });
+(_o = els.selfIntroExport) === null || _o === void 0 ? void 0 : _o.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); toggleSelfIntroExportCenter(); });
+els.selfIntroExportPanelClose === null || els.selfIntroExportPanelClose === void 0 ? void 0 : els.selfIntroExportPanelClose.addEventListener("click", () => toggleSelfIntroExportCenter(false));
+els.selfIntroExportReset === null || els.selfIntroExportReset === void 0 ? void 0 : els.selfIntroExportReset.addEventListener("click", () => { selfIntroExportState = defaultSelfIntroExportState(); saveSelfIntroExportState(); renderSelfIntroExportCenter(); });
+els.selfIntroExportNow === null || els.selfIntroExportNow === void 0 ? void 0 : els.selfIntroExportNow.addEventListener("click", async () => { const ok = await exportSelfIntroImage(selfIntroExportState); if (ok) toggleSelfIntroExportCenter(false); });
+els.selfIntroExportPanel === null || els.selfIntroExportPanel === void 0 ? void 0 : els.selfIntroExportPanel.addEventListener("click", e => {
+    const preset = e.target.closest("[data-self-intro-export-preset]"); if (preset) { applySelfIntroExportPreset(preset.dataset.selfIntroExportPreset); return; }
+    const move = e.target.closest("[data-self-intro-export-move]"); if (move) { moveSelfIntroExportScope(move.dataset.exportScopeId, Number(move.dataset.selfIntroExportMove) || 0); return; }
+});
+els.selfIntroExportPanel === null || els.selfIntroExportPanel === void 0 ? void 0 : els.selfIntroExportPanel.addEventListener("change", e => {
+    const t = e.target, state = normalizeSelfIntroExportState(selfIntroExportState);
+    if (t.matches("[data-self-intro-export-scope]")) { const id = t.dataset.selfIntroExportScope, selected = new Set(state.selected); t.checked ? selected.add(id) : selected.delete(id); state.selected = [...selected]; }
+    else if (t.matches('input[name="selfIntroExportStyle"]')) { state.style = t.value; if (state.style === "share") { state.hideEmpty = true; state.hideEmptyNotes = true; state.hideIdentity = true; state.showHelp = false; } }
+    else if (t === els.selfIntroExportHideEmpty) state.hideEmpty = t.checked;
+    else if (t === els.selfIntroExportHideEmptyNotes) state.hideEmptyNotes = t.checked;
+    else if (t === els.selfIntroExportShowHelp) state.showHelp = t.checked;
+    else if (t === els.selfIntroExportHideIdentity) state.hideIdentity = t.checked;
+    else return;
+    selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
+});
 (_p = els.statsExport) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => { void exportStatsImage(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && els.selfIntroExportPanel && !els.selfIntroExportPanel.hidden) { toggleSelfIntroExportCenter(false); if (els.selfIntroExport) els.selfIntroExport.focus(); } });
+window.addEventListener("resize", () => { if (els.selfIntroExportPanel && !els.selfIntroExportPanel.hidden) positionSelfIntroExportPanel(); });
 (_p = els.selfIntroSave) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => { if (shareModeBlock("个人偏好编辑"))
     return; if (commitSelfIntroDraft()) {
     showToast("个人偏好已保存");
@@ -17672,6 +17902,8 @@ document.addEventListener("click", e => {
     var _a;
     if (!e.target.closest(".ho-image-export-wrap"))
         toggleHoImageExportMenu(false);
+    if (!e.target.closest("#selfIntroExportCenter"))
+        toggleSelfIntroExportCenter(false);
     const statsProfile = e.target.closest("[data-stats-profile]");
     if (statsProfile) {
         const id = statsProfile.dataset.statsProfile;
