@@ -3372,6 +3372,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.11 · 个人统计隐私范围修正：仅遮罩人物姓名等身份信息，统计数字、图表、模组名和控件保持可见。 */
     /* v8.1.6.10 · 个人统计界面精简：移除冗余“统计口径”提示条，保留时间筛选与必要的局部说明；延续统计模块隐私雾面保护。 */
     /* v8.1.6.9 · 隐私遮罩补全：个人统计的总览、人物、模组、趋势与资料记录卡统一纳入雾面保护，并同步隐私切换时的统计重绘。 */
     /* v8.1.6.8 · 统计语义校正：可选字段从“完整度/缺失”改为中性的记录率表达，并统一 PC 名等可选信息的缺省文案。 */
@@ -3623,40 +3624,9 @@
     .stats-range-arrow{padding-bottom:11px;color:var(--t-faint);font-size:10px}
     .stats-content{display:grid;gap:12px;min-width:0}
 
-    /* 个人统计也属于隐私展示范围：开启隐私模式后保留版式轮廓，整张统计卡使用与 PL 档案一致的雾面遮罩。 */
-    .stats-identity-card,.stats-metric-card,.stats-panel{position:relative;isolation:isolate}
-    body.privacy-mask .stats-identity-card,
-    body.privacy-mask .stats-metric-card,
-    body.privacy-mask .stats-panel{overflow:hidden;user-select:none}
-    body.privacy-mask .stats-identity-card>*,
-    body.privacy-mask .stats-metric-card>*,
-    body.privacy-mask .stats-panel>*{filter:blur(6px);opacity:.48;pointer-events:none}
-    body.privacy-mask .stats-identity-card::after,
-    body.privacy-mask .stats-metric-card::after,
-    body.privacy-mask .stats-panel::after{
-      content:"";position:absolute;inset:-2px;z-index:20;pointer-events:auto;
-      background:linear-gradient(105deg,rgba(255,255,255,.38),rgba(236,240,236,.58) 47%,rgba(255,255,255,.22));
-      -webkit-backdrop-filter:blur(8px) saturate(.82);backdrop-filter:blur(8px) saturate(.82)
-    }
-    body.privacy-mask .stats-identity-card::before,
-    body.privacy-mask .stats-metric-card::before,
-    body.privacy-mask .stats-panel::before{
-      content:"";position:absolute;left:8%;right:18%;top:2px;height:1px;z-index:21;pointer-events:none;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);opacity:.72
-    }
-    html[data-theme] body.privacy-mask .stats-identity-card::after,
-    html[data-theme] body.privacy-mask .stats-metric-card::after,
-    html[data-theme] body.privacy-mask .stats-panel::after{
-      background:linear-gradient(105deg,var(--t-privacy-sheen),var(--t-privacy-2) 47%,color-mix(in srgb,var(--t-privacy-sheen) 55%,transparent))
-    }
-    html[data-theme] body.privacy-mask .stats-identity-card::before,
-    html[data-theme] body.privacy-mask .stats-metric-card::before,
-    html[data-theme] body.privacy-mask .stats-panel::before{background:linear-gradient(90deg,transparent,var(--t-privacy-sheen),transparent)}
-    body.privacy-mask .stats-toolbar .view-toolbar-title::after{
-      content:"隐私模式已隐藏统计内容";display:inline-flex;width:max-content;max-width:100%;margin-top:7px;padding:4px 8px;
-      border:1px solid var(--t-line);border-radius:999px;background:linear-gradient(135deg,var(--t-privacy-1),var(--t-privacy-2));
-      color:var(--t-muted);font-size:8px;font-weight:720;line-height:1.2;box-shadow:inset 0 1px 0 var(--t-privacy-sheen)
-    }
+    /* 个人统计隐私范围：只遮罩人物姓名等个人身份信息；统计数字、图表、模组名和操作控件保持可见可用。 */
+    .stats-person-sensitive{max-width:100%}
+    body.privacy-mask .stats-person-sensitive{padding:1px 6px;border-radius:7px}
     .stats-overview-shell{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(0,1.8fr);gap:10px;align-items:stretch}
     .stats-identity-card,.stats-metric-card,.stats-panel{border:1px solid var(--t-line);background:var(--t-surface);box-shadow:0 8px 24px var(--t-shadow-soft)}
     .stats-identity-card{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:15px;padding:15px 16px;border-radius:18px;min-width:0}
@@ -4101,7 +4071,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.10 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.11 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4113,7 +4083,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.10　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.11　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4403,7 +4373,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.10</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.11</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4447,10 +4417,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.10 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.10</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.11 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.11</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.11</strong><span>修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span>
 <strong>v8.1.6.10</strong><span>精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span>
 <strong>v8.1.6.9</strong><span>补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span>
 <strong>v8.1.6.8</strong><span>校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写；同时把 PC 名缺省、无日期提示和 PL 参团分布等文案改得更中性准确。</span>
@@ -4603,7 +4574,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.6.10 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.11 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4622,7 +4593,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.9";
+const APP_UI_VERSION = "8.1.6.11";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -8229,8 +8200,11 @@ function statsPersonAggregates(runs){
   return [...map.values()];
 }
 function statsPersonLabel(row,index=0){
-  if(row.profileId){const p=profileById(row.profileId);return p?displayProfileName(p):(privacyMaskEnabled?`PL ${String(index+1).padStart(2,"0")}`:row.name);}
-  return privacyMaskEnabled?`外部参与者 ${String(index+1).padStart(2,"0")}`:row.name;
+  if(row.profileId){const p=profileById(row.profileId);return p?rawProfileName(p):(row.name||`PL ${String(index+1).padStart(2,"0")}`);}
+  return row.name||`外部参与者 ${String(index+1).padStart(2,"0")}`;
+}
+function statsPersonNameHTML(row,index=0,className=""){
+  return sensitiveHTML(statsPersonLabel(row,index),`privacy-name stats-person-sensitive ${className}`.trim());
 }
 function statsModuleAggregates(runs){
   const map=new Map();
@@ -8250,8 +8224,9 @@ function statsCurrentPlanSummary(){
 }
 function statsModuleCount(rows,key){return rows.filter(r=>r[key]>0).length;}
 function statsFormatDate(date){if(!date)return "—";const [y,m,d]=date.split("-");return `${y}.${m}.${d}`;}
-function statsRankButton(row,label,kind){
-  if(kind==="person"&&row.profileId)return `<button class="stats-rank-name" type="button" data-stats-profile="${escapeHTML(row.profileId)}">${escapeHTML(label)}</button>`;
+function statsRankButton(row,label,kind,index=0){
+  if(kind==="person"&&row.profileId)return `<button class="stats-rank-name" type="button" data-stats-profile="${escapeHTML(row.profileId)}">${statsPersonNameHTML(row,index)}</button>`;
+  if(kind==="person")return `<span class="stats-rank-name">${statsPersonNameHTML(row,index)}</span>`;
   if(kind==="module")return `<button class="stats-rank-name" type="button" data-stats-module="${escapeHTML(row.moduleId||"")}" data-stats-module-name="${escapeHTML(row.name)}">${escapeHTML(label)}</button>`;
   return `<span class="stats-rank-name">${escapeHTML(label)}</span>`;
 }
@@ -8260,9 +8235,9 @@ function statsPeopleRowsHTML(rows,metric,view){
   if(!sorted.length)return `<div class="stats-empty">当前范围内还没有足够的人物关系数据。<br>归档跑团记录并关联“我”、KP 与 PL 后，这里会自动生成排名。</div>`;
   const metricLabel=metric==="ledByMe"?"我带 TA":metric==="ledMe"?"TA 带我":"同桌";
   if(view==="bar"){
-    const max=Math.max(1,...sorted.map(r=>r[metric]));return `<div class="stats-bars">${sorted.map((r,i)=>{const label=statsPersonLabel(r,i);const name=r.profileId?`<button class="stats-bar-label" type="button" data-stats-profile="${escapeHTML(r.profileId)}">${escapeHTML(label)}</button>`:`<span class="stats-bar-label">${escapeHTML(label)}</span>`;return `<div class="stats-bar-row">${name}<div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.max(2,r[metric]/max*100).toFixed(2)}%"></div></div><div class="stats-bar-value">${r[metric]} 桌</div></div>`;}).join("")}</div>`;
+    const max=Math.max(1,...sorted.map(r=>r[metric]));return `<div class="stats-bars">${sorted.map((r,i)=>{const name=r.profileId?`<button class="stats-bar-label" type="button" data-stats-profile="${escapeHTML(r.profileId)}">${statsPersonNameHTML(r,i)}</button>`:`<span class="stats-bar-label">${statsPersonNameHTML(r,i)}</span>`;return `<div class="stats-bar-row">${name}<div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.max(2,r[metric]/max*100).toFixed(2)}%"></div></div><div class="stats-bar-value">${r[metric]} 桌</div></div>`;}).join("")}</div>`;
   }
-  return `<div class="stats-ranking">${sorted.map((r,i)=>{const label=statsPersonLabel(r,i);const meta=metric==="together"?`我带 ${r.ledByMe} · TA 带我 ${r.ledMe} · 同为 PL ${r.coPl}`:metric==="ledByMe"?`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`:`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`;return `<div class="stats-ranking-row"><span class="stats-rank-no">${i+1}</span><div class="stats-rank-main">${statsRankButton(r,label,"person")}<span class="stats-rank-meta">${escapeHTML(meta)}</span></div><div class="stats-rank-value"><strong>${r[metric]}</strong><span>${metricLabel}桌次</span></div></div>`;}).join("")}</div>`;
+  return `<div class="stats-ranking">${sorted.map((r,i)=>{const label=statsPersonLabel(r,i);const meta=metric==="together"?`我带 ${r.ledByMe} · TA 带我 ${r.ledMe} · 同为 PL ${r.coPl}`:metric==="ledByMe"?`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`:`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`;return `<div class="stats-ranking-row"><span class="stats-rank-no">${i+1}</span><div class="stats-rank-main">${statsRankButton(r,label,"person",i)}<span class="stats-rank-meta">${escapeHTML(meta)}</span></div><div class="stats-rank-value"><strong>${r[metric]}</strong><span>${metricLabel}桌次</span></div></div>`;}).join("")}</div>`;
 }
 function statsModuleRowsHTML(rows,mode,view){
   const metric=mode==="kp"?"kp":"pl",sorted=rows.filter(r=>r[metric]>0).sort((a,b)=>b[metric]-a[metric]||b.kp+b.pl-(a.kp+a.pl)||String(a.name).localeCompare(String(b.name),"zh-CN")).slice(0,20);
@@ -8337,7 +8312,7 @@ function renderStats(){
         <div class="stats-metric-card"><span>我跑过的模组</span><strong>${plMods} 个</strong><small>至少作为 PL 跑过 1 桌</small></div>
         <div class="stats-metric-card"><span>当前计划</span><strong>${plans.total} 个</strong><small>已排 ${plans.scheduled} · 未排 ${plans.unscheduled}</small></div>
         <div class="stats-metric-card"><span>含 Log 记录</span><strong>${completeness[0].done}/${completeness[0].total}</strong><small>当前范围内已附 Log 链接</small></div>
-        <div class="stats-metric-card"><span>最常同桌</span><strong>${people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0]?.together||0} 桌</strong><small>${people.length?escapeHTML(statsPersonLabel(people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0]||{},0)):"暂无人物数据"}</small></div>
+        <div class="stats-metric-card"><span>最常同桌</span><strong>${people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0]?.together||0} 桌</strong><small>${people.filter(r=>r.together>0).length?statsPersonNameHTML(people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0],0):"暂无人物数据"}</small></div>
         <div class="stats-metric-card"><span>最常带的模组</span><strong>${mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.kp||0} 桌</strong><small>${escapeHTML(mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.name||"暂无带团数据")}</small></div>
       </div>
     </div>
