@@ -3007,6 +3007,22 @@
     .external-backup-notice{position:fixed;right:22px;bottom:22px;z-index:var(--z-toast);width:min(370px,calc(100vw - 28px));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 12px 12px 14px;border:1px solid color-mix(in srgb,var(--t-success) 34%,var(--t-line));border-radius:14px;background:color-mix(in srgb,var(--t-surface) 96%,transparent);box-shadow:0 16px 42px rgba(31,49,45,.16);backdrop-filter:blur(12px)}
     .external-backup-notice[hidden]{display:none!important}.external-backup-notice-copy{display:grid;gap:3px;min-width:0}.external-backup-notice-copy strong{font-size:11px;color:var(--t-ink)}.external-backup-notice-copy span{font-size:8.8px;line-height:1.45;color:var(--t-muted);overflow-wrap:anywhere}.external-backup-notice-actions{display:flex;align-items:center;gap:6px}.external-backup-notice-close{width:32px;height:32px;padding:0;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);color:var(--t-muted);cursor:pointer}
     @media(max-width:760px){.external-backup-notice{left:14px;right:14px;bottom:calc(90px + env(safe-area-inset-bottom));width:auto;grid-template-columns:1fr}.external-backup-notice-actions{justify-content:flex-end}}
+    .external-backup-browser-backdrop{position:fixed;inset:0;z-index:var(--z-submodal);display:grid;place-items:center;padding:16px;background:rgba(28,31,29,.34);backdrop-filter:blur(7px)}
+    .external-backup-browser-backdrop[hidden]{display:none!important}
+    .external-backup-browser-modal{width:min(760px,100%);max-height:min(78vh,760px);display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;overflow:hidden;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface);box-shadow:0 24px 70px rgba(0,0,0,.18)}
+    .external-backup-browser-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 15px;border-bottom:1px solid var(--t-line)}
+    .external-backup-browser-head>div{display:grid;gap:3px}.external-backup-browser-head h3{margin:0;font-size:14px}.external-backup-browser-head p{margin:0;font-size:8.8px;line-height:1.5;color:var(--t-muted)}
+    .external-backup-browser-summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 15px;border-bottom:1px solid var(--t-line);background:var(--t-surface-2)}
+    .external-backup-browser-summary>span{display:grid;gap:2px;min-width:0}.external-backup-browser-summary strong{font-size:9.6px;color:var(--t-ink)}.external-backup-browser-summary small{font-size:8.2px;color:var(--t-muted);overflow-wrap:anywhere}
+    .external-backup-file-list{min-height:0;overflow:auto;padding:10px 12px;display:grid;gap:7px;overscroll-behavior:contain}
+    .external-backup-file-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:10px 11px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2)}
+    .external-backup-file-row.latest{border-color:color-mix(in srgb,var(--t-success) 28%,var(--t-line));background:color-mix(in srgb,var(--t-success) 5%,var(--t-surface))}
+    .external-backup-file-main{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;align-items:start;min-width:0}.external-backup-file-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);font-size:8px;font-weight:820;color:var(--t-accent-strong)}
+    .external-backup-file-copy{display:grid;gap:3px;min-width:0}.external-backup-file-copy strong{font-size:9.7px;color:var(--t-ink);overflow-wrap:anywhere}.external-backup-file-meta{display:flex;flex-wrap:wrap;gap:5px 9px;font-size:8px;color:var(--t-muted)}.external-backup-file-state{font-size:8px;font-weight:740;color:var(--t-success)}.external-backup-file-state.warn{color:var(--t-warning)}
+    .external-backup-file-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.external-backup-browser-empty{padding:28px 16px;text-align:center;border:1px dashed var(--t-line);border-radius:12px;color:var(--t-muted);font-size:9px;line-height:1.6}
+    .external-backup-browser-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 15px;border-top:1px solid var(--t-line);background:var(--t-surface)}
+    @media(max-width:760px){.external-backup-browser-backdrop{padding:8px}.external-backup-browser-modal{width:100%;max-height:calc(100dvh - 16px);border-radius:15px}.external-backup-file-row{grid-template-columns:1fr}.external-backup-file-actions{justify-content:stretch}.external-backup-file-actions .btn{flex:1}.external-backup-browser-foot{padding-bottom:calc(10px + env(safe-area-inset-bottom))}}
+    @media(max-width:420px){.external-backup-browser-summary{align-items:stretch;flex-direction:column}.external-backup-browser-summary .btn{width:100%}.external-backup-browser-foot{display:grid;grid-template-columns:1fr 1fr}.external-backup-browser-foot .btn{width:100%}}
     .external-backup-location{align-items:flex-start}
     .external-backup-location-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;max-width:60%}
     .external-backup-status{padding:9px 10px;border:1px solid var(--t-line);border-radius:11px;background:color-mix(in srgb,var(--t-surface-2) 76%,transparent);font-size:8.6px;line-height:1.55;color:var(--t-muted)}
@@ -4764,7 +4780,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.36 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.37 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4776,7 +4792,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.36　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.37　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5087,7 +5103,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <label class="external-backup-toggle-row"><span><strong>启用定时备份</strong><small>页面或已安装的网页应用运行时自动执行；关闭期间错过的备份会在再次打开时补做最近一次。</small></span><input id="externalBackupEnabledToggle" type="checkbox" aria-label="启用浏览器外自动备份"></label>
 <label class="external-backup-time-row"><span><strong>自动备份频率</strong><small>默认每 30 分钟。频率越高，外部“最新备份”越接近当前数据。</small></span><select id="externalBackupIntervalSelect" aria-label="自动备份频率"><option value="30">每 30 分钟</option><option value="60">每 1 小时</option><option value="120">每 2 小时</option><option value="360">每 6 小时</option><option value="720">每 12 小时</option><option value="1440">每 24 小时</option></select></label>
 </div>
-<div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未设置浏览器外备份方式</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" id="reauthorizeExternalBackupBtn" type="button" hidden>重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
+<div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未设置浏览器外备份方式</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" id="viewExternalBackupFilesBtn" type="button" hidden>查看备份文件</button><button class="btn small" id="reauthorizeExternalBackupBtn" type="button" hidden>重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
 <div id="externalBackupStatusNote" class="external-backup-status">桌面浏览器支持时可固定写入文件夹；手机浏览器若不支持该权限，会改用系统分享/下载保存。手机兼容模式需要在每次到期提示中点一次“保存到手机”，网页无法绕过浏览器安全限制静默选择系统文件夹。</div>
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>设备迁移</strong><span>通过迁移包在设备间转移档案，无需账号或云同步。</span></div></div>
@@ -5111,7 +5127,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.36</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.37</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5126,10 +5142,11 @@ body{font-size:var(--vu-body);line-height:1.5}
 </div>
 </section>
 </div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.36 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.36</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.37 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.37</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.37</strong><span>重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出，可查看文件名、大小、修改时间、完整性状态，并支持查看 JSON 内容或下载副本；更改保存位置仍保留为独立操作。</span>
 <strong>v8.1.6.36</strong><span>修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入；UC、夸克、iOS Safari、Firefox Android 等缺少相应权限时自动提供手机兼容备份，到期准备完整备份并提示“保存到手机”，优先调用系统保存/分享面板，不支持时下载到浏览器默认目录，并明确区分“已写入并可核验”和“已请求手机保存”。</span>
 <strong>v8.1.6.35</strong><span>浏览器外自动备份升级为可配置频率，默认每 30 分钟；每次成功写入后显示非阻塞备份提示，并可核验“最新备份”文件的存在、大小、更新时间与完整性。受浏览器安全限制无法直接定位系统文件夹时，可从核验弹窗打开文件夹选择器查看目录。</span>
 <strong>v8.1.6.34</strong><span>个人偏好导出预览支持直接拖动模块排序；左侧上下按钮继续保留作为键盘、旧浏览器和精细调整的备用操作。半栏布局改为自动填充较短列的紧凑双栏排版，消除不同高度模块之间的大块空白。</span>
@@ -5306,8 +5323,16 @@ body{font-size:var(--vu-body);line-height:1.5}
   <div id="toast" class="toast"></div>
   <aside id="externalBackupNotice" class="external-backup-notice" role="status" aria-live="polite" hidden>
     <div class="external-backup-notice-copy"><strong id="externalBackupNoticeTitle">外部备份已完成</strong><span id="externalBackupNoticeText">刚刚已写入备份。</span></div>
-    <div class="external-backup-notice-actions"><button id="externalBackupVerifyBtn" class="btn small" type="button">查看备份</button><button id="externalBackupNoticeCloseBtn" class="external-backup-notice-close" type="button" aria-label="关闭备份提示">×</button></div>
+    <div class="external-backup-notice-actions"><button id="externalBackupVerifyBtn" class="btn small" type="button">查看备份文件</button><button id="externalBackupNoticeCloseBtn" class="external-backup-notice-close" type="button" aria-label="关闭备份提示">×</button></div>
   </aside>
+  <div id="externalBackupBrowserBackdrop" class="external-backup-browser-backdrop" hidden>
+    <section class="external-backup-browser-modal" role="dialog" aria-modal="true" aria-labelledby="externalBackupBrowserTitle">
+      <header class="external-backup-browser-head"><div><h3 id="externalBackupBrowserTitle">外部备份文件</h3><p>直接读取当前已授权保存位置中的 JSON 文件，不会重新打开文件夹选择器。</p></div><button id="closeExternalBackupBrowserBtn" class="icon-close" type="button" aria-label="关闭外部备份文件列表">×</button></header>
+      <div class="external-backup-browser-summary"><span><strong id="externalBackupBrowserLocation">正在读取保存位置…</strong><small id="externalBackupBrowserSummary">请稍候</small></span><button id="refreshExternalBackupBrowserBtn" class="btn small" type="button">刷新列表</button></div>
+      <div id="externalBackupFileList" class="external-backup-file-list"><div class="external-backup-browser-empty">正在读取备份文件…</div></div>
+      <footer class="external-backup-browser-foot"><button id="changeExternalBackupLocationFromBrowserBtn" class="btn small" type="button">更改保存位置</button><button id="closeExternalBackupBrowserFootBtn" class="btn small primary" type="button">关闭</button></footer>
+    </section>
+  </div>
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script id="compatBootstrap">
@@ -5359,7 +5384,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.36";
+const APP_UI_VERSION = "8.1.6.37";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -7498,41 +7523,95 @@ async function prepareMobileExternalBackup(reason = "scheduled") {
         return false;
     }
 }
-function showExternalBackupSuccessNotice(meta) { if (!els.externalBackupNotice || !els.externalBackupNoticeText) return; const when = formatSafetyDateTime(Number((meta===null||meta===void 0?void 0:meta.backedUpAt)||Date.now())), name = String((meta===null||meta===void 0?void 0:meta.fileName)||`${APP_NAME}_自动备份_最新.json`), location = String((meta===null||meta===void 0?void 0:meta.locationName)||"已选择位置"), mobile = String((meta===null||meta===void 0?void 0:meta.kind)||"").startsWith("mobile-"); externalBackupNoticeMode = mobile ? "mobile-info" : "verify"; if (els.externalBackupNoticeTitle) els.externalBackupNoticeTitle.textContent = mobile ? "已请求保存外部备份" : "外部备份已完成"; els.externalBackupNoticeText.textContent = mobile ? `${when} 已生成「${name}」并交给${location}。网页无法读取手机最终落盘路径，请在系统文件 / 浏览器下载记录中确认。` : `${when} 已写入「${name}」 · ${location}`; if (els.externalBackupVerify) els.externalBackupVerify.textContent = mobile ? "保存说明" : "查看备份"; els.externalBackupNotice.hidden = false; }
+function showExternalBackupSuccessNotice(meta) { if (!els.externalBackupNotice || !els.externalBackupNoticeText) return; const when = formatSafetyDateTime(Number((meta===null||meta===void 0?void 0:meta.backedUpAt)||Date.now())), name = String((meta===null||meta===void 0?void 0:meta.fileName)||`${APP_NAME}_自动备份_最新.json`), location = String((meta===null||meta===void 0?void 0:meta.locationName)||"已选择位置"), mobile = String((meta===null||meta===void 0?void 0:meta.kind)||"").startsWith("mobile-"); externalBackupNoticeMode = mobile ? "mobile-info" : "verify"; if (els.externalBackupNoticeTitle) els.externalBackupNoticeTitle.textContent = mobile ? "已请求保存外部备份" : "外部备份已完成"; els.externalBackupNoticeText.textContent = mobile ? `${when} 已生成「${name}」并交给${location}。网页无法读取手机最终落盘路径，请在系统文件 / 浏览器下载记录中确认。` : `${when} 已写入「${name}」 · ${location}`; if (els.externalBackupVerify) els.externalBackupVerify.textContent = mobile ? "保存说明" : "查看备份文件"; els.externalBackupNotice.hidden = false; }
 function hideExternalBackupSuccessNotice() { if (els.externalBackupNotice) els.externalBackupNotice.hidden = true; }
-async function openExternalBackupLocationPickerForView() { if (!externalBackupFolderApiSupported()) return false; try { await window.showDirectoryPicker({ id:"pl-life-external-backup", mode:"read" }); return true; } catch (err) { if (err && err.name === "AbortError") return false; console.warn("打开文件夹选择器失败", err); return false; } }
+let externalBackupBrowserRows = [];
+async function inspectExternalBackupFileObject(file) {
+    if (!file || !file.size) return { integrity:"文件为空", ok:false };
+    try {
+        const raw = JSON.parse(await file.text());
+        if (isCanonicalArchive(raw)) { assertCanonicalIntegrity(raw); return { integrity:"完整性校验通过", ok:true }; }
+        return { integrity:"JSON 可读取，但不是当前完整备份格式", ok:false };
+    } catch (err) { return { integrity:"内容校验未通过", ok:false }; }
+}
+async function listExternalBackupFiles(target = null) {
+    const t = target || await loadExternalBackupTarget();
+    if (!t || !t.handle) throw new Error("尚未设置外部备份位置");
+    const permission = await externalBackupPermission(t, false);
+    if (permission === "prompt" || permission === "denied") throw new Error("需要重新授权保存位置");
+    const rows = [];
+    if (t.kind === "directory") {
+        if (typeof t.handle.entries !== "function") throw new Error("当前浏览器无法读取该文件夹的文件列表");
+        for await (const pair of t.handle.entries()) {
+            const name = pair[0], handle = pair[1];
+            if (!handle || handle.kind !== "file" || !/\.json$/i.test(name) || name.indexOf(`${APP_NAME}_自动备份_`) !== 0) continue;
+            try {
+                const file = await handle.getFile(), state = await inspectExternalBackupFileObject(file);
+                rows.push({ name, handle, file, size:Number(file.size||0), lastModified:Number(file.lastModified||0), integrity:state.integrity, ok:state.ok });
+            } catch (err) { rows.push({ name, handle, file:null, size:0, lastModified:0, integrity:"读取失败", ok:false }); }
+        }
+    } else {
+        const file = await t.handle.getFile(), state = await inspectExternalBackupFileObject(file);
+        rows.push({ name:String(file.name || t.handle.name || `${APP_NAME}_自动备份_最新.json`), handle:t.handle, file, size:Number(file.size||0), lastModified:Number(file.lastModified||0), integrity:state.integrity, ok:state.ok });
+    }
+    rows.sort((a,b)=>Number(b.lastModified||0)-Number(a.lastModified||0) || String(a.name).localeCompare(String(b.name),"zh-CN"));
+    return { target:t, rows };
+}
+function closeExternalBackupBrowser() { if (els.externalBackupBrowserBackdrop) els.externalBackupBrowserBackdrop.hidden = true; externalBackupBrowserRows = []; }
+function renderExternalBackupBrowserRows(rows) {
+    if (!els.externalBackupFileList) return;
+    if (!rows.length) { els.externalBackupFileList.innerHTML = `<div class="external-backup-browser-empty">当前保存位置里还没有找到自动备份 JSON 文件。可以先点“立即备份测试”，再回来刷新列表。</div>`; return; }
+    const latestName = `${APP_NAME}_自动备份_最新.json`;
+    els.externalBackupFileList.innerHTML = rows.map((row,index)=>{ const latest=row.name===latestName, modified=row.lastModified?formatSafetyDateTime(row.lastModified):"未知时间"; return `<article class="external-backup-file-row ${latest?"latest":""}"><div class="external-backup-file-main"><span class="external-backup-file-icon">JSON</span><span class="external-backup-file-copy"><strong>${escapeHTML(row.name)}${latest?" · 最新":""}</strong><span class="external-backup-file-meta"><span>${escapeHTML(formatBackupFileSize(row.size))}</span><span>${escapeHTML(modified)}</span><span class="external-backup-file-state ${row.ok?"":"warn"}">${escapeHTML(row.integrity)}</span></span></span></div><div class="external-backup-file-actions"><button class="btn small" type="button" data-external-backup-view="${index}">查看内容</button><button class="btn small" type="button" data-external-backup-download="${index}">下载副本</button></div></article>`; }).join("");
+}
+async function openExternalBackupBrowser() {
+    if (!els.externalBackupBrowserBackdrop) return false;
+    els.externalBackupBrowserBackdrop.hidden = false;
+    if (els.externalBackupBrowserLocation) els.externalBackupBrowserLocation.textContent = "正在读取保存位置…";
+    if (els.externalBackupBrowserSummary) els.externalBackupBrowserSummary.textContent = "请稍候";
+    if (els.externalBackupFileList) els.externalBackupFileList.innerHTML = `<div class="external-backup-browser-empty">正在读取实际 JSON 文件…</div>`;
+    try {
+        const result = await listExternalBackupFiles(), targetName = String(result.target.handle.name || result.target.displayName || "已选择位置");
+        externalBackupBrowserRows = result.rows;
+        if (els.externalBackupBrowserLocation) els.externalBackupBrowserLocation.textContent = `保存位置：${targetName}`;
+        if (els.externalBackupBrowserSummary) els.externalBackupBrowserSummary.textContent = `实际读取到 ${result.rows.length} 个自动备份 JSON 文件；列表来自当前已授权位置。`;
+        renderExternalBackupBrowserRows(result.rows);
+        return true;
+    } catch (err) {
+        externalBackupBrowserRows = [];
+        if (els.externalBackupBrowserLocation) els.externalBackupBrowserLocation.textContent = "无法读取保存位置";
+        if (els.externalBackupBrowserSummary) els.externalBackupBrowserSummary.textContent = String(err.message||err);
+        if (els.externalBackupFileList) els.externalBackupFileList.innerHTML = `<div class="external-backup-browser-empty">${escapeHTML(String(err.message||err))}<br>如果权限已失效，请关闭此窗口后使用“重新授权”。</div>`;
+        return false;
+    }
+}
+async function openExternalBackupFileContent(index) {
+    const row = externalBackupBrowserRows[Number(index)]; if (!row) return;
+    try {
+        const file = row.file || await row.handle.getFile(), text = await file.text();
+        const win = window.open("", "_blank");
+        if (!win) { showToast("浏览器拦截了新窗口，可使用“下载副本”查看文件"); return; }
+        win.document.open();
+        win.document.write(`<!doctype html><meta charset="utf-8"><title>${escapeHTML(row.name)}</title><style>body{margin:0;padding:24px;background:#f6f8f7;color:#263532;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}</style><pre>${escapeHTML(text)}</pre>`);
+        win.document.close();
+    } catch (err) { appNotice(`无法读取这个备份文件：${err.message||err}`,"查看失败"); }
+}
+async function downloadExternalBackupFileCopy(index) {
+    const row = externalBackupBrowserRows[Number(index)]; if (!row) return;
+    try { const file = row.file || await row.handle.getFile(); downloadBlobFile(file,row.name); showToast(`已下载副本：${row.name}`); } catch (err) { appNotice(`无法下载这个备份文件：${err.message||err}`,"下载失败"); }
+}
 async function verifyExternalBackupFromNotice() {
     if (externalBackupNoticeMode === "mobile-save") {
-        try {
-            const serialized = externalBackupMobileSerialized || JSON.stringify(buildCanonicalArchive(true), null, 2);
-            return await saveSerializedBackupToMobile(serialized, "scheduled-user-save");
-        } catch (err) {
-            appNotice(`保存手机备份失败：${err.message || err}`, "保存失败");
-            return false;
-        }
+        try { const serialized = externalBackupMobileSerialized || JSON.stringify(buildCanonicalArchive(true), null, 2); return await saveSerializedBackupToMobile(serialized, "scheduled-user-save"); }
+        catch (err) { appNotice(`保存手机备份失败：${err.message || err}`, "保存失败"); return false; }
     }
     if (externalBackupNoticeMode === "mobile-info" || externalBackupMobileConfigured() && !externalBackupDirectSupported()) {
-        appNotice(`当前手机浏览器没有向网页开放“固定文件夹长期写入”权限，所以网页无法直接打开或核验某个系统保存目录。
+        appNotice(`当前手机浏览器没有向网页开放“固定文件夹长期写入”权限，所以网页无法读取系统保存目录里的实际文件列表。
 
-如果刚才使用系统保存/分享，请到手机的“文件”或你选择的网盘位置确认；如果走的是浏览器下载，请到浏览器下载记录或默认下载目录确认。想改变默认下载位置，需要在浏览器自己的下载设置中修改。`, "手机备份说明");
+如果刚才使用系统保存/分享，请到手机的“文件”或你选择的网盘位置确认；如果走的是浏览器下载，请到浏览器下载记录或默认下载目录确认。`, "手机备份说明");
         return true;
     }
-    try {
-        const info = await inspectExternalBackupTarget();
-        const targetName = String(info.target.handle.name || info.target.displayName || "已选择位置"), modified = info.lastModified ? formatSafetyDateTime(info.lastModified) : "未知", message = `保存位置：${targetName}
-备份文件：${info.fileName}
-文件大小：${formatBackupFileSize(info.size)}
-最近修改：${modified}
-状态：${info.integrity}
-
-浏览器出于安全限制，网页不能直接唤起系统文件管理器并定位到这个文件夹。${externalBackupFolderApiSupported()?"你可以点击“打开文件夹选择器”查看该目录；取消选择不会改变当前备份位置。":"当前浏览器只能在这里核验备份文件是否存在。"}`;
-        if (externalBackupFolderApiSupported()) {
-            const open = await appConfirm(message,{title:"备份核验",confirmText:"打开文件夹选择器",cancelText:"关闭"});
-            if (open) await openExternalBackupLocationPickerForView();
-        } else appNotice(message,"备份核验");
-    } catch (err) {
-        appNotice(`无法核验外部备份：${err.message||err}。如果浏览器要求授权，请回到“数据与备份”重新授权。`,"备份核验失败");
-    }
+    return openExternalBackupBrowser();
 }
 
 function acquireExternalBackupLock() { const token = `${tabInstanceId}_${Date.now()}_${Math.random().toString(16).slice(2)}`; try { const old = safeReadLocalMeta(EXTERNAL_BACKUP_LOCK_KEY); if (old && Date.now() - Number(old.at || 0) < 120000) return ""; localStorage.setItem(EXTERNAL_BACKUP_LOCK_KEY, JSON.stringify({ token, at: Date.now() })); const verify = safeReadLocalMeta(EXTERNAL_BACKUP_LOCK_KEY); return verify && verify.token === token ? token : ""; } catch (err) { return token; } }
@@ -7602,6 +7681,7 @@ async function updateExternalBackupUI(options = {}) {
     if (els.chooseExternalBackupFolder) els.chooseExternalBackupFolder.textContent = target ? "更改保存位置" : mobileMode && directSupported ? "升级为固定保存位置" : mobileMode ? "手机保存说明" : directSupported ? (externalBackupFolderApiSupported() ? "选择保存文件夹" : "选择备份文件") : "启用手机兼容备份";
     if (els.externalBackupLocationText) els.externalBackupLocationText.textContent = target ? `${target.kind === "directory" ? "文件夹" : "备份文件"}：${target.handle.name || target.displayName || "已授权位置"}` : mobileMode ? "系统保存 / 浏览器默认下载目录（路径由手机系统或浏览器决定）" : "尚未设置浏览器外备份方式";
     const permission = target ? await externalBackupPermission(target, false) : "unknown", needsAuth = Boolean(target && permission === "prompt");
+    if (els.viewExternalBackupFiles) { els.viewExternalBackupFiles.hidden = !target; els.viewExternalBackupFiles.disabled = Boolean(!target || needsAuth); }
     if (els.reauthorizeExternalBackup) els.reauthorizeExternalBackup.hidden = !needsAuth;
     if (els.externalBackupHealthValue) els.externalBackupHealthValue.textContent = !supported ? "浏览器不支持" : !configured ? "未设置" : needsAuth ? "需重新授权" : mobileMode ? (enabled ? "等待点按保存" : "已暂停") : enabled ? "已启用" : "已暂停";
     if (els.externalBackupHealthSub) els.externalBackupHealthSub.textContent = pendingAt ? `待保存：${formatSafetyDateTime(pendingAt)} · ${intervalLabel}` : lastAt ? `最近：${formatSafetyDateTime(lastAt)} · ${intervalLabel}` : configured ? `${intervalLabel} · 尚未写入` : directSupported ? "选择保存位置后可启用" : "可启用手机兼容备份";
@@ -7818,7 +7898,7 @@ const els = {
     quickRunModule: document.getElementById("quickRunModuleInput"), quickRunName: document.getElementById("quickRunNameInput"), quickRunKp: document.getElementById("quickRunKpInput"), quickRunStart: document.getElementById("quickRunStartInput"), quickRunEnd: document.getElementById("quickRunEndInput"), quickRunLog: document.getElementById("quickRunLogInput"), createLinkedRun: document.getElementById("createLinkedRunBtn"),
     editRuns: document.getElementById("editRuns"),
     save: document.getElementById("saveBtn"), cancel: document.getElementById("cancelBtn"), closeProfile: document.getElementById("closeProfileBtn"), modalDelete: document.getElementById("modalDeleteBtn"),
-    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), recordDefaultExpandSetting: document.getElementById("recordDefaultExpandSetting"), profileFootprintSetting: document.getElementById("profileFootprintSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
+    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), viewExternalBackupFiles: document.getElementById("viewExternalBackupFilesBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), externalBackupBrowserBackdrop: document.getElementById("externalBackupBrowserBackdrop"), externalBackupBrowserLocation: document.getElementById("externalBackupBrowserLocation"), externalBackupBrowserSummary: document.getElementById("externalBackupBrowserSummary"), externalBackupFileList: document.getElementById("externalBackupFileList"), closeExternalBackupBrowser: document.getElementById("closeExternalBackupBrowserBtn"), closeExternalBackupBrowserFoot: document.getElementById("closeExternalBackupBrowserFootBtn"), refreshExternalBackupBrowser: document.getElementById("refreshExternalBackupBrowserBtn"), changeExternalBackupLocationFromBrowser: document.getElementById("changeExternalBackupLocationFromBrowserBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), recordDefaultExpandSetting: document.getElementById("recordDefaultExpandSetting"), profileFootprintSetting: document.getElementById("profileFootprintSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
 };
 /* ---------- 10. 通用工具：文本转义、读取字段、评分说明、加权总分等 ---------- */
 function escapeHTML(v = "") { return String(v).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[ch])); }
@@ -18818,10 +18898,17 @@ els.requestPersistentStorage.addEventListener("click", requestPersistentStorage)
 els.externalBackupEnabled.addEventListener("change", async () => { if (els.externalBackupEnabled.checked) { const target = externalBackupDirectSupported() ? await loadExternalBackupTarget() : null; if (!target && !externalBackupMobileConfigured()) { els.externalBackupEnabled.checked = false; showToast(externalBackupDirectSupported() ? "请先选择自动备份保存位置" : "请先启用手机兼容备份"); return; } } setExternalBackupEnabled(els.externalBackupEnabled.checked); });
 els.externalBackupInterval.addEventListener("change", () => setExternalBackupIntervalMinutes(els.externalBackupInterval.value));
 els.chooseExternalBackupFolder.addEventListener("click", chooseExternalBackupTarget);
+els.viewExternalBackupFiles.addEventListener("click", () => { void openExternalBackupBrowser(); });
 els.reauthorizeExternalBackup.addEventListener("click", reauthorizeExternalBackup);
 els.externalBackupNow.addEventListener("click", () => { void writeExternalBackupNow({ manual: true, reason: "manual-test" }); });
 els.externalBackupVerify.addEventListener("click", () => { void verifyExternalBackupFromNotice(); });
 els.externalBackupNoticeClose.addEventListener("click", hideExternalBackupSuccessNotice);
+els.closeExternalBackupBrowser.addEventListener("click", closeExternalBackupBrowser);
+els.closeExternalBackupBrowserFoot.addEventListener("click", closeExternalBackupBrowser);
+els.refreshExternalBackupBrowser.addEventListener("click", () => { void openExternalBackupBrowser(); });
+els.changeExternalBackupLocationFromBrowser.addEventListener("click", async () => { closeExternalBackupBrowser(); await chooseExternalBackupTarget(); });
+els.externalBackupBrowserBackdrop.addEventListener("click", e => { if (e.target === els.externalBackupBrowserBackdrop) closeExternalBackupBrowser(); });
+els.externalBackupFileList.addEventListener("click", e => { const view=e.target.closest("[data-external-backup-view]"); if(view){void openExternalBackupFileContent(view.dataset.externalBackupView);return;} const dl=e.target.closest("[data-external-backup-download]"); if(dl){void downloadExternalBackupFileCopy(dl.dataset.externalBackupDownload);} });
 els.relayUpgrade.addEventListener("click", async () => { if (await appConfirm("将当前档案写入所选新版 HTML。生成文件包含真实数据，仅用于升级或备份。是否继续？", { title: "生成新版迁移文件？", confirmText: "继续" }))
     els.relayUpgradeFile.click(); });
 els.relayUpgradeFile.addEventListener("change", () => { var _a; const file = (_a = els.relayUpgradeFile.files) === null || _a === void 0 ? void 0 : _a[0]; if (file)
