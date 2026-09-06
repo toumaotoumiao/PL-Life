@@ -259,6 +259,21 @@
     .view-toolbar-title strong{display:block;font-size:15px;color:#353a36}.view-toolbar-title span{display:block;margin-top:4px;font-size:11px;line-height:1.55;color:#7c807b}
     .view-toolbar-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}.view-toolbar-actions input{width:240px;min-height:40px}
     .profiles-toolbar .view-toolbar-actions .btn{min-width:118px}
+    .profile-collapse-actions{
+      display:inline-flex;align-items:center;gap:3px;padding:3px;
+      border:1px solid color-mix(in srgb,var(--t-line-strong) 72%,var(--t-line));
+      border-radius:12px;background:color-mix(in srgb,var(--t-surface-2) 82%,transparent);
+      box-shadow:inset 0 1px 0 color-mix(in srgb,var(--t-surface) 88%,transparent)
+    }
+    .profile-collapse-actions[hidden]{display:none!important}
+    .profiles-toolbar .profile-collapse-actions .btn{
+      min-width:78px;min-height:34px;padding:6px 9px;border-color:transparent;
+      background:transparent;box-shadow:none;font-size:10px;color:var(--t-text-2)
+    }
+    .profiles-toolbar .profile-collapse-actions .btn:hover:not(:disabled){
+      border-color:var(--t-line);background:var(--t-surface);color:var(--t-ink)
+    }
+    .profiles-toolbar .profile-collapse-actions .btn:disabled{opacity:.42}
     .records-search-row{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;margin-top:1px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--t-line) 72%,transparent)}
     .records-search{margin:0;min-width:0}
     .records-search-row .search-result-count{margin:0;min-width:max-content;text-align:right}
@@ -535,6 +550,11 @@
       .view-toolbar{grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;margin:8px 0;padding:11px;border-radius:15px}
       .view-toolbar-title strong{font-size:14px}.view-toolbar-title span{display:none}.view-toolbar-actions{display:flex;justify-content:flex-end;min-width:0}
       .profiles-toolbar .view-toolbar-actions .btn{min-width:0;min-height:42px;padding:8px 12px;white-space:nowrap}
+      .profiles-toolbar{grid-template-columns:1fr!important}
+      .profiles-toolbar .view-toolbar-actions{width:100%;display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px;justify-content:stretch}
+      .profiles-toolbar .profile-collapse-actions{display:grid;grid-template-columns:1fr 1fr;width:100%;min-width:0;padding:3px}
+      .profiles-toolbar .profile-collapse-actions[hidden]{display:none!important}
+      .profiles-toolbar .profile-collapse-actions .btn{width:100%;min-width:0;min-height:38px;padding:6px 7px;font-size:10px}
       .records-toolbar{grid-template-columns:1fr}.records-toolbar .view-toolbar-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px;width:100%}
       .records-toolbar .view-toolbar-actions input{width:100%;min-width:0}.records-toolbar .view-toolbar-actions .btn{min-height:46px;white-space:nowrap;padding-inline:12px}
 
@@ -3089,7 +3109,8 @@
       .mobile-side-rail{position:fixed;right:max(6px,env(safe-area-inset-right));top:50%;z-index:1315;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:9px;width:44px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;transition:opacity .16s ease,transform .16s ease}
       .mobile-side-rail button{display:grid;place-items:center;width:42px;height:42px;min-width:42px;min-height:42px;padding:0;border:1px solid color-mix(in srgb,var(--t-line) 86%,transparent);border-radius:13px;background:color-mix(in srgb,var(--t-surface) 92%,transparent);color:var(--t-text-2);box-shadow:0 5px 16px rgba(35,42,38,.11);backdrop-filter:blur(14px) saturate(108%);-webkit-backdrop-filter:blur(14px) saturate(108%);font-family:inherit;font-size:18px;font-weight:740;line-height:1;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .12s ease,background .12s ease,border-color .12s ease,box-shadow .12s ease}
       .mobile-side-rail button:first-child{border-color:color-mix(in srgb,var(--t-accent) 58%,var(--t-line));background:var(--t-accent);color:var(--t-accent-on);box-shadow:0 6px 18px color-mix(in srgb,var(--t-accent) 24%,transparent)}
-      .mobile-side-rail button:active{transform:scale(.92)}
+      .mobile-side-rail button:active:not(:disabled){transform:scale(.92)}
+      .mobile-side-rail button:disabled{opacity:.34;box-shadow:none;cursor:default;transform:none!important}
       .profiles-view,.self-intro-view,.modules-view,.plans-view,.records-view{box-sizing:border-box;padding-right:var(--mobile-rail-safe)}
       .site-footer{box-sizing:border-box;margin-right:var(--mobile-rail-safe)!important;width:auto!important}
 
@@ -3312,6 +3333,8 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.2 · 全站按钮与双端交互审计：修复手机侧栏/PL 编辑器滚动按钮、跑团偏好图片导出，并完成字体图形冲突与响应式检查。 */
+    /* v8.1.6.1 · PL 卡片批量折叠：新增“全部折叠 / 全部展开”，支持当前搜索结果并记忆折叠状态。 */
     /* v8.1.6.0 · 手机端全局稳定化：修复 PL 卡片头部挤压、窄屏控件溢出，并补回跑团偏好保存状态逻辑。 */
     /* v8.1.5.9 · 搜索体验统一：PL 添加改为单一可搜索下拉框，并为主要搜索框加入拼音首字母匹配。 */
     /* v8.1.5.8 · 开团计划 PL 添加器优化：添加区前置、支持名字搜索，并将下拉名单改为 A～Z（拼音 / 英文）排序。 */
@@ -3732,6 +3755,10 @@
           </div>
           <div class="view-toolbar-actions">
             <button id="blacklistBtn" class="btn" type="button">黑名单</button>
+            <div id="profileCollapseActions" class="profile-collapse-actions" role="group" aria-label="PL 卡片批量折叠">
+              <button id="collapseAllProfilesBtn" class="btn small" type="button" title="折叠当前列表中的全部 PL 卡片">全部折叠</button>
+              <button id="expandAllProfilesBtn" class="btn small" type="button" title="展开当前列表中的全部 PL 卡片">全部展开</button>
+            </div>
             <button id="newBtn" class="btn primary" type="button">＋ 新建 PL</button>
           </div>
         </div>
@@ -3908,7 +3935,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.0 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.2 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3920,7 +3947,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.0　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.2　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4209,7 +4236,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.0</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.2</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4253,10 +4280,12 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.0 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.0</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.2 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.2</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.2</strong><span>完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”；补强 Android WebView / 第三方浏览器的滚动兜底，并检查主页面、编辑器、固定导航中的文字、图标遮挡、按钮可点击性与横向溢出。</span>
+<strong>v8.1.6.1</strong><span>PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span>
 <strong>v8.1.6.0</strong><span>全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条；同步收敛模组、计划、记录、偏好与编辑器的窄屏宽度，并补回跑团偏好保存状态逻辑。</span>
 <strong>v8.1.5.9</strong><span>统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span>
 <strong>v8.1.5.8</strong><span>优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。</span>
@@ -4399,7 +4428,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.6.0 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.2 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4418,7 +4447,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.0";
+const APP_UI_VERSION = "8.1.6.2";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5991,7 +6020,7 @@ const els = {
   moduleNativeStats:document.getElementById("moduleNativeStats"),moduleNativeSearch:document.getElementById("moduleNativeSearch"),moduleNativeHoFilter:document.getElementById("moduleNativeHoFilter"),moduleNativeLocationFilter:document.getElementById("moduleNativeLocationFilter"),moduleNativeSort:document.getElementById("moduleNativeSort"),moduleNativeGrid:document.getElementById("moduleNativeGrid"),newNativeModule:document.getElementById("newNativeModuleBtn"),openModuleAdvanced:document.getElementById("openModuleAdvancedBtn"),moduleCardsLayout:document.getElementById("moduleCardsLayoutBtn"),moduleCompactLayout:document.getElementById("moduleCompactLayoutBtn"),nativeModuleEditorBackdrop:document.getElementById("nativeModuleEditorBackdrop"),nativeModuleEditorTitle:document.getElementById("nativeModuleEditorTitle"),nativeModuleEditorContent:document.getElementById("nativeModuleEditorContent"),closeNativeModuleEditor:document.getElementById("closeNativeModuleEditorBtn"),cancelNativeModuleEditor:document.getElementById("cancelNativeModuleEditorBtn"),saveNativeModuleEditor:document.getElementById("saveNativeModuleEditorBtn"),moduleAdvancedBackdrop:document.getElementById("moduleAdvancedBackdrop"),closeModuleAdvanced:document.getElementById("closeModuleAdvancedBtn"),
   profilesViewBtn:document.getElementById("profilesViewBtn"),selfIntroViewBtn:document.getElementById("selfIntroViewBtn"),modulesViewBtn:document.getElementById("modulesViewBtn"),plansViewBtn:document.getElementById("plansViewBtn"),recordsViewBtn:document.getElementById("recordsViewBtn"),
   selfIntroGrid:document.getElementById("selfIntroGrid"),selfIntroSaveState:document.getElementById("selfIntroSaveState"),selfIntroExport:document.getElementById("selfIntroExportBtn"),selfIntroSave:document.getElementById("selfIntroSaveBtn"),
-  grid:document.getElementById("profileGrid"),count:document.getElementById("countText"),search:document.getElementById("searchInput"),sort:document.getElementById("sortSelect"),cardLayout:document.getElementById("cardLayoutBtn"),compactLayout:document.getElementById("compactLayoutBtn"),blacklistBtn:document.getElementById("blacklistBtn"),profilesToolbarTitle:document.getElementById("profilesToolbarTitle"),profilesToolbarSubtitle:document.getElementById("profilesToolbarSubtitle"),
+  grid:document.getElementById("profileGrid"),count:document.getElementById("countText"),search:document.getElementById("searchInput"),sort:document.getElementById("sortSelect"),cardLayout:document.getElementById("cardLayoutBtn"),compactLayout:document.getElementById("compactLayoutBtn"),blacklistBtn:document.getElementById("blacklistBtn"),profileCollapseActions:document.getElementById("profileCollapseActions"),collapseAllProfiles:document.getElementById("collapseAllProfilesBtn"),expandAllProfiles:document.getElementById("expandAllProfilesBtn"),profilesToolbarTitle:document.getElementById("profilesToolbarTitle"),profilesToolbarSubtitle:document.getElementById("profilesToolbarSubtitle"),
   planBoard:document.getElementById("planBoard"),planSearch:document.getElementById("planSearchInput"),planCount:document.getElementById("planCountText"),planMonth:document.getElementById("planMonthCalendar"),planWeek:document.getElementById("planWeekCalendar"),newPlan:document.getElementById("newPlanBtn"),plannerWeekMode:document.getElementById("plannerWeekModeBtn"),plannerMonthMode:document.getElementById("plannerMonthModeBtn"),
   planEditorBackdrop:document.getElementById("planEditorBackdrop"),planEditorDrawer:document.getElementById("planEditorDrawer"),planEditorTitle:document.getElementById("planEditorTitle"),planEditorContent:document.getElementById("planEditorContent"),closePlanEditor:document.getElementById("closePlanEditorBtn"),
   recordsBoard:document.getElementById("recordsBoard"),recordsSearch:document.getElementById("recordsSearchInput"),newModuleName:document.getElementById("newModuleNameInput"),createModuleRecord:document.getElementById("createModuleRecordBtn"),expandAllRecords:document.getElementById("expandAllRecordsBtn"),collapseAllRecords:document.getElementById("collapseAllRecordsBtn"),
@@ -6431,6 +6460,37 @@ function toggleProfileCardCollapse(id){
   persistProfileCardCollapseState();
   renderProfiles();
 }
+function currentProfileRowsForBulkCollapse(){
+  const q=normalizedEntityNameKey(els.search?.value||"");
+  const source=profiles.map(p=>(draft&&editingId===p.id?draft:p));
+  return source
+    .filter(p=>profileListMode==="blacklist"?isBlacklistedProfile(p):!isBlacklistedProfile(p))
+    .filter(p=>!q||profileSearchText(p).includes(q));
+}
+function syncProfileBulkCollapseControls(rows=currentProfileRowsForBulkCollapse()){
+  if(!els.profileCollapseActions)return;
+  const enabled=profileListMode!=="blacklist"&&effectiveProfileLayout()==="cards";
+  els.profileCollapseActions.hidden=!enabled;
+  if(!enabled)return;
+  const ids=rows.map(p=>String(p.id));
+  const anyExpanded=ids.some(id=>!collapsedCards.has(id));
+  const anyCollapsed=ids.some(id=>collapsedCards.has(id));
+  if(els.collapseAllProfiles)els.collapseAllProfiles.disabled=!ids.length||!anyExpanded;
+  if(els.expandAllProfiles)els.expandAllProfiles.disabled=!ids.length||!anyCollapsed;
+}
+function setCurrentProfileCardsCollapsed(shouldCollapse){
+  if(profileListMode==="blacklist"||effectiveProfileLayout()!=="cards")return;
+  const rows=currentProfileRowsForBulkCollapse();
+  if(!rows.length){showToast("当前没有可操作的 PL 卡片");return;}
+  rows.forEach(p=>{
+    const id=String(p.id);
+    if(shouldCollapse)collapsedCards.add(id);
+    else collapsedCards.delete(id);
+  });
+  persistProfileCardCollapseState();
+  renderProfiles();
+  showToast(shouldCollapse?`已折叠 ${rows.length} 张 PL 卡片`:`已展开 ${rows.length} 张 PL 卡片`);
+}
 
 function initMobileUX(){
   try{
@@ -6498,6 +6558,7 @@ function renderProfiles(){
   els.count.textContent=q?`${sorted.length} / ${modeRows.length} 位 PL`:`${modeRows.length} 位 PL`;
   syncProfileLayoutButtons();
   const compact=effectiveProfileLayout()==="compact";
+  syncProfileBulkCollapseControls(sorted);
   els.grid.classList.toggle("compact-grid",profileListMode!=="blacklist"&&compact);
   els.grid.classList.toggle("blacklist-grid",profileListMode==="blacklist");
 
@@ -7890,6 +7951,18 @@ function buildSelfIntroExportCanvas(){
   const drawColumn=(x,title,sideLabel,sections,color,soft)=>{const h=columnH;canvasFillRound(ctx,x,y,colW,h,16,theme.surface,theme.line);canvasFillRound(ctx,x+14,y+15,4,38,2,color,"");ctx.fillStyle=theme.muted;ctx.font="750 10.5px system-ui, sans-serif";ctx.fillText(sideLabel,x+28,y+27);ctx.fillStyle=theme.ink;ctx.font="800 22px system-ui, sans-serif";ctx.fillText(title,x+28,y+50);ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(x+14,y+64.5);ctx.lineTo(x+colW-14,y+64.5);ctx.stroke();let cy=y+76;const body=sections.slice(0,-1),last=sections.at(-1);for(const sec of body){const sh=drawIntroExportSection(ctx,x+12,cy,colW-24,sec,theme,color);cy+=sh+sectionGap;}if(last){const lastH=measureIntroExportSection(ctx,last,colW-24),lastY=y+h-sectionGap-lastH;drawIntroExportSection(ctx,x+12,Math.max(cy,lastY),colW-24,last,theme,color);}return h;};
   drawColumn(pad,"PL 偏好","PL · 玩家侧",plSections,theme.accent,theme.accentSoft);drawColumn(pad+colW+gap,"KP 偏好","KP · 带团侧",kpSections,theme.success,colorMixForCanvas(theme.success,theme.surface,.12));drawUnifiedExportFooter(ctx,baseW,baseH-32,theme);return canvas;
 }
+async function exportSelfIntroImage(){
+  try{
+    const canvas=buildSelfIntroExportCanvas();
+    const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG 生成失败")),"image/png",1));
+    const profile=selfProfileFrom(),rawName=String(displayProfileName(profile)||"我").replace(/[\/:*?"<>|]/g,"_").trim()||"我";
+    downloadBlobFile(blob,`${rawName}_跑团偏好.png`);
+    showToast("跑团偏好图片已导出");
+    return true;
+  }catch(err){
+    console.error(err);appNotice(`导出跑团偏好图片失败：${err.message||err}`);return false;
+  }
+}
 function queueSelfIntroSave(delay=700){clearTimeout(selfIntroSaveTimer);selfIntroLastSaveError="";updateSelfIntroSaveState();selfIntroSaveTimer=setTimeout(()=>commitSelfIntroDraft(),delay);}
 function reconcileSelfIntroIntentRefs(intro){for(const path of ["pl.wantModules","kp.canHostModules"]){const rows=selfIntroPathGet(intro,path)||[];for(const ref of rows){const mod=modules.find(m=>m.id===ref.moduleId);if(mod){ref.name=mod.name;continue;}const matches=modulesByNormalizedName(ref.name);if(matches.length===1){ref.moduleId=matches[0].id;ref.name=matches[0].name;}}}}
 function updatePersistedSelfIntroModuleRefs({renameId="",renameName="",sourceIds=null,targetModule=null}={}){
@@ -9098,14 +9171,37 @@ async function appSelect(message,options,value="",opts={}){const result=await op
 function appNotice(message,title="提示"){void openActionDialog(message,{title,confirmText:"知道了",cancelText:""});}
 
 
-/* ---------- 页面快速滚动：按钮会根据当前位置自动淡出不可用方向 ---------- */
+/* ---------- 页面快速滚动：兼容 window / document.scrollingElement / 移动浏览器 ---------- */
 function preferredScrollBehavior(){return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches?"auto":"smooth";}
+function pageScrollRoot(){return document.scrollingElement||document.documentElement||document.body;}
+function pageScrollTop(){const root=pageScrollRoot();return Math.max(0,Number(window.scrollY||root?.scrollTop||document.documentElement?.scrollTop||document.body?.scrollTop||0));}
+function pageScrollMax(){const root=pageScrollRoot(),height=Math.max(Number(root?.scrollHeight||0),Number(document.documentElement?.scrollHeight||0),Number(document.body?.scrollHeight||0));return Math.max(0,height-window.innerHeight);}
 function updateScrollRail(){
-  const max=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
-  els.scrollTop.disabled=window.scrollY<=4;
-  els.scrollBottom.disabled=window.scrollY>=max-4;
+  const top=pageScrollTop(),max=pageScrollMax(),atTop=top<=4,atBottom=max<=4||top>=max-4;
+  if(els.scrollTop)els.scrollTop.disabled=atTop;
+  if(els.scrollBottom)els.scrollBottom.disabled=atBottom;
+  document.querySelectorAll("[data-mobile-top]").forEach(btn=>{btn.disabled=atTop;btn.setAttribute("aria-disabled",atTop?"true":"false");});
+  document.querySelectorAll("[data-mobile-bottom]").forEach(btn=>{btn.disabled=atBottom;btn.setAttribute("aria-disabled",atBottom?"true":"false");});
 }
-function scrollToEdge(edge){window.scrollTo({top:edge==="top"?0:document.documentElement.scrollHeight,behavior:preferredScrollBehavior()});}
+function scrollPageToEdge(edge){
+  const root=pageScrollRoot(),target=edge==="top"?0:pageScrollMax(),behavior=preferredScrollBehavior();
+  const apply=(mode=behavior)=>{
+    try{window.scrollTo({left:window.scrollX||0,top:target,behavior:mode});}
+    catch(err){try{window.scrollTo(window.scrollX||0,target);}catch(e){} }
+    if(mode==="auto"&&root)root.scrollTop=target;
+  };
+  apply();
+  /* 部分 Android WebView / 第三方浏览器会忽略对象形式的 smooth scroll，延时做一次无动画兜底。 */
+  window.setTimeout(()=>{
+    const tolerance=Math.max(8,Math.min(24,pageScrollMax()*.003));
+    if(Math.abs(pageScrollTop()-target)>tolerance){
+      try{if(root)root.scrollTop=target;}catch(err){}
+      apply("auto");
+    }
+    updateScrollRail();
+  },behavior==="smooth"?460:20);
+}
+function scrollToEdge(edge){scrollPageToEdge(edge);}
 
 /* 一键隐私打码：只改变显示，不修改 profiles / runRecords。 */
 function updatePrivacyMaskUI(){
@@ -9188,8 +9284,14 @@ function scheduleMobileEditorRestore(target){
 
 /* PL详情页本身是独立滚动容器，因此使用自己的顶部 / 底部控制。 */
 function scrollProfileToEdge(edge){
-  const max=Math.max(0,els.profileModal.scrollHeight-els.profileModal.clientHeight);
-  els.profileModal.scrollTo({top:edge==="top"?0:max,behavior:preferredScrollBehavior()});
+  const modal=els.profileModal;if(!modal)return;
+  const max=Math.max(0,modal.scrollHeight-modal.clientHeight),target=edge==="top"?0:max,behavior=preferredScrollBehavior();
+  try{modal.scrollTo({top:target,left:0,behavior});}catch(err){modal.scrollTop=target;}
+  window.setTimeout(()=>{
+    const current=modal.scrollTop,nextMax=Math.max(0,modal.scrollHeight-modal.clientHeight),nextTarget=edge==="top"?0:nextMax;
+    if(Math.abs(current-nextTarget)>8)modal.scrollTop=nextTarget;
+    updateProfileActionRail();
+  },behavior==="smooth"?460:20);
 }
 function updateProfileActionRail(){
   if(!els.profileModal||!els.profileScrollTop||!els.profileScrollBottom)return;
@@ -10434,6 +10536,8 @@ setTimeout(()=>void updateRuntimeVersionDetails(),300);
 els.newBtn.addEventListener("click",()=>openEditor());els.settingsBtn.addEventListener("click",openSettings);els.search.addEventListener("input",()=>{profileRenderLimit=PROFILE_RENDER_BATCH;debouncedProfileRender();});
 els.cardLayout.addEventListener("click",()=>setProfileLayout("cards"));
 els.compactLayout.addEventListener("click",()=>setProfileLayout("compact"));
+els.collapseAllProfiles?.addEventListener("click",()=>setCurrentProfileCardsCollapsed(true));
+els.expandAllProfiles?.addEventListener("click",()=>setCurrentProfileCardsCollapsed(false));
 els.profilesViewBtn.addEventListener("click",()=>switchView("profiles"));
 els.selfIntroViewBtn.addEventListener("click",()=>switchView("selfIntro"));
 els.modulesViewBtn.addEventListener("click",()=>switchView("modules"));
