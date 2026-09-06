@@ -3772,7 +3772,7 @@
     @media(max-width:430px){.export-option-grid{grid-template-columns:1fr}.export-scope-row{grid-template-columns:auto minmax(0,1fr)}.export-scope-actions{grid-column:2;justify-content:flex-end}.export-center-foot{display:grid;grid-template-columns:1fr 1fr}.export-center-foot .btn{width:100%;min-width:0}}
 
 
-    /* ---------- v8.1.6.30 · 个人偏好可视化导出编排 ---------- */
+    /* ---------- v8.1.6.34 · 个人偏好导出预览拖拽与半栏瀑布流 ---------- */
     .export-center-panel{width:min(980px,calc(100vw - 24px));max-width:none;max-height:calc(100vh - 28px)}
     .export-composer-body{padding:0 14px}
     .export-composer-grid{display:grid;grid-template-columns:minmax(330px,420px) minmax(0,1fr);gap:14px;align-items:start;min-width:0}
@@ -3789,7 +3789,18 @@
     .export-preview-pane{position:sticky;top:0;display:grid;gap:8px;min-width:0;padding:12px;border:1px solid var(--t-line);border-radius:14px;background:var(--t-surface-2)}
     .export-preview-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.export-preview-head>div{display:grid;gap:2px}.export-preview-head strong{font-size:11.5px;color:var(--t-ink)}.export-preview-head span{font-size:8.5px;line-height:1.45;color:var(--t-muted)}
     .export-preview-stage{display:grid;place-items:start center;min-height:300px;max-height:calc(100vh - 235px);padding:10px;overflow:auto;border:1px solid var(--t-line);border-radius:12px;background:linear-gradient(135deg,color-mix(in srgb,var(--t-bg) 86%,#fff),var(--t-bg))}
-    .export-preview-stage canvas{display:block;max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 22px var(--t-shadow-soft);background:var(--t-surface)}
+    .export-preview-canvas-wrap{position:relative;width:100%;max-width:430px;line-height:0}
+    .export-preview-canvas-wrap canvas{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 22px var(--t-shadow-soft);background:var(--t-surface)}
+    .export-preview-drag-layer{position:absolute;inset:0;pointer-events:auto;overflow:hidden;border-radius:8px;touch-action:pan-y pinch-zoom}
+    .export-preview-drag-card{position:absolute;pointer-events:auto;touch-action:pan-y pinch-zoom;border:1px solid transparent;border-radius:6px;transition:border-color .12s ease,background .12s ease,box-shadow .12s ease}
+    .export-preview-drag-handle{position:absolute;top:4px;right:5px;display:inline-flex;align-items:center;gap:3px;max-width:78%;height:22px;padding:0 7px;border:1px solid color-mix(in srgb,var(--t-accent) 26%,var(--t-line));border-radius:999px;background:color-mix(in srgb,var(--t-surface) 91%,transparent);box-shadow:0 2px 6px var(--t-shadow-soft);color:var(--t-accent-strong);font-size:8px;font-weight:780;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:grab;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+    .export-preview-drag-handle::before{content:"⋮⋮";font-weight:900;letter-spacing:-2px;opacity:.72}
+    .export-preview-drag-card:hover{border-color:color-mix(in srgb,var(--t-accent) 34%,transparent);background:color-mix(in srgb,var(--t-accent-soft) 18%,transparent)}
+    .export-preview-drag-card.is-dragging{border-color:var(--t-accent);background:color-mix(in srgb,var(--t-accent-soft) 34%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--t-accent) 12%,transparent)}
+    .export-preview-drag-card.is-drop-before::before,.export-preview-drag-card.is-drop-after::after{content:"";position:absolute;left:4px;right:4px;height:3px;border-radius:999px;background:var(--t-accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--t-surface) 80%,transparent)}
+    .export-preview-drag-card.is-drop-before::before{top:-3px}.export-preview-drag-card.is-drop-after::after{bottom:-3px}
+    body.self-intro-preview-dragging{user-select:none;-webkit-user-select:none}
+    body.self-intro-preview-dragging .export-preview-drag-handle{cursor:grabbing}
     .export-preview-empty{place-self:center;padding:28px 14px;color:var(--t-muted);font-size:9px;text-align:center}
     .export-center-summary{margin-bottom:12px}
     @media(max-width:980px){.export-center-panel{width:min(760px,calc(100vw - 24px))}.export-composer-grid{grid-template-columns:1fr}.export-preview-pane{position:static}.export-preview-stage{max-height:360px;min-height:220px}}
@@ -4564,7 +4575,7 @@ body{font-size:var(--vu-body);line-height:1.5}
                       <div id="selfIntroExportSummary" class="export-center-summary" role="status" aria-live="polite"></div>
                     </div>
                     <aside class="export-preview-pane" aria-label="导出预览">
-                      <div class="export-preview-head"><div><strong>实时预览</strong><span>实际导出固定为 1080 px 宽；这里按比例缩小显示</span></div></div>
+                      <div class="export-preview-head"><div><strong>实时预览</strong><span>拖动卡片右上角抓手可直接排序；半栏会自动紧凑填充两列</span></div></div>
                       <div id="selfIntroExportPreviewStage" class="export-preview-stage"><div class="export-preview-empty">选择导出内容后会在这里预览。</div></div>
                     </aside>
                   </div>
@@ -4750,7 +4761,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.30 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.34 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4762,7 +4773,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.30　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.34　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5097,7 +5108,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.30</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.34</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5112,10 +5123,14 @@ body{font-size:var(--vu-body);line-height:1.5}
 </div>
 </section>
 </div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.30 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.30</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.34 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.34</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.34</strong><span>个人偏好导出预览支持直接拖动模块排序；左侧上下按钮继续保留作为键盘、旧浏览器和精细调整的备用操作。半栏布局改为自动填充较短列的紧凑双栏排版，消除不同高度模块之间的大块空白。</span>
+<strong>v8.1.6.33</strong><span>优化个人偏好导出中的 PL / KP 偏好尺：五档轨道改为居中紧凑宽度并缩短行高，保留项目名、当前值和两端语义，减少信息量较少时的横向空耗，让双栏导出更紧凑清晰。</span>
+<strong>v8.1.6.32</strong><span>定位并修复“GitHub Pages 已更新但浏览器仍运行旧程序”的更新链路问题：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，发现页面版本落后时明确提示安全刷新；Service Worker 注册禁用脚本缓存，HTML 导航优先请求最新网络文件。并再次回归验证个人偏好导出：想跑模组 / 可带模组无论有无内容，只要勾选就会进入预览与最终图片。</span>
+<strong>v8.1.6.31</strong><span>修复个人偏好导出中心“已勾选区域却不出现在预览/导出图”的问题：明确勾选现在始终保留整个区域，区域内部空白字段仍自动省略；空的想跑模组 / 可带模组会显示清晰空状态，不再整块消失。</span>
 <strong>v8.1.6.30</strong><span>个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度；每个导出区域可独立设置整行 / 半栏并实时预览，支持自由排序与组合；空白“其他”输入、空备注和未填写文字自动省略。</span>
 <strong>v8.1.6.29</strong><span>重新整理“数据与备份”的信息结构：浏览器外自动备份移动到“恢复与迁移”分组内，并放在完整备份之后、设备迁移之前；“日常保护”继续聚焦自动保存、恢复点、冗余副本与存储保护。同步修正设置页残留的旧版本显示。</span>
 <strong>v8.1.6.28</strong><span>个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式，以及隐藏空白、空备注、说明文字和个人姓名等选项；导出设置会记住上次选择，并同步优化电脑、平板和手机端弹层布局。</span>
@@ -5335,7 +5350,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.30";
+const APP_UI_VERSION = "8.1.6.34";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5623,6 +5638,7 @@ function normalizeSelfIntroExportState(raw) {
 function loadSelfIntroExportState() { try { return normalizeSelfIntroExportState(JSON.parse(localStorage.getItem(SELF_INTRO_EXPORT_PREF_KEY) || "null")); } catch (err) { return defaultSelfIntroExportState(); } }
 function saveSelfIntroExportState() { try { localStorage.setItem(SELF_INTRO_EXPORT_PREF_KEY, JSON.stringify(selfIntroExportState)); } catch (err) { } }
 let selfIntroExportState = loadSelfIntroExportState();
+let selfIntroExportPreviewDrag = null;
 let profileListMode = "active";
 let selectedModuleName = "";
 let privacyMaskEnabled = false;
@@ -10301,7 +10317,7 @@ function selfIntroExportBasicLines(d) {
     return lines;
 }
 function selfIntroExportStyleConfig() {
-    return { style: "share", baseW: 1080, pad: 30, headBottom: 166, footerSpace: 46, groupGap: 14, columnGap: 14, sectionGap: 9, groupHeader: 58, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 48, sectionBottom: 14, scaleHeight: 64, scaleLabelFont: 13, scaleValueFont: 12, scaleMetaFont: 9.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 10.5, cardGap: 9, showModuleMeta: false };
+    return { style: "share", baseW: 1080, pad: 30, headBottom: 166, footerSpace: 46, groupGap: 10, columnGap: 12, sectionGap: 9, groupHeader: 58, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 48, sectionBottom: 14, scaleHeight: 58, scaleLabelFont: 13, scaleValueFont: 12, scaleMetaFont: 9.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 10.5, cardGap: 9, showModuleMeta: false };
 }
 function selfIntroExportCleanLines(lines) {
     return (lines || []).map(x => String(x || "").trim()).filter(line => line && line !== "暂未添加" && !/[：:]未填写$/.test(line));
@@ -10327,17 +10343,19 @@ function selfIntroExportGroupHelp(id) {
     }[id] || "";
 }
 function selfIntroExportGroupData(d, id, state) {
+    // 用户在导出中心明确勾选了某个区域，就保留该区域本身；
+    // 空白字段仍在区域内部自动省略，避免“勾选了却整块消失”的反直觉行为。
     if (id === "common") {
         const lines = selfIntroExportCleanLines(selfIntroExportBasicLines(d));
-        return lines.length ? { id, kind: "lines", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, lines } : null;
+        return { id, kind: "lines", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, lines };
     }
     if (id === "pl" || id === "kp") {
         const excluded = id === "pl" ? "想跑模组" : "可带模组";
         const sections = selfIntroExportSections(d, id).filter(sec => sec.title !== excluded).map(sec => selfIntroExportSectionForState(sec)).filter(Boolean);
-        return sections.length ? { id, kind: "sections", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, sections } : null;
+        return { id, kind: "sections", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, sections };
     }
     const rows = id === "want" ? d.pl.wantModules : d.kp.canHostModules;
-    return rows.length ? { id, kind: "modules", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, rows: [...rows], noteLabel: id === "host" ? "带团备注" : "备注" } : null;
+    return { id, kind: "modules", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, rows: [...rows], noteLabel: id === "host" ? "带团备注" : "备注" };
 }
 function selfIntroExportEffectiveState(raw = selfIntroExportState) {
     return normalizeSelfIntroExportState(raw);
@@ -10354,31 +10372,37 @@ function measureIntroExportSection(ctx, section, w, cfg) {
     return cfg.sectionTop + lines * cfg.bodyLine + scaleRows * cfg.scaleHeight + cfg.sectionBottom;
 }
 function drawIntroExportScale(ctx, x, y, w, row, theme, color, cfg) {
-    const value = introScaleValue(row.value), left = x + 18, right = x + w - 18, trackY = y + Math.round(cfg.scaleHeight * .43);
+    // 偏好尺信息量有限，导出时不再把轨道无意义地拉满整个卡片。
+    // 保留“项目名 + 当前值 + 两端语义 + 五档位置”，但把核心轨道收成居中的紧凑宽度，
+    // 让 PL / KP 两栏并排时更像信息摘要，而不是横跨整栏的图表。
+    const value = introScaleValue(row.value), contentLeft = x + 18, contentRight = x + w - 18;
+    const available = Math.max(120, contentRight - contentLeft), trackWidth = Math.min(available * .58, 260);
+    const trackLeft = contentLeft + (available - trackWidth) / 2, trackRight = trackLeft + trackWidth;
+    const trackY = y + Math.round(cfg.scaleHeight * .45);
     ctx.fillStyle = theme.text2;
     ctx.font = `750 ${cfg.scaleLabelFont}px system-ui, sans-serif`;
     ctx.textAlign = "left";
-    ctx.fillText(row.label, left, y + 13);
+    ctx.fillText(canvasTextFit(ctx, row.label, Math.max(92, trackLeft - contentLeft - 12)), contentLeft, y + 13);
     ctx.fillStyle = color;
     ctx.font = `800 ${cfg.scaleValueFont}px system-ui, sans-serif`;
     ctx.textAlign = "right";
-    ctx.fillText(row.current, right, y + 13);
+    ctx.fillText(canvasTextFit(ctx, row.current, Math.max(86, contentRight - trackRight - 12)), contentRight, y + 13);
     ctx.textAlign = "left";
     ctx.strokeStyle = theme.line;
     ctx.lineWidth = 3;
     ctx.lineCap = "round";
-    ctx.beginPath(); ctx.moveTo(left, trackY); ctx.lineTo(right, trackY); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(trackLeft, trackY); ctx.lineTo(trackRight, trackY); ctx.stroke();
     for (let i = 1; i <= 5; i++) {
-        const px = left + (right - left) * (i - 1) / 4, active = i === value;
-        ctx.beginPath(); ctx.arc(px, trackY, active ? 7 : 5, 0, Math.PI * 2);
+        const px = trackLeft + (trackRight - trackLeft) * (i - 1) / 4, active = i === value;
+        ctx.beginPath(); ctx.arc(px, trackY, active ? 7 : 4.5, 0, Math.PI * 2);
         ctx.fillStyle = active ? color : theme.surface; ctx.fill();
         ctx.strokeStyle = active ? color : theme.line; ctx.lineWidth = 2; ctx.stroke();
     }
     ctx.font = `500 ${cfg.scaleMetaFont}px system-ui, sans-serif`;
     ctx.fillStyle = theme.muted;
-    ctx.textAlign = "left"; ctx.fillText(row.left, left, y + cfg.scaleHeight - 12);
-    ctx.textAlign = "center"; ctx.fillText("中间", (left + right) / 2, y + cfg.scaleHeight - 12);
-    ctx.textAlign = "right"; ctx.fillText(row.right, right, y + cfg.scaleHeight - 12);
+    ctx.textAlign = "left"; ctx.fillText(canvasTextFit(ctx, row.left, trackWidth * .43), trackLeft, y + cfg.scaleHeight - 10);
+    ctx.textAlign = "center"; ctx.fillText("中间", (trackLeft + trackRight) / 2, y + cfg.scaleHeight - 10);
+    ctx.textAlign = "right"; ctx.fillText(canvasTextFit(ctx, row.right, trackWidth * .43), trackRight, y + cfg.scaleHeight - 10);
     ctx.textAlign = "left";
     return cfg.scaleHeight;
 }
@@ -10467,35 +10491,44 @@ function createSelfIntroExportLayout(rawState = selfIntroExportState) {
     ensureSelfIntroDraft();
     const state = selfIntroExportEffectiveState(rawState), d = normalizeSelfIntro(selfIntroDraft || ((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro)), cfg = selfIntroExportStyleConfig(), measure = document.createElement("canvas").getContext("2d");
     if (!measure) throw new Error("当前浏览器无法生成图片");
-    const groups = selfIntroExportSelectedIds(state).map(id => selfIntroExportGroupData(d, id, state)).filter(Boolean), contentW = cfg.baseW - cfg.pad * 2, halfW = Math.floor((contentW - cfg.columnGap) / 2), rows = [];
-    for (let i = 0; i < groups.length; i++) {
-        const group = groups[i], widthMode = state.widths[group.id] === "half" ? "half" : "full";
-        if (widthMode === "half") {
-            const next = groups[i + 1], nextHalf = next && state.widths[next.id] === "half";
-            if (nextHalf) { rows.push({ items: [{ group, width: halfW }, { group: next, width: halfW }] }); i++; }
-            else rows.push({ items: [{ group, width: halfW }] });
-        } else rows.push({ items: [{ group, width: contentW }] });
+    const groups = selfIntroExportSelectedIds(state).map(id => selfIntroExportGroupData(d, id, state)).filter(Boolean), contentW = cfg.baseW - cfg.pad * 2, halfW = Math.floor((contentW - cfg.columnGap) / 2), placements = [];
+    const colBottom = [cfg.headBottom, cfg.headBottom];
+    let hasPlacement = false;
+    for (const group of groups) {
+        const widthMode = state.widths[group.id] === "half" ? "half" : "full";
+        if (widthMode === "full") {
+            const y = hasPlacement ? Math.max(colBottom[0], colBottom[1]) + cfg.groupGap : cfg.headBottom;
+            const h = measureSelfIntroExportGroup(measure, group, contentW, cfg, state);
+            placements.push({ group, id: group.id, widthMode, x: cfg.pad, y, width: contentW, height: h, column: -1 });
+            colBottom[0] = colBottom[1] = y + h;
+            hasPlacement = true;
+            continue;
+        }
+        // 半栏采用“瀑布流”式紧凑排布：下一块自动进入当前较短的一列。
+        // 这样两栏高度不一致时不会被传统“同一行取最大高度”制造大片空白。
+        const column = colBottom[0] <= colBottom[1] ? 0 : 1;
+        const x = cfg.pad + column * (halfW + cfg.columnGap);
+        const y = colBottom[column] > cfg.headBottom ? colBottom[column] + cfg.groupGap : cfg.headBottom;
+        const h = measureSelfIntroExportGroup(measure, group, halfW, cfg, state);
+        placements.push({ group, id: group.id, widthMode, x, y, width: halfW, height: h, column });
+        colBottom[column] = y + h;
+        hasPlacement = true;
     }
-    let baseH = cfg.headBottom + cfg.footerSpace;
-    rows.forEach((row, index) => { row.height = Math.max(...row.items.map(item => measureSelfIntroExportGroup(measure, item.group, item.width, cfg, state))); baseH += row.height; if (index < rows.length - 1) baseH += cfg.groupGap; });
-    return { state, d, cfg, groups, rows, contentW, halfW, baseH };
+    const contentBottom = placements.length ? Math.max(...placements.map(item => item.y + item.height)) : cfg.headBottom;
+    const baseH = contentBottom + cfg.footerSpace;
+    return { state, d, cfg, groups, placements, contentW, halfW, baseH };
 }
 function buildSelfIntroExportCanvas(rawState = selfIntroExportState, options = {}) {
-    const layout = createSelfIntroExportLayout(rawState), { state, cfg, groups, rows, baseH } = layout;
-    if (!groups.length) throw new Error("请至少选择一个有内容的导出区域");
+    const layout = createSelfIntroExportLayout(rawState), { state, cfg, groups, placements, baseH } = layout;
+    if (!groups.length) throw new Error("请至少选择一个导出区域");
     const theme = hoExportTheme(), preview = Boolean(options.preview), scale = preview ? Math.min(.38, 430 / cfg.baseW) : 1;
     if (!preview && baseH > 12000) throw new Error("当前组合内容过长，请减少导出区域或将更多区域改为半栏");
     const canvas = document.createElement("canvas"); canvas.width = Math.max(1, Math.round(cfg.baseW * scale)); canvas.height = Math.max(1, Math.round(baseH * scale));
     const ctx = canvas.getContext("2d"); if (!ctx) throw new Error("当前浏览器无法生成图片");
     ctx.scale(scale, scale); ctx.fillStyle = theme.bg; ctx.fillRect(0, 0, cfg.baseW, baseH);
     const selectedLabels = groups.map(g => g.title);
-    drawUnifiedExportHeader(ctx, cfg.baseW, theme, { eyebrow: "PL / KP · 个人偏好", title: "个人偏好", subtitle: `导出范围：${selectedLabels.join("、")}`, stats: [`${groups.length} 个有效区域`, "1080 px 固定宽度", "空白内容自动省略"] });
-    let y = cfg.headBottom;
-    rows.forEach((row, rowIndex) => {
-        let x = cfg.pad;
-        row.items.forEach((item, itemIndex) => { drawSelfIntroExportGroup(ctx, x, y, item.width, item.group, theme, cfg, state); x += item.width + (itemIndex < row.items.length - 1 ? cfg.columnGap : 0); });
-        y += row.height + (rowIndex < rows.length - 1 ? cfg.groupGap : 0);
-    });
+    drawUnifiedExportHeader(ctx, cfg.baseW, theme, { eyebrow: "PL / KP · 个人偏好", title: "个人偏好", subtitle: `导出范围：${selectedLabels.join("、")}`, stats: [`${groups.length} 个导出区域`, "1080 px 固定宽度", "半栏自动紧凑排版"] });
+    placements.forEach(item => drawSelfIntroExportGroup(ctx, item.x, item.y, item.width, item.group, theme, cfg, state));
     drawUnifiedExportFooter(ctx, cfg.baseW, baseH - 32, theme);
     return canvas;
 }
@@ -10533,13 +10566,76 @@ function setSelfIntroExportScopeWidth(id, width) {
     if (!SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id) || !["full", "half"].includes(width)) return;
     const state = normalizeSelfIntroExportState(selfIntroExportState); state.widths[id] = width; selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
 }
+function reorderSelfIntroExportScope(sourceId, targetId, after = false) {
+    if (!sourceId || !targetId || sourceId === targetId) return false;
+    const state = normalizeSelfIntroExportState(selfIntroExportState), order = [...state.order], sourceIndex = order.indexOf(sourceId), targetIndexRaw = order.indexOf(targetId);
+    if (sourceIndex < 0 || targetIndexRaw < 0) return false;
+    order.splice(sourceIndex, 1);
+    let targetIndex = order.indexOf(targetId);
+    if (after) targetIndex += 1;
+    order.splice(Math.max(0, Math.min(order.length, targetIndex)), 0, sourceId);
+    state.order = order; selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
+    return true;
+}
+function clearSelfIntroPreviewDragMarks() {
+    if (!els.selfIntroExportPreview) return;
+    els.selfIntroExportPreview.querySelectorAll(".export-preview-drag-card").forEach(card => card.classList.remove("is-dragging", "is-drop-before", "is-drop-after"));
+}
+function previewDragNearestTarget(clientX, clientY, sourceId) {
+    if (!els.selfIntroExportPreview) return null;
+    const cards = [...els.selfIntroExportPreview.querySelectorAll(".export-preview-drag-card")].filter(card => card.dataset.exportPreviewScopeId !== sourceId);
+    if (!cards.length) return null;
+    let best = null, bestDistance = Infinity;
+    cards.forEach(card => {
+        const r = card.getBoundingClientRect();
+        const cx = Math.max(r.left, Math.min(clientX, r.right)), cy = Math.max(r.top, Math.min(clientY, r.bottom));
+        const dx = clientX - cx, dy = clientY - cy, distance = dx * dx + dy * dy;
+        if (distance < bestDistance) { bestDistance = distance; best = { card, rect: r }; }
+    });
+    if (!best) return null;
+    const after = clientY > best.rect.top + best.rect.height / 2;
+    return { id: best.card.dataset.exportPreviewScopeId, after, card: best.card };
+}
+function beginSelfIntroPreviewDrag(handle, clientX, clientY, pointerId = null) {
+    const card = handle && handle.closest ? handle.closest(".export-preview-drag-card") : null, sourceId = card && card.dataset.exportPreviewScopeId;
+    if (!card || !sourceId) return false;
+    clearSelfIntroPreviewDragMarks();
+    selfIntroExportPreviewDrag = { sourceId, sourceCard: card, startX: clientX, startY: clientY, clientX, clientY, pointerId, moved: false, targetId: "", after: false };
+    card.classList.add("is-dragging"); document.body.classList.add("self-intro-preview-dragging");
+    return true;
+}
+function updateSelfIntroPreviewDrag(clientX, clientY) {
+    const drag = selfIntroExportPreviewDrag; if (!drag) return;
+    drag.clientX = clientX; drag.clientY = clientY;
+    const distance = Math.hypot(clientX - drag.startX, clientY - drag.startY);
+    if (!drag.moved && distance < 5) return;
+    drag.moved = true;
+    clearSelfIntroPreviewDragMarks(); drag.sourceCard.classList.add("is-dragging");
+    const target = previewDragNearestTarget(clientX, clientY, drag.sourceId);
+    drag.targetId = target ? target.id : ""; drag.after = target ? target.after : false;
+    if (target) target.card.classList.add(target.after ? "is-drop-after" : "is-drop-before");
+}
+function finishSelfIntroPreviewDrag({ cancel = false } = {}) {
+    const drag = selfIntroExportPreviewDrag; if (!drag) return;
+    selfIntroExportPreviewDrag = null; document.body.classList.remove("self-intro-preview-dragging"); clearSelfIntroPreviewDragMarks();
+    if (!cancel && drag.moved && drag.targetId) reorderSelfIntroExportScope(drag.sourceId, drag.targetId, drag.after);
+}
 function renderSelfIntroExportPreview() {
     if (!els.selfIntroExportPreview) return;
     try {
         const layout = createSelfIntroExportLayout(selfIntroExportState);
-        if (!layout.groups.length) { els.selfIntroExportPreview.innerHTML = '<div class="export-preview-empty">当前勾选区域没有已填写内容。</div>'; return; }
+        if (!layout.groups.length) { els.selfIntroExportPreview.innerHTML = '<div class="export-preview-empty">尚未选择导出区域。</div>'; return; }
         const canvas = buildSelfIntroExportCanvas(selfIntroExportState, { preview: true });
-        els.selfIntroExportPreview.innerHTML = ""; canvas.setAttribute("aria-label", "个人偏好导出图片实时预览"); els.selfIntroExportPreview.appendChild(canvas);
+        canvas.setAttribute("aria-label", "个人偏好导出图片实时预览");
+        const wrap = document.createElement("div"); wrap.className = "export-preview-canvas-wrap"; wrap.style.maxWidth = `${canvas.width}px`; wrap.style.aspectRatio = `${canvas.width} / ${canvas.height}`;
+        const layer = document.createElement("div"); layer.className = "export-preview-drag-layer"; layer.setAttribute("aria-label", "拖动导出区域调整顺序");
+        layout.placements.forEach(item => {
+            const card = document.createElement("div"); card.className = "export-preview-drag-card"; card.dataset.exportPreviewScopeId = item.id;
+            card.style.left = `${item.x / layout.cfg.baseW * 100}%`; card.style.top = `${item.y / layout.baseH * 100}%`; card.style.width = `${item.width / layout.cfg.baseW * 100}%`; card.style.height = `${item.height / layout.baseH * 100}%`;
+            const handle = document.createElement("button"); handle.type = "button"; handle.className = "export-preview-drag-handle"; handle.dataset.exportPreviewDragHandle = item.id; handle.title = `拖动调整${SELF_INTRO_EXPORT_SCOPE_META[item.id].label}顺序`; handle.setAttribute("aria-label", `拖动调整${SELF_INTRO_EXPORT_SCOPE_META[item.id].label}顺序`); handle.textContent = SELF_INTRO_EXPORT_SCOPE_META[item.id].label;
+            card.appendChild(handle); layer.appendChild(card);
+        });
+        wrap.appendChild(canvas); wrap.appendChild(layer); els.selfIntroExportPreview.innerHTML = ""; els.selfIntroExportPreview.appendChild(wrap);
     } catch (err) { els.selfIntroExportPreview.innerHTML = `<div class="export-preview-empty">${escapeHTML(err.message || "暂时无法生成预览")}</div>`; }
 }
 function renderSelfIntroExportCenter() {
@@ -10548,7 +10644,7 @@ function renderSelfIntroExportCenter() {
     els.selfIntroExportScopes.innerHTML = state.order.map((id, index) => { const meta = SELF_INTRO_EXPORT_SCOPE_META[id], checked = selected.has(id), width = state.widths[id] === "half" ? "half" : "full"; return `<div class="export-scope-row ${checked ? "" : "is-disabled"}" data-export-scope-row="${escapeHTML(id)}"><label class="export-scope-check"><input type="checkbox" data-self-intro-export-scope="${escapeHTML(id)}" ${checked ? "checked" : ""} aria-label="导出${escapeHTML(meta.label)}"></label><span class="export-scope-copy"><strong>${escapeHTML(meta.label)}</strong><small>${escapeHTML(meta.desc)}</small></span><div class="export-scope-row-controls"><span class="export-scope-width" role="group" aria-label="${escapeHTML(meta.label)}版面宽度"><button type="button" class="${width === "full" ? "active" : ""}" data-self-intro-export-width="full" data-export-scope-id="${escapeHTML(id)}">整行</button><button type="button" class="${width === "half" ? "active" : ""}" data-self-intro-export-width="half" data-export-scope-id="${escapeHTML(id)}">半栏</button></span><span class="export-scope-actions"><button type="button" data-self-intro-export-move="-1" data-export-scope-id="${escapeHTML(id)}" ${index === 0 ? "disabled" : ""} aria-label="上移${escapeHTML(meta.label)}">↑</button><button type="button" data-self-intro-export-move="1" data-export-scope-id="${escapeHTML(id)}" ${index === state.order.length - 1 ? "disabled" : ""} aria-label="下移${escapeHTML(meta.label)}">↓</button></span></div></div>`; }).join("");
     const preset = selfIntroExportPresetKey(state); document.querySelectorAll("[data-self-intro-export-preset]").forEach(btn => btn.classList.toggle("active", btn.dataset.selfIntroExportPreset === preset));
     const selectedIds = selfIntroExportSelectedIds(state), layout = (() => { try { return createSelfIntroExportLayout(state); } catch (err) { return null; } })(), actualCount = layout ? layout.groups.length : 0, est = layout ? layout.baseH : 0, halfCount = selectedIds.filter(id => state.widths[id] === "half").length, fullCount = selectedIds.length - halfCount, lengthLabel = !est ? "无法估算" : est < 1500 ? "短图" : est < 2800 ? "中等长图" : est < 4600 ? "长图" : "超长图";
-    if (els.selfIntroExportSummary) els.selfIntroExportSummary.innerHTML = selectedIds.length ? `<strong>已选 ${selectedIds.length} 个区域${actualCount !== selectedIds.length ? `，其中 ${actualCount} 个有内容` : ""}</strong> · ${fullCount} 个整行 / ${halfCount} 个半栏 · 预计${lengthLabel}${est ? `（约 ${Math.round(est)} px）` : ""}${selfIntroDirty() ? " · 包含当前未保存修改" : ""}` : `<strong>尚未选择导出区域</strong> · 请至少勾选一个区域。`;
+    if (els.selfIntroExportSummary) els.selfIntroExportSummary.innerHTML = selectedIds.length ? `<strong>已选 ${selectedIds.length} 个区域</strong> · ${fullCount} 个整行 / ${halfCount} 个半栏 · 半栏自动紧凑填充 · 预计${lengthLabel}${est ? `（约 ${Math.round(est)} px）` : ""}${selfIntroDirty() ? " · 包含当前未保存修改" : ""}` : `<strong>尚未选择导出区域</strong> · 请至少勾选一个区域。`;
     if (els.selfIntroExportNow) els.selfIntroExportNow.disabled = actualCount === 0;
     renderSelfIntroExportPreview();
 }
@@ -13252,7 +13348,7 @@ async function registerOfflineApp() { if (!("serviceWorker" in navigator) || !/^
     updatePwaUI();
     return;
 } try {
-    const reg = await navigator.serviceWorker.register("./sw.js", { scope: "./" });
+    const reg = await navigator.serviceWorker.register("./sw.js", { scope: "./", updateViaCache: "none" });
     await navigator.serviceWorker.ready;
     serviceWorkerReady = true;
     void reg.update();
@@ -14508,6 +14604,8 @@ let shareModeEnabled = false;
 function shareModeBlock(label = "敏感编辑") { if (!shareModeEnabled)
     return false; showToast(`分享模式下已关闭${label}`); return true; }
 let pendingUpdateRegistration = null;
+let remoteProgramVersion = "";
+let remoteProgramVersionCheckedAt = 0;
 let pendingExternalSync = null;
 let syncChannel = null;
 const tabInstanceId = (typeof crypto !== "undefined" && crypto && typeof crypto.randomUUID === "function" ? crypto.randomUUID() : `tab_${Date.now()}_${Math.random()}`);
@@ -15691,8 +15789,48 @@ async function loadMigrationFile(file) { guardImportFile(file, MAX_IMPORT_FILE_B
 function updateVersionStatus(text) { const sub = document.getElementById("appVersionHealthSub"), summary = document.getElementById("versionUpdateSummary"); if (sub)
     sub.textContent = text; if (summary)
     summary.textContent = `当前版本 v${APP_UI_VERSION} · ${text}`; }
-function showAppUpdate(reg) { pendingUpdateRegistration = reg; document.getElementById("appUpdateBanner").hidden = false; updateVersionStatus("发现新版本，可安全更新"); }
+function showAppUpdate(reg) { pendingUpdateRegistration = reg; const banner = document.getElementById("appUpdateBanner"), strong = banner === null || banner === void 0 ? void 0 : banner.querySelector("strong"), span = banner === null || banner === void 0 ? void 0 : banner.querySelector("span"); if (strong) strong.textContent = "新版本已准备好"; if (span) span.textContent = "更新前会先保护当前档案。"; if (banner) banner.hidden = false; updateVersionStatus("发现新版本，可安全更新"); }
+function parseRemoteProgramVersion(source) { const text = String(source || ""), match = text.match(/CACHE_NAME\s*=\s*`[^`]*?v(\d+(?:\.\d+){2,})`/) || text.match(/tomato-pl-v?(\d+(?:\.\d+){2,})/); return match ? match[1] : ""; }
+function remoteProgramIsNewer() { return Boolean(remoteProgramVersion && compareVersionText(APP_UI_VERSION, remoteProgramVersion) < 0); }
+async function fetchRemoteProgramVersion({ force = false } = {}) {
+    const now = Date.now();
+    if (!force && remoteProgramVersionCheckedAt && now - remoteProgramVersionCheckedAt < 60000)
+        return remoteProgramVersion;
+    remoteProgramVersionCheckedAt = now;
+    try {
+        const url = new URL("./sw.js", location.href);
+        url.searchParams.set("_version_probe", String(now));
+        const response = await fetch(url.toString(), { cache: "no-store", credentials: "same-origin" });
+        if (!response.ok)
+            throw new Error(`HTTP ${response.status}`);
+        const version = parseRemoteProgramVersion(await response.text());
+        if (version)
+            remoteProgramVersion = version;
+        return version;
+    }
+    catch (err) {
+        console.warn("服务器程序版本检查失败", err);
+        return remoteProgramVersion || "";
+    }
+}
+function showStaleRuntimeUpdate(version) {
+    if (!version || compareVersionText(APP_UI_VERSION, version) >= 0)
+        return false;
+    remoteProgramVersion = version;
+    pendingUpdateRegistration = null;
+    const banner = document.getElementById("appUpdateBanner"), strong = banner === null || banner === void 0 ? void 0 : banner.querySelector("strong"), span = banner === null || banner === void 0 ? void 0 : banner.querySelector("span");
+    if (strong) strong.textContent = "当前页面仍是旧程序";
+    if (span) span.textContent = `正在运行 v${APP_UI_VERSION}，服务器已有 v${version}。点击“现在更新”会先建立恢复点，再清理旧程序缓存并重新载入。`;
+    if (banner) banner.hidden = false;
+    updateVersionStatus(`当前页面落后于服务器 v${version}`);
+    return true;
+}
+async function probeRemoteProgramVersion({ force = false } = {}) { const version = await fetchRemoteProgramVersion({ force }); return showStaleRuntimeUpdate(version); }
 async function applyAppUpdate() { const reg = pendingUpdateRegistration; if (!(reg === null || reg === void 0 ? void 0 : reg.waiting)) {
+    if (remoteProgramIsNewer()) {
+        await forceReloadProgramFiles({ skipConfirm: true, targetVersion: remoteProgramVersion, reason: "remote-version-gap" });
+        return;
+    }
     showToast("新版仍在准备，请稍后再试");
     return;
 } try {
@@ -15729,9 +15867,10 @@ registerOfflineApp = async function ({ markCheck = true } = {}) { if (!("service
         return; worker.addEventListener("statechange", () => { if (worker.state === "installed" && navigator.serviceWorker.controller)
         showAppUpdate(reg); }); });
     await reg.update();
+    await probeRemoteProgramVersion({ force: true });
     if (markCheck)
         markVersionCheckTime();
-    if (!pendingUpdateRegistration)
+    if (!pendingUpdateRegistration && !remoteProgramIsNewer())
         updateVersionStatus(isStandaloneApp() ? "应用已安装，离线可用" : "离线已准备");
     await updateRuntimeVersionDetails();
     updatePwaUI();
@@ -15747,22 +15886,23 @@ catch (err) {
     updatePwaUI();
     return null;
 } };
-async function checkAppUpdate({ silent = false } = {}) { markVersionCheckTime(); if (!("serviceWorker" in navigator)) {
-    if (!silent)
-        showToast("当前浏览器不支持应用更新检查");
+async function checkAppUpdate({ silent = false } = {}) { markVersionCheckTime(); const stale = await probeRemoteProgramVersion({ force: true }); if (!("serviceWorker" in navigator)) {
+    if (!silent && !stale)
+        showToast("当前浏览器不支持离线应用更新，但服务器版本检查已完成");
     await updateRuntimeVersionDetails();
-    return false;
+    return stale;
 } const reg = await navigator.serviceWorker.getRegistration("./"); if (!reg) {
     await registerOfflineApp({ markCheck: true });
-    if (!silent && !pendingUpdateRegistration)
+    if (!silent && !pendingUpdateRegistration && !remoteProgramIsNewer())
         showToast("当前已经是最新版本");
     return true;
 } try {
     await reg.update();
+    await probeRemoteProgramVersion({ force: true });
     markVersionCheckTime();
     await updateRuntimeVersionDetails();
     if (!silent)
-        setTimeout(() => { if (!pendingUpdateRegistration)
+        setTimeout(() => { if (!pendingUpdateRegistration && !remoteProgramIsNewer())
             showToast("当前已经是最新版本"); }, 450);
     return true;
 }
@@ -16528,24 +16668,28 @@ async function updateRuntimeVersionDetails() { const cache = await currentCacheV
 }
 catch (err) { } if (l)
     l.textContent = `最后检查：${t ? formatSafetyDateTime(t) : "尚未"}`; }
-async function forceReloadProgramFiles() { if (!await appConfirm("将重新加载最新程序文件并清理旧离线缓存。现有档案不会删除。", { title: "刷新程序文件？", confirmText: "重新加载" }))
-    return; try {
+async function forceReloadProgramFiles(options = {}) { const skipConfirm = Boolean(options && options.skipConfirm), targetVersion = String((options && options.targetVersion) || remoteProgramVersion || ""); if (!skipConfirm && !await appConfirm("将重新加载最新程序文件并清理旧离线缓存。现有档案不会删除。", { title: "刷新程序文件？", confirmText: "重新加载" }))
+    return false; try {
     const payload = buildCanonicalArchive(false);
     if (hasMeaningfulData(archiveCountsFromPayload(payload)))
-        await createSafetySnapshot("before-force-program-reload");
+        await createSafetySnapshot(options && options.reason === "remote-version-gap" ? "before-stale-runtime-refresh" : "before-force-program-reload");
     if ("caches" in window) {
         const keys = await caches.keys();
         await Promise.all(keys.filter(k => k.startsWith("tomato-pl-")).map(k => caches.delete(k)));
     }
     const regs = "serviceWorker" in navigator ? await navigator.serviceWorker.getRegistrations() : [];
     await Promise.all(regs.filter(r => String(r.scope || "").startsWith(location.origin + location.pathname.replace(/[^/]*$/, ""))).map(r => r.unregister()));
+    try { localStorage.setItem(APP_UPDATE_JUST_APPLIED_KEY, "1"); } catch (err) { }
     const u = new URL(location.href);
-    u.searchParams.set("_program_refresh", Date.now());
+    u.searchParams.set("_program_refresh", String(Date.now()));
+    if (targetVersion) u.searchParams.set("_target_version", targetVersion);
     location.replace(u.toString());
+    return true;
 }
 catch (err) {
     console.error(err);
     appNotice("重新加载失败。档案未删除，请稍后重试。");
+    return false;
 } }
 function checkClickableTarget(el, label, issues) { if (!el || el.hidden || !el.getClientRects().length)
     return; const r = el.getBoundingClientRect(); if (r.bottom <= 0 || r.top >= innerHeight || r.right <= 0 || r.left >= innerWidth)
@@ -17903,6 +18047,30 @@ els.selfIntroExportPanel === null || els.selfIntroExportPanel === void 0 ? void 
     const id = t.dataset.selfIntroExportScope, selected = new Set(state.selected); t.checked ? selected.add(id) : selected.delete(id); state.selected = [...selected];
     selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
 });
+if (els.selfIntroExportPreview) {
+    if (window.PointerEvent) {
+        els.selfIntroExportPreview.addEventListener("pointerdown", e => {
+            const card = e.target.closest(".export-preview-drag-card"), explicitHandle = e.target.closest("[data-export-preview-drag-handle]"), handle = explicitHandle || (e.pointerType !== "touch" && card ? card.querySelector("[data-export-preview-drag-handle]") : null);
+            if (!handle || e.button !== 0) return;
+            e.preventDefault(); e.stopPropagation();
+            if (beginSelfIntroPreviewDrag(handle, e.clientX, e.clientY, e.pointerId)) {
+                try { handle.setPointerCapture(e.pointerId); } catch (err) { }
+            }
+        });
+        els.selfIntroExportPreview.addEventListener("pointermove", e => { if (!selfIntroExportPreviewDrag || selfIntroExportPreviewDrag.pointerId !== e.pointerId) return; e.preventDefault(); updateSelfIntroPreviewDrag(e.clientX, e.clientY); });
+        els.selfIntroExportPreview.addEventListener("pointerup", e => { if (!selfIntroExportPreviewDrag || selfIntroExportPreviewDrag.pointerId !== e.pointerId) return; e.preventDefault(); finishSelfIntroPreviewDrag(); });
+        els.selfIntroExportPreview.addEventListener("pointercancel", e => { if (!selfIntroExportPreviewDrag || selfIntroExportPreviewDrag.pointerId !== e.pointerId) return; finishSelfIntroPreviewDrag({ cancel: true }); });
+    } else {
+        // 旧内核降级：保留左侧上下按钮，同时提供基础鼠标 / 触摸拖动。
+        els.selfIntroExportPreview.addEventListener("mousedown", e => { const card = e.target.closest(".export-preview-drag-card"), handle = e.target.closest("[data-export-preview-drag-handle]") || (card ? card.querySelector("[data-export-preview-drag-handle]") : null); if (!handle || e.button !== 0) return; e.preventDefault(); beginSelfIntroPreviewDrag(handle, e.clientX, e.clientY); });
+        document.addEventListener("mousemove", e => { if (!selfIntroExportPreviewDrag) return; updateSelfIntroPreviewDrag(e.clientX, e.clientY); });
+        document.addEventListener("mouseup", () => finishSelfIntroPreviewDrag());
+        els.selfIntroExportPreview.addEventListener("touchstart", e => { const handle = e.target.closest("[data-export-preview-drag-handle]"); if (!handle || !e.touches[0]) return; const t = e.touches[0]; e.preventDefault(); beginSelfIntroPreviewDrag(handle, t.clientX, t.clientY); }, { passive: false });
+        document.addEventListener("touchmove", e => { if (!selfIntroExportPreviewDrag || !e.touches[0]) return; const t = e.touches[0]; e.preventDefault(); updateSelfIntroPreviewDrag(t.clientX, t.clientY); }, { passive: false });
+        document.addEventListener("touchend", () => finishSelfIntroPreviewDrag());
+        document.addEventListener("touchcancel", () => finishSelfIntroPreviewDrag({ cancel: true }));
+    }
+}
 (_p = els.statsExport) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => { void exportStatsImage(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape" && els.selfIntroExportPanel && !els.selfIntroExportPanel.hidden) { toggleSelfIntroExportCenter(false); if (els.selfIntroExport) els.selfIntroExport.focus(); } });
 window.addEventListener("resize", () => { if (els.selfIntroExportPanel && !els.selfIntroExportPanel.hidden) positionSelfIntroExportPanel(); });
