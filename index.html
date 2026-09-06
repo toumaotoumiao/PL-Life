@@ -1901,6 +1901,11 @@
     .assignment-pc-field,.assignment-ho-field{display:grid;gap:4px;min-width:0}
     .assignment-mini-label{font-size:7.5px;color:var(--t-faint);font-weight:700;letter-spacing:.04em}
     .assignment-pc-input{min-width:0}
+    .record-picker-state,.assignment-picker-hint{padding-left:2px;font-size:8px;line-height:1.45;color:var(--t-muted)}
+    .assignment-picker-hint.empty,.record-picker-state.warning{color:var(--t-warning)}
+    .assignment-pc-field .plan-pl-options,.record-kp-field .plan-pl-options{z-index:36}
+    .assignment-pc-field .plan-pl-combobox-input,.record-kp-field .plan-pl-combobox-input{font-size:10.5px}
+    .record-kp-field .record-kp-controls{display:grid;gap:5px}
     .assignment-ho-chips{display:grid;grid-template-columns:repeat(8,minmax(28px,1fr));gap:4px}
     .assignment-ho-chip{
       min-height:32px;padding:4px 5px;border:1px solid var(--t-line-strong);border-radius:8px;
@@ -2134,16 +2139,30 @@
 
     .table-record-head-actions{display:flex;align-items:center;gap:7px;flex:0 0 auto}
     .table-record-time{font-size:8px;color:var(--t-faint);white-space:nowrap;font-variant-numeric:tabular-nums}
-    .record-collapse-btn{
-      display:inline-flex;align-items:center;gap:5px;min-height:30px;padding:5px 8px;
-      border:1px solid var(--t-line);border-radius:9px;background:color-mix(in srgb,var(--t-surface) 86%,transparent);
-      color:var(--t-muted);font-size:8.5px;font-weight:720
+    .table-record-collapse-strip{
+      width:calc(100% - 18px);margin:0 9px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:10px 12px 10px 14px;border:0;border-bottom:1px solid var(--t-line);
+      background:linear-gradient(180deg,
+        color-mix(in srgb,var(--t-accent-soft) 34%,var(--t-surface)),
+        color-mix(in srgb,var(--t-surface) 98%,transparent)
+      );
+      color:var(--t-text-2);text-align:left;cursor:pointer
     }
-    .record-collapse-btn:hover{border-color:var(--t-accent);color:var(--t-accent-strong)}
-    .record-collapse-chevron{display:inline-block;transition:transform .16s ease}
+    .table-record-collapse-strip:hover{
+      background:linear-gradient(180deg,
+        color-mix(in srgb,var(--t-accent-soft) 48%,var(--t-surface)),
+        color-mix(in srgb,var(--t-surface) 98%,transparent)
+      )
+    }
+    .record-collapse-strip-main{display:flex;align-items:center;gap:8px;min-width:0}
+    .record-collapse-strip-text{display:grid;gap:2px;min-width:0}
+    .record-collapse-strip-label{font-size:9.8px;font-weight:800;color:var(--t-ink)}
+    .record-collapse-strip-hint,.record-collapse-strip-summary{font-size:8px;color:var(--t-muted)}
+    .record-collapse-strip-summary{white-space:nowrap}
+    .record-collapse-chevron{display:inline-block;transition:transform .16s ease;color:var(--t-accent-strong)}
     .table-record.is-collapsed .record-collapse-chevron{transform:rotate(180deg)}
     .table-record.is-collapsed .table-record-body{display:none}
-    .table-record.is-collapsed .table-record-head{border-bottom:0}
 
     .table-record-body{padding:12px 13px 11px 17px}
     .record-section{
@@ -3372,7 +3391,9 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
-    /* v8.1.6.12 · 全站文案自然化审校：个人统计改用更直观的第一人称表达，并统一个人偏好相关命名。 */
+    /* v8.1.6.15 · 全站搜索逻辑优化：模组、计划、记录、全局与设置搜索按各自场景做精准匹配与相关性排序，保留拼音首字母支持。 */
+    /* v8.1.6.14 · PL 搜索相关性修复：完整姓名 / 完整拼音首字母命中时只显示目标 PL；普通搜索按“本人资料 → 关联跑团信息”排序，并移除同桌其他 PL 姓名造成的误匹配。 */
+    /* v8.1.6.13 · 跑团记录结构与选择器升级：整行展开收起、操作按钮归一到右下角、模组操作文案明确化，并为 KP / PL / PC 选择加入搜索与拼音首字母匹配。 */
     /* v8.1.6.11 · 个人统计隐私范围修正：仅遮罩人物姓名等身份信息，统计数字、图表、模组名和控件保持可见。 */
     /* v8.1.6.10 · 个人统计界面精简：移除冗余“统计口径”提示条，保留时间筛选与必要的局部说明；延续统计模块隐私雾面保护。 */
     /* v8.1.6.9 · 隐私遮罩补全：个人统计的总览、人物、模组、趋势与资料记录卡统一纳入雾面保护，并同步隐私切换时的统计重绘。 */
@@ -3944,7 +3965,7 @@
         <div id="moduleNativeStats" class="module-native-stats" aria-live="polite"></div>
 
         <div class="module-native-controls sticky-searchbar">
-          <label class="search"><span>⌕</span><input id="moduleNativeSearch" placeholder="搜索模组名称、作者、地点、时代、性质或备注（支持拼音首字母）"></label>
+          <label class="search"><span>⌕</span><input id="moduleNativeSearch" placeholder="搜索模组名称、作者、地点、时代或备注（名称优先・支持拼音首字母）"></label>
           <select id="moduleNativeHoFilter" class="sort-select" aria-label="HO筛选">
             <option value="">全部 HO 设置</option>
             <option value="has">有 HO 位</option>
@@ -4019,7 +4040,7 @@
               </div>
               <div id="planCountText" class="count" aria-live="polite">0 个</div>
             </div>
-            <label class="search plan-search"><span>⌕</span><input id="planSearchInput" placeholder="搜索模组、桌名、KP 或 PL（支持拼音首字母）"></label>
+            <label class="search plan-search"><span>⌕</span><input id="planSearchInput" placeholder="搜索模组、桌名、KP、PL、PC 或日期（支持拼音首字母）"></label>
             <div class="planner-drag-hint" aria-label="排期操作提示"><span class="planner-drag-hint-desktop">按住卡片左侧 <strong>“拖到日历”</strong> 可直接排期</span><span class="planner-drag-hint-mobile">点击 <strong>“安排”</strong> 后选择日历时段</span></div>
             <section id="planBoard" class="plan-board"></section>
           </aside>
@@ -4056,7 +4077,7 @@
             <button id="createModuleRecordBtn" class="btn primary" type="button">＋ 新建跑团记录</button>
           </div>
           <div class="records-search-row">
-            <label class="search records-search"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、日期或 Log（支持拼音首字母）"></label>
+            <label class="search records-search"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、PC、日期或 Log（支持拼音首字母）"></label>
             <div class="records-search-batch" role="group" aria-label="跑团记录批量展开与收起">
               <button id="expandAllRecordsBtn" class="btn small" type="button">全部展开</button>
               <button id="collapseAllRecordsBtn" class="btn small" type="button">全部收起</button>
@@ -4072,7 +4093,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.12 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.15 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4084,7 +4105,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.12　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.15　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4288,7 +4309,7 @@
           </aside>
           <div class="settings-main">
             <div class="settings-search-wrap">
-              <label class="settings-search"><span>⌕</span><input id="settingsSearchInput" type="search" placeholder="搜索设置，例如：主题、备份、默认展开……（支持拼音首字母）" autocomplete="off"></label>
+              <label class="settings-search"><span>⌕</span><input id="settingsSearchInput" type="search" placeholder="搜索设置名称或功能，例如：主题、备份、展开……（支持拼音首字母）" autocomplete="off"></label>
               <div id="settingsSearchResults" class="settings-search-results" hidden></div>
             </div>
             <div class="settings-panels">
@@ -4374,7 +4395,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.12</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.15</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4418,11 +4439,13 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.12 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.12</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.15 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.15</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
-<strong>v8.1.6.12</strong><span>重新审校个人统计与个人偏好的界面文案：将“参团人员统计”等偏生硬的表达改为“我的跑团关系统计”等更自然、直接的说法；统一“我带的 PL / 我的 KP / 我的模组统计 / PL 参团次数分布 / 历史记录填写情况”等名称，并同步修正个人偏好导出、保存和错误提示中的旧称。</span>
+<strong>v8.1.6.15</strong><span>统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果；跑团记录搜索会优先定位最相关模组，并在非模组关键词搜索时只显示命中的桌次；全局搜索按精准度跨页面排序；设置搜索增加常用功能词匹配。所有搜索继续支持拼音首字母。</span>
+<strong>v8.1.6.14</strong><span>修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息；同时移除“同桌其他 PL 姓名”造成的连带误匹配。</span>
+<strong>v8.1.6.13</strong><span>重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”；KP、PL 与 PC 名选择加入可搜索匹配，支持拼音首字母，PC 名无历史匹配时可直接输入保存为新名字。</span>
 <strong>v8.1.6.11</strong><span>修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span>
 <strong>v8.1.6.10</strong><span>精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span>
 <strong>v8.1.6.9</strong><span>补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span>
@@ -4523,7 +4546,7 @@
   <div id="globalSearchBackdrop" class="global-search-backdrop" hidden>
     <section class="global-search-modal" role="dialog" aria-modal="true" aria-labelledby="globalSearchTitle">
       <header><div><h3 id="globalSearchTitle">全局搜索</h3><p>搜索 PL、个人偏好、模组、开团计划和跑团记录。</p></div><button id="closeGlobalSearchBtn" class="close" type="button" aria-label="关闭">×</button></header>
-      <label class="global-search-box"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="输入名称、PC、KP、桌名、日期……（支持拼音首字母）" autocomplete="off"></label>
+      <label class="global-search-box"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="跨 PL、模组、计划、记录与个人页面搜索（支持拼音首字母）" autocomplete="off"></label>
       <div id="globalSearchResults" class="global-search-results" role="listbox"></div>
       <footer><span>Ctrl + K 打开 · ↑↓ 选择 · Enter 跳转 · Esc 关闭</span></footer>
     </section>
@@ -4576,7 +4599,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.6.12 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.15 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4595,7 +4618,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.12";
+const APP_UI_VERSION = "8.1.6.14";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5236,16 +5259,45 @@ function recentPcNamesForProfile(profileId){
     const a=(run.participantAssignments||[]).find(x=>String(x.plId)===String(profileId));
     if(a?.pcName)names.push(a.pcName.trim());
   });
-  return [...new Set(names.filter(Boolean))].slice(0,12);
+  return [...new Set(names.filter(Boolean))].sort((a,b)=>profilePickerNameCollator.compare(String(a||""),String(b||""))).slice(0,18);
+}
+function filterPcNamesForPicker(list,query){
+  const q=normalizedEntityNameKey(query),filtered=!q?[...list]:list.filter(name=>searchTextMatches([name],q));
+  return filtered.sort((a,b)=>{
+    if(q){const rank=searchFieldRank(a,q)-searchFieldRank(b,q);if(rank)return rank;}
+    return profilePickerNameCollator.compare(String(a||""),String(b||""));
+  });
+}
+function pcNamePickerOptionsHTML(profileId,query=""){
+  const names=filterPcNamesForPicker(recentPcNamesForProfile(profileId),query);
+  if(!names.length)return `<div class="plan-pl-empty">${query.trim()?"没有找到匹配的 PC 名，可直接按当前输入保存。":"暂无历史 PC 名，可直接输入创建。"}</div>`;
+  return names.map(name=>`<button class="plan-pl-option" type="button" data-pc-name-pick="${escapeHTML(profileId)}" data-pc-name-value="${escapeHTML(name)}"><strong>${escapeHTML(name)}</strong><small>使用</small></button>`).join("");
+}
+function syncPcNamePickerUI(comboRoot,{open=null}={}){
+  const combo=comboRoot?.closest?.(".assignment-pc-combobox")||comboRoot;
+  if(!combo)return;
+  const input=combo.querySelector("[data-plan-pc-name],[data-record-pc-name]"),options=combo.querySelector("[data-pc-options]"),hint=combo.querySelector("[data-pc-hint]");
+  if(!input||!options||!hint)return;
+  const profileId=combo.dataset.pcProfileId||input.dataset.planPcName||input.dataset.recordPcName||"";
+  const allNames=recentPcNamesForProfile(profileId),filtered=filterPcNamesForPicker(allNames,input.value||"");
+  options.innerHTML=pcNamePickerOptionsHTML(profileId,input.value||"");
+  if(open!==null)options.hidden=!open;
+  hint.textContent=(input.value||"").trim()?(filtered.length?`找到 ${filtered.length} 个历史 PC 名；可直接选择，也可保留当前输入新建。`:`没有匹配的历史 PC 名；当前输入会直接保存为新 PC 名。`):(allNames.length?`可从历史记录中选择 ${allNames.length} 个 PC 名；也可以直接输入新名字。`:"暂无历史 PC 名，直接输入即可。");
+  hint.classList.toggle("empty",Boolean((input.value||"").trim()&&!filtered.length));
 }
 function pcNameInputHTML(entity,profileId,scope){
   const a=assignmentFor(entity,profileId);
-  const listId=`pc_names_${scope}_${String(entity.id).replace(/[^\w-]/g,"")}_${String(profileId).replace(/[^\w-]/g,"")}`;
-  const recent=recentPcNamesForProfile(profileId);
   return `<div class="assignment-pc-field">
     <span class="assignment-mini-label">PC</span>
-    <input class="text-input assignment-pc-input" data-${scope}-pc-name="${escapeHTML(profileId)}" value="${escapeHTML(a.pcName)}" placeholder="本桌 PC 名（可选）" ${recent.length?`list="${listId}"`:""}>
-    ${recent.length?`<datalist id="${listId}">${recent.map(n=>`<option value="${escapeHTML(n)}"></option>`).join("")}</datalist>`:""}
+    <div class="plan-pl-combobox assignment-pc-combobox" data-pc-profile-id="${escapeHTML(profileId)}">
+      <div class="plan-pl-combobox-control">
+        <span class="plan-pl-search-icon">⌕</span>
+        <input class="text-input plan-pl-combobox-input assignment-pc-input" data-${scope}-pc-name="${escapeHTML(profileId)}" value="${escapeHTML(a.pcName)}" placeholder="搜索或输入本桌 PC 名（可直接新建）" autocomplete="off" aria-expanded="false">
+        <button class="plan-pl-combobox-toggle" type="button" data-pc-toggle aria-label="展开 PC 名列表">⌄</button>
+      </div>
+      <div class="plan-pl-options" data-pc-options hidden>${pcNamePickerOptionsHTML(profileId,a.pcName||"")}</div>
+    </div>
+    <div class="assignment-picker-hint" data-pc-hint></div>
   </div>`;
 }
 function hoNumberInUseByOther(entity,number,exceptProfileId){
@@ -6253,6 +6305,21 @@ function searchTextMatches(values,query){
   const q=normalizedEntityNameKey(query);if(!q)return true;
   return buildSearchIndex(values).includes(q);
 }
+function searchFieldRank(value,query){
+  const q=normalizedEntityNameKey(query);if(!q)return 0;
+  const raw=String(value??"").trim();if(!raw)return 99;
+  const key=normalizedEntityNameKey(raw),initials=normalizedEntityNameKey(pinyinInitials(raw));
+  if(key===q||initials===q)return 0;
+  if(key.startsWith(q)||(initials&&initials.startsWith(q)))return 1;
+  if(key.includes(q)||(initials&&initials.includes(q)))return 2;
+  return 99;
+}
+function bestSearchFieldRank(values,query){
+  const list=(Array.isArray(values)?values:[values]).flat(Infinity).filter(v=>v!==null&&v!==undefined&&v!==false&&String(v).trim());
+  if(!list.length)return 99;
+  return Math.min(...list.map(v=>searchFieldRank(v,query)));
+}
+function exactSearchFieldMatch(value,query){return searchFieldRank(value,query)===0;}
 function duplicateProfileByName(name,excludeId=""){
   const key=normalizedEntityNameKey(name);
   if(!key)return null;
@@ -6436,9 +6503,19 @@ function compareProfilesForPicker(a,b){
   const left=String(rawProfileName(a)||"").trim(),right=String(rawProfileName(b)||"").trim();
   return profilePickerNameCollator.compare(left,right)||String(a?.id||"").localeCompare(String(b?.id||""),"zh-CN");
 }
+function profilePickerSearchRank(profile,query){
+  const q=normalizedEntityNameKey(query);if(!q)return 0;
+  return bestSearchFieldRank([rawProfileName(profile),displayProfileName(profile),selfOptionLabel(profile)],q);
+}
+function sortProfilesForPicker(list,query=""){
+  return [...list].sort((a,b)=>{
+    if(normalizedEntityNameKey(query)){const rank=profilePickerSearchRank(a,query)-profilePickerSearchRank(b,query);if(rank)return rank;}
+    return compareProfilesForPicker(a,b);
+  });
+}
 function filterProfilesForPicker(list,query){
-  if(!normalizedEntityNameKey(query))return [...list];
-  return list.filter(profile=>searchTextMatches([rawProfileName(profile),displayProfileName(profile),selfOptionLabel(profile)],query));
+  if(!normalizedEntityNameKey(query))return sortProfilesForPicker(list);
+  return sortProfilesForPicker(list.filter(profile=>searchTextMatches([rawProfileName(profile),displayProfileName(profile),selfOptionLabel(profile)],query)),query);
 }
 function planPlPickerQuery(planId){return planEditorPlSearchQueries.get(String(planId||""))||"";}
 function setPlanPlPickerQuery(planId,value){
@@ -6446,9 +6523,85 @@ function setPlanPlPickerQuery(planId,value){
   if(query)planEditorPlSearchQueries.set(key,query);
   else planEditorPlSearchQueries.delete(key);
 }
+const recordEditorPlSearchQueries=new Map();
+const recordEditorKpSearchQueries=new Map();
+function recordPlPickerQuery(recordId){return recordEditorPlSearchQueries.get(String(recordId||""))||"";}
+function setRecordPlPickerQuery(recordId,value){
+  const key=String(recordId||""),query=String(value||"");
+  if(query)recordEditorPlSearchQueries.set(key,query);
+  else recordEditorPlSearchQueries.delete(key);
+}
+function recordKpPickerQuery(recordId){return recordEditorKpSearchQueries.get(String(recordId||""))||"";}
+function setRecordKpPickerQuery(recordId,value){
+  const key=String(recordId||""),query=String(value||"");
+  if(query)recordEditorKpSearchQueries.set(key,query);
+  else recordEditorKpSearchQueries.delete(key);
+}
+function exactProfileMatches(query,list=profiles){
+  const key=normalizedEntityNameKey(query);if(!key)return [];
+  return list.filter(profile=>[
+    rawProfileName(profile),
+    displayProfileName(profile),
+    selfOptionLabel(profile)
+  ].some(text=>normalizedEntityNameKey(text)===key));
+}
+function recordPlPickerOptionsHTML(record,query=""){
+  const available=profiles.filter(p=>!record.plIds.includes(p.id)).sort(compareProfilesForPicker);
+  const filtered=filterProfilesForPicker(available,query);
+  if(!filtered.length)return `<div class="plan-pl-empty">${query.trim()?"没有找到匹配的 PL。可输入姓名、英文名或拼音首字母。":"没有可添加的 PL。"}</div>`;
+  return filtered.map(p=>`<button class="plan-pl-option" type="button" data-record-add-pl-id="${escapeHTML(p.id)}"><strong>${escapeHTML(displayProfileName(p))}</strong><small>${isBlacklistedProfile(p)?"黑名单":"添加"}</small></button>`).join("");
+}
+function syncRecordPlPickerUI(rootOrRecordId,{open=null}={}){
+  const wrap=typeof rootOrRecordId==="string"?els.recordsBoard.querySelector(`[data-record-id="${CSS.escape(String(rootOrRecordId))}"]`):rootOrRecordId?.closest?.("[data-record-id]")||rootOrRecordId;
+  const recordId=wrap?.dataset.recordId;if(!recordId)return;
+  const record=runRecords.find(r=>String(r.id)===String(recordId));if(!record)return;
+  const input=wrap.querySelector("[data-record-add-pl-query]"),options=wrap.querySelector("[data-record-pl-options]"),hint=wrap.querySelector("[data-record-add-pl-hint]");
+  if(!input||!options||!hint)return;
+  const query=String(input.value||"");setRecordPlPickerQuery(recordId,query);
+  const available=profiles.filter(p=>!record.plIds.includes(p.id)).sort(compareProfilesForPicker);
+  const filtered=filterProfilesForPicker(available,query);
+  options.innerHTML=recordPlPickerOptionsHTML(record,query);
+  if(open!==null)options.hidden=!open;
+  hint.textContent=query.trim()?(filtered.length?`找到 ${filtered.length} 位；支持姓名、英文名和拼音首字母。`:`没有找到匹配的 PL。`):(available.length?`点击输入框展开 ${available.length} 位可添加 PL；按 A～Z（拼音 / 英文）排列。`:"没有可添加的 PL。");
+  hint.classList.toggle("empty",Boolean(query.trim()&&!filtered.length));
+}
+function recordKpPickerOptionsHTML(record,query=""){
+  const list=[...profiles].sort(compareProfilesForPicker);
+  const filtered=filterProfilesForPicker(list,query);
+  if(!filtered.length)return `<div class="plan-pl-empty">${query.trim()?"没有找到匹配的 PL。保留当前输入即可作为自定义 KP。":"没有可关联的 PL。可直接输入自定义 KP。"}</div>`;
+  return filtered.map(p=>`<button class="plan-pl-option" type="button" data-record-kp-pick="${escapeHTML(p.id)}"><strong>${escapeHTML(displayProfileName(p))}</strong><small>${isSelfProfile(p)?"本人":isBlacklistedProfile(p)?"黑名单":"设为 KP"}</small></button>`).join("");
+}
+function recordKpPickerStateHTML(record){
+  const linked=linkedKpProfile(record);
+  if(linked)return `已关联：${escapeHTML(displayProfileName(linked))}`;
+  if(String(record.kp||"").trim())return `当前按自定义 KP 保存：${escapeHTML(String(record.kp||"").trim())}`;
+  return "可搜索已有 PL 并直接关联；也可以输入外部 KP 名称。";
+}
+function syncRecordKpPickerUI(rootOrRecordId,{open=null}={}){
+  const wrap=typeof rootOrRecordId==="string"?els.recordsBoard.querySelector(`[data-record-id="${CSS.escape(String(rootOrRecordId))}"]`):rootOrRecordId?.closest?.("[data-record-id]")||rootOrRecordId;
+  const recordId=wrap?.dataset.recordId;if(!recordId)return;
+  const record=runRecords.find(r=>String(r.id)===String(recordId));if(!record)return;
+  const input=wrap.querySelector("[data-record-kp-query]"),options=wrap.querySelector("[data-record-kp-options]"),hint=wrap.querySelector("[data-record-kp-hint]");
+  if(!input||!options||!hint)return;
+  const query=String(input.value||"");setRecordKpPickerQuery(recordId,query);
+  const filtered=filterProfilesForPicker(profiles,query);
+  options.innerHTML=recordKpPickerOptionsHTML(record,query);
+  if(open!==null)options.hidden=!open;
+  hint.innerHTML=recordKpPickerStateHTML(record);
+  hint.classList.toggle("warning",Boolean(query.trim()&&!filtered.length&&record.kpProfileId));
+}
+function linkRecordToKpProfile(recordId,profileId){
+  const p=profileById(profileId);if(!p)return false;
+  const ok=mutateRunRecord(recordId,r=>{r.kpProfileId=p.id;r.kp=rawProfileName(p);},{undoLabel:`已更新 KP · ${displayProfileName(p)}`,render:false});
+  if(!ok)return false;
+  setRecordKpPickerQuery(recordId,displayProfileName(p));
+  renderRunRecords({preservePageScroll:true,centerSelected:false});
+  showToast(`已关联 KP：${displayProfileName(p)}`);
+  return true;
+}
 function planPlPickerOptionsHTML(plan,query=""){
   const available=profiles.filter(p=>!isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)).sort(compareProfilesForPicker);
-  const filtered=filterProfilesForPicker(available,query).sort(compareProfilesForPicker);
+  const filtered=filterProfilesForPicker(available,query);
   if(!filtered.length)return `<div class="plan-pl-empty">${query.trim()?"没有找到匹配的 PL。可输入姓名、英文名或拼音首字母。":"没有可添加的 PL。"}</div>`;
   return filtered.map(p=>`<button class="plan-pl-option" type="button" data-editor-add-pl-id="${escapeHTML(p.id)}"><strong>${escapeHTML(displayProfileName(p))}</strong><small>${isSelfProfile(p)?"本人":"添加"}</small></button>`).join("");
 }
@@ -6462,7 +6615,7 @@ function syncPlanPlPickerUI(rootOrPlanId,{open=null}={}){
   if(!input||!options||!hint)return;
   const query=String(input.value||"");setPlanPlPickerQuery(planId,query);
   const available=profiles.filter(p=>!isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)).sort(compareProfilesForPicker);
-  const filtered=filterProfilesForPicker(available,query).sort(compareProfilesForPicker);
+  const filtered=filterProfilesForPicker(available,query);
   options.innerHTML=planPlPickerOptionsHTML(plan,query);
   if(open!==null)options.hidden=!open;
   hint.textContent=query.trim()?(filtered.length?`找到 ${filtered.length} 位；支持姓名、英文名和拼音首字母。`:`没有找到匹配的 PL。`):(available.length?`点击输入框展开 ${available.length} 位可添加 PL；按 A～Z（拼音 / 英文）排列。`:"没有可添加的 PL。");
@@ -6613,9 +6766,8 @@ function toggleProfileCardCollapse(id){
 function currentProfileRowsForBulkCollapse(){
   const q=normalizedEntityNameKey(els.search?.value||"");
   const source=profiles.map(p=>(draft&&editingId===p.id?draft:p));
-  return source
-    .filter(p=>profileListMode==="blacklist"?isBlacklistedProfile(p):!isBlacklistedProfile(p))
-    .filter(p=>!q||profileSearchText(p).includes(q));
+  const modeRows=source.filter(p=>profileListMode==="blacklist"?isBlacklistedProfile(p):!isBlacklistedProfile(p));
+  return filterProfileRowsByQuery(modeRows,q);
 }
 function syncProfileBulkCollapseControls(rows=currentProfileRowsForBulkCollapse()){
   if(!els.profileCollapseActions)return;
@@ -6703,8 +6855,17 @@ function renderProfiles(){
   const q=normalizedEntityNameKey(els.search.value);
   const source=profiles.map(p => (draft && editingId===p.id ? draft : p));
   const modeRows=source.filter(p=>profileListMode==="blacklist"?isBlacklistedProfile(p):!isBlacklistedProfile(p));
-  const filtered=modeRows.filter(p=>!q||profileSearchText(p).includes(q));
-  const sorted=profileListMode==="blacklist"?[...filtered].sort((a,b)=>(b.blacklist?.addedAt||0)-(a.blacklist?.addedAt||0)||(b.updatedAt||0)-(a.updatedAt||0)):sortProfiles(filtered);
+  const filtered=filterProfileRowsByQuery(modeRows,q);
+  let sorted;
+  if(profileListMode==="blacklist"){
+    sorted=[...filtered].sort((a,b)=>{
+      if(q){const rankDiff=profileSearchRank(a,q)-profileSearchRank(b,q);if(rankDiff)return rankDiff;}
+      return (b.blacklist?.addedAt||0)-(a.blacklist?.addedAt||0)||(b.updatedAt||0)-(a.updatedAt||0);
+    });
+  }else if(q){
+    const buckets=[0,1,2].flatMap(rank=>sortProfiles(filtered.filter(p=>profileSearchRank(p,q)===rank)));
+    sorted=buckets;
+  }else sorted=sortProfiles(filtered);
   els.count.textContent=q?`${sorted.length} / ${modeRows.length} 位 PL`:`${modeRows.length} 位 PL`;
   syncProfileLayoutButtons();
   const compact=effectiveProfileLayout()==="compact";
@@ -7900,13 +8061,24 @@ function planArchiveDateRange(plan){
   return {startDate:dates[0]||"",endDate:dates.length?dates[dates.length-1]:""};
 }
 function archivedSessionText(r){return (r?.sessionSlots||[]).map(formatPlanSlot).filter(Boolean);}
-function planMatchesSearch(plan,q){
-  if(!q)return true;
-  const plNames=plan.plIds.map(profileNameById);
-  const kpName=kpTextLabel(plan);
-  const slots=(plan.timeSlots||[]).flatMap(s=>[s.date,daypartInfo(s.daypart).label,daypartInfo(s.daypart).hint,formatPlanSlot(s)]);
-  return searchTextMatches([plan.moduleName,plan.tableName,kpName,plan.kp,plan.logUrl,[participantDisplaySummary(plan),hoAssignmentSummary(plan),plan.sharedHoNote].filter(Boolean).join(' '),...plNames,...slots],q);
+function planSearchCoreValues(plan){
+  const plNames=(plan.plIds||[]).map(profileNameById),pcNames=(plan.participantAssignments||[]).map(a=>a?.pcName).filter(Boolean);
+  return [plan.moduleName,plan.tableName,kpTextLabel(plan),plan.kp,...plNames,...pcNames,plan.kpc?.pcName];
 }
+function planSearchSecondaryValues(plan){
+  const slots=(plan.timeSlots||[]).flatMap(s=>[s.date,daypartInfo(s.daypart).label,daypartInfo(s.daypart).hint,formatPlanSlot(s)]);
+  return [plan.logUrl,hoAssignmentSummary(plan),plan.sharedHoNote,...(plan.participantAssignments||[]).map(a=>a?.hoCustom).filter(Boolean),plan.kpc?.hoCustom,...slots];
+}
+function planSearchRank(plan,q){
+  const query=normalizedEntityNameKey(q);if(!query)return 0;
+  const tableRank=searchFieldRank(plan.tableName,query);if(tableRank===0)return 0;
+  const moduleRank=searchFieldRank(plan.moduleName,query);if(moduleRank===0)return 1;
+  const peopleRank=bestSearchFieldRank([kpTextLabel(plan),plan.kp,(plan.plIds||[]).map(profileNameById),(plan.participantAssignments||[]).map(a=>a?.pcName),plan.kpc?.pcName],query);if(peopleRank===0)return 1;
+  const coreRank=bestSearchFieldRank(planSearchCoreValues(plan),query);if(coreRank<99)return 2+Math.min(coreRank,2);
+  if(bestSearchFieldRank(planSearchSecondaryValues(plan),query)<99)return 5;
+  return 99;
+}
+function planMatchesSearch(plan,q){return !normalizedEntityNameKey(q)||planSearchRank(plan,q)<99;}
 
 
 /* ---------- v8.1.5.1 · 跑团偏好多选快捷操作 ---------- */
@@ -7959,7 +8131,7 @@ function introRadioGroup(path,options){const value=String(selfIntroPathGet(selfI
 function introScale(path,title){const value=introScaleValue(selfIntroPathGet(selfIntroDraft,path)),meta=INTRO_SCALE_META[path]||["低","高"],steps=[1,2,3,4,5].map(n=>{const text=selfIntroScaleText(path,n);return `<button class="intro-scale-step ${n===value?"is-active":""}" type="button" data-intro-scale-step="${escapeHTML(path)}" data-scale-value="${n}" aria-pressed="${n===value?"true":"false"}" aria-label="${escapeHTML(`${title}：${text}`)}" title="${escapeHTML(text)}"><span class="intro-scale-dot" aria-hidden="true"></span></button>`;}).join("");return `<div class="intro-scale" role="group" aria-label="${escapeHTML(title)}"><div class="intro-scale-head"><strong>${escapeHTML(title)}</strong><output data-intro-scale-output="${escapeHTML(path)}">${escapeHTML(selfIntroScaleText(path,value))}</output></div><div class="intro-scale-track">${steps}</div><div class="intro-scale-labels"><span>${escapeHTML(meta[0])}</span><span>中间</span><span>${escapeHTML(meta[1])}</span></div></div>`;}
 function currentOrPendingModule(ref){const id=String(ref?.moduleId||"");return modules.find(m=>m.id===id)||selfIntroPendingModules.find(m=>m.id===id)||null;}
 function moduleIntentCard(ref,kind){const mod=currentOrPendingModule(ref),name=mod?.name||ref?.name||"未命名模组",pending=Boolean(selfIntroPendingModules.some(m=>m.id===ref?.moduleId)),meta=mod?[mod.author,mod.era,mod.location].filter(Boolean).join(" · "):"";return `<div class="intro-module-chip"><span><strong>${escapeHTML(name)}</strong><small>${escapeHTML(pending?"保存后新建模组档案":meta||"已关联模组档案")}</small></span><button type="button" data-intro-remove-module="${escapeHTML(kind)}" data-module-id="${escapeHTML(ref?.moduleId||"")}" data-module-name="${escapeHTML(ref?.name||name)}" aria-label="移除">×</button></div>`;}
-function moduleIntentSection(kind,title,desc){const path=kind==="want"?"pl.wantModules":"kp.canHostModules",rows=selfIntroPathGet(selfIntroDraft,path)||[];return `<div class="self-intro-section intro-intent-section"><div class="self-intro-section-head"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div><div class="intro-intent-box"><div class="intro-module-chips">${rows.length?rows.map(r=>moduleIntentCard(r,kind)).join(""):`<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" list="selfIntroModuleOptions" placeholder="输入模组名称；已有名称自动关联，新名称自动建档"><div class="intro-intent-actions"><button class="btn" type="button" data-intro-pick-module="${escapeHTML(kind)}">选择已有</button><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div></div></div>`;}
+function moduleIntentSection(kind,title,desc){const path=kind==="want"?"pl.wantModules":"kp.canHostModules",rows=selfIntroPathGet(selfIntroDraft,path)||[];return `<div class="self-intro-section intro-intent-section"><div class="self-intro-section-head"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div><div class="intro-intent-box"><div class="intro-module-chips">${rows.length?rows.map(r=>moduleIntentCard(r,kind)).join(""):`<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" list="selfIntroModuleOptions" placeholder="输入模组名称或拼音首字母；匹配已有或新建"><div class="intro-intent-actions"><button class="btn" type="button" data-intro-pick-module="${escapeHTML(kind)}">选择已有</button><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div></div></div>`;}
 function boundaryLevelOptions(current){return SELF_INTRO_BOUNDARY_LEVELS.map(v=>`<option value="${escapeHTML(v)}" ${current===v?"selected":""}>${escapeHTML(v||"未设置")}</option>`).join("");}
 function introModulePrefsSections(side){const base=`${side}.modulePrefs`,mp=selfIntroPathGet(selfIntroDraft,base)||defaultIntroModulePrefs();return `
   <div class="self-intro-section intro-module-pref-title"><div class="self-intro-section-head"><strong>模组偏好</strong></div></div>
@@ -8140,9 +8312,10 @@ async function pickSelfIntroModuleIntent(kind){
 }
 async function addSelfIntroModuleIntent(kind){
   ensureSelfIntroDraft();const input=els.selfIntroView?.querySelector(`[data-intro-module-input="${kind}"]`),name=String(input?.value||"").trim();if(!name){showToast("请输入模组名称");return;}
-  const path=kind==="want"?"pl.wantModules":"kp.canHostModules",rows=selfIntroPathGet(selfIntroDraft,path)||[],key=normalizedEntityNameKey(name);let mod=selfIntroPendingModules.find(m=>normalizedEntityNameKey(m.name)===key)||null;const matches=modulesByNormalizedName(name);
+  const path=kind==="want"?"pl.wantModules":"kp.canHostModules",rows=selfIntroPathGet(selfIntroDraft,path)||[],key=normalizedEntityNameKey(name);let mod=selfIntroPendingModules.find(m=>normalizedEntityNameKey(m.name)===key)||null;let matches=modulesByNormalizedName(name);
+  if(!matches.length){const initialMatches=modules.filter(m=>exactSearchFieldMatch(m.name,name));if(initialMatches.length)matches=initialMatches;}
   if(!mod&&matches.length===1)mod=matches[0];
-  if(!mod&&matches.length>1){const value=await appSelect(`检测到 ${matches.length} 个同名模组，请选择要关联的档案。`,matches.map(m=>({value:m.id,label:`${m.name} · ${modulePickerMeta(m)}`})),matches[0].id,{title:"选择模组档案",confirmText:"关联"});if(!value)return;mod=modules.find(m=>m.id===value)||null;}
+  if(!mod&&matches.length>1){const value=await appSelect(`找到 ${matches.length} 个匹配模组，请选择要关联的档案。`,matches.map(m=>({value:m.id,label:`${m.name} · ${modulePickerMeta(m)}`})),matches[0].id,{title:"选择模组档案",confirmText:"关联"});if(!value)return;mod=modules.find(m=>m.id===value)||null;}
   if(!mod){const now=Date.now();mod=normalizeRichModule({id:uid(),name,createdAt:now,updatedAt:now},settings.moduleArchive);selfIntroPendingModules.push(mod);}
   if(rows.some(r=>r.moduleId===mod.id||normalizedEntityNameKey(r.name)===normalizedEntityNameKey(mod.name))){showToast("该模组已在列表中");return;}
   rows.push({moduleId:mod.id,name:mod.name,addedAt:Date.now()});selfIntroPathSet(selfIntroDraft,path,rows);renderSelfIntroView();queueSelfIntroSave(80);
@@ -8410,11 +8583,34 @@ function groupedRunRecords(){
   return [...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0],"zh-CN"));
 }
 
-function recordMatchesSearch(r,moduleName,q){
-  if(!q)return true;
-  const plNames=r.plIds.map(profileNameById);
+function recordSearchCoreValues(r,moduleName){
+  return [moduleName,r.tableName,kpTextLabel(r),r.kp,(r.plIds||[]).map(profileNameById),(r.participantAssignments||[]).map(a=>a?.pcName),r.kpc?.pcName];
+}
+function recordSearchSecondaryValues(r){
   const slots=(r.sessionSlots||[]).flatMap(s=>[s.date,daypartInfo(s.daypart).label,formatPlanSlot(s)]);
-  return searchTextMatches([moduleName,r.tableName,kpTextLabel(r),r.kp,r.startDate,r.endDate,r.legacyDuration,r.logUrl,r.actualDuration,r.thoughts,r.runNotes,[participantDisplaySummary(r),hoAssignmentSummary(r),r.sharedHoNote].filter(Boolean).join(' '),...plNames,...slots],q);
+  return [r.startDate,r.endDate,r.legacyDuration,r.logUrl,r.actualDuration,r.thoughts,r.runNotes,hoAssignmentSummary(r),r.sharedHoNote,(r.participantAssignments||[]).map(a=>a?.hoCustom),r.kpc?.hoCustom,...slots];
+}
+function recordSearchRank(r,moduleName,q){
+  const query=normalizedEntityNameKey(q);if(!query)return 0;
+  const tableRank=searchFieldRank(r.tableName,query);if(tableRank===0)return 0;
+  const moduleRank=searchFieldRank(moduleName,query);if(moduleRank===0)return 1;
+  const peopleRank=bestSearchFieldRank([kpTextLabel(r),r.kp,(r.plIds||[]).map(profileNameById),(r.participantAssignments||[]).map(a=>a?.pcName),r.kpc?.pcName],query);if(peopleRank===0)return 1;
+  const coreRank=bestSearchFieldRank(recordSearchCoreValues(r,moduleName),query);if(coreRank<99)return 2+Math.min(coreRank,2);
+  if(bestSearchFieldRank(recordSearchSecondaryValues(r),query)<99)return 5;
+  return 99;
+}
+function recordMatchesSearch(r,moduleName,q){return !normalizedEntityNameKey(q)||recordSearchRank(r,moduleName,q)<99;}
+function buildRecordSearchGroups(allGroups,q){
+  const query=normalizedEntityNameKey(q);if(!query)return allGroups.map(([name,list])=>[name,list,0,list.length]);
+  const groups=[];
+  allGroups.forEach(([name,list])=>{
+    const moduleRank=searchFieldRank(name,query);
+    if(moduleRank<99){groups.push([name,[...list],moduleRank,list.length]);return;}
+    const matched=list.filter(r=>recordMatchesSearch(r,name,query)).sort((a,b)=>recordSearchRank(a,name,query)-recordSearchRank(b,name,query)||compareRunChronology(a,b));
+    if(matched.length)groups.push([name,matched,Math.min(...matched.map(r=>recordSearchRank(r,name,query))),list.length]);
+  });
+  groups.sort((a,b)=>a[2]-b[2]||a[0].localeCompare(b[0],"zh-CN"));
+  return groups;
 }
 
 function applyPlannerMobileSectionUI(){
@@ -8438,7 +8634,10 @@ function renderRunPlans(){
 }
 function renderPlanList(){
   const q=normalizedEntityNameKey(els.planSearch.value);
-  const filtered=runPlans.filter(p=>planMatchesSearch(p,q)).sort(compareRunPlans);
+  const filtered=runPlans.filter(p=>planMatchesSearch(p,q)).sort((a,b)=>{
+    if(q){const rank=planSearchRank(a,q)-planSearchRank(b,q);if(rank)return rank;}
+    return compareRunPlans(a,b);
+  });
   const unscheduled=runPlans.filter(p=>planStatusInfo(p).key==="unscheduled").length;
   const visibleUnscheduled=filtered.filter(p=>planStatusInfo(p).key==="unscheduled").length;
   els.planCount.textContent=q?`${filtered.length} / ${runPlans.length} 个${visibleUnscheduled?` · ${visibleUnscheduled} 未排期`:""}`:`${runPlans.length} 个${unscheduled?` · ${unscheduled} 未排期`:""}`;
@@ -8449,11 +8648,13 @@ function renderPlanList(){
     return;
   }
 
-  const groups=[
-    {key:"next",label:"接下来",items:filtered.filter(p=>["active","upcoming"].includes(planStatusInfo(p).key))},
-    {key:"overdue",label:"待归档",items:filtered.filter(p=>planStatusInfo(p).key==="overdue")},
-    {key:"unscheduled",label:"未排期",items:filtered.filter(p=>planStatusInfo(p).key==="unscheduled")}
-  ].filter(g=>g.items.length);
+  const groups=q
+    ?[{key:"search",label:"搜索结果",items:filtered}]
+    :[
+      {key:"next",label:"接下来",items:filtered.filter(p=>["active","upcoming"].includes(planStatusInfo(p).key))},
+      {key:"overdue",label:"待归档",items:filtered.filter(p=>planStatusInfo(p).key==="overdue")},
+      {key:"unscheduled",label:"未排期",items:filtered.filter(p=>planStatusInfo(p).key==="unscheduled")}
+    ].filter(g=>g.items.length);
 
   els.planBoard.innerHTML=groups.map(g=>`<section class="plan-group" data-plan-group="${g.key}">
     <header class="plan-group-head"><span>${g.label}</span><span class="plan-group-count">${g.items.length}</span></header>
@@ -8674,10 +8875,12 @@ function modulePickerMeta(module){
   return [module.author,module.location,module.era,module.players].filter(Boolean).join(" · ")||"暂无补充信息";
 }
 function planModulePickerMatches(query){
-  const q=normalizedEntityNameKey(query);
-  const list=[...modules].sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"zh-CN"));
-  if(!q)return list.slice(0,12);
-  return list.filter(m=>searchTextMatches([m.name,m.author,m.location,m.era,m.nature],q)).slice(0,20);
+  const q=normalizedEntityNameKey(query),list=[...modules];
+  if(!q)return list.sort((a,b)=>profilePickerNameCollator.compare(String(a.name||""),String(b.name||""))).slice(0,12);
+  return list.filter(m=>searchTextMatches([m.name,m.author,m.location,m.era,m.nature],q)).sort((a,b)=>{
+    const ar=bestSearchFieldRank([a.name,a.author,a.location,a.era,a.nature],q),br=bestSearchFieldRank([b.name,b.author,b.location,b.era,b.nature],q);
+    return ar-br||profilePickerNameCollator.compare(String(a.name||""),String(b.name||""));
+  }).slice(0,20);
 }
 function planModulePickerStateHTML(plan){
   const linked=moduleById(plan?.moduleId);
@@ -8739,7 +8942,7 @@ function renderPlanEditor(){
   const blacklistedKpOptions=profiles.filter(p=>isBlacklistedProfile(p)&&p.id!==plan.kpProfileId).sort(compareProfilesForPicker);
   const participants=plan.plIds.map(id=>profiles.find(p=>p.id===id)).filter(Boolean);
   const available=profiles.filter(p=>!isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)).sort(compareProfilesForPicker);
-  const filteredAvailable=filterProfilesForPicker(available,planPlPickerQuery(plan.id)).sort(compareProfilesForPicker);
+  const filteredAvailable=filterProfilesForPicker(available,planPlPickerQuery(plan.id));
   const blacklistedAvailable=profiles.filter(p=>isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)).sort(compareProfilesForPicker);
   const kpProfile=linkedKpProfile(plan);
   const schedules=sortedPlanSlots(plan).filter(s=>s.date);
@@ -8812,6 +9015,7 @@ function renderPlanEditor(){
     </footer>
   </div>`;
   syncPlanPlPickerUI(plan.id);
+  els.planEditorContent.querySelectorAll(".assignment-pc-combobox").forEach(combo=>syncPcNamePickerUI(combo,{open:false}));
 }
 
 function loadRunRecordCollapseState(){
@@ -8878,7 +9082,7 @@ function renderRunRecords(options={}){
   const pageX=window.scrollX,pageY=window.scrollY;
   const q=normalizedEntityNameKey(els.recordsSearch.value);
   const allGroups=groupedRunRecords();
-  const visibleGroups=allGroups.filter(([moduleName,list])=>list.some(r=>recordMatchesSearch(r,moduleName,q)));
+  const visibleGroups=buildRecordSearchGroups(allGroups,q);
   updateRecordsSearchCount(visibleGroups,allGroups,q);
 
   if(!visibleGroups.length){
@@ -8887,18 +9091,18 @@ function renderRunRecords(options={}){
   }
 
   if(!visibleGroups.some(([name])=>name===selectedModuleName))selectedModuleName=visibleGroups[0][0];
-  const selectedPair=allGroups.find(([name])=>name===selectedModuleName) || visibleGroups[0];
-  const [moduleName,list]=selectedPair;
+  const selectedPair=visibleGroups.find(([name])=>name===selectedModuleName) || visibleGroups[0];
+  const [moduleName,list,,moduleTotal]=selectedPair;
 
   const sidebar=`<aside class="module-sidebar" aria-label="模组列表">
-    ${visibleGroups.map(([name,records])=>{const latest=records[records.length-1];return `<button class="module-tab ${name===moduleName?"active":""}" type="button" data-select-module="${escapeHTML(name)}"><span class="module-tab-name">${escapeHTML(name)}</span><span class="module-tab-meta"><span>${records.length}桌</span><span>最近 ${escapeHTML(latest?.startDate?compactRecordDate(latest.startDate):"未填日期")}</span></span></button>`;}).join("")}
+    ${visibleGroups.map(([name,records,,total])=>{const latest=records[records.length-1];const countText=q&&records.length<total?`${records.length}/${total}桌`:`${records.length}桌`;return `<button class="module-tab ${name===moduleName?"active":""}" type="button" data-select-module="${escapeHTML(name)}"><span class="module-tab-name">${escapeHTML(name)}</span><span class="module-tab-meta"><span>${countText}</span><span>最近 ${escapeHTML(latest?.startDate?compactRecordDate(latest.startDate):"未填日期")}</span></span></button>`;}).join("")}
   </aside>`;
 
   const detail=`<section class="module-detail">
     <header class="module-detail-head">
       <div class="module-detail-title">
         <div class="module-detail-name">${escapeHTML(moduleName)}</div>
-        <div class="module-detail-sub">${list.length} 桌 · 按开始日期升序排列</div>
+        <div class="module-detail-sub">${q&&list.length<moduleTotal?`${list.length} / ${moduleTotal} 桌匹配 · 按相关性显示`:`${list.length} 桌 · 按开始日期升序排列`}</div>
       </div>
       <div class="module-actions">
         <button class="btn small" type="button" data-add-table="${escapeHTML(moduleName)}">＋ 新增一桌</button>
@@ -8910,6 +9114,11 @@ function renderRunRecords(options={}){
   </section>`;
 
   els.recordsBoard.innerHTML=sidebar+detail;
+  els.recordsBoard.querySelectorAll("[data-record-id]").forEach(row=>{
+    if(row.querySelector("[data-record-add-pl-query]"))syncRecordPlPickerUI(row,{open:false});
+    if(row.querySelector("[data-record-kp-query]"))syncRecordKpPickerUI(row,{open:false});
+    row.querySelectorAll(".assignment-pc-combobox").forEach(combo=>syncPcNamePickerUI(combo,{open:false}));
+  });
   applySearchHighlights(els.recordsBoard,q);
   requestAnimationFrame(()=>{
     if(preservePageScroll)window.scrollTo({left:pageX,top:pageY,behavior:"auto"});
@@ -8920,7 +9129,7 @@ function renderRunRecords(options={}){
 async function returnRecordToPlan(recordId){
   if(shareModeBlock("退回计划"))return false;if(recordInputPending?.recordId===recordId)flushRecordInputSave();
   const rec=runRecords.find(r=>String(r.id)===String(recordId));if(!rec)return false;if(runPlans.some(p=>String(p.id)===String(recordId))){appNotice("已经存在同编号开团计划，请先处理重复桌次。","无法退回");return false;}
-  let mod=moduleById(rec.moduleId);if(!mod){const unique=uniqueModuleByNormalizedName(rec.moduleName);if(unique)mod=unique;}if(!mod){appNotice("该跑团记录尚未关联唯一模组档案，请先使用“更改模组”完成关联。","请先关联模组");return false;}
+  let mod=moduleById(rec.moduleId);if(!mod){const unique=uniqueModuleByNormalizedName(rec.moduleName);if(unique)mod=unique;}if(!mod){appNotice("该跑团记录尚未关联唯一模组档案，请先使用“更换此桌所属模组”完成关联。","请先关联模组");return false;}
   const extra=postRunDraftFromRecord(rec),hasExtra=hasPostRunDraft(extra),schedule=normalizePlanSlots(rec.sessionSlots).filter(x=>x.date),detail=[`模组：${mod.name}${rec.tableName?` · ${rec.tableName}`:""}`,`已归档安排：${schedule.length?`${schedule.length} 次`:"无"}`,hasExtra?"跑后补充：已填写，将暂存并在再次归档时恢复":"跑后补充：无"].join("\n");
   if(!await appConfirm(`将这桌退回开团计划？\n\n${detail}\n\n退回后会从跑团记录移除，并重新出现在开团计划中。`,{title:"退回开团计划？",confirmText:"退回计划"}))return false;
   try{await createSafetySnapshot("before-record-return-to-plan");}catch(err){console.warn(err);appNotice("未能创建操作前恢复点。请先导出完整备份或释放浏览器存储空间后重试。","无法安全退回");return false;}
@@ -8930,9 +9139,9 @@ async function returnRecordToPlan(recordId){
 }
 function recordModuleOptionLabel(m){return [m.name,m.author,m.location,m.era].filter(Boolean).join(" · ")||m.name;}
 async function changeRecordModule(recordId){
-  if(shareModeBlock("更改模组关联"))return false;if(recordInputPending?.recordId===recordId)flushRecordInputSave();const rec=runRecords.find(r=>String(r.id)===String(recordId));if(!rec)return false;if(!modules.length){appNotice("暂无可关联的模组档案。请先在“模组档案”中新建模组。","暂无模组");return false;}
-  const options=[...modules].sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"zh-CN")).map(m=>({value:m.id,label:recordModuleOptionLabel(m)})),chosen=await appSelect(`当前关联：${moduleById(rec.moduleId)?.name||rec.moduleName||"未关联"}\n\n选择新的模组档案。`,options,rec.moduleId,{title:"更改关联模组",confirmText:"保存关联"});
-  if(!chosen||chosen===rec.moduleId)return false;const mod=moduleById(chosen);if(!mod)return false;const ok=mutateRunRecord(recordId,r=>{r.moduleId=mod.id;r.moduleName=mod.name;},{undoLabel:`已更改模组关联 · ${mod.name}`,render:false});if(!ok)return false;selectedModuleName=mod.name;moduleFrameDirty=true;renderNativeModules();renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(String(recordId))}"]`)?.scrollIntoView({block:"center"}));showToast(`已关联：${mod.name}`);return true;
+  if(shareModeBlock("更换所属模组"))return false;if(recordInputPending?.recordId===recordId)flushRecordInputSave();const rec=runRecords.find(r=>String(r.id)===String(recordId));if(!rec)return false;if(!modules.length){appNotice("暂无可关联的模组档案。请先在“模组档案”中新建模组。","暂无模组");return false;}
+  const options=[...modules].sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"zh-CN")).map(m=>({value:m.id,label:recordModuleOptionLabel(m)})),chosen=await appSelect(`当前关联：${moduleById(rec.moduleId)?.name||rec.moduleName||"未关联"}\n\n选择新的模组档案。`,options,rec.moduleId,{title:"更换所属模组",confirmText:"保存关联"});
+  if(!chosen||chosen===rec.moduleId)return false;const mod=moduleById(chosen);if(!mod)return false;const ok=mutateRunRecord(recordId,r=>{r.moduleId=mod.id;r.moduleName=mod.name;},{undoLabel:`已更换所属模组 · ${mod.name}`,render:false});if(!ok)return false;selectedModuleName=mod.name;moduleFrameDirty=true;renderNativeModules();renderProfiles();renderRunRecords({preservePageScroll:true,centerSelected:false});requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(String(recordId))}"]`)?.scrollIntoView({block:"center"}));showToast(`已关联：${mod.name}`);return true;
 }
 
 function recordIsEditing(r){
@@ -8967,7 +9176,7 @@ function recordReadonlyBodyHTML(r){
       ${r.sharedHoNote&&moduleHoSystemForEntity(r)==="has"?`<div class="record-view-note"><span>共通HO</span><strong>${escapeHTML(r.sharedHoNote)}</strong></div>`:""}
     </section>
     ${extra.length?`<details class="record-view-extra"><summary>本桌补充 · ${extra.length}项</summary><div>${extra.map(x=>`<p>${escapeHTML(x)}</p>`).join("")}</div></details>`:""}
-    <footer class="table-record-footer"><div class="table-record-footer-meta"><span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span></div><div class="table-record-footer-actions"><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更改模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt?"退回计划":"转为计划"}</button></div></footer>
+    <footer class="table-record-footer"><div class="table-record-footer-meta"><span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span></div><div class="table-record-footer-actions"><button class="btn small" type="button" data-record-edit="${escapeHTML(r.id)}">编辑此桌</button><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt?"退回计划":"转为计划"}</button></div></footer>
   </div>`;
 }
 function recordTableHTML(r,index){
@@ -8987,12 +9196,12 @@ function recordTableHTML(r,index){
       </div>
       <div class="table-record-head-actions">
         <span class="table-record-time">更新 ${escapeHTML(formatDateTime(r.updatedAt))}</span>
-        <button class="record-mode-btn" type="button" ${editing?`data-record-done="${escapeHTML(r.id)}"`:`data-record-edit="${escapeHTML(r.id)}"`}>${editing?"完成":"编辑"}</button>
-        <button class="record-collapse-btn" type="button" data-toggle-record-collapse="${escapeHTML(r.id)}" aria-expanded="${collapsed?"false":"true"}">
-          <span class="record-collapse-label">${collapsed?"展开":"收起"}</span><span class="record-collapse-chevron">⌃</span>
-        </button>
       </div>
     </header>
+    <button class="table-record-collapse-strip" type="button" data-toggle-record-collapse="${escapeHTML(r.id)}" aria-expanded="${collapsed?"false":"true"}">
+      <span class="record-collapse-strip-main"><span class="record-collapse-chevron">⌃</span><span class="record-collapse-strip-text"><span class="record-collapse-strip-label">${collapsed?"展开本桌详情":"收起本桌详情"}</span><span class="record-collapse-strip-hint">${collapsed?"点击展开本桌内容":"点击收起并保留概要信息"}</span></span></span>
+      <span class="record-collapse-strip-summary">${editing?"编辑中":`${participants.length} 人`}</span>
+    </button>
 
     <div class="table-record-body">
       ${editing?`<section class="record-section record-core-section">
@@ -9005,11 +9214,15 @@ function recordTableHTML(r,index){
           <div class="record-kp-field">
             <span class="field-label">KP</span>
             <div class="record-kp-controls">
-              <select class="participant-select" data-record-kp-profile>
-                <option value="">自定义 / 外部 KP</option>
-                ${profileOptions.map(p=>`<option value="${escapeHTML(p.id)}" ${r.kpProfileId===p.id?"selected":""}>${escapeHTML(selfOptionLabel(p))}</option>`).join("")}
-              </select>
-              <input class="text-input" data-record-field="kp" value="${escapeHTML(r.kp)}" placeholder="${r.kpProfileId?`已关联：${escapeHTML(kpDisplayText(r))}`:"输入 KP 名称"}" ${r.kpProfileId?"disabled":""}>
+              <div class="plan-pl-combobox" data-record-kp-combobox>
+                <div class="plan-pl-combobox-control">
+                  <span class="plan-pl-search-icon">⌕</span>
+                  <input class="text-input plan-pl-combobox-input" data-record-kp-query value="${escapeHTML(recordKpPickerQuery(r.id)||r.kp||kpDisplayText(r)||"")}" placeholder="搜索已有 PL 或输入外部 KP（支持拼音首字母）" autocomplete="off" aria-expanded="false">
+                  <button class="plan-pl-combobox-toggle" type="button" data-record-kp-toggle aria-label="展开 KP 列表">⌄</button>
+                </div>
+                <div class="plan-pl-options" data-record-kp-options hidden>${recordKpPickerOptionsHTML(r,recordKpPickerQuery(r.id)||r.kp||kpDisplayText(r)||"")}</div>
+              </div>
+              <div class="record-picker-state" data-record-kp-hint>${recordKpPickerStateHTML(r)}</div>
             </div>
           </div>
           <label><span class="field-label">开始日期</span><input class="text-input" data-record-field="startDate" type="date" value="${escapeHTML(r.startDate)}"></label>
@@ -9036,10 +9249,17 @@ function recordTableHTML(r,index){
           <div class="participants-head-actions">
             ${moduleHoInlineControlHTML(r)}
             <div class="participant-add">
-              <select class="participant-select" data-add-pl-select>
-                <option value="">选择已有 PL…</option>
-                ${available.map(p=>`<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))}</option>`).join("")}
-              </select>
+              <div class="plan-editor-add-panel">
+                <div class="plan-pl-combobox" data-record-pl-combobox>
+                  <div class="plan-pl-combobox-control">
+                    <span class="plan-pl-search-icon">⌕</span>
+                    <input class="text-input plan-pl-combobox-input" data-record-add-pl-query value="${escapeHTML(recordPlPickerQuery(r.id))}" placeholder="搜索并添加 PL（支持拼音首字母）" autocomplete="off" aria-expanded="false">
+                    <button class="plan-pl-combobox-toggle" type="button" data-record-pl-toggle aria-label="展开 PL 列表">⌄</button>
+                  </div>
+                  <div class="plan-pl-options" data-record-pl-options hidden>${recordPlPickerOptionsHTML(r,recordPlPickerQuery(r.id))}</div>
+                </div>
+                <div class="plan-editor-add-hint ${recordPlPickerQuery(r.id).trim()&&!available.length?"empty":""}" data-record-add-pl-hint></div>
+              </div>
               <button class="btn small" type="button" data-add-pl="${escapeHTML(r.id)}" ${available.length?"":"disabled"}>＋ 添加</button>
             </div>
           </div>
@@ -9068,7 +9288,7 @@ function recordTableHTML(r,index){
           ${assignmentSummary?`<span class="record-footer-ho">${escapeHTML(assignmentSummary)}</span>`:""}
           <span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span>
         </div>
-        <div class="table-record-footer-actions"><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更改模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt?"退回计划":"转为计划"}</button><button class="btn small danger record-delete-btn" type="button" data-delete-record="${escapeHTML(r.id)}">删除此桌</button></div>
+        <div class="table-record-footer-actions"><button class="btn small" type="button" ${editing?`data-record-done="${escapeHTML(r.id)}"`:`data-record-edit="${escapeHTML(r.id)}"`}>${editing?"完成编辑":"编辑此桌"}</button><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt?"退回计划":"转为计划"}</button><button class="btn small danger record-delete-btn" type="button" data-delete-record="${escapeHTML(r.id)}">删除此桌</button></div>
       </footer>`:recordReadonlyBodyHTML(r)}
     </div>
   </article>`;
@@ -9089,8 +9309,9 @@ async function createFirstRunRecord(){
     return;
   }
 
-  const matches=modulesByNormalizedName(requestedName);
-  if(matches.length>1){appNotice(`存在 ${matches.length} 个同名模组“${requestedName}”。请先在模组档案确认正确档案。`,"同名模组需要确认");return;}
+  let matches=modulesByNormalizedName(requestedName);
+  if(!matches.length)matches=modules.filter(m=>exactSearchFieldMatch(m.name,requestedName));
+  if(matches.length>1){const chosen=await appSelect(`找到 ${matches.length} 个匹配模组，请选择要创建跑团记录的模组。`,matches.map(m=>({value:m.id,label:recordModuleOptionLabel(m)})),matches[0].id,{title:"选择模组档案",confirmText:"选择"});if(!chosen)return;matches=[moduleById(chosen)].filter(Boolean);}
   let linkedModule=matches[0]||null,createdModule=null;
   if(!linkedModule){if(!await appConfirm(`未找到模组“${requestedName}”。
 
@@ -9740,19 +9961,21 @@ function renderNativeModules(){
     moduleNativeLocation=els.moduleNativeLocationFilter.value;
   }
 
-  let rows=modules.filter(m=>{
-    const hay=moduleSearchText(m);
+  let rows=filterModulesByQuery(modules,moduleNativeQuery).filter(m=>{
     const ho=normalizeModuleHoSystem(m.hoSystem);
-    return (!moduleNativeQuery||hay.includes(moduleNativeQuery))
-      &&(!moduleNativeHo||(moduleNativeHo==="unset"?!ho:ho===moduleNativeHo))
+    return (!moduleNativeHo||(moduleNativeHo==="unset"?!ho:ho===moduleNativeHo))
       &&(!moduleNativeLocation||m.location===moduleNativeLocation);
   });
 
-  rows.sort((a,b)=>{
+  const moduleTieSort=(a,b)=>{
     if(moduleNativeSortMode==="name")return a.name.localeCompare(b.name,"zh-CN");
     if(moduleNativeSortMode==="runs")return moduleRunCount(b)-moduleRunCount(a)||(b.updatedAt-a.updatedAt);
     if(moduleNativeSortMode==="rating")return (moduleComputedScore(b)??-1)-(moduleComputedScore(a)??-1)||(b.updatedAt-a.updatedAt);
     return (b.updatedAt||0)-(a.updatedAt||0);
+  };
+  rows.sort((a,b)=>{
+    if(moduleNativeQuery){const rank=moduleSearchRank(a,moduleNativeQuery)-moduleSearchRank(b,moduleNativeQuery);if(rank)return rank;}
+    return moduleTieSort(a,b);
   });
 
   const filterActive=Boolean(moduleNativeQuery||moduleNativeHo||moduleNativeLocation);
@@ -10235,16 +10458,56 @@ const debouncedModuleRender=debounce(renderNativeModules,110);
 const debouncedPlanRender=debounce(renderRunPlans,110);
 const debouncedRecordRender=debounce(()=>renderRunRecords(),110);
 
-function profileSearchText(p){
-  if(shareModeEnabled){const related=recordsForProfileView(p),runText=related.flatMap(r=>[r.moduleName,r.tableName,r.startDate,r.endDate,kpTextLabel(r),r.kp,participantDisplaySummary(r)]);return buildSearchIndex([p.name,...runText]);}
-  const key=String(p.id||"");const cached=profileSearchCache.get(key);if(cached)return cached;
-  const related=recordsForProfileView(p);
-  const runText=related.flatMap(r=>[r.moduleName,r.tableName,r.startDate,r.endDate,r.legacyDuration,kpTextLabel(r),r.kp,r.logUrl,participantDisplaySummary(r),hoAssignmentSummary(r),r.sharedHoNote]);
+function profileDirectSearchText(p){
   const blacklistSearch=isBlacklistedProfile(p)?[p.blacklist?.reason,blacklistHistoryText(p)]:[];
-  const value=buildSearchIndex([p.name,p.contact,p.birthDate,p.startDate,p.gender,p.usualRpLength,p.rpLengthMin,p.rpLengthMax,...blacklistSearch,...runText,...Object.values(p.notes||{})]);
+  return buildSearchIndex([p.name,p.contact,p.birthDate,p.startDate,p.gender,p.usualRpLength,p.rpLengthMin,p.rpLengthMax,...blacklistSearch,...Object.values(p.notes||{})]);
+}
+function profileRelatedSearchText(p){
+  const related=recordsForProfileView(p);
+  /* 只索引这位 PL 自己的跑团信息，不把同桌其他 PL 的姓名写进搜索索引，避免“搜一个人却把所有同桌人都搜出来”。 */
+  const runText=related.flatMap(r=>[r.moduleName,r.tableName,r.startDate,r.endDate,r.legacyDuration,kpTextLabel(r),r.kp,r.logUrl,hoAssignmentSummary(r),r.sharedHoNote]);
+  return buildSearchIndex(runText);
+}
+function profileExactNameSearchMatch(p,q){
+  const query=normalizedEntityNameKey(q);if(!query)return false;
+  const name=rawProfileName(p);
+  return query===normalizedEntityNameKey(name)||query===normalizedEntityNameKey(pinyinInitials(name));
+}
+function profileSearchRank(p,q){
+  const query=normalizedEntityNameKey(q);if(!query)return 0;
+  if(profileExactNameSearchMatch(p,query))return 0;
+  if(profileDirectSearchText(p).includes(query))return 1;
+  if(profileRelatedSearchText(p).includes(query))return 2;
+  return 99;
+}
+function filterProfileRowsByQuery(rows,q){
+  const query=normalizedEntityNameKey(q);if(!query)return [...rows];
+  const exact=rows.filter(p=>profileExactNameSearchMatch(p,query));
+  /* 完整姓名 / 完整拼音首字母命中时，只展示目标档案。 */
+  if(exact.length)return exact;
+  return rows.filter(p=>profileSearchRank(p,query)<99);
+}
+function profileSearchText(p){
+  if(shareModeEnabled)return buildSearchIndex([p.name,profileRelatedSearchText(p)]);
+  const key=String(p.id||"");const cached=profileSearchCache.get(key);if(cached)return cached;
+  const value=buildSearchIndex([profileDirectSearchText(p),profileRelatedSearchText(p)]);
   profileSearchCache.set(key,value);return value;
 }
 function moduleSearchText(m){if(shareModeEnabled)return buildSearchIndex([m.name,m.author,m.source,m.location,m.era,m.players,m.duration,m.nature]);const key=String(m.id||"");const cached=moduleSearchCache.get(key);if(cached)return cached;const value=buildSearchIndex([m.name,m.author,m.source,m.location,m.era,m.players,m.duration,m.nature,m.notes,m.rules,m.recommendedSkills,m.cardRequirements,m.recommendedOccupations,m.background,m.recruitmentNotes]);moduleSearchCache.set(key,value);return value;}
+function moduleExactNameSearchMatch(m,q){return exactSearchFieldMatch(m?.name,q);}
+function moduleSearchRank(m,q){
+  const query=normalizedEntityNameKey(q);if(!query)return 0;
+  const nameRank=searchFieldRank(m?.name,query);if(nameRank<99)return nameRank;
+  const coreRank=bestSearchFieldRank([m?.author,m?.source,m?.location,m?.era,m?.nature,m?.players,m?.duration],query);if(coreRank<99)return 3+Math.min(coreRank,2);
+  const detailRank=bestSearchFieldRank([m?.notes,m?.rules,m?.recommendedSkills,m?.cardRequirements,m?.recommendedOccupations,m?.background,m?.recruitmentNotes],query);if(detailRank<99)return 6;
+  return 99;
+}
+function filterModulesByQuery(rows,q){
+  const query=normalizedEntityNameKey(q);if(!query)return [...rows];
+  const exact=rows.filter(m=>moduleExactNameSearchMatch(m,query));
+  if(exact.length)return exact;
+  return rows.filter(m=>moduleSearchRank(m,query)<99);
+}
 
 
 /* 回收站 */
@@ -10294,7 +10557,7 @@ function renderTrashBin(){
 /* 删除操作改为软删除 */
 async function deleteRunPlan(planId){const plan=runPlans.find(p=>p.id===planId);if(!plan)return;if(!await appConfirm(`将“${plan.moduleName||plan.tableName||"未命名计划"}”移入回收站吗？`,{title:"删除开团计划？",confirmText:"移入回收站",danger:true}))return;const entry=addTrashEntry("plan",plan.moduleName||plan.tableName||"开团计划",plan);if(!entry)return;const before=runPlans;runPlans=runPlans.filter(p=>p.id!==planId);if(!saveState()){runPlans=before;removeTrashEntry(entry.id);return;}if(plannerPickedPlanId===planId)plannerPickedPlanId=null;if(editingPlanId===planId)closePlanEditor();renderRunPlans();};
 async function deleteRunRecord(recordId){const rec=runRecords.find(r=>r.id===recordId);if(!rec)return;const label=recordDisplayLabel(rec,runRecords);if(!await appConfirm(`将“${label}”移入回收站吗？`,{title:"删除跑团记录？",confirmText:"移入回收站",danger:true}))return;setRunRecordCollapsed(recordId,false);const ids=[...new Set([...rec.plIds,rec.kpProfileId].filter(Boolean))];const entry=addTrashEntry("record",label,rec);if(!entry)return;const before=runRecords;runRecords=runRecords.filter(r=>r.id!==recordId);touchProfiles(ids);if(!saveState()){runRecords=before;removeTrashEntry(entry.id);return;}renderRunRecords();renderProfiles();};
-async function deleteModuleRecords(moduleName){const moduleKey=normalizedEntityNameKey(moduleName),affected=runRecords.filter(r=>normalizedEntityNameKey(r.moduleName)===moduleKey);if(!affected.length)return;const linkedIds=[...new Set(affected.map(r=>String(r.moduleId||"").trim()).filter(id=>moduleById(id)))];if(linkedIds.length>1){appNotice(`“${moduleName}”的跑团记录当前关联了 ${linkedIds.length} 个同名模组。为避免跨模组误删，请先在“模组档案”合并同名模组，或逐桌使用“更改模组”修正关联。`,"请先处理重复模组");return;}if(!await appConfirm(`将“${moduleName}”的 ${affected.length} 桌跑团记录移入回收站吗？模组档案本身不会删除。`,{title:"删除全部跑团记录？",confirmText:"移入回收站",danger:true}))return;const ids=[...new Set(affected.flatMap(r=>[...r.plIds,r.kpProfileId].filter(Boolean)))],entry=addTrashEntry("moduleRecords",`${moduleName} · ${affected.length}桌`,affected);if(!entry)return;const before=runRecords;runRecords=runRecords.filter(r=>normalizedEntityNameKey(r.moduleName)!==moduleKey);if(selectedModuleName===moduleName)selectedModuleName="";touchProfiles(ids);if(!saveState()){runRecords=before;removeTrashEntry(entry.id);return;}renderRunRecords();renderProfiles();};
+async function deleteModuleRecords(moduleName){const moduleKey=normalizedEntityNameKey(moduleName),affected=runRecords.filter(r=>normalizedEntityNameKey(r.moduleName)===moduleKey);if(!affected.length)return;const linkedIds=[...new Set(affected.map(r=>String(r.moduleId||"").trim()).filter(id=>moduleById(id)))];if(linkedIds.length>1){appNotice(`“${moduleName}”的跑团记录当前关联了 ${linkedIds.length} 个同名模组。为避免跨模组误删，请先在“模组档案”合并同名模组，或逐桌使用“更换此桌所属模组”修正关联。`,"请先处理重复模组");return;}if(!await appConfirm(`将“${moduleName}”的 ${affected.length} 桌跑团记录移入回收站吗？模组档案本身不会删除。`,{title:"删除全部跑团记录？",confirmText:"移入回收站",danger:true}))return;const ids=[...new Set(affected.flatMap(r=>[...r.plIds,r.kpProfileId].filter(Boolean)))],entry=addTrashEntry("moduleRecords",`${moduleName} · ${affected.length}桌`,affected);if(!entry)return;const before=runRecords;runRecords=runRecords.filter(r=>normalizedEntityNameKey(r.moduleName)!==moduleKey);if(selectedModuleName===moduleName)selectedModuleName="";touchProfiles(ids);if(!saveState()){runRecords=before;removeTrashEntry(entry.id);return;}renderRunRecords();renderProfiles();};
 async function deleteNativeModule(id){const m=moduleById(id);if(!m)return;const intro=normalizeSelfIntro(selfProfileFrom()?.selfIntro),introLinked=[...(intro.pl.wantModules||[]),...(intro.kp.canHostModules||[])].some(r=>r.moduleId===id);if(introLinked){appNotice("该模组仍在“个人偏好”的想跑模组或可带模组列表中。请先从对应列表移除，再删除模组档案。","无法删除");return;}const linked=runRecords.some(r=>r.moduleId===id)||runPlans.some(p=>p.moduleId===id);if(linked){const dup=modulesByNormalizedName(m.name).length>1;appNotice(dup?"该模组仍关联桌次。可使用“合并同名”将桌次迁移到保留档案后自动清理重复模组。":"该模组仍关联跑团记录或开团计划。请先更改这些桌次的模组关联。","无法删除");return;}if(!await appConfirm(`将模组“${m.name}”移入回收站吗？`,{title:"删除模组？",confirmText:"移入回收站",danger:true}))return;const entry=addTrashEntry("module",m.name,m);if(!entry)return;const before=modules;modules=modules.filter(x=>x.id!==id);if(!saveState()){modules=before;removeTrashEntry(entry.id);return;}renderNativeModules();};
 async function deleteProfile(id,fromModal=false){
   const p=profiles.find(x=>x.id===id);if(!p)return;if(isSelfProfile(p)){showToast("“我”是系统本人档案，不能删除");return;}
@@ -10575,23 +10838,48 @@ function finishOnboarding(startProfile=false){try{localStorage.setItem(ONBOARDIN
 function maybeShowOnboarding(){let done=false;try{done=localStorage.getItem(ONBOARDING_KEY)==="1";}catch(err){}if(done||hasMeaningfulData()||startupDataReport.source!=="fresh")return;setTimeout(()=>{document.getElementById("onboardingBackdrop").hidden=false;syncModalPageScrollLock();requestAnimationFrame(()=>document.getElementById("onboardingStartBtn")?.focus());},450);}
 
 /* 全局搜索 */
-function buildGlobalSearchRows(q){q=normalizedEntityNameKey(q);if(!q)return [];
-  const rows=[];
-  if(selfIntroSearchText().includes(q))rows.push({type:"个人偏好",title:"个人偏好",meta:"PL / KP 偏好 · 想跑模组 / 可带模组",action:{view:"selfIntro"}});
-  profiles.forEach(p=>{const hay=profileSearchText(p);if(hay.includes(q)){const black=!shareModeEnabled&&isBlacklistedProfile(p);rows.push({type:black?"PL · 黑名单":"PL",title:displayProfileName(p),meta:black&&!shareModeEnabled?[rawProfileContact(p),p.blacklist?.reason].filter(Boolean).join(" · "):`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id,blacklist:black}});}});
-  modules.forEach(m=>{if(moduleSearchText(m).includes(q))rows.push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}});});
-  runPlans.forEach(p=>{const values=shareModeEnabled?[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),...(p.timeSlots||[]).map(s=>s.date)]:[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),p.sharedHoNote,...(p.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),p.kpc?.pcName,p.kpc?.hoCustom,...(p.timeSlots||[]).map(s=>s.date)];if(buildSearchIndex(values).includes(q))rows.push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}});});
-  runRecords.forEach(r=>{const values=shareModeEnabled?[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate]:[r.moduleName,r.tableName,kpDisplayText(r),participantDisplaySummary(r),r.startDate,r.endDate,r.logUrl,r.actualDuration,r.thoughts,r.runNotes,r.sharedHoNote,hoAssignmentSummary(r),...(r.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),r.kpc?.pcName,r.kpc?.hoCustom];if(buildSearchIndex(values).includes(q))rows.push({type:"记录",title:recordDisplayLabel(r,runRecords),meta:(shareModeEnabled?[r.startDate,kpDisplayText(r)]:[r.startDate,kpDisplayText(r),r.thoughts&&String(r.thoughts).slice(0,30)]).filter(Boolean).join(" · "),action:{view:"records",id:r.id,moduleName:r.moduleName}});});
-  return rows;
+function globalResultRankFromTitle(title,q){
+  const rank=searchFieldRank(title,q);return rank<99?rank:99;
 }
-function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);const shown=Math.min(globalSearchVisibleCount,globalSearchRows.length);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,shown-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨四个页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">无匹配结果。<button type="button" class="btn small" data-empty-clear-search="globalSearchInput">清除搜索</button></div>`;return;}const visible=globalSearchRows.slice(0,shown);box.innerHTML=visible.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("")+`<div class="global-search-progress"><span>显示 ${visible.length} / ${globalSearchRows.length} 条结果</span>${visible.length<globalSearchRows.length?`<button type="button" class="btn small" data-global-search-more>继续显示</button>`:""}</div>`;applySearchHighlights(box,q.trim().toLowerCase());}
+function buildGlobalSearchRows(q){q=normalizedEntityNameKey(q);if(!q)return [];
+  const rows=[],push=(row,rank,typeRank=9)=>rows.push({...row,_rank:rank,_typeRank:typeRank});
+  if(searchTextMatches(["个人偏好","跑团偏好","PL偏好","KP偏好","想跑模组","可带模组",selfIntroSearchText()],q))push({type:"个人偏好",title:"个人偏好",meta:"PL / KP 偏好 · 想跑模组 / 可带模组",action:{view:"selfIntro"}},globalResultRankFromTitle("个人偏好",q)<99?globalResultRankFromTitle("个人偏好",q):5,5);
+  if(searchTextMatches(["个人统计","跑团统计","统计","趋势","排名","同桌","模组统计","记录情况"],q))push({type:"个人统计",title:"个人统计",meta:"跑团关系 · 模组排名 · 趋势 · 历史记录",action:{view:"stats"}},globalResultRankFromTitle("个人统计",q)<99?globalResultRankFromTitle("个人统计",q):5,6);
+  profiles.forEach(p=>{const rank=profileSearchRank(p,q);if(rank<99){const black=!shareModeEnabled&&isBlacklistedProfile(p);push({type:black?"PL · 黑名单":"PL",title:displayProfileName(p),meta:black&&!shareModeEnabled?[rawProfileContact(p),p.blacklist?.reason].filter(Boolean).join(" · "):`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id,blacklist:black}},rank,0);}});
+  modules.forEach(m=>{const rank=moduleSearchRank(m,q);if(rank<99)push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}},rank,1);});
+  runPlans.forEach(p=>{const rank=planSearchRank(p,q);if(rank<99)push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}},rank,2);});
+  runRecords.forEach(r=>{const rank=recordSearchRank(r,r.moduleName,q);if(rank<99)push({type:"记录",title:recordDisplayLabel(r,runRecords),meta:(shareModeEnabled?[r.startDate,kpDisplayText(r)]:[r.startDate,kpDisplayText(r),r.thoughts&&String(r.thoughts).slice(0,30)]).filter(Boolean).join(" · "),action:{view:"records",id:r.id,moduleName:r.moduleName}},rank,3);});
+  return rows.sort((a,b)=>a._rank-b._rank||a._typeRank-b._typeRank||profilePickerNameCollator.compare(a.title,b.title));
+}
+function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);const shown=Math.min(globalSearchVisibleCount,globalSearchRows.length);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,shown-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨 PL、模组、计划、记录和个人页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">无匹配结果。<button type="button" class="btn small" data-empty-clear-search="globalSearchInput">清除搜索</button></div>`;return;}const visible=globalSearchRows.slice(0,shown);box.innerHTML=visible.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("")+`<div class="global-search-progress"><span>显示 ${visible.length} / ${globalSearchRows.length} 条结果</span>${visible.length<globalSearchRows.length?`<button type="button" class="btn small" data-global-search-more>继续显示</button>`:""}</div>`;applySearchHighlights(box,q.trim().toLowerCase());}
 function openGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=false;globalSearchActiveIndex=0;globalSearchVisibleCount=GLOBAL_SEARCH_BATCH;document.getElementById("globalSearchInput").value="";renderGlobalSearch();syncModalPageScrollLock();setTimeout(()=>document.getElementById("globalSearchInput").focus(),30);}
 function closeGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=true;syncModalPageScrollLock();}
 function activateGlobalSearchResult(index){const r=globalSearchRows[index];if(!r)return;closeGlobalSearch();if(r.action.view==="selfIntro"){switchView("selfIntro");}else if(r.action.view==="stats"){switchView("stats");}else if(r.action.view==="profiles"){profileListMode=r.action.blacklist?"blacklist":"active";switchView("profiles");els.search.value="";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(r.action.id)}"],.compact-row[data-id="${CSS.escape(r.action.id)}"],.blacklist-card[data-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="modules"){switchView("modules");els.moduleNativeSearch.value="";renderNativeModules();requestAnimationFrame(()=>document.querySelector(`[data-native-module-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="plans"){switchView("plans");requestAnimationFrame(()=>document.querySelector(`[data-plan-row="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else{const rec=runRecords.find(x=>x.id===r.action.id);if(rec){selectedModuleName=rec.moduleName;setRunRecordCollapsed(rec.id,false);}switchView("records");requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}}
 
 /* 设置搜索 */
 const SETTINGS_LABELS={appearance:"外观","pl-rating":"PL 评分","module-rating":"模组评分",behavior:"显示设置",data:"数据与备份"};
-function renderSettingsSearch(){const input=document.getElementById("settingsSearchInput"),box=document.getElementById("settingsSearchResults"),q=normalizedEntityNameKey(input.value);if(!q){box.hidden=true;box.innerHTML="";return;}const rows=[];document.querySelectorAll("[data-settings-panel]").forEach(panel=>{const text=(panel.textContent||"").replace(/\s+/g," ").trim(),low=text.toLowerCase();if(!searchTextMatches(text,q))return;const at=low.indexOf(q),snippet=at>=0?text.slice(Math.max(0,at-24),Math.min(text.length,at+q.length+46)):text.slice(0,70);rows.push({key:panel.dataset.settingsPanel,label:SETTINGS_LABELS[panel.dataset.settingsPanel]||panel.dataset.settingsPanel,snippet});});box.hidden=false;box.innerHTML=rows.length?rows.map((r,i)=>`<button type="button" data-settings-search-target="${r.key}" data-settings-search-query="${escapeHTML(q)}"><strong>${r.label}</strong><span>${escapeHTML(r.snippet)}</span></button>`).join(""):`<button type="button" data-empty-clear-search="settingsSearchInput"><strong>无匹配设置</strong><span>清除搜索以显示全部设置</span></button>`;if(rows.length)applySearchHighlights(box,q);}
+const SETTINGS_SEARCH_ALIASES={
+  appearance:["主题","颜色","配色","夜间","深色","暗色","护眼","字体","外观","界面"],
+  "pl-rating":["PL评分","人物评分","权重","评分项","综合评分"],
+  "module-rating":["模组评分","模组权重","模组评价","评分项"],
+  behavior:["显示","展开","折叠","默认展开","卡片","简表","周历","月历","排期","行为"],
+  data:["数据","备份","导出","导入","恢复","回收站","存储","迁移","升级","安全","离线缓存","安装"]
+};
+function settingsSearchRank(panel,q){
+  const key=panel.dataset.settingsPanel,label=SETTINGS_LABELS[key]||key,aliases=SETTINGS_SEARCH_ALIASES[key]||[];
+  const labelRank=bestSearchFieldRank([label,key],q);if(labelRank<99)return labelRank;
+  const headings=[...panel.querySelectorAll("h2,h3,strong,summary,label,button")].map(el=>(el.textContent||"").replace(/\s+/g," ").trim()).filter(Boolean);
+  const headingRank=bestSearchFieldRank(headings,q);if(headingRank<99)return 2+Math.min(headingRank,2);
+  const aliasRank=bestSearchFieldRank(aliases,q);if(aliasRank<99)return 3+Math.min(aliasRank,1);
+  return searchTextMatches(panel.textContent||"",q)?6:99;
+}
+function settingsSearchSnippet(panel,q){
+  const candidates=[...panel.querySelectorAll("h3,strong,summary,label,button")].map(el=>(el.textContent||"").replace(/\s+/g," ").trim()).filter(Boolean);
+  const best=candidates.sort((a,b)=>searchFieldRank(a,q)-searchFieldRank(b,q))[0];
+  if(best&&searchFieldRank(best,q)<99)return best.slice(0,88);
+  return (panel.textContent||"").replace(/\s+/g," ").trim().slice(0,88);
+}
+function renderSettingsSearch(){const input=document.getElementById("settingsSearchInput"),box=document.getElementById("settingsSearchResults"),q=normalizedEntityNameKey(input.value);if(!q){box.hidden=true;box.innerHTML="";return;}const rows=[];document.querySelectorAll("[data-settings-panel]").forEach(panel=>{const rank=settingsSearchRank(panel,q);if(rank>=99)return;rows.push({key:panel.dataset.settingsPanel,label:SETTINGS_LABELS[panel.dataset.settingsPanel]||panel.dataset.settingsPanel,snippet:settingsSearchSnippet(panel,q),rank});});rows.sort((a,b)=>a.rank-b.rank||a.label.localeCompare(b.label,"zh-CN"));box.hidden=false;box.innerHTML=rows.length?rows.map(r=>`<button type="button" data-settings-search-target="${r.key}" data-settings-search-query="${escapeHTML(q)}"><strong>${r.label}</strong><span>${escapeHTML(r.snippet)}</span></button>`).join(""):`<button type="button" data-empty-clear-search="settingsSearchInput"><strong>无匹配设置</strong><span>清除搜索以显示全部设置</span></button>`;if(rows.length)applySearchHighlights(box,q);}
 function focusSettingsSearchResult(key,q){activateSettingsPanel(key);const panel=document.querySelector(`[data-settings-panel="${CSS.escape(key)}"]`);if(!panel)return;const candidates=[...panel.querySelectorAll("h3,strong,label,summary,button")],target=candidates.find(el=>searchTextMatches(el.textContent||"",q))||panel;requestAnimationFrame(()=>{const group=target.closest("details.data-safety-group,details.settings-collapsible");if(group)group.open=true;target.scrollIntoView({block:"center",behavior:"smooth"});target.classList.add("settings-search-flash");setTimeout(()=>target.classList.remove("settings-search-flash"),1400);});document.getElementById("settingsSearchResults").hidden=true;}
 
 /* 分享模式 */
@@ -10995,7 +11283,7 @@ els.planEditorContent.addEventListener("input",e=>{
     queuePlanInputMutation(planId,plan=>{plan[field]=value;if(field==="kp")plan.kpProfileId=isSelfKP(value)?selfProfileId():"";},`已自动保存：${field==="tableName"?"桌名":field==="kp"?"KP":field==="logUrl"?"Log":"HO补充"}`);
     return;
   }
-  if(e.target.matches("[data-plan-pc-name]")){const id=e.target.dataset.planPcName,value=e.target.value;queuePlanInputMutation(planId,plan=>mutateParticipantAssignment(plan,id,a=>{a.pcName=value;}),"已自动保存 PC 名");return;}
+  if(e.target.matches("[data-plan-pc-name]")){const id=e.target.dataset.planPcName,value=e.target.value;queuePlanInputMutation(planId,plan=>mutateParticipantAssignment(plan,id,a=>{a.pcName=value;}),"已自动保存 PC 名");syncPcNamePickerUI(e.target,{open:true});e.target.setAttribute("aria-expanded","true");return;}
   if(e.target.matches("[data-plan-pc-ho-custom]")){const id=e.target.dataset.planPcHoCustom,value=e.target.value;queuePlanInputMutation(planId,plan=>{if(id==="__kpc__")mutateKpcAssignment(plan,k=>{k.enabled=true;k.hoMode="custom";k.hoCustom=value;});else mutateParticipantAssignment(plan,id,a=>{a.hoMode="custom";a.hoCustom=value;});},"已自动保存 HO");return;}
   if(e.target.matches("[data-plan-kpc-name]")){const value=e.target.value;queuePlanInputMutation(planId,plan=>mutateKpcAssignment(plan,k=>{k.enabled=true;k.pcName=value;}),"已自动保存 KPC");}
 });
@@ -11017,6 +11305,7 @@ els.planEditorContent.addEventListener("change",e=>{
 
   if(e.target.matches("[data-plan-editor-field],[data-plan-pc-name],[data-plan-pc-ho-custom],[data-plan-kpc-name]")){
     if(planInputPending?.planId===planId)flushPlanInputSave();
+    if(e.target.matches("[data-plan-pc-name]"))syncPcNamePickerUI(e.target,{open:false});
     return;
   }
 });
@@ -11024,12 +11313,23 @@ els.planEditorContent.addEventListener("change",e=>{
 els.planEditorContent.addEventListener("focusin",e=>{
   if(e.target.matches("[data-plan-module-query]")){const wrap=e.target.closest("[data-editor-plan-id]");if(wrap)updatePlanModulePicker(wrap.dataset.editorPlanId,{open:true});}
   if(e.target.matches("[data-editor-add-pl-query]")){const wrap=e.target.closest("[data-editor-plan-id]");if(wrap){syncPlanPlPickerUI(wrap,{open:true});e.target.setAttribute("aria-expanded","true");}}
+  if(e.target.matches("[data-plan-pc-name]")){syncPcNamePickerUI(e.target,{open:true});e.target.setAttribute("aria-expanded","true");}
 });
 els.planEditorContent.addEventListener("focusout",e=>{
   if(e.target.matches("[data-plan-module-query]")){const wrap=e.target.closest("[data-editor-plan-id]");if(wrap)setTimeout(()=>{const options=wrap.querySelector("[data-plan-module-options]");if(options&&!wrap.contains(document.activeElement))options.hidden=true;},140);}
   if(e.target.matches("[data-editor-add-pl-query]")){const wrap=e.target.closest("[data-editor-plan-id]");if(wrap)setTimeout(()=>{const combo=wrap.querySelector("[data-editor-pl-combobox]"),options=wrap.querySelector("[data-editor-pl-options]");if(options&&combo&&!combo.contains(document.activeElement)){options.hidden=true;e.target.setAttribute("aria-expanded","false");}},140);}
+  if(e.target.matches("[data-plan-pc-name]"))setTimeout(()=>{const combo=e.target.closest(".assignment-pc-combobox"),options=combo?.querySelector("[data-pc-options]");if(options&&combo&&!combo.contains(document.activeElement)){options.hidden=true;e.target.setAttribute("aria-expanded","false");}},140);
 });
 els.planEditorContent.addEventListener("keydown",e=>{
+  if(e.target.matches("[data-plan-pc-name]")){
+    if(e.key==="Escape"){
+      const options=e.target.closest(".assignment-pc-combobox")?.querySelector("[data-pc-options]");if(options)options.hidden=true;
+      e.target.setAttribute("aria-expanded","false");return;
+    }
+    if(e.key!=="Enter")return;
+    const profileId=e.target.dataset.planPcName,filtered=filterPcNamesForPicker(recentPcNamesForProfile(profileId),e.target.value);
+    if(filtered.length===1&&filtered[0]!==e.target.value){e.preventDefault();e.target.value=filtered[0];e.target.dispatchEvent(new Event("input",{bubbles:true}));setTimeout(()=>{if(planInputPending?.planId===planId)flushPlanInputSave();},0);}return;
+  }
   if(!e.target.matches("[data-editor-add-pl-query]"))return;
   const wrap=e.target.closest("[data-editor-plan-id]"),planId=wrap?.dataset.editorPlanId;if(!planId)return;
   if(e.key==="Escape"){
@@ -11038,7 +11338,7 @@ els.planEditorContent.addEventListener("keydown",e=>{
   }
   if(e.key!=="Enter")return;
   const plan=runPlans.find(p=>p.id===planId);if(!plan)return;
-  const filtered=filterProfilesForPicker(profiles.filter(p=>!isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)).sort(compareProfilesForPicker),e.target.value).sort(compareProfilesForPicker);
+  const filtered=filterProfilesForPicker(profiles.filter(p=>!isBlacklistedProfile(p)&&!plan.plIds.includes(p.id)),e.target.value);
   if(filtered.length===1){e.preventDefault();setPlanPlPickerQuery(planId,"");addProfileToPlan(planId,filtered[0].id);requestAnimationFrame(()=>els.planEditorContent.querySelector("[data-editor-add-pl-query]")?.focus());}
 });
 els.planEditorContent.addEventListener("click",async e=>{
@@ -11115,6 +11415,17 @@ els.planEditorContent.addEventListener("click",async e=>{
     requestAnimationFrame(()=>{const input=els.planEditorContent.querySelector("[data-editor-add-pl-query]");if(input){input.value="";input.focus();syncPlanPlPickerUI(input.closest("[data-editor-plan-id]"),{open:true});}});return;
   }
 
+  const pcPick=e.target.closest("[data-pc-name-pick]");
+  if(pcPick){
+    e.preventDefault();const input=pcPick.closest(".assignment-pc-field")?.querySelector("[data-plan-pc-name]");
+    if(input){input.value=pcPick.dataset.pcNameValue||"";input.dispatchEvent(new Event("input",{bubbles:true}));const options=pcPick.closest("[data-pc-options]");if(options)options.hidden=true;input.setAttribute("aria-expanded","false");input.focus();}
+    return;
+  }
+  const pcToggle=e.target.closest("[data-pc-toggle]");
+  if(pcToggle){
+    e.preventDefault();const input=pcToggle.closest(".assignment-pc-combobox")?.querySelector("[data-plan-pc-name]"),options=pcToggle.closest(".assignment-pc-combobox")?.querySelector("[data-pc-options]");if(!input||!options)return;
+    const willOpen=options.hidden;syncPcNamePickerUI(input,{open:willOpen});input.setAttribute("aria-expanded",willOpen?"true":"false");if(willOpen)input.focus();return;
+  }
   const removePl=e.target.closest("[data-editor-remove-pl]");
   if(removePl){removeProfileFromPlan(planId,removePl.dataset.editorRemovePl);return;}
 
@@ -11211,7 +11522,7 @@ document.addEventListener("drop",e=>{
   unschedulePlanSlot(pending.planId,pending.slotId);
 });
 
-els.recordsSearch.addEventListener("input",debouncedRecordRender);
+els.recordsSearch.addEventListener("input",()=>{selectedModuleName="";debouncedRecordRender();});
 els.statsRange?.addEventListener("change",()=>{statsUiState.range=els.statsRange.value;renderStats();captureCurrentViewState("stats");});
 els.statsStartDate?.addEventListener("change",()=>{statsUiState.customStart=els.statsStartDate.value;if(statsUiState.customEnd&&statsUiState.customStart>statsUiState.customEnd){statsUiState.customEnd=statsUiState.customStart;els.statsEndDate.value=statsUiState.customEnd;}renderStats();captureCurrentViewState("stats");});
 els.statsEndDate?.addEventListener("change",()=>{statsUiState.customEnd=els.statsEndDate.value;if(statsUiState.customStart&&statsUiState.customEnd<statsUiState.customStart){statsUiState.customStart=statsUiState.customEnd;els.statsStartDate.value=statsUiState.customStart;}renderStats();captureCurrentViewState("stats");});
@@ -11221,25 +11532,79 @@ els.newModuleName.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDe
 
 els.recordsBoard.addEventListener("input",e=>{
   const recordEl=e.target.closest("[data-record-id]");if(!recordEl)return;const recordId=recordEl.dataset.recordId;
+  if(e.target.matches("[data-record-kp-query]")){
+    const value=e.target.value;
+    queueRecordInputMutation(recordId,r=>{r.kp=value;r.kpProfileId=isSelfKP(value)?selfProfileId():"";},"已自动保存 KP");
+    syncRecordKpPickerUI(recordEl,{open:true});
+    e.target.setAttribute("aria-expanded","true");
+    return;
+  }
+  if(e.target.matches("[data-record-add-pl-query]")){
+    syncRecordPlPickerUI(recordEl,{open:true});
+    e.target.setAttribute("aria-expanded","true");
+    return;
+  }
   if(e.target.matches("[data-record-field]")){
     const field=e.target.dataset.recordField;if(!["tableName","kp","logUrl","sharedHoNote","actualDuration","thoughts","runNotes"].includes(field))return;const value=e.target.value;
     queueRecordInputMutation(recordId,r=>{r[field]=value;if(field==="kp")r.kpProfileId=isSelfKP(value)?selfProfileId():"";},`已自动保存：${field==="thoughts"?"跑后感想":field==="runNotes"?"本桌备注":"跑团记录"}`);return;
   }
-  if(e.target.matches("[data-record-pc-name]")){const id=e.target.dataset.recordPcName,value=e.target.value;queueRecordInputMutation(recordId,r=>mutateParticipantAssignment(r,id,a=>{a.pcName=value;}),"已自动保存 PC 名");return;}
+  if(e.target.matches("[data-record-pc-name]")){const id=e.target.dataset.recordPcName,value=e.target.value;queueRecordInputMutation(recordId,r=>mutateParticipantAssignment(r,id,a=>{a.pcName=value;}),"已自动保存 PC 名");syncPcNamePickerUI(e.target,{open:true});e.target.setAttribute("aria-expanded","true");return;}
   if(e.target.matches("[data-record-pc-ho-custom]")){const id=e.target.dataset.recordPcHoCustom,value=e.target.value;queueRecordInputMutation(recordId,r=>{if(id==="__kpc__")mutateKpcAssignment(r,k=>{k.enabled=true;k.hoMode="custom";k.hoCustom=value;});else mutateParticipantAssignment(r,id,a=>{a.hoMode="custom";a.hoCustom=value;});},"已自动保存 HO");return;}
   if(e.target.matches("[data-record-kpc-name]")){const value=e.target.value;queueRecordInputMutation(recordId,r=>mutateKpcAssignment(r,k=>{k.enabled=true;k.pcName=value;}),"已自动保存 KPC");}
 });
 
 els.recordsBoard.addEventListener("change",e=>{
   const recordEl=e.target.closest("[data-record-id]");if(!recordEl)return;const recordId=recordEl.dataset.recordId,rec=runRecords.find(r=>r.id===recordId);if(!rec)return;
+  if(e.target.matches("[data-record-kp-query]")){
+    if(recordInputPending?.recordId===recordId)flushRecordInputSave();
+    const exact=exactProfileMatches(e.target.value);
+    if(exact.length===1)linkRecordToKpProfile(recordId,exact[0].id);else syncRecordKpPickerUI(recordEl,{open:false});
+    return;
+  }
+  if(e.target.matches("[data-record-add-pl-query]")){
+    syncRecordPlPickerUI(recordEl,{open:false});
+    return;
+  }
   if(e.target.matches("[data-record-field],[data-record-pc-name],[data-record-pc-ho-custom],[data-record-kpc-name]")){
     const field=e.target.dataset.recordField;if(field==="startDate"||field==="endDate"){
       const next=e.target.value.trim();if(field==="startDate"&&next&&rec.endDate&&rec.endDate<next){appNotice("开始时间不能晚于结束时间。请先调整结束时间。");e.target.value=rec.startDate;return;}if(field==="endDate"&&next&&rec.startDate&&next<rec.startDate){appNotice("结束时间不能早于开始时间。请先调整开始时间。");e.target.value=rec.endDate;return;}
       mutateRunRecord(recordId,r=>{r[field]=next;if(next)r.legacyDuration="";},{undoLabel:`已更新${field==="startDate"?"开始":"结束"}日期`});return;
     }
-    if(recordInputPending?.recordId===recordId)flushRecordInputSave();return;
+    if(recordInputPending?.recordId===recordId)flushRecordInputSave();if(e.target.matches("[data-record-pc-name]"))syncPcNamePickerUI(e.target,{open:false});return;
   }
-  if(e.target.matches("[data-record-kp-profile]")){const value=e.target.value;mutateRunRecord(recordId,r=>{r.kpProfileId=value;},{undoLabel:"已更新 KP 关联"});return;}
+});
+
+els.recordsBoard.addEventListener("focusin",e=>{
+  if(e.target.matches("[data-record-kp-query]")){syncRecordKpPickerUI(e.target,{open:true});e.target.setAttribute("aria-expanded","true");}
+  if(e.target.matches("[data-record-add-pl-query]")){syncRecordPlPickerUI(e.target,{open:true});e.target.setAttribute("aria-expanded","true");}
+  if(e.target.matches("[data-record-pc-name]")){syncPcNamePickerUI(e.target,{open:true});e.target.setAttribute("aria-expanded","true");}
+});
+els.recordsBoard.addEventListener("focusout",e=>{
+  if(e.target.matches("[data-record-kp-query]"))setTimeout(()=>{const combo=e.target.closest("[data-record-kp-combobox]");const options=combo?.querySelector("[data-record-kp-options]");if(options&&combo&&!combo.contains(document.activeElement)){options.hidden=true;e.target.setAttribute("aria-expanded","false");}},140);
+  if(e.target.matches("[data-record-add-pl-query]"))setTimeout(()=>{const combo=e.target.closest("[data-record-pl-combobox]");const options=combo?.querySelector("[data-record-pl-options]");if(options&&combo&&!combo.contains(document.activeElement)){options.hidden=true;e.target.setAttribute("aria-expanded","false");}},140);
+  if(e.target.matches("[data-record-pc-name]"))setTimeout(()=>{const combo=e.target.closest(".assignment-pc-combobox");const options=combo?.querySelector("[data-pc-options]");if(options&&combo&&!combo.contains(document.activeElement)){options.hidden=true;e.target.setAttribute("aria-expanded","false");}},140);
+});
+els.recordsBoard.addEventListener("keydown",e=>{
+  const recordEl=e.target.closest("[data-record-id]");const recordId=recordEl?.dataset.recordId;if(!recordId)return;
+  if(e.target.matches("[data-record-kp-query]")){
+    if(e.key==="Escape"){const options=recordEl.querySelector("[data-record-kp-options]");if(options)options.hidden=true;e.target.setAttribute("aria-expanded","false");return;}
+    if(e.key!=="Enter")return;
+    const filtered=filterProfilesForPicker(profiles,e.target.value);
+    if(filtered.length===1){e.preventDefault();linkRecordToKpProfile(recordId,filtered[0].id);}return;
+  }
+  if(e.target.matches("[data-record-add-pl-query]")){
+    if(e.key==="Escape"){const options=recordEl.querySelector("[data-record-pl-options]");if(options)options.hidden=true;e.target.setAttribute("aria-expanded","false");return;}
+    if(e.key!=="Enter")return;
+    const rec=runRecords.find(r=>r.id===recordId);if(!rec)return;
+    const filtered=filterProfilesForPicker(profiles.filter(p=>!rec.plIds.includes(p.id)),e.target.value);
+    if(filtered.length===1){e.preventDefault();setRecordPlPickerQuery(recordId,"");addProfileToRecord(recordId,filtered[0].id);requestAnimationFrame(()=>{const input=recordEl.querySelector("[data-record-add-pl-query]");if(input){input.value="";input.focus();syncRecordPlPickerUI(recordEl,{open:true});}});}return;
+  }
+  if(e.target.matches("[data-record-pc-name]")){
+    if(e.key==="Escape"){const options=e.target.closest(".assignment-pc-combobox")?.querySelector("[data-pc-options]");if(options)options.hidden=true;e.target.setAttribute("aria-expanded","false");return;}
+    if(e.key!=="Enter")return;
+    const profileId=e.target.dataset.recordPcName,filtered=filterPcNamesForPicker(recentPcNamesForProfile(profileId),e.target.value);
+    if(filtered.length===1&&filtered[0]!==e.target.value){e.preventDefault();e.target.value=filtered[0];e.target.dispatchEvent(new Event("input",{bubbles:true}));setTimeout(()=>{if(recordInputPending?.recordId===recordId)flushRecordInputSave();},0);}return;
+  }
 });
 
 els.recordsBoard.addEventListener("click",e=>{
@@ -11279,8 +11644,9 @@ els.recordsBoard.addEventListener("click",e=>{
     setRunRecordCollapsed(recordId,collapsed);
     recordEl.classList.toggle("is-collapsed",collapsed);
     collapseBtn.setAttribute("aria-expanded",collapsed?"false":"true");
-    const label=collapseBtn.querySelector(".record-collapse-label");
-    if(label)label.textContent=collapsed?"展开":"收起";
+    const label=collapseBtn.querySelector(".record-collapse-strip-label"),hint=collapseBtn.querySelector(".record-collapse-strip-hint");
+    if(label)label.textContent=collapsed?"展开本桌详情":"收起本桌详情";
+    if(hint)hint.textContent=collapsed?"点击展开本桌内容":"点击收起并保留概要信息";
     return;
   }
 
@@ -11304,11 +11670,43 @@ els.recordsBoard.addEventListener("click",e=>{
   const delRecord=e.target.closest("[data-delete-record]");
   if(delRecord){deleteRunRecord(recordId);return;}
 
+  if(e.target.closest("[data-record-kp-toggle]")){
+    e.preventDefault();const input=recordEl.querySelector("[data-record-kp-query]"),options=recordEl.querySelector("[data-record-kp-options]");if(!input||!options)return;
+    const willOpen=options.hidden;syncRecordKpPickerUI(recordEl,{open:willOpen});input.setAttribute("aria-expanded",willOpen?"true":"false");if(willOpen)input.focus();return;
+  }
+  const kpOption=e.target.closest("[data-record-kp-pick]");
+  if(kpOption){e.preventDefault();linkRecordToKpProfile(recordId,kpOption.dataset.recordKpPick);return;}
+
+  if(e.target.closest("[data-record-pl-toggle]")){
+    e.preventDefault();const input=recordEl.querySelector("[data-record-add-pl-query]"),options=recordEl.querySelector("[data-record-pl-options]");if(!input||!options)return;
+    const willOpen=options.hidden;syncRecordPlPickerUI(recordEl,{open:willOpen});input.setAttribute("aria-expanded",willOpen?"true":"false");if(willOpen)input.focus();return;
+  }
+  const addPlOption=e.target.closest("[data-record-add-pl-id]");
+  if(addPlOption){
+    e.preventDefault();setRecordPlPickerQuery(recordId,"");addProfileToRecord(recordId,addPlOption.dataset.recordAddPlId);
+    requestAnimationFrame(()=>{const input=recordEl.querySelector("[data-record-add-pl-query]");if(input){input.value="";input.focus();syncRecordPlPickerUI(recordEl,{open:true});}});return;
+  }
+
   const addPl=e.target.closest("[data-add-pl]");
   if(addPl){
-    const select=recordEl.querySelector("[data-add-pl-select]");
-    if(select?.value)addProfileToRecord(recordId,select.value);
+    const input=recordEl.querySelector("[data-record-add-pl-query]");
+    const recNow=runRecords.find(r=>r.id===recordId);if(!recNow||!input)return;
+    const filtered=filterProfilesForPicker(profiles.filter(p=>!recNow.plIds.includes(p.id)),input.value);
+    if(filtered.length===1){addProfileToRecord(recordId,filtered[0].id);setRecordPlPickerQuery(recordId,"");requestAnimationFrame(()=>{input.value="";syncRecordPlPickerUI(recordEl,{open:true});input.focus();});}
+    else showToast(input.value.trim()?"请先从匹配列表中选择唯一的 PL":"请先输入或选择要添加的 PL");
     return;
+  }
+
+  const pcPick=e.target.closest("[data-pc-name-pick]");
+  if(pcPick){
+    e.preventDefault();const input=pcPick.closest(".assignment-pc-field")?.querySelector("[data-record-pc-name],[data-plan-pc-name]");
+    if(input){input.value=pcPick.dataset.pcNameValue||"";input.dispatchEvent(new Event("input",{bubbles:true}));const options=pcPick.closest("[data-pc-options]");if(options)options.hidden=true;input.setAttribute("aria-expanded","false");input.focus();}
+    return;
+  }
+  const pcToggle=e.target.closest("[data-pc-toggle]");
+  if(pcToggle){
+    e.preventDefault();const input=pcToggle.closest(".assignment-pc-combobox")?.querySelector("[data-record-pc-name]"),options=pcToggle.closest(".assignment-pc-combobox")?.querySelector("[data-pc-options]");if(!input||!options)return;
+    const willOpen=options.hidden;syncPcNamePickerUI(input,{open:willOpen});input.setAttribute("aria-expanded",willOpen?"true":"false");if(willOpen)input.focus();return;
   }
 
   const removePl=e.target.closest("[data-remove-pl]");
@@ -11676,7 +12074,7 @@ function clearSearchControl(input,{refocus=true}={}){if(!input||!input.value)ret
 function installSearchClearButton(input){if(!input||input.dataset.clearButtonReady==="1")return;const host=input.closest("label")||input.parentElement;if(!host)return;input.dataset.clearButtonReady="1";const btn=document.createElement("button");btn.type="button";btn.className="search-clear";btn.textContent="×";btn.title="清除搜索";btn.setAttribute("aria-label","清除搜索");const sync=()=>{btn.hidden=!input.value};btn.addEventListener("pointerdown",e=>e.preventDefault());btn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();clearSearchControl(input)});input.addEventListener("input",sync,{passive:true});input.addEventListener("keydown",e=>{if(e.key==="Escape"&&input.value){e.preventDefault();e.stopPropagation();clearSearchControl(input)}});host.appendChild(btn);sync()}
 function wrapSelectAffordance(id,label){const select=document.getElementById(id);if(!select||select.parentElement?.classList.contains("select-affordance"))return;const wrap=document.createElement("label");wrap.className="select-affordance";const prefix=document.createElement("span");prefix.className="select-affordance-label";prefix.textContent=label;select.parentNode.insertBefore(wrap,select);wrap.append(prefix,select)}
 function ensureRecordsSearchCount(){if(document.getElementById("recordsSearchCount"))return;const search=els.recordsSearch?.closest("label");if(!search)return;const count=document.createElement("div");count.id="recordsSearchCount";count.className="search-result-count";count.setAttribute("aria-live","polite");const batch=search.parentElement?.querySelector(".records-search-batch");(batch||search).insertAdjacentElement("afterend",count)}
-function updateRecordsSearchCount(visibleGroups,allGroups,q){const el=document.getElementById("recordsSearchCount");if(!el)return;el.textContent=q?`${visibleGroups.length} / ${allGroups.length} 个模组命中`:`${allGroups.length} 个模组 · ${runRecords.length} 桌`}
+function updateRecordsSearchCount(visibleGroups,allGroups,q){const el=document.getElementById("recordsSearchCount");if(!el)return;const matchedTables=visibleGroups.reduce((n,g)=>n+(g?.[1]?.length||0),0);el.textContent=q?`${visibleGroups.length} 个模组 · ${matchedTables} 桌显示`:`${allGroups.length} 个模组 · ${runRecords.length} 桌`}
 function applySearchHighlights(root,rawQuery){
   if(!root)return;
   root.querySelectorAll("mark.search-hit").forEach(mark=>mark.replaceWith(document.createTextNode(mark.textContent||"")));
