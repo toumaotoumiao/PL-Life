@@ -3372,6 +3372,8 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.10 · 个人统计界面精简：移除冗余“统计口径”提示条，保留时间筛选与必要的局部说明；延续统计模块隐私雾面保护。 */
+    /* v8.1.6.9 · 隐私遮罩补全：个人统计的总览、人物、模组、趋势与资料记录卡统一纳入雾面保护，并同步隐私切换时的统计重绘。 */
     /* v8.1.6.8 · 统计语义校正：可选字段从“完整度/缺失”改为中性的记录率表达，并统一 PC 名等可选信息的缺省文案。 */
     /* v8.1.6.7 · 偏好与统计命名优化：主导航与页面标题统一改为“个人偏好”“个人统计”，保持双端风格一致。 */
     /* v8.1.6.6 · 新增“我的跑团统计”：人物关系、模组排名、时间趋势、复跑分布、记录完整度与多视图切换；保持全离线计算。 */
@@ -3620,8 +3622,41 @@
     .stats-custom-range input{width:132px;min-height:40px}
     .stats-range-arrow{padding-bottom:11px;color:var(--t-faint);font-size:10px}
     .stats-content{display:grid;gap:12px;min-width:0}
-    .stats-scope-note{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:9px 11px;border:1px solid var(--t-line);border-radius:12px;background:color-mix(in srgb,var(--t-surface-2) 78%,transparent);color:var(--t-muted);font-size:8.8px;line-height:1.55}
-    .stats-scope-note strong{color:var(--t-text-2)}
+
+    /* 个人统计也属于隐私展示范围：开启隐私模式后保留版式轮廓，整张统计卡使用与 PL 档案一致的雾面遮罩。 */
+    .stats-identity-card,.stats-metric-card,.stats-panel{position:relative;isolation:isolate}
+    body.privacy-mask .stats-identity-card,
+    body.privacy-mask .stats-metric-card,
+    body.privacy-mask .stats-panel{overflow:hidden;user-select:none}
+    body.privacy-mask .stats-identity-card>*,
+    body.privacy-mask .stats-metric-card>*,
+    body.privacy-mask .stats-panel>*{filter:blur(6px);opacity:.48;pointer-events:none}
+    body.privacy-mask .stats-identity-card::after,
+    body.privacy-mask .stats-metric-card::after,
+    body.privacy-mask .stats-panel::after{
+      content:"";position:absolute;inset:-2px;z-index:20;pointer-events:auto;
+      background:linear-gradient(105deg,rgba(255,255,255,.38),rgba(236,240,236,.58) 47%,rgba(255,255,255,.22));
+      -webkit-backdrop-filter:blur(8px) saturate(.82);backdrop-filter:blur(8px) saturate(.82)
+    }
+    body.privacy-mask .stats-identity-card::before,
+    body.privacy-mask .stats-metric-card::before,
+    body.privacy-mask .stats-panel::before{
+      content:"";position:absolute;left:8%;right:18%;top:2px;height:1px;z-index:21;pointer-events:none;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);opacity:.72
+    }
+    html[data-theme] body.privacy-mask .stats-identity-card::after,
+    html[data-theme] body.privacy-mask .stats-metric-card::after,
+    html[data-theme] body.privacy-mask .stats-panel::after{
+      background:linear-gradient(105deg,var(--t-privacy-sheen),var(--t-privacy-2) 47%,color-mix(in srgb,var(--t-privacy-sheen) 55%,transparent))
+    }
+    html[data-theme] body.privacy-mask .stats-identity-card::before,
+    html[data-theme] body.privacy-mask .stats-metric-card::before,
+    html[data-theme] body.privacy-mask .stats-panel::before{background:linear-gradient(90deg,transparent,var(--t-privacy-sheen),transparent)}
+    body.privacy-mask .stats-toolbar .view-toolbar-title::after{
+      content:"隐私模式已隐藏统计内容";display:inline-flex;width:max-content;max-width:100%;margin-top:7px;padding:4px 8px;
+      border:1px solid var(--t-line);border-radius:999px;background:linear-gradient(135deg,var(--t-privacy-1),var(--t-privacy-2));
+      color:var(--t-muted);font-size:8px;font-weight:720;line-height:1.2;box-shadow:inset 0 1px 0 var(--t-privacy-sheen)
+    }
     .stats-overview-shell{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(0,1.8fr);gap:10px;align-items:stretch}
     .stats-identity-card,.stats-metric-card,.stats-panel{border:1px solid var(--t-line);background:var(--t-surface);box-shadow:0 8px 24px var(--t-shadow-soft)}
     .stats-identity-card{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:15px;padding:15px 16px;border-radius:18px;min-width:0}
@@ -3656,7 +3691,7 @@
     .stats-footnote{margin-top:8px;font-size:7.7px;line-height:1.55;color:var(--t-faint)}
     @media(max-width:1100px){.stats-overview-shell{grid-template-columns:1fr}.stats-overview-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.stats-identity-card{grid-template-columns:auto minmax(0,1fr)}}
     @media(max-width:900px){.stats-dashboard-grid{grid-template-columns:1fr}.stats-panel.full{grid-column:auto}.stats-overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-toolbar{grid-template-columns:1fr}.stats-toolbar .view-toolbar-actions{justify-content:flex-start}}
-    @media(max-width:760px){.stats-view{padding-right:var(--mobile-rail-safe)}.stats-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr}.stats-filter-field select{width:100%}.stats-custom-range{display:grid;grid-template-columns:1fr auto 1fr;align-items:end}.stats-custom-range input{width:100%}.stats-scope-note{display:grid;gap:4px}.stats-identity-card{grid-template-columns:94px minmax(0,1fr);padding:12px}.stats-donut{width:92px;height:92px}.stats-donut::after{inset:10px}.stats-donut-center strong{font-size:19px}.stats-panel-head{display:grid;gap:8px}.stats-panel-controls{justify-content:flex-start}.stats-panel-body{padding:10px}.stats-repeat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-line-chart{overflow:hidden}.stats-line-chart svg{min-width:0}.stats-module-table{min-width:100%}.stats-module-table.kp :is(th,td):nth-child(4),.stats-module-table.kp :is(th,td):nth-child(6){display:none}.stats-module-table.pl :is(th,td):nth-child(5){display:none}.stats-module-table td:nth-child(2){white-space:normal;min-width:100px}.stats-completeness-row{grid-template-columns:90px minmax(0,1fr) auto}.mobile-bottom-nav{grid-template-columns:repeat(6,minmax(0,1fr))}.mobile-bottom-nav button span{font-size:10px!important}.mobile-bottom-nav button small{font-size:8px!important}}
+    @media(max-width:760px){.stats-view{padding-right:var(--mobile-rail-safe)}.stats-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr}.stats-filter-field select{width:100%}.stats-custom-range{display:grid;grid-template-columns:1fr auto 1fr;align-items:end}.stats-custom-range input{width:100%}.stats-identity-card{grid-template-columns:94px minmax(0,1fr);padding:12px}.stats-donut{width:92px;height:92px}.stats-donut::after{inset:10px}.stats-donut-center strong{font-size:19px}.stats-panel-head{display:grid;gap:8px}.stats-panel-controls{justify-content:flex-start}.stats-panel-body{padding:10px}.stats-repeat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-line-chart{overflow:hidden}.stats-line-chart svg{min-width:0}.stats-module-table{min-width:100%}.stats-module-table.kp :is(th,td):nth-child(4),.stats-module-table.kp :is(th,td):nth-child(6){display:none}.stats-module-table.pl :is(th,td):nth-child(5){display:none}.stats-module-table td:nth-child(2){white-space:normal;min-width:100px}.stats-completeness-row{grid-template-columns:90px minmax(0,1fr) auto}.mobile-bottom-nav{grid-template-columns:repeat(6,minmax(0,1fr))}.mobile-bottom-nav button span{font-size:10px!important}.mobile-bottom-nav button small{font-size:8px!important}}
     @media(max-width:360px){.stats-overview-grid{grid-template-columns:1fr 1fr}.stats-identity-card{grid-template-columns:82px minmax(0,1fr);gap:9px}.stats-donut{width:80px;height:80px}.stats-donut-center strong{font-size:17px}.stats-metric-card{padding:9px}.stats-metric-card strong{font-size:16px}.stats-segmented button{padding-inline:6px;font-size:7.7px}.stats-panel-body{padding:8px}.stats-bar-row{grid-template-columns:82px minmax(0,1fr) 30px}.stats-completeness-row{grid-template-columns:78px minmax(0,1fr) 42px}.mobile-bottom-nav{left:4px;right:4px;gap:1px;padding:3px}.mobile-bottom-nav button{min-height:45px}.mobile-bottom-nav button span{font-size:9.5px!important}.mobile-bottom-nav button small{font-size:7.5px!important}}
 
     /* ---------- v8.1.6.0 · 手机端全局稳定化 ---------- */
@@ -4066,7 +4101,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.8 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.10 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4078,7 +4113,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.8　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.10　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4368,7 +4403,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.8</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.10</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4412,10 +4447,12 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.8 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.8</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.10 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.10</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.10</strong><span>精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span>
+<strong>v8.1.6.9</strong><span>补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span>
 <strong>v8.1.6.8</strong><span>校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写；同时把 PC 名缺省、无日期提示和 PL 参团分布等文案改得更中性准确。</span>
 <strong>v8.1.6.7</strong><span>统一“偏好 / 统计”命名：将主导航与对应页面标题调整为“个人偏好”“个人统计”，让第三组导航含义更完整，也与现有个人信息语境更一致。</span>
 <strong>v8.1.6.6</strong><span>新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度；人物与模组支持排名表/条形图切换，趋势支持折线/柱状/表格切换，全部统计均在本地离线完成。</span>
@@ -4566,7 +4603,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.6.8 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.10 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4585,7 +4622,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.8";
+const APP_UI_VERSION = "8.1.6.9";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -8282,14 +8319,12 @@ function statsRepeatHTML(people){
 function renderStats(){
   if(!els.statsContent)return;
   if(els.statsRange)els.statsRange.value=statsUiState.range;if(els.statsStartDate)els.statsStartDate.value=statsUiState.customStart;if(els.statsEndDate)els.statsEndDate.value=statsUiState.customEnd;if(els.statsCustomRange)els.statsCustomRange.hidden=statsUiState.range!=="custom";
-  const runs=statsPersonalRuns(),roles=runs.map(r=>statsRunRoles(r)),kpCount=roles.filter(r=>r.kp).length,plCount=roles.filter(r=>r.pl).length,people=statsPersonAggregates(runs),mods=statsModuleAggregates(runs),plans=statsCurrentPlanSummary(),bounds=statsDateBounds();
+  const runs=statsPersonalRuns(),roles=runs.map(r=>statsRunRoles(r)),kpCount=roles.filter(r=>r.kp).length,plCount=roles.filter(r=>r.pl).length,people=statsPersonAggregates(runs),mods=statsModuleAggregates(runs),plans=statsCurrentPlanSummary();
   const uniquePl=people.filter(r=>r.ledByMe>0).length,uniqueKp=people.filter(r=>r.ledMe>0).length,kpMods=statsModuleCount(mods,"kp"),plMods=statsModuleCount(mods,"pl"),roleTotal=kpCount+plCount,kpPct=roleTotal?Math.round(kpCount/roleTotal*100):50;
   const peopleMetric=statsUiState.peopleMode==="kp"?"ledByMe":statsUiState.peopleMode==="myKp"?"ledMe":"together";
   const peopleSubtitle=peopleMetric==="ledByMe"?"我作为 KP 时，哪些 PL 跟我的桌最多。":peopleMetric==="ledMe"?"我作为 PL 时，哪些人最常担任我的 KP。":"不区分谁是 KP，统计与我共同出现在同一桌的次数。";
-  const trend=statsTrendData(runs),completeness=statsCompleteness(runs),undated=runs.filter(r=>!statsRecordDate(r)).length;
-  const scopeParts=[`范围：${bounds.label}`,`纳入 ${runs.length} 桌与“我”关联的记录`];if(undated&&statsUiState.range==="all")scopeParts.push(`${undated} 桌未记录明确日期，已计入总览；时间趋势不纳入这些桌`);scopeParts.push("当前计划始终显示实时状态，不受时间范围筛选");
+  const trend=statsTrendData(runs),completeness=statsCompleteness(runs);
   els.statsContent.innerHTML=`
-    <div class="stats-scope-note"><span><strong>统计口径：</strong>${escapeHTML(scopeParts.join(" · "))}</span><span>未关联的外部参与者会按文字名称参与人数统计；隐私遮罩开启时会匿名显示。</span></div>
     <div class="stats-overview-shell">
       <section class="stats-identity-card">
         <div class="stats-donut" style="--kp:${kpPct}%"><div class="stats-donut-center"><strong>${runs.length}</strong><span>总桌次</span></div></div>
@@ -9547,6 +9582,7 @@ function updatePrivacyMaskUI(){
   renderProfiles();
   if(currentView==="records")renderRunRecords();
   else if(currentView==="plans")renderRunPlans();
+  else if(currentView==="stats")renderStats();
 
   if(draft){
     els.modalTitle.innerHTML=draftTitleHTML();
