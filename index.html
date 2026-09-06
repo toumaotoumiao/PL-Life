@@ -2827,6 +2827,32 @@
     .icon-close:hover{transform:translateY(-1px);border-color:var(--t-line-strong);background:var(--t-surface-2);color:var(--t-ink);box-shadow:0 6px 16px color-mix(in srgb,var(--t-shadow) 58%,transparent)}
     .icon-close:active{transform:translateY(0);box-shadow:0 2px 7px color-mix(in srgb,var(--t-shadow) 40%,transparent)}
     .icon-close:focus-visible{outline:3px solid color-mix(in srgb,var(--t-accent) 20%,transparent);outline-offset:2px}
+    /* v8.1.6.22 · 全站弹窗操作区 / 关闭按钮 / 导出按钮统一 */
+    :is(.modal-head,.native-module-editor-head,.module-advanced-head,.plan-editor-drawer-head,.ho-organizer-head,.secure-backup-modal>header,.global-search-modal>header,.import-preview-modal>header,.migration-wizard-modal>header,.onboarding-modal>header)>.icon-close{
+      width:38px;height:38px;flex:0 0 38px;border-radius:12px
+    }
+    :is(.native-module-editor-foot,.modal-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.migration-wizard-modal>footer,.onboarding-modal>footer,.ho-organizer-foot,.plan-editor-footer){
+      min-height:62px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+      border-top:1px solid var(--t-line);background:color-mix(in srgb,var(--t-surface) 96%,transparent)
+    }
+    :is(.native-module-editor-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.onboarding-modal>footer){justify-content:flex-end}
+    :is(.native-module-editor-foot,.modal-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.migration-wizard-modal>footer,.onboarding-modal>footer,.ho-organizer-foot,.plan-editor-footer) .btn{
+      min-height:40px;border-radius:10px
+    }
+    .image-export-btn{min-height:40px!important;white-space:nowrap}
+    .image-export-btn.has-menu::after{content:"⌄";font-size:.9em;opacity:.72;margin-left:1px;transition:transform .15s ease}
+    .image-export-btn.has-menu[aria-expanded="true"]::after{transform:rotate(180deg)}
+    .organizer-expand-all-btn{min-width:98px;position:relative;padding-left:31px!important}
+    .organizer-expand-all-btn::before{content:"＋";position:absolute;left:12px;top:50%;transform:translateY(-52%);font-size:15px;font-weight:520;color:var(--t-accent-strong)}
+    .organizer-expand-all-btn.is-all-expanded::before{content:"−"}
+    .organizer-expand-all-btn.is-all-expanded{background:var(--t-accent-soft);border-color:color-mix(in srgb,var(--t-accent) 32%,var(--t-line));color:var(--t-accent-strong)}
+    @media(max-width:760px){
+      :is(.native-module-editor-foot,.modal-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.migration-wizard-modal>footer,.onboarding-modal>footer,.ho-organizer-foot,.plan-editor-footer){padding:9px 10px calc(9px + env(safe-area-inset-bottom));gap:7px}
+      :is(.native-module-editor-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.onboarding-modal>footer){display:grid;grid-template-columns:1fr 1fr}
+      :is(.native-module-editor-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.onboarding-modal>footer) .btn{width:100%}
+      :is(.secure-backup-modal>header,.global-search-modal>header,.import-preview-modal>header,.migration-wizard-modal>header,.onboarding-modal>header)>.icon-close{width:40px;height:40px;flex-basis:40px}
+    }
+
 
     /* ---------- PL · HO 整理 ---------- */
     .ho-organizer-trigger{color:var(--t-accent-strong)}
@@ -2860,6 +2886,19 @@
     .ho-view-filter button.active{background:var(--t-accent-soft);color:var(--t-accent-strong)}
     .ho-empty-toggle{display:flex;align-items:center;gap:5px;color:var(--t-muted);font-size:8.6px;white-space:nowrap}.ho-empty-toggle input{accent-color:var(--t-accent)}
     .kp-sort-wrap{display:flex;align-items:center;gap:5px;color:var(--t-muted);font-size:8.6px;white-space:nowrap}.kp-sort-wrap select{min-height:32px;padding:4px 28px 4px 9px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-ink);font-size:8.6px}
+    .ho-organizer-toolbar-actions{margin-left:auto;justify-content:flex-end}
+    .ho-mode-specific-slot{display:flex;align-items:center;justify-content:center;min-height:34px;min-width:174px}
+    .ho-mode-specific-slot>.ho-empty-toggle,.ho-mode-specific-slot>.kp-sort-wrap{width:100%}
+    .ho-mode-specific-slot>.ho-empty-toggle[hidden],.ho-mode-specific-slot>.kp-sort-wrap[hidden]{display:none!important}
+    .ho-mode-specific-slot .ho-empty-toggle{min-height:34px;justify-content:center;padding:0 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface)}
+    .ho-mode-specific-slot .kp-sort-wrap{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px}
+    .ho-mode-specific-slot .kp-sort-wrap select{width:100%;min-width:0}
+    #toggleOrganizerAllBtn,#copyHoOrganizerBtn,.ho-image-export-wrap>#hoImageExportBtn{min-width:96px}
+    .image-export-btn{position:relative;padding-inline:12px 14px;border-color:color-mix(in srgb,var(--t-accent) 26%,var(--t-line));background:linear-gradient(180deg,color-mix(in srgb,var(--t-accent-soft) 72%,var(--t-surface)),var(--t-surface));color:var(--t-accent-strong);font-weight:760}
+    .image-export-btn:hover:not(:disabled){border-color:color-mix(in srgb,var(--t-accent) 42%,var(--t-line));background:linear-gradient(180deg,color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface)),var(--t-surface))}
+    .image-export-btn::before{content:"▣";font-size:.9em;opacity:.72;transform:translateY(-.02em)}
+    .view-toolbar-actions .image-export-btn{min-width:112px}
+
 
     .ho-organizer-notice{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:8px 14px;background:color-mix(in srgb,var(--t-surface-2) 72%,transparent);color:var(--t-muted);font-size:8.6px}.ho-organizer-notice strong{color:var(--t-warning)}
     /* 单行横向看板：栏目永不向下一行压叠；栏位过多时横向滚动。 */
@@ -2923,7 +2962,7 @@
     @media(max-width:760px){
       .ho-organizer-backdrop{padding:5px}.ho-organizer-modal{height:calc(100dvh - 10px);border-radius:17px}.ho-organizer-head{padding:14px 13px 11px}.ho-organizer-head h2{font-size:18px}
       .run-organizer-mode-tabs{padding:6px 8px}.run-organizer-mode-tabs button{flex:1;justify-content:center}
-      .ho-organizer-toolbar{align-items:flex-start;padding:8px}.ho-organizer-toolbar-actions{width:100%;justify-content:space-between}.kp-sort-wrap{flex:1}.kp-sort-wrap select{width:100%}
+      .ho-organizer-toolbar{align-items:flex-start;padding:8px}.ho-organizer-toolbar-actions{width:100%;justify-content:flex-end}.ho-mode-specific-slot{min-width:164px}.kp-sort-wrap{flex:1}.kp-sort-wrap select{width:100%}
       .ho-organizer-board{gap:8px;padding:8px;scroll-snap-type:x proximity}.ho-organizer-board.kp-mode{display:grid;grid-template-columns:1fr;scroll-snap-type:none}.ho-column{flex:0 0 172px;min-width:172px;max-width:172px;scroll-snap-align:start}.ho-column-head{padding:12px 9px 9px}.ho-column-title-stack strong{font-size:11.8px}.ho-column-body{padding:7px;gap:7px}.ho-entry{padding:8px 9px}.ho-organizer-foot{padding:8px}.ho-organizer-foot>span{max-width:70%;font-size:7.8px}
     }
 
@@ -4414,7 +4453,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <span>整理常用信息、PL / KP 偏好、想跑模组、可带模组与协作边界。<small class="self-intro-credit">（参考来源：@云染、@冒冒及匿名作者的偏好表格；如有遗漏，欢迎补充来源信息。）</small></span>
           </div>
           <div class="view-toolbar-actions">
-            <button id="selfIntroExportBtn" class="btn" type="button">导出图片</button>
+            <button id="selfIntroExportBtn" class="btn image-export-btn" type="button">导出图片</button>
             <span id="selfIntroSaveState" class="self-intro-save-state" role="status" aria-live="polite">已保存</span>
             <button id="selfIntroSaveBtn" class="btn primary" type="button">保存偏好</button>
           </div>
@@ -4429,6 +4468,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <span>汇总我已经归档的跑团记录，查看和谁跑得最多、跑过和带过哪些模组、跑团趋势和历史记录填写情况。</span>
           </div>
           <div class="view-toolbar-actions stats-toolbar-actions">
+            <button id="statsExportBtn" class="btn image-export-btn" type="button">导出图片</button>
             <label class="stats-filter-field"><span>统计范围</span><select id="statsRangeSelect" class="sort-select" aria-label="统计时间范围">
               <option value="all">全部时间</option>
               <option value="year">今年</option>
@@ -4589,7 +4629,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.19 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.22 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4601,7 +4641,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.19　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.22　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4646,16 +4686,18 @@ body{font-size:var(--vu-body);line-height:1.5}
                 <button type="button" data-ho-filter="record">已结团</button>
                 <button type="button" data-ho-filter="plan">计划中</button>
               </div>
-              <button id="toggleOrganizerAllBtn" class="btn small" type="button">展开全部</button>
-              <label class="ho-empty-toggle ho-only-control"><input id="hoShowEmptyColumns" type="checkbox"><span>显示空 HO 列</span></label>
+              <button id="toggleOrganizerAllBtn" class="btn small organizer-expand-all-btn" type="button">展开全部</button>
+              <div class="ho-mode-specific-slot">
+                <label class="ho-empty-toggle ho-only-control"><input id="hoShowEmptyColumns" type="checkbox"><span>显示空 HO 列</span></label>
+                <label id="kpOrganizerSortWrap" class="kp-sort-wrap" hidden><span>排序</span><select id="kpOrganizerSort"><option value="recent">最近带团</option><option value="count">带团次数</option><option value="name">模组名称</option></select></label>
+              </div>
               <div class="ho-image-export-wrap">
-                <button id="hoImageExportBtn" class="btn small" type="button" aria-expanded="false">导出图片 ▾</button>
+                <button id="hoImageExportBtn" class="btn small image-export-btn has-menu" type="button" aria-expanded="false">导出图片</button>
                 <div id="hoImageExportMenu" class="ho-image-export-menu" hidden>
                   <button type="button" data-ho-image-style="wide"><strong>宽幅 PNG</strong><span>横向整理当前结果，适合电脑或群聊</span></button>
                   <button type="button" data-ho-image-style="long"><strong>长图 PNG</strong><span>纵向整理当前结果，适合手机查看</span></button>
                 </div>
               </div>
-              <label id="kpOrganizerSortWrap" class="kp-sort-wrap" hidden><span>排序</span><select id="kpOrganizerSort"><option value="recent">最近带团</option><option value="count">带团次数</option><option value="name">模组名称</option></select></label>
               <button id="copyHoOrganizerBtn" class="btn small" type="button">复制结果</button>
             </div>
           </div>
@@ -4706,7 +4748,7 @@ body{font-size:var(--vu-body);line-height:1.5}
     <section id="profileModal" class="modal">
       <header class="modal-head">
         <div><h2 id="modalTitle">编辑 PL</h2><div class="sub">评分采用行为锚定标准；备注会同步显示在 PL 卡片。</div><div class="editor-state-line"><span id="profileEditStatus" class="editor-state-chip clean">未修改</span><button id="profileReturnBtn" class="editor-return-btn" type="button" hidden>← 返回原位置</button></div></div>
-        <button type="button" id="closeProfileBtn" class="close" aria-label="关闭">×</button>
+        <button type="button" id="closeProfileBtn" class="close icon-close" aria-label="关闭">×</button>
       </header>
       <div class="modal-body">
         <div class="basic">
@@ -4792,7 +4834,7 @@ body{font-size:var(--vu-body);line-height:1.5}
     <section id="settingsModal" class="modal settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
       <header class="modal-head">
         <div><h2 id="settingsTitle">设置</h2><div class="sub">管理主题、评分、显示偏好和数据备份。</div></div>
-        <button type="button" id="closeSettingsBtn" class="close" aria-label="关闭">×</button>
+        <button type="button" id="closeSettingsBtn" class="close icon-close" aria-label="关闭">×</button>
       </header>
       <div class="modal-body settings-modal-body">
         <div class="settings-layout">
@@ -4939,6 +4981,9 @@ body{font-size:var(--vu-body);line-height:1.5}
 <div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.19</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.22</strong><span>继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。</span>
+<strong>v8.1.6.21</strong><span>统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。</span>
+<strong>v8.1.6.20</strong><span>个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span>
 <strong>v8.1.6.19</strong><span>全站视觉收口 1.0：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态；减少框套框与重复说明，强化卡片信息优先级，并重新优化 PL、模组、计划、记录、个人偏好、个人统计、设置及各编辑器在电脑、平板和手机端的视觉密度与操作布局。</span>
 <strong>v8.1.6.18</strong><span>全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动；同时复查全部主页面、PL 编辑、模组编辑、设置与个人统计的横向溢出，并让可换行的操作区优先换行。</span>
 <strong>v8.1.6.17</strong><span>开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。</span>
@@ -5019,7 +5064,7 @@ body{font-size:var(--vu-body);line-height:1.5}
   
   <div id="secureBackupBackdrop" class="secure-backup-backdrop" hidden>
     <section class="secure-backup-modal" role="dialog" aria-modal="true" aria-labelledby="secureBackupTitle">
-      <header><div><h3 id="secureBackupTitle">加密备份</h3><p id="secureBackupSubtitle">密码仅在当前设备用于加密或解密，不会上传。</p></div><button id="closeSecureBackupBtn" class="close" type="button" aria-label="关闭">×</button></header>
+      <header><div><h3 id="secureBackupTitle">加密备份</h3><p id="secureBackupSubtitle">密码仅在当前设备用于加密或解密，不会上传。</p></div><button id="closeSecureBackupBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
       <div class="secure-backup-body">
         <label><span>密码</span><input id="secureBackupPassword" type="password" autocomplete="new-password" placeholder="至少 8 个字符"></label>
         <label id="secureBackupConfirmRow"><span>再次输入密码</span><input id="secureBackupPasswordConfirm" type="password" autocomplete="new-password" placeholder="再次输入密码"></label>
@@ -5045,7 +5090,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 
   <div id="globalSearchBackdrop" class="global-search-backdrop" hidden>
     <section class="global-search-modal" role="dialog" aria-modal="true" aria-labelledby="globalSearchTitle">
-      <header><div><h3 id="globalSearchTitle">全局搜索</h3><p>搜索 PL、个人偏好、模组、开团计划和跑团记录。</p></div><button id="closeGlobalSearchBtn" class="close" type="button" aria-label="关闭">×</button></header>
+      <header><div><h3 id="globalSearchTitle">全局搜索</h3><p>搜索 PL、个人偏好、模组、开团计划和跑团记录。</p></div><button id="closeGlobalSearchBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
       <label class="global-search-box"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="跨 PL、模组、计划、记录与个人页面搜索（支持拼音首字母）" autocomplete="off"></label>
       <div id="globalSearchResults" class="global-search-results" role="listbox"></div>
       <footer><span>Ctrl + K 打开 · ↑↓ 选择 · Enter 跳转 · Esc 关闭</span></footer>
@@ -5054,7 +5099,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 
   <div id="importPreviewBackdrop" class="import-preview-backdrop" hidden>
     <section class="import-preview-modal" role="dialog" aria-modal="true" aria-labelledby="importPreviewTitle">
-      <header><div><h3 id="importPreviewTitle">导入预览</h3><p id="importPreviewSubtitle">先确认内容和处理方式，再写入当前档案。</p></div><button id="closeImportPreviewBtn" class="close" type="button" aria-label="关闭">×</button></header>
+      <header><div><h3 id="importPreviewTitle">导入预览</h3><p id="importPreviewSubtitle">先确认内容和处理方式，再写入当前档案。</p></div><button id="closeImportPreviewBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
       <div class="import-preview-body">
         <div id="importPreviewCounts" class="import-preview-counts"></div>
         <div id="importConflictSummary" class="import-conflict-summary"></div>
@@ -5075,7 +5120,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 
   <div id="migrationWizardBackdrop" class="migration-wizard-backdrop" hidden>
     <section class="migration-wizard-modal" role="dialog" aria-modal="true" aria-labelledby="migrationWizardTitle">
-      <header><div><h3 id="migrationWizardTitle">设备迁移</h3><p>使用密码加密迁移包，把档案带到另一台设备。</p></div><button id="closeMigrationWizardBtn" class="close" type="button" aria-label="关闭">×</button></header>
+      <header><div><h3 id="migrationWizardTitle">设备迁移</h3><p>使用密码加密迁移包，把档案带到另一台设备。</p></div><button id="closeMigrationWizardBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
       <div class="migration-wizard-body">
         <article><span>1</span><div><strong>旧设备</strong><p>生成迁移包并保存到你能在新设备打开的位置。</p></div><button id="migrationWizardExportBtn" class="btn primary-soft" type="button">生成迁移包</button></article>
         <article><span>2</span><div><strong>新设备</strong><p>选择迁移包并输入创建时的密码，随后会进入导入预览。</p></div><button id="migrationWizardImportBtn" class="btn" type="button">选择迁移包</button></article>
@@ -5086,7 +5131,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 
   <div id="onboardingBackdrop" class="onboarding-backdrop" hidden>
     <section class="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
-      <header><div><span class="onboarding-kicker">欢迎使用</span><h2 id="onboardingTitle">3 步开始整理跑团档案</h2><p>所有内容默认保存在当前浏览器；可以随时导出备份。</p></div><button id="skipOnboardingBtn" class="close" type="button" aria-label="暂时关闭引导">×</button></header>
+      <header><div><span class="onboarding-kicker">欢迎使用</span><h2 id="onboardingTitle">3 步开始整理跑团档案</h2><p>所有内容默认保存在当前浏览器；可以随时导出备份。</p></div><button id="skipOnboardingBtn" class="close icon-close" type="button" aria-label="暂时关闭引导">×</button></header>
       <div class="onboarding-steps">
         <article><span>01</span><strong>建立 PL</strong><p>记录常用资料与评分；新建档案的评分默认均为“无”。</p></article>
         <article><span>02</span><strong>建立模组或计划</strong><p>为桌次关联 KP、PL、PC 和 HO；计划可以直接安排到日历。</p></article>
@@ -5144,7 +5189,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24 * 60 * 60 * 1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.19";
+const APP_UI_VERSION = "8.1.6.22";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -7245,7 +7290,7 @@ const els = {
     moduleNativeStats: document.getElementById("moduleNativeStats"), moduleNativeSearch: document.getElementById("moduleNativeSearch"), moduleNativeHoFilter: document.getElementById("moduleNativeHoFilter"), moduleNativeLocationFilter: document.getElementById("moduleNativeLocationFilter"), moduleNativeSort: document.getElementById("moduleNativeSort"), moduleNativeGrid: document.getElementById("moduleNativeGrid"), newNativeModule: document.getElementById("newNativeModuleBtn"), openModuleAdvanced: document.getElementById("openModuleAdvancedBtn"), moduleCardsLayout: document.getElementById("moduleCardsLayoutBtn"), moduleCompactLayout: document.getElementById("moduleCompactLayoutBtn"), nativeModuleEditorBackdrop: document.getElementById("nativeModuleEditorBackdrop"), nativeModuleEditorTitle: document.getElementById("nativeModuleEditorTitle"), nativeModuleEditorContent: document.getElementById("nativeModuleEditorContent"), closeNativeModuleEditor: document.getElementById("closeNativeModuleEditorBtn"), cancelNativeModuleEditor: document.getElementById("cancelNativeModuleEditorBtn"), saveNativeModuleEditor: document.getElementById("saveNativeModuleEditorBtn"), moduleAdvancedBackdrop: document.getElementById("moduleAdvancedBackdrop"), closeModuleAdvanced: document.getElementById("closeModuleAdvancedBtn"),
     profilesViewBtn: document.getElementById("profilesViewBtn"), selfIntroViewBtn: document.getElementById("selfIntroViewBtn"), statsViewBtn: document.getElementById("statsViewBtn"), modulesViewBtn: document.getElementById("modulesViewBtn"), plansViewBtn: document.getElementById("plansViewBtn"), recordsViewBtn: document.getElementById("recordsViewBtn"),
     selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
-    statsContent: document.getElementById("statsContent"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
+    statsContent: document.getElementById("statsContent"), statsExport: document.getElementById("statsExportBtn"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
     grid: document.getElementById("profileGrid"), count: document.getElementById("countText"), search: document.getElementById("searchInput"), sort: document.getElementById("sortSelect"), cardLayout: document.getElementById("cardLayoutBtn"), compactLayout: document.getElementById("compactLayoutBtn"), blacklistBtn: document.getElementById("blacklistBtn"), profileCollapseActions: document.getElementById("profileCollapseActions"), collapseAllProfiles: document.getElementById("collapseAllProfilesBtn"), expandAllProfiles: document.getElementById("expandAllProfilesBtn"), profilesToolbarTitle: document.getElementById("profilesToolbarTitle"), profilesToolbarSubtitle: document.getElementById("profilesToolbarSubtitle"),
     planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"),
     planEditorBackdrop: document.getElementById("planEditorBackdrop"), planEditorDrawer: document.getElementById("planEditorDrawer"), planEditorTitle: document.getElementById("planEditorTitle"), planEditorContent: document.getElementById("planEditorContent"), closePlanEditor: document.getElementById("closePlanEditorBtn"),
@@ -8359,11 +8404,17 @@ function updateRunOrganizerExpandAllControl() {
         return;
     const selector = hoOrganizerMode === "kp" ? "[data-kp-group-toggle]" : "[data-pl-group-toggle]", toggles = [...els.hoOrganizerBoard.querySelectorAll(selector)];
     btn.hidden = !toggles.length;
-    if (!toggles.length)
+    if (!toggles.length) {
+        btn.classList.remove("is-all-expanded");
+        btn.setAttribute("aria-pressed", "false");
         return;
+    }
     const allExpanded = toggles.every(t => t.getAttribute("aria-expanded") === "true");
     btn.textContent = allExpanded ? "收起全部" : "展开全部";
+    btn.classList.toggle("is-all-expanded", allExpanded);
+    btn.setAttribute("aria-pressed", allExpanded ? "true" : "false");
     btn.setAttribute("aria-label", allExpanded ? "收起当前全部分组" : "展开当前全部分组");
+    btn.title = allExpanded ? "收起当前全部分组" : "展开当前全部分组";
 }
 function renderHoOrganizer() {
     var _a, _b, _c, _d;
@@ -10550,6 +10601,346 @@ function statsRepeatHTML(people) {
     if (!total)
         return `<div class="stats-empty">当前范围内还没有我作为 KP 的 PL 参团记录。</div>`;
     return `<div class="stats-repeat-grid">${buckets.map(b => { const pct = Math.round(b.n / total * 100); return `<div class="stats-repeat-card"><span>${b.label}</span><strong>${b.n} 人</strong><i style="--pct:${pct}%"></i><span>${pct}%</span></div>`; }).join("")}</div><div class="stats-footnote">按每位 PL 跟我跑过的桌数分组，方便查看一次参团和多次参团的比例。</div>`;
+}
+
+function statsRangeSummaryLabel() {
+    if (statsUiState.range === "year")
+        return `${new Date().getFullYear()} 年`;
+    if (statsUiState.range === "12m")
+        return "近 12 个月";
+    if (statsUiState.range === "custom") {
+        const s = normalizeDateValue(statsUiState.customStart), e = normalizeDateValue(statsUiState.customEnd);
+        if (s && e)
+            return `${s.replace(/-/g, ".")} ～ ${e.replace(/-/g, ".")}`;
+        if (s)
+            return `${s.replace(/-/g, ".")} 起`;
+        if (e)
+            return `截至 ${e.replace(/-/g, ".")}`;
+        return "自定义时间";
+    }
+    return "全部时间";
+}
+function statsExportRoleColors(theme) {
+    const cs = getComputedStyle(document.documentElement), get = (name, fallback) => cs.getPropertyValue(name).trim() || fallback;
+    return { total: theme.accent, kp: get("--t-role-kp", theme.warning), pl: get("--t-role-pl", "#6f99ab") };
+}
+function statsExportPersonLabel(row, index = 0) {
+    if (!privacyMaskEnabled)
+        return statsPersonLabel(row, index);
+    if (row.profileId) {
+        const p = profileById(row.profileId);
+        return p ? displayProfileName(p) : `PL ${String(index + 1).padStart(2, "0")}`;
+    }
+    return `参与者 ${String(index + 1).padStart(2, "0")}`;
+}
+function statsExportTopPeople(rows, metric, limit = 10) {
+    return rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.together - a.together || String(a.name).localeCompare(String(b.name), "zh-CN")).slice(0, limit);
+}
+function statsExportTopModules(rows, mode, limit = 10) {
+    const metric = mode === "kp" ? "kp" : "pl";
+    return rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.kp + b.pl - (a.kp + a.pl) || String(a.name).localeCompare(String(b.name), "zh-CN")).slice(0, limit);
+}
+function statsExportPeopleMeta(row, metric) {
+    return metric === "together"
+        ? `我当 KP ${row.ledByMe} 桌 · 对方当 KP ${row.ledMe} 桌 · 同为 PL ${row.coPl} 桌`
+        : `累计同桌 ${row.together} 桌 · 最近一次 ${statsFormatDate(row.lastDate)}`;
+}
+function statsExportModuleMeta(row, mode) {
+    return mode === "kp"
+        ? `带团 ${row.kp} 桌 · PL 人次 ${row.plAppearances} · 不同 PL ${row.uniquePl.size}`
+        : `参团 ${row.pl} 桌 · 不同 KP ${row.uniqueKp.size} · 最近 ${statsFormatDate(row.lastDate)}`;
+}
+function drawStatsExportParagraph(ctx, text, x, y, maxWidth, lineHeight = 20) {
+    const lines = canvasWrapLines(ctx, String(text || ""), maxWidth);
+    for (const line of lines.length ? lines : [""]) {
+        ctx.fillText(line, x, y);
+        y += lineHeight;
+    }
+    return y;
+}
+function statsExportMeasureParagraph(ctx, text, maxWidth, lineHeight = 20) {
+    const lines = canvasWrapLines(ctx, String(text || ""), maxWidth);
+    return (lines.length ? lines.length : 1) * lineHeight;
+}
+function drawStatsExportPanel(ctx, x, y, w, h, theme, title, subtitle, body) {
+    canvasFillRound(ctx, x, y, w, h, 18, theme.surface, theme.line);
+    canvasFillRound(ctx, x + 18, y + 18, 4, 24, 2, theme.accent, "");
+    ctx.fillStyle = theme.ink;
+    ctx.font = "800 22px system-ui, sans-serif";
+    ctx.fillText(canvasTextFit(ctx, title, w - 40), x + 30, y + 36);
+    ctx.fillStyle = theme.muted;
+    ctx.font = "500 12px system-ui, sans-serif";
+    drawStatsExportParagraph(ctx, subtitle, x + 30, y + 58, w - 60, 18);
+    body(y + 82);
+}
+function drawStatsExportMetricCard(ctx, x, y, w, h, theme, label, value, sub) {
+    canvasFillRound(ctx, x, y, w, h, 14, theme.surface2, theme.line);
+    ctx.fillStyle = theme.text2;
+    ctx.font = "700 13px system-ui, sans-serif";
+    ctx.fillText(canvasTextFit(ctx, label, w - 24), x + 14, y + 24);
+    ctx.fillStyle = theme.ink;
+    ctx.font = "800 34px system-ui, sans-serif";
+    ctx.fillText(canvasTextFit(ctx, value, w - 24), x + 14, y + 61);
+    ctx.fillStyle = theme.muted;
+    ctx.font = "500 12px system-ui, sans-serif";
+    drawStatsExportParagraph(ctx, sub, x + 14, y + 81, w - 28, 16);
+}
+function drawStatsExportDonut(ctx, cx, cy, r, pct, colors, theme) {
+    const start = -Math.PI / 2, pctRad = Math.max(0, Math.min(100, pct)) / 100 * Math.PI * 2;
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = colorMixForCanvas(theme.line, theme.surface, .65);
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.strokeStyle = colors.kp;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, start, start + pctRad);
+    ctx.stroke();
+    ctx.strokeStyle = colors.pl;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, start + pctRad, start + Math.PI * 2);
+    ctx.stroke();
+}
+function drawStatsExportRankingRows(ctx, x, y, w, rows, kind, metricOrMode, theme) {
+    if (!rows.length) {
+        ctx.fillStyle = theme.muted;
+        ctx.font = "600 13px system-ui, sans-serif";
+        ctx.fillText("当前范围内暂无可导出的统计结果。", x, y + 14);
+        return;
+    }
+    const rowH = 52;
+    rows.forEach((row, idx) => {
+        const yy = y + idx * rowH;
+        if (idx > 0) {
+            ctx.strokeStyle = theme.line;
+            ctx.beginPath();
+            ctx.moveTo(x, yy - 12.5);
+            ctx.lineTo(x + w, yy - 12.5);
+            ctx.stroke();
+        }
+        canvasFillRound(ctx, x, yy + 2, 28, 28, 14, theme.surface2, theme.line);
+        ctx.fillStyle = theme.text2;
+        ctx.font = "800 12px system-ui, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(String(idx + 1), x + 14, yy + 20);
+        ctx.textAlign = "left";
+        const label = kind === "person" ? statsExportPersonLabel(row, idx) : row.name;
+        ctx.fillStyle = theme.ink;
+        ctx.font = "800 16px system-ui, sans-serif";
+        ctx.fillText(canvasTextFit(ctx, label, w - 176), x + 40, yy + 16);
+        ctx.fillStyle = theme.muted;
+        ctx.font = "500 11px system-ui, sans-serif";
+        const meta = kind === "person" ? statsExportPeopleMeta(row, metricOrMode) : statsExportModuleMeta(row, metricOrMode);
+        drawStatsExportParagraph(ctx, meta, x + 40, yy + 33, w - 176, 14);
+        const val = kind === "person" ? row[metricOrMode] : row[metricOrMode === "kp" ? "kp" : "pl"];
+        ctx.fillStyle = theme.ink;
+        ctx.font = "800 22px system-ui, sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText(String(val), x + w - 6, yy + 20);
+        ctx.fillStyle = theme.muted;
+        ctx.font = "650 10px system-ui, sans-serif";
+        ctx.fillText("桌", x + w - 6, yy + 34);
+        ctx.textAlign = "left";
+    });
+}
+function drawStatsExportTrendPanel(ctx, x, y, w, h, trend, theme, colors) {
+    const trendViewLabel = statsUiState.trendView === "bar" ? "柱状图" : statsUiState.trendView === "table" ? "表格" : "折线图";
+    const roleLabel = statsUiState.trendRole === "kp" ? "仅看 KP" : statsUiState.trendRole === "pl" ? "仅看 PL" : "全部身份";
+    const granLabel = statsUiState.trendGranularity === "year" ? "按年" : "按月";
+    drawStatsExportPanel(ctx, x, y, w, h, theme, "跑团趋势", `${granLabel} · ${roleLabel} · 当前显示 ${trendViewLabel}`, bodyY => {
+        const contentX = x + 26, contentW = w - 52;
+        if (!trend.length) {
+            ctx.fillStyle = theme.muted;
+            ctx.font = "600 13px system-ui, sans-serif";
+            ctx.fillText("当前范围内没有带日期的跑团记录。", contentX, bodyY + 20);
+            return;
+        }
+        const series = statsTrendSeries(trend), legendY = bodyY + 6;
+        let lx = contentX;
+        series.forEach(s => {
+            const color = s.key === "kp" ? colors.kp : s.key === "pl" ? colors.pl : colors.total;
+            canvasFillRound(ctx, lx, legendY - 10, 12, 12, 6, color, "");
+            ctx.fillStyle = theme.text2;
+            ctx.font = "650 11px system-ui, sans-serif";
+            ctx.fillText(s.label, lx + 18, legendY);
+            lx += 18 + ctx.measureText(s.label).width + 18;
+        });
+        const chartX = contentX, chartY = bodyY + 28, chartW = contentW, chartH = h - (chartY - y) - 24;
+        if (statsUiState.trendView === "table") {
+            const tableRows = trend.slice(-12);
+            const colXs = [chartX, chartX + chartW * .33, chartX + chartW * .56, chartX + chartW * .76, chartX + chartW];
+            const rowH = 20;
+            ctx.fillStyle = theme.text2;
+            ctx.font = "750 11px system-ui, sans-serif";
+            ["时间", "总桌次", "KP", "PL"].forEach((head, i) => ctx.fillText(head, i === 0 ? colXs[0] + 4 : colXs[i] + 4, chartY + 16));
+            for (let i = 0; i <= tableRows.length; i++) {
+                const yy = chartY + 22 + i * rowH;
+                ctx.strokeStyle = theme.line;
+                ctx.beginPath(); ctx.moveTo(chartX, yy); ctx.lineTo(chartX + chartW, yy); ctx.stroke();
+            }
+            tableRows.forEach((row, i) => {
+                const yy = chartY + 38 + i * rowH;
+                ctx.fillStyle = theme.ink; ctx.font = "600 11px system-ui, sans-serif";
+                ctx.fillText(row.label, colXs[0] + 4, yy);
+                ctx.textAlign = "left";
+                [row.total, row.kp, row.pl].forEach((v, j) => ctx.fillText(String(v), colXs[j + 1] + 4, yy));
+            });
+            return;
+        }
+        const L = chartX + 30, R = chartX + chartW - 10, T = chartY + 8, B = chartY + chartH - 28, plotW = R - L, plotH = B - T;
+        const max = Math.max(1, ...trend.flatMap(r => series.map(s => r[s.key])));
+        for (let i = 0; i <= 4; i++) {
+            const yy = T + plotH * (i / 4), val = Math.round(max * (1 - i / 4));
+            ctx.strokeStyle = colorMixForCanvas(theme.line, theme.surface, .5);
+            ctx.beginPath(); ctx.moveTo(L, yy); ctx.lineTo(R, yy); ctx.stroke();
+            ctx.fillStyle = theme.faint; ctx.font = "550 10px system-ui, sans-serif"; ctx.textAlign = "right"; ctx.fillText(String(val), L - 6, yy + 3);
+        }
+        const xAt = i => trend.length === 1 ? L + plotW / 2 : L + i / Math.max(1, trend.length - 1) * plotW;
+        const yAt = v => T + plotH - v / max * plotH;
+        const step = Math.max(1, Math.ceil(trend.length / 8));
+        if (statsUiState.trendView === "bar") {
+            const gW = Math.max(14, Math.min(34, plotW / Math.max(1, trend.length)));
+            trend.forEach((row, idx) => {
+                const gx = xAt(idx);
+                const seriesWidth = Math.max(4, Math.floor((gW - 4) / series.length));
+                const totalWidth = series.length * seriesWidth + Math.max(0, series.length - 1) * 2;
+                let sx = gx - totalWidth / 2;
+                series.forEach(s => {
+                    const val = row[s.key];
+                    const bh = val ? Math.max(4, val / max * plotH) : 0;
+                    const color = s.key === "kp" ? colors.kp : s.key === "pl" ? colors.pl : colors.total;
+                    canvasFillRound(ctx, sx, B - bh, seriesWidth, bh, Math.min(6, seriesWidth / 2), color, "");
+                    sx += seriesWidth + 2;
+                });
+                if (idx % step === 0 || idx === trend.length - 1) {
+                    ctx.fillStyle = theme.faint; ctx.font = "550 10px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.fillText(row.label, gx, B + 15);
+                }
+            });
+        }
+        else {
+            series.forEach(s => {
+                const color = s.key === "kp" ? colors.kp : s.key === "pl" ? colors.pl : colors.total;
+                ctx.strokeStyle = color; ctx.lineWidth = s.key === "total" ? 4 : 3; ctx.lineJoin = "round"; ctx.lineCap = "round";
+                ctx.beginPath();
+                trend.forEach((row, idx) => {
+                    const xx = xAt(idx), yy = yAt(row[s.key]);
+                    if (!idx) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+                });
+                ctx.stroke();
+                trend.forEach((row, idx) => {
+                    const xx = xAt(idx), yy = yAt(row[s.key]);
+                    canvasFillRound(ctx, xx - 2.5, yy - 2.5, 5, 5, 2.5, color, "");
+                });
+            });
+            trend.forEach((row, idx) => {
+                if (idx % step === 0 || idx === trend.length - 1) {
+                    const xx = xAt(idx);
+                    ctx.fillStyle = theme.faint; ctx.font = "550 10px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.fillText(row.label, xx, B + 15);
+                }
+            });
+        }
+        ctx.textAlign = "left";
+    });
+}
+function buildStatsExportCanvas() {
+    const theme = hoExportTheme(), roleColors = statsExportRoleColors(theme), runs = statsPersonalRuns(), roles = runs.map(r => statsRunRoles(r)), kpCount = roles.filter(r => r.kp).length, plCount = roles.filter(r => r.pl).length, people = statsPersonAggregates(runs), mods = statsModuleAggregates(runs), plans = statsCurrentPlanSummary(), completeness = statsCompleteness(runs), trend = statsTrendData(runs), uniquePl = people.filter(r => r.ledByMe > 0).length, uniqueKp = people.filter(r => r.ledMe > 0).length, kpMods = statsModuleCount(mods, "kp"), plMods = statsModuleCount(mods, "pl"), roleTotal = kpCount + plCount, kpPct = roleTotal ? Math.round(kpCount / roleTotal * 100) : 50;
+    const peopleMetric = statsUiState.peopleMode === "kp" ? "ledByMe" : statsUiState.peopleMode === "myKp" ? "ledMe" : "together";
+    const peopleSubtitle = peopleMetric === "ledByMe" ? "当前查看：我作为 KP 时，哪些 PL 跟我的团最多。" : peopleMetric === "ledMe" ? "当前查看：我作为 PL 时，哪些 KP 带我的团最多。" : "当前查看：我和谁同桌最多，以及彼此作为 KP / PL 的次数。";
+    const moduleSubtitle = statsUiState.moduleMode === "kp" ? "当前查看：我带过哪些模组，以及各自带了多少桌。" : "当前查看：我作为 PL 跑过哪些模组，以及各自跑了多少桌。";
+    const peopleRows = statsExportTopPeople(people, peopleMetric, 10), moduleRows = statsExportTopModules(mods, statsUiState.moduleMode, 10);
+    const baseW = 1600, pad = 34, gap = 22, colGap = 20;
+    const overviewH = 302, rankBodyH = Math.max(168, (Math.max(peopleRows.length, moduleRows.length) || 1) * 52 + 22), rankPanelH = 104 + rankBodyH, trendPanelH = 376, bottomPanelH = 254;
+    const headerBottom = 180, totalH = headerBottom + overviewH + gap + rankPanelH + gap + trendPanelH + gap + bottomPanelH + 48;
+    const maxDim = 9000, scale = Math.min(2, maxDim / baseW, maxDim / totalH);
+    if (scale < .6)
+        throw new Error("当前统计内容过多，暂时无法稳定导出图片");
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.round(baseW * scale);
+    canvas.height = Math.round(totalH * scale);
+    const ctx = canvas.getContext("2d");
+    if (!ctx)
+        throw new Error("当前浏览器无法生成图片");
+    ctx.scale(scale, scale);
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, baseW, totalH);
+    const profile = selfProfileFrom();
+    drawUnifiedExportHeader(ctx, baseW, theme, { eyebrow: "TRPG · 本地跑团统计", title: `${displayProfileName(profile) || "我"} · 个人统计`, subtitle: `统计范围：${statsRangeSummaryLabel()} · 自动根据当前页面筛选与切换导出`, stats: [statsUiState.peopleMode === "kp" ? "人物：我带的 PL" : statsUiState.peopleMode === "myKp" ? "人物：我的 KP" : "人物：同桌最多", statsUiState.moduleMode === "kp" ? "模组：带团最多" : "模组：跑过最多", statsUiState.trendGranularity === "year" ? "趋势：按年" : "趋势：按月", privacyMaskEnabled ? "隐私模式：导出匿名人物名" : "隐私模式：关闭"] });
+    let y = headerBottom;
+    const leftW = 480, rightX = pad + leftW + colGap, rightW = baseW - pad * 2 - leftW - colGap;
+    canvasFillRound(ctx, pad, y, leftW, overviewH, 18, theme.surface, theme.line);
+    canvasFillRound(ctx, pad + 18, y + 18, 4, 24, 2, theme.accent, "");
+    ctx.fillStyle = theme.ink; ctx.font = "800 24px system-ui, sans-serif"; ctx.fillText("我的身份构成", pad + 30, y + 36);
+    ctx.fillStyle = theme.muted; ctx.font = "500 12px system-ui, sans-serif"; drawStatsExportParagraph(ctx, "按每桌记录中的 KP / PL 身份统计；同一桌同时满足两种身份时，两边都会计入。", pad + 30, y + 58, leftW - 60, 18);
+    drawStatsExportDonut(ctx, pad + 112, y + 167, 70, kpPct, roleColors, theme);
+    ctx.fillStyle = theme.ink; ctx.font = "800 40px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.fillText(String(runs.length), pad + 112, y + 176); ctx.font = "650 14px system-ui, sans-serif"; ctx.fillStyle = theme.muted; ctx.fillText("总桌次", pad + 112, y + 196); ctx.textAlign = "left";
+    const legendX = pad + 220;
+    [["作为 KP", `${kpCount} 桌 · ${roleTotal ? Math.round(kpCount / roleTotal * 100) : 0}%`, roleColors.kp], ["作为 PL", `${plCount} 桌 · ${roleTotal ? Math.round(plCount / roleTotal * 100) : 0}%`, roleColors.pl]].forEach((row, i) => {
+        const yy = y + 144 + i * 52;
+        canvasFillRound(ctx, legendX, yy - 12, 10, 10, 5, row[2], "");
+        ctx.fillStyle = theme.text2; ctx.font = "700 14px system-ui, sans-serif"; ctx.fillText(row[0], legendX + 18, yy - 2);
+        ctx.fillStyle = theme.ink; ctx.font = "800 20px system-ui, sans-serif"; ctx.fillText(row[1], legendX + 18, yy + 22);
+    });
+    const metrics = [
+        ["我带过的 PL", `${uniquePl} 人`, "我作为 KP 带过的不同 PL"],
+        ["带过我的 KP", `${uniqueKp} 人`, "我作为 PL 时的不同 KP"],
+        ["我带过的模组", `${kpMods} 个`, "至少作为 KP 带过 1 桌"],
+        ["我跑过的模组", `${plMods} 个`, "至少作为 PL 跑过 1 桌"],
+        ["当前计划", `${plans.total} 个`, `已排期 ${plans.scheduled} · 未排期 ${plans.unscheduled}`],
+        ["含 Log 记录", `${completeness[0].done}/${completeness[0].total}`, "已填写 Log 链接的已归档记录"]
+    ];
+    const metricGap = 16, metricCols = 3, metricRows = 2, metricW = Math.floor((rightW - metricGap * (metricCols - 1)) / metricCols), metricH = Math.floor((overviewH - 18 - 18 - metricGap) / metricRows);
+    metrics.forEach((item, idx) => {
+        const col = idx % metricCols, row = Math.floor(idx / metricCols), mx = rightX + col * (metricW + metricGap), my = y + row * (metricH + metricGap);
+        drawStatsExportMetricCard(ctx, mx, my, metricW, metricH, theme, item[0], item[1], item[2]);
+    });
+    y += overviewH + gap;
+    const colW = (baseW - pad * 2 - colGap) / 2;
+    drawStatsExportPanel(ctx, pad, y, colW, rankPanelH, theme, "我的跑团关系统计", peopleSubtitle, bodyY => drawStatsExportRankingRows(ctx, pad + 24, bodyY + 8, colW - 48, peopleRows, "person", peopleMetric, theme));
+    drawStatsExportPanel(ctx, pad + colW + colGap, y, colW, rankPanelH, theme, "我的模组统计", moduleSubtitle, bodyY => drawStatsExportRankingRows(ctx, pad + colW + colGap + 24, bodyY + 8, colW - 48, moduleRows, "module", statsUiState.moduleMode, theme));
+    y += rankPanelH + gap;
+    drawStatsExportTrendPanel(ctx, pad, y, baseW - pad * 2, trendPanelH, trend, theme, roleColors);
+    y += trendPanelH + gap;
+    drawStatsExportPanel(ctx, pad, y, colW, bottomPanelH, theme, "PL 参团次数分布", "看我作为 KP 时，不同 PL 分别跟过我多少桌。", bodyY => {
+        const counts = people.filter(r => r.ledByMe > 0).map(r => r.ledByMe), total = counts.length, buckets = [{ label: "1 桌", n: counts.filter(n => n === 1).length }, { label: "2–4 桌", n: counts.filter(n => n >= 2 && n <= 4).length }, { label: "5–9 桌", n: counts.filter(n => n >= 5 && n <= 9).length }, { label: "10+ 桌", n: counts.filter(n => n >= 10).length }];
+        if (!total) {
+            ctx.fillStyle = theme.muted; ctx.font = "600 13px system-ui, sans-serif"; ctx.fillText("当前范围内还没有我作为 KP 的 PL 参团记录。", pad + 24, bodyY + 20); return;
+        }
+        const cardGap = 14, cardW = (colW - 48 - cardGap) / 2, cardH = 70;
+        buckets.forEach((b, idx) => {
+            const col = idx % 2, row = Math.floor(idx / 2), bx = pad + 24 + col * (cardW + cardGap), by = bodyY + 8 + row * (cardH + 14), pct = Math.round(b.n / total * 100);
+            canvasFillRound(ctx, bx, by, cardW, cardH, 14, theme.surface2, theme.line);
+            ctx.fillStyle = theme.text2; ctx.font = "700 13px system-ui, sans-serif"; ctx.fillText(b.label, bx + 14, by + 22);
+            ctx.fillStyle = theme.ink; ctx.font = "800 28px system-ui, sans-serif"; ctx.fillText(`${b.n} 人`, bx + 14, by + 50);
+            ctx.fillStyle = theme.muted; ctx.font = "700 12px system-ui, sans-serif"; ctx.textAlign = "right"; ctx.fillText(`${pct}%`, bx + cardW - 14, by + 50); ctx.textAlign = "left";
+        });
+    });
+    drawStatsExportPanel(ctx, pad + colW + colGap, y, colW, bottomPanelH, theme, "历史记录填写情况", "查看 Log、实际时长、HO 和我的 PC 名分别记录了多少。", bodyY => {
+        completeness.forEach((row, idx) => {
+            const yy = bodyY + 8 + idx * 38, pct = row.total ? Math.round(row.done / row.total * 100) : 0, lx = pad + colW + colGap + 24, trackX = lx + 96, trackW = colW - 48 - 96 - 56;
+            ctx.fillStyle = theme.ink; ctx.font = "750 14px system-ui, sans-serif"; ctx.fillText(row.label, lx, yy + 13);
+            ctx.fillStyle = theme.faint; ctx.font = "500 10px system-ui, sans-serif"; ctx.fillText(row.sub, lx, yy + 28);
+            canvasFillRound(ctx, trackX, yy + 5, trackW, 10, 5, theme.surface2, theme.line);
+            canvasFillRound(ctx, trackX, yy + 5, Math.max(2, trackW * pct / 100), 10, 5, theme.accent, "");
+            ctx.fillStyle = theme.ink; ctx.font = "800 14px system-ui, sans-serif"; ctx.textAlign = "right"; ctx.fillText(`${row.done}/${row.total}`, trackX + trackW + 46, yy + 14); ctx.textAlign = "left";
+        });
+    });
+    drawUnifiedExportFooter(ctx, baseW, totalH - 32, theme);
+    return canvas;
+}
+async function exportStatsImage() {
+    try {
+        const canvas = buildStatsExportCanvas();
+        const blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error("PNG 生成失败")), "image/png", 1));
+        const profile = selfProfileFrom(), rawName = String(displayProfileName(profile) || "我").replace(/[\\/:*?"<>|]/g, "_").trim() || "我";
+        downloadBlobFile(blob, `${rawName}_个人统计.png`);
+        showToast("个人统计图片已导出");
+        return true;
+    }
+    catch (err) {
+        console.error(err);
+        appNotice(`导出个人统计图片失败：${err.message || err}`);
+        return false;
+    }
 }
 function renderStats() {
     var _a, _b, _c;
@@ -17080,6 +17471,7 @@ els.recordsBoard.addEventListener("click", e => {
     addSelfIntroModuleIntent(input.dataset.introModuleInput);
 } });
 (_o = els.selfIntroExport) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => { void exportSelfIntroImage(); });
+(_p = els.statsExport) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => { void exportStatsImage(); });
 (_p = els.selfIntroSave) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => { if (shareModeBlock("个人偏好编辑"))
     return; if (commitSelfIntroDraft()) {
     showToast("个人偏好已保存");
