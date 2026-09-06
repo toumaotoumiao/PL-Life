@@ -3372,6 +3372,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.12 · 全站文案自然化审校：个人统计改用更直观的第一人称表达，并统一个人偏好相关命名。 */
     /* v8.1.6.11 · 个人统计隐私范围修正：仅遮罩人物姓名等身份信息，统计数字、图表、模组名和控件保持可见。 */
     /* v8.1.6.10 · 个人统计界面精简：移除冗余“统计口径”提示条，保留时间筛选与必要的局部说明；延续统计模块隐私雾面保护。 */
     /* v8.1.6.9 · 隐私遮罩补全：个人统计的总览、人物、模组、趋势与资料记录卡统一纳入雾面保护，并同步隐私切换时的统计重绘。 */
@@ -3894,7 +3895,7 @@
         <div class="view-toolbar self-intro-toolbar">
           <div class="view-toolbar-title">
             <strong>个人偏好</strong>
-            <span>整理常用信息、PL / KP 偏好、想跑团 / 可带团与协作边界。<small class="self-intro-credit">（参考了这些大人：@云染、@冒冒和不知名作者的偏好表格。欢迎补充。）</small></span>
+            <span>整理常用信息、PL / KP 偏好、想跑模组、可带模组与协作边界。<small class="self-intro-credit">（参考来源：@云染、@冒冒及匿名作者的偏好表格；如有遗漏，欢迎补充来源信息。）</small></span>
           </div>
           <div class="view-toolbar-actions">
             <button id="selfIntroExportBtn" class="btn" type="button">导出图片</button>
@@ -3909,7 +3910,7 @@
         <div class="view-toolbar stats-toolbar">
           <div class="view-toolbar-title">
             <strong>个人统计</strong>
-            <span>基于与“我”关联的已归档跑团记录，整理人与模组关系、活跃趋势和常用资料记录情况。</span>
+            <span>汇总我已经归档的跑团记录，查看和谁跑得最多、跑过和带过哪些模组、跑团趋势和历史记录填写情况。</span>
           </div>
           <div class="view-toolbar-actions stats-toolbar-actions">
             <label class="stats-filter-field"><span>统计范围</span><select id="statsRangeSelect" class="sort-select" aria-label="统计时间范围">
@@ -4071,7 +4072,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.11 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.12 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4083,7 +4084,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.11　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.12　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4373,7 +4374,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.11</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.12</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4417,10 +4418,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.11 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.11</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.12 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.12</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.12</strong><span>重新审校个人统计与个人偏好的界面文案：将“参团人员统计”等偏生硬的表达改为“我的跑团关系统计”等更自然、直接的说法；统一“我带的 PL / 我的 KP / 我的模组统计 / PL 参团次数分布 / 历史记录填写情况”等名称，并同步修正个人偏好导出、保存和错误提示中的旧称。</span>
 <strong>v8.1.6.11</strong><span>修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span>
 <strong>v8.1.6.10</strong><span>精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span>
 <strong>v8.1.6.9</strong><span>补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span>
@@ -4520,7 +4522,7 @@
 
   <div id="globalSearchBackdrop" class="global-search-backdrop" hidden>
     <section class="global-search-modal" role="dialog" aria-modal="true" aria-labelledby="globalSearchTitle">
-      <header><div><h3 id="globalSearchTitle">全局搜索</h3><p>搜索 PL、跑团偏好、模组、开团计划和跑团记录。</p></div><button id="closeGlobalSearchBtn" class="close" type="button" aria-label="关闭">×</button></header>
+      <header><div><h3 id="globalSearchTitle">全局搜索</h3><p>搜索 PL、个人偏好、模组、开团计划和跑团记录。</p></div><button id="closeGlobalSearchBtn" class="close" type="button" aria-label="关闭">×</button></header>
       <label class="global-search-box"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="输入名称、PC、KP、桌名、日期……（支持拼音首字母）" autocomplete="off"></label>
       <div id="globalSearchResults" class="global-search-results" role="listbox"></div>
       <footer><span>Ctrl + K 打开 · ↑↓ 选择 · Enter 跳转 · Esc 关闭</span></footer>
@@ -4574,7 +4576,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.6.11 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.12 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4593,7 +4595,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.11";
+const APP_UI_VERSION = "8.1.6.12";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5724,7 +5726,7 @@ function assertCanonicalIntegrity(raw){
     const intro=normalizeSelfIntro(selfProfile?.selfIntro);
     for(const ref of [...(intro.pl.wantModules||[]),...(intro.kp.canHostModules||[])]){
       const id=String(ref?.moduleId||"").trim();
-      if(!id||!moduleIds.has(id))throw new Error(`跑团偏好中的模组意向“${ref?.name||"未命名"}”未关联有效模组档案`);
+      if(!id||!moduleIds.has(id))throw new Error(`个人偏好中的模组意向“${ref?.name||"未命名"}”未关联有效模组档案`);
     }
   }
 
@@ -7151,7 +7153,7 @@ function cardHTML(p){
     if(r.endDate)bodyParts.push(`<div>结束日期：${escapeHTML(r.endDate)}</div>`);
     if(r.legacyDuration&&!r.startDate&&!r.endDate)bodyParts.push(`<div>旧版时间记录：${escapeHTML(r.legacyDuration)}</div>`);
     if(archivedSessionText(r).length)bodyParts.push(`<div>归档安排：${archivedSessionText(r).map(escapeHTML).join("；")}</div>`);
-    if(r.kpProfileId||r.kp)bodyParts.push(`<div>KP：${kpDisplayHTML(r,"privacy-chip-name")}${self?"（我带的团）":""}</div>`);
+    if(r.kpProfileId||r.kp)bodyParts.push(`<div>KP：${kpDisplayHTML(r,"privacy-chip-name")}${self?"（本人担任 KP）":""}</div>`);
     if(linkedAsPl){
       const pcHo=participantPcHoSummary(r,p.id);
       if(pcHo)bodyParts.push(`<div>${escapeHTML(pcHo)}</div>`);
@@ -7965,7 +7967,7 @@ function introModulePrefsSections(side){const base=`${side}.modulePrefs`,mp=self
   <div class="self-intro-section">${introMultiSelectHead("地域偏好",`${base}.regions`,INTRO_OPTIONS.regions)}${introChipGroup(`${base}.regions`,INTRO_OPTIONS.regions)}<input class="intro-field" data-intro-field="${base}.regionOther" placeholder="其他地域" value="${escapeHTML(mp.regionOther)}"></div>
   <div class="self-intro-section">${introMultiSelectHead("结构偏好",`${base}.structures`,INTRO_OPTIONS.structures)}${introChipGroup(`${base}.structures`,INTRO_OPTIONS.structures)}<input class="intro-field" data-intro-field="${base}.structureOther" placeholder="其他结构" value="${escapeHTML(mp.structureOther)}"></div>
   <div class="self-intro-section">${introMultiSelectHead("要素偏好",`${base}.elements`,INTRO_OPTIONS.elements)}${introChipGroup(`${base}.elements`,INTRO_OPTIONS.elements)}<input class="intro-field" data-intro-field="${base}.elementOther" placeholder="其他偏好要素" value="${escapeHTML(mp.elementOther)}"></div>
-  <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="${base}.notes" placeholder="补充这一侧的模组口味，例如不吃的题材、特别想体验或带团的方向。">${escapeHTML(mp.notes)}</textarea></div>`;}
+  <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="${base}.notes" placeholder="补充该侧的模组偏好，例如回避题材、重点偏好或带团方向。">${escapeHTML(mp.notes)}</textarea></div>`;}
 function selfIntroDatalist(){const names=[...new Set([...modules,...selfIntroPendingModules].map(m=>m.name).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"zh-CN"));return `<datalist id="selfIntroModuleOptions">${names.map(n=>`<option value="${escapeHTML(n)}"></option>`).join("")}</datalist>`;}
 function renderSelfIntroView({reset=false}={}){
   if(!els.selfIntroGrid)return;const persisted=normalizeSelfIntro(selfProfileFrom()?.selfIntro);if(!reset&&selfIntroDraft&&!selfIntroDirty()&&JSON.stringify(persisted)!==JSON.stringify(selfIntroBaseline))reset=true;ensureSelfIntroDraft(reset);const d=selfIntroDraft;if(!d)return;
@@ -7980,26 +7982,26 @@ function renderSelfIntroView({reset=false}={}){
     </div></details>
     <div class="self-intro-dual">
       <section class="self-intro-side pl-side" aria-label="PL 偏好">
-        <header class="self-intro-side-head"><div><span class="self-intro-side-kicker">PL · 玩家侧</span><strong>PL 偏好</strong><small>自己作为玩家时的模组口味、RP、行动、同桌偏好与想跑团。</small></div></header>
+        <header class="self-intro-side-head"><div><span class="self-intro-side-kicker">PL · 玩家侧</span><strong>PL 偏好</strong><small>作为 PL 时的模组偏好、RP 风格、行动方式、同桌协作偏好及想跑模组。</small></div></header>
         <div class="self-intro-side-body">
           ${introModulePrefsSections("pl")}
           <div class="self-intro-section">${introMultiSelectHead("跑团侧重","pl.focus",INTRO_OPTIONS.plFocus)}${introChipGroup("pl.focus",INTRO_OPTIONS.plFocus)}<div class="self-intro-section-head"><strong>OC 与 PC</strong><span>单选</span></div>${introRadioGroup("pl.ocPcRelation",[["same","高度重叠"],["partial","部分重叠"],["separate","尽量分开"]])}</div>
           <div class="self-intro-section intro-two-col">${introScale("pl.rpIntensity","RP 强度")}${introScale("pl.npcAttitude","对 NPC 的态度")}${introScale("pl.actionStyle","行动习惯")}${introScale("pl.originalFlavor","原旨风味")}${introScale("pl.socialStyle","桌面社交")}${introScale("pl.decisionStyle","决策参与")}${introScale("pl.cardLossAttitude","撕卡态度")}${introScale("pl.kpChatStyle","对 KP 模外交流")}${introScale("pl.kpMercyStyle","对 KP 放水 / 严格度")}</div>
           <div class="self-intro-section"><div class="self-intro-section-head"><strong>RP 风格</strong><span>自由描述</span></div><textarea class="intro-textarea" data-intro-field="pl.rpStyle" placeholder="例如：偏生活流、重人物关系、短句快速 RP 等。">${escapeHTML(d.pl.rpStyle)}</textarea></div>
-          <div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>希望 KP / 同桌会做的事</span><textarea class="intro-textarea" data-intro-field="pl.wishes">${escapeHTML(d.pl.wishes)}</textarea></label><label class="intro-field-wrap"><span>希望 KP / 同桌避免的事</span><textarea class="intro-textarea" data-intro-field="pl.avoids">${escapeHTML(d.pl.avoids)}</textarea></label></div>
+          <div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>期望 KP / 同桌的协作方式</span><textarea class="intro-textarea" data-intro-field="pl.wishes">${escapeHTML(d.pl.wishes)}</textarea></label><label class="intro-field-wrap"><span>需避免的 KP / 同桌协作行为</span><textarea class="intro-textarea" data-intro-field="pl.avoids">${escapeHTML(d.pl.avoids)}</textarea></label></div>
           <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="pl.notes" placeholder="PL 侧其他补充。">${escapeHTML(d.pl.notes)}</textarea></div>
-          ${moduleIntentSection("want","想跑团","从模组档案选择或直接输入新模组")}
+          ${moduleIntentSection("want","想跑模组","从模组档案选择或直接输入新模组")}
         </div>
       </section>
       <section class="self-intro-side kp-side" aria-label="KP 偏好">
-        <header class="self-intro-side-head"><div><span class="self-intro-side-kicker">KP · 带团侧</span><strong>KP 偏好</strong><small>自己带团时的模组口味、处理尺度、规则原则、协作边界与可带团。</small></div></header>
+        <header class="self-intro-side-head"><div><span class="self-intro-side-kicker">KP · 带团侧</span><strong>KP 偏好</strong><small>作为 KP 时的模组偏好、处理尺度、规则原则、协作边界及可带团模组。</small></div></header>
         <div class="self-intro-side-body">
           ${introModulePrefsSections("kp")}
           <div class="self-intro-section intro-two-col">${introScale("kp.moduleAdaptation","模组处理尺度")}${introScale("kp.npcHandling","NPC 处理尺度")}${introScale("kp.plFreedom","PL 行动自由度")}${introScale("kp.originalFlavor","原旨倾向")}${introScale("kp.ruleStrictness","规则执行尺度")}</div>
-          <div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>希望 PL 会做的事</span><textarea class="intro-textarea" data-intro-field="kp.wishes">${escapeHTML(d.kp.wishes)}</textarea></label><label class="intro-field-wrap"><span>希望 PL 避免的事</span><textarea class="intro-textarea" data-intro-field="kp.avoids">${escapeHTML(d.kp.avoids)}</textarea></label></div>
-          <div class="self-intro-section"><details class="intro-subdetails"><summary>协作边界与须知</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><strong>事项接受度</strong><span>未设置不会被视为默认立场</span></div><div class="intro-boundary-list">${boundaryRows}</div></div><div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>同类问题累计次数</span><select class="intro-select" data-intro-field="kp.issueThreshold"><option value="">未设置</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${String(d.kp.issueThreshold)===String(n)?"selected":""}>${n} 次</option>`).join("")}</select></label><label class="intro-field-wrap"><span>达到次数后的处理</span><select class="intro-select" data-intro-field="kp.issueAction"><option value="">未设置</option>${["提醒警告","协商后继续","停止本次团","不再约团"].map(v=>`<option value="${escapeHTML(v)}" ${d.kp.issueAction===v?"selected":""}>${escapeHTML(v)}</option>`).join("")}</select></label><label class="intro-field-wrap"><span>停止合作后 Log 沿用</span><select class="intro-select" data-intro-field="kp.logReuse">${["","不可以","最好不要","无所谓","可以"].map(v=>`<option value="${escapeHTML(v)}" ${d.kp.logReuse===v?"selected":""}>${escapeHTML(v||"未设置")}</option>`).join("")}</select></label><label class="intro-field-wrap"><span>之后是否还可再约团</span><select class="intro-select" data-intro-field="kp.futureContact">${["","不可以","最好不要","视情况","可以"].map(v=>`<option value="${escapeHTML(v)}" ${d.kp.futureContact===v?"selected":""}>${escapeHTML(v||"未设置")}</option>`).join("")}</select></label></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.boundaryNotes" placeholder="其他边界、特殊情况或需要提前沟通的内容。">${escapeHTML(d.kp.boundaryNotes)}</textarea></div></div></details></div>
+          <div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>期望 PL 的协作方式</span><textarea class="intro-textarea" data-intro-field="kp.wishes">${escapeHTML(d.kp.wishes)}</textarea></label><label class="intro-field-wrap"><span>需避免的 PL 协作行为</span><textarea class="intro-textarea" data-intro-field="kp.avoids">${escapeHTML(d.kp.avoids)}</textarea></label></div>
+          <div class="self-intro-section"><details class="intro-subdetails"><summary>协作边界与须知</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><strong>事项接受度</strong><span>未设置不会被视为默认立场</span></div><div class="intro-boundary-list">${boundaryRows}</div></div><div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>同类问题累计次数</span><select class="intro-select" data-intro-field="kp.issueThreshold"><option value="">未设置</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${String(d.kp.issueThreshold)===String(n)?"selected":""}>${n} 次</option>`).join("")}</select></label><label class="intro-field-wrap"><span>达到次数后的处理</span><select class="intro-select" data-intro-field="kp.issueAction"><option value="">未设置</option>${["提醒警告","协商后继续","停止本次团","不再约团"].map(v=>`<option value="${escapeHTML(v)}" ${d.kp.issueAction===v?"selected":""}>${escapeHTML(v)}</option>`).join("")}</select></label><label class="intro-field-wrap"><span>合作终止后的 Log 使用</span><select class="intro-select" data-intro-field="kp.logReuse">${["","不可以","最好不要","无所谓","可以"].map(v=>`<option value="${escapeHTML(v)}" ${d.kp.logReuse===v?"selected":""}>${escapeHTML(v||"未设置")}</option>`).join("")}</select></label><label class="intro-field-wrap"><span>后续是否继续约团</span><select class="intro-select" data-intro-field="kp.futureContact">${["","不可以","最好不要","视情况","可以"].map(v=>`<option value="${escapeHTML(v)}" ${d.kp.futureContact===v?"selected":""}>${escapeHTML(v||"未设置")}</option>`).join("")}</select></label></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.boundaryNotes" placeholder="其他边界、特殊情况或需要提前沟通的内容。">${escapeHTML(d.kp.boundaryNotes)}</textarea></div></div></details></div>
           <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.notes" placeholder="KP 侧其他补充，例如改模原则、常用规则、开团习惯等。">${escapeHTML(d.kp.notes)}</textarea></div>
-          ${moduleIntentSection("host","可带团","从模组档案选择或直接输入新模组")}
+          ${moduleIntentSection("host","可带模组","从模组档案选择或直接输入新模组")}
         </div>
       </section>
     </div>`;
@@ -8034,9 +8036,9 @@ function selfIntroExportSections(d,side){
       selfIntroExportScale("pl.kpMercyStyle","KP 放水 / 严格度",x.kpMercyStyle)
     ]});
     if(String(x.rpStyle||"").trim())sections.push({title:"RP 风格",lines:[String(x.rpStyle).trim()]});
-    if(String(x.wishes||"").trim()||String(x.avoids||"").trim())sections.push({title:"同桌协作",lines:[...(String(x.wishes||"").trim()?[`希望：${String(x.wishes).trim()}`]:[]),...(String(x.avoids||"").trim()?[`避免：${String(x.avoids).trim()}`]:[])]});
+    if(String(x.wishes||"").trim()||String(x.avoids||"").trim())sections.push({title:"同桌协作",lines:[...(String(x.wishes||"").trim()?[`期望协作：${String(x.wishes).trim()}`]:[]),...(String(x.avoids||"").trim()?[`需避免：${String(x.avoids).trim()}`]:[])]});
     if(String(x.notes||"").trim())sections.push({title:"其他补充",lines:[String(x.notes).trim()]});
-    sections.push({title:"想跑团",lines:[(x.wantModules||[]).map(r=>r.name).filter(Boolean).join("、")||"暂未添加"]});
+    sections.push({title:"想跑模组",lines:[(x.wantModules||[]).map(r=>r.name).filter(Boolean).join("、")||"暂未添加"]});
   }else{
     sections.push({title:"带团方式",lines:[],scales:[
       selfIntroExportScale("kp.moduleAdaptation","模组处理尺度",x.moduleAdaptation),
@@ -8045,11 +8047,11 @@ function selfIntroExportSections(d,side){
       selfIntroExportScale("kp.originalFlavor","原旨倾向",x.originalFlavor),
       selfIntroExportScale("kp.ruleStrictness","规则执行尺度",x.ruleStrictness)
     ]});
-    if(String(x.wishes||"").trim()||String(x.avoids||"").trim())sections.push({title:"PL 协作",lines:[...(String(x.wishes||"").trim()?[`希望：${String(x.wishes).trim()}`]:[]),...(String(x.avoids||"").trim()?[`避免：${String(x.avoids).trim()}`]:[])]});
+    if(String(x.wishes||"").trim()||String(x.avoids||"").trim())sections.push({title:"PL 协作",lines:[...(String(x.wishes||"").trim()?[`期望协作：${String(x.wishes).trim()}`]:[]),...(String(x.avoids||"").trim()?[`需避免：${String(x.avoids).trim()}`]:[])]});
     const boundary=Object.entries(x.boundaries||{}).filter(([,v])=>v).map(([k,v])=>`${k}：${v}`);
-    if(boundary.length||x.issueThreshold||x.issueAction||x.logReuse||x.futureContact||String(x.boundaryNotes||"").trim())sections.push({title:"协作边界与须知",lines:[...boundary,...(x.issueThreshold?[`同类问题累计：${x.issueThreshold} 次`]:[]),...(x.issueAction?[`达到次数后：${x.issueAction}`]:[]),...(x.logReuse?[`停止合作后 Log：${x.logReuse}`]:[]),...(x.futureContact?[`之后再约团：${x.futureContact}`]:[]),...(String(x.boundaryNotes||"").trim()?[`补充：${String(x.boundaryNotes).trim()}`]:[])]});
+    if(boundary.length||x.issueThreshold||x.issueAction||x.logReuse||x.futureContact||String(x.boundaryNotes||"").trim())sections.push({title:"协作边界与须知",lines:[...boundary,...(x.issueThreshold?[`同类问题累计：${x.issueThreshold} 次`]:[]),...(x.issueAction?[`达到次数后：${x.issueAction}`]:[]),...(x.logReuse?[`停止合作后 Log：${x.logReuse}`]:[]),...(x.futureContact?[`后续约团：${x.futureContact}`]:[]),...(String(x.boundaryNotes||"").trim()?[`补充：${String(x.boundaryNotes).trim()}`]:[])]});
     if(String(x.notes||"").trim())sections.push({title:"其他补充",lines:[String(x.notes).trim()]});
-    sections.push({title:"可带团",lines:[(x.canHostModules||[]).map(r=>r.name).filter(Boolean).join("、")||"暂未添加"]});
+    sections.push({title:"可带模组",lines:[(x.canHostModules||[]).map(r=>r.name).filter(Boolean).join("、")||"暂未添加"]});
   }
   return sections;
 }
@@ -8092,9 +8094,9 @@ function drawIntroExportSection(ctx,x,y,w,section,theme,color){
 function buildSelfIntroExportCanvas(){
   ensureSelfIntroDraft();const d=normalizeSelfIntro(selfIntroDraft||selfProfileFrom()?.selfIntro),theme=hoExportTheme(),profile=selfProfileFrom();const baseW=1600,pad=44,gap=24,colW=(baseW-pad*2-gap)/2;const measure=document.createElement("canvas").getContext("2d");if(!measure)throw new Error("当前浏览器无法生成图片");
   const basic={title:"基本信息",lines:selfIntroExportBasicLines(d)},plSections=selfIntroExportSections(d,"pl"),kpSections=selfIntroExportSections(d,"kp"),basicH=measureIntroExportSection(measure,basic,baseW-pad*2),sectionGap=12;
-  const colHeight=sections=>76+sections.reduce((n,sec)=>n+measureIntroExportSection(measure,sec,colW-24)+sectionGap,0),leftH=colHeight(plSections),rightH=colHeight(kpSections),columnH=Math.max(leftH,rightH),headBottom=180,baseH=headBottom+basicH+24+columnH+52,maxDim=9000,scale=Math.min(2,maxDim/baseW,maxDim/baseH);if(scale<.6)throw new Error("跑团偏好内容较多，建议精简超长补充文字后再导出");
+  const colHeight=sections=>76+sections.reduce((n,sec)=>n+measureIntroExportSection(measure,sec,colW-24)+sectionGap,0),leftH=colHeight(plSections),rightH=colHeight(kpSections),columnH=Math.max(leftH,rightH),headBottom=180,baseH=headBottom+basicH+24+columnH+52,maxDim=9000,scale=Math.min(2,maxDim/baseW,maxDim/baseH);if(scale<.6)throw new Error("个人偏好内容较多，建议精简超长补充文字后再导出");
   const canvas=document.createElement("canvas");canvas.width=Math.round(baseW*scale);canvas.height=Math.round(baseH*scale);const ctx=canvas.getContext("2d");if(!ctx)throw new Error("当前浏览器无法生成图片");ctx.scale(scale,scale);ctx.fillStyle=theme.bg;ctx.fillRect(0,0,baseW,baseH);
-  drawUnifiedExportHeader(ctx,baseW,theme,{eyebrow:"PL / KP · 跑团偏好",title:`${displayProfileName(profile)||"我"} · 跑团偏好`,subtitle:"PL / KP 偏好、常用信息、协作边界与想跑 / 可带模组。",stats:["玩家侧与带团侧独立记录","当前页面完整导出"]});
+  drawUnifiedExportHeader(ctx,baseW,theme,{eyebrow:"PL / KP · 个人偏好",title:`${displayProfileName(profile)||"我"} · 个人偏好`,subtitle:"PL / KP 偏好、常用信息、协作边界、想跑模组与可带模组。",stats:["玩家侧与带团侧独立记录","当前页面完整导出"]});
   let y=headBottom;drawIntroExportSection(ctx,pad,y,baseW-pad*2,basic,theme,theme.accent);y+=basicH+24;
   const drawColumn=(x,title,sideLabel,sections,color,soft)=>{const h=columnH;canvasFillRound(ctx,x,y,colW,h,16,theme.surface,theme.line);canvasFillRound(ctx,x+14,y+15,4,38,2,color,"");ctx.fillStyle=theme.muted;ctx.font="750 10.5px system-ui, sans-serif";ctx.fillText(sideLabel,x+28,y+27);ctx.fillStyle=theme.ink;ctx.font="800 22px system-ui, sans-serif";ctx.fillText(title,x+28,y+50);ctx.strokeStyle=theme.line;ctx.beginPath();ctx.moveTo(x+14,y+64.5);ctx.lineTo(x+colW-14,y+64.5);ctx.stroke();let cy=y+76;const body=sections.slice(0,-1),last=sections.at(-1);for(const sec of body){const sh=drawIntroExportSection(ctx,x+12,cy,colW-24,sec,theme,color);cy+=sh+sectionGap;}if(last){const lastH=measureIntroExportSection(ctx,last,colW-24),lastY=y+h-sectionGap-lastH;drawIntroExportSection(ctx,x+12,Math.max(cy,lastY),colW-24,last,theme,color);}return h;};
   drawColumn(pad,"PL 偏好","PL · 玩家侧",plSections,theme.accent,theme.accentSoft);drawColumn(pad+colW+gap,"KP 偏好","KP · 带团侧",kpSections,theme.success,colorMixForCanvas(theme.success,theme.surface,.12));drawUnifiedExportFooter(ctx,baseW,baseH-32,theme);return canvas;
@@ -8104,11 +8106,11 @@ async function exportSelfIntroImage(){
     const canvas=buildSelfIntroExportCanvas();
     const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG 生成失败")),"image/png",1));
     const profile=selfProfileFrom(),rawName=String(displayProfileName(profile)||"我").replace(/[\/:*?"<>|]/g,"_").trim()||"我";
-    downloadBlobFile(blob,`${rawName}_跑团偏好.png`);
-    showToast("跑团偏好图片已导出");
+    downloadBlobFile(blob,`${rawName}_个人偏好.png`);
+    showToast("个人偏好图片已导出");
     return true;
   }catch(err){
-    console.error(err);appNotice(`导出跑团偏好图片失败：${err.message||err}`);return false;
+    console.error(err);appNotice(`导出个人偏好图片失败：${err.message||err}`);return false;
   }
 }
 function queueSelfIntroSave(delay=700){clearTimeout(selfIntroSaveTimer);selfIntroLastSaveError="";updateSelfIntroSaveState();selfIntroSaveTimer=setTimeout(()=>commitSelfIntroDraft(),delay);}
@@ -8232,20 +8234,20 @@ function statsRankButton(row,label,kind,index=0){
 }
 function statsPeopleRowsHTML(rows,metric,view){
   const sorted=rows.filter(r=>r[metric]>0).sort((a,b)=>b[metric]-a[metric]||b.together-a.together||String(a.name).localeCompare(String(b.name),"zh-CN")).slice(0,20);
-  if(!sorted.length)return `<div class="stats-empty">当前范围内还没有足够的人物关系数据。<br>归档跑团记录并关联“我”、KP 与 PL 后，这里会自动生成排名。</div>`;
-  const metricLabel=metric==="ledByMe"?"我带 TA":metric==="ledMe"?"TA 带我":"同桌";
+  if(!sorted.length)return `<div class="stats-empty">当前范围内还没有可统计的人物跑团记录。<br>归档跑团记录并关联好“我”、KP 和 PL 后，这里会自动生成统计。</div>`;
+  const metricLabel=metric==="ledByMe"?"我带的桌":metric==="ledMe"?"带我的桌":"同桌次数";
   if(view==="bar"){
     const max=Math.max(1,...sorted.map(r=>r[metric]));return `<div class="stats-bars">${sorted.map((r,i)=>{const name=r.profileId?`<button class="stats-bar-label" type="button" data-stats-profile="${escapeHTML(r.profileId)}">${statsPersonNameHTML(r,i)}</button>`:`<span class="stats-bar-label">${statsPersonNameHTML(r,i)}</span>`;return `<div class="stats-bar-row">${name}<div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.max(2,r[metric]/max*100).toFixed(2)}%"></div></div><div class="stats-bar-value">${r[metric]} 桌</div></div>`;}).join("")}</div>`;
   }
-  return `<div class="stats-ranking">${sorted.map((r,i)=>{const label=statsPersonLabel(r,i);const meta=metric==="together"?`我带 ${r.ledByMe} · TA 带我 ${r.ledMe} · 同为 PL ${r.coPl}`:metric==="ledByMe"?`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`:`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`;return `<div class="stats-ranking-row"><span class="stats-rank-no">${i+1}</span><div class="stats-rank-main">${statsRankButton(r,label,"person",i)}<span class="stats-rank-meta">${escapeHTML(meta)}</span></div><div class="stats-rank-value"><strong>${r[metric]}</strong><span>${metricLabel}桌次</span></div></div>`;}).join("")}</div>`;
+  return `<div class="stats-ranking">${sorted.map((r,i)=>{const label=statsPersonLabel(r,i);const meta=metric==="together"?`我当 KP ${r.ledByMe} 桌 · 对方当 KP ${r.ledMe} 桌 · 同为 PL ${r.coPl} 桌`:`累计同桌 ${r.together} 桌 · 最近一次 ${statsFormatDate(r.lastDate)}`;return `<div class="stats-ranking-row"><span class="stats-rank-no">${i+1}</span><div class="stats-rank-main">${statsRankButton(r,label,"person",i)}<span class="stats-rank-meta">${escapeHTML(meta)}</span></div><div class="stats-rank-value"><strong>${r[metric]} 桌</strong><span>${metricLabel}</span></div></div>`;}).join("")}</div>`;
 }
 function statsModuleRowsHTML(rows,mode,view){
   const metric=mode==="kp"?"kp":"pl",sorted=rows.filter(r=>r[metric]>0).sort((a,b)=>b[metric]-a[metric]||b.kp+b.pl-(a.kp+a.pl)||String(a.name).localeCompare(String(b.name),"zh-CN")).slice(0,20);
-  if(!sorted.length)return `<div class="stats-empty">当前范围内还没有对应的模组统计。<br>归档跑团记录后，带团与参团桌次会自动汇总。</div>`;
+  if(!sorted.length)return `<div class="stats-empty">当前范围内还没有对应的模组记录。<br>归档跑团记录后，这里会自动汇总我带过和跑过的模组。</div>`;
   if(view==="bar"){
     const max=Math.max(1,...sorted.map(r=>r[metric]));return `<div class="stats-bars">${sorted.map(r=>`<div class="stats-bar-row"><button class="stats-bar-label" type="button" data-stats-module="${escapeHTML(r.moduleId||"")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button><div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.max(2,r[metric]/max*100).toFixed(2)}%"></div></div><div class="stats-bar-value">${r[metric]} 桌</div></div>`).join("")}</div>`;
   }
-  const heads=mode==="kp"?"<th>#</th><th>模组</th><th>带团桌次</th><th>PL 人次</th><th>不同 PL</th><th>最近</th>":"<th>#</th><th>模组</th><th>参团桌次</th><th>不同 KP</th><th>最近</th>";
+  const heads=mode==="kp"?"<th>#</th><th>模组</th><th>带团桌次</th><th>PL 人次</th><th>不同 PL</th><th>最近一次</th>":"<th>#</th><th>模组</th><th>参团桌次</th><th>不同 KP</th><th>最近一次</th>";
   const body=sorted.map((r,i)=>mode==="kp"?`<tr><td>${i+1}</td><td><button type="button" data-stats-module="${escapeHTML(r.moduleId||"")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.kp}</td><td class="num">${r.plAppearances}</td><td class="num">${r.uniquePl.size}</td><td>${statsFormatDate(r.lastDate)}</td></tr>`:`<tr><td>${i+1}</td><td><button type="button" data-stats-module="${escapeHTML(r.moduleId||"")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.pl}</td><td class="num">${r.uniqueKp.size}</td><td>${statsFormatDate(r.lastDate)}</td></tr>`).join("");
   return `<div class="stats-table-wrap"><table class="stats-table stats-module-table ${mode}"><thead><tr>${heads}</tr></thead><tbody>${body}</tbody></table></div>`;
 }
@@ -8279,17 +8281,17 @@ function statsCompleteness(runs){
   const hoApplicable=runs.filter(r=>moduleHoSystemForEntity(r)==="has");const ho=hoApplicable.filter(r=>{if(String(r.ho||"").trim())return true;const roles=statsRunRoles(r);if(roles.pl&&selfId){const a=assignmentFor(r,selfId);if(pcHoText(a))return true;}if(roles.kp){const ids=(r.plIds||[]).filter(id=>id!==selfId);if(ids.length&&ids.every(id=>Boolean(pcHoText(assignmentFor(r,id)))))return true;}return false;}).length;
   const pcApplicable=runs.filter(r=>statsRunRoles(r).pl&&selfId);const pc=pcApplicable.filter(r=>String(assignmentFor(r,selfId)?.pcName||"").trim()).length;
   return [
-    {label:"Log",sub:"附有 Log 链接的已归档记录",done:log,total},
-    {label:"实际时长",sub:"填写了实际时长的已归档记录",done:duration,total},
-    {label:"HO 记录",sub:"仅统计设为“有 HO 位”的桌",done:ho,total:hoApplicable.length},
-    {label:"我的 PC 名",sub:"我作为 PL 时填写了 PC 名的桌",done:pc,total:pcApplicable.length}
+    {label:"Log",sub:"填写了 Log 链接的记录",done:log,total},
+    {label:"实际时长",sub:"填写了实际时长的记录",done:duration,total},
+    {label:"HO",sub:"只统计设置了 HO 位的记录",done:ho,total:hoApplicable.length},
+    {label:"我的 PC 名",sub:"只统计我作为 PL 的记录",done:pc,total:pcApplicable.length}
   ];
 }
-function statsCompletenessHTML(rows){return `<div class="stats-completeness">${rows.map(r=>{const pct=r.total?Math.round(r.done/r.total*100):0;return `<div class="stats-completeness-row"><div class="stats-completeness-label"><strong>${escapeHTML(r.label)}</strong><span>${escapeHTML(r.sub)}</span></div><div class="stats-completeness-track"><div class="stats-completeness-fill" style="width:${pct}%"></div></div><div class="stats-completeness-value">${r.done}/${r.total}</div></div>`;}).join("")}</div><div class="stats-footnote">这里展示的是字段记录率，用于了解历史资料的填写情况。Log、实际时长和 PC 名均可按需要填写；未填写不代表记录不完整或异常。HO 仅在模组设为“有 HO 位”时计入分母。</div>`;}
+function statsCompletenessHTML(rows){return `<div class="stats-completeness">${rows.map(r=>{const pct=r.total?Math.round(r.done/r.total*100):0;return `<div class="stats-completeness-row"><div class="stats-completeness-label"><strong>${escapeHTML(r.label)}</strong><span>${escapeHTML(r.sub)}</span></div><div class="stats-completeness-track"><div class="stats-completeness-fill" style="width:${pct}%"></div></div><div class="stats-completeness-value">${r.done}/${r.total}</div></div>`;}).join("")}</div><div class="stats-footnote">这些数字只表示字段填写情况。Log、实际时长和 PC 名都是可选项；HO 只统计设置了 HO 位的桌。</div>`;}
 function statsRepeatHTML(people){
   const counts=people.filter(r=>r.ledByMe>0).map(r=>r.ledByMe),total=counts.length,buckets=[{label:"1 桌",n:counts.filter(n=>n===1).length},{label:"2–4 桌",n:counts.filter(n=>n>=2&&n<=4).length},{label:"5–9 桌",n:counts.filter(n=>n>=5&&n<=9).length},{label:"10+ 桌",n:counts.filter(n=>n>=10).length}];
-  if(!total)return `<div class="stats-empty">当前范围内还没有“我作为 KP”带 PL 的数据。</div>`;
-  return `<div class="stats-repeat-grid">${buckets.map(b=>{const pct=Math.round(b.n/total*100);return `<div class="stats-repeat-card"><span>${b.label}</span><strong>${b.n} 人</strong><i style="--pct:${pct}%"></i><span>${pct}%</span></div>`;}).join("")}</div><div class="stats-footnote">按每位 PL 在当前统计范围内被我带过的桌次分组，用于观察单次参团与多次参团的比例。</div>`;
+  if(!total)return `<div class="stats-empty">当前范围内还没有我作为 KP 的 PL 参团记录。</div>`;
+  return `<div class="stats-repeat-grid">${buckets.map(b=>{const pct=Math.round(b.n/total*100);return `<div class="stats-repeat-card"><span>${b.label}</span><strong>${b.n} 人</strong><i style="--pct:${pct}%"></i><span>${pct}%</span></div>`;}).join("")}</div><div class="stats-footnote">按每位 PL 跟我跑过的桌数分组，方便查看一次参团和多次参团的比例。</div>`;
 }
 function renderStats(){
   if(!els.statsContent)return;
@@ -8297,44 +8299,44 @@ function renderStats(){
   const runs=statsPersonalRuns(),roles=runs.map(r=>statsRunRoles(r)),kpCount=roles.filter(r=>r.kp).length,plCount=roles.filter(r=>r.pl).length,people=statsPersonAggregates(runs),mods=statsModuleAggregates(runs),plans=statsCurrentPlanSummary();
   const uniquePl=people.filter(r=>r.ledByMe>0).length,uniqueKp=people.filter(r=>r.ledMe>0).length,kpMods=statsModuleCount(mods,"kp"),plMods=statsModuleCount(mods,"pl"),roleTotal=kpCount+plCount,kpPct=roleTotal?Math.round(kpCount/roleTotal*100):50;
   const peopleMetric=statsUiState.peopleMode==="kp"?"ledByMe":statsUiState.peopleMode==="myKp"?"ledMe":"together";
-  const peopleSubtitle=peopleMetric==="ledByMe"?"我作为 KP 时，哪些 PL 跟我的桌最多。":peopleMetric==="ledMe"?"我作为 PL 时，哪些人最常担任我的 KP。":"不区分谁是 KP，统计与我共同出现在同一桌的次数。";
+  const peopleSubtitle=peopleMetric==="ledByMe"?"看我作为 KP 时，哪些 PL 跟我的团最多。":peopleMetric==="ledMe"?"看我作为 PL 时，哪些 KP 带我的团最多。":"看我和谁同桌最多，以及彼此作为 KP / PL 的次数。";
   const trend=statsTrendData(runs),completeness=statsCompleteness(runs);
   els.statsContent.innerHTML=`
     <div class="stats-overview-shell">
       <section class="stats-identity-card">
         <div class="stats-donut" style="--kp:${kpPct}%"><div class="stats-donut-center"><strong>${runs.length}</strong><span>总桌次</span></div></div>
-        <div class="stats-identity-copy"><div><h3>我的身份构成</h3><p>按 KP / PL 身份桌次计算；同桌兼任时会分别计入两种身份。</p></div><div class="stats-role-legend"><div class="stats-role-row"><i class="stats-role-dot kp"></i><span>作为 KP</span><strong>${kpCount} 桌 · ${roleTotal?Math.round(kpCount/roleTotal*100):0}%</strong></div><div class="stats-role-row"><i class="stats-role-dot pl"></i><span>作为 PL</span><strong>${plCount} 桌 · ${roleTotal?Math.round(plCount/roleTotal*100):0}%</strong></div></div></div>
+        <div class="stats-identity-copy"><div><h3>我的身份构成</h3><p>按每桌记录里的 KP / PL 身份统计；同一桌同时算作两种身份时，两边都会计入。</p></div><div class="stats-role-legend"><div class="stats-role-row"><i class="stats-role-dot kp"></i><span>作为 KP</span><strong>${kpCount} 桌 · ${roleTotal?Math.round(kpCount/roleTotal*100):0}%</strong></div><div class="stats-role-row"><i class="stats-role-dot pl"></i><span>作为 PL</span><strong>${plCount} 桌 · ${roleTotal?Math.round(plCount/roleTotal*100):0}%</strong></div></div></div>
       </section>
       <div class="stats-overview-grid">
-        <div class="stats-metric-card"><span>我带过的 PL</span><strong>${uniquePl} 人</strong><small>当前范围内的不同参与者</small></div>
-        <div class="stats-metric-card"><span>带过我的 KP</span><strong>${uniqueKp} 人</strong><small>当前范围内的不同 KP</small></div>
-        <div class="stats-metric-card"><span>我带过的模组</span><strong>${kpMods} 个</strong><small>至少带过 1 桌</small></div>
+        <div class="stats-metric-card"><span>我带过的 PL</span><strong>${uniquePl} 人</strong><small>我作为 KP 带过的不同 PL</small></div>
+        <div class="stats-metric-card"><span>带过我的 KP</span><strong>${uniqueKp} 人</strong><small>我作为 PL 时的不同 KP</small></div>
+        <div class="stats-metric-card"><span>我带过的模组</span><strong>${kpMods} 个</strong><small>至少作为 KP 带过 1 桌</small></div>
         <div class="stats-metric-card"><span>我跑过的模组</span><strong>${plMods} 个</strong><small>至少作为 PL 跑过 1 桌</small></div>
-        <div class="stats-metric-card"><span>当前计划</span><strong>${plans.total} 个</strong><small>已排 ${plans.scheduled} · 未排 ${plans.unscheduled}</small></div>
-        <div class="stats-metric-card"><span>含 Log 记录</span><strong>${completeness[0].done}/${completeness[0].total}</strong><small>当前范围内已附 Log 链接</small></div>
-        <div class="stats-metric-card"><span>最常同桌</span><strong>${people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0]?.together||0} 桌</strong><small>${people.filter(r=>r.together>0).length?statsPersonNameHTML(people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0],0):"暂无人物数据"}</small></div>
-        <div class="stats-metric-card"><span>最常带的模组</span><strong>${mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.kp||0} 桌</strong><small>${escapeHTML(mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.name||"暂无带团数据")}</small></div>
+        <div class="stats-metric-card"><span>当前计划</span><strong>${plans.total} 个</strong><small>已排期 ${plans.scheduled} · 未排期 ${plans.unscheduled}</small></div>
+        <div class="stats-metric-card"><span>含 Log 记录</span><strong>${completeness[0].done}/${completeness[0].total}</strong><small>已填写 Log 链接的已归档记录</small></div>
+        <div class="stats-metric-card"><span>和我同桌最多</span><strong>${people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0]?.together||0} 桌</strong><small>${people.filter(r=>r.together>0).length?statsPersonNameHTML(people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0],0):"暂无人员数据"}</small></div>
+        <div class="stats-metric-card"><span>我带得最多的模组</span><strong>${mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.kp||0} 桌</strong><small>${escapeHTML(mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.name||"暂无带团记录")}</small></div>
       </div>
     </div>
     <div class="stats-dashboard-grid">
       <section class="stats-panel">
-        <div class="stats-panel-head"><div class="stats-panel-title"><strong>人与我的跑团关系</strong><span>${peopleSubtitle}</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="人物统计维度"><button type="button" data-stats-people-mode="together" class="${statsUiState.peopleMode==="together"?"active":""}" aria-pressed="${statsUiState.peopleMode==="together"}">同桌最多</button><button type="button" data-stats-people-mode="kp" class="${statsUiState.peopleMode==="kp"?"active":""}" aria-pressed="${statsUiState.peopleMode==="kp"}">我带的 PL</button><button type="button" data-stats-people-mode="myKp" class="${statsUiState.peopleMode==="myKp"?"active":""}" aria-pressed="${statsUiState.peopleMode==="myKp"}">我的 KP</button></div><div class="stats-segmented" role="group" aria-label="人物统计显示"><button type="button" data-stats-people-view="rank" class="${statsUiState.peopleView==="rank"?"active":""}">排名</button><button type="button" data-stats-people-view="bar" class="${statsUiState.peopleView==="bar"?"active":""}">条形图</button></div></div></div>
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>我的跑团关系统计</strong><span>${peopleSubtitle}</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="人物统计维度"><button type="button" data-stats-people-mode="together" class="${statsUiState.peopleMode==="together"?"active":""}" aria-pressed="${statsUiState.peopleMode==="together"}">同桌最多</button><button type="button" data-stats-people-mode="kp" class="${statsUiState.peopleMode==="kp"?"active":""}" aria-pressed="${statsUiState.peopleMode==="kp"}">我带的 PL</button><button type="button" data-stats-people-mode="myKp" class="${statsUiState.peopleMode==="myKp"?"active":""}" aria-pressed="${statsUiState.peopleMode==="myKp"}">我的 KP</button></div><div class="stats-segmented" role="group" aria-label="人物统计显示"><button type="button" data-stats-people-view="rank" class="${statsUiState.peopleView==="rank"?"active":""}">排名表</button><button type="button" data-stats-people-view="bar" class="${statsUiState.peopleView==="bar"?"active":""}">条形图</button></div></div></div>
         <div class="stats-panel-body">${statsPeopleRowsHTML(people,peopleMetric,statsUiState.peopleView)}</div>
       </section>
       <section class="stats-panel">
-        <div class="stats-panel-head"><div class="stats-panel-title"><strong>个人模组</strong><span>${statsUiState.moduleMode==="kp"?"按我作为 KP 的带团桌次排名。":"按我作为 PL 的参团桌次排名。"}</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="模组统计维度"><button type="button" data-stats-module-mode="kp" class="${statsUiState.moduleMode==="kp"?"active":""}">带团最多</button><button type="button" data-stats-module-mode="pl" class="${statsUiState.moduleMode==="pl"?"active":""}">参团最多</button></div><div class="stats-segmented" role="group" aria-label="模组统计显示"><button type="button" data-stats-module-view="rank" class="${statsUiState.moduleView==="rank"?"active":""}">排名表</button><button type="button" data-stats-module-view="bar" class="${statsUiState.moduleView==="bar"?"active":""}">条形图</button></div></div></div>
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>我的模组统计</strong><span>${statsUiState.moduleMode==="kp"?"看我带过哪些模组，以及各自带了多少桌。":"看我作为 PL 跑过哪些模组，以及各自跑了多少桌。"}</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="模组统计维度"><button type="button" data-stats-module-mode="kp" class="${statsUiState.moduleMode==="kp"?"active":""}">带团最多</button><button type="button" data-stats-module-mode="pl" class="${statsUiState.moduleMode==="pl"?"active":""}">跑过最多</button></div><div class="stats-segmented" role="group" aria-label="模组统计显示"><button type="button" data-stats-module-view="rank" class="${statsUiState.moduleView==="rank"?"active":""}">排名表</button><button type="button" data-stats-module-view="bar" class="${statsUiState.moduleView==="bar"?"active":""}">条形图</button></div></div></div>
         <div class="stats-panel-body">${statsModuleRowsHTML(mods,statsUiState.moduleMode,statsUiState.moduleView)}</div>
       </section>
       <section class="stats-panel full">
-        <div class="stats-panel-head"><div class="stats-panel-title"><strong>跑团趋势</strong><span>观察跑团频率随时间的变化；月视图在跨度较长时展示最近 24 个月。</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="趋势粒度"><button type="button" data-stats-trend-granularity="month" class="${statsUiState.trendGranularity==="month"?"active":""}">月</button><button type="button" data-stats-trend-granularity="year" class="${statsUiState.trendGranularity==="year"?"active":""}">年</button></div><div class="stats-segmented" role="group" aria-label="趋势身份"><button type="button" data-stats-trend-role="all" class="${statsUiState.trendRole==="all"?"active":""}">全部</button><button type="button" data-stats-trend-role="kp" class="${statsUiState.trendRole==="kp"?"active":""}">KP</button><button type="button" data-stats-trend-role="pl" class="${statsUiState.trendRole==="pl"?"active":""}">PL</button></div><div class="stats-segmented" role="group" aria-label="趋势显示"><button type="button" data-stats-trend-view="line" class="${statsUiState.trendView==="line"?"active":""}">折线</button><button type="button" data-stats-trend-view="bar" class="${statsUiState.trendView==="bar"?"active":""}">柱状</button><button type="button" data-stats-trend-view="table" class="${statsUiState.trendView==="table"?"active":""}">表格</button></div></div></div>
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>跑团趋势</strong><span>查看每月或每年的跑团桌次变化；月份跨度较长时显示最近 24 个月。</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="趋势粒度"><button type="button" data-stats-trend-granularity="month" class="${statsUiState.trendGranularity==="month"?"active":""}">月</button><button type="button" data-stats-trend-granularity="year" class="${statsUiState.trendGranularity==="year"?"active":""}">年</button></div><div class="stats-segmented" role="group" aria-label="趋势身份"><button type="button" data-stats-trend-role="all" class="${statsUiState.trendRole==="all"?"active":""}">全部</button><button type="button" data-stats-trend-role="kp" class="${statsUiState.trendRole==="kp"?"active":""}">KP</button><button type="button" data-stats-trend-role="pl" class="${statsUiState.trendRole==="pl"?"active":""}">PL</button></div><div class="stats-segmented" role="group" aria-label="趋势显示"><button type="button" data-stats-trend-view="line" class="${statsUiState.trendView==="line"?"active":""}">折线图</button><button type="button" data-stats-trend-view="bar" class="${statsUiState.trendView==="bar"?"active":""}">柱状图</button><button type="button" data-stats-trend-view="table" class="${statsUiState.trendView==="table"?"active":""}">表格</button></div></div></div>
         <div class="stats-panel-body"><div class="stats-trend-wrap">${statsTrendHTML(trend,statsUiState.trendView)}</div></div>
       </section>
       <section class="stats-panel">
-        <div class="stats-panel-head"><div class="stats-panel-title"><strong>PL 参团次数分布</strong><span>查看我作为 KP 时，不同 PL 跟我跑过 1 桌或多桌的分布。</span></div></div>
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>PL 参团次数分布</strong><span>看我作为 KP 时，不同 PL 分别跟过我多少桌。</span></div></div>
         <div class="stats-panel-body">${statsRepeatHTML(people)}</div>
       </section>
       <section class="stats-panel">
-        <div class="stats-panel-head"><div class="stats-panel-title"><strong>历史资料记录情况</strong><span>查看 Log、实际时长、HO 与我的 PC 名在适用记录中的填写比例。</span></div></div>
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>历史记录填写情况</strong><span>查看 Log、实际时长、HO 和我的 PC 名分别记录了多少。</span></div></div>
         <div class="stats-panel-body">${statsCompletenessHTML(completeness)}</div>
       </section>
     </div>`;
@@ -10060,7 +10062,7 @@ function syncAuthoritativeModuleState(incoming){
     const hasPlans=runPlans.some(p=>p.moduleId===id);
     const intro=normalizeSelfIntro(selfProfileFrom()?.selfIntro),hasIntro=[...(intro.pl.wantModules||[]),...(intro.kp.canHostModules||[])].some(r=>r.moduleId===id);
     if(hasRecords||hasPlans||hasIntro){
-      showToast(hasIntro?"该模组仍在想跑团或可带团列表中，暂不能删除。":"该模组仍有关联记录或计划，暂不能删除。请先处理关联数据。");
+      showToast(hasIntro?"该模组仍在想跑模组或可带模组列表中，暂不能删除。":"该模组仍有关联记录或计划，暂不能删除。请先处理关联数据。");
       return;
     }
     modules=modules.filter(m=>m.id!==id);
@@ -10293,7 +10295,7 @@ function renderTrashBin(){
 async function deleteRunPlan(planId){const plan=runPlans.find(p=>p.id===planId);if(!plan)return;if(!await appConfirm(`将“${plan.moduleName||plan.tableName||"未命名计划"}”移入回收站吗？`,{title:"删除开团计划？",confirmText:"移入回收站",danger:true}))return;const entry=addTrashEntry("plan",plan.moduleName||plan.tableName||"开团计划",plan);if(!entry)return;const before=runPlans;runPlans=runPlans.filter(p=>p.id!==planId);if(!saveState()){runPlans=before;removeTrashEntry(entry.id);return;}if(plannerPickedPlanId===planId)plannerPickedPlanId=null;if(editingPlanId===planId)closePlanEditor();renderRunPlans();};
 async function deleteRunRecord(recordId){const rec=runRecords.find(r=>r.id===recordId);if(!rec)return;const label=recordDisplayLabel(rec,runRecords);if(!await appConfirm(`将“${label}”移入回收站吗？`,{title:"删除跑团记录？",confirmText:"移入回收站",danger:true}))return;setRunRecordCollapsed(recordId,false);const ids=[...new Set([...rec.plIds,rec.kpProfileId].filter(Boolean))];const entry=addTrashEntry("record",label,rec);if(!entry)return;const before=runRecords;runRecords=runRecords.filter(r=>r.id!==recordId);touchProfiles(ids);if(!saveState()){runRecords=before;removeTrashEntry(entry.id);return;}renderRunRecords();renderProfiles();};
 async function deleteModuleRecords(moduleName){const moduleKey=normalizedEntityNameKey(moduleName),affected=runRecords.filter(r=>normalizedEntityNameKey(r.moduleName)===moduleKey);if(!affected.length)return;const linkedIds=[...new Set(affected.map(r=>String(r.moduleId||"").trim()).filter(id=>moduleById(id)))];if(linkedIds.length>1){appNotice(`“${moduleName}”的跑团记录当前关联了 ${linkedIds.length} 个同名模组。为避免跨模组误删，请先在“模组档案”合并同名模组，或逐桌使用“更改模组”修正关联。`,"请先处理重复模组");return;}if(!await appConfirm(`将“${moduleName}”的 ${affected.length} 桌跑团记录移入回收站吗？模组档案本身不会删除。`,{title:"删除全部跑团记录？",confirmText:"移入回收站",danger:true}))return;const ids=[...new Set(affected.flatMap(r=>[...r.plIds,r.kpProfileId].filter(Boolean)))],entry=addTrashEntry("moduleRecords",`${moduleName} · ${affected.length}桌`,affected);if(!entry)return;const before=runRecords;runRecords=runRecords.filter(r=>normalizedEntityNameKey(r.moduleName)!==moduleKey);if(selectedModuleName===moduleName)selectedModuleName="";touchProfiles(ids);if(!saveState()){runRecords=before;removeTrashEntry(entry.id);return;}renderRunRecords();renderProfiles();};
-async function deleteNativeModule(id){const m=moduleById(id);if(!m)return;const intro=normalizeSelfIntro(selfProfileFrom()?.selfIntro),introLinked=[...(intro.pl.wantModules||[]),...(intro.kp.canHostModules||[])].some(r=>r.moduleId===id);if(introLinked){appNotice("该模组仍在“跑团偏好”的想跑团或可带团列表中。请先从对应列表移除，再删除模组档案。","无法删除");return;}const linked=runRecords.some(r=>r.moduleId===id)||runPlans.some(p=>p.moduleId===id);if(linked){const dup=modulesByNormalizedName(m.name).length>1;appNotice(dup?"该模组仍关联桌次。可使用“合并同名”将桌次迁移到保留档案后自动清理重复模组。":"该模组仍关联跑团记录或开团计划。请先更改这些桌次的模组关联。","无法删除");return;}if(!await appConfirm(`将模组“${m.name}”移入回收站吗？`,{title:"删除模组？",confirmText:"移入回收站",danger:true}))return;const entry=addTrashEntry("module",m.name,m);if(!entry)return;const before=modules;modules=modules.filter(x=>x.id!==id);if(!saveState()){modules=before;removeTrashEntry(entry.id);return;}renderNativeModules();};
+async function deleteNativeModule(id){const m=moduleById(id);if(!m)return;const intro=normalizeSelfIntro(selfProfileFrom()?.selfIntro),introLinked=[...(intro.pl.wantModules||[]),...(intro.kp.canHostModules||[])].some(r=>r.moduleId===id);if(introLinked){appNotice("该模组仍在“个人偏好”的想跑模组或可带模组列表中。请先从对应列表移除，再删除模组档案。","无法删除");return;}const linked=runRecords.some(r=>r.moduleId===id)||runPlans.some(p=>p.moduleId===id);if(linked){const dup=modulesByNormalizedName(m.name).length>1;appNotice(dup?"该模组仍关联桌次。可使用“合并同名”将桌次迁移到保留档案后自动清理重复模组。":"该模组仍关联跑团记录或开团计划。请先更改这些桌次的模组关联。","无法删除");return;}if(!await appConfirm(`将模组“${m.name}”移入回收站吗？`,{title:"删除模组？",confirmText:"移入回收站",danger:true}))return;const entry=addTrashEntry("module",m.name,m);if(!entry)return;const before=modules;modules=modules.filter(x=>x.id!==id);if(!saveState()){modules=before;removeTrashEntry(entry.id);return;}renderNativeModules();};
 async function deleteProfile(id,fromModal=false){
   const p=profiles.find(x=>x.id===id);if(!p)return;if(isSelfProfile(p)){showToast("“我”是系统本人档案，不能删除");return;}
   const linkedCount=runRecords.filter(r=>(r.plIds||[]).includes(id)||r.kpProfileId===id).length+runPlans.filter(r=>(r.plIds||[]).includes(id)||r.kpProfileId===id).length;
@@ -10575,7 +10577,7 @@ function maybeShowOnboarding(){let done=false;try{done=localStorage.getItem(ONBO
 /* 全局搜索 */
 function buildGlobalSearchRows(q){q=normalizedEntityNameKey(q);if(!q)return [];
   const rows=[];
-  if(selfIntroSearchText().includes(q))rows.push({type:"个人偏好",title:"个人偏好",meta:"PL / KP 偏好 · 想跑团 / 可带团",action:{view:"selfIntro"}});
+  if(selfIntroSearchText().includes(q))rows.push({type:"个人偏好",title:"个人偏好",meta:"PL / KP 偏好 · 想跑模组 / 可带模组",action:{view:"selfIntro"}});
   profiles.forEach(p=>{const hay=profileSearchText(p);if(hay.includes(q)){const black=!shareModeEnabled&&isBlacklistedProfile(p);rows.push({type:black?"PL · 黑名单":"PL",title:displayProfileName(p),meta:black&&!shareModeEnabled?[rawProfileContact(p),p.blacklist?.reason].filter(Boolean).join(" · "):`KP ${profileRoleStats(p.id).kpCount} · PL ${profileRoleStats(p.id).plCount}`,action:{view:"profiles",id:p.id,blacklist:black}});}});
   modules.forEach(m=>{if(moduleSearchText(m).includes(q))rows.push({type:"模组",title:m.name,meta:[m.author,m.location,m.era,`${moduleRunCount(m)}桌`].filter(Boolean).join(" · "),action:{view:"modules",id:m.id}});});
   runPlans.forEach(p=>{const values=shareModeEnabled?[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),...(p.timeSlots||[]).map(s=>s.date)]:[p.moduleName,p.tableName,kpDisplayText(p),participantDisplaySummary(p),p.sharedHoNote,...(p.participantAssignments||[]).flatMap(a=>[a.pcName,a.hoCustom]),p.kpc?.pcName,p.kpc?.hoCustom,...(p.timeSlots||[]).map(s=>s.date)];if(buildSearchIndex(values).includes(q))rows.push({type:"计划",title:p.moduleName||"未命名计划",meta:[p.tableName,kpDisplayText(p),planStatusInfo(p).label].filter(Boolean).join(" · "),action:{view:"plans",id:p.id}});});
@@ -11326,7 +11328,7 @@ els.selfIntroView?.addEventListener("change",e=>{
 els.selfIntroView?.addEventListener("click",e=>{if(shareModeEnabled)return;const all=e.target.closest("[data-intro-toggle-all]");if(all){ensureSelfIntroDraft();const path=all.dataset.introToggleAll,section=all.closest(".self-intro-section"),boxes=[...section.querySelectorAll(`input[type="checkbox"][data-intro-array="${CSS.escape(path)}"]`)];if(!boxes.length)return;const clear=boxes.every(box=>box.checked);boxes.forEach(box=>{box.checked=!clear;});selfIntroPathSet(selfIntroDraft,path,clear?[]:boxes.map(box=>box.value));syncIntroToggleAll(section,path);queueSelfIntroSave(220);return;}const scale=e.target.closest("[data-intro-scale-step]");if(scale){ensureSelfIntroDraft();const path=scale.dataset.introScaleStep,value=introScaleValue(scale.dataset.scaleValue);selfIntroPathSet(selfIntroDraft,path,value);const card=scale.closest(".intro-scale");card?.querySelectorAll("[data-intro-scale-step]").forEach(btn=>{const active=Number(btn.dataset.scaleValue)===value;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",active?"true":"false");});const out=card?.querySelector(`[data-intro-scale-output="${CSS.escape(path)}"]`);if(out)out.textContent=selfIntroScaleText(path,value);queueSelfIntroSave(220);return;}const pick=e.target.closest("[data-intro-pick-module]");if(pick){pickSelfIntroModuleIntent(pick.dataset.introPickModule);return;}const add=e.target.closest("[data-intro-add-module]");if(add){addSelfIntroModuleIntent(add.dataset.introAddModule);return;}const rem=e.target.closest("[data-intro-remove-module]");if(rem){removeSelfIntroModuleIntent(rem.dataset.introRemoveModule,rem.dataset.moduleId,rem.dataset.moduleName);return;}});
 els.selfIntroView?.addEventListener("keydown",e=>{if(shareModeEnabled)return;const input=e.target.closest("[data-intro-module-input]");if(input&&e.key==="Enter"){e.preventDefault();addSelfIntroModuleIntent(input.dataset.introModuleInput);}});
 els.selfIntroExport?.addEventListener("click",()=>{void exportSelfIntroImage();});
-els.selfIntroSave?.addEventListener("click",()=>{if(shareModeBlock("跑团偏好编辑"))return;if(commitSelfIntroDraft()){showToast("跑团偏好已保存");renderSelfIntroView();}else appNotice("跑团偏好保存失败。请先导出备份或释放浏览器存储空间后重试。");});
+els.selfIntroSave?.addEventListener("click",()=>{if(shareModeBlock("个人偏好编辑"))return;if(commitSelfIntroDraft()){showToast("个人偏好已保存");renderSelfIntroView();}else appNotice("个人偏好保存失败。请先导出备份或释放浏览器存储空间后重试。");});
 
 document.addEventListener("click",e=>{
   if(!e.target.closest(".ho-image-export-wrap"))toggleHoImageExportMenu(false);
