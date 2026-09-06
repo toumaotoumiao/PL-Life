@@ -279,9 +279,11 @@
     .profile-search-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;min-width:0}
     .profile-search-line .search{min-width:0;width:100%}
     .profiles-search-toolbar{grid-template-columns:minmax(360px,1fr) auto auto auto}
-    .records-search-row{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;margin-top:1px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--t-line) 72%,transparent)}
-    .records-search{margin:0;min-width:0}
-    .records-search-row .search-result-count{margin:0;min-width:max-content;text-align:right}
+    .records-search-row{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"search batch count";gap:8px;align-items:center;margin-top:1px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--t-line) 72%,transparent)}
+    .records-search{grid-area:search;margin:0;min-width:0}
+    .records-search-batch{grid-area:batch;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+    .records-search-batch .btn{min-height:40px;padding-inline:11px}
+    .records-search-row .search-result-count{grid-area:count;margin:0;min-width:max-content;text-align:right}
     .records-board{display:grid;grid-template-columns:220px minmax(0,1fr);gap:12px;align-items:start}
     .module-sidebar{position:sticky;top:118px;display:grid;gap:6px;padding:8px;border:1px solid #dcded8;border-radius:17px;background:rgba(249,250,247,.82);max-height:calc(100vh - 120px);overflow:auto}
     .module-tab{width:100%;min-height:44px;border:1px solid transparent;background:transparent;border-radius:12px;padding:9px 10px;text-align:left;cursor:pointer;transition:.15s ease}
@@ -3242,8 +3244,15 @@
     .count,.search-result-count{font-variant-numeric:tabular-nums}.search-result-count{margin:6px 2px 0;color:var(--t-muted);font-size:9.5px;line-height:1.35;white-space:nowrap}.records-search-row .search-result-count{margin:0;align-self:center}
     html[data-theme] :is(.status-ok,.plan-row-status.active,.integrity-ok){background:var(--status-success-bg)!important;border-color:var(--status-success-line)!important;color:var(--t-success)!important}html[data-theme] :is(.plan-row-status.upcoming,.record-summary-chip.archive,.archived-schedule-label,.record-view-archive){background:var(--status-info-bg)!important;border-color:var(--status-info-line)!important;color:var(--t-muted)!important}html[data-theme] :is(.pending-badge,.plan-row-status.overdue,.legacy-duration-note,.record-legacy-badge,.integrity-item.warn){background:var(--status-warning-bg)!important;border-color:var(--status-warning-line)!important;color:var(--t-warning)!important}html[data-theme] :is(.integrity-item.error,.settings-warning.error){background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)!important}.plan-row-status.unscheduled{background:var(--t-surface-3)!important;border-color:var(--t-line)!important;color:var(--t-muted)!important}
     .plan-row-status,.month-event,.week-day-head-cell span,.week-time-label span,.calendar-event-time,.week-slot-capacity,.record-summary-chip,.record-section-note,.module-tab-meta,.table-record-time,.record-view-fact span,.record-view-section-title span,.record-view-note span,.native-module-score span,.native-module-row-main span,.native-module-row-tags span,.global-search-result-type,.integrity-item small,.trash-row-main span,.assignment-mini-label,.participant-empty-panel span,.module-ho-inline-label,.compact-save-status,.updated-chip,.runs-role-summary{font-size:9px!important}
-    @media(max-width:760px){.records-search-row{grid-template-columns:1fr;gap:5px;padding-top:8px}.records-search-row .search-result-count{text-align:left;margin:0 2px!important}.records-search{min-height:46px}
+    @media(max-width:760px){.records-search-row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"search batch" "count count";gap:6px;padding-top:8px}.records-search-batch{justify-self:end;gap:4px}.records-search-batch .btn{min-height:42px;padding-inline:9px;font-size:10.5px}.records-search-row .search-result-count{text-align:left;margin:0 2px!important}.records-search{min-height:46px}
     html[data-theme] .settings-nav button.active{box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}html[data-theme] .module-tab.active{box-shadow:inset 0 -2px 0 var(--t-accent),0 2px 8px var(--t-shadow-soft)!important}.toolbar>.select-affordance{grid-column:1/2!important;grid-row:2!important;width:100%;max-width:none}.toolbar>.select-affordance>.sort-select{font-size:16px!important}.select-affordance-label{font-size:9.5px}.search-clear{width:34px;height:34px;min-width:34px;min-height:34px;border-radius:10px}.search-result-count{font-size:10px}}
+
+    @media(max-width:380px){
+      .records-search-row{grid-template-columns:minmax(0,1fr) auto;gap:5px}
+      .records-search-batch{gap:3px}
+      .records-search-batch .btn{min-width:0;padding-inline:7px;font-size:10px}
+      .records-search input{font-size:12px}
+    }
   
 
     /* ---------- v8.0.6：固定层级令牌，统一关键悬浮/弹窗的有效层级 ---------- */
@@ -3363,6 +3372,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.5 · 跑团记录搜索工具栏重排：将“全部展开 / 全部收起”移动到搜索框右侧，并完善手机窄屏布局。 */
     /* v8.1.6.4 · PL 搜索工具栏操作重排：将“全部折叠 / 全部展开”移动到搜索框右侧，并补做桌面与窄屏布局避让。 */
     /* v8.1.6.3 · 主导航分组优化：将主视图切换整理为 3 组，扩大按钮字号与点击范围，并补做中等宽度下的排版避让。 */
     /* v8.1.6.2 · 全站按钮与双端交互审计：修复手机侧栏/PL 编辑器滚动按钮、跑团偏好图片导出，并完成字体图形冲突与响应式检查。 */
@@ -3957,13 +3967,15 @@
             <span>集中维护已归档跑团记录；PL 足迹及模组关联信息均由此同步。</span>
           </div>
           <div class="view-toolbar-actions records-toolbar-actions">
-            <button id="expandAllRecordsBtn" class="btn small" type="button">全部展开</button>
-            <button id="collapseAllRecordsBtn" class="btn small" type="button">全部收起</button>
             <input id="newModuleNameInput" class="text-input" placeholder="输入模组名称">
             <button id="createModuleRecordBtn" class="btn primary" type="button">＋ 新建跑团记录</button>
           </div>
           <div class="records-search-row">
             <label class="search records-search"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、日期或 Log（支持拼音首字母）"></label>
+            <div class="records-search-batch" role="group" aria-label="跑团记录批量展开与收起">
+              <button id="expandAllRecordsBtn" class="btn small" type="button">全部展开</button>
+              <button id="collapseAllRecordsBtn" class="btn small" type="button">全部收起</button>
+            </div>
           </div>
         </div>
         <div id="recordsBoard" class="records-board"></div>
@@ -3975,7 +3987,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.4 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.5 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3987,7 +3999,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.4　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.5　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4276,7 +4288,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.4</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.5</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4320,10 +4332,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.5 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.5</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.5</strong><span>调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。</span>
 <strong>v8.1.6.4</strong><span>调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。</span>
 <strong>v8.1.6.3</strong><span>重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span>
 <strong>v8.1.6.2</strong><span>完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”；补强 Android WebView / 第三方浏览器的滚动兜底，并检查主页面、编辑器、固定导航中的文字、图标遮挡、按钮可点击性与横向溢出。</span>
@@ -4470,7 +4483,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.6.4 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.5 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4489,7 +4502,7 @@ const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REM
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.4";
+const APP_UI_VERSION = "8.1.6.5";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -11357,7 +11370,7 @@ const PRIMARY_SEARCH_INPUT_IDS=["searchInput","moduleNativeSearch","planSearchIn
 function clearSearchControl(input,{refocus=true}={}){if(!input||!input.value)return false;input.value="";input.dispatchEvent(new Event("input",{bubbles:true}));if(refocus)requestAnimationFrame(()=>input.focus({preventScroll:true}));return true}
 function installSearchClearButton(input){if(!input||input.dataset.clearButtonReady==="1")return;const host=input.closest("label")||input.parentElement;if(!host)return;input.dataset.clearButtonReady="1";const btn=document.createElement("button");btn.type="button";btn.className="search-clear";btn.textContent="×";btn.title="清除搜索";btn.setAttribute("aria-label","清除搜索");const sync=()=>{btn.hidden=!input.value};btn.addEventListener("pointerdown",e=>e.preventDefault());btn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();clearSearchControl(input)});input.addEventListener("input",sync,{passive:true});input.addEventListener("keydown",e=>{if(e.key==="Escape"&&input.value){e.preventDefault();e.stopPropagation();clearSearchControl(input)}});host.appendChild(btn);sync()}
 function wrapSelectAffordance(id,label){const select=document.getElementById(id);if(!select||select.parentElement?.classList.contains("select-affordance"))return;const wrap=document.createElement("label");wrap.className="select-affordance";const prefix=document.createElement("span");prefix.className="select-affordance-label";prefix.textContent=label;select.parentNode.insertBefore(wrap,select);wrap.append(prefix,select)}
-function ensureRecordsSearchCount(){if(document.getElementById("recordsSearchCount"))return;const search=els.recordsSearch?.closest("label");if(!search)return;const count=document.createElement("div");count.id="recordsSearchCount";count.className="search-result-count";count.setAttribute("aria-live","polite");search.insertAdjacentElement("afterend",count)}
+function ensureRecordsSearchCount(){if(document.getElementById("recordsSearchCount"))return;const search=els.recordsSearch?.closest("label");if(!search)return;const count=document.createElement("div");count.id="recordsSearchCount";count.className="search-result-count";count.setAttribute("aria-live","polite");const batch=search.parentElement?.querySelector(".records-search-batch");(batch||search).insertAdjacentElement("afterend",count)}
 function updateRecordsSearchCount(visibleGroups,allGroups,q){const el=document.getElementById("recordsSearchCount");if(!el)return;el.textContent=q?`${visibleGroups.length} / ${allGroups.length} 个模组命中`:`${allGroups.length} 个模组 · ${runRecords.length} 桌`}
 function applySearchHighlights(root,rawQuery){
   if(!root)return;
