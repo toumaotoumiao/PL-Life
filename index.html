@@ -3808,22 +3808,29 @@
     .export-preview-pane{position:sticky;top:0;display:grid;gap:8px;min-width:0;padding:12px;border:1px solid var(--t-line);border-radius:14px;background:var(--t-surface-2)}
     .export-preview-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.export-preview-head>div{display:grid;gap:2px}.export-preview-head strong{font-size:11.5px;color:var(--t-ink)}.export-preview-head span{font-size:8.5px;line-height:1.45;color:var(--t-muted)}
     .export-preview-stage{display:grid;place-items:start center;min-height:300px;max-height:calc(100vh - 235px);padding:10px;overflow:auto;border:1px solid var(--t-line);border-radius:12px;background:linear-gradient(135deg,color-mix(in srgb,var(--t-bg) 86%,#fff),var(--t-bg))}
-    .export-preview-canvas-wrap{position:relative;width:100%;max-width:430px;line-height:0}
-    .export-preview-canvas-wrap canvas{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 22px var(--t-shadow-soft);background:var(--t-surface)}
+    .export-preview-canvas-wrap{width:100%;max-width:430px;display:grid;gap:8px;line-height:0}
+    .export-preview-canvas-surface{position:relative;width:100%;line-height:0}
+    .export-preview-canvas-surface canvas{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 22px var(--t-shadow-soft);background:var(--t-surface)}
+    .export-preview-canvas-wrap,.export-preview-canvas-surface,.export-preview-canvas-surface canvas,.export-preview-drag-layer,.export-preview-drag-card,.export-preview-drag-handle{-webkit-touch-callout:none!important;-webkit-user-select:none!important;user-select:none!important;-webkit-user-drag:none!important}
+    .export-preview-canvas-surface canvas{pointer-events:none}
     .export-preview-drag-layer{position:absolute;inset:0;pointer-events:auto;overflow:hidden;border-radius:8px;touch-action:pan-y pinch-zoom}
     .export-preview-drag-card{position:absolute;pointer-events:auto;touch-action:pan-y pinch-zoom;border:1px solid transparent;border-radius:6px;transition:border-color .12s ease,background .12s ease,box-shadow .12s ease}
-    .export-preview-drag-handle{position:absolute;top:4px;right:5px;display:inline-flex;align-items:center;gap:3px;max-width:78%;height:22px;padding:0 7px;border:1px solid color-mix(in srgb,var(--t-accent) 26%,var(--t-line));border-radius:999px;background:color-mix(in srgb,var(--t-surface) 91%,transparent);box-shadow:0 2px 6px var(--t-shadow-soft);color:var(--t-accent-strong);font-size:8px;font-weight:780;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:grab;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+    .export-preview-drag-handle{position:absolute;top:4px;right:5px;display:inline-flex;align-items:center;gap:3px;max-width:78%;height:22px;padding:0 7px;border:1px solid color-mix(in srgb,var(--t-accent) 26%,var(--t-line));border-radius:999px;background:color-mix(in srgb,var(--t-surface) 91%,transparent);box-shadow:0 2px 6px var(--t-shadow-soft);color:var(--t-accent-strong);font-size:8px;font-weight:780;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:grab;pointer-events:auto;touch-action:none;overscroll-behavior:contain;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none;-webkit-tap-highlight-color:transparent}
     .export-preview-drag-handle::before{content:"⋮⋮";font-weight:900;letter-spacing:-2px;opacity:.72}
     .export-preview-drag-card:hover{border-color:color-mix(in srgb,var(--t-accent) 34%,transparent);background:color-mix(in srgb,var(--t-accent-soft) 18%,transparent)}
     .export-preview-drag-card.is-dragging{border-color:var(--t-accent);background:color-mix(in srgb,var(--t-accent-soft) 34%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--t-accent) 12%,transparent)}
     .export-preview-drag-card.is-drop-before::before,.export-preview-drag-card.is-drop-after::after{content:"";position:absolute;left:4px;right:4px;height:3px;border-radius:999px;background:var(--t-accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--t-surface) 80%,transparent)}
     .export-preview-drag-card.is-drop-before::before{top:-3px}.export-preview-drag-card.is-drop-after::after{bottom:-3px}
+    .export-preview-tail-dropzone{display:flex;align-items:center;justify-content:center;min-height:74px;padding:12px;border:1px dashed color-mix(in srgb,var(--t-accent) 28%,var(--t-line));border-radius:10px;background:color-mix(in srgb,var(--t-accent-soft) 18%,var(--t-surface));color:var(--t-muted);font-size:8.5px;line-height:1.45;text-align:center;transition:border-color .14s ease,background .14s ease,color .14s ease}
+    .export-preview-tail-dropzone::before{content:"↓";margin-right:6px;color:var(--t-accent-strong);font-weight:900}
+    .export-preview-tail-dropzone.is-active{border-color:var(--t-accent);background:color-mix(in srgb,var(--t-accent-soft) 56%,var(--t-surface));color:var(--t-accent-strong)}
+    .export-preview-compact-btn{min-height:28px!important;padding:4px 9px!important;font-size:8px!important}
     body.self-intro-preview-dragging{user-select:none;-webkit-user-select:none}
     body.self-intro-preview-dragging .export-preview-drag-handle{cursor:grabbing}
     .export-preview-empty{place-self:center;padding:28px 14px;color:var(--t-muted);font-size:9px;text-align:center}
     .export-center-summary{margin-bottom:12px}
     @media(max-width:980px){.export-center-panel{width:min(760px,calc(100vw - 24px))}.export-composer-grid{grid-template-columns:1fr}.export-preview-pane{position:static}.export-preview-stage{max-height:360px;min-height:220px}}
-    @media(max-width:760px){.export-center-panel{left:10px;right:10px;bottom:10px;width:auto;max-height:90vh}.export-composer-body{padding:0 11px}.export-composer-grid{gap:10px}.export-preview-pane{padding:9px}.export-preview-stage{min-height:180px;max-height:300px;padding:7px}.export-preset-grid-compact{grid-template-columns:repeat(3,minmax(0,1fr))}.export-scope-row-controls{align-items:flex-end;flex-direction:column}.export-scope-actions{margin-left:0}.export-scope-width{align-self:stretch;justify-content:flex-end}}
+    @media(max-width:760px){.export-center-panel{left:10px;right:10px;bottom:10px;width:auto;max-height:90vh}.export-composer-body{padding:0 11px}.export-composer-grid{gap:10px}.export-preview-pane{padding:9px}.export-preview-stage{min-height:180px;max-height:300px;padding:7px}.export-preview-drag-handle{top:5px;left:6px;right:6px;width:auto;max-width:none;height:38px;min-width:0;padding:0 12px;justify-content:center;font-size:9px;box-shadow:0 3px 10px var(--t-shadow-soft);background:color-mix(in srgb,var(--t-surface) 94%,transparent)}.export-preview-drag-handle::before{content:"↕";letter-spacing:0;font-size:13px}.export-preset-grid-compact{grid-template-columns:repeat(3,minmax(0,1fr))}.export-scope-row-controls{align-items:flex-end;flex-direction:column}.export-scope-actions{margin-left:0}.export-scope-width{align-self:stretch;justify-content:flex-end}}
     @media(max-width:430px){.export-center-head{padding-right:10px}.export-preset-grid-compact{grid-template-columns:1fr}.export-scope-row{grid-template-columns:auto minmax(0,1fr)}.export-scope-row-controls{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center}.export-scope-width{justify-self:start}.export-preview-stage{max-height:240px}.export-center-foot{grid-template-columns:1fr 1fr}}
 
 
@@ -4594,7 +4601,7 @@ body{font-size:var(--vu-body);line-height:1.5}
                       <div id="selfIntroExportSummary" class="export-center-summary" role="status" aria-live="polite"></div>
                     </div>
                     <aside class="export-preview-pane" aria-label="导出预览">
-                      <div class="export-preview-head"><div><strong>实时预览</strong><span>拖动卡片右上角抓手可直接排序；半栏会自动紧凑填充两列</span></div></div>
+                      <div class="export-preview-head"><div><strong>实时预览</strong><span>拖动模块可改变顺序和左右栏；拖到底部“继续向下排列”区域即可继续往下追加，预览会自动延伸。</span></div><button id="selfIntroExportCompactBtn" class="btn small export-preview-compact-btn" type="button">自动紧凑</button></div>
                       <div id="selfIntroExportPreviewStage" class="export-preview-stage"><div class="export-preview-empty">选择导出内容后会在这里预览。</div></div>
                     </aside>
                   </div>
@@ -4780,7 +4787,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.37 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.40 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4792,7 +4799,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.37　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.40　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5127,7 +5134,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.37</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.40</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5142,10 +5149,13 @@ body{font-size:var(--vu-body);line-height:1.5}
 </div>
 </section>
 </div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.37 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.37</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.40 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.40</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.40</strong><span>个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏；同时加入“一键自动紧凑”恢复，并移除个人偏好导出图片顶部的导出范围与版面参数标签。</span>
+<strong>v8.1.6.39</strong><span>进一步完善手机端导出预览拖动：移动端抓手扩大为更易触控的横向拖动条，并在预览层禁用系统长按菜单、文本选择和原生图片拖拽；同时统一移除所有导出图片底部的“应用名 / 版本 / 生成日期”等元数据脚注，并收紧对应底部留白。</span>
+<strong>v8.1.6.38</strong><span>修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域，同时保留左侧上下按钮作为兼容降级。</span>
 <strong>v8.1.6.37</strong><span>重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出，可查看文件名、大小、修改时间、完整性状态，并支持查看 JSON 内容或下载副本；更改保存位置仍保留为独立操作。</span>
 <strong>v8.1.6.36</strong><span>修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入；UC、夸克、iOS Safari、Firefox Android 等缺少相应权限时自动提供手机兼容备份，到期准备完整备份并提示“保存到手机”，优先调用系统保存/分享面板，不支持时下载到浏览器默认目录，并明确区分“已写入并可核验”和“已请求手机保存”。</span>
 <strong>v8.1.6.35</strong><span>浏览器外自动备份升级为可配置频率，默认每 30 分钟；每次成功写入后显示非阻塞备份提示，并可核验“最新备份”文件的存在、大小、更新时间与完整性。受浏览器安全限制无法直接定位系统文件夹时，可从核验弹窗打开文件夹选择器查看目录。</span>
@@ -5384,7 +5394,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.37";
+const APP_UI_VERSION = "8.1.6.40";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5662,12 +5672,15 @@ const SELF_INTRO_EXPORT_SCOPE_META = {
     host: { label: "可带模组", desc: "可带清单及每个模组的带团备注" }
 };
 const SELF_INTRO_EXPORT_DEFAULT_WIDTHS = { common: "full", pl: "half", kp: "half", want: "half", host: "half" };
-function defaultSelfIntroExportState() { return { selected: [...SELF_INTRO_EXPORT_SCOPE_ORDER], order: [...SELF_INTRO_EXPORT_SCOPE_ORDER], widths: Object.assign({}, SELF_INTRO_EXPORT_DEFAULT_WIDTHS) }; }
+function defaultSelfIntroExportState() { return { selected: [...SELF_INTRO_EXPORT_SCOPE_ORDER], order: [...SELF_INTRO_EXPORT_SCOPE_ORDER], widths: Object.assign({}, SELF_INTRO_EXPORT_DEFAULT_WIDTHS), columns: {} }; }
 function normalizeSelfIntroExportState(raw) {
-    const def = defaultSelfIntroExportState(), src = raw && typeof raw === "object" ? raw : {}, selected = Array.isArray(src.selected) ? src.selected.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.selected, orderRaw = Array.isArray(src.order) ? src.order.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.order, order = [...orderRaw, ...SELF_INTRO_EXPORT_SCOPE_ORDER.filter(id => !orderRaw.includes(id))], widths = Object.assign({}, def.widths);
-    const srcWidths = src.widths && typeof src.widths === "object" ? src.widths : {};
-    SELF_INTRO_EXPORT_SCOPE_ORDER.forEach(id => { if (srcWidths[id] === "full" || srcWidths[id] === "half") widths[id] = srcWidths[id]; });
-    return { selected: [...new Set(selected)], order: [...new Set(order)], widths };
+    const def = defaultSelfIntroExportState(), src = raw && typeof raw === "object" ? raw : {}, selected = Array.isArray(src.selected) ? src.selected.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.selected, orderRaw = Array.isArray(src.order) ? src.order.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.order, order = [...orderRaw, ...SELF_INTRO_EXPORT_SCOPE_ORDER.filter(id => !orderRaw.includes(id))], widths = Object.assign({}, def.widths), columns = {};
+    const srcWidths = src.widths && typeof src.widths === "object" ? src.widths : {}, srcColumns = src.columns && typeof src.columns === "object" ? src.columns : {};
+    SELF_INTRO_EXPORT_SCOPE_ORDER.forEach(id => {
+        if (srcWidths[id] === "full" || srcWidths[id] === "half") widths[id] = srcWidths[id];
+        if (srcColumns[id] === "left" || srcColumns[id] === "right") columns[id] = srcColumns[id];
+    });
+    return { selected: [...new Set(selected)], order: [...new Set(order)], widths, columns };
 }
 function loadSelfIntroExportState() { try { return normalizeSelfIntroExportState(JSON.parse(localStorage.getItem(SELF_INTRO_EXPORT_PREF_KEY) || "null")); } catch (err) { return defaultSelfIntroExportState(); } }
 function saveSelfIntroExportState() { try { localStorage.setItem(SELF_INTRO_EXPORT_PREF_KEY, JSON.stringify(selfIntroExportState)); } catch (err) { } }
@@ -7881,7 +7894,7 @@ const els = {
     compactAppBar: document.getElementById("compactAppBar"), compactSaveStatus: document.getElementById("compactSaveStatus"),
     moduleNativeStats: document.getElementById("moduleNativeStats"), moduleNativeSearch: document.getElementById("moduleNativeSearch"), moduleNativeHoFilter: document.getElementById("moduleNativeHoFilter"), moduleNativeLocationFilter: document.getElementById("moduleNativeLocationFilter"), moduleNativeSort: document.getElementById("moduleNativeSort"), moduleNativeGrid: document.getElementById("moduleNativeGrid"), newNativeModule: document.getElementById("newNativeModuleBtn"), openModuleAdvanced: document.getElementById("openModuleAdvancedBtn"), moduleCardsLayout: document.getElementById("moduleCardsLayoutBtn"), moduleCompactLayout: document.getElementById("moduleCompactLayoutBtn"), nativeModuleEditorBackdrop: document.getElementById("nativeModuleEditorBackdrop"), nativeModuleEditorTitle: document.getElementById("nativeModuleEditorTitle"), nativeModuleEditorContent: document.getElementById("nativeModuleEditorContent"), closeNativeModuleEditor: document.getElementById("closeNativeModuleEditorBtn"), cancelNativeModuleEditor: document.getElementById("cancelNativeModuleEditorBtn"), saveNativeModuleEditor: document.getElementById("saveNativeModuleEditorBtn"), moduleAdvancedBackdrop: document.getElementById("moduleAdvancedBackdrop"), closeModuleAdvanced: document.getElementById("closeModuleAdvancedBtn"),
     profilesViewBtn: document.getElementById("profilesViewBtn"), selfIntroViewBtn: document.getElementById("selfIntroViewBtn"), statsViewBtn: document.getElementById("statsViewBtn"), modulesViewBtn: document.getElementById("modulesViewBtn"), plansViewBtn: document.getElementById("plansViewBtn"), recordsViewBtn: document.getElementById("recordsViewBtn"),
-    selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportPreview: document.getElementById("selfIntroExportPreviewStage"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
+    selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportPreview: document.getElementById("selfIntroExportPreviewStage"), selfIntroExportCompact: document.getElementById("selfIntroExportCompactBtn"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
     statsContent: document.getElementById("statsContent"), statsExport: document.getElementById("statsExportBtn"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
     grid: document.getElementById("profileGrid"), count: document.getElementById("countText"), search: document.getElementById("searchInput"), sort: document.getElementById("sortSelect"), cardLayout: document.getElementById("cardLayoutBtn"), compactLayout: document.getElementById("compactLayoutBtn"), blacklistBtn: document.getElementById("blacklistBtn"), profileCollapseActions: document.getElementById("profileCollapseActions"), collapseAllProfiles: document.getElementById("collapseAllProfilesBtn"), expandAllProfiles: document.getElementById("expandAllProfilesBtn"), profilesToolbarTitle: document.getElementById("profilesToolbarTitle"), profilesToolbarSubtitle: document.getElementById("profilesToolbarSubtitle"),
     planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"),
@@ -9129,15 +9142,8 @@ function drawUnifiedExportHeader(ctx, w, theme, { eyebrow = "TRPG · 本地档�
     return y + cardH + 18;
 }
 function drawUnifiedExportFooter(ctx, w, y, theme) {
-    ctx.strokeStyle = theme.line;
-    ctx.beginPath();
-    ctx.moveTo(34, y - .5);
-    ctx.lineTo(w - 34, y - .5);
-    ctx.stroke();
-    ctx.fillStyle = theme.faint;
-    ctx.font = "500 10.5px system-ui, sans-serif";
-    ctx.fillText(`${APP_NAME} · v${APP_UI_VERSION} · ${new Date().toLocaleDateString("zh-CN")}`, 34, y + 18);
-    return y + 30;
+    // 导出图片保持纯内容，不附加应用名、版本、生成日期等脚注。
+    return y;
 }
 function drawRunExportGroupHead(ctx, x, y, w, { title = "", subtitle = "", summary = "", meta = "", accent = "", soft = "" }, theme) {
     const h = 70;
@@ -9235,7 +9241,7 @@ function buildHoOrganizerCanvas(style = "wide") {
         let y = headBottom;
         const w = baseW - pad * 2;
         cols.forEach((col, ci) => { const rows = entries.filter(e => e.column.key === col.key), entryCols = rows.length > 1 ? 2 : 1, rowCount = Math.max(1, Math.ceil(Math.max(rows.length, 1) / entryCols)), h = 70 + (rows.length ? (18 + rowCount * 72 + Math.max(0, rowCount - 1) * 7) : 58); layout.push({ col, rows, ci, x: pad, y, w, h, entryCols }); y += h + 14; });
-        baseH = y + 38;
+        baseH = y + 14;
     }
     else {
         baseW = 1560;
@@ -9247,7 +9253,7 @@ function buildHoOrganizerCanvas(style = "wide") {
             layout.push(...row);
             y += rowH + 14;
         }
-        baseH = y + 38;
+        baseH = y + 14;
     }
     const maxDim = 9000, scale = Math.min(2, maxDim / baseW, maxDim / baseH);
     if (scale < .5)
@@ -9318,7 +9324,7 @@ function buildKpOrganizerCanvas(style = "wide") {
         let y = headBottom;
         const w = baseW - pad * 2;
         groups.forEach(group => { const count = Math.max(1, group.entries.length), entryCols = count > 1 ? 2 : 1, rows = Math.ceil(count / entryCols), h = 70 + 18 + rows * 72 + Math.max(0, rows - 1) * 7; layout.push({ group, x: pad, y, w, h, entryCols }); y += h + 14; });
-        baseH = y + 38;
+        baseH = y + 14;
     }
     else {
         baseW = 1560;
@@ -9330,7 +9336,7 @@ function buildKpOrganizerCanvas(style = "wide") {
             layout.push(...row);
             y += rowH + 14;
         }
-        baseH = y + 38;
+        baseH = y + 14;
     }
     const maxDim = 9000, safeScale = Math.min(2, maxDim / baseW, maxDim / baseH);
     if (safeScale < .5)
@@ -10651,7 +10657,15 @@ function selfIntroExportBasicLines(d) {
     return lines;
 }
 function selfIntroExportStyleConfig() {
-    return { style: "share", baseW: 1080, pad: 30, headBottom: 166, footerSpace: 46, groupGap: 10, columnGap: 12, sectionGap: 9, groupHeader: 58, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 48, sectionBottom: 14, scaleHeight: 58, scaleLabelFont: 13, scaleValueFont: 12, scaleMetaFont: 9.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 10.5, cardGap: 9, showModuleMeta: false };
+    return { style: "share", baseW: 1080, pad: 30, headBottom: 128, footerSpace: 18, groupGap: 10, columnGap: 12, sectionGap: 9, groupHeader: 58, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 48, sectionBottom: 14, scaleHeight: 58, scaleLabelFont: 13, scaleValueFont: 12, scaleMetaFont: 9.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 10.5, cardGap: 9, showModuleMeta: false };
+}
+function drawSelfIntroExportHeader(ctx, w, theme) {
+    const x = 30, y = 22, cardW = w - 60, cardH = 88, innerX = x + 20;
+    canvasFillRound(ctx, x, y, cardW, cardH, 17, theme.surface, theme.line);
+    canvasFillRound(ctx, innerX, y + 18, 4, 18, 2, theme.accent, "");
+    ctx.fillStyle = theme.muted; ctx.font = "750 12px system-ui, sans-serif"; ctx.fillText("PL / KP · 个人偏好", innerX + 13, y + 32);
+    ctx.fillStyle = theme.ink; ctx.font = "800 29px system-ui, sans-serif"; ctx.fillText("个人偏好", innerX, y + 68);
+    return y + cardH + 18;
 }
 function selfIntroExportCleanLines(lines) {
     return (lines || []).map(x => String(x || "").trim()).filter(line => line && line !== "暂未添加" && !/[：:]未填写$/.test(line));
@@ -10838,9 +10852,10 @@ function createSelfIntroExportLayout(rawState = selfIntroExportState) {
             hasPlacement = true;
             continue;
         }
-        // 半栏采用“瀑布流”式紧凑排布：下一块自动进入当前较短的一列。
-        // 这样两栏高度不一致时不会被传统“同一行取最大高度”制造大片空白。
-        const column = colBottom[0] <= colBottom[1] ? 0 : 1;
+        // 半栏默认仍采用紧凑瀑布流；如果用户在预览中明确拖入左栏 / 右栏，则尊重手动栏位。
+        // 这样可以把多个半栏连续向下堆在同一侧，另一侧无需被系统强行“平衡”回来。
+        const preferredColumn = state.columns && state.columns[group.id] === "left" ? 0 : state.columns && state.columns[group.id] === "right" ? 1 : -1;
+        const column = preferredColumn >= 0 ? preferredColumn : (colBottom[0] <= colBottom[1] ? 0 : 1);
         const x = cfg.pad + column * (halfW + cfg.columnGap);
         const y = colBottom[column] > cfg.headBottom ? colBottom[column] + cfg.groupGap : cfg.headBottom;
         const h = measureSelfIntroExportGroup(measure, group, halfW, cfg, state);
@@ -10860,8 +10875,7 @@ function buildSelfIntroExportCanvas(rawState = selfIntroExportState, options = {
     const canvas = document.createElement("canvas"); canvas.width = Math.max(1, Math.round(cfg.baseW * scale)); canvas.height = Math.max(1, Math.round(baseH * scale));
     const ctx = canvas.getContext("2d"); if (!ctx) throw new Error("当前浏览器无法生成图片");
     ctx.scale(scale, scale); ctx.fillStyle = theme.bg; ctx.fillRect(0, 0, cfg.baseW, baseH);
-    const selectedLabels = groups.map(g => g.title);
-    drawUnifiedExportHeader(ctx, cfg.baseW, theme, { eyebrow: "PL / KP · 个人偏好", title: "个人偏好", subtitle: `导出范围：${selectedLabels.join("、")}`, stats: [`${groups.length} 个导出区域`, "1080 px 固定宽度", "半栏自动紧凑排版"] });
+    drawSelfIntroExportHeader(ctx, cfg.baseW, theme);
     placements.forEach(item => drawSelfIntroExportGroup(ctx, item.x, item.y, item.width, item.group, theme, cfg, state));
     drawUnifiedExportFooter(ctx, cfg.baseW, baseH - 32, theme);
     return canvas;
@@ -10885,7 +10899,7 @@ function selfIntroExportPresetKey(state = selfIntroExportState) {
     return "";
 }
 function applySelfIntroExportPreset(key) {
-    const next = normalizeSelfIntroExportState(selfIntroExportState); next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.widths = Object.assign({}, SELF_INTRO_EXPORT_DEFAULT_WIDTHS);
+    const next = normalizeSelfIntroExportState(selfIntroExportState); next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.widths = Object.assign({}, SELF_INTRO_EXPORT_DEFAULT_WIDTHS); next.columns = {};
     if (key === "prefs") next.selected = ["common", "pl", "kp"];
     else if (key === "modules") next.selected = ["want", "host"];
     else next.selected = [...SELF_INTRO_EXPORT_SCOPE_ORDER];
@@ -10898,7 +10912,36 @@ function moveSelfIntroExportScope(id, dir) {
 }
 function setSelfIntroExportScopeWidth(id, width) {
     if (!SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id) || !["full", "half"].includes(width)) return;
-    const state = normalizeSelfIntroExportState(selfIntroExportState); state.widths[id] = width; selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
+    const state = normalizeSelfIntroExportState(selfIntroExportState); state.widths[id] = width;
+    if (width === "full" && state.columns) delete state.columns[id];
+    selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
+}
+function compactSelfIntroExportLayout() {
+    const state = normalizeSelfIntroExportState(selfIntroExportState); state.columns = {}; selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter(); showToast("已恢复自动紧凑排版");
+}
+function selfIntroExportPreviewColumnFromPoint(clientX) {
+    const surface = els.selfIntroExportPreview && els.selfIntroExportPreview.querySelector(".export-preview-canvas-surface");
+    if (!surface) return "auto";
+    const r = surface.getBoundingClientRect();
+    return clientX < r.left + r.width / 2 ? "left" : "right";
+}
+function placeSelfIntroExportScopeFromPreview(sourceId, targetId, after, clientX, appendToEnd = false) {
+    const state = normalizeSelfIntroExportState(selfIntroExportState), order = [...state.order], sourceIndex = order.indexOf(sourceId);
+    if (sourceIndex < 0) return false;
+    order.splice(sourceIndex, 1);
+    if (appendToEnd || !targetId || sourceId === targetId) order.push(sourceId);
+    else {
+        let targetIndex = order.indexOf(targetId);
+        if (targetIndex < 0) order.push(sourceId);
+        else { if (after) targetIndex += 1; order.splice(Math.max(0, Math.min(order.length, targetIndex)), 0, sourceId); }
+    }
+    state.order = order;
+    if (state.widths[sourceId] === "half") {
+        const column = selfIntroExportPreviewColumnFromPoint(clientX);
+        if (column === "left" || column === "right") state.columns[sourceId] = column;
+    } else if (state.columns) delete state.columns[sourceId];
+    selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
+    return true;
 }
 function reorderSelfIntroExportScope(sourceId, targetId, after = false) {
     if (!sourceId || !targetId || sourceId === targetId) return false;
@@ -10914,6 +10957,7 @@ function reorderSelfIntroExportScope(sourceId, targetId, after = false) {
 function clearSelfIntroPreviewDragMarks() {
     if (!els.selfIntroExportPreview) return;
     els.selfIntroExportPreview.querySelectorAll(".export-preview-drag-card").forEach(card => card.classList.remove("is-dragging", "is-drop-before", "is-drop-after"));
+    const tail = els.selfIntroExportPreview.querySelector(".export-preview-tail-dropzone"); if (tail) tail.classList.remove("is-active");
 }
 function previewDragNearestTarget(clientX, clientY, sourceId) {
     if (!els.selfIntroExportPreview) return null;
@@ -10944,7 +10988,20 @@ function updateSelfIntroPreviewDrag(clientX, clientY) {
     const distance = Math.hypot(clientX - drag.startX, clientY - drag.startY);
     if (!drag.moved && distance < 5) return;
     drag.moved = true;
+    // 拖动接近预览上下边缘时自动滚动，长图无需先松手再滚屏。
+    const stage = els.selfIntroExportPreview, sr = stage && stage.getBoundingClientRect ? stage.getBoundingClientRect() : null;
+    if (stage && sr) {
+        const edge = Math.min(72, sr.height * .18), step = 22;
+        if (clientY > sr.bottom - edge) stage.scrollTop += step;
+        else if (clientY < sr.top + edge) stage.scrollTop -= step;
+    }
     clearSelfIntroPreviewDragMarks(); drag.sourceCard.classList.add("is-dragging");
+    const tail = els.selfIntroExportPreview.querySelector(".export-preview-tail-dropzone"), tr = tail && tail.getBoundingClientRect ? tail.getBoundingClientRect() : null;
+    const inTail = Boolean(tr && clientY >= tr.top - 12);
+    drag.appendToEnd = inTail;
+    if (inTail) {
+        drag.targetId = ""; drag.after = true; if (tail) tail.classList.add("is-active"); return;
+    }
     const target = previewDragNearestTarget(clientX, clientY, drag.sourceId);
     drag.targetId = target ? target.id : ""; drag.after = target ? target.after : false;
     if (target) target.card.classList.add(target.after ? "is-drop-after" : "is-drop-before");
@@ -10952,7 +11009,7 @@ function updateSelfIntroPreviewDrag(clientX, clientY) {
 function finishSelfIntroPreviewDrag({ cancel = false } = {}) {
     const drag = selfIntroExportPreviewDrag; if (!drag) return;
     selfIntroExportPreviewDrag = null; document.body.classList.remove("self-intro-preview-dragging"); clearSelfIntroPreviewDragMarks();
-    if (!cancel && drag.moved && drag.targetId) reorderSelfIntroExportScope(drag.sourceId, drag.targetId, drag.after);
+    if (!cancel && drag.moved) placeSelfIntroExportScopeFromPreview(drag.sourceId, drag.targetId, drag.after, drag.clientX, Boolean(drag.appendToEnd));
 }
 function renderSelfIntroExportPreview() {
     if (!els.selfIntroExportPreview) return;
@@ -10961,15 +11018,18 @@ function renderSelfIntroExportPreview() {
         if (!layout.groups.length) { els.selfIntroExportPreview.innerHTML = '<div class="export-preview-empty">尚未选择导出区域。</div>'; return; }
         const canvas = buildSelfIntroExportCanvas(selfIntroExportState, { preview: true });
         canvas.setAttribute("aria-label", "个人偏好导出图片实时预览");
-        const wrap = document.createElement("div"); wrap.className = "export-preview-canvas-wrap"; wrap.style.maxWidth = `${canvas.width}px`; wrap.style.aspectRatio = `${canvas.width} / ${canvas.height}`;
-        const layer = document.createElement("div"); layer.className = "export-preview-drag-layer"; layer.setAttribute("aria-label", "拖动导出区域调整顺序");
+        const wrap = document.createElement("div"); wrap.className = "export-preview-canvas-wrap"; wrap.style.maxWidth = `${canvas.width}px`;
+        const surface = document.createElement("div"); surface.className = "export-preview-canvas-surface"; surface.style.aspectRatio = `${canvas.width} / ${canvas.height}`;
+        const layer = document.createElement("div"); layer.className = "export-preview-drag-layer"; layer.setAttribute("aria-label", "拖动导出区域调整顺序和左右栏");
         layout.placements.forEach(item => {
             const card = document.createElement("div"); card.className = "export-preview-drag-card"; card.dataset.exportPreviewScopeId = item.id;
             card.style.left = `${item.x / layout.cfg.baseW * 100}%`; card.style.top = `${item.y / layout.baseH * 100}%`; card.style.width = `${item.width / layout.cfg.baseW * 100}%`; card.style.height = `${item.height / layout.baseH * 100}%`;
-            const handle = document.createElement("button"); handle.type = "button"; handle.className = "export-preview-drag-handle"; handle.dataset.exportPreviewDragHandle = item.id; handle.title = `拖动调整${SELF_INTRO_EXPORT_SCOPE_META[item.id].label}顺序`; handle.setAttribute("aria-label", `拖动调整${SELF_INTRO_EXPORT_SCOPE_META[item.id].label}顺序`); handle.textContent = SELF_INTRO_EXPORT_SCOPE_META[item.id].label;
+            const handle = document.createElement("button"); handle.type = "button"; handle.className = "export-preview-drag-handle"; handle.dataset.exportPreviewDragHandle = item.id; handle.setAttribute("draggable", "false"); handle.title = `直接按住并滑动，调整${SELF_INTRO_EXPORT_SCOPE_META[item.id].label}位置`; handle.setAttribute("aria-label", `直接按住并滑动，调整${SELF_INTRO_EXPORT_SCOPE_META[item.id].label}位置`); handle.textContent = SELF_INTRO_EXPORT_SCOPE_META[item.id].label;
             card.appendChild(handle); layer.appendChild(card);
         });
-        wrap.appendChild(canvas); wrap.appendChild(layer); els.selfIntroExportPreview.innerHTML = ""; els.selfIntroExportPreview.appendChild(wrap);
+        surface.appendChild(canvas); surface.appendChild(layer); wrap.appendChild(surface);
+        const tail = document.createElement("div"); tail.className = "export-preview-tail-dropzone"; tail.textContent = "拖到这里继续向下排列；半栏会按你拖到的左侧 / 右侧继续追加"; wrap.appendChild(tail);
+        els.selfIntroExportPreview.innerHTML = ""; els.selfIntroExportPreview.appendChild(wrap);
     } catch (err) { els.selfIntroExportPreview.innerHTML = `<div class="export-preview-empty">${escapeHTML(err.message || "暂时无法生成预览")}</div>`; }
 }
 function renderSelfIntroExportCenter() {
@@ -10978,7 +11038,7 @@ function renderSelfIntroExportCenter() {
     els.selfIntroExportScopes.innerHTML = state.order.map((id, index) => { const meta = SELF_INTRO_EXPORT_SCOPE_META[id], checked = selected.has(id), width = state.widths[id] === "half" ? "half" : "full"; return `<div class="export-scope-row ${checked ? "" : "is-disabled"}" data-export-scope-row="${escapeHTML(id)}"><label class="export-scope-check"><input type="checkbox" data-self-intro-export-scope="${escapeHTML(id)}" ${checked ? "checked" : ""} aria-label="导出${escapeHTML(meta.label)}"></label><span class="export-scope-copy"><strong>${escapeHTML(meta.label)}</strong><small>${escapeHTML(meta.desc)}</small></span><div class="export-scope-row-controls"><span class="export-scope-width" role="group" aria-label="${escapeHTML(meta.label)}版面宽度"><button type="button" class="${width === "full" ? "active" : ""}" data-self-intro-export-width="full" data-export-scope-id="${escapeHTML(id)}">整行</button><button type="button" class="${width === "half" ? "active" : ""}" data-self-intro-export-width="half" data-export-scope-id="${escapeHTML(id)}">半栏</button></span><span class="export-scope-actions"><button type="button" data-self-intro-export-move="-1" data-export-scope-id="${escapeHTML(id)}" ${index === 0 ? "disabled" : ""} aria-label="上移${escapeHTML(meta.label)}">↑</button><button type="button" data-self-intro-export-move="1" data-export-scope-id="${escapeHTML(id)}" ${index === state.order.length - 1 ? "disabled" : ""} aria-label="下移${escapeHTML(meta.label)}">↓</button></span></div></div>`; }).join("");
     const preset = selfIntroExportPresetKey(state); document.querySelectorAll("[data-self-intro-export-preset]").forEach(btn => btn.classList.toggle("active", btn.dataset.selfIntroExportPreset === preset));
     const selectedIds = selfIntroExportSelectedIds(state), layout = (() => { try { return createSelfIntroExportLayout(state); } catch (err) { return null; } })(), actualCount = layout ? layout.groups.length : 0, est = layout ? layout.baseH : 0, halfCount = selectedIds.filter(id => state.widths[id] === "half").length, fullCount = selectedIds.length - halfCount, lengthLabel = !est ? "无法估算" : est < 1500 ? "短图" : est < 2800 ? "中等长图" : est < 4600 ? "长图" : "超长图";
-    if (els.selfIntroExportSummary) els.selfIntroExportSummary.innerHTML = selectedIds.length ? `<strong>已选 ${selectedIds.length} 个区域</strong> · ${fullCount} 个整行 / ${halfCount} 个半栏 · 半栏自动紧凑填充 · 预计${lengthLabel}${est ? `（约 ${Math.round(est)} px）` : ""}${selfIntroDirty() ? " · 包含当前未保存修改" : ""}` : `<strong>尚未选择导出区域</strong> · 请至少勾选一个区域。`;
+    if (els.selfIntroExportSummary) els.selfIntroExportSummary.innerHTML = selectedIds.length ? `<strong>已选 ${selectedIds.length} 个区域</strong> · ${fullCount} 个整行 / ${halfCount} 个半栏 · 半栏支持手动左右栏 / 自动紧凑 · 预计${lengthLabel}${est ? `（约 ${Math.round(est)} px）` : ""}${selfIntroDirty() ? " · 包含当前未保存修改" : ""}` : `<strong>尚未选择导出区域</strong> · 请至少勾选一个区域。`;
     if (els.selfIntroExportNow) els.selfIntroExportNow.disabled = actualCount === 0;
     renderSelfIntroExportPreview();
 }
@@ -11681,7 +11741,7 @@ function buildStatsExportCanvas() {
     const peopleRows = statsExportTopPeople(people, peopleMetric, 10), moduleRows = statsExportTopModules(mods, statsUiState.moduleMode, 10);
     const baseW = 1600, pad = 34, gap = 22, colGap = 20;
     const overviewH = 302, rankBodyH = Math.max(168, (Math.max(peopleRows.length, moduleRows.length) || 1) * 52 + 22), rankPanelH = 104 + rankBodyH, trendPanelH = 376, bottomPanelH = 254;
-    const headerBottom = 180, totalH = headerBottom + overviewH + gap + rankPanelH + gap + trendPanelH + gap + bottomPanelH + 48;
+    const headerBottom = 180, totalH = headerBottom + overviewH + gap + rankPanelH + gap + trendPanelH + gap + bottomPanelH + 20;
     const maxDim = 9000, scale = Math.min(2, maxDim / baseW, maxDim / totalH);
     if (scale < .6)
         throw new Error("当前统计内容过多，暂时无法稳定导出图片");
@@ -18367,6 +18427,8 @@ els.recordsBoard.addEventListener("click", e => {
 (_o = els.selfIntroExport) === null || _o === void 0 ? void 0 : _o.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); toggleSelfIntroExportCenter(); });
 els.selfIntroExportPanelClose === null || els.selfIntroExportPanelClose === void 0 ? void 0 : els.selfIntroExportPanelClose.addEventListener("click", () => toggleSelfIntroExportCenter(false));
 els.selfIntroExportReset === null || els.selfIntroExportReset === void 0 ? void 0 : els.selfIntroExportReset.addEventListener("click", () => { selfIntroExportState = defaultSelfIntroExportState(); saveSelfIntroExportState(); renderSelfIntroExportCenter(); });
+const selfIntroExportCompactBtn = document.getElementById("selfIntroExportCompactBtn");
+selfIntroExportCompactBtn === null || selfIntroExportCompactBtn === void 0 ? void 0 : selfIntroExportCompactBtn.addEventListener("click", compactSelfIntroExportLayout);
 els.selfIntroExportNow === null || els.selfIntroExportNow === void 0 ? void 0 : els.selfIntroExportNow.addEventListener("click", async () => { const ok = await exportSelfIntroImage(selfIntroExportState); if (ok) toggleSelfIntroExportCenter(false); });
 els.selfIntroExportPanel === null || els.selfIntroExportPanel === void 0 ? void 0 : els.selfIntroExportPanel.addEventListener("click", e => {
     e.stopPropagation();
@@ -18382,11 +18444,54 @@ els.selfIntroExportPanel === null || els.selfIntroExportPanel === void 0 ? void 
     selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
 });
 if (els.selfIntroExportPreview) {
+    const exportPreviewGestureTarget = target => target && target.closest && target.closest(".export-preview-drag-card");
+    const suppressExportPreviewNativeGesture = e => {
+        if (!exportPreviewGestureTarget(e.target)) return;
+        e.preventDefault();
+        e.stopPropagation();
+    };
+    // UC / 夸克 / Safari 等移动浏览器长按时可能弹出系统菜单、广告标记或文本选择。
+    // 在导出预览拖动层内主动关闭这些原生手势；页面其他区域不受影响。
+    els.selfIntroExportPreview.addEventListener("contextmenu", suppressExportPreviewNativeGesture, true);
+    els.selfIntroExportPreview.addEventListener("selectstart", suppressExportPreviewNativeGesture, true);
+    els.selfIntroExportPreview.addEventListener("dragstart", suppressExportPreviewNativeGesture, true);
+    els.selfIntroExportPreview.addEventListener("touchstart", e => {
+        const handle = e.target.closest && e.target.closest("[data-export-preview-drag-handle]");
+        if (!handle || !e.touches || !e.touches[0]) return;
+        // 必须在 touchstart 就 preventDefault，避免浏览器把“按住”识别成系统长按菜单。
+        e.preventDefault();
+        e.stopPropagation();
+        if (!selfIntroExportPreviewDrag) {
+            const t = e.touches[0];
+            beginSelfIntroPreviewDrag(handle, t.clientX, t.clientY, `touch-${t.identifier}`);
+        }
+    }, { passive: false, capture: true });
+    els.selfIntroExportPreview.addEventListener("touchmove", e => {
+        if (!selfIntroExportPreviewDrag || !String(selfIntroExportPreviewDrag.pointerId || "").startsWith("touch-") || !e.touches || !e.touches[0]) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const t = e.touches[0];
+        updateSelfIntroPreviewDrag(t.clientX, t.clientY);
+    }, { passive: false, capture: true });
+    els.selfIntroExportPreview.addEventListener("touchend", e => {
+        if (!selfIntroExportPreviewDrag || !String(selfIntroExportPreviewDrag.pointerId || "").startsWith("touch-")) return;
+        e.preventDefault();
+        e.stopPropagation();
+        finishSelfIntroPreviewDrag();
+    }, { passive: false, capture: true });
+    els.selfIntroExportPreview.addEventListener("touchcancel", e => {
+        if (!selfIntroExportPreviewDrag || !String(selfIntroExportPreviewDrag.pointerId || "").startsWith("touch-")) return;
+        e.preventDefault();
+        e.stopPropagation();
+        finishSelfIntroPreviewDrag({ cancel: true });
+    }, { passive: false, capture: true });
     if (window.PointerEvent) {
         els.selfIntroExportPreview.addEventListener("pointerdown", e => {
             const card = e.target.closest(".export-preview-drag-card"), explicitHandle = e.target.closest("[data-export-preview-drag-handle]"), handle = explicitHandle || (e.pointerType !== "touch" && card ? card.querySelector("[data-export-preview-drag-handle]") : null);
             if (!handle || e.button !== 0) return;
             e.preventDefault(); e.stopPropagation();
+            // 触摸设备优先走 capture touch 逻辑，专门用于压制 UC / 夸克原生长按菜单。
+            if (e.pointerType === "touch" && selfIntroExportPreviewDrag && String(selfIntroExportPreviewDrag.pointerId || "").startsWith("touch-")) return;
             if (beginSelfIntroPreviewDrag(handle, e.clientX, e.clientY, e.pointerId)) {
                 try { handle.setPointerCapture(e.pointerId); } catch (err) { }
             }
