@@ -2660,7 +2660,7 @@
 
       .mobile-bottom-nav{
         position:fixed;left:7px;right:7px;bottom:calc(7px + env(safe-area-inset-bottom));z-index:1320;
-        display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:4px;
+        display:grid;grid-template-columns:repeat(6,1fr);gap:2px;padding:4px;
         border:1px solid var(--t-line);border-radius:16px;
         background:color-mix(in srgb,var(--t-surface) 92%,transparent);
         backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
@@ -3140,7 +3140,7 @@
       .mobile-side-rail button:first-child{border-color:color-mix(in srgb,var(--t-accent) 58%,var(--t-line));background:var(--t-accent);color:var(--t-accent-on);box-shadow:0 6px 18px color-mix(in srgb,var(--t-accent) 24%,transparent)}
       .mobile-side-rail button:active:not(:disabled){transform:scale(.92)}
       .mobile-side-rail button:disabled{opacity:.34;box-shadow:none;cursor:default;transform:none!important}
-      .profiles-view,.self-intro-view,.modules-view,.plans-view,.records-view{box-sizing:border-box;padding-right:var(--mobile-rail-safe)}
+      .profiles-view,.self-intro-view,.stats-view,.modules-view,.plans-view,.records-view{box-sizing:border-box;padding-right:var(--mobile-rail-safe)}
       .site-footer{box-sizing:border-box;margin-right:var(--mobile-rail-safe)!important;width:auto!important}
 
       /* 手机顶部重复入口收起；搜索不再使用 sticky 覆盖布局。 */
@@ -3372,6 +3372,7 @@
       .ho-organizer-foot{padding:7px 8px}.ho-organizer-foot>span{max-width:68%;font-size:8px}
     }
 
+    /* v8.1.6.6 · 新增“我的跑团统计”：人物关系、模组排名、时间趋势、复跑分布、记录完整度与多视图切换；保持全离线计算。 */
     /* v8.1.6.5 · 跑团记录搜索工具栏重排：将“全部展开 / 全部收起”移动到搜索框右侧，并完善手机窄屏布局。 */
     /* v8.1.6.4 · PL 搜索工具栏操作重排：将“全部折叠 / 全部展开”移动到搜索框右侧，并补做桌面与窄屏布局避让。 */
     /* v8.1.6.3 · 主导航分组优化：将主视图切换整理为 3 组，扩大按钮字号与点击范围，并补做中等宽度下的排版避让。 */
@@ -3605,13 +3606,64 @@
     @media(max-width:900px){.self-intro-dual{grid-template-columns:1fr}.intro-two-col{grid-template-columns:1fr}}
     @media(max-width:760px){.self-intro-view{padding-right:var(--mobile-rail-safe)}.self-intro-toolbar .view-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}.self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1;width:100%;box-sizing:border-box}.self-intro-toolbar .view-toolbar-actions>.btn{width:100%;min-width:0}.self-intro-grid{gap:8px}.self-intro-card,.self-intro-side{border-radius:14px}.self-intro-card>summary{padding:12px}.self-intro-card-body{padding:0 11px 13px}.self-intro-side-head{padding:13px 12px}.self-intro-side-body{padding:0 11px 13px}.intro-boundary-row{grid-template-columns:1fr}.intro-intent-add{grid-template-columns:1fr}.intro-intent-actions{display:grid;grid-template-columns:1fr 1fr}.intro-intent-add .btn{width:100%}}
 
+
+    /* ---------- v8.1.6.6 · 我的跑团统计 ---------- */
+    .stats-view{display:grid;gap:10px;min-width:0}
+    .stats-toolbar{align-items:center}
+    .stats-toolbar-actions{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .stats-filter-field,.stats-custom-range label{display:grid;gap:4px;min-width:0}
+    .stats-filter-field>span,.stats-custom-range label>span{font-size:8px;font-weight:760;color:var(--t-muted)}
+    .stats-filter-field select{min-width:126px}
+    .stats-custom-range{display:flex;align-items:flex-end;gap:6px}
+    .stats-custom-range input{width:132px;min-height:40px}
+    .stats-range-arrow{padding-bottom:11px;color:var(--t-faint);font-size:10px}
+    .stats-content{display:grid;gap:12px;min-width:0}
+    .stats-scope-note{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:9px 11px;border:1px solid var(--t-line);border-radius:12px;background:color-mix(in srgb,var(--t-surface-2) 78%,transparent);color:var(--t-muted);font-size:8.8px;line-height:1.55}
+    .stats-scope-note strong{color:var(--t-text-2)}
+    .stats-overview-shell{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(0,1.8fr);gap:10px;align-items:stretch}
+    .stats-identity-card,.stats-metric-card,.stats-panel{border:1px solid var(--t-line);background:var(--t-surface);box-shadow:0 8px 24px var(--t-shadow-soft)}
+    .stats-identity-card{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:15px;padding:15px 16px;border-radius:18px;min-width:0}
+    .stats-donut{--kp:50%;position:relative;width:112px;height:112px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--t-role-kp) 0 var(--kp),var(--t-role-pl) var(--kp) 100%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--t-line) 65%,transparent)}
+    .stats-donut::after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--t-surface);box-shadow:0 0 0 1px var(--t-line)}
+    .stats-donut-center{position:relative;z-index:1;display:grid;gap:1px;text-align:center}.stats-donut-center strong{font-size:22px;line-height:1;color:var(--t-ink)}.stats-donut-center span{font-size:7.8px;color:var(--t-muted)}
+    .stats-identity-copy{display:grid;gap:8px;min-width:0}.stats-identity-copy>div:first-child{display:grid;gap:3px}.stats-identity-copy h3{margin:0;font-size:13px;color:var(--t-ink)}.stats-identity-copy p{margin:0;font-size:8.5px;line-height:1.5;color:var(--t-muted)}
+    .stats-role-legend{display:grid;gap:6px}.stats-role-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:center;font-size:8.8px;color:var(--t-text-2)}.stats-role-dot{width:8px;height:8px;border-radius:50%}.stats-role-dot.kp{background:var(--t-role-kp)}.stats-role-dot.pl{background:var(--t-role-pl)}.stats-role-row strong{font-size:10px;color:var(--t-ink)}
+    .stats-overview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;min-width:0}
+    .stats-metric-card{display:grid;align-content:start;gap:3px;min-width:0;padding:11px 12px;border-radius:14px}.stats-metric-card span{font-size:8px;color:var(--t-muted)}.stats-metric-card strong{font-size:18px;line-height:1.12;color:var(--t-ink);overflow-wrap:anywhere}.stats-metric-card small{font-size:7.8px;line-height:1.4;color:var(--t-faint)}
+    .stats-dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}
+    .stats-panel{min-width:0;border-radius:18px;overflow:hidden}
+    .stats-panel.full{grid-column:1/-1}
+    .stats-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:13px 14px;border-bottom:1px solid var(--t-line);background:linear-gradient(135deg,color-mix(in srgb,var(--t-accent-soft) 34%,var(--t-surface)),var(--t-surface))}
+    .stats-panel-title{display:grid;gap:2px;min-width:0}.stats-panel-title strong{font-size:13px;color:var(--t-ink)}.stats-panel-title span{font-size:8.3px;line-height:1.45;color:var(--t-muted)}
+    .stats-panel-controls{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex-wrap:wrap}
+    .stats-segmented{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2)}
+    .stats-segmented button{min-height:29px;padding:4px 8px;border:0;border-radius:7px;background:transparent;color:var(--t-muted);font-size:8.2px;font-weight:760;white-space:nowrap}
+    .stats-segmented button:hover{background:var(--t-surface);color:var(--t-text-2)}
+    .stats-segmented button.active{background:var(--t-surface);color:var(--t-accent-strong);box-shadow:0 1px 5px var(--t-shadow-soft),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 20%,var(--t-line))}
+    .stats-panel-body{padding:12px 14px 14px;min-width:0}
+    .stats-empty{padding:20px 14px;border:1px dashed var(--t-line);border-radius:13px;text-align:center;color:var(--t-muted);font-size:9px;line-height:1.6;background:var(--t-surface-2)}
+    .stats-ranking{display:grid;gap:5px}.stats-ranking-row{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:8px;align-items:center;min-height:42px;padding:6px 7px;border-radius:10px;background:color-mix(in srgb,var(--t-surface-2) 82%,transparent)}.stats-rank-no{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--t-surface);border:1px solid var(--t-line);font-size:8px;font-weight:800;color:var(--t-muted)}.stats-ranking-row:nth-child(-n+3) .stats-rank-no{border-color:color-mix(in srgb,var(--t-accent) 28%,var(--t-line));background:var(--t-accent-soft);color:var(--t-accent-strong)}
+    .stats-rank-main{display:grid;gap:2px;min-width:0}.stats-rank-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9.8px;font-weight:800;color:var(--t-ink)}button.stats-rank-name{justify-self:start;border:0;background:transparent;padding:0;cursor:pointer;text-align:left}.stats-rank-name[disabled]{cursor:default}.stats-rank-meta{font-size:7.7px;color:var(--t-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stats-rank-value{display:grid;justify-items:end;gap:1px}.stats-rank-value strong{font-size:13px;color:var(--t-ink)}.stats-rank-value span{font-size:7px;color:var(--t-muted)}
+    .stats-bars{display:grid;gap:8px}.stats-bar-row{display:grid;grid-template-columns:minmax(72px,132px) minmax(0,1fr) 38px;gap:8px;align-items:center}.stats-bar-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8.8px;font-weight:760;color:var(--t-text-2)}button.stats-bar-label{border:0;background:transparent;padding:0;text-align:left;cursor:pointer}.stats-bar-track{height:10px;border-radius:999px;background:var(--t-surface-3);overflow:hidden}.stats-bar-fill{height:100%;min-width:2px;border-radius:999px;background:linear-gradient(90deg,var(--t-accent),color-mix(in srgb,var(--t-accent) 58%,var(--t-info)))}.stats-bar-value{text-align:right;font-size:8.5px;font-weight:800;color:var(--t-ink)}
+    .stats-table-wrap{overflow:auto;border:1px solid var(--t-line);border-radius:12px}.stats-table{width:100%;border-collapse:collapse;min-width:470px}.stats-table th,.stats-table td{padding:8px 9px;border-bottom:1px solid var(--t-line);text-align:left;font-size:8.3px;color:var(--t-text-2);white-space:nowrap}.stats-table th{position:sticky;top:0;background:var(--t-surface-2);font-size:7.8px;color:var(--t-muted);font-weight:800}.stats-table tr:last-child td{border-bottom:0}.stats-table td.num{text-align:right;font-variant-numeric:tabular-nums}.stats-table button{border:0;background:transparent;padding:0;color:var(--t-accent-strong);font:inherit;font-weight:800;cursor:pointer}
+    .stats-trend-wrap{display:grid;gap:9px;min-width:0}.stats-trend-legend{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:8px;color:var(--t-muted)}.stats-trend-legend span{display:inline-flex;align-items:center;gap:5px}.stats-trend-legend i{width:14px;height:3px;border-radius:999px}.stats-trend-legend .total i{background:var(--t-accent)}.stats-trend-legend .kp i{background:var(--t-role-kp)}.stats-trend-legend .pl i{background:var(--t-role-pl)}
+    .stats-line-chart{width:100%;min-height:238px;overflow:hidden;border:1px solid var(--t-line);border-radius:13px;background:linear-gradient(180deg,color-mix(in srgb,var(--t-surface-2) 74%,transparent),var(--t-surface))}.stats-line-chart svg{display:block;width:100%;height:auto;min-height:238px}.stats-axis-text{fill:var(--t-muted);font-size:12px}.stats-grid-line{stroke:color-mix(in srgb,var(--t-line-strong) 60%,transparent);stroke-width:1}.stats-series-total{fill:none;stroke:var(--t-accent);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.stats-series-kp{fill:none;stroke:var(--t-role-kp);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.stats-series-pl{fill:none;stroke:var(--t-role-pl);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.stats-point-total{fill:var(--t-accent)}.stats-point-kp{fill:var(--t-role-kp)}.stats-point-pl{fill:var(--t-role-pl)}
+    .stats-trend-bars-scroll{overflow-x:auto;padding-bottom:2px}.stats-trend-bars{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(44px,1fr);gap:6px;align-items:end;min-width:max(100%,560px);height:248px;padding:12px 10px 25px;border:1px solid var(--t-line);border-radius:13px;background:linear-gradient(180deg,color-mix(in srgb,var(--t-surface-2) 74%,transparent),var(--t-surface))}.stats-trend-bar-group{display:grid;grid-template-rows:1fr auto;gap:5px;height:100%;min-width:0}.stats-trend-bar-area{display:flex;align-items:flex-end;justify-content:center;gap:2px;height:100%}.stats-trend-bar{width:min(11px,30%);min-height:2px;border-radius:5px 5px 2px 2px;background:var(--t-accent)}.stats-trend-bar.kp{background:var(--t-role-kp)}.stats-trend-bar.pl{background:var(--t-role-pl)}.stats-trend-bar-label{text-align:center;font-size:7px;color:var(--t-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .stats-repeat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.stats-repeat-card{display:grid;gap:5px;padding:10px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2)}.stats-repeat-card strong{font-size:16px;color:var(--t-ink)}.stats-repeat-card span{font-size:7.8px;color:var(--t-muted)}.stats-repeat-card i{display:block;height:5px;border-radius:999px;background:var(--t-surface-3);overflow:hidden}.stats-repeat-card i::after{content:"";display:block;width:var(--pct,0%);height:100%;border-radius:inherit;background:var(--t-accent)}
+    .stats-completeness{display:grid;gap:8px}.stats-completeness-row{display:grid;grid-template-columns:minmax(92px,130px) minmax(0,1fr) auto;gap:8px;align-items:center}.stats-completeness-label{display:grid;gap:1px}.stats-completeness-label strong{font-size:9px;color:var(--t-text-2)}.stats-completeness-label span{font-size:7.2px;color:var(--t-muted)}.stats-completeness-track{height:8px;border-radius:999px;background:var(--t-surface-3);overflow:hidden}.stats-completeness-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--t-accent),var(--t-success))}.stats-completeness-value{min-width:48px;text-align:right;font-size:8.5px;font-weight:800;color:var(--t-ink)}
+    .stats-footnote{margin-top:8px;font-size:7.7px;line-height:1.55;color:var(--t-faint)}
+    @media(max-width:1100px){.stats-overview-shell{grid-template-columns:1fr}.stats-overview-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.stats-identity-card{grid-template-columns:auto minmax(0,1fr)}}
+    @media(max-width:900px){.stats-dashboard-grid{grid-template-columns:1fr}.stats-panel.full{grid-column:auto}.stats-overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-toolbar{grid-template-columns:1fr}.stats-toolbar .view-toolbar-actions{justify-content:flex-start}}
+    @media(max-width:760px){.stats-view{padding-right:var(--mobile-rail-safe)}.stats-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr}.stats-filter-field select{width:100%}.stats-custom-range{display:grid;grid-template-columns:1fr auto 1fr;align-items:end}.stats-custom-range input{width:100%}.stats-scope-note{display:grid;gap:4px}.stats-identity-card{grid-template-columns:94px minmax(0,1fr);padding:12px}.stats-donut{width:92px;height:92px}.stats-donut::after{inset:10px}.stats-donut-center strong{font-size:19px}.stats-panel-head{display:grid;gap:8px}.stats-panel-controls{justify-content:flex-start}.stats-panel-body{padding:10px}.stats-repeat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-line-chart{overflow:hidden}.stats-line-chart svg{min-width:0}.stats-module-table{min-width:100%}.stats-module-table.kp :is(th,td):nth-child(4),.stats-module-table.kp :is(th,td):nth-child(6){display:none}.stats-module-table.pl :is(th,td):nth-child(5){display:none}.stats-module-table td:nth-child(2){white-space:normal;min-width:100px}.stats-completeness-row{grid-template-columns:90px minmax(0,1fr) auto}.mobile-bottom-nav{grid-template-columns:repeat(6,minmax(0,1fr))}.mobile-bottom-nav button span{font-size:10px!important}.mobile-bottom-nav button small{font-size:8px!important}}
+    @media(max-width:360px){.stats-overview-grid{grid-template-columns:1fr 1fr}.stats-identity-card{grid-template-columns:82px minmax(0,1fr);gap:9px}.stats-donut{width:80px;height:80px}.stats-donut-center strong{font-size:17px}.stats-metric-card{padding:9px}.stats-metric-card strong{font-size:16px}.stats-segmented button{padding-inline:6px;font-size:7.7px}.stats-panel-body{padding:8px}.stats-bar-row{grid-template-columns:82px minmax(0,1fr) 30px}.stats-completeness-row{grid-template-columns:78px minmax(0,1fr) 42px}.mobile-bottom-nav{left:4px;right:4px;gap:1px;padding:3px}.mobile-bottom-nav button{min-height:45px}.mobile-bottom-nav button span{font-size:9.5px!important}.mobile-bottom-nav button small{font-size:7.5px!important}}
+
     /* ---------- v8.1.6.0 · 手机端全局稳定化 ---------- */
     @media(max-width:760px){
       html{scrollbar-gutter:auto!important;overflow-x:hidden}
       :root{--mobile-rail-safe:48px}
       body{overflow-x:hidden;max-width:100vw}
       .shell{width:calc(100% - 12px)!important;max-width:100%!important;margin-inline:auto!important}
-      .profiles-view,.self-intro-view,.modules-view,.plans-view,.records-view{width:100%;min-width:0;max-width:100%;padding-right:var(--mobile-rail-safe)!important}
+      .profiles-view,.self-intro-view,.stats-view,.modules-view,.plans-view,.records-view{width:100%;min-width:0;max-width:100%;padding-right:var(--mobile-rail-safe)!important}
       .view-toolbar,.toolbar,.module-native-controls,.planner-layout,.planner-sidebar,.planner-calendar,.calendar-panel,.records-board,.module-detail,.table-record,.self-intro-grid,.self-intro-dual,.self-intro-card,.self-intro-side{min-width:0;max-width:100%}
       input,textarea,select,button{max-width:100%}
       .name,.contact,.profile-meta,.rp-length-card,.role-degree,.native-module-card,.native-module-row,.plan-list-item,.record-view-mode,.record-section,.table-record,.self-intro-section{min-width:0}
@@ -3673,7 +3725,7 @@
     @media(max-width:360px){
       :root{--mobile-rail-safe:42px}
       .shell{width:calc(100% - 10px)!important}
-      .profiles-view,.self-intro-view,.modules-view,.plans-view,.records-view{padding-right:var(--mobile-rail-safe)!important}
+      .profiles-view,.self-intro-view,.stats-view,.modules-view,.plans-view,.records-view{padding-right:var(--mobile-rail-safe)!important}
       .mobile-side-rail{width:38px!important;gap:7px!important}
       .mobile-side-rail button{width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;border-radius:11px!important;font-size:16px!important}
       .card{padding:11px!important}
@@ -3694,7 +3746,7 @@
       .self-intro-toolbar .view-toolbar-actions{grid-template-columns:1fr 1fr!important}
       .self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1!important}
       .intro-intent-actions{grid-template-columns:1fr!important}
-      .mobile-bottom-nav button span{font-size:10.5px!important}.mobile-bottom-nav button small{font-size:9px!important}
+      .mobile-bottom-nav button span{font-size:9.5px!important}.mobile-bottom-nav button small{font-size:7.5px!important}
     }
 
 </style>
@@ -3766,6 +3818,7 @@
           <button type="button" data-view-target="plans">计划</button>
           <button type="button" data-view-target="records">记录</button>
           <button type="button" data-view-target="selfIntro">偏好</button>
+          <button type="button" data-view-target="stats">统计</button>
         </nav>
         <div class="compact-actions">
           <span id="compactSaveStatus" class="compact-save-status">已保存</span>
@@ -3789,8 +3842,9 @@
           <button id="plansViewBtn" class="view-tab" type="button" aria-pressed="false">开团计划</button>
           <button id="recordsViewBtn" class="view-tab" type="button" aria-pressed="false">跑团记录</button>
         </div>
-        <div class="view-switch-group solo" role="group" aria-label="个人偏好">
+        <div class="view-switch-group" role="group" aria-label="个人">
           <button id="selfIntroViewBtn" class="view-tab" type="button" aria-pressed="false">跑团偏好</button>
+          <button id="statsViewBtn" class="view-tab" type="button" aria-pressed="false">统计</button>
         </div>
       </nav>
 
@@ -3842,6 +3896,29 @@
           </div>
         </div>
         <div id="selfIntroGrid" class="self-intro-grid"></div>
+      </section>
+
+      <section id="statsView" class="stats-view" hidden>
+        <div class="view-toolbar stats-toolbar">
+          <div class="view-toolbar-title">
+            <strong>我的跑团统计</strong>
+            <span>基于与“我”关联的已归档跑团记录，整理人与模组关系、活跃趋势和数据完整度。</span>
+          </div>
+          <div class="view-toolbar-actions stats-toolbar-actions">
+            <label class="stats-filter-field"><span>统计范围</span><select id="statsRangeSelect" class="sort-select" aria-label="统计时间范围">
+              <option value="all">全部时间</option>
+              <option value="year">今年</option>
+              <option value="12m">近 12 个月</option>
+              <option value="custom">自定义</option>
+            </select></label>
+            <div id="statsCustomRange" class="stats-custom-range" hidden>
+              <label><span>开始</span><input id="statsStartDate" type="date" class="text-input"></label>
+              <span class="stats-range-arrow">→</span>
+              <label><span>结束</span><input id="statsEndDate" type="date" class="text-input"></label>
+            </div>
+          </div>
+        </div>
+        <div id="statsContent" class="stats-content" aria-live="polite"></div>
       </section>
 
       <section id="modulesView" class="modules-view" hidden>
@@ -3987,7 +4064,7 @@
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.5 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.6 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -3999,7 +4076,7 @@
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.5　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.6　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4088,6 +4165,7 @@
         <button type="button" data-view-target="plans"><span>计划</span><small>排期</small></button>
         <button type="button" data-view-target="records"><span>记录</span><small>归档</small></button>
         <button type="button" data-view-target="selfIntro"><span>偏好</span><small>我的</small></button>
+        <button type="button" data-view-target="stats"><span>统计</span><small>我的</small></button>
       </nav>
       <div id="mobileToolsSheet" class="mobile-tools-sheet" hidden>
         <button type="button" data-mobile-search>⌕ 搜索</button>
@@ -4288,7 +4366,7 @@
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.5</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.6</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；完整备份用于长期和跨设备保管。</span></div></div>
 <label class="data-safety-select-row"><span><strong>完整备份提醒</strong><small>仅在到期时提醒。</small></span><select aria-label="完整备份提醒周期" class="setting-input" id="backupReminderDaysSelect"><option value="3">每 3 天</option><option value="7">每 7 天</option><option value="14">每 14 天</option><option value="30">每 30 天</option><option value="0">关闭提醒</option></select></label>
@@ -4332,10 +4410,11 @@
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
 </section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.5 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.5</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.6 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.6</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.6</strong><span>新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度；人物与模组支持排名表/条形图切换，趋势支持折线/柱状/表格切换，全部统计均在本地离线完成。</span>
 <strong>v8.1.6.5</strong><span>调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。</span>
 <strong>v8.1.6.4</strong><span>调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。</span>
 <strong>v8.1.6.3</strong><span>重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span>
@@ -4483,7 +4562,7 @@
   <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script>
-/* PL收集梦想生活 v8.1.6.5 · 作者：番茄
+/* PL收集梦想生活 v8.1.6.6 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -4495,14 +4574,14 @@ const PLANNER_MONTH_COMPACT_KEY = "tomato_pl_month_compact_v1"; // 月历展开/
 const PRIVACY_MASK_SESSION_KEY = "tomato_pl_privacy_mask_v1"; // 仅当前标签页记忆打码状态，不写入档案备份。
 const PROFILE_CARD_COLLAPSE_KEY = "tomato_pl_card_collapse_v1"; // 仅保存主页面卡片收起状态，不写入档案备份。
 const RUN_RECORD_COLLAPSE_KEY = "tomato_run_record_collapse_v1"; // 仅保存跑团记录每桌收起状态，不写入档案备份。
-const VIEW_SESSION_STATE_KEY = "tomato_pl_view_session_v1"; // 当前标签页记住五个主页面各自的滚动位置、搜索和筛选。
+const VIEW_SESSION_STATE_KEY = "tomato_pl_view_session_v1"; // 当前标签页记住六个主页面各自的滚动位置、搜索、筛选与统计视图状态。
 const HISTORY_STATE_TAG = "tomato-pl-v8"; // 浏览器 / 手机返回键的页面历史标记。
 const SAVE_META_KEY = "tomato_pl_save_meta_v1", FIRST_MEANINGFUL_SAVE_KEY = "tomato_pl_first_meaningful_save_v1", LAST_EXPORT_META_KEY = "tomato_pl_last_export_meta_v1";
 const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REMINDER_DISMISS_KEY = "tomato_pl_backup_reminder_dismiss_v1";
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const RECOVERY_MAX_SNAPSHOTS = 7, RECOVERY_AUTO_INTERVAL = 24*60*60*1000, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.5";
+const APP_UI_VERSION = "8.1.6.6";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -4744,6 +4823,7 @@ let lastInteractionSelfCheckText = "";
 const EDITOR_DRAFT_KEY = "trpg_unified_editor_drafts_v1";
 let settingsDraft = null;
 let currentView = "profiles";
+const statsUiState={range:"all",customStart:"",customEnd:"",peopleMode:"together",peopleView:"rank",moduleMode:"kp",moduleView:"rank",trendGranularity:"month",trendRole:"all",trendView:"line"};
 let selfIntroDraft=null;
 let selfIntroBaseline=null;
 let selfIntroSaveTimer=0;
@@ -6069,12 +6149,13 @@ enforceTopLevelUse();
 /* ---------- 09. DOM 元素缓存：集中保存后续会频繁操作的页面节点 ---------- */
 const els = {
   appRoot:document.getElementById("appRoot"),
-  profilesView:document.getElementById("profilesView"),selfIntroView:document.getElementById("selfIntroView"),modulesView:document.getElementById("modulesView"),plansView:document.getElementById("plansView"),recordsView:document.getElementById("recordsView"),
+  profilesView:document.getElementById("profilesView"),selfIntroView:document.getElementById("selfIntroView"),statsView:document.getElementById("statsView"),modulesView:document.getElementById("modulesView"),plansView:document.getElementById("plansView"),recordsView:document.getElementById("recordsView"),
   moduleArchiveFrame:document.getElementById("moduleArchiveFrame"),
   compactAppBar:document.getElementById("compactAppBar"),compactSaveStatus:document.getElementById("compactSaveStatus"),
   moduleNativeStats:document.getElementById("moduleNativeStats"),moduleNativeSearch:document.getElementById("moduleNativeSearch"),moduleNativeHoFilter:document.getElementById("moduleNativeHoFilter"),moduleNativeLocationFilter:document.getElementById("moduleNativeLocationFilter"),moduleNativeSort:document.getElementById("moduleNativeSort"),moduleNativeGrid:document.getElementById("moduleNativeGrid"),newNativeModule:document.getElementById("newNativeModuleBtn"),openModuleAdvanced:document.getElementById("openModuleAdvancedBtn"),moduleCardsLayout:document.getElementById("moduleCardsLayoutBtn"),moduleCompactLayout:document.getElementById("moduleCompactLayoutBtn"),nativeModuleEditorBackdrop:document.getElementById("nativeModuleEditorBackdrop"),nativeModuleEditorTitle:document.getElementById("nativeModuleEditorTitle"),nativeModuleEditorContent:document.getElementById("nativeModuleEditorContent"),closeNativeModuleEditor:document.getElementById("closeNativeModuleEditorBtn"),cancelNativeModuleEditor:document.getElementById("cancelNativeModuleEditorBtn"),saveNativeModuleEditor:document.getElementById("saveNativeModuleEditorBtn"),moduleAdvancedBackdrop:document.getElementById("moduleAdvancedBackdrop"),closeModuleAdvanced:document.getElementById("closeModuleAdvancedBtn"),
-  profilesViewBtn:document.getElementById("profilesViewBtn"),selfIntroViewBtn:document.getElementById("selfIntroViewBtn"),modulesViewBtn:document.getElementById("modulesViewBtn"),plansViewBtn:document.getElementById("plansViewBtn"),recordsViewBtn:document.getElementById("recordsViewBtn"),
+  profilesViewBtn:document.getElementById("profilesViewBtn"),selfIntroViewBtn:document.getElementById("selfIntroViewBtn"),statsViewBtn:document.getElementById("statsViewBtn"),modulesViewBtn:document.getElementById("modulesViewBtn"),plansViewBtn:document.getElementById("plansViewBtn"),recordsViewBtn:document.getElementById("recordsViewBtn"),
   selfIntroGrid:document.getElementById("selfIntroGrid"),selfIntroSaveState:document.getElementById("selfIntroSaveState"),selfIntroExport:document.getElementById("selfIntroExportBtn"),selfIntroSave:document.getElementById("selfIntroSaveBtn"),
+  statsContent:document.getElementById("statsContent"),statsRange:document.getElementById("statsRangeSelect"),statsCustomRange:document.getElementById("statsCustomRange"),statsStartDate:document.getElementById("statsStartDate"),statsEndDate:document.getElementById("statsEndDate"),
   grid:document.getElementById("profileGrid"),count:document.getElementById("countText"),search:document.getElementById("searchInput"),sort:document.getElementById("sortSelect"),cardLayout:document.getElementById("cardLayoutBtn"),compactLayout:document.getElementById("compactLayoutBtn"),blacklistBtn:document.getElementById("blacklistBtn"),profileCollapseActions:document.getElementById("profileCollapseActions"),collapseAllProfiles:document.getElementById("collapseAllProfilesBtn"),expandAllProfiles:document.getElementById("expandAllProfilesBtn"),profilesToolbarTitle:document.getElementById("profilesToolbarTitle"),profilesToolbarSubtitle:document.getElementById("profilesToolbarSubtitle"),
   planBoard:document.getElementById("planBoard"),planSearch:document.getElementById("planSearchInput"),planCount:document.getElementById("planCountText"),planMonth:document.getElementById("planMonthCalendar"),planWeek:document.getElementById("planWeekCalendar"),newPlan:document.getElementById("newPlanBtn"),plannerWeekMode:document.getElementById("plannerWeekModeBtn"),plannerMonthMode:document.getElementById("plannerMonthModeBtn"),
   planEditorBackdrop:document.getElementById("planEditorBackdrop"),planEditorDrawer:document.getElementById("planEditorDrawer"),planEditorTitle:document.getElementById("planEditorTitle"),planEditorContent:document.getElementById("planEditorContent"),closePlanEditor:document.getElementById("closePlanEditorBtn"),
@@ -8055,6 +8136,196 @@ async function addSelfIntroModuleIntent(kind){
 function removeSelfIntroModuleIntent(kind,moduleId,moduleName){ensureSelfIntroDraft();const path=kind==="want"?"pl.wantModules":"kp.canHostModules",key=normalizedEntityNameKey(moduleName);const rows=(selfIntroPathGet(selfIntroDraft,path)||[]).filter(r=>!(moduleId&&r.moduleId===moduleId)&&!(key&&normalizedEntityNameKey(r.name)===key));selfIntroPathSet(selfIntroDraft,path,rows);const stillUsed=[...(selfIntroDraft.pl.wantModules||[]),...(selfIntroDraft.kp.canHostModules||[])].some(r=>r.moduleId===moduleId);if(!stillUsed)selfIntroPendingModules=selfIntroPendingModules.filter(m=>m.id!==moduleId);renderSelfIntroView();queueSelfIntroSave(120);}
 function selfIntroSearchText(){const d=normalizeSelfIntro(selfProfileFrom()?.selfIntro),mps=[d.pl.modulePrefs,d.kp.modulePrefs];return buildSearchIndex([d.bio,d.platformOther,d.generalNotes,d.pl.rpStyle,d.pl.wishes,d.pl.avoids,d.pl.notes,d.kp.wishes,d.kp.avoids,d.kp.notes,d.kp.boundaryNotes,...d.platforms,...d.formats,...d.timeSlots,...d.availability,...mps.flatMap(mp=>[mp.eraOther,mp.regionOther,mp.structureOther,mp.elementOther,mp.notes,...mp.eras,...mp.regions,...mp.structures,...mp.elements]),...d.pl.focus,...d.pl.wantModules.map(x=>x.name),...d.kp.canHostModules.map(x=>x.name),...Object.keys(d.kp.boundaries).filter(k=>d.kp.boundaries[k])]);}
 
+
+function statsRunRoles(run){
+  const selfId=selfProfileId();
+  const kp=Boolean((selfId&&run?.kpProfileId===selfId)||(!run?.kpProfileId&&isSelfKP(run?.kp)));
+  const pl=Boolean(selfId&&Array.isArray(run?.plIds)&&run.plIds.includes(selfId));
+  return {kp,pl};
+}
+function statsRecordDate(run){
+  const start=normalizeDateValue(run?.startDate);if(start)return start;
+  const slots=(run?.sessionSlots||[]).map(s=>normalizeDateValue(s?.date)).filter(Boolean).sort();if(slots.length)return slots[0];
+  return "";
+}
+function statsDateBounds(){
+  const now=new Date(),today=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+  if(statsUiState.range==="year")return {start:`${now.getFullYear()}-01-01`,end:`${now.getFullYear()}-12-31`,label:`${now.getFullYear()} 年`};
+  if(statsUiState.range==="12m"){const d=new Date(now.getFullYear(),now.getMonth()-11,1);return {start:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-01`,end:today,label:"近 12 个月"};}
+  if(statsUiState.range==="custom")return {start:normalizeDateValue(statsUiState.customStart),end:normalizeDateValue(statsUiState.customEnd),label:"自定义范围"};
+  return {start:"",end:"",label:"全部时间"};
+}
+function statsRunInRange(run,bounds=statsDateBounds()){
+  if(!bounds.start&&!bounds.end)return true;
+  const date=statsRecordDate(run);if(!date)return false;
+  if(bounds.start&&date<bounds.start)return false;if(bounds.end&&date>bounds.end)return false;return true;
+}
+function statsPersonalRuns(){
+  const bounds=statsDateBounds();return runRecords.filter(r=>{const role=statsRunRoles(r);return (role.kp||role.pl)&&statsRunInRange(r,bounds);});
+}
+function statsPersonRefFromProfile(profile){return profile?{key:`p:${profile.id}`,profileId:profile.id,name:rawProfileName(profile),external:false}:null;}
+function statsPersonRefFromName(name){const raw=String(name||"").trim();if(!raw||isSelfKP(raw))return null;const linked=profileByExactName(raw);if(linked)return statsPersonRefFromProfile(linked);const key=normalizePersonToken(raw);return key?{key:`x:${key}`,profileId:"",name:raw,external:true}:null;}
+function statsParticipantRefs(run){
+  const selfId=selfProfileId(),out=new Map();
+  (run?.plIds||[]).forEach(id=>{if(id===selfId)return;const p=profileById(id);const ref=p?statsPersonRefFromProfile(p):null;if(ref)out.set(ref.key,ref);});
+  splitParticipantNames(run?.participantText).forEach(name=>{const ref=statsPersonRefFromName(name);if(ref&&ref.profileId!==selfId)out.set(ref.key,ref);});
+  return [...out.values()];
+}
+function statsKpRef(run){
+  const selfId=selfProfileId();if(selfId&&run?.kpProfileId===selfId)return null;
+  const p=profileById(run?.kpProfileId);if(p&&!isSelfProfile(p))return statsPersonRefFromProfile(p);
+  return statsPersonRefFromName(run?.kp);
+}
+function statsPersonAggregates(runs){
+  const map=new Map();
+  const ensure=ref=>{if(!ref)return null;if(!map.has(ref.key))map.set(ref.key,{...ref,together:0,ledByMe:0,ledMe:0,coPl:0,lastDate:""});return map.get(ref.key);};
+  runs.forEach(run=>{
+    const roles=statsRunRoles(run);if(!roles.kp&&!roles.pl)return;const date=statsRecordDate(run);const seen=new Set();
+    if(roles.kp){statsParticipantRefs(run).forEach(ref=>{const row=ensure(ref);if(!row)return;row.ledByMe++;if(date>row.lastDate)row.lastDate=date;seen.add(ref.key);});}
+    if(roles.pl){const kp=statsKpRef(run);if(kp){const row=ensure(kp);row.ledMe++;if(date>row.lastDate)row.lastDate=date;seen.add(kp.key);}statsParticipantRefs(run).forEach(ref=>{const row=ensure(ref);if(!row)return;row.coPl++;if(date>row.lastDate)row.lastDate=date;seen.add(ref.key);});}
+    seen.forEach(key=>{const row=map.get(key);if(row)row.together++;});
+  });
+  return [...map.values()];
+}
+function statsPersonLabel(row,index=0){
+  if(row.profileId){const p=profileById(row.profileId);return p?displayProfileName(p):(privacyMaskEnabled?`PL ${String(index+1).padStart(2,"0")}`:row.name);}
+  return privacyMaskEnabled?`外部参与者 ${String(index+1).padStart(2,"0")}`:row.name;
+}
+function statsModuleAggregates(runs){
+  const map=new Map();
+  runs.forEach(run=>{
+    const roles=statsRunRoles(run);if(!roles.kp&&!roles.pl)return;
+    const name=String(run.moduleName||moduleById(run.moduleId)?.name||"未命名模组").trim()||"未命名模组";
+    const key=run.moduleId?`id:${run.moduleId}`:`name:${normalizedEntityNameKey(name)}`;
+    if(!map.has(key))map.set(key,{key,moduleId:String(run.moduleId||""),name,kp:0,pl:0,plAppearances:0,uniquePl:new Set(),uniqueKp:new Set(),lastDate:""});
+    const row=map.get(key),date=statsRecordDate(run);if(date>row.lastDate)row.lastDate=date;
+    if(roles.kp){row.kp++;const refs=statsParticipantRefs(run);row.plAppearances+=refs.length;refs.forEach(ref=>row.uniquePl.add(ref.key));}
+    if(roles.pl){row.pl++;const kp=statsKpRef(run);if(kp)row.uniqueKp.add(kp.key);}
+  });
+  return [...map.values()];
+}
+function statsCurrentPlanSummary(){
+  let total=0,scheduled=0,unscheduled=0;runPlans.forEach(plan=>{const role=statsRunRoles(plan);if(!role.kp&&!role.pl)return;total++;if((plan.timeSlots||[]).some(s=>normalizeDateValue(s?.date)))scheduled++;else unscheduled++;});return {total,scheduled,unscheduled};
+}
+function statsModuleCount(rows,key){return rows.filter(r=>r[key]>0).length;}
+function statsFormatDate(date){if(!date)return "—";const [y,m,d]=date.split("-");return `${y}.${m}.${d}`;}
+function statsRankButton(row,label,kind){
+  if(kind==="person"&&row.profileId)return `<button class="stats-rank-name" type="button" data-stats-profile="${escapeHTML(row.profileId)}">${escapeHTML(label)}</button>`;
+  if(kind==="module")return `<button class="stats-rank-name" type="button" data-stats-module="${escapeHTML(row.moduleId||"")}" data-stats-module-name="${escapeHTML(row.name)}">${escapeHTML(label)}</button>`;
+  return `<span class="stats-rank-name">${escapeHTML(label)}</span>`;
+}
+function statsPeopleRowsHTML(rows,metric,view){
+  const sorted=rows.filter(r=>r[metric]>0).sort((a,b)=>b[metric]-a[metric]||b.together-a.together||String(a.name).localeCompare(String(b.name),"zh-CN")).slice(0,20);
+  if(!sorted.length)return `<div class="stats-empty">当前范围内还没有足够的人物关系数据。<br>归档跑团记录并关联“我”、KP 与 PL 后，这里会自动生成排名。</div>`;
+  const metricLabel=metric==="ledByMe"?"我带 TA":metric==="ledMe"?"TA 带我":"同桌";
+  if(view==="bar"){
+    const max=Math.max(1,...sorted.map(r=>r[metric]));return `<div class="stats-bars">${sorted.map((r,i)=>{const label=statsPersonLabel(r,i);const name=r.profileId?`<button class="stats-bar-label" type="button" data-stats-profile="${escapeHTML(r.profileId)}">${escapeHTML(label)}</button>`:`<span class="stats-bar-label">${escapeHTML(label)}</span>`;return `<div class="stats-bar-row">${name}<div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.max(2,r[metric]/max*100).toFixed(2)}%"></div></div><div class="stats-bar-value">${r[metric]} 桌</div></div>`;}).join("")}</div>`;
+  }
+  return `<div class="stats-ranking">${sorted.map((r,i)=>{const label=statsPersonLabel(r,i);const meta=metric==="together"?`我带 ${r.ledByMe} · TA 带我 ${r.ledMe} · 同为 PL ${r.coPl}`:metric==="ledByMe"?`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`:`共同出现 ${r.together} · 最近 ${statsFormatDate(r.lastDate)}`;return `<div class="stats-ranking-row"><span class="stats-rank-no">${i+1}</span><div class="stats-rank-main">${statsRankButton(r,label,"person")}<span class="stats-rank-meta">${escapeHTML(meta)}</span></div><div class="stats-rank-value"><strong>${r[metric]}</strong><span>${metricLabel}桌次</span></div></div>`;}).join("")}</div>`;
+}
+function statsModuleRowsHTML(rows,mode,view){
+  const metric=mode==="kp"?"kp":"pl",sorted=rows.filter(r=>r[metric]>0).sort((a,b)=>b[metric]-a[metric]||b.kp+b.pl-(a.kp+a.pl)||String(a.name).localeCompare(String(b.name),"zh-CN")).slice(0,20);
+  if(!sorted.length)return `<div class="stats-empty">当前范围内还没有对应的模组统计。<br>归档跑团记录后，带团与参团桌次会自动汇总。</div>`;
+  if(view==="bar"){
+    const max=Math.max(1,...sorted.map(r=>r[metric]));return `<div class="stats-bars">${sorted.map(r=>`<div class="stats-bar-row"><button class="stats-bar-label" type="button" data-stats-module="${escapeHTML(r.moduleId||"")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button><div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.max(2,r[metric]/max*100).toFixed(2)}%"></div></div><div class="stats-bar-value">${r[metric]} 桌</div></div>`).join("")}</div>`;
+  }
+  const heads=mode==="kp"?"<th>#</th><th>模组</th><th>带团桌次</th><th>PL 人次</th><th>不同 PL</th><th>最近</th>":"<th>#</th><th>模组</th><th>参团桌次</th><th>不同 KP</th><th>最近</th>";
+  const body=sorted.map((r,i)=>mode==="kp"?`<tr><td>${i+1}</td><td><button type="button" data-stats-module="${escapeHTML(r.moduleId||"")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.kp}</td><td class="num">${r.plAppearances}</td><td class="num">${r.uniquePl.size}</td><td>${statsFormatDate(r.lastDate)}</td></tr>`:`<tr><td>${i+1}</td><td><button type="button" data-stats-module="${escapeHTML(r.moduleId||"")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.pl}</td><td class="num">${r.uniqueKp.size}</td><td>${statsFormatDate(r.lastDate)}</td></tr>`).join("");
+  return `<div class="stats-table-wrap"><table class="stats-table stats-module-table ${mode}"><thead><tr>${heads}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+function statsPeriodKey(date,granularity){if(!date)return "";return granularity==="year"?date.slice(0,4):date.slice(0,7);}
+function statsPeriodLabel(key,granularity){if(granularity==="year")return `${key}年`;const [y,m]=key.split("-");return `${String(y).slice(-2)}.${m}`;}
+function statsPeriodRange(runs,granularity){
+  const dates=runs.map(statsRecordDate).filter(Boolean).sort();if(!dates.length)return [];
+  if(granularity==="year"){const start=Number(dates[0].slice(0,4)),end=Number(dates.at(-1).slice(0,4)),out=[];for(let y=start;y<=end;y++)out.push(String(y));return out;}
+  let [sy,sm]=dates[0].slice(0,7).split("-").map(Number),[ey,em]=dates.at(-1).slice(0,7).split("-").map(Number);let out=[];while(sy<ey||(sy===ey&&sm<=em)){out.push(`${sy}-${String(sm).padStart(2,"0")}`);sm++;if(sm>12){sm=1;sy++;}if(out.length>240)break;}if(out.length>24)out=out.slice(-24);return out;
+}
+function statsTrendData(runs){
+  const gran=statsUiState.trendGranularity,keys=statsPeriodRange(runs,gran),map=new Map(keys.map(k=>[k,{key:k,label:statsPeriodLabel(k,gran),total:0,kp:0,pl:0}]));
+  runs.forEach(run=>{const date=statsRecordDate(run),key=statsPeriodKey(date,gran),row=map.get(key);if(!row)return;const roles=statsRunRoles(run);row.total++;if(roles.kp)row.kp++;if(roles.pl)row.pl++;});return [...map.values()];
+}
+function statsTrendSeries(data){if(statsUiState.trendRole==="kp")return [{key:"kp",label:"KP",cls:"kp"}];if(statsUiState.trendRole==="pl")return [{key:"pl",label:"PL",cls:"pl"}];return [{key:"total",label:"总桌次",cls:"total"},{key:"kp",label:"KP",cls:"kp"},{key:"pl",label:"PL",cls:"pl"}];}
+function statsTrendHTML(data,view){
+  if(!data.length)return `<div class="stats-empty">当前范围内没有带日期的跑团记录，暂时无法生成趋势图。</div>`;
+  const series=statsTrendSeries(data),legend=`<div class="stats-trend-legend">${series.map(s=>`<span class="${s.cls}"><i></i>${s.label}</span>`).join("")}${statsUiState.trendGranularity==="month"&&data.length===24?`<span>月视图最多展示最近 24 个月</span>`:""}</div>`;
+  if(view==="table")return `${legend}<div class="stats-table-wrap"><table class="stats-table"><thead><tr><th>时间</th>${series.map(s=>`<th>${s.label}</th>`).join("")}</tr></thead><tbody>${data.map(r=>`<tr><td>${r.label}</td>${series.map(s=>`<td class="num">${r[s.key]}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  const max=Math.max(1,...data.flatMap(r=>series.map(s=>r[s.key])));
+  if(view==="bar")return `${legend}<div class="stats-trend-bars-scroll"><div class="stats-trend-bars">${data.map(r=>`<div class="stats-trend-bar-group"><div class="stats-trend-bar-area">${series.map(s=>`<div class="stats-trend-bar ${s.cls}" title="${r.label} · ${s.label} ${r[s.key]} 桌" style="height:${Math.max(r[s.key]?4:0,r[s.key]/max*100).toFixed(2)}%"></div>`).join("")}</div><div class="stats-trend-bar-label">${r.label}</div></div>`).join("")}</div></div>`;
+  const W=800,H=250,L=46,R=18,T=18,B=42,plotW=W-L-R,plotH=H-T-B;const x=i=>data.length===1?L+plotW/2:L+(i/(data.length-1))*plotW,y=v=>T+plotH-(v/max)*plotH;
+  const grid=[0,.25,.5,.75,1].map(fr=>{const val=Math.round(max*(1-fr)),yy=T+plotH*fr;return `<line class="stats-grid-line" x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}"></line><text class="stats-axis-text" x="${L-9}" y="${yy+4}" text-anchor="end">${val}</text>`;}).join("");
+  const step=Math.max(1,Math.ceil(data.length/8)),labels=data.map((r,i)=>(i%step===0||i===data.length-1)?`<text class="stats-axis-text" x="${x(i)}" y="${H-14}" text-anchor="middle">${r.label}</text>`:"").join("");
+  const lines=series.map(s=>{const pts=data.map((r,i)=>`${x(i).toFixed(1)},${y(r[s.key]).toFixed(1)}`).join(" ");const circles=data.map((r,i)=>`<circle class="stats-point-${s.cls}" cx="${x(i).toFixed(1)}" cy="${y(r[s.key]).toFixed(1)}" r="3"><title>${r.label} · ${s.label} ${r[s.key]} 桌</title></circle>`).join("");return `<polyline class="stats-series-${s.cls}" points="${pts}"></polyline>${circles}`;}).join("");
+  return `${legend}<div class="stats-line-chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="跑团趋势折线图">${grid}${labels}${lines}</svg></div>`;
+}
+function statsCompleteness(runs){
+  const total=runs.length,selfId=selfProfileId();
+  const log=runs.filter(r=>String(r.logUrl||"").trim()).length,duration=runs.filter(r=>String(r.actualDuration||r.legacyDuration||"").trim()).length;
+  const hoApplicable=runs.filter(r=>moduleHoSystemForEntity(r)==="has");const ho=hoApplicable.filter(r=>{if(String(r.ho||"").trim())return true;const roles=statsRunRoles(r);if(roles.pl&&selfId){const a=assignmentFor(r,selfId);if(pcHoText(a))return true;}if(roles.kp){const ids=(r.plIds||[]).filter(id=>id!==selfId);if(ids.length&&ids.every(id=>Boolean(pcHoText(assignmentFor(r,id)))))return true;}return false;}).length;
+  const pcApplicable=runs.filter(r=>statsRunRoles(r).pl&&selfId);const pc=pcApplicable.filter(r=>String(assignmentFor(r,selfId)?.pcName||"").trim()).length;
+  return [
+    {label:"Log",sub:"已归档记录",done:log,total},
+    {label:"实际时长",sub:"填写 actual duration",done:duration,total},
+    {label:"HO",sub:"仅统计有 HO 的适用桌",done:ho,total:hoApplicable.length},
+    {label:"我的 PC 名",sub:"仅统计我作为 PL 的桌",done:pc,total:pcApplicable.length}
+  ];
+}
+function statsCompletenessHTML(rows){return `<div class="stats-completeness">${rows.map(r=>{const pct=r.total?Math.round(r.done/r.total*100):0;return `<div class="stats-completeness-row"><div class="stats-completeness-label"><strong>${escapeHTML(r.label)}</strong><span>${escapeHTML(r.sub)}</span></div><div class="stats-completeness-track"><div class="stats-completeness-fill" style="width:${pct}%"></div></div><div class="stats-completeness-value">${r.done}/${r.total}</div></div>`;}).join("")}</div><div class="stats-footnote">完整度用于提醒哪些历史记录还值得补齐。分母为当前统计范围内、且该字段实际适用的记录。</div>`;}
+function statsRepeatHTML(people){
+  const counts=people.filter(r=>r.ledByMe>0).map(r=>r.ledByMe),total=counts.length,buckets=[{label:"1 桌",n:counts.filter(n=>n===1).length},{label:"2–4 桌",n:counts.filter(n=>n>=2&&n<=4).length},{label:"5–9 桌",n:counts.filter(n=>n>=5&&n<=9).length},{label:"10+ 桌",n:counts.filter(n=>n>=10).length}];
+  if(!total)return `<div class="stats-empty">当前范围内还没有“我作为 KP”带 PL 的数据。</div>`;
+  return `<div class="stats-repeat-grid">${buckets.map(b=>{const pct=Math.round(b.n/total*100);return `<div class="stats-repeat-card"><span>${b.label}</span><strong>${b.n} 人</strong><i style="--pct:${pct}%"></i><span>${pct}%</span></div>`;}).join("")}</div><div class="stats-footnote">按每位 PL 在当前统计范围内被我带过的桌次分组，可观察固定 PL 与一次性参团的比例。</div>`;
+}
+function renderStats(){
+  if(!els.statsContent)return;
+  if(els.statsRange)els.statsRange.value=statsUiState.range;if(els.statsStartDate)els.statsStartDate.value=statsUiState.customStart;if(els.statsEndDate)els.statsEndDate.value=statsUiState.customEnd;if(els.statsCustomRange)els.statsCustomRange.hidden=statsUiState.range!=="custom";
+  const runs=statsPersonalRuns(),roles=runs.map(r=>statsRunRoles(r)),kpCount=roles.filter(r=>r.kp).length,plCount=roles.filter(r=>r.pl).length,people=statsPersonAggregates(runs),mods=statsModuleAggregates(runs),plans=statsCurrentPlanSummary(),bounds=statsDateBounds();
+  const uniquePl=people.filter(r=>r.ledByMe>0).length,uniqueKp=people.filter(r=>r.ledMe>0).length,kpMods=statsModuleCount(mods,"kp"),plMods=statsModuleCount(mods,"pl"),roleTotal=kpCount+plCount,kpPct=roleTotal?Math.round(kpCount/roleTotal*100):50;
+  const peopleMetric=statsUiState.peopleMode==="kp"?"ledByMe":statsUiState.peopleMode==="myKp"?"ledMe":"together";
+  const peopleSubtitle=peopleMetric==="ledByMe"?"我作为 KP 时，哪些 PL 跟我的桌最多。":peopleMetric==="ledMe"?"我作为 PL 时，哪些人最常担任我的 KP。":"不区分谁是 KP，统计与我共同出现在同一桌的次数。";
+  const trend=statsTrendData(runs),completeness=statsCompleteness(runs),undated=runs.filter(r=>!statsRecordDate(r)).length;
+  const scopeParts=[`范围：${bounds.label}`,`纳入 ${runs.length} 桌与“我”关联的记录`];if(undated&&statsUiState.range==="all")scopeParts.push(`${undated} 桌缺少明确日期，已计入总览但不会进入趋势图`);scopeParts.push("当前计划始终显示实时状态，不受时间范围筛选");
+  els.statsContent.innerHTML=`
+    <div class="stats-scope-note"><span><strong>统计口径：</strong>${escapeHTML(scopeParts.join(" · "))}</span><span>未关联的外部参与者会按文字名称参与人数统计；隐私遮罩开启时会匿名显示。</span></div>
+    <div class="stats-overview-shell">
+      <section class="stats-identity-card">
+        <div class="stats-donut" style="--kp:${kpPct}%"><div class="stats-donut-center"><strong>${runs.length}</strong><span>总桌次</span></div></div>
+        <div class="stats-identity-copy"><div><h3>我的身份构成</h3><p>按 KP / PL 身份桌次计算；同桌兼任时会分别计入两种身份。</p></div><div class="stats-role-legend"><div class="stats-role-row"><i class="stats-role-dot kp"></i><span>作为 KP</span><strong>${kpCount} 桌 · ${roleTotal?Math.round(kpCount/roleTotal*100):0}%</strong></div><div class="stats-role-row"><i class="stats-role-dot pl"></i><span>作为 PL</span><strong>${plCount} 桌 · ${roleTotal?Math.round(plCount/roleTotal*100):0}%</strong></div></div></div>
+      </section>
+      <div class="stats-overview-grid">
+        <div class="stats-metric-card"><span>我带过的 PL</span><strong>${uniquePl} 人</strong><small>当前范围内的不同参与者</small></div>
+        <div class="stats-metric-card"><span>带过我的 KP</span><strong>${uniqueKp} 人</strong><small>当前范围内的不同 KP</small></div>
+        <div class="stats-metric-card"><span>我带过的模组</span><strong>${kpMods} 个</strong><small>至少带过 1 桌</small></div>
+        <div class="stats-metric-card"><span>我跑过的模组</span><strong>${plMods} 个</strong><small>至少作为 PL 跑过 1 桌</small></div>
+        <div class="stats-metric-card"><span>当前计划</span><strong>${plans.total} 个</strong><small>已排 ${plans.scheduled} · 未排 ${plans.unscheduled}</small></div>
+        <div class="stats-metric-card"><span>有 Log</span><strong>${completeness[0].done}/${completeness[0].total}</strong><small>已归档记录的 Log 覆盖</small></div>
+        <div class="stats-metric-card"><span>最常同桌</span><strong>${people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0]?.together||0} 桌</strong><small>${people.length?escapeHTML(statsPersonLabel(people.filter(r=>r.together>0).sort((a,b)=>b.together-a.together)[0]||{},0)):"暂无人物数据"}</small></div>
+        <div class="stats-metric-card"><span>最常带的模组</span><strong>${mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.kp||0} 桌</strong><small>${escapeHTML(mods.filter(r=>r.kp>0).sort((a,b)=>b.kp-a.kp)[0]?.name||"暂无带团数据")}</small></div>
+      </div>
+    </div>
+    <div class="stats-dashboard-grid">
+      <section class="stats-panel">
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>人与我的跑团关系</strong><span>${peopleSubtitle}</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="人物统计维度"><button type="button" data-stats-people-mode="together" class="${statsUiState.peopleMode==="together"?"active":""}" aria-pressed="${statsUiState.peopleMode==="together"}">同桌最多</button><button type="button" data-stats-people-mode="kp" class="${statsUiState.peopleMode==="kp"?"active":""}" aria-pressed="${statsUiState.peopleMode==="kp"}">我带的 PL</button><button type="button" data-stats-people-mode="myKp" class="${statsUiState.peopleMode==="myKp"?"active":""}" aria-pressed="${statsUiState.peopleMode==="myKp"}">我的 KP</button></div><div class="stats-segmented" role="group" aria-label="人物统计显示"><button type="button" data-stats-people-view="rank" class="${statsUiState.peopleView==="rank"?"active":""}">排名</button><button type="button" data-stats-people-view="bar" class="${statsUiState.peopleView==="bar"?"active":""}">条形图</button></div></div></div>
+        <div class="stats-panel-body">${statsPeopleRowsHTML(people,peopleMetric,statsUiState.peopleView)}</div>
+      </section>
+      <section class="stats-panel">
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>我的模组</strong><span>${statsUiState.moduleMode==="kp"?"按我作为 KP 的带团桌次排名。":"按我作为 PL 的参团桌次排名。"}</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="模组统计维度"><button type="button" data-stats-module-mode="kp" class="${statsUiState.moduleMode==="kp"?"active":""}">带团最多</button><button type="button" data-stats-module-mode="pl" class="${statsUiState.moduleMode==="pl"?"active":""}">参团最多</button></div><div class="stats-segmented" role="group" aria-label="模组统计显示"><button type="button" data-stats-module-view="rank" class="${statsUiState.moduleView==="rank"?"active":""}">排名表</button><button type="button" data-stats-module-view="bar" class="${statsUiState.moduleView==="bar"?"active":""}">条形图</button></div></div></div>
+        <div class="stats-panel-body">${statsModuleRowsHTML(mods,statsUiState.moduleMode,statsUiState.moduleView)}</div>
+      </section>
+      <section class="stats-panel full">
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>跑团趋势</strong><span>观察跑团频率随时间的变化；月视图在跨度较长时展示最近 24 个月。</span></div><div class="stats-panel-controls"><div class="stats-segmented" role="group" aria-label="趋势粒度"><button type="button" data-stats-trend-granularity="month" class="${statsUiState.trendGranularity==="month"?"active":""}">月</button><button type="button" data-stats-trend-granularity="year" class="${statsUiState.trendGranularity==="year"?"active":""}">年</button></div><div class="stats-segmented" role="group" aria-label="趋势身份"><button type="button" data-stats-trend-role="all" class="${statsUiState.trendRole==="all"?"active":""}">全部</button><button type="button" data-stats-trend-role="kp" class="${statsUiState.trendRole==="kp"?"active":""}">KP</button><button type="button" data-stats-trend-role="pl" class="${statsUiState.trendRole==="pl"?"active":""}">PL</button></div><div class="stats-segmented" role="group" aria-label="趋势显示"><button type="button" data-stats-trend-view="line" class="${statsUiState.trendView==="line"?"active":""}">折线</button><button type="button" data-stats-trend-view="bar" class="${statsUiState.trendView==="bar"?"active":""}">柱状</button><button type="button" data-stats-trend-view="table" class="${statsUiState.trendView==="table"?"active":""}">表格</button></div></div></div>
+        <div class="stats-panel-body"><div class="stats-trend-wrap">${statsTrendHTML(trend,statsUiState.trendView)}</div></div>
+      </section>
+      <section class="stats-panel">
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>PL 复跑分布</strong><span>查看我作为 KP 时，固定 PL 与一次性参团的大致结构。</span></div></div>
+        <div class="stats-panel-body">${statsRepeatHTML(people)}</div>
+      </section>
+      <section class="stats-panel">
+        <div class="stats-panel-head"><div class="stats-panel-title"><strong>历史记录完整度</strong><span>用于发现 Log、时长、HO 与我的 PC 名等缺失项。</span></div></div>
+        <div class="stats-panel-body">${statsCompletenessHTML(completeness)}</div>
+      </section>
+    </div>`;
+}
+
 function loadViewSessionState(){try{const raw=JSON.parse(sessionStorage.getItem(VIEW_SESSION_STATE_KEY)||"{}");return raw&&typeof raw==="object"?raw:{};}catch(err){return {};}}
 let viewSessionState=loadViewSessionState();
 let viewStateApplying=false;
@@ -8067,6 +8338,7 @@ function captureCurrentViewState(view=currentView){
   if(view==="modules"){next.search=els.moduleNativeSearch?.value||"";next.ho=els.moduleNativeHoFilter?.value||"";next.location=els.moduleNativeLocationFilter?.value||"";next.sort=els.moduleNativeSort?.value||"updated";next.layout=normalizeUiSettings(settings.ui).moduleLayout;}
   if(view==="plans"){next.search=els.planSearch?.value||"";next.calendar=plannerViewMode;}
   if(view==="records"){next.search=els.recordsSearch?.value||"";next.module=selectedModuleName||"";}
+  if(view==="stats")next.stats={...statsUiState};
   viewSessionState[view]=next;persistViewSessionState();
 }
 function applyViewSessionInputs(view){
@@ -8076,21 +8348,22 @@ function applyViewSessionInputs(view){
     if(view==="modules"){if(els.moduleNativeSearch)els.moduleNativeSearch.value=s.search||"";if(els.moduleNativeHoFilter)els.moduleNativeHoFilter.value=s.ho||"";if(els.moduleNativeLocationFilter)els.moduleNativeLocationFilter.value=s.location||"";if(els.moduleNativeSort)els.moduleNativeSort.value=s.sort||"updated";}
     if(view==="plans"){if(els.planSearch)els.planSearch.value=s.search||"";if(s.calendar&&["week","month"].includes(s.calendar)){plannerViewMode=s.calendar;document.body.dataset.plannerView=plannerViewMode;}}
     if(view==="records"){if(els.recordsSearch)els.recordsSearch.value=s.search||"";if(typeof s.module==="string")selectedModuleName=s.module;}
+    if(view==="stats"&&s.stats&&typeof s.stats==="object")Object.assign(statsUiState,s.stats);
   }finally{viewStateApplying=false;}
 }
 function restoreViewScroll(view){const y=Math.max(0,Number(viewSessionState[view]?.scrollY)||0);requestAnimationFrame(()=>requestAnimationFrame(()=>window.scrollTo({top:y,left:0,behavior:"auto"})));}
 function writeViewHistory(view,mode="push"){if(!history?.replaceState)return;const state={tag:HISTORY_STATE_TAG,view};try{if(mode==="replace")history.replaceState(state,"",location.href);else if(mode==="push"&&history.state?.view!==view)history.pushState(state,"",location.href);}catch(err){}}
 function switchView(view,{historyMode="push",restoreScroll=true}={}){
-  const next=view==="records"?"records":view==="plans"?"plans":view==="modules"?"modules":view==="selfIntro"?"selfIntro":"profiles";
+  const next=view==="records"?"records":view==="plans"?"plans":view==="modules"?"modules":view==="selfIntro"?"selfIntro":view==="stats"?"stats":"profiles";
   const changing=currentView&&currentView!==next;
   if(changing&&currentView==="selfIntro"&&selfIntroDirty())commitSelfIntroDraft();
   if(changing)captureCurrentViewState(currentView);
   if(next==="plans"&&changing&&mobileMedia.matches)plannerMobileSection="calendar";
   currentView=next;applyViewSessionInputs(currentView);
-  els.profilesView.hidden=currentView!=="profiles";els.selfIntroView.hidden=currentView!=="selfIntro";els.modulesView.hidden=currentView!=="modules";els.plansView.hidden=currentView!=="plans";els.recordsView.hidden=currentView!=="records";
-  [[els.profilesViewBtn,"profiles"],[els.selfIntroViewBtn,"selfIntro"],[els.modulesViewBtn,"modules"],[els.plansViewBtn,"plans"],[els.recordsViewBtn,"records"]].forEach(([btn,key])=>{btn.classList.toggle("active",currentView===key);btn.setAttribute("aria-pressed",currentView===key?"true":"false");});
+  els.profilesView.hidden=currentView!=="profiles";els.selfIntroView.hidden=currentView!=="selfIntro";els.statsView.hidden=currentView!=="stats";els.modulesView.hidden=currentView!=="modules";els.plansView.hidden=currentView!=="plans";els.recordsView.hidden=currentView!=="records";
+  [[els.profilesViewBtn,"profiles"],[els.selfIntroViewBtn,"selfIntro"],[els.statsViewBtn,"stats"],[els.modulesViewBtn,"modules"],[els.plansViewBtn,"plans"],[els.recordsViewBtn,"records"]].forEach(([btn,key])=>{if(!btn)return;btn.classList.toggle("active",currentView===key);btn.setAttribute("aria-pressed",currentView===key?"true":"false");});
   document.querySelectorAll("[data-view-target]").forEach(btn=>btn.classList.toggle("active",btn.dataset.viewTarget===currentView));
-  if(currentView==="records")renderRunRecords();else if(currentView==="plans")renderRunPlans();else if(currentView==="modules")renderNativeModules();else if(currentView==="selfIntro")renderSelfIntroView();else renderProfiles();
+  if(currentView==="records")renderRunRecords();else if(currentView==="plans")renderRunPlans();else if(currentView==="modules")renderNativeModules();else if(currentView==="selfIntro")renderSelfIntroView();else if(currentView==="stats")renderStats();else renderProfiles();
   writeViewHistory(currentView,historyMode);
   if(restoreScroll)restoreViewScroll(currentView);
 }
@@ -10017,7 +10290,7 @@ async function deleteProfile(id,fromModal=false){
   profiles=profiles.filter(x=>x.id!==id);if(!saveState()){profiles=oldProfiles;runRecords=oldRecords;runPlans=oldPlans;removeTrashEntry(entry.id);return;}expandedCards.delete(id);collapsedCards.delete(id);persistProfileCardCollapseState();if(fromModal){draft=null;editingId=null;runRecordsDraft=null;profileEditorBaseline=null;suppressDirtyPrompt=true;closeOverlay();suppressDirtyPrompt=false;}renderAllPrimaryViews();
 };
 
-function renderAllPrimaryViews(){renderProfiles();renderSelfIntroView({reset:!selfIntroDirty()});renderRunPlans();renderRunRecords();renderNativeModules();updateDataSafetyUI();}
+function renderAllPrimaryViews(){renderProfiles();renderSelfIntroView({reset:!selfIntroDirty()});if(currentView==="stats")renderStats();renderRunPlans();renderRunRecords();renderNativeModules();updateDataSafetyUI();}
 
 async function createSafetySnapshot(reason){
   const payload=buildCanonicalArchive(false);assertCanonicalIntegrity(payload);
@@ -10297,7 +10570,7 @@ function buildGlobalSearchRows(q){q=normalizedEntityNameKey(q);if(!q)return [];
 function renderGlobalSearch(){const q=document.getElementById("globalSearchInput").value;globalSearchRows=buildGlobalSearchRows(q);const shown=Math.min(globalSearchVisibleCount,globalSearchRows.length);globalSearchActiveIndex=Math.min(globalSearchActiveIndex,Math.max(0,shown-1));const box=document.getElementById("globalSearchResults");if(!q.trim()){box.innerHTML=`<div class="global-search-empty">输入关键词即可跨四个页面查找。</div>`;return;}if(!globalSearchRows.length){box.innerHTML=`<div class="global-search-empty">无匹配结果。<button type="button" class="btn small" data-empty-clear-search="globalSearchInput">清除搜索</button></div>`;return;}const visible=globalSearchRows.slice(0,shown);box.innerHTML=visible.map((r,i)=>`<button type="button" role="option" aria-selected="${i===globalSearchActiveIndex}" class="global-search-result ${i===globalSearchActiveIndex?"active":""}" data-global-result="${i}"><span class="global-search-result-type">${r.type}</span><span class="global-search-result-main"><strong>${escapeHTML(r.title)}</strong><span>${escapeHTML(r.meta||"")}</span></span><span class="global-search-result-arrow">→</span></button>`).join("")+`<div class="global-search-progress"><span>显示 ${visible.length} / ${globalSearchRows.length} 条结果</span>${visible.length<globalSearchRows.length?`<button type="button" class="btn small" data-global-search-more>继续显示</button>`:""}</div>`;applySearchHighlights(box,q.trim().toLowerCase());}
 function openGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=false;globalSearchActiveIndex=0;globalSearchVisibleCount=GLOBAL_SEARCH_BATCH;document.getElementById("globalSearchInput").value="";renderGlobalSearch();syncModalPageScrollLock();setTimeout(()=>document.getElementById("globalSearchInput").focus(),30);}
 function closeGlobalSearch(){document.getElementById("globalSearchBackdrop").hidden=true;syncModalPageScrollLock();}
-function activateGlobalSearchResult(index){const r=globalSearchRows[index];if(!r)return;closeGlobalSearch();if(r.action.view==="selfIntro"){switchView("selfIntro");}else if(r.action.view==="profiles"){profileListMode=r.action.blacklist?"blacklist":"active";switchView("profiles");els.search.value="";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(r.action.id)}"],.compact-row[data-id="${CSS.escape(r.action.id)}"],.blacklist-card[data-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="modules"){switchView("modules");els.moduleNativeSearch.value="";renderNativeModules();requestAnimationFrame(()=>document.querySelector(`[data-native-module-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="plans"){switchView("plans");requestAnimationFrame(()=>document.querySelector(`[data-plan-row="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else{const rec=runRecords.find(x=>x.id===r.action.id);if(rec){selectedModuleName=rec.moduleName;setRunRecordCollapsed(rec.id,false);}switchView("records");requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}}
+function activateGlobalSearchResult(index){const r=globalSearchRows[index];if(!r)return;closeGlobalSearch();if(r.action.view==="selfIntro"){switchView("selfIntro");}else if(r.action.view==="stats"){switchView("stats");}else if(r.action.view==="profiles"){profileListMode=r.action.blacklist?"blacklist":"active";switchView("profiles");els.search.value="";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(r.action.id)}"],.compact-row[data-id="${CSS.escape(r.action.id)}"],.blacklist-card[data-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="modules"){switchView("modules");els.moduleNativeSearch.value="";renderNativeModules();requestAnimationFrame(()=>document.querySelector(`[data-native-module-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else if(r.action.view==="plans"){switchView("plans");requestAnimationFrame(()=>document.querySelector(`[data-plan-row="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}else{const rec=runRecords.find(x=>x.id===r.action.id);if(rec){selectedModuleName=rec.moduleName;setRunRecordCollapsed(rec.id,false);}switchView("records");requestAnimationFrame(()=>document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)?.scrollIntoView({block:"center"}));}}
 
 /* 设置搜索 */
 const SETTINGS_LABELS={appearance:"外观","pl-rating":"PL 评分","module-rating":"模组评分",behavior:"显示设置",data:"数据与备份"};
@@ -10576,7 +10849,7 @@ async function runDeepInteractionSelfCheck(){
   const issues=[],oks=[];let oldShare=shareModeEnabled;
   try{
     closeSettings(true);await new Promise(r=>setTimeout(r,30));
-    for(const view of ["profiles","selfIntro","modules","plans","records"]){switchView(view,{historyMode:"none",restoreScroll:false});await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));const visible=[els.profilesView,els.selfIntroView,els.modulesView,els.plansView,els.recordsView].filter(v=>!v.hidden).length;if(visible!==1)issues.push({level:"error",title:`${view} 页面互斥异常`,detail:`显示 ${visible} 个主页面`});else oks.push(`${view} 页面切换正常`);const overflow=Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth);if(overflow>2)issues.push({level:"warn",title:`${view} 页面横向溢出 ${overflow}px`,detail:"请检查当前宽度下的固定栏或长内容"});}
+    for(const view of ["profiles","selfIntro","stats","modules","plans","records"]){switchView(view,{historyMode:"none",restoreScroll:false});await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));const visible=[els.profilesView,els.selfIntroView,els.statsView,els.modulesView,els.plansView,els.recordsView].filter(v=>!v.hidden).length;if(visible!==1)issues.push({level:"error",title:`${view} 页面互斥异常`,detail:`显示 ${visible} 个主页面`});else oks.push(`${view} 页面切换正常`);const overflow=Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth);if(overflow>2)issues.push({level:"warn",title:`${view} 页面横向溢出 ${overflow}px`,detail:"请检查当前宽度下的固定栏或长内容"});}
     const profile=profiles.find(isSelfProfile)||profiles[0];if(profile){openEditor(profile.id);await new Promise(r=>requestAnimationFrame(r));if(profileDraftDirty())issues.push({level:"error",title:"PL 编辑器打开即被判定为已修改",detail:displayProfileName(profile)});else oks.push("PL 编辑器无修改打开/关闭正常");suppressDirtyPrompt=true;await closeEditor(true);suppressDirtyPrompt=false;}else oks.push("PL 编辑器检查跳过：暂无档案");
     const mod=modules[0];if(mod){openNativeModuleEditor(mod.id);await new Promise(r=>requestAnimationFrame(r));if(nativeModuleDraftDirty())issues.push({level:"error",title:"模组编辑器打开即被判定为已修改",detail:mod.name||"未命名"});else oks.push("模组编辑器无修改打开/关闭正常");suppressDirtyPrompt=true;await closeNativeModuleEditor(true);suppressDirtyPrompt=false;}else oks.push("模组编辑器检查跳过：暂无模组");
     const plan=runPlans[0];if(plan){openPlanEditor(plan.id);await new Promise(r=>requestAnimationFrame(r));if(els.planEditorBackdrop.hidden)issues.push({level:"error",title:"计划编辑器无法打开",detail:plannerPlanLabel(plan)});else oks.push("计划编辑器打开/关闭正常");closePlanEditor();}else oks.push("计划编辑器检查跳过：暂无计划");
@@ -10595,6 +10868,7 @@ els.collapseAllProfiles?.addEventListener("click",()=>setCurrentProfileCardsColl
 els.expandAllProfiles?.addEventListener("click",()=>setCurrentProfileCardsCollapsed(false));
 els.profilesViewBtn.addEventListener("click",()=>switchView("profiles"));
 els.selfIntroViewBtn.addEventListener("click",()=>switchView("selfIntro"));
+els.statsViewBtn?.addEventListener("click",()=>switchView("stats"));
 els.modulesViewBtn.addEventListener("click",()=>switchView("modules"));
 els.plansViewBtn.addEventListener("click",()=>switchView("plans"));
 els.recordsViewBtn.addEventListener("click",()=>switchView("records"));
@@ -10921,6 +11195,9 @@ document.addEventListener("drop",e=>{
 });
 
 els.recordsSearch.addEventListener("input",debouncedRecordRender);
+els.statsRange?.addEventListener("change",()=>{statsUiState.range=els.statsRange.value;renderStats();captureCurrentViewState("stats");});
+els.statsStartDate?.addEventListener("change",()=>{statsUiState.customStart=els.statsStartDate.value;if(statsUiState.customEnd&&statsUiState.customStart>statsUiState.customEnd){statsUiState.customEnd=statsUiState.customStart;els.statsEndDate.value=statsUiState.customEnd;}renderStats();captureCurrentViewState("stats");});
+els.statsEndDate?.addEventListener("change",()=>{statsUiState.customEnd=els.statsEndDate.value;if(statsUiState.customStart&&statsUiState.customEnd<statsUiState.customStart){statsUiState.customStart=statsUiState.customEnd;els.statsStartDate.value=statsUiState.customStart;}renderStats();captureCurrentViewState("stats");});
 [els.search,els.moduleNativeSearch,els.moduleNativeHoFilter,els.moduleNativeLocationFilter,els.moduleNativeSort,els.planSearch,els.recordsSearch].filter(Boolean).forEach(control=>control.addEventListener(control.tagName==="SELECT"?"change":"input",()=>captureCurrentViewState(currentView),{passive:true}));
 els.createModuleRecord.addEventListener("click",createFirstRunRecord);
 els.newModuleName.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();createFirstRunRecord();}});
@@ -11038,6 +11315,17 @@ els.selfIntroSave?.addEventListener("click",()=>{if(shareModeBlock("跑团偏好
 
 document.addEventListener("click",e=>{
   if(!e.target.closest(".ho-image-export-wrap"))toggleHoImageExportMenu(false);
+  const statsProfile=e.target.closest("[data-stats-profile]");
+  if(statsProfile){const id=statsProfile.dataset.statsProfile;switchView("profiles");profileListMode="active";renderProfiles();requestAnimationFrame(()=>document.querySelector(`.card[data-id="${CSS.escape(id)}"],.compact-row[data-id="${CSS.escape(id)}"]`)?.scrollIntoView({behavior:preferredScrollBehavior(),block:"center"}));return;}
+  const statsModule=e.target.closest("[data-stats-module]");
+  if(statsModule){const id=statsModule.dataset.statsModule,name=statsModule.dataset.statsModuleName||moduleById(id)?.name||"";selectedModuleName=name;switchView("records");renderRunRecords({centerSelected:true});return;}
+  const peopleMode=e.target.closest("[data-stats-people-mode]");if(peopleMode){statsUiState.peopleMode=peopleMode.dataset.statsPeopleMode;renderStats();captureCurrentViewState("stats");return;}
+  const peopleView=e.target.closest("[data-stats-people-view]");if(peopleView){statsUiState.peopleView=peopleView.dataset.statsPeopleView;renderStats();captureCurrentViewState("stats");return;}
+  const moduleMode=e.target.closest("[data-stats-module-mode]");if(moduleMode){statsUiState.moduleMode=moduleMode.dataset.statsModuleMode;renderStats();captureCurrentViewState("stats");return;}
+  const moduleView=e.target.closest("[data-stats-module-view]");if(moduleView){statsUiState.moduleView=moduleView.dataset.statsModuleView;renderStats();captureCurrentViewState("stats");return;}
+  const trendGran=e.target.closest("[data-stats-trend-granularity]");if(trendGran){statsUiState.trendGranularity=trendGran.dataset.statsTrendGranularity;renderStats();captureCurrentViewState("stats");return;}
+  const trendRole=e.target.closest("[data-stats-trend-role]");if(trendRole){statsUiState.trendRole=trendRole.dataset.statsTrendRole;renderStats();captureCurrentViewState("stats");return;}
+  const trendView=e.target.closest("[data-stats-trend-view]");if(trendView){statsUiState.trendView=trendView.dataset.statsTrendView;renderStats();captureCurrentViewState("stats");return;}
   const viewBtn=e.target.closest("[data-view-target]");
   if(viewBtn){
     switchView(viewBtn.dataset.viewTarget);
