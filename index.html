@@ -3772,6 +3772,31 @@
     @media(max-width:430px){.export-option-grid{grid-template-columns:1fr}.export-scope-row{grid-template-columns:auto minmax(0,1fr)}.export-scope-actions{grid-column:2;justify-content:flex-end}.export-center-foot{display:grid;grid-template-columns:1fr 1fr}.export-center-foot .btn{width:100%;min-width:0}}
 
 
+    /* ---------- v8.1.6.30 · 个人偏好可视化导出编排 ---------- */
+    .export-center-panel{width:min(980px,calc(100vw - 24px));max-width:none;max-height:calc(100vh - 28px)}
+    .export-composer-body{padding:0 14px}
+    .export-composer-grid{display:grid;grid-template-columns:minmax(330px,420px) minmax(0,1fr);gap:14px;align-items:start;min-width:0}
+    .export-composer-controls{min-width:0}
+    .export-preset-grid-compact{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .export-scope-row{grid-template-columns:auto minmax(0,1fr);gap:8px 9px;align-items:start;padding:9px}
+    .export-scope-row .export-scope-check{margin-top:1px}
+    .export-scope-row-controls{grid-column:2;display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+    .export-scope-width{display:inline-flex;align-items:center;gap:3px;padding:2px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface)}
+    .export-scope-width button{min-width:43px;height:27px;padding:0 7px;border:0;border-radius:7px;background:transparent;color:var(--t-muted);font-size:8.5px;font-weight:760;cursor:pointer}
+    .export-scope-width button.active{background:var(--t-accent-soft);color:var(--t-accent-strong);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 35%,transparent)}
+    .export-scope-actions{margin-left:auto;flex:0 0 auto}
+    .export-composer-rule-note{margin:2px 0 10px;padding:9px 10px;border:1px dashed var(--t-line);border-radius:10px;background:color-mix(in srgb,var(--t-surface-2) 72%,transparent);font-size:8.7px;line-height:1.5;color:var(--t-muted)}
+    .export-preview-pane{position:sticky;top:0;display:grid;gap:8px;min-width:0;padding:12px;border:1px solid var(--t-line);border-radius:14px;background:var(--t-surface-2)}
+    .export-preview-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.export-preview-head>div{display:grid;gap:2px}.export-preview-head strong{font-size:11.5px;color:var(--t-ink)}.export-preview-head span{font-size:8.5px;line-height:1.45;color:var(--t-muted)}
+    .export-preview-stage{display:grid;place-items:start center;min-height:300px;max-height:calc(100vh - 235px);padding:10px;overflow:auto;border:1px solid var(--t-line);border-radius:12px;background:linear-gradient(135deg,color-mix(in srgb,var(--t-bg) 86%,#fff),var(--t-bg))}
+    .export-preview-stage canvas{display:block;max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 22px var(--t-shadow-soft);background:var(--t-surface)}
+    .export-preview-empty{place-self:center;padding:28px 14px;color:var(--t-muted);font-size:9px;text-align:center}
+    .export-center-summary{margin-bottom:12px}
+    @media(max-width:980px){.export-center-panel{width:min(760px,calc(100vw - 24px))}.export-composer-grid{grid-template-columns:1fr}.export-preview-pane{position:static}.export-preview-stage{max-height:360px;min-height:220px}}
+    @media(max-width:760px){.export-center-panel{left:10px;right:10px;bottom:10px;width:auto;max-height:90vh}.export-composer-body{padding:0 11px}.export-composer-grid{gap:10px}.export-preview-pane{padding:9px}.export-preview-stage{min-height:180px;max-height:300px;padding:7px}.export-preset-grid-compact{grid-template-columns:repeat(3,minmax(0,1fr))}.export-scope-row-controls{align-items:flex-end;flex-direction:column}.export-scope-actions{margin-left:0}.export-scope-width{align-self:stretch;justify-content:flex-end}}
+    @media(max-width:430px){.export-center-head{padding-right:10px}.export-preset-grid-compact{grid-template-columns:1fr}.export-scope-row{grid-template-columns:auto minmax(0,1fr)}.export-scope-row-controls{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center}.export-scope-width{justify-self:start}.export-preview-stage{max-height:240px}.export-center-foot{grid-template-columns:1fr 1fr}}
+
+
     /* ---------- v8.1.6.7 · 我的跑团统计 ---------- */
     .stats-view{display:grid;gap:10px;min-width:0}
     .stats-toolbar{align-items:center}
@@ -4517,41 +4542,32 @@ body{font-size:var(--vu-body);line-height:1.5}
               <button id="selfIntroExportBtn" class="btn image-export-btn has-menu" type="button" aria-expanded="false" aria-controls="selfIntroExportPanel">导出图片</button>
               <div id="selfIntroExportPanel" class="export-center-panel" role="dialog" aria-label="个人偏好导出设置" hidden>
                 <div class="export-center-head">
-                  <div><strong>导出个人偏好</strong><span>选择区域、顺序和样式；既可以整页导出，也可以任意组合。</span></div>
+                  <div><strong>导出个人偏好</strong><span>选择内容、顺序与版面；右侧会实时显示最终图片预览。</span></div>
                   <button id="selfIntroExportPanelClose" class="export-center-close" type="button" aria-label="关闭导出设置">×</button>
                 </div>
-                <div class="export-center-body">
-                  <section class="export-center-section">
-                    <div class="export-center-section-head"><strong>快捷预设</strong><span>一键切换常用组合</span></div>
-                    <div class="export-preset-grid" role="group" aria-label="导出预设">
-                      <button type="button" data-self-intro-export-preset="all">全部</button>
-                      <button type="button" data-self-intro-export-preset="prefs">仅偏好</button>
-                      <button type="button" data-self-intro-export-preset="modules">仅模组</button>
-                      <button type="button" data-self-intro-export-preset="share">公开分享</button>
+                <div class="export-center-body export-composer-body">
+                  <div class="export-composer-grid">
+                    <div class="export-composer-controls">
+                      <section class="export-center-section">
+                        <div class="export-center-section-head"><strong>快捷组合</strong><span>快速选择常用导出内容</span></div>
+                        <div class="export-preset-grid export-preset-grid-compact" role="group" aria-label="导出组合">
+                          <button type="button" data-self-intro-export-preset="all">全部</button>
+                          <button type="button" data-self-intro-export-preset="prefs">仅偏好</button>
+                          <button type="button" data-self-intro-export-preset="modules">仅模组</button>
+                        </div>
+                      </section>
+                      <section class="export-center-section">
+                        <div class="export-center-section-head"><strong>内容与版面</strong><span>勾选、排序，并设置每个区域占整行或半栏</span></div>
+                        <div id="selfIntroExportScopeList" class="export-scope-list"></div>
+                      </section>
+                      <div class="export-composer-rule-note">空白输入框、未填写的“其他”内容和空备注会自动省略，不会在导出图中占位置。</div>
+                      <div id="selfIntroExportSummary" class="export-center-summary" role="status" aria-live="polite"></div>
                     </div>
-                  </section>
-                  <section class="export-center-section">
-                    <div class="export-center-section-head"><strong>导出范围与顺序</strong><span>勾选后可上下调整导出顺序</span></div>
-                    <div id="selfIntroExportScopeList" class="export-scope-list"></div>
-                  </section>
-                  <section class="export-center-section">
-                    <div class="export-center-section-head"><strong>导出样式</strong><span>同一份数据适配不同分享场景</span></div>
-                    <div class="export-style-grid" role="radiogroup" aria-label="导出样式">
-                      <label><input type="radio" name="selfIntroExportStyle" value="full"><span><strong>完整卡片</strong><small>信息最完整，适合留档</small></span></label>
-                      <label><input type="radio" name="selfIntroExportStyle" value="compact"><span><strong>紧凑长图</strong><small>减少留白，适合手机查看</small></span></label>
-                      <label><input type="radio" name="selfIntroExportStyle" value="share"><span><strong>分享简洁</strong><small>更克制，适合公开发送</small></span></label>
-                    </div>
-                  </section>
-                  <section class="export-center-section">
-                    <div class="export-center-section-head"><strong>导出选项</strong><span>只影响图片，不改动原始数据</span></div>
-                    <div class="export-option-grid">
-                      <label><input id="selfIntroExportHideEmpty" type="checkbox"><span>隐藏空白内容</span></label>
-                      <label><input id="selfIntroExportHideEmptyNotes" type="checkbox"><span>隐藏空备注</span></label>
-                      <label><input id="selfIntroExportShowHelp" type="checkbox"><span>显示区域说明</span></label>
-                      <label><input id="selfIntroExportHideIdentity" type="checkbox"><span>隐藏个人姓名</span></label>
-                    </div>
-                  </section>
-                  <div id="selfIntroExportSummary" class="export-center-summary" role="status" aria-live="polite"></div>
+                    <aside class="export-preview-pane" aria-label="导出预览">
+                      <div class="export-preview-head"><div><strong>实时预览</strong><span>实际导出固定为 1080 px 宽；这里按比例缩小显示</span></div></div>
+                      <div id="selfIntroExportPreviewStage" class="export-preview-stage"><div class="export-preview-empty">选择导出内容后会在这里预览。</div></div>
+                    </aside>
+                  </div>
                 </div>
                 <div class="export-center-foot">
                   <button id="selfIntroExportResetBtn" class="btn" type="button">恢复默认</button>
@@ -4734,7 +4750,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.6.28 · 2026-09-06 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.6.30 · 2026-09-06 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4746,7 +4762,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.6.28　·　更新时间：2026-09-06　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.6.30　·　更新时间：2026-09-06　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5029,7 +5045,7 @@ body{font-size:var(--vu-body);line-height:1.5}
           </div>
         </section>
 
-        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" open=""><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" open=""><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、自动备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>完整备份</strong><span>普通备份便于恢复；加密备份适合长期保管。</span></div></div>
 <div class="backup-box unified-backup-box friendly-backup-grid">
 <button class="btn" id="exportBtn" type="button">↓ 导出完整备份</button>
@@ -5051,6 +5067,14 @@ body{font-size:var(--vu-body);line-height:1.5}
 <p>文件可能包含个人资料，仅用于完整备份，请勿公开分享。</p>
 </div>
 </details>
+</section><section class="friendly-data-block external-backup-block">
+<div class="friendly-data-head"><div><strong>浏览器外自动备份</strong><span>每天在指定时间把完整 JSON 备份写到你选择的电脑 / 手机文件夹。保存位置可随时更改。</span></div><span id="externalBackupSupportBadge" class="external-backup-support-badge">检查中</span></div>
+<div class="external-backup-grid">
+<label class="external-backup-toggle-row"><span><strong>启用固定时间备份</strong><small>页面或已安装的网页应用运行时会准时执行；错过后再次打开会补做。</small></span><input id="externalBackupEnabledToggle" type="checkbox" aria-label="启用浏览器外自动备份"></label>
+<label class="external-backup-time-row"><span><strong>每天备份时间</strong><small>按设备本地时间执行。</small></span><input id="externalBackupTimeInput" type="time" value="20:00" aria-label="每天自动备份时间"></label>
+</div>
+<div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未选择保存位置</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" id="reauthorizeExternalBackupBtn" type="button" hidden>重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
+<div id="externalBackupStatusNote" class="external-backup-status">浏览器只会显示被授权的文件夹名称，网页无法读取完整系统路径。外部备份文件不会因为清除本站缓存 / 网站数据而一起消失。</div>
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>设备迁移</strong><span>通过迁移包在设备间转移档案，无需账号或云同步。</span></div></div>
 <div class="device-migration-actions">
@@ -5073,7 +5097,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.26</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.6.30</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5087,19 +5111,13 @@ body{font-size:var(--vu-body);line-height:1.5}
 <button class="btn small" id="installAppBtn" type="button">安装到设备</button>
 </div>
 </section>
-<section class="friendly-data-block external-backup-block">
-<div class="friendly-data-head"><div><strong>浏览器外自动备份</strong><span>每天在指定时间把完整 JSON 备份写到你选择的电脑 / 手机文件夹。保存位置可随时更改。</span></div><span id="externalBackupSupportBadge" class="external-backup-support-badge">检查中</span></div>
-<div class="external-backup-grid">
-<label class="external-backup-toggle-row"><span><strong>启用固定时间备份</strong><small>页面或已安装的网页应用运行时会准时执行；错过后再次打开会补做。</small></span><input id="externalBackupEnabledToggle" type="checkbox" aria-label="启用浏览器外自动备份"></label>
-<label class="external-backup-time-row"><span><strong>每天备份时间</strong><small>按设备本地时间执行。</small></span><input id="externalBackupTimeInput" type="time" value="20:00" aria-label="每天自动备份时间"></label>
-</div>
-<div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未选择保存位置</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" id="reauthorizeExternalBackupBtn" type="button" hidden>重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
-<div id="externalBackupStatusNote" class="external-backup-status">浏览器只会显示被授权的文件夹名称，网页无法读取完整系统路径。外部备份文件不会因为清除本站缓存 / 网站数据而一起消失。</div>
-</section></div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.26 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.26</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+</div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.6.30 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.6.30</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.6.30</strong><span>个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度；每个导出区域可独立设置整行 / 半栏并实时预览，支持自由排序与组合；空白“其他”输入、空备注和未填写文字自动省略。</span>
+<strong>v8.1.6.29</strong><span>重新整理“数据与备份”的信息结构：浏览器外自动备份移动到“恢复与迁移”分组内，并放在完整备份之后、设备迁移之前；“日常保护”继续聚焦自动保存、恢复点、冗余副本与存储保护。同步修正设置页残留的旧版本显示。</span>
 <strong>v8.1.6.28</strong><span>个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式，以及隐藏空白、空备注、说明文字和个人姓名等选项；导出设置会记住上次选择，并同步优化电脑、平板和手机端弹层布局。</span>
 <strong>v8.1.6.27</strong><span>个人偏好前半部分改为更紧凑的“常用信息”布局；平台、形式、日期、频率与时间重新分组，选择上午 / 中午 / 下午 / 晚上 / 凌晨后可继续设置 30 分钟粒度的具体起止时间，并保持手机、平板和电脑自适应。</span>
 <strong>v8.1.6.26</strong><span>调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span>
@@ -5317,7 +5335,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.6.28";
+const APP_UI_VERSION = "8.1.6.30";
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -5585,7 +5603,7 @@ let selfIntroBaseline = null;
 let selfIntroSaveTimer = 0;
 let selfIntroPendingModules = [];
 let selfIntroLastSaveError = "";
-const SELF_INTRO_EXPORT_PREF_KEY = "tomato_pl_self_intro_export_pref_v2";
+const SELF_INTRO_EXPORT_PREF_KEY = "tomato_pl_self_intro_export_pref_v3";
 const SELF_INTRO_EXPORT_SCOPE_ORDER = ["common", "pl", "kp", "want", "host"];
 const SELF_INTRO_EXPORT_SCOPE_META = {
     common: { label: "常用信息", desc: "介绍、平台、形式、日期、精确时段与通用补充" },
@@ -5594,15 +5612,13 @@ const SELF_INTRO_EXPORT_SCOPE_META = {
     want: { label: "想跑模组", desc: "想跑清单及每个模组的备注" },
     host: { label: "可带模组", desc: "可带清单及每个模组的带团备注" }
 };
-const SELF_INTRO_EXPORT_STYLE_META = {
-    full: { label: "完整卡片", desc: "信息完整，适合留档" },
-    compact: { label: "紧凑长图", desc: "减少留白，适合手机查看" },
-    share: { label: "分享简洁", desc: "视觉更克制，适合公开发送" }
-};
-function defaultSelfIntroExportState() { return { selected: [...SELF_INTRO_EXPORT_SCOPE_ORDER], order: [...SELF_INTRO_EXPORT_SCOPE_ORDER], style: "full", hideEmpty: true, hideEmptyNotes: true, showHelp: false, hideIdentity: false }; }
+const SELF_INTRO_EXPORT_DEFAULT_WIDTHS = { common: "full", pl: "half", kp: "half", want: "half", host: "half" };
+function defaultSelfIntroExportState() { return { selected: [...SELF_INTRO_EXPORT_SCOPE_ORDER], order: [...SELF_INTRO_EXPORT_SCOPE_ORDER], widths: Object.assign({}, SELF_INTRO_EXPORT_DEFAULT_WIDTHS) }; }
 function normalizeSelfIntroExportState(raw) {
-    const def = defaultSelfIntroExportState(), src = raw && typeof raw === "object" ? raw : {}, selected = Array.isArray(src.selected) ? src.selected.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.selected, orderRaw = Array.isArray(src.order) ? src.order.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.order, order = [...orderRaw, ...SELF_INTRO_EXPORT_SCOPE_ORDER.filter(id => !orderRaw.includes(id))];
-    return { selected: [...new Set(selected)], order: [...new Set(order)], style: SELF_INTRO_EXPORT_STYLE_META[src.style] ? src.style : def.style, hideEmpty: src.hideEmpty !== false, hideEmptyNotes: src.hideEmptyNotes !== false, showHelp: Boolean(src.showHelp), hideIdentity: Boolean(src.hideIdentity) };
+    const def = defaultSelfIntroExportState(), src = raw && typeof raw === "object" ? raw : {}, selected = Array.isArray(src.selected) ? src.selected.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.selected, orderRaw = Array.isArray(src.order) ? src.order.filter(id => SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id)) : def.order, order = [...orderRaw, ...SELF_INTRO_EXPORT_SCOPE_ORDER.filter(id => !orderRaw.includes(id))], widths = Object.assign({}, def.widths);
+    const srcWidths = src.widths && typeof src.widths === "object" ? src.widths : {};
+    SELF_INTRO_EXPORT_SCOPE_ORDER.forEach(id => { if (srcWidths[id] === "full" || srcWidths[id] === "half") widths[id] = srcWidths[id]; });
+    return { selected: [...new Set(selected)], order: [...new Set(order)], widths };
 }
 function loadSelfIntroExportState() { try { return normalizeSelfIntroExportState(JSON.parse(localStorage.getItem(SELF_INTRO_EXPORT_PREF_KEY) || "null")); } catch (err) { return defaultSelfIntroExportState(); } }
 function saveSelfIntroExportState() { try { localStorage.setItem(SELF_INTRO_EXPORT_PREF_KEY, JSON.stringify(selfIntroExportState)); } catch (err) { } }
@@ -7515,7 +7531,7 @@ const els = {
     compactAppBar: document.getElementById("compactAppBar"), compactSaveStatus: document.getElementById("compactSaveStatus"),
     moduleNativeStats: document.getElementById("moduleNativeStats"), moduleNativeSearch: document.getElementById("moduleNativeSearch"), moduleNativeHoFilter: document.getElementById("moduleNativeHoFilter"), moduleNativeLocationFilter: document.getElementById("moduleNativeLocationFilter"), moduleNativeSort: document.getElementById("moduleNativeSort"), moduleNativeGrid: document.getElementById("moduleNativeGrid"), newNativeModule: document.getElementById("newNativeModuleBtn"), openModuleAdvanced: document.getElementById("openModuleAdvancedBtn"), moduleCardsLayout: document.getElementById("moduleCardsLayoutBtn"), moduleCompactLayout: document.getElementById("moduleCompactLayoutBtn"), nativeModuleEditorBackdrop: document.getElementById("nativeModuleEditorBackdrop"), nativeModuleEditorTitle: document.getElementById("nativeModuleEditorTitle"), nativeModuleEditorContent: document.getElementById("nativeModuleEditorContent"), closeNativeModuleEditor: document.getElementById("closeNativeModuleEditorBtn"), cancelNativeModuleEditor: document.getElementById("cancelNativeModuleEditorBtn"), saveNativeModuleEditor: document.getElementById("saveNativeModuleEditorBtn"), moduleAdvancedBackdrop: document.getElementById("moduleAdvancedBackdrop"), closeModuleAdvanced: document.getElementById("closeModuleAdvancedBtn"),
     profilesViewBtn: document.getElementById("profilesViewBtn"), selfIntroViewBtn: document.getElementById("selfIntroViewBtn"), statsViewBtn: document.getElementById("statsViewBtn"), modulesViewBtn: document.getElementById("modulesViewBtn"), plansViewBtn: document.getElementById("plansViewBtn"), recordsViewBtn: document.getElementById("recordsViewBtn"),
-    selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportHideEmpty: document.getElementById("selfIntroExportHideEmpty"), selfIntroExportHideEmptyNotes: document.getElementById("selfIntroExportHideEmptyNotes"), selfIntroExportShowHelp: document.getElementById("selfIntroExportShowHelp"), selfIntroExportHideIdentity: document.getElementById("selfIntroExportHideIdentity"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
+    selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportPreview: document.getElementById("selfIntroExportPreviewStage"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
     statsContent: document.getElementById("statsContent"), statsExport: document.getElementById("statsExportBtn"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
     grid: document.getElementById("profileGrid"), count: document.getElementById("countText"), search: document.getElementById("searchInput"), sort: document.getElementById("sortSelect"), cardLayout: document.getElementById("cardLayoutBtn"), compactLayout: document.getElementById("compactLayoutBtn"), blacklistBtn: document.getElementById("blacklistBtn"), profileCollapseActions: document.getElementById("profileCollapseActions"), collapseAllProfiles: document.getElementById("collapseAllProfilesBtn"), expandAllProfiles: document.getElementById("expandAllProfilesBtn"), profilesToolbarTitle: document.getElementById("profilesToolbarTitle"), profilesToolbarSubtitle: document.getElementById("profilesToolbarSubtitle"),
     planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"),
@@ -10217,14 +10233,9 @@ function canvasWrapLines(ctx, text, maxWidth) { const raw = String(text !== null
         out.push(line);
 } return out; }
 function selfIntroExportModulePrefLines(mp) {
-    const join = (arr, other) => [...(arr || []), String(other || "").trim()].filter(Boolean).join("、") || "未填写";
-    return [
-        `时代：${join(mp.eras, mp.eraOther)}`,
-        `地域：${join(mp.regions, mp.regionOther)}`,
-        `结构：${join(mp.structures, mp.structureOther)}`,
-        `要素：${join(mp.elements, mp.elementOther)}`,
-        ...(String(mp.notes || "").trim() ? [`补充：${String(mp.notes).trim()}`] : [])
-    ];
+    const clean = (arr, other) => { const extra = String(other || "").trim(), values = (arr || []).filter(v => v && v !== "其他"); if (extra) values.push(extra); return values; };
+    const rows = [["时代", clean(mp.eras, mp.eraOther)], ["地域", clean(mp.regions, mp.regionOther)], ["结构", clean(mp.structures, mp.structureOther)], ["要素", clean(mp.elements, mp.elementOther)]];
+    return [...rows.filter(([, values]) => values.length).map(([label, values]) => `${label}：${values.join("、")}`), ...(String(mp.notes || "").trim() ? [`补充：${String(mp.notes).trim()}`] : [])];
 }
 function selfIntroExportScale(path, label, value) {
     const n = introScaleValue(value), meta = INTRO_SCALE_META[path] || ["低", "高"];
@@ -10240,7 +10251,7 @@ function selfIntroExportSections(d, side) {
     const isPl = side === "pl", x = d[side], sections = [];
     sections.push({ title: "模组偏好", lines: selfIntroExportModulePrefLines(x.modulePrefs) });
     if (isPl) {
-        sections.push({ title: "跑团方式", lines: [`跑团侧重：${(x.focus || []).join("、") || "未填写"}`, `OC 与 PC：${({ same: "高度重叠", partial: "部分重叠", separate: "尽量分开" })[x.ocPcRelation] || "未填写"}`], scales: [
+        sections.push({ title: "跑团方式", lines: [...((x.focus || []).length ? [`跑团侧重：${x.focus.join("、")}`] : []), ...(({ same: "高度重叠", partial: "部分重叠", separate: "尽量分开" })[x.ocPcRelation] ? [`OC 与 PC：${({ same: "高度重叠", partial: "部分重叠", separate: "尽量分开" })[x.ocPcRelation]}`] : [])], scales: [
                 selfIntroExportScale("pl.rpIntensity", "RP 强度", x.rpIntensity),
                 selfIntroExportScale("pl.npcAttitude", "对 NPC 的态度", x.npcAttitude),
                 selfIntroExportScale("pl.actionStyle", "行动习惯", x.actionStyle),
@@ -10279,31 +10290,25 @@ function selfIntroExportSections(d, side) {
     return sections;
 }
 function selfIntroExportBasicLines(d) {
-    const join = a => (a || []).join("、") || "未填写";
-    return [
-        ...(String(d.bio || "").trim() ? [`一句话介绍：${String(d.bio).trim()}`] : []),
-        `常用平台：${[...(d.platforms || []), String(d.platformOther || "").trim()].filter(Boolean).join("、") || "未填写"}`,
-        `跑团形式：${join(d.formats)}`,
-        `常用时段：${(d.timeSlots || []).length ? d.timeSlots.map(slot => { const range = (d.timeRanges || {})[slot]; return range && range.start && range.end ? `${slot} ${range.start}–${range.end}` : slot; }).join("、") : "未填写"}`,
-        `日期范围：${join(d.availability)}`,
-        `跑团频率：${d.frequency || "未填写"}`,
-        ...(String(d.generalNotes || "").trim() ? [`通用说明：${String(d.generalNotes).trim()}`] : [])
-    ];
+    const lines = [], platforms = [...(d.platforms || []), String(d.platformOther || "").trim()].filter(Boolean);
+    if (String(d.bio || "").trim()) lines.push(`一句话介绍：${String(d.bio).trim()}`);
+    if (platforms.length) lines.push(`常用平台：${platforms.join("、")}`);
+    if ((d.formats || []).length) lines.push(`跑团形式：${d.formats.join("、")}`);
+    if ((d.timeSlots || []).length) lines.push(`常用时段：${d.timeSlots.map(slot => { const range = (d.timeRanges || {})[slot]; return range && range.start && range.end ? `${slot} ${range.start}–${range.end}` : slot; }).join("、")}`);
+    if ((d.availability || []).length) lines.push(`日期范围：${d.availability.join("、")}`);
+    if (String(d.frequency || "").trim()) lines.push(`跑团频率：${d.frequency}`);
+    if (String(d.generalNotes || "").trim()) lines.push(`通用说明：${String(d.generalNotes).trim()}`);
+    return lines;
 }
-function selfIntroExportStyleConfig(style) {
-    if (style === "compact") return { style, baseW: 1240, pad: 32, headBottom: 174, footerSpace: 48, groupGap: 12, sectionGap: 8, groupHeader: 58, sectionTitleFont: 15, bodyFont: 13, bodyLine: 20, sectionTop: 44, sectionBottom: 12, scaleHeight: 60, scaleLabelFont: 12, scaleValueFont: 11.5, scaleMetaFont: 9.5, moduleTitleFont: 16, moduleBodyFont: 13, moduleLine: 20, moduleMetaFont: 10.5, cardGap: 8, showModuleMeta: true };
-    if (style === "share") return { style, baseW: 1080, pad: 30, headBottom: 174, footerSpace: 48, groupGap: 14, sectionGap: 9, groupHeader: 60, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 48, sectionBottom: 14, scaleHeight: 64, scaleLabelFont: 13, scaleValueFont: 12, scaleMetaFont: 9.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 10.5, cardGap: 9, showModuleMeta: false };
-    return { style: "full", baseW: 1500, pad: 42, headBottom: 180, footerSpace: 52, groupGap: 18, sectionGap: 12, groupHeader: 68, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 50, sectionBottom: 16, scaleHeight: 68, scaleLabelFont: 14, scaleValueFont: 13, scaleMetaFont: 10.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 11, cardGap: 10, showModuleMeta: true };
+function selfIntroExportStyleConfig() {
+    return { style: "share", baseW: 1080, pad: 30, headBottom: 166, footerSpace: 46, groupGap: 14, columnGap: 14, sectionGap: 9, groupHeader: 58, sectionTitleFont: 17, bodyFont: 15, bodyLine: 23, sectionTop: 48, sectionBottom: 14, scaleHeight: 64, scaleLabelFont: 13, scaleValueFont: 12, scaleMetaFont: 9.5, moduleTitleFont: 18, moduleBodyFont: 15, moduleLine: 23, moduleMetaFont: 10.5, cardGap: 9, showModuleMeta: false };
 }
-function selfIntroExportCleanLines(lines, state) {
-    const list = (lines || []).map(x => String(x || "").trim()).filter(Boolean);
-    if (!state.hideEmpty) return list;
-    return list.filter(line => line !== "暂未添加" && !/[：:]未填写$/.test(line));
+function selfIntroExportCleanLines(lines) {
+    return (lines || []).map(x => String(x || "").trim()).filter(line => line && line !== "暂未添加" && !/[：:]未填写$/.test(line));
 }
-function selfIntroExportSectionForState(section, state) {
-    const next = Object.assign({}, section, { lines: selfIntroExportCleanLines(section.lines, state), scales: [...(section.scales || [])] });
-    if (state.hideEmpty && !next.lines.length && !next.scales.length) return null;
-    return next;
+function selfIntroExportSectionForState(section) {
+    const next = Object.assign({}, section, { lines: selfIntroExportCleanLines(section.lines), scales: [...(section.scales || [])] });
+    return !next.lines.length && !next.scales.length ? null : next;
 }
 function selfIntroExportGroupColor(id, theme) {
     const cs = getComputedStyle(document.documentElement), get = (name, fallback) => cs.getPropertyValue(name).trim() || fallback;
@@ -10323,27 +10328,19 @@ function selfIntroExportGroupHelp(id) {
 }
 function selfIntroExportGroupData(d, id, state) {
     if (id === "common") {
-        const lines = selfIntroExportCleanLines(selfIntroExportBasicLines(d), state);
-        if (state.hideEmpty && !lines.length) return null;
-        return { id, kind: "lines", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, help: selfIntroExportGroupHelp(id), lines };
+        const lines = selfIntroExportCleanLines(selfIntroExportBasicLines(d));
+        return lines.length ? { id, kind: "lines", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, lines } : null;
     }
     if (id === "pl" || id === "kp") {
         const excluded = id === "pl" ? "想跑模组" : "可带模组";
-        const sections = selfIntroExportSections(d, id).filter(sec => sec.title !== excluded).map(sec => selfIntroExportSectionForState(sec, state)).filter(Boolean);
-        if (state.hideEmpty && !sections.length) return null;
-        return { id, kind: "sections", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, help: selfIntroExportGroupHelp(id), sections };
+        const sections = selfIntroExportSections(d, id).filter(sec => sec.title !== excluded).map(sec => selfIntroExportSectionForState(sec)).filter(Boolean);
+        return sections.length ? { id, kind: "sections", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, sections } : null;
     }
     const rows = id === "want" ? d.pl.wantModules : d.kp.canHostModules;
-    if (state.hideEmpty && !rows.length) return null;
-    return { id, kind: "modules", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, help: selfIntroExportGroupHelp(id), rows: [...rows], noteLabel: id === "host" ? "带团备注" : "备注" };
+    return rows.length ? { id, kind: "modules", title: SELF_INTRO_EXPORT_SCOPE_META[id].label, rows: [...rows], noteLabel: id === "host" ? "带团备注" : "备注" } : null;
 }
 function selfIntroExportEffectiveState(raw = selfIntroExportState) {
-    const state = normalizeSelfIntroExportState(raw);
-    if (state.style === "share") {
-        state.hideEmpty = true;
-        state.hideEmptyNotes = true;
-    }
-    return state;
+    return normalizeSelfIntroExportState(raw);
 }
 function selfIntroExportSelectedIds(state = selfIntroExportState) {
     const normalized = normalizeSelfIntroExportState(state), selected = new Set(normalized.selected);
@@ -10413,7 +10410,7 @@ function measureSelfIntroModuleCard(ctx, ref, w, cfg, state, noteLabel) {
     ctx.font = `500 ${cfg.moduleMetaFont}px system-ui, sans-serif`;
     const metaLines = meta ? Math.max(1, canvasWrapLines(ctx, meta, w - 34).length) : 0;
     ctx.font = `500 ${cfg.moduleBodyFont}px system-ui, sans-serif`;
-    const noteText = note ? `${noteLabel}：${note}` : (state.hideEmptyNotes ? "" : `${noteLabel}：未填写`), noteLines = noteText ? Math.max(1, canvasWrapLines(ctx, noteText, w - 34).length) : 0;
+    const noteText = note ? `${noteLabel}：${note}` : "", noteLines = noteText ? Math.max(1, canvasWrapLines(ctx, noteText, w - 34).length) : 0;
     return { h: 22 + nameLines * (cfg.moduleTitleFont + 5) + metaLines * (cfg.moduleMetaFont + 5) + noteLines * cfg.moduleLine + 20, name, meta, noteText, nameLines, metaLines, noteLines };
 }
 function drawSelfIntroModuleCard(ctx, x, y, w, ref, index, theme, color, cfg, state, noteLabel) {
@@ -10468,30 +10465,43 @@ function drawSelfIntroExportGroup(ctx, x, y, w, group, theme, cfg, state) {
 function createSelfIntroExportLayout(rawState = selfIntroExportState) {
     var _a;
     ensureSelfIntroDraft();
-    const state = selfIntroExportEffectiveState(rawState), d = normalizeSelfIntro(selfIntroDraft || ((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro)), cfg = selfIntroExportStyleConfig(state.style), measure = document.createElement("canvas").getContext("2d");
+    const state = selfIntroExportEffectiveState(rawState), d = normalizeSelfIntro(selfIntroDraft || ((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro)), cfg = selfIntroExportStyleConfig(), measure = document.createElement("canvas").getContext("2d");
     if (!measure) throw new Error("当前浏览器无法生成图片");
-    const groups = selfIntroExportSelectedIds(state).map(id => selfIntroExportGroupData(d, id, state)).filter(Boolean), contentW = cfg.baseW - cfg.pad * 2;
+    const groups = selfIntroExportSelectedIds(state).map(id => selfIntroExportGroupData(d, id, state)).filter(Boolean), contentW = cfg.baseW - cfg.pad * 2, halfW = Math.floor((contentW - cfg.columnGap) / 2), rows = [];
+    for (let i = 0; i < groups.length; i++) {
+        const group = groups[i], widthMode = state.widths[group.id] === "half" ? "half" : "full";
+        if (widthMode === "half") {
+            const next = groups[i + 1], nextHalf = next && state.widths[next.id] === "half";
+            if (nextHalf) { rows.push({ items: [{ group, width: halfW }, { group: next, width: halfW }] }); i++; }
+            else rows.push({ items: [{ group, width: halfW }] });
+        } else rows.push({ items: [{ group, width: contentW }] });
+    }
     let baseH = cfg.headBottom + cfg.footerSpace;
-    groups.forEach((group, i) => { baseH += measureSelfIntroExportGroup(measure, group, contentW, cfg, state); if (i < groups.length - 1) baseH += cfg.groupGap; });
-    return { state, d, cfg, groups, contentW, baseH };
+    rows.forEach((row, index) => { row.height = Math.max(...row.items.map(item => measureSelfIntroExportGroup(measure, item.group, item.width, cfg, state))); baseH += row.height; if (index < rows.length - 1) baseH += cfg.groupGap; });
+    return { state, d, cfg, groups, rows, contentW, halfW, baseH };
 }
-function buildSelfIntroExportCanvas(rawState = selfIntroExportState) {
-    const layout = createSelfIntroExportLayout(rawState), { state, cfg, groups, baseH } = layout;
+function buildSelfIntroExportCanvas(rawState = selfIntroExportState, options = {}) {
+    const layout = createSelfIntroExportLayout(rawState), { state, cfg, groups, rows, baseH } = layout;
     if (!groups.length) throw new Error("请至少选择一个有内容的导出区域");
-    const theme = hoExportTheme(), profile = selfProfileFrom(), maxDim = 9000, scale = Math.min(2, maxDim / cfg.baseW, maxDim / baseH);
-    if (scale < .55) throw new Error("当前组合内容过长，请减少导出区域或改用“紧凑长图”");
-    const canvas = document.createElement("canvas"); canvas.width = Math.round(cfg.baseW * scale); canvas.height = Math.round(baseH * scale);
+    const theme = hoExportTheme(), preview = Boolean(options.preview), scale = preview ? Math.min(.38, 430 / cfg.baseW) : 1;
+    if (!preview && baseH > 12000) throw new Error("当前组合内容过长，请减少导出区域或将更多区域改为半栏");
+    const canvas = document.createElement("canvas"); canvas.width = Math.max(1, Math.round(cfg.baseW * scale)); canvas.height = Math.max(1, Math.round(baseH * scale));
     const ctx = canvas.getContext("2d"); if (!ctx) throw new Error("当前浏览器无法生成图片");
     ctx.scale(scale, scale); ctx.fillStyle = theme.bg; ctx.fillRect(0, 0, cfg.baseW, baseH);
-    const selectedLabels = groups.map(g => g.title), hideIdentity = state.hideIdentity || privacyMaskEnabled, title = hideIdentity ? "个人偏好" : `${displayProfileName(profile) || "我"} · 个人偏好`, styleLabel = SELF_INTRO_EXPORT_STYLE_META[state.style].label;
-    drawUnifiedExportHeader(ctx, cfg.baseW, theme, { eyebrow: "PL / KP · 个人偏好", title, subtitle: `导出范围：${selectedLabels.join("、")}`, stats: [`${groups.length} 个区域`, styleLabel, hideIdentity ? "个人姓名已隐藏" : "保留个人姓名"] });
-    let y = cfg.headBottom; groups.forEach((group, i) => { y += drawSelfIntroExportGroup(ctx, cfg.pad, y, layout.contentW, group, theme, cfg, state); if (i < groups.length - 1) y += cfg.groupGap; });
+    const selectedLabels = groups.map(g => g.title);
+    drawUnifiedExportHeader(ctx, cfg.baseW, theme, { eyebrow: "PL / KP · 个人偏好", title: "个人偏好", subtitle: `导出范围：${selectedLabels.join("、")}`, stats: [`${groups.length} 个有效区域`, "1080 px 固定宽度", "空白内容自动省略"] });
+    let y = cfg.headBottom;
+    rows.forEach((row, rowIndex) => {
+        let x = cfg.pad;
+        row.items.forEach((item, itemIndex) => { drawSelfIntroExportGroup(ctx, x, y, item.width, item.group, theme, cfg, state); x += item.width + (itemIndex < row.items.length - 1 ? cfg.columnGap : 0); });
+        y += row.height + (rowIndex < rows.length - 1 ? cfg.groupGap : 0);
+    });
     drawUnifiedExportFooter(ctx, cfg.baseW, baseH - 32, theme);
     return canvas;
 }
 function selfIntroExportFilename(state = selfIntroExportState) {
-    const normalized = selfIntroExportEffectiveState(state), profile = selfProfileFrom(), hideIdentity = normalized.hideIdentity || privacyMaskEnabled, name = hideIdentity ? "个人偏好" : (String(displayProfileName(profile) || "我").replace(/[\\/:*?"<>|]/g, "_").trim() || "我"), ids = selfIntroExportSelectedIds(normalized), scope = ids.length === 1 ? SELF_INTRO_EXPORT_SCOPE_META[ids[0]].label : ids.length === SELF_INTRO_EXPORT_SCOPE_ORDER.length ? "个人偏好" : "个人偏好_自定义组合";
-    return `${name}_${scope}.png`;
+    const normalized = selfIntroExportEffectiveState(state), ids = selfIntroExportSelectedIds(normalized), scope = ids.length === 1 ? SELF_INTRO_EXPORT_SCOPE_META[ids[0]].label : ids.length === SELF_INTRO_EXPORT_SCOPE_ORDER.length ? "个人偏好" : "个人偏好_自定义组合";
+    return `${scope}.png`;
 }
 async function exportSelfIntroImage(state = selfIntroExportState) {
     try {
@@ -10502,18 +10512,16 @@ async function exportSelfIntroImage(state = selfIntroExportState) {
 function selfIntroExportEstimatedHeight(state = selfIntroExportState) { try { return createSelfIntroExportLayout(state).baseH; } catch (err) { return 0; } }
 function selfIntroExportPresetKey(state = selfIntroExportState) {
     const s = normalizeSelfIntroExportState(state), ids = selfIntroExportSelectedIds(s), eq = arr => ids.length === arr.length && ids.every((id, i) => id === arr[i]);
-    if (eq(SELF_INTRO_EXPORT_SCOPE_ORDER) && s.style === "full" && !s.hideIdentity) return "all";
+    if (eq(SELF_INTRO_EXPORT_SCOPE_ORDER)) return "all";
     if (eq(["common", "pl", "kp"])) return "prefs";
     if (eq(["want", "host"])) return "modules";
-    if (eq(SELF_INTRO_EXPORT_SCOPE_ORDER) && s.style === "share" && s.hideIdentity) return "share";
     return "";
 }
 function applySelfIntroExportPreset(key) {
-    const next = normalizeSelfIntroExportState(selfIntroExportState);
-    if (key === "prefs") { next.selected = ["common", "pl", "kp"]; next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.style = "full"; }
-    else if (key === "modules") { next.selected = ["want", "host"]; next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.style = "compact"; }
-    else if (key === "share") { next.selected = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.style = "share"; next.hideEmpty = true; next.hideEmptyNotes = true; next.showHelp = false; next.hideIdentity = true; }
-    else { Object.assign(next, defaultSelfIntroExportState()); }
+    const next = normalizeSelfIntroExportState(selfIntroExportState); next.order = [...SELF_INTRO_EXPORT_SCOPE_ORDER]; next.widths = Object.assign({}, SELF_INTRO_EXPORT_DEFAULT_WIDTHS);
+    if (key === "prefs") next.selected = ["common", "pl", "kp"];
+    else if (key === "modules") next.selected = ["want", "host"];
+    else next.selected = [...SELF_INTRO_EXPORT_SCOPE_ORDER];
     selfIntroExportState = next; saveSelfIntroExportState(); renderSelfIntroExportCenter();
 }
 function moveSelfIntroExportScope(id, dir) {
@@ -10521,30 +10529,39 @@ function moveSelfIntroExportScope(id, dir) {
     if (idx < 0 || next < 0 || next >= state.order.length) return;
     [state.order[idx], state.order[next]] = [state.order[next], state.order[idx]]; selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
 }
+function setSelfIntroExportScopeWidth(id, width) {
+    if (!SELF_INTRO_EXPORT_SCOPE_ORDER.includes(id) || !["full", "half"].includes(width)) return;
+    const state = normalizeSelfIntroExportState(selfIntroExportState); state.widths[id] = width; selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
+}
+function renderSelfIntroExportPreview() {
+    if (!els.selfIntroExportPreview) return;
+    try {
+        const layout = createSelfIntroExportLayout(selfIntroExportState);
+        if (!layout.groups.length) { els.selfIntroExportPreview.innerHTML = '<div class="export-preview-empty">当前勾选区域没有已填写内容。</div>'; return; }
+        const canvas = buildSelfIntroExportCanvas(selfIntroExportState, { preview: true });
+        els.selfIntroExportPreview.innerHTML = ""; canvas.setAttribute("aria-label", "个人偏好导出图片实时预览"); els.selfIntroExportPreview.appendChild(canvas);
+    } catch (err) { els.selfIntroExportPreview.innerHTML = `<div class="export-preview-empty">${escapeHTML(err.message || "暂时无法生成预览")}</div>`; }
+}
 function renderSelfIntroExportCenter() {
     if (!els.selfIntroExportScopes) return;
     const state = normalizeSelfIntroExportState(selfIntroExportState), selected = new Set(state.selected);
-    els.selfIntroExportScopes.innerHTML = state.order.map((id, index) => { const meta = SELF_INTRO_EXPORT_SCOPE_META[id], checked = selected.has(id); return `<div class="export-scope-row ${checked ? "" : "is-disabled"}" data-export-scope-row="${escapeHTML(id)}"><label class="export-scope-check"><input type="checkbox" data-self-intro-export-scope="${escapeHTML(id)}" ${checked ? "checked" : ""} aria-label="导出${escapeHTML(meta.label)}"></label><span class="export-scope-copy"><strong>${escapeHTML(meta.label)}</strong><small>${escapeHTML(meta.desc)}</small></span><span class="export-scope-actions"><button type="button" data-self-intro-export-move="-1" data-export-scope-id="${escapeHTML(id)}" ${index === 0 ? "disabled" : ""} aria-label="上移${escapeHTML(meta.label)}">↑</button><button type="button" data-self-intro-export-move="1" data-export-scope-id="${escapeHTML(id)}" ${index === state.order.length - 1 ? "disabled" : ""} aria-label="下移${escapeHTML(meta.label)}">↓</button></span></div>`; }).join("");
-    document.querySelectorAll('input[name="selfIntroExportStyle"]').forEach(input => { input.checked = input.value === state.style; });
-    if (els.selfIntroExportHideEmpty) els.selfIntroExportHideEmpty.checked = state.hideEmpty;
-    if (els.selfIntroExportHideEmptyNotes) els.selfIntroExportHideEmptyNotes.checked = state.hideEmptyNotes;
-    if (els.selfIntroExportShowHelp) els.selfIntroExportShowHelp.checked = state.showHelp;
-    if (els.selfIntroExportHideIdentity) els.selfIntroExportHideIdentity.checked = state.hideIdentity;
+    els.selfIntroExportScopes.innerHTML = state.order.map((id, index) => { const meta = SELF_INTRO_EXPORT_SCOPE_META[id], checked = selected.has(id), width = state.widths[id] === "half" ? "half" : "full"; return `<div class="export-scope-row ${checked ? "" : "is-disabled"}" data-export-scope-row="${escapeHTML(id)}"><label class="export-scope-check"><input type="checkbox" data-self-intro-export-scope="${escapeHTML(id)}" ${checked ? "checked" : ""} aria-label="导出${escapeHTML(meta.label)}"></label><span class="export-scope-copy"><strong>${escapeHTML(meta.label)}</strong><small>${escapeHTML(meta.desc)}</small></span><div class="export-scope-row-controls"><span class="export-scope-width" role="group" aria-label="${escapeHTML(meta.label)}版面宽度"><button type="button" class="${width === "full" ? "active" : ""}" data-self-intro-export-width="full" data-export-scope-id="${escapeHTML(id)}">整行</button><button type="button" class="${width === "half" ? "active" : ""}" data-self-intro-export-width="half" data-export-scope-id="${escapeHTML(id)}">半栏</button></span><span class="export-scope-actions"><button type="button" data-self-intro-export-move="-1" data-export-scope-id="${escapeHTML(id)}" ${index === 0 ? "disabled" : ""} aria-label="上移${escapeHTML(meta.label)}">↑</button><button type="button" data-self-intro-export-move="1" data-export-scope-id="${escapeHTML(id)}" ${index === state.order.length - 1 ? "disabled" : ""} aria-label="下移${escapeHTML(meta.label)}">↓</button></span></div></div>`; }).join("");
     const preset = selfIntroExportPresetKey(state); document.querySelectorAll("[data-self-intro-export-preset]").forEach(btn => btn.classList.toggle("active", btn.dataset.selfIntroExportPreset === preset));
-    const ids = selfIntroExportSelectedIds(state), est = selfIntroExportEstimatedHeight(state), effectiveHidden = state.hideIdentity || privacyMaskEnabled, lengthLabel = !est ? "无法估算" : est < 1500 ? "短图" : est < 2800 ? "中等长图" : est < 4600 ? "长图" : "超长图";
-    if (els.selfIntroExportSummary) els.selfIntroExportSummary.innerHTML = ids.length ? `<strong>本次将导出 ${ids.length} 个区域</strong> · ${escapeHTML(SELF_INTRO_EXPORT_STYLE_META[state.style].label)} · 预计${lengthLabel}${est ? `（约 ${Math.round(est)} px）` : ""}${effectiveHidden ? " · 个人姓名隐藏" : ""}${selfIntroDirty() ? " · 包含当前未保存修改" : ""}` : `<strong>尚未选择导出区域</strong> · 请至少勾选一个区域。`;
-    if (els.selfIntroExportNow) els.selfIntroExportNow.disabled = ids.length === 0;
+    const selectedIds = selfIntroExportSelectedIds(state), layout = (() => { try { return createSelfIntroExportLayout(state); } catch (err) { return null; } })(), actualCount = layout ? layout.groups.length : 0, est = layout ? layout.baseH : 0, halfCount = selectedIds.filter(id => state.widths[id] === "half").length, fullCount = selectedIds.length - halfCount, lengthLabel = !est ? "无法估算" : est < 1500 ? "短图" : est < 2800 ? "中等长图" : est < 4600 ? "长图" : "超长图";
+    if (els.selfIntroExportSummary) els.selfIntroExportSummary.innerHTML = selectedIds.length ? `<strong>已选 ${selectedIds.length} 个区域${actualCount !== selectedIds.length ? `，其中 ${actualCount} 个有内容` : ""}</strong> · ${fullCount} 个整行 / ${halfCount} 个半栏 · 预计${lengthLabel}${est ? `（约 ${Math.round(est)} px）` : ""}${selfIntroDirty() ? " · 包含当前未保存修改" : ""}` : `<strong>尚未选择导出区域</strong> · 请至少勾选一个区域。`;
+    if (els.selfIntroExportNow) els.selfIntroExportNow.disabled = actualCount === 0;
+    renderSelfIntroExportPreview();
 }
 function positionSelfIntroExportPanel() {
     if (!els.selfIntroExportPanel || !els.selfIntroExport || els.selfIntroExportPanel.hidden) return;
     const docW = document.documentElement.clientWidth || innerWidth, bodyW = document.body && document.body.clientWidth ? document.body.clientWidth : docW, panel = els.selfIntroExportPanel, viewportW = Math.min(docW, bodyW), viewportH = document.documentElement.clientHeight || innerHeight;
     if (viewportW <= 760) {
-        panel.style.left = "12px"; panel.style.right = "12px"; panel.style.top = "auto"; panel.style.bottom = "12px"; panel.style.maxHeight = "82vh";
+        panel.style.left = "10px"; panel.style.right = "10px"; panel.style.top = "auto"; panel.style.bottom = "10px"; panel.style.maxHeight = "90vh";
         return;
     }
-    const rect = els.selfIntroExport.getBoundingClientRect(), panelWidth = Math.min(520, viewportW - 24), maxRight = Math.max(12, viewportW - panelWidth - 12), right = Math.min(Math.max(12, viewportW - rect.right), maxRight), preferredTop = rect.bottom + 8, desiredHeight = Math.min(660, Math.max(360, viewportH * .74));
+    const rect = els.selfIntroExport.getBoundingClientRect(), panelWidth = Math.min(980, viewportW - 24), maxRight = Math.max(12, viewportW - panelWidth - 12), right = Math.min(Math.max(12, viewportW - rect.right), maxRight), preferredTop = rect.bottom + 8, desiredHeight = Math.min(760, Math.max(440, viewportH * .82));
     const top = Math.max(12, Math.min(preferredTop, viewportH - desiredHeight - 12));
-    panel.style.left = "auto"; panel.style.right = `${Math.round(right)}px`; panel.style.top = `${Math.round(top)}px`; panel.style.bottom = "auto"; panel.style.maxHeight = `${Math.max(280, Math.round(viewportH - top - 12))}px`;
+    panel.style.left = "auto"; panel.style.right = `${Math.round(right)}px`; panel.style.top = `${Math.round(top)}px`; panel.style.bottom = "auto"; panel.style.maxHeight = `${Math.max(320, Math.round(viewportH - top - 12))}px`;
 }
 function toggleSelfIntroExportCenter(force = null) {
     if (!els.selfIntroExportPanel || !els.selfIntroExport) return;
@@ -17874,18 +17891,16 @@ els.selfIntroExportPanelClose === null || els.selfIntroExportPanelClose === void
 els.selfIntroExportReset === null || els.selfIntroExportReset === void 0 ? void 0 : els.selfIntroExportReset.addEventListener("click", () => { selfIntroExportState = defaultSelfIntroExportState(); saveSelfIntroExportState(); renderSelfIntroExportCenter(); });
 els.selfIntroExportNow === null || els.selfIntroExportNow === void 0 ? void 0 : els.selfIntroExportNow.addEventListener("click", async () => { const ok = await exportSelfIntroImage(selfIntroExportState); if (ok) toggleSelfIntroExportCenter(false); });
 els.selfIntroExportPanel === null || els.selfIntroExportPanel === void 0 ? void 0 : els.selfIntroExportPanel.addEventListener("click", e => {
+    e.stopPropagation();
     const preset = e.target.closest("[data-self-intro-export-preset]"); if (preset) { applySelfIntroExportPreset(preset.dataset.selfIntroExportPreset); return; }
     const move = e.target.closest("[data-self-intro-export-move]"); if (move) { moveSelfIntroExportScope(move.dataset.exportScopeId, Number(move.dataset.selfIntroExportMove) || 0); return; }
+    const width = e.target.closest("[data-self-intro-export-width]"); if (width) { setSelfIntroExportScopeWidth(width.dataset.exportScopeId, width.dataset.selfIntroExportWidth); return; }
 });
 els.selfIntroExportPanel === null || els.selfIntroExportPanel === void 0 ? void 0 : els.selfIntroExportPanel.addEventListener("change", e => {
+    e.stopPropagation();
     const t = e.target, state = normalizeSelfIntroExportState(selfIntroExportState);
-    if (t.matches("[data-self-intro-export-scope]")) { const id = t.dataset.selfIntroExportScope, selected = new Set(state.selected); t.checked ? selected.add(id) : selected.delete(id); state.selected = [...selected]; }
-    else if (t.matches('input[name="selfIntroExportStyle"]')) { state.style = t.value; if (state.style === "share") { state.hideEmpty = true; state.hideEmptyNotes = true; state.hideIdentity = true; state.showHelp = false; } }
-    else if (t === els.selfIntroExportHideEmpty) state.hideEmpty = t.checked;
-    else if (t === els.selfIntroExportHideEmptyNotes) state.hideEmptyNotes = t.checked;
-    else if (t === els.selfIntroExportShowHelp) state.showHelp = t.checked;
-    else if (t === els.selfIntroExportHideIdentity) state.hideIdentity = t.checked;
-    else return;
+    if (!t.matches("[data-self-intro-export-scope]")) return;
+    const id = t.dataset.selfIntroExportScope, selected = new Set(state.selected); t.checked ? selected.add(id) : selected.delete(id); state.selected = [...selected];
     selfIntroExportState = state; saveSelfIntroExportState(); renderSelfIntroExportCenter();
 });
 (_p = els.statsExport) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => { void exportStatsImage(); });
