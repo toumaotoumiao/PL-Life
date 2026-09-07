@@ -1211,6 +1211,15 @@
       border:1px solid var(--t-line);border-radius:50%;background:var(--t-surface-2);color:transparent;font-size:11px;font-weight:800
     }
     .theme-card.active .theme-card-check{background:var(--t-accent);border-color:var(--t-accent);color:var(--t-accent-on)}
+    /* v8.1.7.9 · 主题选择状态：夜航降低未选中亮度，番茄园使用红绿协调状态。 */
+    html[data-theme="night"] .theme-card:not(.active) .theme-card-check{
+      background:#222b29;border-color:#44514c;color:transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.015)
+    }
+    html[data-theme="night"] .theme-card:not(.active):hover .theme-card-check{background:#28322f;border-color:#50605a}
+    html[data-theme="night"] .theme-card.active .theme-card-check{background:#86a99a;border-color:#9ab8aa;color:#15201c;box-shadow:0 0 0 3px rgba(134,169,154,.10)}
+    .theme-preview-tomato .theme-card-check{background:#f4eee7;border-color:#b8c9aa;color:transparent;box-shadow:inset 0 0 0 1px rgba(107,138,82,.06)}
+    .theme-preview-tomato:hover .theme-card-check{background:#eef3e9;border-color:#8eaa79}
+    .theme-preview-tomato.active .theme-card-check{background:#cb5147;border-color:#b7443d;color:#fffdfb;box-shadow:0 0 0 3px rgba(107,138,82,.16)}
     .theme-card-desc{position:relative;z-index:1;margin-top:4px;color:var(--t-muted);font-size:10px;line-height:1.45}
     .theme-swatches{position:relative;z-index:1;display:grid;grid-template-columns:1.45fr 1fr .8fr .8fr;height:28px;margin-top:10px;overflow:hidden;border:1px solid var(--t-line);border-radius:9px}
     .theme-swatch{min-width:0}
@@ -1737,8 +1746,10 @@
       background:color-mix(in srgb,var(--t-surface-glass) 94%,var(--t-surface));
       box-shadow:0 -8px 20px color-mix(in srgb,var(--t-shadow-soft) 70%,transparent);backdrop-filter:blur(14px)
     }
-    .plan-editor-footer-right{display:flex;gap:8px;justify-content:flex-end}
-    .plan-editor-footer-right .btn{min-height:42px;padding-inline:14px}
+    .plan-editor-footer-left{display:grid;gap:4px;min-width:0}
+    .plan-editor-footer-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+    .plan-editor-footer-right{display:flex;gap:8px;justify-content:flex-end;flex:0 0 auto}
+    .plan-editor-footer-right .btn{min-height:42px;min-width:88px;padding-inline:18px}
     .plan-editor-autosave{font-size:8.5px;color:var(--t-muted)}
 
     @media(max-width:980px){
@@ -1774,8 +1785,10 @@
       .plan-editor-basic,.plan-editor-kp{grid-template-columns:1fr}
       .plan-editor-basic .wide{grid-column:auto}
       .plan-editor-footer{margin-inline:-12px;padding-inline:12px}
-      .plan-editor-footer-right{display:grid;grid-template-columns:1fr 1fr;flex:1}
-      .plan-editor-footer-right .btn{width:100%;min-height:44px}
+      .plan-editor-footer-left{flex:1 1 auto}
+      .plan-editor-footer-actions{gap:6px}
+      .plan-editor-footer-right{display:flex;flex:0 0 auto}
+      .plan-editor-footer-right .btn{width:auto;min-width:78px;min-height:44px}
     }
 
     .linked-run-role{font-size:9px;color:var(--t-muted);padding:4px 6px}
@@ -2910,6 +2923,12 @@
     .ho-mode-specific-slot .kp-sort-wrap{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px}
     .ho-mode-specific-slot .kp-sort-wrap select{width:100%;min-width:0}
     #toggleOrganizerAllBtn,#copyHoOrganizerBtn,.ho-image-export-wrap>#hoImageExportBtn{min-width:96px}
+    .ho-image-export-options{display:grid;gap:6px;padding:8px 9px 7px;border-bottom:1px solid var(--t-line);background:color-mix(in srgb,var(--t-surface-2) 82%,var(--t-surface))}
+    .ho-image-export-options>span{font-size:8px;font-weight:780;color:var(--t-muted)}
+    .ho-image-export-state{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+    .ho-image-export-menu .ho-image-export-state button{width:auto;display:block;min-height:32px;padding:5px 6px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-muted);font-size:8.4px;font-weight:720;text-align:center;cursor:pointer}
+    .ho-image-export-menu .ho-image-export-state button:hover{border-color:var(--t-line-strong);background:var(--t-surface-2);color:var(--t-text-2)}
+    .ho-image-export-menu .ho-image-export-state button.active{border-color:var(--t-accent);background:var(--t-accent-soft);color:var(--t-accent-strong);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 18%,transparent)}
     .image-export-btn{position:relative;padding-inline:12px 14px;border-color:color-mix(in srgb,var(--t-accent) 26%,var(--t-line));background:linear-gradient(180deg,color-mix(in srgb,var(--t-accent-soft) 72%,var(--t-surface)),var(--t-surface));color:var(--t-accent-strong);font-weight:760}
     .image-export-btn:hover:not(:disabled){border-color:color-mix(in srgb,var(--t-accent) 42%,var(--t-line));background:linear-gradient(180deg,color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface)),var(--t-surface))}
     .image-export-btn::before{content:"▣";font-size:.9em;opacity:.72;transform:translateY(-.02em)}
@@ -2989,7 +3008,7 @@
     /* ---------- HO图片导出与存储检查 ---------- */
     .ho-image-export-wrap{position:relative}
     .ho-image-export-menu{
-      position:absolute;right:0;top:calc(100% + 6px);z-index:20;width:235px;padding:5px;
+      position:absolute;right:0;top:calc(100% + 6px);z-index:20;width:285px;padding:5px;
       border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface);box-shadow:0 12px 30px var(--t-shadow)
     }
     .ho-image-export-menu[hidden]{display:none!important}
@@ -3002,6 +3021,7 @@
     @media(max-width:1180px){.data-health-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
     @media(max-width:760px){
       .ho-image-export-menu{position:fixed;left:12px;right:12px;top:auto;bottom:calc(74px + env(safe-area-inset-bottom));width:auto}
+      .ho-image-export-state{grid-template-columns:repeat(3,minmax(0,1fr))}
       .data-health-grid{grid-template-columns:1fr 1fr}
       .data-safety-action-row{grid-template-columns:1fr 1fr}
       #relayUpgradeBtn,#requestPersistentStorageBtn{grid-column:1/-1}
@@ -3020,8 +3040,8 @@
     .external-backup-toggle-row small,.external-backup-time-row small,.external-backup-location small{font-size:8.4px;line-height:1.45;color:var(--t-muted)}
     .external-backup-toggle-row input[type="checkbox"]{width:20px;height:20px;accent-color:var(--t-accent);flex:0 0 auto}
     .external-backup-time-row select{width:138px;min-height:38px;padding:6px 30px 6px 9px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-input);color:var(--t-ink)}
-    .external-backup-notice{position:fixed;right:22px;bottom:22px;z-index:var(--z-toast);width:min(370px,calc(100vw - 28px));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 12px 12px 14px;border:1px solid color-mix(in srgb,var(--t-success) 34%,var(--t-line));border-radius:14px;background:color-mix(in srgb,var(--t-surface) 96%,transparent);box-shadow:0 16px 42px rgba(31,49,45,.16);backdrop-filter:blur(12px)}
-    .external-backup-notice[hidden]{display:none!important}.external-backup-notice-copy{display:grid;gap:3px;min-width:0}.external-backup-notice-copy strong{font-size:11px;color:var(--t-ink)}.external-backup-notice-copy span{font-size:8.8px;line-height:1.45;color:var(--t-muted);overflow-wrap:anywhere}.external-backup-notice-actions{display:flex;align-items:center;gap:6px}.external-backup-notice-close{width:32px;height:32px;padding:0;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);color:var(--t-muted);cursor:pointer}
+    .external-backup-notice{position:fixed;right:22px;bottom:22px;z-index:calc(var(--z-toast) + 40)!important;pointer-events:auto!important;isolation:isolate;width:min(370px,calc(100vw - 28px));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 12px 12px 14px;border:1px solid color-mix(in srgb,var(--t-success) 34%,var(--t-line));border-radius:14px;background:color-mix(in srgb,var(--t-surface) 96%,transparent);box-shadow:0 16px 42px rgba(31,49,45,.16);backdrop-filter:blur(12px)}
+    .external-backup-notice[hidden]{display:none!important}.external-backup-notice-copy{display:grid;gap:3px;min-width:0}.external-backup-notice-copy strong{font-size:11px;color:var(--t-ink)}.external-backup-notice-copy span{font-size:8.8px;line-height:1.45;color:var(--t-muted);overflow-wrap:anywhere}.external-backup-notice-actions{display:flex;align-items:center;gap:6px}.external-backup-notice-close{position:relative;z-index:2;width:32px;height:32px;padding:0;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);color:var(--t-muted);cursor:pointer;pointer-events:auto!important;touch-action:manipulation}
     @media(max-width:760px){.external-backup-notice{left:14px;right:14px;bottom:calc(90px + env(safe-area-inset-bottom));width:auto;grid-template-columns:1fr}.external-backup-notice-actions{justify-content:flex-end}}
     .external-backup-browser-backdrop{position:fixed;inset:0;z-index:var(--z-submodal);display:grid;place-items:center;padding:16px;background:rgba(28,31,29,.34);backdrop-filter:blur(7px)}
     .external-backup-browser-backdrop[hidden]{display:none!important}
@@ -4159,7 +4179,7 @@
         display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important;
       }
       .plan-editor-drawer .plan-editor-footer>div:first-child{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
-      .plan-editor-drawer .plan-editor-footer-right{display:grid!important;grid-template-columns:1fr 1fr!important;width:100%!important}
+      .plan-editor-drawer .plan-editor-footer-right{display:flex!important;width:auto!important;flex:0 0 auto!important}
     }
     @media(max-width:420px){
       .plan-editor-drawer-body{padding-inline:8px!important}
@@ -4168,11 +4188,11 @@
       .plan-editor-drawer .participant-add>.btn{width:100%!important}
       .plan-editor-drawer .assignment-ho-chips{grid-template-columns:repeat(4,minmax(0,1fr))!important}
       .plan-editor-drawer .plan-editor-footer{margin-inline:-8px!important;padding-inline:8px!important}
-      .plan-editor-drawer .plan-editor-footer-right{grid-template-columns:1fr 1fr!important}
+      .plan-editor-drawer .plan-editor-footer-right{display:flex!important;width:auto!important;flex:0 0 auto!important}
     }
     @media(max-width:340px){
       .plan-editor-drawer .assignment-ho-chips{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-      .plan-editor-drawer .plan-editor-footer-right{grid-template-columns:1fr 1fr!important}
+      .plan-editor-drawer .plan-editor-footer-right{display:flex!important;width:auto!important;flex:0 0 auto!important}
       .plan-editor-drawer .plan-editor-footer-right .btn{padding-inline:6px!important}
     }
     @media(max-width:760px){
@@ -4457,7 +4477,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 
   .plan-editor-block{padding:12px;border-radius:14px}
   .plan-editor-drawer-title{font-size:20px}.plan-editor-drawer-sub{font-size:10.5px}
-  .plan-editor-footer{gap:8px}.plan-editor-footer-right{grid-template-columns:1fr 1fr}
+  .plan-editor-footer{gap:8px}
   .assignment-pc-field,.assignment-ho-field{width:100%}
 }
 
@@ -4483,6 +4503,18 @@ body{font-size:var(--vu-body);line-height:1.5}
     .app-update-banner{top:max(8px,env(safe-area-inset-top));align-items:flex-start}
     .app-update-banner>div:last-child .btn{min-height:44px;white-space:nowrap}
   }
+
+<style id="v8178-interaction-polish">
+  /* v8.1.7.9 · 通知条应做到“只要看得到，就一定点得到”。 */
+  #externalBackupNotice{z-index:2140!important;pointer-events:auto!important}
+  #externalBackupNotice *{pointer-events:auto}
+  #externalBackupNoticeCloseBtn{position:relative;z-index:3}
+  /* 夜航未选中圆点压低亮度，减少深色界面中的高对比刺眼感。 */
+  html[data-theme="night"] .theme-card:not(.active) .theme-card-check{background:#202826!important;border-color:#3f4b47!important;box-shadow:none!important}
+  html[data-theme="night"] .theme-card:not(.active):hover .theme-card-check{background:#27302e!important;border-color:#4b5953!important}
+  /* 番茄园使用番茄红选中 + 叶片绿外圈，和主题本身保持一致。 */
+  .theme-preview-tomato.active .theme-card-check{background:#cb5147!important;border-color:#b7443d!important;color:#fffdfb!important;box-shadow:0 0 0 3px rgba(107,138,82,.18)!important}
+</style>
 </style>
 </head>
 <body>
@@ -4838,7 +4870,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.7.7 · 2026-09-07 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.7.9 · 2026-09-07 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4850,7 +4882,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.7.7　·　更新时间：2026-09-07　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.7.9　·　更新时间：2026-09-07　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4903,6 +4935,14 @@ body{font-size:var(--vu-body);line-height:1.5}
               <div class="ho-image-export-wrap">
                 <button id="hoImageExportBtn" class="btn small image-export-btn has-menu" type="button" aria-expanded="false">导出图片</button>
                 <div id="hoImageExportMenu" class="ho-image-export-menu" hidden>
+                  <div class="ho-image-export-options">
+                    <span>导出内容状态</span>
+                    <div class="ho-image-export-state" role="group" aria-label="跑团整理图片导出内容状态">
+                      <button type="button" data-ho-export-detail="current">跟随页面</button>
+                      <button type="button" data-ho-export-detail="collapsed">全部收起</button>
+                      <button type="button" data-ho-export-detail="expanded">全部展开</button>
+                    </div>
+                  </div>
                   <button type="button" data-ho-image-style="wide"><strong>宽幅 PNG</strong><span>横向整理当前结果，适合电脑或群聊</span></button>
                   <button type="button" data-ho-image-style="long"><strong>长图 PNG</strong><span>纵向整理当前结果，适合手机查看</span></button>
                 </div>
@@ -5187,7 +5227,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.7.7</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.7.9</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5202,10 +5242,12 @@ body{font-size:var(--vu-body);line-height:1.5}
 </div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.7.7 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.7.7</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.7.9 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.7.9</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.7.9</strong><span>开团计划编辑器调整底部操作层级：“完成”改为明确的“保存”，并作为右侧唯一主操作；“归档”移至左侧与“删除计划”并列，使用次级样式并保留归档确认与重复归档防呆，降低保存与归档相邻造成的误触风险。</span>
+<strong>v8.1.7.8</strong><span>修复外部自动备份完成提示在模态弹窗同时出现时“看得见却点不到关闭键”的交互层级问题，并强化提示条与按钮的触控事件；夜航主题降低未选中主题选择圆点的亮度与边框反差，番茄园主题的选择状态图标改为番茄红与叶片绿协调样式。跑团整理图片导出新增“跟随页面 / 全部收起 / 全部展开”三种内容状态，可独立于网页当前展开状态生成摘要图或完整详情图，并记住上次导出选择。</span>
 <strong>v8.1.7.7</strong><span>个人偏好页“参考来源”说明补充 @江鸿、@削面，并将来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，确保页面初始显示和重新渲染后的文案一致，其余功能与数据结构不变。</span>
 <strong>v8.1.7.6</strong><span>跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数；支持鼠标/触屏点选、方向键选择、Enter 确认与 Esc 收起。选择已有模组后会精确沿用对应模组档案，减少重复建档和同名误关联；无匹配时仍保留新建模组与第一桌记录流程。</span>
 <strong>v8.1.7.5</strong><span>全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换。显示设置新增“折叠区默认状态”，可选择默认收起或默认展开，且只影响从未手动操作过的区块；PL 卡片、评分明细、跑团足迹、单桌记录、跑团整理分组、月历、设置分组、个人偏好以及模组高级工具统一接入同一套逻辑。设置窗口现在每次打开默认进入首项“数据与备份”，避免继续沿用旧版默认“外观”。</span>
@@ -5437,7 +5479,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.7.7 · 作者：番茄
+/* PL收集梦想生活 v8.1.7.9 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5461,7 +5503,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.7.7";
+const APP_UI_VERSION = "8.1.7.9";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -9410,6 +9452,10 @@ let hoOrganizerFilter = "all";
 let hoOrganizerShowEmpty = false;
 let hoOrganizerMode = "pl";
 let kpOrganizerSort = "recent";
+const HO_ORGANIZER_EXPORT_DETAIL_KEY = "tomato_pl_ho_export_detail_v1";
+function loadHoOrganizerExportDetailMode() { try { const v = localStorage.getItem(HO_ORGANIZER_EXPORT_DETAIL_KEY); return ["current","collapsed","expanded"].includes(v) ? v : "expanded"; } catch (err) { return "expanded"; } }
+function saveHoOrganizerExportDetailMode(mode) { const v = ["current","collapsed","expanded"].includes(mode) ? mode : "expanded"; hoOrganizerExportDetailMode = v; try { localStorage.setItem(HO_ORGANIZER_EXPORT_DETAIL_KEY, v); } catch (err) {} syncHoImageExportDetailControls(); }
+let hoOrganizerExportDetailMode = loadHoOrganizerExportDetailMode();
 let collapseState = null;
 let collapseObserver = null;
 function loadCollapseState() {
@@ -12908,6 +12954,7 @@ function renderHoOrganizer() {
         exportWide.textContent = hoOrganizerMode === "kp" ? "按模组多列展示全部桌次，适合电脑或群聊" : "横向展示全部 HO，适合电脑或群聊";
     if (exportLong)
         exportLong.textContent = hoOrganizerMode === "kp" ? "按模组纵向展示全部桌次，适合手机" : "按 HO 分组纵向展示，适合手机";
+    syncHoImageExportDetailControls();
     if (hoOrganizerMode === "kp")
         renderKpOrganizer(profile);
     else
@@ -12936,12 +12983,21 @@ function closeHoOrganizer() {
     document.body.classList.remove("ho-organizer-open");
     syncModalPageScrollLock();
 }
+function syncHoImageExportDetailControls() {
+    if (!(els === null || els === void 0 ? void 0 : els.hoImageExportMenu)) return;
+    els.hoImageExportMenu.querySelectorAll("[data-ho-export-detail]").forEach(btn => {
+        const active = btn.dataset.hoExportDetail === hoOrganizerExportDetailMode;
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+}
 function toggleHoImageExportMenu(force) {
     var _a;
     if (!(els === null || els === void 0 ? void 0 : els.hoImageExportMenu))
         return;
     const open = typeof force === "boolean" ? force : els.hoImageExportMenu.hidden;
     els.hoImageExportMenu.hidden = !open;
+    if (open) syncHoImageExportDetailControls();
     (_a = els.hoImageExport) === null || _a === void 0 ? void 0 : _a.setAttribute("aria-expanded", open ? "true" : "false");
 }
 function canvasRoundedRect(ctx, x, y, w, h, r) { const rr = Math.min(r, w / 2, h / 2); ctx.beginPath(); ctx.moveTo(x + rr, y); ctx.arcTo(x + w, y, x + w, y + h, rr); ctx.arcTo(x + w, y + h, x, y + h, rr); ctx.arcTo(x, y + h, x, y, rr); ctx.arcTo(x, y, x + w, y, rr); ctx.closePath(); }
@@ -12967,7 +13023,7 @@ function hoExportTheme() {
 function hoExportStatusColors(status, theme) { if (status.key === "done")
     return { bg: "#fdf5e0", fg: "#8f6d25" }; if (status.key === "scheduled")
     return { bg: "#e8f5e8", fg: "#527d52" }; return { bg: "#e8f4fc", fg: "#567f99" }; }
-function hoExportFilename(style) { const p = profileById(hoOrganizerProfileId), name = String(displayProfileName(p) || "PL").replace(/[\\/:*?"<>|]/g, "_"); const scope = hoOrganizerFilter === "record" ? "已结团" : hoOrganizerFilter === "plan" ? "计划中" : "全部", view = hoOrganizerMode === "kp" ? "KP 带团整理" : "HO 整理"; return `${name}_${view}_${style === "wide" ? "宽幅" : "长图"}_${scope}.png`; }
+function hoExportFilename(style, detailMode = hoOrganizerExportDetailMode) { const p = profileById(hoOrganizerProfileId), name = String(displayProfileName(p) || "PL").replace(/[\\/:*?"<>|]/g, "_"); const scope = hoOrganizerFilter === "record" ? "已结团" : hoOrganizerFilter === "plan" ? "计划中" : "全部", view = hoOrganizerMode === "kp" ? "KP 带团整理" : "HO 整理", detail = detailMode === "collapsed" ? "_收起摘要" : detailMode === "current" ? "_当前状态" : ""; return `${name}_${view}_${style === "wide" ? "宽幅" : "长图"}_${scope}${detail}.png`; }
 function drawUnifiedExportHeader(ctx, w, theme, { eyebrow = "TRPG · 本地档案管理", title = "", subtitle = "", stats = [] } = {}) {
     const x = 34, y = 24, cardW = w - 68, cardH = 138, innerX = x + 20;
     canvasFillRound(ctx, x, y, cardW, cardH, 18, theme.surface, theme.line);
@@ -13064,11 +13120,12 @@ function drawHoEntryCard(ctx, x, y, w, entry, theme) {
     ctx.fillText(canvasTextFit(ctx, meta, w - 24), x + 11, y + 63);
     return h;
 }
-function drawHoExportGroup(ctx, x, y, w, col, rows, palette, theme, entryCols = 1) {
-    const headH = 70, pad = 9, gap = 7, entryH = 72, count = Math.max(rows.length, 1), rowCount = Math.ceil(count / entryCols), bodyH = rows.length ? (pad * 2 + rowCount * entryH + Math.max(0, rowCount - 1) * gap) : 58, h = headH + bodyH;
+function drawHoExportGroup(ctx, x, y, w, col, rows, palette, theme, entryCols = 1, expanded = true) {
+    const headH = 70, pad = 9, gap = 7, entryH = 72, count = Math.max(rows.length, 1), rowCount = Math.ceil(count / entryCols), bodyH = rows.length ? (pad * 2 + rowCount * entryH + Math.max(0, rowCount - 1) * gap) : 58, h = expanded ? headH + bodyH : headH;
     canvasFillRound(ctx, x, y, w, h, 15, theme.surface, theme.line);
     const done = rows.filter(e => e.kind === "record").length, plan = rows.filter(e => e.kind === "plan").length, summary = `${rows.length} 条`, meta = [done && `已结团 ${done}`, plan && `计划 ${plan}`].filter(Boolean).join(" · ") || "暂无记录";
     drawRunExportGroupHead(ctx, x, y, w, { title: col.label, subtitle: "HO 分组", summary, meta, accent: palette.dot, soft: colorMixForCanvas(palette.bg, theme.surface, .28) }, theme);
+    if (!expanded) return headH;
     if (!rows.length) {
         ctx.fillStyle = theme.faint;
         ctx.font = "500 11px system-ui, sans-serif";
@@ -13081,7 +13138,12 @@ function drawHoExportGroup(ctx, x, y, w, col, rows, palette, theme, entryCols = 
     rows.forEach((entry, i) => { const colI = i % entryCols, rowI = Math.floor(i / entryCols), cx = x + pad + colI * (cardW + gap), cy = y + headH + pad + rowI * (entryH + gap); drawHoEntryCard(ctx, cx, cy, cardW, entry, theme); });
     return h;
 }
-function buildHoOrganizerCanvas(style = "wide") {
+function hoExportGroupExpanded(stateKey, mode = hoOrganizerExportDetailMode) {
+    if (mode === "collapsed") return false;
+    if (mode === "expanded") return true;
+    return collapseStateOpen(stateKey);
+}
+function buildHoOrganizerCanvas(style = "wide", detailMode = hoOrganizerExportDetailMode) {
     const profile = profileById(hoOrganizerProfileId);
     if (!profile)
         throw new Error("没有选择 PL");
@@ -13098,7 +13160,7 @@ function buildHoOrganizerCanvas(style = "wide") {
         baseW = 1080;
         let y = headBottom;
         const w = baseW - pad * 2;
-        cols.forEach((col, ci) => { const rows = entries.filter(e => e.column.key === col.key), entryCols = rows.length > 1 ? 2 : 1, rowCount = Math.max(1, Math.ceil(Math.max(rows.length, 1) / entryCols)), h = 70 + (rows.length ? (18 + rowCount * 72 + Math.max(0, rowCount - 1) * 7) : 58); layout.push({ col, rows, ci, x: pad, y, w, h, entryCols }); y += h + 14; });
+        cols.forEach((col, ci) => { const rows = entries.filter(e => e.column.key === col.key), expanded = hoExportGroupExpanded(`organizer:pl:${col.key}`, detailMode), entryCols = rows.length > 1 ? 2 : 1, rowCount = Math.max(1, Math.ceil(Math.max(rows.length, 1) / entryCols)), h = expanded ? 70 + (rows.length ? (18 + rowCount * 72 + Math.max(0, rowCount - 1) * 7) : 58) : 70; layout.push({ col, rows, ci, x: pad, y, w, h, entryCols, expanded }); y += h + 14; });
         baseH = y + 14;
     }
     else {
@@ -13106,7 +13168,7 @@ function buildHoOrganizerCanvas(style = "wide") {
         const gridCols = 3, colW = (baseW - pad * 2 - gap * (gridCols - 1)) / gridCols;
         let y = headBottom;
         for (let i = 0; i < cols.length; i += gridCols) {
-            const row = cols.slice(i, i + gridCols).map((col, j) => { const rows = entries.filter(e => e.column.key === col.key), rowCount = Math.max(rows.length, 1), h = 70 + (rows.length ? (18 + rowCount * 72 + Math.max(0, rowCount - 1) * 7) : 58); return { col, rows, ci: i + j, x: pad + j * (colW + gap), y, w: colW, h, entryCols: 1 }; });
+            const row = cols.slice(i, i + gridCols).map((col, j) => { const rows = entries.filter(e => e.column.key === col.key), expanded = hoExportGroupExpanded(`organizer:pl:${col.key}`, detailMode), rowCount = Math.max(rows.length, 1), h = expanded ? 70 + (rows.length ? (18 + rowCount * 72 + Math.max(0, rowCount - 1) * 7) : 58) : 70; return { col, rows, ci: i + j, x: pad + j * (colW + gap), y, w: colW, h, entryCols: 1, expanded }; });
             const rowH = Math.max(...row.map(v => v.h));
             layout.push(...row);
             y += rowH + 14;
@@ -13126,7 +13188,7 @@ function buildHoOrganizerCanvas(style = "wide") {
     ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, baseW, baseH);
     drawUnifiedExportHeader(ctx, baseW, theme, { eyebrow: "PL · 玩家侧 · 跑团整理", title: `${displayProfileName(profile)} · PL 参团`, subtitle: "按 HO 分组整理已结团记录与开团计划。", stats: [`${entries.length} 条`, `已结团 ${statDone}`, `计划中 ${statPlan}`, `已记录 HO ${known}`] });
-    layout.forEach(item => drawHoExportGroup(ctx, item.x, item.y, item.w, item.col, item.rows, palette[item.ci % palette.length], theme, item.entryCols));
+    layout.forEach(item => drawHoExportGroup(ctx, item.x, item.y, item.w, item.col, item.rows, palette[item.ci % palette.length], theme, item.entryCols, item.expanded));
     drawUnifiedExportFooter(ctx, baseW, baseH - 32, theme);
     return canvas;
 }
@@ -13158,16 +13220,17 @@ function drawKpExportEntry(ctx, x, y, w, entry, theme) {
     ctx.textAlign = "left";
     return h;
 }
-function drawKpExportGroup(ctx, x, y, w, group, theme, entryCols = 1) {
-    const headH = 70, pad = 9, gap = 7, entryH = 72, entries = [...group.entries].sort((a, b) => (b.dateKey || "").localeCompare(a.dateKey || "") || b.updatedAt - a.updatedAt), rows = Math.max(1, Math.ceil(entries.length / entryCols)), bodyH = pad * 2 + rows * entryH + Math.max(0, rows - 1) * gap, h = headH + bodyH;
+function drawKpExportGroup(ctx, x, y, w, group, theme, entryCols = 1, expanded = true) {
+    const headH = 70, pad = 9, gap = 7, entryH = 72, entries = [...group.entries].sort((a, b) => (b.dateKey || "").localeCompare(a.dateKey || "") || b.updatedAt - a.updatedAt), rows = Math.max(1, Math.ceil(entries.length / entryCols)), bodyH = pad * 2 + rows * entryH + Math.max(0, rows - 1) * gap, h = expanded ? headH + bodyH : headH;
     canvasFillRound(ctx, x, y, w, h, 15, theme.surface, theme.line);
     const recent = group.lastDone ? `最近带团 ${group.lastDone}` : (group.lastAny ? `最近计划 ${group.lastAny}` : "暂无日期"), summary = [group.done && `已带 ${group.done} 桌`, group.planned && `计划 ${group.planned} 桌`].filter(Boolean).join(" · ") || `${entries.length} 条`, meta = group.totalPl ? `${group.totalPl} PL 次 · ${group.uniquePl} 人` : "";
     drawRunExportGroupHead(ctx, x, y, w, { title: group.moduleName, subtitle: recent, summary, meta, accent: theme.accent, soft: colorMixForCanvas(theme.accentSoft, theme.surface, .46) }, theme);
+    if (!expanded) return headH;
     const cardW = (w - pad * 2 - gap * (entryCols - 1)) / entryCols;
     entries.forEach((entry, i) => { const col = i % entryCols, row = Math.floor(i / entryCols), cx = x + pad + col * (cardW + gap), cy = y + headH + pad + row * (entryH + gap); drawKpExportEntry(ctx, cx, cy, cardW, entry, theme); });
     return h;
 }
-function buildKpOrganizerCanvas(style = "wide") {
+function buildKpOrganizerCanvas(style = "wide", detailMode = hoOrganizerExportDetailMode) {
     const profile = profileById(hoOrganizerProfileId);
     if (!profile)
         throw new Error("没有选择 PL");
@@ -13181,7 +13244,7 @@ function buildKpOrganizerCanvas(style = "wide") {
         baseW = 1080;
         let y = headBottom;
         const w = baseW - pad * 2;
-        groups.forEach(group => { const count = Math.max(1, group.entries.length), entryCols = count > 1 ? 2 : 1, rows = Math.ceil(count / entryCols), h = 70 + 18 + rows * 72 + Math.max(0, rows - 1) * 7; layout.push({ group, x: pad, y, w, h, entryCols }); y += h + 14; });
+        groups.forEach(group => { const expanded = hoExportGroupExpanded(`organizer:kp:${group.key}`, detailMode), count = Math.max(1, group.entries.length), entryCols = count > 1 ? 2 : 1, rows = Math.ceil(count / entryCols), h = expanded ? 70 + 18 + rows * 72 + Math.max(0, rows - 1) * 7 : 70; layout.push({ group, x: pad, y, w, h, entryCols, expanded }); y += h + 14; });
         baseH = y + 14;
     }
     else {
@@ -13189,7 +13252,7 @@ function buildKpOrganizerCanvas(style = "wide") {
         const cols = 3, colW = (baseW - pad * 2 - gap * (cols - 1)) / cols;
         let y = headBottom;
         for (let i = 0; i < groups.length; i += cols) {
-            const row = groups.slice(i, i + cols).map((group, j) => { const count = Math.max(1, group.entries.length), rows = count, h = 70 + 18 + rows * 72 + Math.max(0, rows - 1) * 7; return { group, x: pad + j * (colW + gap), y, w: colW, h, entryCols: 1 }; });
+            const row = groups.slice(i, i + cols).map((group, j) => { const expanded = hoExportGroupExpanded(`organizer:kp:${group.key}`, detailMode), count = Math.max(1, group.entries.length), rows = count, h = expanded ? 70 + 18 + rows * 72 + Math.max(0, rows - 1) * 7 : 70; return { group, x: pad + j * (colW + gap), y, w: colW, h, entryCols: 1, expanded }; });
             const rowH = Math.max(...row.map(v => v.h));
             layout.push(...row);
             y += rowH + 14;
@@ -13209,17 +13272,18 @@ function buildKpOrganizerCanvas(style = "wide") {
     ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, baseW, baseH);
     drawUnifiedExportHeader(ctx, baseW, theme, { eyebrow: "KP · 带团侧 · 跑团整理", title: `${displayProfileName(profile)} · KP 带团`, subtitle: "按模组汇总已经归档的带团记录与后续计划。", stats: [`已带团 ${done} 桌`, `计划中 ${plan} 桌`, `已带模组 ${moduleCount}`, `PL ${totalPl} 次`, `PL ${uniquePl} 人`] });
-    layout.forEach(item => drawKpExportGroup(ctx, item.x, item.y, item.w, item.group, theme, item.entryCols));
+    layout.forEach(item => drawKpExportGroup(ctx, item.x, item.y, item.w, item.group, theme, item.entryCols, item.expanded));
     drawUnifiedExportFooter(ctx, baseW, baseH - 32, theme);
     return canvas;
 }
 async function exportHoOrganizerImage(style) {
     try {
         toggleHoImageExportMenu(false);
-        const isKp = hoOrganizerMode === "kp", canvas = isKp ? buildKpOrganizerCanvas(style) : buildHoOrganizerCanvas(style);
+        const isKp = hoOrganizerMode === "kp", detailMode = hoOrganizerExportDetailMode, canvas = isKp ? buildKpOrganizerCanvas(style, detailMode) : buildHoOrganizerCanvas(style, detailMode);
         const blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error("PNG 生成失败")), "image/png", 1));
-        downloadBlobFile(blob, hoExportFilename(style));
-        showToast(isKp ? (style === "long" ? "KP 长图已导出" : "KP 宽幅图已导出") : (style === "long" ? "PL 长图已导出" : "PL 宽幅图已导出"));
+        downloadBlobFile(blob, hoExportFilename(style, detailMode));
+        const detailLabel = detailMode === "collapsed" ? " · 收起摘要" : detailMode === "current" ? " · 跟随页面" : "";
+        showToast((isKp ? (style === "long" ? "KP 长图已导出" : "KP 宽幅图已导出") : (style === "long" ? "PL 长图已导出" : "PL 宽幅图已导出")) + detailLabel);
     }
     catch (err) {
         console.error(err);
@@ -16559,8 +16623,11 @@ function renderPlanEditor() {
     </section>
 
     <footer class="plan-editor-footer">
-      <div><button class="btn small danger" type="button" data-editor-delete-plan>删除计划</button><div class="plan-editor-autosave">自动保存修改</div></div>
-      <div class="plan-editor-footer-right"><button class="btn" type="button" data-editor-close>完成</button><button class="btn primary" type="button" data-editor-archive>✓ 归档</button></div>
+      <div class="plan-editor-footer-left">
+        <div class="plan-editor-footer-actions"><button class="btn small danger" type="button" data-editor-delete-plan>删除计划</button><button class="btn small" type="button" data-editor-archive>归档</button></div>
+        <div class="plan-editor-autosave">自动保存修改</div>
+      </div>
+      <div class="plan-editor-footer-right"><button class="btn primary" type="button" data-editor-close data-i18n="common.save">保存</button></div>
     </footer>
   </div>`;
     syncPlanPlPickerUI(plan.id);
@@ -22945,8 +23012,13 @@ els.hoOrganizerBoard.addEventListener("click", e => {
     openHoOrganizerSource(item.dataset.hoOpenKind, item.dataset.hoOpenId);
 });
 els.hoImageExport.addEventListener("click", e => { e.stopPropagation(); toggleHoImageExportMenu(); });
-els.hoImageExportMenu.addEventListener("click", e => { const btn = e.target.closest("[data-ho-image-style]"); if (!btn)
-    return; void exportHoOrganizerImage(btn.dataset.hoImageStyle); });
+els.hoImageExportMenu.addEventListener("click", e => {
+    const detailBtn = e.target.closest("[data-ho-export-detail]");
+    if (detailBtn) { saveHoOrganizerExportDetailMode(detailBtn.dataset.hoExportDetail); return; }
+    const btn = e.target.closest("[data-ho-image-style]");
+    if (!btn) return;
+    void exportHoOrganizerImage(btn.dataset.hoImageStyle);
+});
 els.copyHoOrganizer.addEventListener("click", async () => {
     if (!hoOrganizerProfileId)
         return;
@@ -23185,7 +23257,14 @@ els.viewExternalBackupFiles.addEventListener("click", () => { void openExternalB
 els.reauthorizeExternalBackup.addEventListener("click", reauthorizeExternalBackup);
 els.externalBackupNow.addEventListener("click", () => { void writeExternalBackupNow({ manual: true, reason: "manual-test" }); });
 els.externalBackupVerify.addEventListener("click", () => { void verifyExternalBackupFromNotice(); });
-els.externalBackupNoticeClose.addEventListener("click", hideExternalBackupSuccessNotice);
+if (els.externalBackupNotice) {
+    els.externalBackupNotice.addEventListener("pointerdown", e => e.stopPropagation());
+    els.externalBackupNotice.addEventListener("click", e => e.stopPropagation());
+}
+if (els.externalBackupNoticeClose) {
+    els.externalBackupNoticeClose.addEventListener("pointerdown", e => e.stopPropagation());
+    els.externalBackupNoticeClose.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); hideExternalBackupSuccessNotice(); });
+}
 els.closeExternalBackupBrowser.addEventListener("click", closeExternalBackupBrowser);
 els.closeExternalBackupBrowserFoot.addEventListener("click", closeExternalBackupBrowser);
 els.refreshExternalBackupBrowser.addEventListener("click", () => { void openExternalBackupBrowser(); });
