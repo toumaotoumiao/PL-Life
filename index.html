@@ -4450,6 +4450,21 @@ body{font-size:var(--vu-body);line-height:1.5}
 }
 </style>
 
+
+<style id="v8174-mobile-dialog-reliability">
+  /* v8.1.7.4 · 手机弹层与按钮触控可靠性：统一使用点击语义，扩大关键关闭区域。 */
+  button,[role="button"],summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  :is(.overlay,.plan-editor-backdrop,.native-module-editor-backdrop,.module-advanced-backdrop,.ho-organizer-backdrop,.secure-backup-backdrop,.global-search-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.onboarding-backdrop,.external-backup-browser-backdrop,.action-dialog-backdrop){isolation:isolate}
+  :is(.modal,.plan-editor-drawer,.native-module-editor,.module-advanced-shell,.ho-organizer-modal,.secure-backup-modal,.global-search-modal,.import-preview-modal,.migration-wizard-modal,.onboarding-modal,.external-backup-browser-modal,.action-dialog){position:relative;pointer-events:auto}
+  :is(.modal-head,.plan-editor-drawer-head,.native-module-editor-head,.module-advanced-head,.ho-organizer-head,.secure-backup-modal>header,.global-search-modal>header,.import-preview-modal>header,.migration-wizard-modal>header,.onboarding-modal>header,.external-backup-browser-head){pointer-events:auto}
+  :is(.close,.icon-close,.export-center-close,.external-backup-notice-close){position:relative;z-index:5;pointer-events:auto;touch-action:manipulation}
+  @media(max-width:760px){
+    :is(.close,.icon-close,.export-center-close,.external-backup-notice-close){width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex:0 0 44px!important;touch-action:manipulation!important}
+    :is(.modal-foot,.plan-editor-footer,.native-module-editor-foot,.ho-organizer-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.migration-wizard-modal>footer,.onboarding-modal>footer,.external-backup-browser-foot,.action-dialog-actions) button{min-height:44px;touch-action:manipulation}
+    .app-update-banner{top:max(8px,env(safe-area-inset-top));align-items:flex-start}
+    .app-update-banner>div:last-child .btn{min-height:44px;white-space:nowrap}
+  }
+</style>
 </head>
 <body>
   
@@ -4801,7 +4816,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.7.3 · 2026-09-07 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.7.4 · 2026-09-07 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4813,7 +4828,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.7.3　·　更新时间：2026-09-07　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.7.4　·　更新时间：2026-09-07　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5151,7 +5166,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.7.3</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.7.4</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5166,10 +5181,11 @@ body{font-size:var(--vu-body);line-height:1.5}
 </div>
 </section>
 </div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.7.3 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.7.3</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.7.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.7.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.7.4</strong><span>交互与移动端可靠性优化：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理一致的折叠区；更新提示改为刷新后自动更新完成通知“自动更新咯（*＾ワ＾*）请查收新版本”，取消顶部提示中的手动更新按钮；统一加强手机端弹窗关闭键、按钮触控区域、触摸行为和弹层层级保护；全站静态按钮绑定检查通过，并把当前视口可见按钮的遮挡/点击命中检查加入界面自检。</span>
 <strong>v8.1.7.3</strong><span>个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span>
 <strong>v8.1.7.2</strong><span>全站防呆与误操作保护：PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档；新增重复归档拦截、重复成员反馈、出生日期与日期范围前置校验、危险操作口令确认、删除影响明细、按钮级重复执行锁、保存失败保命提示、导入替换与升级恢复事务回滚、关键保存后的静默完整性守门。模组高级工具同步补齐未保存关闭提醒、删除回收站、批量删除恢复、覆盖导入回滚和高风险口令确认。黑名单人员继续采用明确二次确认；不加入人物时间冲突限制。</span>
 <strong>v8.1.7.1</strong><span>完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案；动态 DOM 新增/更新时自动绑定翻译键，并加入用户档案原文保护，避免把 PL 名称、联系方式、模组资料、备注、Log 等既有内容误当系统文案翻译。高级模组工具同步主页面语言状态；简体中文继续作为唯一开放语言，为后续繁中、英文、日文词包直接填充做好准备。</span>
@@ -5288,9 +5304,9 @@ body{font-size:var(--vu-body);line-height:1.5}
     </section>
   </div>
 
-  <div id="appUpdateBanner" class="app-update-banner" hidden>
-    <div><strong>新版本已准备好</strong><span>更新前会先保护当前档案。</span></div>
-    <div><button id="laterAppUpdateBtn" class="btn small" type="button">稍后</button><button id="applyAppUpdateBtn" class="btn small primary" type="button">现在更新</button></div>
+  <div id="appUpdateBanner" class="app-update-banner" hidden role="status" aria-live="polite">
+    <div><strong>自动更新咯（*＾ワ＾*）请查收新版本</strong><span id="appUpdateNoticeText">当前程序已刷新到最新版本。</span></div>
+    <div><button id="dismissAppUpdateBtn" class="btn small primary" type="button">知道啦</button></div>
   </div>
 
   <div id="externalSyncBanner" class="external-sync-banner" hidden>
@@ -5397,7 +5413,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.7.3 · 作者：番茄
+/* PL收集梦想生活 v8.1.7.4 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
@@ -5419,7 +5435,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.7.3";
+const APP_UI_VERSION = "8.1.7.4";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -9024,6 +9040,7 @@ const TRASH_KEY = "tomato_pl_trash_v1";
 const ONBOARDING_KEY = "tomato_pl_onboarding_v1";
 const SHARE_MODE_SESSION_KEY = "tomato_pl_share_mode_v1";
 const APP_UPDATE_JUST_APPLIED_KEY = "tomato_pl_update_applied_v1";
+const APP_VERSION_NOTICE_KEY = "tomato_pl_version_notice_v1";
 const MULTITAB_CHANNEL_NAME = "tomato_pl_sync_v1";
 const MULTITAB_SAVE_LOCK_KEY = "tomato_pl_save_lock_v1", MULTITAB_SAVE_LOCK_TTL = 5000, MULTITAB_CONCURRENT_WINDOW_MS = 3000;
 const SAFETY_FALLBACK_KEY = "tomato_pl_safety_fallback_v1";
@@ -14234,7 +14251,7 @@ function renderSelfIntroView({ reset = false } = {}) {
 
           <div class="self-intro-section"><div class="self-intro-section-head"><strong>带团方式</strong><span>核心带团倾向</span></div><div class="intro-two-col">${introScale("kp.moduleAdaptation", "模组处理尺度")}${introScale("kp.npcHandling", "NPC 处理尺度")}${introScale("kp.plFreedom", "PL 行动自由度")}${introScale("kp.originalFlavor", "原旨倾向")}${introScale("kp.ruleStrictness", "规则执行尺度")}</div></div>
 
-          <div class="self-intro-section"><div class="self-intro-section-head"><strong>团内互动偏好</strong><span>只保留影响桌内体验的高频项</span></div><div class="intro-preference-list">${kpInteractionRows(d)}</div></div>
+          <div class="self-intro-section"><details class="intro-subdetails"><summary>团内互动偏好</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><span>只保留影响桌内体验的高频项</span></div><div class="intro-preference-list">${kpInteractionRows(d)}</div></div></div></details></div>
 
           <div class="self-intro-section"><details class="intro-subdetails" open><summary>内容接受度</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><strong>内容与桌型</strong><span>未设置不会被视为默认立场</span></div><div class="intro-boundary-list">${contentBoundaryRows}</div></div></div></details></div>
 
@@ -17940,7 +17957,7 @@ function nativeModuleCardHTML(m, compact = false) {
       <div class="native-module-row-main"><strong>${escapeHTML(m.name)}</strong><span>${escapeHTML(m.author || "作者未填写")}</span></div>
       <div class="native-module-row-tags">${tags.slice(0, 4).map(t => `<span>${escapeHTML(t)}</span>`).join("")}</div>
       <div class="native-module-row-stats"><span>${runs}桌</span><span>KP ${stat.kp}</span><span>PL ${stat.pl}</span><strong>${score === null ? "—" : score.toFixed(1)}</strong></div>
-      <div class="native-module-actions"><button class="btn small" data-native-module-records="${escapeHTML(m.id)}">记录</button>${duplicateCount > 1 ? `<button class="btn small" data-native-module-merge="${escapeHTML(m.id)}">合并</button>` : ""}<button class="btn small" data-native-module-edit="${escapeHTML(m.id)}">编辑</button></div>
+      <div class="native-module-actions"><button type="button" class="btn small" data-native-module-records="${escapeHTML(m.id)}">记录</button>${duplicateCount > 1 ? `<button type="button" class="btn small" data-native-module-merge="${escapeHTML(m.id)}">合并</button>` : ""}<button type="button" class="btn small" data-native-module-edit="${escapeHTML(m.id)}">编辑</button></div>
     </article>`;
     }
     return `<article class="native-module-card" data-native-module-id="${escapeHTML(m.id)}">
@@ -17952,11 +17969,11 @@ function nativeModuleCardHTML(m, compact = false) {
     <div class="native-module-runline"><span><strong>${runs}</strong> 桌经历</span><span>KP ${stat.kp}</span><span>PL ${stat.pl}</span>${last ? `<span>最近 ${escapeHTML(compactRecordDate(last))}</span>` : ""}</div>
     <div class="native-module-note">${escapeHTML(m.notes || "暂无备注")}</div>
     <div class="native-module-card-actions">
-      <button class="btn small" data-native-module-records="${escapeHTML(m.id)}">跑团记录</button>
-      <button class="btn small" data-native-module-recruit="${escapeHTML(m.id)}">复制招募</button>
-      ${duplicateCount > 1 ? `<button class="btn small" data-native-module-merge="${escapeHTML(m.id)}">合并同名</button>` : ""}
-      <button class="btn small" data-native-module-edit="${escapeHTML(m.id)}">编辑</button>
-      <button class="btn small danger" data-native-module-delete="${escapeHTML(m.id)}">删除</button>
+      <button type="button" class="btn small" data-native-module-records="${escapeHTML(m.id)}">跑团记录</button>
+      <button type="button" class="btn small" data-native-module-recruit="${escapeHTML(m.id)}">复制招募</button>
+      ${duplicateCount > 1 ? `<button type="button" class="btn small" data-native-module-merge="${escapeHTML(m.id)}">合并同名</button>` : ""}
+      <button type="button" class="btn small" data-native-module-edit="${escapeHTML(m.id)}">编辑</button>
+      <button type="button" class="btn small danger" data-native-module-delete="${escapeHTML(m.id)}">删除</button>
     </div>
   </article>`;
 }
@@ -20027,7 +20044,8 @@ async function loadMigrationFile(file) { guardImportFile(file, MAX_IMPORT_FILE_B
 function updateVersionStatus(text) { const sub = document.getElementById("appVersionHealthSub"), summary = document.getElementById("versionUpdateSummary"); if (sub)
     sub.textContent = text; if (summary)
     summary.textContent = `当前版本 v${APP_UI_VERSION} · ${text}`; }
-function showAppUpdate(reg) { pendingUpdateRegistration = reg; const banner = document.getElementById("appUpdateBanner"), strong = banner === null || banner === void 0 ? void 0 : banner.querySelector("strong"), span = banner === null || banner === void 0 ? void 0 : banner.querySelector("span"); if (strong) strong.textContent = "新版本已准备好"; if (span) span.textContent = "更新前会先保护当前档案。"; if (banner) banner.hidden = false; updateVersionStatus("发现新版本，可安全更新"); }
+function showAppUpdate(reg) { pendingUpdateRegistration = reg; updateVersionStatus("新版本已准备，刷新页面后会自动更新"); }
+function showCompletedAppUpdateNotice(previousVersion = "") { const banner = document.getElementById("appUpdateBanner"), text = document.getElementById("appUpdateNoticeText"); if (!banner) return; if (text) text.textContent = previousVersion && previousVersion !== APP_UI_VERSION ? `v${previousVersion} → v${APP_UI_VERSION} · 已在刷新时自动载入` : `当前版本 v${APP_UI_VERSION} · 已在刷新时自动载入`; banner.hidden = false; clearTimeout(showCompletedAppUpdateNotice._t); showCompletedAppUpdateNotice._t = setTimeout(() => { banner.hidden = true; }, 12000); }
 function parseRemoteProgramVersion(source) { const text = String(source || ""), match = text.match(/CACHE_NAME\s*=\s*`[^`]*?v(\d+(?:\.\d+){2,})`/) || text.match(/tomato-pl-v?(\d+(?:\.\d+){2,})/); return match ? match[1] : ""; }
 function remoteProgramIsNewer() { return Boolean(remoteProgramVersion && compareVersionText(APP_UI_VERSION, remoteProgramVersion) < 0); }
 async function fetchRemoteProgramVersion({ force = false } = {}) {
@@ -20056,11 +20074,7 @@ function showStaleRuntimeUpdate(version) {
         return false;
     remoteProgramVersion = version;
     pendingUpdateRegistration = null;
-    const banner = document.getElementById("appUpdateBanner"), strong = banner === null || banner === void 0 ? void 0 : banner.querySelector("strong"), span = banner === null || banner === void 0 ? void 0 : banner.querySelector("span");
-    if (strong) strong.textContent = "当前页面仍是旧程序";
-    if (span) span.textContent = `正在运行 v${APP_UI_VERSION}，服务器已有 v${version}。点击“现在更新”会先建立恢复点，再清理旧程序缓存并重新载入。`;
-    if (banner) banner.hidden = false;
-    updateVersionStatus(`当前页面落后于服务器 v${version}`);
+    updateVersionStatus(`服务器已有 v${version} · 刷新页面后自动更新`);
     return true;
 }
 async function probeRemoteProgramVersion({ force = false } = {}) { const version = await fetchRemoteProgramVersion({ force }); return showStaleRuntimeUpdate(version); }
@@ -20538,8 +20552,7 @@ function initV79() {
     document.getElementById("applyExternalSyncBtn").addEventListener("click", () => applyExternalState(true));
     document.getElementById("keepLocalExternalSyncBtn").addEventListener("click", () => void keepLocalExternalState());
     document.getElementById("dismissExternalSyncBtn").addEventListener("click", () => { document.getElementById("externalSyncBanner").hidden = true; });
-    document.getElementById("applyAppUpdateBtn").addEventListener("click", () => void applyAppUpdate());
-    document.getElementById("laterAppUpdateBtn").addEventListener("click", () => { document.getElementById("appUpdateBanner").hidden = true; });
+    document.getElementById("dismissAppUpdateBtn").addEventListener("click", () => { document.getElementById("appUpdateBanner").hidden = true; });
     document.getElementById("checkAppUpdateBtn").addEventListener("click", () => void checkAppUpdate());
     (_c = document.getElementById("forceReloadAppBtn")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => void forceReloadProgramFiles());
     (_d = document.getElementById("runInteractionSelfCheckBtn")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => void runInteractionSelfCheck());
@@ -20555,10 +20568,14 @@ function initV79() {
         renderNativeModules();
     } });
     try {
-        if (localStorage.getItem(APP_UPDATE_JUST_APPLIED_KEY) === "1") {
-            localStorage.removeItem(APP_UPDATE_JUST_APPLIED_KEY);
-            setTimeout(() => showToast(`已更新到 v${APP_UI_VERSION}`), 500);
-        }
+        const justApplied = localStorage.getItem(APP_UPDATE_JUST_APPLIED_KEY) === "1";
+        if (justApplied) localStorage.removeItem(APP_UPDATE_JUST_APPLIED_KEY);
+        const lastNoticeVersion = String(localStorage.getItem(APP_VERSION_NOTICE_KEY) || "");
+        const sourceVersion = String((startupDataReport && startupDataReport.sourceAppVersion) || "");
+        const previousVersion = lastNoticeVersion || sourceVersion;
+        if (justApplied || (previousVersion && previousVersion !== APP_UI_VERSION))
+            setTimeout(() => showCompletedAppUpdateNotice(previousVersion), 520);
+        localStorage.setItem(APP_VERSION_NOTICE_KEY, APP_UI_VERSION);
     }
     catch (err) { }
     maybeShowOnboarding();
@@ -20954,11 +20971,18 @@ async function runInteractionSelfCheck() {
         oks.push("元素编号唯一");
     const active = visibleDialog();
     if (active) {
-        const buttons = focusablesIn(active).filter(x => x.matches("button")).slice(0, 8);
+        const buttons = focusablesIn(active).filter(x => x.matches("button")).slice(0, 12);
         buttons.forEach((b, i) => checkClickableTarget(b, b.textContent.trim() || b.getAttribute("aria-label") || `按钮${i + 1}`, issues));
         if (!issues.some(x => x.title.includes("遮挡") || x.title.includes("隔离") || x.title.includes("点击")))
             oks.push("当前弹窗主要按钮可点击");
     }
+    const visibleButtons = [...document.querySelectorAll("button")].filter(btn => {
+        if (btn.disabled || btn.hidden || btn.getAttribute("aria-hidden") === "true") return false;
+        const r = btn.getBoundingClientRect(), cs = getComputedStyle(btn);
+        return cs.display !== "none" && cs.visibility !== "hidden" && cs.pointerEvents !== "none" && r.width > 1 && r.height > 1 && r.bottom > 0 && r.right > 0 && r.top < innerHeight && r.left < innerWidth;
+    });
+    visibleButtons.slice(0, 240).forEach((b, i) => checkClickableTarget(b, b.textContent.trim() || b.getAttribute("aria-label") || b.id || `可见按钮${i + 1}`, issues));
+    if (visibleButtons.length) oks.push(`当前视口可见按钮触控检查：${Math.min(visibleButtons.length, 240)} 个`);
     try {
         const k = "__trpg_selfcheck__" + Date.now(), v = Math.random().toString(36);
         localStorage.setItem(k, v);
