@@ -1211,7 +1211,7 @@
       border:1px solid var(--t-line);border-radius:50%;background:var(--t-surface-2);color:transparent;font-size:11px;font-weight:800
     }
     .theme-card.active .theme-card-check{background:var(--t-accent);border-color:var(--t-accent);color:var(--t-accent-on)}
-    /* v8.1.7.9 · 主题选择状态：夜航降低未选中亮度，番茄园使用红绿协调状态。 */
+    /* v8.1.8.0 · 主题选择状态：夜航降低未选中亮度，番茄园使用红绿协调状态。 */
     html[data-theme="night"] .theme-card:not(.active) .theme-card-check{
       background:#222b29;border-color:#44514c;color:transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.015)
     }
@@ -2325,7 +2325,10 @@
     .table-record-footer-meta{
       display:flex;align-items:center;gap:6px;min-width:0;flex-wrap:wrap;color:var(--t-faint);font-size:7.5px
     }
-    .table-record-footer-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
+    .table-record-footer-left{display:flex;align-items:center;gap:8px;min-width:0;flex:1 1 auto;flex-wrap:wrap}
+    .table-record-footer-actions{display:flex;align-items:center;justify-content:flex-start;gap:6px;flex-wrap:wrap}
+    .table-record-footer-primary{display:flex;align-items:center;justify-content:flex-end;flex:0 0 auto;margin-left:auto}
+    .table-record-footer-primary .btn{min-width:88px;font-weight:760}
     .record-footer-ho{
       display:inline-block;max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--t-accent-strong)
     }
@@ -2362,6 +2365,8 @@
       .archived-schedule{flex-direction:column}.archived-schedule-times{justify-content:flex-start}
       .participants-head-actions{width:100%;justify-content:space-between}
       .table-record-footer{align-items:flex-start}
+      .table-record-footer-left{width:100%;align-items:flex-start}
+      .table-record-footer-primary{align-self:flex-end}
       .record-footer-ho{max-width:70vw}
     }
 
@@ -3045,10 +3050,11 @@
     @media(max-width:760px){.external-backup-notice{left:14px;right:14px;bottom:calc(90px + env(safe-area-inset-bottom));width:auto;grid-template-columns:1fr}.external-backup-notice-actions{justify-content:flex-end}}
     .external-backup-browser-backdrop{position:fixed;inset:0;z-index:var(--z-submodal);display:grid;place-items:center;padding:16px;background:rgba(28,31,29,.34);backdrop-filter:blur(7px)}
     .external-backup-browser-backdrop[hidden]{display:none!important}
-    .external-backup-browser-modal{width:min(760px,100%);max-height:min(78vh,760px);display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;overflow:hidden;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface);box-shadow:0 24px 70px rgba(0,0,0,.18)}
+    .external-backup-browser-modal{width:min(760px,100%);max-height:min(78vh,760px);display:grid;grid-template-rows:auto auto minmax(0,1fr);overflow:hidden;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface);box-shadow:0 24px 70px rgba(0,0,0,.18)}
     .external-backup-browser-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 15px;border-bottom:1px solid var(--t-line)}
     .external-backup-browser-head>div{display:grid;gap:3px}.external-backup-browser-head h3{margin:0;font-size:14px}.external-backup-browser-head p{margin:0;font-size:8.8px;line-height:1.5;color:var(--t-muted)}
     .external-backup-browser-summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 15px;border-bottom:1px solid var(--t-line);background:var(--t-surface-2)}
+    .external-backup-browser-summary-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
     .external-backup-browser-summary>span{display:grid;gap:2px;min-width:0}.external-backup-browser-summary strong{font-size:9.6px;color:var(--t-ink)}.external-backup-browser-summary small{font-size:8.2px;color:var(--t-muted);overflow-wrap:anywhere}
     .external-backup-file-list{min-height:0;overflow:auto;padding:10px 12px;display:grid;gap:7px;overscroll-behavior:contain}
     .external-backup-file-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:10px 11px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2)}
@@ -3056,9 +3062,8 @@
     .external-backup-file-main{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;align-items:start;min-width:0}.external-backup-file-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);font-size:8px;font-weight:820;color:var(--t-accent-strong)}
     .external-backup-file-copy{display:grid;gap:3px;min-width:0}.external-backup-file-copy strong{font-size:9.7px;color:var(--t-ink);overflow-wrap:anywhere}.external-backup-file-meta{display:flex;flex-wrap:wrap;gap:5px 9px;font-size:8px;color:var(--t-muted)}.external-backup-file-state{font-size:8px;font-weight:740;color:var(--t-success)}.external-backup-file-state.warn{color:var(--t-warning)}
     .external-backup-file-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.external-backup-browser-empty{padding:28px 16px;text-align:center;border:1px dashed var(--t-line);border-radius:12px;color:var(--t-muted);font-size:9px;line-height:1.6}
-    .external-backup-browser-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 15px;border-top:1px solid var(--t-line);background:var(--t-surface)}
-    @media(max-width:760px){.external-backup-browser-backdrop{padding:8px}.external-backup-browser-modal{width:100%;max-height:calc(100dvh - 16px);border-radius:15px}.external-backup-file-row{grid-template-columns:1fr}.external-backup-file-actions{justify-content:stretch}.external-backup-file-actions .btn{flex:1}.external-backup-browser-foot{padding-bottom:calc(10px + env(safe-area-inset-bottom))}}
-    @media(max-width:420px){.external-backup-browser-summary{align-items:stretch;flex-direction:column}.external-backup-browser-summary .btn{width:100%}.external-backup-browser-foot{display:grid;grid-template-columns:1fr 1fr}.external-backup-browser-foot .btn{width:100%}}
+    @media(max-width:760px){.external-backup-browser-backdrop{padding:8px}.external-backup-browser-modal{width:100%;max-height:calc(100dvh - 16px);border-radius:15px}.external-backup-file-row{grid-template-columns:1fr}.external-backup-file-actions{justify-content:stretch}.external-backup-file-actions .btn{flex:1}}
+    @media(max-width:420px){.external-backup-browser-summary{align-items:stretch;flex-direction:column}.external-backup-browser-summary-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.external-backup-browser-summary-actions .btn{width:100%}}
     .external-backup-location{align-items:flex-start}
     .external-backup-location-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;max-width:60%}
     .external-backup-status{padding:9px 10px;border:1px solid var(--t-line);border-radius:11px;background:color-mix(in srgb,var(--t-surface-2) 76%,transparent);font-size:8.6px;line-height:1.55;color:var(--t-muted)}
@@ -4449,9 +4454,18 @@ body{font-size:var(--vu-body);line-height:1.5}
   .plan-list-item{grid-template-columns:32px minmax(0,1fr) auto}
 
   .record-view-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .table-record-footer{display:grid;grid-template-columns:1fr;gap:8px}
+  .table-record-footer{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
+  .table-record-footer-left{display:grid;grid-template-columns:1fr;gap:7px;width:100%;min-width:0}
   .table-record-footer-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
   .table-record-footer-actions .btn{width:100%;min-width:0}
+  .table-record-footer-primary{grid-column:2;grid-row:1;margin-left:0;align-self:end}
+  .table-record-footer-primary .btn{min-height:44px;min-width:88px}
+
+@media (max-width:520px){
+  .table-record-footer{grid-template-columns:1fr}
+  .table-record-footer-primary{grid-column:1;grid-row:auto;justify-self:end}
+  .table-record-footer-primary .btn{min-width:108px}
+}
   .participants-head-actions{display:grid!important;grid-template-columns:1fr;width:100%;gap:8px}
   .participant-add{display:grid!important;grid-template-columns:1fr!important;width:100%}
   .participant-add .btn{width:100%}
@@ -4499,13 +4513,14 @@ body{font-size:var(--vu-body);line-height:1.5}
   :is(.close,.icon-close,.export-center-close,.external-backup-notice-close){position:relative;z-index:5;pointer-events:auto;touch-action:manipulation}
   @media(max-width:760px){
     :is(.close,.icon-close,.export-center-close,.external-backup-notice-close){width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex:0 0 44px!important;touch-action:manipulation!important}
-    :is(.modal-foot,.plan-editor-footer,.native-module-editor-foot,.ho-organizer-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.migration-wizard-modal>footer,.onboarding-modal>footer,.external-backup-browser-foot,.action-dialog-actions) button{min-height:44px;touch-action:manipulation}
+    :is(.modal-foot,.plan-editor-footer,.native-module-editor-foot,.ho-organizer-foot,.secure-backup-modal>footer,.import-preview-modal>footer,.migration-wizard-modal>footer,.onboarding-modal>footer,.action-dialog-actions) button{min-height:44px;touch-action:manipulation}
     .app-update-banner{top:max(8px,env(safe-area-inset-top));align-items:flex-start}
     .app-update-banner>div:last-child .btn{min-height:44px;white-space:nowrap}
   }
+</style>
 
 <style id="v8178-interaction-polish">
-  /* v8.1.7.9 · 通知条应做到“只要看得到，就一定点得到”。 */
+  /* v8.1.8.0 · 通知条应做到“只要看得到，就一定点得到”。 */
   #externalBackupNotice{z-index:2140!important;pointer-events:auto!important}
   #externalBackupNotice *{pointer-events:auto}
   #externalBackupNoticeCloseBtn{position:relative;z-index:3}
@@ -4515,6 +4530,30 @@ body{font-size:var(--vu-body);line-height:1.5}
   /* 番茄园使用番茄红选中 + 叶片绿外圈，和主题本身保持一致。 */
   .theme-preview-tomato.active .theme-card-check{background:#cb5147!important;border-color:#b7443d!important;color:#fffdfb!important;box-shadow:0 0 0 3px rgba(107,138,82,.18)!important}
 </style>
+
+<style id="v8180-safety-layer">
+
+  /* v8.1.8.1 · 第三层防呆：保护模式、导入模拟与近似重复提示 */
+  /* v8.1.8.3 · 第四层防呆：跨页陈旧状态、存储压力、隐私导出、操作前快照撤回与异常粘贴保护 */
+  .data-protection-banner{border-color:color-mix(in srgb,var(--t-danger) 48%,var(--t-line));background:color-mix(in srgb,var(--t-danger-soft) 88%,var(--t-surface));box-shadow:0 9px 28px color-mix(in srgb,var(--t-danger) 12%,transparent)}
+  .data-protection-banner .data-safety-banner-icon{background:var(--t-danger-soft);color:var(--t-danger)}
+  .import-outcome-summary{display:grid;gap:5px;padding:10px 11px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface-2);font-size:10px;color:var(--t-text-2);line-height:1.55}
+  .import-outcome-summary strong{font-size:10.5px;color:var(--t-ink)}
+  .import-outcome-pills{display:flex;flex-wrap:wrap;gap:5px}.import-outcome-pills span{padding:4px 7px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface);font-size:9px;font-weight:720;color:var(--t-muted)}
+  .integrity-item.critical{border-color:color-mix(in srgb,var(--t-danger) 48%,var(--t-line));background:color-mix(in srgb,var(--t-danger-soft) 72%,var(--t-surface))}.integrity-item.critical>span{color:var(--t-danger)}
+  .anti-mistake-hint.near{border-color:color-mix(in srgb,var(--t-warning) 48%,var(--t-line));background:color-mix(in srgb,var(--t-warning-soft) 78%,var(--t-surface))}
+
+  /* v8.1.8.0 · 第二层防呆：统一弹层点击层、历史版本与高风险状态提示。 */
+  [data-modal-inert-exempt]{pointer-events:auto!important}
+  .revision-history-block{display:grid;gap:9px}
+  .revision-history-list{display:grid;gap:7px}
+  .revision-history-empty{padding:12px;border:1px dashed var(--t-line);border-radius:11px;background:var(--t-surface-2);color:var(--t-muted);font-size:9px;line-height:1.55}
+  .revision-history-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 11px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface)}
+  .revision-history-copy{display:grid;gap:2px;min-width:0}
+  .revision-history-copy strong{font-size:10px;color:var(--t-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .revision-history-copy span{font-size:8.3px;line-height:1.4;color:var(--t-muted)}
+  .revision-history-actions{display:flex;gap:6px;align-items:center}
+  @media(max-width:760px){.revision-history-row{grid-template-columns:1fr}.revision-history-actions .btn{width:100%;min-height:42px}}
 </style>
 </head>
 <body>
@@ -4595,6 +4634,10 @@ body{font-size:var(--vu-body);line-height:1.5}
       <section id="dataSafetyBanner" class="data-safety-banner" hidden aria-live="polite">
         <div class="data-safety-banner-main"><span class="data-safety-banner-icon">↧</span><div><strong id="dataSafetyBannerTitle">建议备份数据</strong><span id="dataSafetyBannerText"></span></div></div>
         <div class="data-safety-banner-actions"><button type="button" id="dataSafetyBackupNowBtn" class="btn small primary">立即导出</button><button type="button" id="dataSafetyDismissBtn" class="btn small">稍后提醒</button></div>
+      </section>
+      <section id="dataProtectionBanner" class="data-safety-banner data-protection-banner" hidden role="alert" aria-live="assertive">
+        <div class="data-safety-banner-main"><span class="data-safety-banner-icon">!</span><div><strong>档案进入保护模式</strong><span id="dataProtectionBannerText">检测到可能导致关联错乱的严重编号冲突。普通修改已暂停。</span></div></div>
+        <div class="data-safety-banner-actions"><button type="button" id="dataProtectionBackupBtn" class="btn small">先导出备份</button><button type="button" id="dataProtectionRepairBtn" class="btn small">安全重编号</button><button type="button" id="dataProtectionOpenBtn" class="btn small primary">查看并处理</button></div>
       </section>
 
       
@@ -4870,7 +4913,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.7.9 · 2026-09-07 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.8.3 · 2026-09-07 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4882,7 +4925,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.7.9　·　更新时间：2026-09-07　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.8.3　·　更新时间：2026-09-07　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4956,7 +4999,6 @@ body{font-size:var(--vu-body);line-height:1.5}
 
           <footer class="ho-organizer-foot">
             <span>点击记录可打开对应跑团记录或开团计划。</span>
-            <button id="closeHoOrganizerFootBtn" class="btn" type="button">关闭</button>
           </footer>
         </section>
       </div>
@@ -5219,6 +5261,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">自动保存</span><strong id="localSaveHealthValue">检查中</strong><span id="localSaveHealthSub">正在检查</span></article>
 <article class="data-health-card"><span class="data-health-label">当前档案</span><strong id="dataScaleHealthValue">—</strong><span id="dataScaleHealthSub">PL / 模组 / 计划 / 记录</span></article>
 <article class="data-health-card" id="archiveSizeHealthCard"><span class="data-health-label">主档案体积</span><strong id="archiveSizeHealthValue">计算中</strong><span id="archiveSizeHealthSub">监测存储空间</span></article>
+<article class="data-health-card" id="storagePressureHealthCard"><span class="data-health-label">存储余量</span><strong id="storagePressureHealthValue">检查中</strong><span id="storagePressureHealthSub">监测浏览器容量与主档案占用</span></article>
 <article class="data-health-card"><span class="data-health-label">恢复点</span><strong id="recoveryHealthValue">检查中</strong><span id="recoveryHealthSub">用于误操作恢复</span></article>
 <article class="data-health-card"><span class="data-health-label">冗余副本</span><strong id="primaryMirrorHealthValue">检查中</strong><span id="primaryMirrorHealthSub">主档案的独立浏览器内副本</span></article>
 <article class="data-health-card"><span class="data-health-label">存储保护</span><strong id="persistentHealthValue">检查中</strong><span id="persistentHealthSub">降低浏览器自动回收概率</span></article>
@@ -5227,7 +5270,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.7.9</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.8.3</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5241,11 +5284,23 @@ body{font-size:var(--vu-body);line-height:1.5}
 <button class="btn small" id="installAppBtn" type="button">安装到设备</button>
 </div>
 </section>
+<section class="friendly-data-block revision-history-block">
+  <div class="friendly-data-head"><div><strong>最近编辑历史</strong><span>PL、模组、开团计划和跑团记录每个对象最多保留 5 个最近版本；恢复前会自动创建安全恢复点。</span></div><button class="btn small" id="clearRevisionHistoryBtn" type="button">清空历史</button></div>
+  <div id="revisionHistoryList" class="revision-history-list"><div class="revision-history-empty">暂无可恢复的编辑历史。保存对象后，这里会自动保留修改前版本。</div></div>
+</section>
+<section class="friendly-data-block" id="lastRiskSnapshotBlock">
+  <div class="friendly-data-head"><div><strong>最近高风险操作退路</strong><span>归档、导入、合并、修复、回收站恢复等操作前会优先建立安全快照；这里可以恢复到最近一次操作开始前。</span></div><button class="btn small" id="restoreLastRiskSnapshotBtn" type="button" disabled>恢复操作前状态</button></div>
+  <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
+</section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.7.9 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.7.9</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.8.3 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.8.3</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.8.3</strong><span>交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮；跑团记录把“完成编辑/编辑此桌”独立放到右侧主操作区，更换模组、退回计划与删除统一放左侧次级操作区。</span>
+<strong>v8.1.8.2</strong><span>第四层防呆强化：高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据；新增浏览器存储余量监测与大档案预警、敏感图片导出前隐私提醒、最近高风险操作前安全快照一键恢复、异常超长粘贴二次确认，以及导入/恢复后的自动完整性复核。</span>
+<strong>v8.1.8.1</strong><span>第三层防呆强化：新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常。保护模式只拦截普通写入，导出、已有恢复点恢复、升级前恢复、导入和安全修复仍可继续。</span>
+<strong>v8.1.8.0</strong><span>第二层防呆强化：统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒；切换模组或关闭 HO 显示前增加影响提示，模组搜索输入不再边输入边解除已有关联；新增 PL、模组、开团计划、跑团记录最近编辑历史，每个对象最多保留 5 个版本，可从设置中安全恢复。</span>
 <strong>v8.1.7.9</strong><span>开团计划编辑器调整底部操作层级：“完成”改为明确的“保存”，并作为右侧唯一主操作；“归档”移至左侧与“删除计划”并列，使用次级样式并保留归档确认与重复归档防呆，降低保存与归档相邻造成的误触风险。</span>
 <strong>v8.1.7.8</strong><span>修复外部自动备份完成提示在模态弹窗同时出现时“看得见却点不到关闭键”的交互层级问题，并强化提示条与按钮的触控事件；夜航主题降低未选中主题选择圆点的亮度与边框反差，番茄园主题的选择状态图标改为番茄红与叶片绿协调样式。跑团整理图片导出新增“跟随页面 / 全部收起 / 全部展开”三种内容状态，可独立于网页当前展开状态生成摘要图或完整详情图，并记住上次导出选择。</span>
 <strong>v8.1.7.7</strong><span>个人偏好页“参考来源”说明补充 @江鸿、@削面，并将来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，确保页面初始显示和重新渲染后的文案一致，其余功能与数据结构不变。</span>
@@ -5332,7 +5387,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <strong>v8.1.0</strong><span>新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span>
 </div></details>
 </section></div></details><details class="data-safety-group advanced" data-collapse-key="settings:data:advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
-<div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。</span></div><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button></div>
+<div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。严重编号冲突会自动进入保护模式。</span></div><div class="friendly-head-actions"><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button><button class="btn small primary-soft" id="safeAutoRepairBtn" type="button">安全修复轻微问题</button></div></div>
 <div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>界面与交互自检</strong><span>检查当前界面；深度自检会覆盖主要页面和编辑器，并在完成后恢复当前位置。</span></div><div class="friendly-head-actions"><button class="btn small" id="runInteractionSelfCheckBtn" type="button">运行自检</button><button class="btn small" hidden="" id="copyInteractionSelfCheckBtn" type="button">复制诊断结果</button><button class="btn small primary-soft" id="runDeepInteractionSelfCheckBtn" type="button">深度自检</button></div></div>
@@ -5370,17 +5425,17 @@ body{font-size:var(--vu-body);line-height:1.5}
     </section>
   </div>
 
-  <div id="appUpdateBanner" class="app-update-banner" hidden role="status" aria-live="polite">
+  <div id="appUpdateBanner" class="app-update-banner" data-modal-inert-exempt hidden role="status" aria-live="polite">
     <div><strong>自动更新咯（*＾ワ＾*）请查收新版本</strong><span id="appUpdateNoticeText">当前程序已刷新到最新版本。</span></div>
     <div><button id="dismissAppUpdateBtn" class="btn small primary" type="button">知道啦</button></div>
   </div>
 
-  <div id="externalSyncBanner" class="external-sync-banner" hidden>
+  <div id="externalSyncBanner" class="external-sync-banner" data-modal-inert-exempt hidden>
     <div><strong>另一页面刚刚修改了档案</strong><span id="externalSyncMessage">本页有尚未保存的内容，请选择如何处理。</span></div>
     <div><button id="dismissExternalSyncBtn" class="btn small" type="button">暂不处理</button><button id="keepLocalExternalSyncBtn" class="btn small danger-soft" type="button" title="明确用本页当前状态覆盖另一页面刚保存的数据">保留本页并覆盖</button><button id="applyExternalSyncBtn" class="btn small primary" type="button">同步最新数据</button></div>
   </div>
 
-  <div id="undoDeleteToast" class="undo-delete-toast" hidden>
+  <div id="undoDeleteToast" class="undo-delete-toast" data-modal-inert-exempt hidden>
     <span id="undoDeleteText">已移入回收站</span><button id="undoDeleteBtn" type="button">撤销</button>
   </div>
 
@@ -5399,6 +5454,7 @@ body{font-size:var(--vu-body);line-height:1.5}
       <div class="import-preview-body">
         <div id="importPreviewCounts" class="import-preview-counts"></div>
         <div id="importConflictSummary" class="import-conflict-summary"></div>
+        <div id="importOutcomeSummary" class="import-outcome-summary" aria-live="polite"></div>
         <div class="import-mode-grid">
           <label><input type="radio" name="importMode" value="merge" checked><span><strong>智能合并</strong><small>保留当前档案，并合并导入内容。</small></span></label>
           <label><input type="radio" name="importMode" value="replace"><span><strong>替换当前档案</strong><small>先创建恢复点，再用导入文件完整替换。</small></span></label>
@@ -5421,7 +5477,7 @@ body{font-size:var(--vu-body);line-height:1.5}
         <article><span>1</span><div><strong>旧设备</strong><p>生成迁移包并保存到你能在新设备打开的位置。</p></div><button id="migrationWizardExportBtn" class="btn primary-soft" type="button">生成迁移包</button></article>
         <article><span>2</span><div><strong>新设备</strong><p>选择迁移包并输入创建时的密码，随后会进入导入预览。</p></div><button id="migrationWizardImportBtn" class="btn" type="button">选择迁移包</button></article>
       </div>
-      <footer><span>迁移包经过密码加密；请自行保管密码。</span><button id="closeMigrationWizardFootBtn" class="btn" type="button">关闭</button></footer>
+      <footer><span>迁移包经过密码加密；请自行保管密码。</span></footer>
     </section>
   </div>
 
@@ -5437,19 +5493,18 @@ body{font-size:var(--vu-body);line-height:1.5}
     </section>
   </div>
   <div id="toast" class="toast"></div>
-  <aside id="externalBackupNotice" class="external-backup-notice" role="status" aria-live="polite" hidden>
+  <aside id="externalBackupNotice" class="external-backup-notice" data-modal-inert-exempt role="status" aria-live="polite" hidden>
     <div class="external-backup-notice-copy"><strong id="externalBackupNoticeTitle">外部备份已完成</strong><span id="externalBackupNoticeText">刚刚已写入备份。</span></div>
     <div class="external-backup-notice-actions"><button id="externalBackupVerifyBtn" class="btn small" type="button">查看备份文件</button><button id="externalBackupNoticeCloseBtn" class="external-backup-notice-close" type="button" aria-label="关闭备份提示">×</button></div>
   </aside>
   <div id="externalBackupBrowserBackdrop" class="external-backup-browser-backdrop" hidden>
     <section class="external-backup-browser-modal" role="dialog" aria-modal="true" aria-labelledby="externalBackupBrowserTitle">
       <header class="external-backup-browser-head"><div><h3 id="externalBackupBrowserTitle">外部备份文件</h3><p>直接读取当前已授权保存位置中的 JSON 文件，不会重新打开文件夹选择器。</p></div><button id="closeExternalBackupBrowserBtn" class="icon-close" type="button" aria-label="关闭外部备份文件列表">×</button></header>
-      <div class="external-backup-browser-summary"><span><strong id="externalBackupBrowserLocation">正在读取保存位置…</strong><small id="externalBackupBrowserSummary">请稍候</small></span><button id="refreshExternalBackupBrowserBtn" class="btn small" type="button">刷新列表</button></div>
+      <div class="external-backup-browser-summary"><span><strong id="externalBackupBrowserLocation">正在读取保存位置…</strong><small id="externalBackupBrowserSummary">请稍候</small></span><div class="external-backup-browser-summary-actions"><button id="changeExternalBackupLocationFromBrowserBtn" class="btn small" type="button">更改保存位置</button><button id="refreshExternalBackupBrowserBtn" class="btn small" type="button">刷新列表</button></div></div>
       <div id="externalBackupFileList" class="external-backup-file-list"><div class="external-backup-browser-empty">正在读取备份文件…</div></div>
-      <footer class="external-backup-browser-foot"><button id="changeExternalBackupLocationFromBrowserBtn" class="btn small" type="button">更改保存位置</button><button id="closeExternalBackupBrowserFootBtn" class="btn small primary" type="button">关闭</button></footer>
     </section>
   </div>
-  <div id="undoToast" class="undo-toast" hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
+  <div id="undoToast" class="undo-toast" data-modal-inert-exempt hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 
 <script id="compatBootstrap">
 (function(){
@@ -5479,7 +5534,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.7.9 · 作者：番茄
+/* PL收集梦想生活 v8.1.8.3 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5495,15 +5550,18 @@ const PROFILE_CARD_COLLAPSE_KEY = "tomato_pl_card_collapse_v1"; // 仅保存主�
 const RUN_RECORD_COLLAPSE_KEY = "tomato_run_record_collapse_v1"; // 仅保存跑团记录每桌收起状态，不写入档案备份。
 const VIEW_SESSION_STATE_KEY = "tomato_pl_view_session_v1"; // 当前标签页记住六个主页面各自的滚动位置、搜索、筛选与统计视图状态。
 const HISTORY_STATE_TAG = "tomato-pl-v8"; // 浏览器 / 手机返回键的页面历史标记。
+const REVISION_HISTORY_KEY = "tomato_pl_entity_revision_history_v1"; // 本机最近编辑历史，不写入完整备份。
+const OPERATION_LEDGER_KEY = "tomato_pl_operation_ledger_v1"; // 关键操作幂等账本，避免重复提交。
 const SAVE_META_KEY = "tomato_pl_save_meta_v1", FIRST_MEANINGFUL_SAVE_KEY = "tomato_pl_first_meaningful_save_v1", LAST_EXPORT_META_KEY = "tomato_pl_last_export_meta_v1";
 const BACKUP_REMINDER_DAYS_KEY = "tomato_pl_backup_reminder_days_v1", BACKUP_REMINDER_DISMISS_KEY = "tomato_pl_backup_reminder_dismiss_v1";
+const BACKUP_CHANGE_COUNT_KEY = "tomato_pl_backup_change_count_v1", BACKUP_LAST_SAVE_FINGERPRINT_KEY = "tomato_pl_backup_last_save_fingerprint_v1";
 const RECOVERY_LAST_AUTO_KEY = "tomato_pl_recovery_last_auto_v1", RECOVERY_INTERVAL_HOURS_KEY = "tomato_pl_recovery_interval_hours_v1", RECOVERY_KEEP_KEY = "tomato_pl_recovery_keep_v1", RECOVERY_DB_NAME = "tomato_trpg_recovery_v1", RECOVERY_DB_VERSION = 1, RECOVERY_STORE_NAME = "snapshots";
 const PRIMARY_MIRROR_DB_NAME = "tomato_pl_primary_mirror_v1", PRIMARY_MIRROR_DB_VERSION = 1, PRIMARY_MIRROR_STORE_NAME = "archives", PRIMARY_MIRROR_ID = "latest";
 const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEFAULT_BACKUP_REMINDER_DAYS = 7;
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.7.9";
+const APP_UI_VERSION = "8.1.8.3";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -9862,41 +9920,59 @@ function ensureModuleForRunEntity(entity) {
     });
     return mod;
 }
-function setModuleHoSystemInline(entity, system) {
+async function setModuleHoSystemInline(entity, system) {
     const next = normalizeModuleHoSystem(system);
     if (!next)
         return false;
-    const mod = ensureModuleForRunEntity(entity);
+    const mod = moduleForRunEntity(entity);
     if (!mod) {
         showToast("请先关联已有模组或创建模组档案");
         return false;
     }
-    const previous = mod.hoSystem;
-    mod.hoSystem = next;
-    mod.updatedAt = Date.now();
-    const key = normalizedEntityNameKey(mod.name);
-    [...runPlans, ...runRecords].forEach(item => {
-        var _a;
-        if (item.moduleId === mod.id || (!item.moduleId && normalizedEntityNameKey(item.moduleName) === key && ((_a = uniqueModuleByNormalizedName(item.moduleName)) === null || _a === void 0 ? void 0 : _a.id) === mod.id)) {
-            item.moduleId = mod.id;
-            item.moduleName = mod.name;
-            item.updatedAt = Date.now();
-        }
+    const previousSystem = normalizeModuleHoSystem(mod.hoSystem);
+    if (previousSystem === next)
+        return false;
+    const linked = [...runPlans, ...runRecords].filter(item => String(item.moduleId || "") === String(mod.id) || (!item.moduleId && normalizedEntityNameKey(item.moduleName) === normalizedEntityNameKey(mod.name) && (uniqueModuleByNormalizedName(item.moduleName) === null || uniqueModuleByNormalizedName(item.moduleName) === void 0 ? void 0 : uniqueModuleByNormalizedName(item.moduleName).id) === mod.id));
+    const hasHoDetail = item => {
+        const assigned = (item.participantAssignments || []).some(a => ["number", "custom"].includes(normalizePcHoMode(a.hoMode)) || String(a.hoCustom || "").trim());
+        const kpc = normalizeKpc(item.kpc), kpcAssigned = kpc.enabled && (["number", "custom"].includes(normalizePcHoMode(kpc.hoMode)) || String(kpc.hoCustom || "").trim());
+        return Boolean(assigned || kpcAssigned || String(item.sharedHoNote || "").trim() || Number(item.legacyHoSlots || 0));
+    };
+    const affected = linked.filter(hasHoDetail);
+    if (next === "none" && affected.length) {
+        const ok = await appConfirm(`“${mod.name}”当前有 ${affected.length} 桌保存了 HO 分配或 HO 补充。\n\n切换为“无 HO”后，这些 HO 信息会在界面中暂时隐藏，但原数据会保留；以后重新切回“有 HO”会再次显示。`, { title: "关闭模组 HO 显示？", confirmText: "切换为无 HO" });
+        if (!ok)
+            return false;
+    }
+    const beforeModules = clone(modules), beforePlans = clone(runPlans), beforeRecords = clone(runRecords), oldModule = clone(mod);
+    const target = moduleById(mod.id);
+    if (!target)
+        return false;
+    target.hoSystem = next;
+    target.updatedAt = Date.now();
+    linked.forEach(item => {
+        item.moduleId = target.id;
+        item.moduleName = target.name;
+        item.updatedAt = Date.now();
     });
     if (!saveState()) {
-        mod.hoSystem = previous;
+        modules = beforeModules;
+        runPlans = beforePlans;
+        runRecords = beforeRecords;
+        renderAllPrimaryViews();
         return false;
     }
+    rememberEntityRevision("module", oldModule, next === "none" ? "关闭 HO 显示前版本" : "开启 HO 显示前版本");
     moduleFrameDirty = true;
     renderRunPlans();
     renderRunRecords({ preservePageScroll: true, centerSelected: false });
+    renderNativeModules();
     if (editingPlanId)
         renderPlanEditor();
-    showToast(next === "has"
-        ? "已设置：有 HO 位"
-        : "已设置：无 HO 位");
+    showToast(next === "has" ? "已设置：有 HO 位" : affected.length ? `已设置：无 HO 位 · ${affected.length} 桌原 HO 信息已保留` : "已设置：无 HO 位");
     return true;
 }
+
 function moduleHoInlineControlHTML(entity) {
     const system = moduleHoSystemForEntity(entity);
     return `<div class="module-ho-inline ${system || "unset"}" role="group" aria-label="模组 HO 位设置">
@@ -10198,12 +10274,14 @@ function flushPlanInputSave() {
         return false;
     }
     if (!saveState()) {
-        runPlans[i] = before;
-        renderRunPlans();
+        // 保存失败时保留用户当前输入，不关闭编辑器；旧版本仍留在 before 中等待下一次重试。
+        runPlans[i] = current;
+        planInputPending = { planId: pending.planId, before: clone(before), label: pending.label, wasTransient: pending.wasTransient };
         return false;
     }
     if (pending.wasTransient)
         transientPlanIds.delete(pending.planId);
+    rememberEntityRevision("plan", before, "自动保存前版本");
     setPlanUndo({ type: "replace-plan", planId: pending.planId, before, label: pending.label, removeIfBlank: pending.wasTransient });
     renderRunPlans();
     return true;
@@ -10942,8 +11020,10 @@ function setBackupReminderDays(days) { const n = [0, 3, 7, 14, 30].includes(Numb
     localStorage.setItem(BACKUP_REMINDER_DAYS_KEY, String(n));
 }
 catch (err) { } updateDataSafetyUI(); }
-function markExportComplete(kind, payload) { const meta = { exportedAt: Date.now(), kind: String(kind || "完整备份"), counts: archiveCountsFromPayload(payload), appVersion: APP_UI_VERSION, schemaVersion: DATA_SCHEMA_VERSION }; try {
+function markExportComplete(kind, payload, verification = null) { const verified = verification || verifyBackupPayloadRoundTrip(payload); const meta = { exportedAt: Date.now(), kind: String(kind || "完整备份"), counts: archiveCountsFromPayload(payload), appVersion: APP_UI_VERSION, schemaVersion: DATA_SCHEMA_VERSION, verified: true, fileSize: Number(verified.bytes || 0), fingerprint: verified.fingerprint || archiveDataFingerprint(payload) }; try {
     localStorage.setItem(LAST_EXPORT_META_KEY, JSON.stringify(meta));
+    localStorage.setItem(BACKUP_CHANGE_COUNT_KEY, "0");
+    localStorage.setItem(BACKUP_LAST_SAVE_FINGERPRINT_KEY, meta.fingerprint || "");
     localStorage.removeItem(BACKUP_REMINDER_DISMISS_KEY);
 }
 catch (err) { } updateDataSafetyUI(); }
@@ -11048,9 +11128,13 @@ PL ${c.profiles} · 模组 ${c.modules} · 计划 ${c.plans} · 跑团记录 ${c
         try {
             const before = buildCanonicalArchive(false);
             if (hasMeaningfulData(archiveCountsFromPayload(before)))
-                await createSafetySnapshot("before-restore");
+                await ensureRepairRecoveryPoint("before-restore");
         }
-        catch (err) { }
+        catch (err) {
+            console.warn("恢复前安全保护失败", err);
+            appNotice(`无法为当前数据建立任何恢复退路：${err?.message || err}。本次恢复已取消。`, "无法安全恢复");
+            return false;
+        }
         const incoming = ensureSelfProfileAndLinks(hydrateCanonicalArchive(latest.payload));
         settings = incoming.settings;
         profiles = incoming.profiles;
@@ -11063,7 +11147,7 @@ PL ${c.profiles} · 模组 ${c.modules} · 计划 ${c.plans} · 跑团记录 ${c
         runRecordsDraft = null;
         selectedModuleName = "";
         editingPlanId = null;
-        if (!saveState())
+        if (!saveState({ allowProtectionWrite: true, skipAntiIntegrity: true }))
             return false;
         applyTheme(settings.theme);
         renderSortOptions();
@@ -11071,6 +11155,7 @@ PL ${c.profiles} · 模组 ${c.modules} · 计划 ${c.plans} · 跑团记录 ${c
         moduleFrameDirty = true;
         closeOverlay();
         showToast("已恢复最近恢复点");
+        await postRecoveryVerification("恢复最近恢复点");
         return true;
     }
     catch (err) {
@@ -11448,7 +11533,14 @@ async function listExternalBackupFiles(target = null) {
     rows.sort((a,b)=>Number(b.lastModified||0)-Number(a.lastModified||0) || String(a.name).localeCompare(String(b.name),"zh-CN"));
     return { target:t, rows };
 }
-function closeExternalBackupBrowser() { if (els.externalBackupBrowserBackdrop) els.externalBackupBrowserBackdrop.hidden = true; externalBackupBrowserRows = []; }
+function closeExternalBackupBrowser() {
+    if (els.externalBackupBrowserBackdrop) {
+        clearManagedSurfaceInertPath(els.externalBackupBrowserBackdrop);
+        els.externalBackupBrowserBackdrop.hidden = true;
+    }
+    externalBackupBrowserRows = [];
+    queueMicrotask(() => { syncModalLayerOrder(); syncDialogInert(); syncModalPageScrollLock(); });
+}
 function renderExternalBackupBrowserRows(rows) {
     if (!els.externalBackupFileList) return;
     if (!rows.length) { els.externalBackupFileList.innerHTML = `<div class="external-backup-browser-empty">当前保存位置里还没有找到自动备份 JSON 文件。可以先点“立即备份测试”，再回来刷新列表。</div>`; return; }
@@ -11457,7 +11549,13 @@ function renderExternalBackupBrowserRows(rows) {
 }
 async function openExternalBackupBrowser() {
     if (!els.externalBackupBrowserBackdrop) return false;
+    clearManagedSurfaceInertPath(els.externalBackupBrowserBackdrop);
     els.externalBackupBrowserBackdrop.hidden = false;
+    els.externalBackupBrowserBackdrop.dataset.modalOpenSeq = String(++modalOpenSequence);
+    syncModalLayerOrder();
+    syncDialogInert();
+    syncModalPageScrollLock();
+    requestAnimationFrame(() => { try { els.closeExternalBackupBrowser && els.closeExternalBackupBrowser.focus({ preventScroll:true }); } catch (err) {} });
     if (els.externalBackupBrowserLocation) els.externalBackupBrowserLocation.textContent = "正在读取保存位置…";
     if (els.externalBackupBrowserSummary) els.externalBackupBrowserSummary.textContent = "请稍候";
     if (els.externalBackupFileList) els.externalBackupFileList.innerHTML = `<div class="external-backup-browser-empty">正在读取实际 JSON 文件…</div>`;
@@ -11653,7 +11751,7 @@ function updateDataSafetyUI() { const sm = currentSaveMeta(), em = safeReadLocal
     els.dataScaleHealthValue.textContent = `${c.profiles} PL · ${c.modules} 模组`;
     els.dataScaleHealthSub.textContent = `${c.plans} 计划 · ${c.records} 跑团记录`;
     els.exportHealthValue.textContent = (em === null || em === void 0 ? void 0 : em.exportedAt) ? formatSafetyDateTime(em.exportedAt) : "未导出";
-    els.exportHealthSub.textContent = (em === null || em === void 0 ? void 0 : em.exportedAt) ? `${em.kind || "完整备份"}` : "建议尽快导出首次完整备份";
+    els.exportHealthSub.textContent = (em === null || em === void 0 ? void 0 : em.exportedAt) ? `${em.kind || "完整备份"}${em.verified ? " · 已校验" : ""}` : "建议尽快导出首次完整备份";
     els.inheritanceStatusNote.innerHTML = getInheritanceStatusHTML();
     els.storageContextNote.innerHTML = currentStorageContextText();
     els.backupReminderDays.value = String(getBackupReminderDays());
@@ -11794,7 +11892,7 @@ const els = {
     planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"),
     planEditorBackdrop: document.getElementById("planEditorBackdrop"), planEditorDrawer: document.getElementById("planEditorDrawer"), planEditorTitle: document.getElementById("planEditorTitle"), planEditorContent: document.getElementById("planEditorContent"), closePlanEditor: document.getElementById("closePlanEditorBtn"),
     recordsBoard: document.getElementById("recordsBoard"), recordsSearch: document.getElementById("recordsSearchInput"), newModuleName: document.getElementById("newModuleNameInput"), newModuleNameCombobox: document.getElementById("newModuleNameCombobox"), newModuleSuggestions: document.getElementById("newModuleSuggestions"), createModuleRecord: document.getElementById("createModuleRecordBtn"), expandAllRecords: document.getElementById("expandAllRecordsBtn"), collapseAllRecords: document.getElementById("collapseAllRecordsBtn"),
-    newBtn: document.getElementById("newBtn"), settingsBtn: document.getElementById("settingsBtn"), overlay: document.getElementById("overlay"), globalCreate: document.getElementById("globalCreateBtn"), quickCreateMenu: document.getElementById("quickCreateMenu"), mobileBottomNav: document.getElementById("mobileBottomNav"), mobileToolsSheet: document.getElementById("mobileToolsSheet"), hoOrganizerBackdrop: document.getElementById("hoOrganizerBackdrop"), hoOrganizerTitle: document.getElementById("hoOrganizerTitle"), hoOrganizerSubtitle: document.getElementById("hoOrganizerSubtitle"), hoOrganizerStats: document.getElementById("hoOrganizerStats"), hoOrganizerNotice: document.getElementById("hoOrganizerNotice"), hoOrganizerBoard: document.getElementById("hoOrganizerBoard"), hoShowEmptyColumns: document.getElementById("hoShowEmptyColumns"), kpOrganizerSortWrap: document.getElementById("kpOrganizerSortWrap"), kpOrganizerSort: document.getElementById("kpOrganizerSort"), hoImageExport: document.getElementById("hoImageExportBtn"), hoImageExportMenu: document.getElementById("hoImageExportMenu"), copyHoOrganizer: document.getElementById("copyHoOrganizerBtn"), closeHoOrganizer: document.getElementById("closeHoOrganizerBtn"), closeHoOrganizerFoot: document.getElementById("closeHoOrganizerFootBtn"),
+    newBtn: document.getElementById("newBtn"), settingsBtn: document.getElementById("settingsBtn"), overlay: document.getElementById("overlay"), globalCreate: document.getElementById("globalCreateBtn"), quickCreateMenu: document.getElementById("quickCreateMenu"), mobileBottomNav: document.getElementById("mobileBottomNav"), mobileToolsSheet: document.getElementById("mobileToolsSheet"), hoOrganizerBackdrop: document.getElementById("hoOrganizerBackdrop"), hoOrganizerTitle: document.getElementById("hoOrganizerTitle"), hoOrganizerSubtitle: document.getElementById("hoOrganizerSubtitle"), hoOrganizerStats: document.getElementById("hoOrganizerStats"), hoOrganizerNotice: document.getElementById("hoOrganizerNotice"), hoOrganizerBoard: document.getElementById("hoOrganizerBoard"), hoShowEmptyColumns: document.getElementById("hoShowEmptyColumns"), kpOrganizerSortWrap: document.getElementById("kpOrganizerSortWrap"), kpOrganizerSort: document.getElementById("kpOrganizerSort"), hoImageExport: document.getElementById("hoImageExportBtn"), hoImageExportMenu: document.getElementById("hoImageExportMenu"), copyHoOrganizer: document.getElementById("copyHoOrganizerBtn"), closeHoOrganizer: document.getElementById("closeHoOrganizerBtn"),
     autoSaveHeroStatus: document.getElementById("autoSaveHeroStatus"), autoSaveHeroText: document.getElementById("autoSaveHeroText"), dataSafetyBanner: document.getElementById("dataSafetyBanner"), dataSafetyBannerTitle: document.getElementById("dataSafetyBannerTitle"), dataSafetyBannerText: document.getElementById("dataSafetyBannerText"), dataSafetyBackupNow: document.getElementById("dataSafetyBackupNowBtn"), dataSafetyDismiss: document.getElementById("dataSafetyDismissBtn"),
     profileModalWrap: document.getElementById("profileModalWrap"), profileModal: document.getElementById("profileModal"), settingsModal: document.getElementById("settingsModal"), settingsPanels: document.querySelector(".settings-panels"), modalTitle: document.getElementById("modalTitle"),
     name: document.getElementById("nameInput"), contact: document.getElementById("contactInput"), profileStatusValue: document.getElementById("profileStatusValue"), profileStatusDetail: document.getElementById("profileStatusDetail"), profileStatusAction: document.getElementById("profileStatusActionBtn"), profileStatusHistory: document.getElementById("profileStatusHistory"), profileStatusHistoryBody: document.getElementById("profileStatusHistoryBody"),
@@ -11805,7 +11903,7 @@ const els = {
     quickRunModule: document.getElementById("quickRunModuleInput"), quickRunName: document.getElementById("quickRunNameInput"), quickRunKp: document.getElementById("quickRunKpInput"), quickRunStart: document.getElementById("quickRunStartInput"), quickRunEnd: document.getElementById("quickRunEndInput"), quickRunLog: document.getElementById("quickRunLogInput"), createLinkedRun: document.getElementById("createLinkedRunBtn"),
     editRuns: document.getElementById("editRuns"),
     save: document.getElementById("saveBtn"), cancel: document.getElementById("cancelBtn"), closeProfile: document.getElementById("closeProfileBtn"), modalDelete: document.getElementById("modalDeleteBtn"),
-    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupMobileDeliveryRow: document.getElementById("externalBackupMobileDeliveryRow"), externalBackupMobileDelivery: document.getElementById("externalBackupMobileDeliverySelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), viewExternalBackupFiles: document.getElementById("viewExternalBackupFilesBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), externalBackupBrowserBackdrop: document.getElementById("externalBackupBrowserBackdrop"), externalBackupBrowserLocation: document.getElementById("externalBackupBrowserLocation"), externalBackupBrowserSummary: document.getElementById("externalBackupBrowserSummary"), externalBackupFileList: document.getElementById("externalBackupFileList"), closeExternalBackupBrowser: document.getElementById("closeExternalBackupBrowserBtn"), closeExternalBackupBrowserFoot: document.getElementById("closeExternalBackupBrowserFootBtn"), refreshExternalBackupBrowser: document.getElementById("refreshExternalBackupBrowserBtn"), changeExternalBackupLocationFromBrowser: document.getElementById("changeExternalBackupLocationFromBrowserBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), collapseDefaultSetting: document.getElementById("collapseDefaultSetting"), interfaceLanguageSetting: document.getElementById("interfaceLanguageSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
+    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupMobileDeliveryRow: document.getElementById("externalBackupMobileDeliveryRow"), externalBackupMobileDelivery: document.getElementById("externalBackupMobileDeliverySelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), viewExternalBackupFiles: document.getElementById("viewExternalBackupFilesBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), externalBackupBrowserBackdrop: document.getElementById("externalBackupBrowserBackdrop"), externalBackupBrowserLocation: document.getElementById("externalBackupBrowserLocation"), externalBackupBrowserSummary: document.getElementById("externalBackupBrowserSummary"), externalBackupFileList: document.getElementById("externalBackupFileList"), closeExternalBackupBrowser: document.getElementById("closeExternalBackupBrowserBtn"), refreshExternalBackupBrowser: document.getElementById("refreshExternalBackupBrowserBtn"), changeExternalBackupLocationFromBrowser: document.getElementById("changeExternalBackupLocationFromBrowserBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), collapseDefaultSetting: document.getElementById("collapseDefaultSetting"), interfaceLanguageSetting: document.getElementById("interfaceLanguageSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
 };
 /* ---------- 10. 通用工具：文本转义、读取字段、评分说明、加权总分等 ---------- */
 function escapeHTML(v = "") { return String(v).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[ch])); }
@@ -13610,7 +13708,7 @@ let modalPageScrollState = null;
 function anyModalSurfaceOpen() {
     var _a;
     return Boolean(((_a = els.overlay) === null || _a === void 0 ? void 0 : _a.classList.contains("open")) ||
-        ["planEditorBackdrop", "nativeModuleEditorBackdrop", "moduleAdvancedBackdrop", "hoOrganizerBackdrop", "secureBackupBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"]
+        ["planEditorBackdrop", "nativeModuleEditorBackdrop", "moduleAdvancedBackdrop", "hoOrganizerBackdrop", "secureBackupBackdrop", "externalBackupBrowserBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"]
             .some(id => { const el = document.getElementById(id); return el && !el.hidden; }));
 }
 function syncModalPageScrollLock() {
@@ -13644,7 +13742,7 @@ function watchModalSurface(el) {
         return;
     new MutationObserver(syncModalPageScrollLock).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] });
 }
-[els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop].forEach(watchModalSurface);
+[els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop].forEach(watchModalSurface);
 /* ---------- 14. 弹窗控制：切换 PL 编辑窗口和设置窗口，并虚化背景 ---------- */
 function showOverlay(which) {
     els.profileModalWrap.hidden = which !== "profile";
@@ -13948,6 +14046,8 @@ function commitProfileSaveTransaction() {
     }
     const previousProfiles = profiles;
     const previousRunRecords = runRecords;
+    const previousProfile = profiles.find(p => String(p.id) === String(tx.profile.id));
+    const previousProfileSnapshot = previousProfile ? clone(previousProfile) : null;
     profiles = tx.profiles;
     runRecords = tx.runRecords;
     if (!saveState()) {
@@ -13965,6 +14065,8 @@ function commitProfileSaveTransaction() {
         appNotice("保存校验未通过，已恢复到保存前状态。");
         return null;
     }
+    if (previousProfileSnapshot)
+        rememberEntityRevision("profile", previousProfileSnapshot, "编辑前版本");
     return tx;
 }
 function syncDraftBasics() {
@@ -16282,6 +16384,7 @@ function mutateRunPlan(planId, mutator, options = {}) {
     }
     if (wasTransient)
         transientPlanIds.delete(planId);
+    rememberEntityRevision("plan", before, options.historyLabel || "编辑前版本");
     setPlanUndo({ type: "replace-plan", planId, before, label: options.undoLabel || `已更新：${plannerPlanLabel(runPlans[index])}`, removeIfBlank: wasTransient });
     renderRunPlans();
     if (editingPlanId === planId && options.rerenderEditor !== false)
@@ -16317,78 +16420,114 @@ function addProfileToPlan(planId, profileId) {
 function removeProfileFromPlan(planId, profileId) { const profile = profiles.find(p => p.id === profileId); if (!profile)
     return; mutateRunPlan(planId, plan => { plan.plIds = plan.plIds.filter(id => id !== profileId); plan.participantAssignments = normalizeParticipantAssignments(plan.participantAssignments, plan.plIds); }, { undoLabel: `已从计划移除 ${displayProfileName(profile)}` }); }
 async function archiveRunPlan(planId) {
+    if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId) {
+        flushPlanInputSave();
+        if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId) {
+            appNotice("当前计划还有未能保存的修改。请先解决存储或多标签页冲突，再执行归档。", "归档已暂停");
+            return false;
+        }
+    }
     const plan = runPlans.find(p => p.id === planId);
     if (!plan)
-        return;
+        return false;
     const exactArchived = runRecords.find(r => String(r.id) === String(planId));
     if (exactArchived) {
         appNotice(`这条计划已经存在同编号跑团记录“${recordDisplayLabel(exactArchived, runRecords)}”。为避免重复归档，本次操作已停止。`, "已经归档");
-        return;
+        return false;
     }
-    let moduleName = plan.moduleName.trim();
+    let moduleName = String(plan.moduleName || "").trim(), resolvedModule = moduleById(plan.moduleId);
     if (!moduleName) {
         appNotice("请先填写模组名称再归档。");
         openPlanEditor(planId);
-        return;
+        return false;
     }
-    if (!moduleById(plan.moduleId)) {
+    if (!resolvedModule) {
         const unique = uniqueModuleByNormalizedName(moduleName);
         if (unique) {
-            plan.moduleId = unique.id;
-            plan.moduleName = unique.name;
+            resolvedModule = unique;
             moduleName = unique.name;
         }
         else {
             appNotice("该计划尚未关联模组档案。请先选择已有模组，或创建并关联新模组。", "请先关联模组");
             openPlanEditor(planId);
-            return;
+            return false;
         }
+    }
+    else {
+        moduleName = resolvedModule.name;
     }
     const times = sortedPlanSlots(plan).filter(s => s.date), range = planArchiveDateRange(plan);
     const samePeople = (a, b) => { const aa = [...new Set(a || [])].map(String).sort(), bb = [...new Set(b || [])].map(String).sort(); return aa.length === bb.length && aa.every((x, i) => x === bb[i]); };
-    const likelyArchived = range.startDate ? runRecords.find(r => r.id !== plan.id && (r.moduleId && plan.moduleId ? r.moduleId === plan.moduleId : normalizedEntityNameKey(r.moduleName) === normalizedEntityNameKey(moduleName)) && r.startDate === range.startDate && (r.endDate || r.startDate) === (range.endDate || range.startDate) && String(r.kpProfileId || normalizedEntityNameKey(r.kp)) === String(plan.kpProfileId || normalizedEntityNameKey(plan.kp)) && samePeople(r.plIds, plan.plIds)) : null;
-    if (likelyArchived && !await appConfirm(`发现一条高度相似的已归档记录：
-
-${recordDisplayLabel(likelyArchived, runRecords)}
-日期：${formatRunDateRange(likelyArchived) || "未填写"}
-
-请确认这确实是另一桌，再继续归档。`, { title: "可能已经归档", confirmText: "仍然归档", danger: true }))
-        return;
-    const kpName = kpDisplayText(plan);
-    const assignmentText = participantDisplaySummary(plan);
-    const roleLabel = moduleHoSystemForEntity(plan) === "has" ? "PL / PC / HO" : "PL / PC";
+    const likelyArchived = range.startDate ? runRecords.find(r => r.id !== plan.id && (r.moduleId && resolvedModule.id ? r.moduleId === resolvedModule.id : normalizedEntityNameKey(r.moduleName) === normalizedEntityNameKey(moduleName)) && r.startDate === range.startDate && (r.endDate || r.startDate) === (range.endDate || range.startDate) && String(r.kpProfileId || normalizedEntityNameKey(r.kp)) === String(plan.kpProfileId || normalizedEntityNameKey(plan.kp)) && samePeople(r.plIds, plan.plIds)) : null;
+    if (likelyArchived && !await appConfirm(`发现一条高度相似的已归档记录：\n\n${recordDisplayLabel(likelyArchived, runRecords)}\n日期：${formatRunDateRange(likelyArchived) || "未填写"}\n\n请确认这确实是另一桌，再继续归档。`, { title: "可能已经归档", confirmText: "仍然归档", danger: true }))
+        return false;
+    const kpName = kpDisplayText(plan), assignmentText = participantDisplaySummary(plan), roleLabel = moduleHoSystemForEntity(Object.assign({}, plan, { moduleId: resolvedModule.id, moduleName })) === "has" ? "PL / PC / HO" : "PL / PC";
     const detail = [`模组：${moduleName}${plan.tableName ? ` · ${plan.tableName}` : ""}`, `KP：${kpName}`, `${roleLabel}：${assignmentText || "未关联"}`, `安排：${times.length ? times.length + " 次" : "未填写"}`].join("\n");
     if (!await appConfirm(`归档这桌？\n\n${detail}\n\n归档后将生成跑团记录、同步关联 PL 足迹，并从开团计划移除。`, { title: "归档这桌？", confirmText: "归档" }))
-        return;
-    const previousRecords = runRecords, previousPlans = runPlans, previousProfiles = clone(profiles);
-    const archivedAt = Date.now(), post = normalizePostRunDraft(plan.postRunDraft);
-    const created = normalizeRunRecord({
-        id: plan.id, moduleId: plan.moduleId, moduleName, tableName: plan.tableName, kp: plan.kp, kpProfileId: plan.kpProfileId,
-        startDate: range.startDate, endDate: range.endDate, logUrl: plan.logUrl, sessionSlots: times,
-        plIds: [...plan.plIds], participantAssignments: clone(plan.participantAssignments || []),
-        kpc: clone(plan.kpc || normalizeKpc(null)), sharedHoNote: plan.sharedHoNote || "", legacyHoSlots: plan.legacyHoSlots || 0,
-        sideRole: post.sideRole, actualDuration: post.actualDuration, participantText: post.participantText, ho: post.ho, thoughts: post.thoughts, runNotes: post.runNotes, legacyCountOnly: post.legacyCountOnly,
-        createdAt: plan.createdAt, updatedAt: archivedAt, archivedAt
-    }, new Set(profiles.map(p => p.id)));
-    runRecords = [...runRecords, created];
-    runPlans = runPlans.filter(p => p.id !== planId);
-    touchProfiles([...plan.plIds, plan.kpProfileId].filter(Boolean));
-    if (!saveState()) {
-        runRecords = previousRecords;
-        runPlans = previousPlans;
-        profiles = previousProfiles;
-        return;
+        return false;
+    try {
+        await createSafetySnapshot("before-plan-archive");
     }
-    if (plannerPickedPlanId === planId)
-        plannerPickedPlanId = null;
-    if (editingPlanId === planId)
-        closePlanEditor();
-    selectedModuleName = moduleName;
-    renderRunPlans();
-    renderRunRecords();
-    renderProfiles();
-    showToast(`已归档：${moduleName} · 第${recordOrdinal(created, runRecords)}桌`);
+    catch (err) {
+        console.warn(err);
+        appNotice("未能创建归档前安全恢复点。请先导出完整备份或释放浏览器存储空间后再试。", "无法安全归档");
+        return false;
+    }
+    const operationKey = `archive-plan:${plan.id}:${Number(plan.updatedAt || 0)}`;
+    const op = beginIdempotentOperation(operationKey, "archive-plan", plan.id, moduleName);
+    if (!op.ok) {
+        appNotice(op.status === "done" ? "这一次归档操作已经成功执行过，为避免重复生成记录，本次请求已停止。" : "这一次归档操作正在处理中，请稍候，不要重复点击。", op.status === "done" ? "已经处理过" : "正在归档");
+        return false;
+    }
+    const beforeRecords = clone(runRecords), beforePlans = clone(runPlans), beforeProfiles = clone(profiles);
+    try {
+        const archivedAt = Date.now(), post = normalizePostRunDraft(plan.postRunDraft);
+        const created = normalizeRunRecord({
+            id: plan.id, moduleId: resolvedModule.id, moduleName, tableName: plan.tableName, kp: plan.kp, kpProfileId: plan.kpProfileId,
+            startDate: range.startDate, endDate: range.endDate, logUrl: plan.logUrl, sessionSlots: times,
+            plIds: [...plan.plIds], participantAssignments: clone(plan.participantAssignments || []),
+            kpc: clone(plan.kpc || normalizeKpc(null)), sharedHoNote: plan.sharedHoNote || "", legacyHoSlots: plan.legacyHoSlots || 0,
+            sideRole: post.sideRole, actualDuration: post.actualDuration, participantText: post.participantText, ho: post.ho, thoughts: post.thoughts, runNotes: post.runNotes, legacyCountOnly: post.legacyCountOnly,
+            createdAt: plan.createdAt, updatedAt: archivedAt, archivedAt
+        }, new Set(profiles.map(p => p.id)));
+        runRecords = [...runRecords, created];
+        runPlans = runPlans.filter(p => p.id !== planId);
+        touchProfiles([...plan.plIds, plan.kpProfileId].filter(Boolean));
+        if (!saveState())
+            throw new Error("归档数据写入失败");
+        if (!verifyArchivedPlanPersisted(planId))
+            throw new Error("归档落盘校验未通过");
+        completeIdempotentOperation(op.row.id, { recordId: created.id, archivedAt, moduleId: resolvedModule.id });
+        if (plannerPickedPlanId === planId)
+            plannerPickedPlanId = null;
+        transientPlanIds.delete(planId);
+        newPlanSessionIds.delete(planId);
+        if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId)
+            planInputPending = null;
+        if (editingPlanId === planId)
+            closePlanEditor();
+        selectedModuleName = moduleName;
+        moduleFrameDirty = true;
+        renderRunPlans();
+        renderRunRecords();
+        renderProfiles();
+        renderNativeModules();
+        showToast(`已归档：${moduleName} · 第${recordOrdinal(created, runRecords)}桌`);
+        return true;
+    }
+    catch (err) {
+        runRecords = beforeRecords;
+        runPlans = beforePlans;
+        profiles = beforeProfiles;
+        failIdempotentOperation(op.row.id);
+        const rollbackOk = saveState({ skipAntiIntegrity: true });
+        renderAllPrimaryViews();
+        console.error(err);
+        appNotice(`${err.message || err}\n\n${rollbackOk ? "已自动恢复到归档前状态。" : "内存状态已恢复，但浏览器存储回滚未能确认；请不要继续编辑，立即导出完整备份并刷新页面核对。"}`, "归档未完成");
+        return false;
+    }
 }
+
 function openPlanEditor(planId) {
     if (shareModeBlock("计划编辑"))
         return false;
@@ -16403,38 +16542,63 @@ function openPlanEditor(planId) {
 }
 function closePlanEditor() {
     const closingId = editingPlanId;
-    if (closingId && (planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === closingId)
+    if (closingId && (planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === closingId) {
         flushPlanInputSave();
+        // flush 失败时会把 pending 留在队列里；此时绝不关闭抽屉，避免用户以为已经保存。
+        if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === closingId) {
+            showToast("当前修改尚未保存，请先解决存储或多标签页冲突后再关闭");
+            return false;
+        }
+    }
     if (closingId && newPlanSessionIds.has(closingId)) {
         const plan = runPlans.find(p => p.id === closingId);
         if (!isMeaningfulRunPlan(plan)) {
             runPlans = runPlans.filter(p => p.id !== closingId);
             transientPlanIds.delete(closingId);
             newPlanSessionIds.delete(closingId);
-            saveState();
+            if (!saveState()) {
+                // 空白新建计划删除失败并不会丢用户输入，但保持窗口开启更符合“所见即真实状态”。
+                if (plan) runPlans.push(plan);
+                return false;
+            }
             renderRunPlans();
         }
         else {
-            if (saveState())
-                transientPlanIds.delete(closingId);
+            if (!saveState()) {
+                showToast("计划尚未保存，窗口已保持开启");
+                return false;
+            }
+            transientPlanIds.delete(closingId);
             newPlanSessionIds.delete(closingId);
         }
     }
     else if (closingId && transientPlanIds.has(closingId)) {
         const plan = runPlans.find(p => p.id === closingId);
         if (!isMeaningfulRunPlan(plan)) {
+            const beforePlans = runPlans;
             runPlans = runPlans.filter(p => p.id !== closingId);
+            if (!saveState()) {
+                runPlans = beforePlans;
+                return false;
+            }
             transientPlanIds.delete(closingId);
             renderRunPlans();
         }
-        else if (saveState())
+        else {
+            if (!saveState()) {
+                showToast("计划尚未保存，窗口已保持开启");
+                return false;
+            }
             transientPlanIds.delete(closingId);
+        }
     }
     editingPlanId = null;
     els.planEditorBackdrop.hidden = true;
     document.body.classList.remove("plan-editor-open");
     syncModalPageScrollLock();
+    return true;
 }
+
 function modulePickerMeta(module) {
     return [module.author, module.location, module.era, module.players].filter(Boolean).join(" · ") || "暂无补充信息";
 }
@@ -16487,26 +16651,53 @@ function updatePlanModulePicker(planId, { open = true } = {}) {
         options.hidden = !open;
     }
 }
-function linkPlanToModule(planId, moduleId) {
-    if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId)
+async function linkPlanToModule(planId, moduleId) {
+    if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId) {
         flushPlanInputSave();
-    const mod = moduleById(moduleId);
-    if (!mod)
+        if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId)
+            return false;
+    }
+    const mod = moduleById(moduleId), currentPlan = runPlans.find(p => p.id === planId);
+    if (!mod || !currentPlan)
         return false;
-    const ok = mutateRunPlan(planId, plan => { plan.moduleId = mod.id; plan.moduleName = mod.name; }, { undoLabel: `已关联模组 · ${mod.name}` });
+    const currentModule = moduleById(currentPlan.moduleId);
+    if (currentModule && String(currentModule.id) === String(mod.id)) {
+        requestAnimationFrame(() => updatePlanModulePicker(planId, { open: false }));
+        return false;
+    }
+    if (currentModule) {
+        const hasHoDetail = (currentPlan.participantAssignments || []).some(a => ["number", "custom"].includes(normalizePcHoMode(a.hoMode)) || String(a.hoCustom || "").trim()) || (normalizeKpc(currentPlan.kpc).enabled && ["number", "custom"].includes(normalizePcHoMode(normalizeKpc(currentPlan.kpc).hoMode))) || String(currentPlan.sharedHoNote || "").trim();
+        const oldHo = normalizeModuleHoSystem(currentModule.hoSystem), newHo = normalizeModuleHoSystem(mod.hoSystem);
+        const hoLine = hasHoDetail && oldHo !== newHo ? `\n\n当前桌保存了 HO 信息；新模组的 HO 设置为“${moduleHoSystemLabel(newHo)}”。切换后 HO 信息可能暂时隐藏或重新显示，原分配不会被自动删除。` : "";
+        const ok = await appConfirm(`将当前计划的关联模组从“${currentModule.name}”改为“${mod.name}”？\n\n这桌之后会计入新模组的计划/桌次关联与整理统计。${hoLine}`, { title: "更换计划关联模组？", confirmText: "更换关联" });
+        if (!ok) {
+            requestAnimationFrame(() => {
+                const root = els.planEditorContent.querySelector(`[data-editor-plan-id="${CSS.escape(planId)}"]`), input = root === null || root === void 0 ? void 0 : root.querySelector("[data-plan-module-query]");
+                if (input) input.value = currentModule.name;
+                updatePlanModulePicker(planId, { open: false });
+            });
+            return false;
+        }
+    }
+    const ok = mutateRunPlan(planId, plan => { plan.moduleId = mod.id; plan.moduleName = mod.name; }, { undoLabel: `已关联模组 · ${mod.name}`, historyLabel: "更换模组关联前版本" });
     if (ok) {
         showToast(`已关联：${mod.name}`);
         requestAnimationFrame(() => updatePlanModulePicker(planId, { open: false }));
     }
     return ok;
 }
+
 function createAndLinkModuleForPlan(planId) {
-    if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId)
+    if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId) {
         flushPlanInputSave();
+        if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId)
+            return false;
+    }
     const plan = runPlans.find(p => p.id === planId);
     if (!plan)
         return false;
-    const name = String(plan.moduleName || "").trim();
+    const root = els.planEditorContent.querySelector(`[data-editor-plan-id="${CSS.escape(planId)}"]`), queryInput = root === null || root === void 0 ? void 0 : root.querySelector("[data-plan-module-query]");
+    const name = String((queryInput === null || queryInput === void 0 ? void 0 : queryInput.value) || plan.moduleName || "").trim();
     if (!name) {
         showToast("请先输入模组名称");
         return false;
@@ -16760,8 +16951,13 @@ function renderRunRecords(options = {}) {
 async function returnRecordToPlan(recordId) {
     if (shareModeBlock("退回计划"))
         return false;
-    if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId)
+    if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId) {
         flushRecordInputSave();
+        if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId) {
+            appNotice("当前跑团记录还有未能保存的修改。请先解决存储或多标签页冲突后再退回计划。", "退回已暂停");
+            return false;
+        }
+    }
     const rec = runRecords.find(r => String(r.id) === String(recordId));
     if (!rec)
         return false;
@@ -16772,8 +16968,7 @@ async function returnRecordToPlan(recordId) {
     let mod = moduleById(rec.moduleId);
     if (!mod) {
         const unique = uniqueModuleByNormalizedName(rec.moduleName);
-        if (unique)
-            mod = unique;
+        if (unique) mod = unique;
     }
     if (!mod) {
         appNotice("该跑团记录尚未关联唯一模组档案，请先使用“更换此桌所属模组”完成关联。", "请先关联模组");
@@ -16790,25 +16985,43 @@ async function returnRecordToPlan(recordId) {
         appNotice("未能创建操作前恢复点。请先导出完整备份或释放浏览器存储空间后重试。", "无法安全退回");
         return false;
     }
-    const beforeRecords = clone(runRecords), beforePlans = clone(runPlans), beforeProfiles = clone(profiles), plan = normalizeRunPlan({ id: rec.id, moduleId: mod.id, moduleName: mod.name, tableName: rec.tableName, kp: rec.kp, kpProfileId: rec.kpProfileId, logUrl: rec.logUrl, plIds: clone(rec.plIds || []), participantAssignments: clone(rec.participantAssignments || []), kpc: clone(rec.kpc || normalizeKpc(null)), sharedHoNote: rec.sharedHoNote || "", legacyHoSlots: rec.legacyHoSlots || 0, timeSlots: schedule, postRunDraft: extra, createdAt: rec.createdAt, updatedAt: Date.now() }, new Set(profiles.map(p => p.id)));
-    runRecords = runRecords.filter(r => String(r.id) !== String(recordId));
-    runPlans = [...runPlans, plan];
-    touchProfiles([...(rec.plIds || []), rec.kpProfileId].filter(Boolean));
-    if (!saveState()) {
-        runRecords = beforeRecords;
-        runPlans = beforePlans;
-        profiles = beforeProfiles;
+    const opKey = `return-record:${rec.id}:${Number(rec.updatedAt || 0)}`, op = beginIdempotentOperation(opKey, "return-record", rec.id, mod.name);
+    if (!op.ok) {
+        appNotice(op.status === "done" ? "这次退回计划操作已经执行过，本次不会重复处理。" : "这次退回计划操作正在处理中，请稍候。", op.status === "done" ? "已经处理过" : "正在处理");
         return false;
     }
-    selectedModuleName = mod.name;
-    recordEditingIds.delete(String(recordId));
-    moduleFrameDirty = true;
-    renderAllPrimaryViews();
-    switchView("plans");
-    requestAnimationFrame(() => openPlanEditor(plan.id));
-    showToast(hasExtra ? "已退回计划；跑后补充已暂存" : "已退回开团计划");
-    return true;
+    const beforeRecords = clone(runRecords), beforePlans = clone(runPlans), beforeProfiles = clone(profiles);
+    try {
+        const plan = normalizeRunPlan({ id: rec.id, moduleId: mod.id, moduleName: mod.name, tableName: rec.tableName, kp: rec.kp, kpProfileId: rec.kpProfileId, logUrl: rec.logUrl, plIds: clone(rec.plIds || []), participantAssignments: clone(rec.participantAssignments || []), kpc: clone(rec.kpc || normalizeKpc(null)), sharedHoNote: rec.sharedHoNote || "", legacyHoSlots: rec.legacyHoSlots || 0, timeSlots: schedule, postRunDraft: extra, createdAt: rec.createdAt, updatedAt: Date.now() }, new Set(profiles.map(p => p.id)));
+        runRecords = runRecords.filter(r => String(r.id) !== String(recordId));
+        runPlans = [...runPlans, plan];
+        touchProfiles([...(rec.plIds || []), rec.kpProfileId].filter(Boolean));
+        if (!saveState())
+            throw new Error("退回计划写入失败");
+        const raw = safeParseStoredJson(localStorage.getItem(STORAGE_KEY)), rows = isCanonicalArchive(raw) ? raw.data.runs || [] : [];
+        if (!rows.some(run => String(run.id) === String(recordId) && run.status === "planned") || rows.some(run => String(run.id) === String(recordId) && run.status === "completed"))
+            throw new Error("退回计划落盘校验未通过");
+        completeIdempotentOperation(op.row.id, { planId: plan.id, returnedAt: Date.now() });
+        selectedModuleName = mod.name;
+        recordEditingIds.delete(String(recordId));
+        moduleFrameDirty = true;
+        renderAllPrimaryViews();
+        switchView("plans");
+        requestAnimationFrame(() => openPlanEditor(plan.id));
+        showToast(hasExtra ? "已退回计划；跑后补充已暂存" : "已退回开团计划");
+        return true;
+    }
+    catch (err) {
+        runRecords = beforeRecords; runPlans = beforePlans; profiles = beforeProfiles;
+        failIdempotentOperation(op.row.id);
+        const rollbackOk = saveState({ skipAntiIntegrity: true });
+        renderAllPrimaryViews();
+        console.error(err);
+        appNotice(`${err.message || err}\n\n${rollbackOk ? "已自动恢复到退回前状态。" : "内存状态已恢复，但浏览器存储回滚未能确认；请立即导出备份并刷新页面核对。"}`, "退回未完成");
+        return false;
+    }
 }
+
 function recordModuleOptionLabel(m) { return [m.name, m.author, m.location, m.era].filter(Boolean).join(" · ") || m.name; }
 async function changeRecordModule(recordId) {
     var _a;
@@ -16829,7 +17042,15 @@ async function changeRecordModule(recordId) {
     const mod = moduleById(chosen);
     if (!mod)
         return false;
-    const ok = mutateRunRecord(recordId, r => { r.moduleId = mod.id; r.moduleName = mod.name; }, { undoLabel: `已更换所属模组 · ${mod.name}`, render: false });
+    const oldMod = moduleById(rec.moduleId);
+    if (oldMod && String(oldMod.id) !== String(mod.id)) {
+        const hasHoDetail = (rec.participantAssignments || []).some(a => ["number", "custom"].includes(normalizePcHoMode(a.hoMode)) || String(a.hoCustom || "").trim()) || String(rec.sharedHoNote || "").trim();
+        const oldHo = normalizeModuleHoSystem(oldMod.hoSystem), newHo = normalizeModuleHoSystem(mod.hoSystem);
+        const hoLine = hasHoDetail && oldHo !== newHo ? `\n\n本桌保存了 HO 信息；新模组 HO 设置为“${moduleHoSystemLabel(newHo)}”，切换后部分 HO 显示可能改变，原分配不会自动删除。` : "";
+        if (!await appConfirm(`确认把这桌从“${oldMod.name}”改到“${mod.name}”？\n\n这桌会从原模组统计与整理中移出，并计入新模组。${hoLine}`, { title: "确认更换所属模组", confirmText: "确认更换" }))
+            return false;
+    }
+    const ok = mutateRunRecord(recordId, r => { r.moduleId = mod.id; r.moduleName = mod.name; }, { undoLabel: `已更换所属模组 · ${mod.name}`, historyLabel: "更换模组关联前版本", render: false });
     if (!ok)
         return false;
     selectedModuleName = mod.name;
@@ -16875,7 +17096,7 @@ function recordReadonlyBodyHTML(r) {
       ${r.sharedHoNote && moduleHoSystemForEntity(r) === "has" ? `<div class="record-view-note"><span>共通HO</span><strong>${escapeHTML(r.sharedHoNote)}</strong></div>` : ""}
     </section>
     ${extra.length ? `<details class="record-view-extra" data-collapse-key="run-record:${escapeHTML(r.id)}:readonly-extra"><summary>本桌补充 · ${extra.length}项</summary><div>${extra.map(x => `<p>${escapeHTML(x)}</p>`).join("")}</div></details>` : ""}
-    <footer class="table-record-footer"><div class="table-record-footer-meta"><span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span></div><div class="table-record-footer-actions"><button class="btn small" type="button" data-record-edit="${escapeHTML(r.id)}">编辑此桌</button><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt ? "退回计划" : "转为计划"}</button></div></footer>
+    <footer class="table-record-footer"><div class="table-record-footer-left"><div class="table-record-footer-meta"><span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span></div><div class="table-record-footer-actions"><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt ? "退回计划" : "转为计划"}</button></div></div><div class="table-record-footer-primary"><button class="btn small primary-soft" type="button" data-record-edit="${escapeHTML(r.id)}">编辑此桌</button></div></footer>
   </div>`;
 }
 function recordTableHTML(r, index) {
@@ -16982,11 +17203,14 @@ function recordTableHTML(r, index) {
       </details>
 
       <footer class="table-record-footer">
-        <div class="table-record-footer-meta">
-          ${assignmentSummary ? `<span class="record-footer-ho">${escapeHTML(assignmentSummary)}</span>` : ""}
-          <span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span>
+        <div class="table-record-footer-left">
+          <div class="table-record-footer-meta">
+            ${assignmentSummary ? `<span class="record-footer-ho">${escapeHTML(assignmentSummary)}</span>` : ""}
+            <span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span>
+          </div>
+          <div class="table-record-footer-actions"><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt ? "退回计划" : "转为计划"}</button><button class="btn small danger record-delete-btn" type="button" data-delete-record="${escapeHTML(r.id)}">删除此桌</button></div>
         </div>
-        <div class="table-record-footer-actions"><button class="btn small" type="button" ${editing ? `data-record-done="${escapeHTML(r.id)}"` : `data-record-edit="${escapeHTML(r.id)}"`}>${editing ? "完成编辑" : "编辑此桌"}</button><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt ? "退回计划" : "转为计划"}</button><button class="btn small danger record-delete-btn" type="button" data-delete-record="${escapeHTML(r.id)}">删除此桌</button></div>
+        <div class="table-record-footer-primary"><button class="btn small primary" type="button" ${editing ? `data-record-done="${escapeHTML(r.id)}"` : `data-record-edit="${escapeHTML(r.id)}"`}>${editing ? "完成编辑" : "编辑此桌"}</button></div>
       </footer>` : recordReadonlyBodyHTML(r)}
     </div>
   </article>`;
@@ -17247,6 +17471,7 @@ function mutateRunRecord(recordId, mutator, options = {}) {
         runRecords[i] = before;
         return false;
     }
+    rememberEntityRevision("record", before, options.historyLabel || "编辑前版本");
     setPlanUndo({ type: "replace-record", recordId, before, label: options.undoLabel || `已更新：${recordDisplayLabel(runRecords[i], runRecords)}` });
     if (options.render !== false) {
         renderProfiles();
@@ -17300,9 +17525,12 @@ function flushRecordInputSave() {
     const ids = [...new Set([...(before.plIds || []), before.kpProfileId, ...(current.plIds || []), current.kpProfileId].filter(Boolean))];
     touchProfiles(ids);
     if (!saveState()) {
-        runRecords[i] = before;
+        // 与计划编辑器一致：保存失败时保留当前输入，等待用户修复存储问题后重试。
+        runRecords[i] = current;
+        recordInputPending = { recordId: pending.recordId, before: clone(before), label: pending.label };
         return false;
     }
+    rememberEntityRevision("record", before, "自动保存前版本");
     setPlanUndo({ type: "replace-record", recordId: pending.recordId, before, label: pending.label });
     renderProfiles();
     return true;
@@ -17620,11 +17848,17 @@ async function confirmSecureBackupAction() {
             els.confirmSecureBackup.textContent = "正在加密…";
             const payload = buildCanonicalArchive(true);
             assertCanonicalIntegrity(payload);
+            const plainVerification = verifyBackupPayloadRoundTrip(payload);
             const pkg = await encryptBackupPayload(payload, password);
-            downloadBlobFile(new Blob([JSON.stringify(pkg)], { type: "application/json;charset=utf-8" }), `${APP_NAME}_加密备份_${secureBackupStamp()}.plbackup`);
-            markExportComplete("加密备份", payload);
+            const packageText = JSON.stringify(pkg), parsedPkg = assertSafeImportedObject(JSON.parse(packageText));
+            const decryptedCheck = await decryptBackupPackage(parsedPkg, password);
+            const encryptedVerification = verifyBackupPayloadRoundTrip(decryptedCheck);
+            if (encryptedVerification.fingerprint !== plainVerification.fingerprint)
+                throw new Error("加密备份回读校验不一致");
+            downloadBlobFile(new Blob([packageText], { type: "application/json;charset=utf-8" }), `${APP_NAME}_加密备份_${secureBackupStamp()}.plbackup`);
+            markExportComplete("加密备份", payload, { ...plainVerification, bytes: new Blob([packageText]).size });
             closeSecureBackup();
-            showToast("加密备份已导出");
+            showToast("加密备份已导出并完成解密回读校验");
         }
         catch (err) {
             console.error(err);
@@ -17760,11 +17994,11 @@ async function restoreUpgradeGuardData() {
         const before = buildCanonicalArchive(false);
         try {
             if (hasMeaningfulData(archiveCountsFromPayload(before)))
-                await createRecoverySnapshot(before, "before-upgrade-restore");
+                await ensureRepairRecoveryPoint("before-upgrade-restore");
         }
         catch (err) {
             console.warn(err);
-            appNotice("无法创建恢复前安全点。为避免当前数据失去退路，本次恢复已取消。", "无法安全恢复");
+            appNotice("无法创建标准恢复点或应急原始备份。为避免当前数据失去退路，本次恢复已取消。", "无法安全恢复");
             return;
         }
         settings = incoming.settings;
@@ -17776,7 +18010,7 @@ async function restoreUpgradeGuardData() {
         selfIntroBaseline = null;
         selfIntroPendingModules = [];
         selectedModuleName = "";
-        if (!saveState()) {
+        if (!saveState({ allowProtectionWrite: true, skipAntiIntegrity: true })) {
             const rollback = ensureSelfProfileAndLinks(hydrateCanonicalArchive(before));
             settings = rollback.settings; profiles = rollback.profiles; runPlans = rollback.runPlans; runRecords = rollback.runRecords; modules = rollback.modules || [];
             saveState({ allowExternalOverwrite: true, skipAntiIntegrity: true });
@@ -17790,6 +18024,7 @@ async function restoreUpgradeGuardData() {
         renderNativeModules();
         updateDataSafetyUI();
         showToast("已恢复升级前数据");
+        await postRecoveryVerification("恢复升级前数据");
     }
     catch (err) {
         console.error(err);
@@ -17846,17 +18081,24 @@ function exportBackup() {
     try {
         const payload = buildCanonicalArchive(true);
         assertCanonicalIntegrity(payload);
-        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" }), url = URL.createObjectURL(blob), a = document.createElement("a"), d = new Date(), stamp = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+        const serialized = JSON.stringify(payload, null, 2), verification = verifyBackupPayloadRoundTrip(payload, serialized);
+        const blob = new Blob([serialized], { type: "application/json;charset=utf-8" }), url = URL.createObjectURL(blob), a = document.createElement("a"), d = new Date(), stamp = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
         a.href = url;
         a.download = `${APP_NAME}_统一完整备份_v${DATA_SCHEMA_VERSION}_${stamp}.json`;
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 500);
-        markExportComplete("完整备份", payload);
-        showToast("完整备份已导出");
+        markExportComplete("完整备份", payload, verification);
+        showToast("完整备份已导出并完成自校验");
     }
     catch (err) {
         console.error(err);
-        appNotice(`导出失败：${err.message || err}`);
+        try {
+            if (exportEmergencyRawBackup(err?.message || String(err))) return;
+        } catch (fallbackErr) {
+            console.error("应急原始备份也失败", fallbackErr);
+            appNotice(`标准备份与应急备份均导出失败：${fallbackErr?.message || fallbackErr}。请先不要刷新或关闭页面，并尝试复制当前页面数据或使用外部备份功能。`, "备份失败");
+            return;
+        }
     }
 }
 /* ---------- 26. 导入备份：读取 JSON、兼容旧版并在确认后恢复完整数据 ---------- */
@@ -18247,6 +18489,9 @@ catch (err) {
     console.warn(err);
     appNotice("未能创建合并前恢复点。请先导出完整备份或释放浏览器存储空间后重试。", "无法安全合并");
     return false;
+} const mergeKey = `merge-modules:${primary.id}:${stableTextHash(group.map(m => `${m.id}:${Number(m.updatedAt || 0)}`).sort().join("|"))}`, mergeOp = beginIdempotentOperation(mergeKey, "merge-modules", primary.id, primary.name); if (!mergeOp.ok) {
+    appNotice(mergeOp.status === "done" ? "这组模组合并操作已经执行过，本次不会重复合并。" : "这组模组正在合并，请稍候，不要重复点击。", mergeOp.status === "done" ? "已经处理过" : "正在合并");
+    return false;
 } const beforeModules = clone(modules), beforeRecords = clone(runRecords), beforePlans = clone(runPlans), beforeProfiles = clone(profiles), beforeSelected = selectedModuleName; try {
     for (const source of sources)
         await mergeModuleFieldsInto(primary, source, strategy);
@@ -18263,6 +18508,9 @@ catch (err) {
     selectedModuleName = primary.name;
     if (!saveState())
         throw new Error("合并后保存失败");
+    const oldPrimary = beforeModules.find(m => String(m.id) === String(primary.id));
+    if (oldPrimary) rememberEntityRevision("module", oldPrimary, "合并前主档版本");
+    completeIdempotentOperation(mergeOp.row.id, { targetModuleId: primary.id, mergedIds: [...sourceIds], completedAt: Date.now() });
     moduleFrameDirty = true;
     renderAllPrimaryViews();
     showToast(`已合并 ${sources.length + 1} 个“${primary.name}”档案`);
@@ -18274,6 +18522,8 @@ catch (err) {
     runPlans = beforePlans;
     profiles = beforeProfiles;
     selectedModuleName = beforeSelected;
+    failIdempotentOperation(mergeOp.row.id);
+    saveState({ skipAntiIntegrity: true });
     renderAllPrimaryViews();
     console.error(err);
     appNotice(`合并失败：${err.message || err}。已恢复合并前状态。`);
@@ -18510,6 +18760,7 @@ function saveNativeModuleEditor() {
             renderAllPrimaryViews();
             return;
         }
+        rememberEntityRevision("module", old, "编辑前版本");
     }
     const wasEditing = Boolean(nativeModuleEditingId);
     clearEditorDraft("module");
@@ -18606,7 +18857,7 @@ function moduleToLegacyBridge(m) {
 function buildModuleBridgeState() {
     buildCanonicalCollections();
     moduleBridgeSessionId = `module_bridge_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    return { version: 17, meta: { createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }, settings: Object.assign({}, clone(settings.moduleArchive), { theme: parentThemeToModule(settings.theme), collapsibleDefault: normalizeUiSettings(settings.ui).collapseDefault }), modules: modules.map(moduleToLegacyBridge), __unifiedBridge: { sessionId: moduleBridgeSessionId, moduleIds: modules.map(m => m.id), runIdsByModule: Object.fromEntries(modules.map(m => [m.id, runRecords.filter(r => r.moduleId === m.id).map(r => r.id)])) } };
+    return { version: 17, meta: { createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }, settings: Object.assign({}, clone(settings.moduleArchive), { theme: parentThemeToModule(settings.theme), collapsibleDefault: normalizeUiSettings(settings.ui).collapseDefault }), modules: modules.map(moduleToLegacyBridge), __unifiedBridge: { sessionId: moduleBridgeSessionId, baseSaveNonce: String((currentSaveMeta() || {}).saveNonce || ""), baseSavedAt: Number((currentSaveMeta() || {}).savedAt || 0), moduleIds: modules.map(m => m.id), runIdsByModule: Object.fromEntries(modules.map(m => [m.id, runRecords.filter(r => r.moduleId === m.id).map(r => r.id)])) } };
 }
 function moduleRunRoleFlags(role) { const s = String(role || "").toUpperCase(); return { kp: /KP/.test(s), pl: /PL/.test(s) }; }
 function moduleRunFingerprint(moduleId, r) { return [moduleId, normalizeDateValue(r === null || r === void 0 ? void 0 : r.date), normalizePersonToken(r === null || r === void 0 ? void 0 : r.kp), splitParticipantNames(r === null || r === void 0 ? void 0 : r.participants).map(normalizePersonToken).sort().join(","), String((r === null || r === void 0 ? void 0 : r.role) || "").toUpperCase()].join("|"); }
@@ -18888,8 +19139,15 @@ window.UnifiedTRPGBridge = {
     async saveModuleState(incoming) {
         var _a;
         try {
-            if (((_a = incoming === null || incoming === void 0 ? void 0 : incoming.__unifiedBridge) === null || _a === void 0 ? void 0 : _a.sessionId) === moduleBridgeSessionId)
+            if (((_a = incoming === null || incoming === void 0 ? void 0 : incoming.__unifiedBridge) === null || _a === void 0 ? void 0 : _a.sessionId) === moduleBridgeSessionId) {
+                const marker = incoming.__unifiedBridge || {}, currentMeta = currentSaveMeta() || {};
+                const bridgeNonce = String(marker.baseSaveNonce || ""), currentNonce = String(currentMeta.saveNonce || "");
+                if (bridgeNonce && currentNonce && bridgeNonce !== currentNonce) {
+                    moduleFrameDirty = true;
+                    throw new Error("主页面数据已经在高级模组工具打开后发生变化。为避免旧页面覆盖新数据，请刷新高级模组工具后再保存。");
+                }
                 return syncAuthoritativeModuleState(incoming);
+            }
             mergeLegacyModuleState(incoming);
             return buildModuleBridgeState();
         }
@@ -19556,6 +19814,256 @@ function fallbackSafetySnapshot() { try {
 catch (err) {
     return null;
 } }
+
+/* ---------- v8.1.8.0 第二层防呆：最近编辑历史与关键操作幂等账本 ---------- */
+function revisionHistoryLoad() {
+    try {
+        const raw = JSON.parse(localStorage.getItem(REVISION_HISTORY_KEY) || "[]");
+        return Array.isArray(raw) ? raw.filter(row => row && row.id && row.type && row.entityId && row.snapshot) : [];
+    }
+    catch (err) {
+        console.warn("读取最近编辑历史失败", err);
+        return [];
+    }
+}
+function revisionHistoryPersist(rows) {
+    let next = Array.isArray(rows) ? rows.slice(0, 80) : [];
+    try {
+        while (next.length > 1 && JSON.stringify(next).length > 1200000)
+            next.pop();
+        localStorage.setItem(REVISION_HISTORY_KEY, JSON.stringify(next));
+        return true;
+    }
+    catch (err) {
+        try {
+            next = next.slice(0, Math.max(1, Math.floor(next.length / 2)));
+            localStorage.setItem(REVISION_HISTORY_KEY, JSON.stringify(next));
+            return true;
+        }
+        catch (fallbackErr) {
+            console.warn("保存最近编辑历史失败", fallbackErr);
+            return false;
+        }
+    }
+}
+function revisionComparable(snapshot) {
+    try {
+        const x = clone(snapshot || {});
+        delete x.updatedAt;
+        delete x.archivedAt;
+        return JSON.stringify(x);
+    }
+    catch (err) {
+        return "";
+    }
+}
+function revisionTypeLabel(type) {
+    return ({ profile: "PL", module: "模组", plan: "开团计划", record: "跑团记录" })[String(type)] || "对象";
+}
+function revisionEntityLabel(type, snapshot) {
+    if (!snapshot)
+        return "未知对象";
+    if (type === "profile")
+        return rawProfileName(snapshot) || displayProfileName(snapshot) || "未命名 PL";
+    if (type === "module")
+        return String(snapshot.name || "未命名模组").trim();
+    if (type === "plan")
+        return [String(snapshot.moduleName || "未命名模组").trim(), String(snapshot.tableName || "").trim()].filter(Boolean).join(" · ");
+    if (type === "record")
+        return [String(snapshot.moduleName || "未命名模组").trim(), String(snapshot.tableName || "").trim()].filter(Boolean).join(" · ");
+    return String(snapshot.id || "未知对象");
+}
+function rememberEntityRevision(type, snapshot, reason = "编辑前版本") {
+    if (!snapshot || !snapshot.id || !["profile", "module", "plan", "record"].includes(String(type)))
+        return false;
+    const entityId = String(snapshot.id), comparable = revisionComparable(snapshot);
+    let rows = revisionHistoryLoad();
+    const latestSame = rows.find(row => row.type === type && String(row.entityId) === entityId);
+    if (latestSame && revisionComparable(latestSame.snapshot) === comparable)
+        return false;
+    const row = {
+        id: uid(), type: String(type), entityId,
+        createdAt: Date.now(), reason: String(reason || "编辑前版本"),
+        label: revisionEntityLabel(type, snapshot), snapshot: clone(snapshot)
+    };
+    rows.unshift(row);
+    const seen = new Map();
+    rows = rows.filter(item => {
+        const key = `${item.type}:${item.entityId}`, count = Number(seen.get(key) || 0);
+        if (count >= 5)
+            return false;
+        seen.set(key, count + 1);
+        return true;
+    }).slice(0, 80);
+    const ok = revisionHistoryPersist(rows);
+    if (ok)
+        renderRevisionHistory();
+    return ok;
+}
+function renderRevisionHistory() {
+    const host = document.getElementById("revisionHistoryList");
+    if (!host)
+        return;
+    const rows = revisionHistoryLoad().slice(0, 24);
+    if (!rows.length) {
+        host.innerHTML = '<div class="revision-history-empty">暂无可恢复的编辑历史。保存对象后，这里会自动保留修改前版本。</div>';
+        return;
+    }
+    host.innerHTML = rows.map(row => {
+        const type = revisionTypeLabel(row.type), label = escapeHTML(row.label || revisionEntityLabel(row.type, row.snapshot)), reason = escapeHTML(row.reason || "编辑前版本");
+        return `<article class="revision-history-row">
+          <div class="revision-history-copy"><strong>${escapeHTML(type)} · ${label}</strong><span>${escapeHTML(formatSafetyDateTime(Number(row.createdAt || 0)))} · ${reason}</span></div>
+          <div class="revision-history-actions"><button class="btn small" type="button" data-revision-restore="${escapeHTML(row.id)}">恢复这个版本</button></div>
+        </article>`;
+    }).join("");
+}
+function currentEntityForRevision(type, id) {
+    id = String(id || "");
+    if (type === "profile") return profiles.find(x => String(x.id) === id) || null;
+    if (type === "module") return modules.find(x => String(x.id) === id) || null;
+    if (type === "plan") return runPlans.find(x => String(x.id) === id) || null;
+    if (type === "record") return runRecords.find(x => String(x.id) === id) || null;
+    return null;
+}
+async function restoreEntityRevision(revisionId) {
+    if (shareModeBlock("恢复历史版本"))
+        return false;
+    const rows = revisionHistoryLoad(), row = rows.find(x => String(x.id) === String(revisionId));
+    if (!row)
+        return false;
+    const current = currentEntityForRevision(row.type, row.entityId);
+    if (!current) {
+        appNotice(row.type === "plan" || row.type === "record" ? "当前对象已经不在原位置。若它被归档、退回计划或删除，请先通过跑团记录、开团计划或回收站恢复对应对象，再使用编辑历史。" : "当前对象已不存在。请先通过回收站恢复，再使用编辑历史。", "暂时无法恢复这个版本");
+        return false;
+    }
+    const typeLabel = revisionTypeLabel(row.type), label = row.label || revisionEntityLabel(row.type, row.snapshot);
+    if (!await appConfirm(`恢复 ${typeLabel}「${label}」到 ${formatSafetyDateTime(Number(row.createdAt || 0))} 保存的版本？\n\n只恢复这个对象本身；恢复前会自动创建整库安全恢复点，并保留当前版本以便反向恢复。`, { title: "恢复最近编辑历史？", confirmText: "恢复这个版本" }))
+        return false;
+    try {
+        await createSafetySnapshot("before-entity-revision-restore");
+    }
+    catch (err) {
+        console.warn(err);
+        appNotice("未能创建恢复前安全点。请先导出完整备份或释放浏览器存储空间后重试。", "无法安全恢复");
+        return false;
+    }
+    const beforeProfiles = clone(profiles), beforeModules = clone(modules), beforePlans = clone(runPlans), beforeRecords = clone(runRecords), currentSnapshot = clone(current);
+    try {
+        if (row.type === "profile") {
+            const i = profiles.findIndex(x => String(x.id) === String(row.entityId));
+            if (i < 0) throw new Error("PL 档案已不存在");
+            profiles[i] = normalizeProfile(Object.assign({}, clone(row.snapshot), { id: row.entityId, updatedAt: Date.now() }));
+        }
+        else if (row.type === "module") {
+            const i = modules.findIndex(x => String(x.id) === String(row.entityId));
+            if (i < 0) throw new Error("模组档案已不存在");
+            const next = normalizeRichModule(Object.assign({}, clone(row.snapshot), { id: row.entityId, updatedAt: Date.now() }), settings.moduleArchive);
+            modules[i] = next;
+            runPlans.forEach(plan => { if (String(plan.moduleId) === String(next.id)) { plan.moduleName = next.name; plan.updatedAt = Date.now(); } });
+            runRecords.forEach(rec => { if (String(rec.moduleId) === String(next.id)) { rec.moduleName = next.name; rec.updatedAt = Date.now(); } });
+            updatePersistedSelfIntroModuleRefs({ renameId: next.id, renameName: next.name });
+        }
+        else if (row.type === "plan") {
+            const i = runPlans.findIndex(x => String(x.id) === String(row.entityId));
+            if (i < 0) throw new Error("开团计划已不存在");
+            runPlans[i] = normalizeRunPlan(Object.assign({}, clone(row.snapshot), { id: row.entityId, updatedAt: Date.now() }), new Set(profiles.map(p => p.id)));
+        }
+        else if (row.type === "record") {
+            const i = runRecords.findIndex(x => String(x.id) === String(row.entityId));
+            if (i < 0) throw new Error("跑团记录已不存在");
+            runRecords[i] = normalizeRunRecord(Object.assign({}, clone(row.snapshot), { id: row.entityId, updatedAt: Date.now() }), new Set(profiles.map(p => p.id)));
+        }
+        if (!saveState())
+            throw new Error("写入浏览器存储失败");
+        rememberEntityRevision(row.type, currentSnapshot, "恢复前版本");
+        moduleFrameDirty = true;
+        renderAllPrimaryViews();
+        renderRevisionHistory();
+        showToast(`已恢复：${typeLabel} · ${label}`);
+        return true;
+    }
+    catch (err) {
+        profiles = beforeProfiles; modules = beforeModules; runPlans = beforePlans; runRecords = beforeRecords;
+        saveState({ skipAntiIntegrity: true });
+        console.error(err);
+        appNotice(`恢复失败，已回到操作前状态：${err.message || err}`, "恢复未完成");
+        return false;
+    }
+}
+async function clearEntityRevisionHistory() {
+    const rows = revisionHistoryLoad();
+    if (!rows.length) {
+        showToast("当前没有编辑历史");
+        return false;
+    }
+    if (!await appConfirm(`清空本机保存的 ${rows.length} 条最近编辑历史？\n\n这不会删除 PL、模组、计划或跑团记录，也不会影响完整备份。`, { title: "清空最近编辑历史？", confirmText: "清空历史", danger: true }))
+        return false;
+    try { localStorage.removeItem(REVISION_HISTORY_KEY); } catch (err) { }
+    renderRevisionHistory();
+    showToast("最近编辑历史已清空");
+    return true;
+}
+function stableTextHash(text) {
+    let h = 2166136261;
+    const s = String(text || "");
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0).toString(36);
+}
+function importStateFingerprint(incoming) {
+    if (!incoming) return "none";
+    const ids = [
+        ...(incoming.profiles || []).map(x => `p:${x.id}:${Number(x.updatedAt || 0)}`),
+        ...(incoming.modules || []).map(x => `m:${x.id}:${Number(x.updatedAt || 0)}`),
+        ...(incoming.runPlans || []).map(x => `q:${x.id}:${Number(x.updatedAt || 0)}`),
+        ...(incoming.runRecords || []).map(x => `r:${x.id}:${Number(x.updatedAt || 0)}`)
+    ].sort();
+    return stableTextHash(ids.join("|") + `|${Number((incoming.settings || {}).version || 0)}`);
+}
+function operationLedgerLoad() {
+    const now = Date.now();
+    try {
+        const raw = JSON.parse(localStorage.getItem(OPERATION_LEDGER_KEY) || "[]"), rows = Array.isArray(raw) ? raw : [];
+        return rows.filter(row => {
+            if (!row || !row.id || !row.key) return false;
+            if (row.status === "pending") return now - Number(row.startedAt || 0) < 10 * 60 * 1000;
+            return now - Number(row.completedAt || row.startedAt || 0) < 30 * 24 * 60 * 60 * 1000;
+        }).slice(0, 120);
+    }
+    catch (err) { return []; }
+}
+function operationLedgerPersist(rows) {
+    try { localStorage.setItem(OPERATION_LEDGER_KEY, JSON.stringify((rows || []).slice(0, 120))); return true; }
+    catch (err) { console.warn("保存操作账本失败", err); return false; }
+}
+function beginIdempotentOperation(key, action, entityId, label = "") {
+    const now = Date.now(), rows = operationLedgerLoad(), existing = rows.find(row => row.key === key && (row.status === "pending" || row.status === "done"));
+    if (existing)
+        return { ok: false, status: existing.status, row: existing };
+    const row = { id: uid(), key: String(key), action: String(action || "operation"), entityId: String(entityId || ""), label: String(label || ""), status: "pending", startedAt: now };
+    rows.unshift(row);
+    operationLedgerPersist(rows);
+    return { ok: true, status: "pending", row };
+}
+function completeIdempotentOperation(id, meta = null) {
+    const rows = operationLedgerLoad(), row = rows.find(x => x.id === id);
+    if (!row) return false;
+    row.status = "done"; row.completedAt = Date.now(); if (meta) row.meta = meta;
+    return operationLedgerPersist(rows);
+}
+function failIdempotentOperation(id) {
+    const rows = operationLedgerLoad().filter(x => x.id !== id);
+    return operationLedgerPersist(rows);
+}
+function verifyArchivedPlanPersisted(planId) {
+    try {
+        const raw = safeParseStoredJson(localStorage.getItem(STORAGE_KEY));
+        if (!isCanonicalArchive(raw)) return false;
+        const rows = raw.data.runs || [], id = String(planId);
+        return rows.some(run => String(run.id) === id && run.status === "completed") && !rows.some(run => String(run.id) === id && run.status === "planned");
+    }
+    catch (err) { return false; }
+}
+
 /* 多标签页同步 */
 function storedArchiveSaveMeta(raw = null) {
     try {
@@ -19864,7 +20372,7 @@ function importConflictInfo(incoming) {
     return { profileSameId, moduleSameId, profileNameCollisions, moduleNameCollisions, runSameId: incomingRuns.filter(r => runIds.has(r.id)).length };
 }
 function openImportPreview(incoming, label = "备份") {
-    pendingImportPreview = { incoming, label };
+    pendingImportPreview = { incoming, label, operationKey: `import:${importStateFingerprint(incoming)}` };
     const c = importConflictInfo(incoming), cur = currentDataCounts(), inc = { profiles: incoming.profiles.length, modules: incoming.modules.length, plans: incoming.runPlans.length, records: incoming.runRecords.length };
     document.getElementById("importPreviewSubtitle").textContent = `${label} · 先确认后再写入当前档案。`;
     document.getElementById("importPreviewCounts").innerHTML = `<article class="import-count-card"><strong>当前档案</strong><span>${cur.profiles} PL · ${cur.modules} 模组 · ${cur.plans} 计划 · ${cur.records} 记录</span></article><article class="import-count-card"><strong>导入文件</strong><span>${inc.profiles} PL · ${inc.modules} 模组 · ${inc.plans} 计划 · ${inc.records} 记录</span></article>`;
@@ -19969,15 +20477,24 @@ function mergeIncomingState(incoming, policy = "current", useIncomingSettings = 
 async function executeImportPreview() {
     var _a;
     if (!pendingImportPreview)
-        return;
-    const incoming = pendingImportPreview.incoming, mode = ((_a = document.querySelector('input[name="importMode"]:checked')) === null || _a === void 0 ? void 0 : _a.value) || "merge", policy = document.getElementById("importConflictPolicy").value, useSettings = document.getElementById("importSettingsToo").checked;
+        return false;
+    const preview = pendingImportPreview, incoming = preview.incoming, mode = ((_a = document.querySelector('input[name="importMode"]:checked')) === null || _a === void 0 ? void 0 : _a.value) || "merge", policy = document.getElementById("importConflictPolicy").value, useSettings = document.getElementById("importSettingsToo").checked;
     if (mode === "replace" && !await appPhraseConfirm("你选择了“替换当前档案”。导入文件会完整覆盖当前 PL、模组、计划和跑团记录。", "覆盖", { title: "替换当前档案？", confirmText: "确认替换" }))
-        return;
+        return false;
     const before = buildCanonicalArchive(false);
+    let importOp = null;
     try {
         if (hasMeaningfulData(archiveCountsFromPayload(before)))
-            await createSafetySnapshot("before-import");
-        let next = mode === "replace" ? incoming : mergeIncomingState(incoming, policy, useSettings);
+            await ensureRepairRecoveryPoint("before-import");
+        const baseSaveNonce = String((currentSaveMeta() || {}).saveNonce || "no-base");
+        const opKey = `${preview.operationKey || `import:${importStateFingerprint(incoming)}`}:${mode}:${policy}:${useSettings ? "settings" : "no-settings"}:base:${stableTextHash(baseSaveNonce)}`;
+        const started = beginIdempotentOperation(opKey, "import", importStateFingerprint(incoming), preview.label || "备份");
+        if (!started.ok) {
+            appNotice(started.status === "done" ? "这份备份以相同导入方式已经成功执行过。为避免重复合并或重复覆盖，本次请求已停止。" : "这份备份正在导入处理中，请稍候，不要重复点击。", started.status === "done" ? "已经导入过" : "正在导入");
+            return false;
+        }
+        importOp = started.row;
+        const next = mode === "replace" ? incoming : mergeIncomingState(incoming, policy, useSettings);
         settings = next.settings;
         profiles = next.profiles;
         runPlans = next.runPlans;
@@ -19993,15 +20510,22 @@ async function executeImportPreview() {
         selectedModuleName = "";
         if (!saveState())
             throw new Error("导入后保存失败");
+        const stored = safeParseStoredJson(localStorage.getItem(STORAGE_KEY));
+        if (!isCanonicalArchive(stored))
+            throw new Error("导入后的落盘校验未通过");
+        assertCanonicalIntegrity(stored);
+        completeIdempotentOperation(importOp.id, { mode, policy, completedAt: Date.now(), counts: archiveCountsFromPayload(stored) });
         applyTheme(settings.theme);
         applyUiPreferences(settings);
         renderSortOptions();
         renderAllPrimaryViews();
         closeImportPreview();
         showToast(mode === "replace" ? "备份已恢复" : "备份已合并");
+        return true;
     }
     catch (err) {
         console.error(err);
+        if (importOp) failIdempotentOperation(importOp.id);
         try {
             const rollback = ensureSelfProfileAndLinks(hydrateCanonicalArchive(before));
             settings = rollback.settings; profiles = rollback.profiles; runPlans = rollback.runPlans; runRecords = rollback.runRecords; modules = rollback.modules || [];
@@ -20010,8 +20534,10 @@ async function executeImportPreview() {
             applyTheme(settings.theme); applyUiPreferences(settings); renderSortOptions(); renderAllPrimaryViews();
         } catch (rollbackErr) { console.error("导入失败后的内存回滚也失败", rollbackErr); }
         appNotice(`导入失败：${err.message || err}。已尽量恢复导入前状态。`);
+        return false;
     }
 }
+
 function closeImportPreview() { pendingImportPreview = null; document.getElementById("importPreviewBackdrop").hidden = true; syncModalPageScrollLock(); }
 importBackup = async function (file) { try {
     guardImportFile(file);
@@ -20521,9 +21047,55 @@ async function runStartupAutoChecks() {
     catch (err) { }
 }
 /* 焦点、快捷键与离开保护 */
-function visibleDialog() { var _a; const candidates = ["#secureBackupBackdrop", "#importPreviewBackdrop", "#migrationWizardBackdrop", "#globalSearchBackdrop", "#onboardingBackdrop", "#hoOrganizerBackdrop", "#moduleAdvancedBackdrop", "#nativeModuleEditorBackdrop", "#planEditorBackdrop", "#actionDialogBackdrop"].map(s => document.querySelector(s)).filter(el => el && !el.hidden); if (candidates.length)
-    return candidates[candidates.length - 1].querySelector('[role="dialog"]') || candidates[candidates.length - 1]; if ((_a = els.overlay) === null || _a === void 0 ? void 0 : _a.classList.contains("open"))
-    return !els.settingsModal.hidden ? els.settingsModal : els.profileModal; return null; }
+let modalOpenSequence = 0;
+function modalSurfaceZIndex(el) {
+    if (!el) return -1;
+    const raw = getComputedStyle(el).zIndex, n = Number(raw);
+    return Number.isFinite(n) ? n : 0;
+}
+function modalManagedSurfaces() {
+    const ids = ["secureBackupBackdrop", "externalBackupBrowserBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "globalSearchBackdrop", "onboardingBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "planEditorBackdrop", "actionDialogBackdrop"];
+    return [els.overlay, ...ids.map(id => document.getElementById(id)).filter(Boolean)].filter(Boolean);
+}
+function modalSurfaceBaseZIndex(el) {
+    if (!el) return 0;
+    if (el.dataset.modalBaseZ) return Number(el.dataset.modalBaseZ) || 0;
+    const inline = el.style.getPropertyValue("z-index");
+    if (inline) el.style.removeProperty("z-index");
+    const raw = getComputedStyle(el).zIndex, n = Number(raw), base = Number.isFinite(n) ? n : 0;
+    el.dataset.modalBaseZ = String(base);
+    if (inline) el.style.setProperty("z-index", inline, "important");
+    return base;
+}
+function clearManagedSurfaceInertPath(el) {
+    let node = el;
+    while (node && node !== document.body) {
+        if (node instanceof HTMLElement) {
+            node.inert = false;
+            node.removeAttribute("data-v79-inert");
+        }
+        node = node.parentElement;
+    }
+}
+function syncModalLayerOrder() {
+    const surfaces = modalManagedSurfaces();
+    surfaces.forEach(el => { if (el.hidden || (el === els.overlay && !el.classList.contains("open"))) el.style.removeProperty("z-index"); });
+    const open = surfaces.filter(el => el === els.overlay ? el.classList.contains("open") : !el.hidden);
+    // 后打开的模态面永远位于更上层；原始 z-index 仅作为同一打开序列下的兜底。
+    // 这样从确认框、计划编辑器等界面继续打开子弹窗时，不会因为旧 CSS 层级更高而把新弹窗压在下面。
+    open.sort((a, b) => Number(a.dataset.modalOpenSeq || 0) - Number(b.dataset.modalOpenSeq || 0) || modalSurfaceBaseZIndex(a) - modalSurfaceBaseZIndex(b));
+    open.forEach((el, index) => el.style.setProperty("z-index", String(600 + index * 30), "important"));
+}
+function visibleDialog() {
+    const selectors = ["#secureBackupBackdrop", "#externalBackupBrowserBackdrop", "#importPreviewBackdrop", "#migrationWizardBackdrop", "#globalSearchBackdrop", "#onboardingBackdrop", "#hoOrganizerBackdrop", "#moduleAdvancedBackdrop", "#nativeModuleEditorBackdrop", "#planEditorBackdrop", "#actionDialogBackdrop"];
+    const surfaces = selectors.map(sel => document.querySelector(sel)).filter(el => el && !el.hidden);
+    if (els.overlay && els.overlay.classList.contains("open")) surfaces.push(els.overlay);
+    if (!surfaces.length) return null;
+    surfaces.sort((a, b) => modalSurfaceZIndex(a) - modalSurfaceZIndex(b) || Number(a.dataset.modalOpenSeq || 0) - Number(b.dataset.modalOpenSeq || 0));
+    const top = surfaces[surfaces.length - 1];
+    if (top === els.overlay) return !els.settingsModal.hidden ? els.settingsModal : els.profileModal;
+    return top.querySelector('[role="dialog"]') || top;
+}
 function dialogInteractionRoot(active) {
     if (active === els.profileModal && els.profileModalWrap && !els.profileModalWrap.hidden)
         return els.profileModalWrap;
@@ -20534,13 +21106,16 @@ function syncDialogInert() {
     const active = visibleDialog();
     if (!active)
         return;
+    const activeSurface = active.closest ? active.closest(".overlay,.secure-backup-backdrop,.external-backup-browser-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.global-search-backdrop,.onboarding-backdrop,.ho-organizer-backdrop,.module-advanced-backdrop,.native-module-editor-backdrop,.plan-editor-backdrop,.action-dialog-backdrop") : null;
+    clearManagedSurfaceInertPath(activeSurface || active);
     let node = dialogInteractionRoot(active);
     while (node && node !== document.body) {
         const parent = node.parentElement;
         if (!parent)
             break;
         [...parent.children].forEach(sib => {
-            if (sib !== node && sib instanceof HTMLElement && !['externalSyncBanner', 'appUpdateBanner', 'undoDeleteToast'].includes(sib.id)) {
+            const exempt = sib instanceof HTMLElement && (sib.hasAttribute("data-modal-inert-exempt") || ['externalSyncBanner', 'appUpdateBanner', 'undoDeleteToast', 'externalBackupNotice'].includes(sib.id));
+            if (sib !== node && sib instanceof HTMLElement && !exempt) {
                 sib.inert = true;
                 sib.setAttribute("data-v79-inert", "");
             }
@@ -20569,97 +21144,69 @@ function restorePoppedSurfaceGuard(id) { try {
 }
 catch (err) { } }
 function topOpenHistorySurfaceId() {
-    var _a, _b;
-    const action = document.getElementById("actionDialogBackdrop");
-    if (action && !action.hidden)
-        return "actionDialogBackdrop";
-    if (!((_a = els.quickCreateMenu) === null || _a === void 0 ? void 0 : _a.hidden))
-        return "quickCreateMenu";
-    if (!((_b = els.mobileToolsSheet) === null || _b === void 0 ? void 0 : _b.hidden))
-        return "mobileToolsSheet";
-    for (const id of ["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "secureBackupBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "planEditorBackdrop"]) {
-        if (historySurfaceIsOpen(id))
-            return id;
-    }
-    if (historySurfaceIsOpen("overlay"))
-        return "overlay";
-    return "";
+    const ids = ["actionDialogBackdrop", "externalBackupBrowserBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "secureBackupBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "planEditorBackdrop", "quickCreateMenu", "mobileToolsSheet", "overlay"];
+    const rows = ids.map(id => ({ id, el: historySurfaceById(id) })).filter(row => row.el && historySurfaceIsOpen(row.id));
+    if (!rows.length)
+        return "";
+    rows.sort((a, b) => modalSurfaceZIndex(a.el) - modalSurfaceZIndex(b.el) || Number(a.el.dataset.modalOpenSeq || 0) - Number(b.el.dataset.modalOpenSeq || 0));
+    return rows[rows.length - 1].id;
 }
-function closeTopSurfaceFromSystemBack() {
-    var _a, _b, _c, _d, _e, _f, _g;
-    const action = document.getElementById("actionDialogBackdrop");
-    if (action && !action.hidden) {
-        restorePoppedSurfaceGuard("actionDialogBackdrop");
-        finishActionDialog(null);
-        return true;
-    }
-    if (!((_a = els.quickCreateMenu) === null || _a === void 0 ? void 0 : _a.hidden)) {
-        restorePoppedSurfaceGuard("quickCreateMenu");
-        toggleQuickCreateMenu(false);
-        return true;
-    }
-    if (!((_b = els.mobileToolsSheet) === null || _b === void 0 ? void 0 : _b.hidden)) {
-        restorePoppedSurfaceGuard("mobileToolsSheet");
-        toggleMobileTools(false);
-        return true;
-    }
-    if (!((_c = document.getElementById("globalSearchBackdrop")) === null || _c === void 0 ? void 0 : _c.hidden)) {
-        restorePoppedSurfaceGuard("globalSearchBackdrop");
-        closeGlobalSearch();
-        return true;
-    }
-    if (!((_d = document.getElementById("importPreviewBackdrop")) === null || _d === void 0 ? void 0 : _d.hidden)) {
-        restorePoppedSurfaceGuard("importPreviewBackdrop");
-        closeImportPreview();
-        return true;
-    }
-    if (!((_e = document.getElementById("migrationWizardBackdrop")) === null || _e === void 0 ? void 0 : _e.hidden)) {
-        restorePoppedSurfaceGuard("migrationWizardBackdrop");
-        closeMigrationWizard();
-        return true;
-    }
-    if (!((_f = document.getElementById("onboardingBackdrop")) === null || _f === void 0 ? void 0 : _f.hidden)) {
-        restorePoppedSurfaceGuard("onboardingBackdrop");
-        closeOnboardingTemporarily();
-        return true;
-    }
-    if (els.secureBackupBackdrop && !els.secureBackupBackdrop.hidden) {
-        restorePoppedSurfaceGuard("secureBackupBackdrop");
-        closeSecureBackup();
-        return true;
-    }
-    if (els.hoOrganizerBackdrop && !els.hoOrganizerBackdrop.hidden) {
-        restorePoppedSurfaceGuard("hoOrganizerBackdrop");
-        closeHoOrganizer();
-        return true;
-    }
-    if (els.moduleAdvancedBackdrop && !els.moduleAdvancedBackdrop.hidden) {
-        restorePoppedSurfaceGuard("moduleAdvancedBackdrop");
-        closeModuleAdvancedEditor();
-        return true;
-    }
-    if (els.nativeModuleEditorBackdrop && !els.nativeModuleEditorBackdrop.hidden) {
-        restorePoppedSurfaceGuard("nativeModuleEditorBackdrop");
-        void closeNativeModuleEditor(true);
-        return true;
-    }
-    if (els.planEditorBackdrop && !els.planEditorBackdrop.hidden) {
-        restorePoppedSurfaceGuard("planEditorBackdrop");
-        closePlanEditor();
-        return true;
-    }
-    if ((_g = els.overlay) === null || _g === void 0 ? void 0 : _g.classList.contains("open")) {
-        restorePoppedSurfaceGuard("overlay");
-        if (!els.settingsModal.hidden)
-            void closeSettings(false);
-        else if (linkedReturnContext)
-            void closeEditor(true);
-        else
-            void closeEditor(true);
+function closeHistorySurfaceById(id) {
+    if (!id)
+        return false;
+    if (id === "actionDialogBackdrop") { finishActionDialog(null); return true; }
+    if (id === "quickCreateMenu") { toggleQuickCreateMenu(false); return true; }
+    if (id === "mobileToolsSheet") { toggleMobileTools(false); return true; }
+    if (id === "externalBackupBrowserBackdrop") { closeExternalBackupBrowser(); return true; }
+    if (id === "globalSearchBackdrop") { closeGlobalSearch(); return true; }
+    if (id === "importPreviewBackdrop") { closeImportPreview(); return true; }
+    if (id === "migrationWizardBackdrop") { closeMigrationWizard(); return true; }
+    if (id === "onboardingBackdrop") { closeOnboardingTemporarily(); return true; }
+    if (id === "secureBackupBackdrop") { closeSecureBackup(); return true; }
+    if (id === "hoOrganizerBackdrop") { closeHoOrganizer(); return true; }
+    if (id === "moduleAdvancedBackdrop") { closeModuleAdvancedEditor(); return true; }
+    if (id === "nativeModuleEditorBackdrop") { void closeNativeModuleEditor(true); return true; }
+    if (id === "planEditorBackdrop") { closePlanEditor(); return true; }
+    if (id === "overlay") {
+        if (!els.settingsModal.hidden) void closeSettings(false);
+        else void closeEditor(true);
         return true;
     }
     return false;
 }
+function closeTransientEscapeLayer(target) {
+    if (els.selfIntroExportPanel && !els.selfIntroExportPanel.hidden) {
+        toggleSelfIntroExportCenter(false);
+        if (els.selfIntroExport) els.selfIntroExport.focus();
+        return true;
+    }
+    const selectors = ["[data-plan-module-options]", "[data-editor-pl-options]", "[data-pc-options]", "[data-record-kp-options]", "[data-record-pl-options]"];
+    for (const selector of selectors) {
+        const list = [...document.querySelectorAll(selector)].find(el => !el.hidden && el.getClientRects().length);
+        if (!list)
+            continue;
+        list.hidden = true;
+        const combo = list.closest('[role="combobox"],.plan-module-picker,.assignment-pc-combobox,.record-picker-combobox,.profile-picker-combobox') || list.parentElement;
+        const input = combo && combo.querySelector('input[aria-expanded="true"]');
+        if (input) input.setAttribute("aria-expanded", "false");
+        return true;
+    }
+    return false;
+}
+function closeTopSurfaceFromEscape(target) {
+    if (closeTransientEscapeLayer(target))
+        return true;
+    const id = topOpenHistorySurfaceId();
+    return closeHistorySurfaceById(id);
+}
+function closeTopSurfaceFromSystemBack() {
+    const id = topOpenHistorySurfaceId();
+    if (!id)
+        return false;
+    restorePoppedSurfaceGuard(id);
+    return closeHistorySurfaceById(id);
+}
+
 function initSystemBackNavigation() {
     try {
         history.replaceState({ tag: HISTORY_STATE_TAG, view: currentView }, "", location.href);
@@ -20667,6 +21214,11 @@ function initSystemBackNavigation() {
     catch (err) { }
     window.addEventListener("popstate", e => {
         var _a, _b;
+        if (!flushPendingInteractionSaves()) {
+            try { history.pushState({ tag: HISTORY_STATE_TAG, view: currentView, modal: topOpenHistorySurfaceId() || undefined }, "", location.href); } catch (err) { }
+            showToast("当前还有未能保存的修改，已阻止返回；请先解决保存问题");
+            return;
+        }
         const targetModal = ((_a = e.state) === null || _a === void 0 ? void 0 : _a.tag) === HISTORY_STATE_TAG ? String(e.state.modal || "") : "";
         const topId = topOpenHistorySurfaceId();
         if (targetModal && historySurfaceIsOpen(targetModal) && topId === targetModal)
@@ -20731,18 +21283,9 @@ function handleGlobalKeys(e) {
         return;
     }
     if (e.key === "Escape") {
-        const custom = ["onboardingBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop"].find(id => !document.getElementById(id).hidden);
-        if (custom) {
+        if (closeTopSurfaceFromEscape(e.target)) {
             e.preventDefault();
             e.stopImmediatePropagation();
-            if (custom === "onboardingBackdrop")
-                closeOnboardingTemporarily();
-            if (custom === "globalSearchBackdrop")
-                closeGlobalSearch();
-            if (custom === "importPreviewBackdrop")
-                closeImportPreview();
-            if (custom === "migrationWizardBackdrop")
-                closeMigrationWizard();
             return;
         }
     }
@@ -20801,19 +21344,22 @@ function consumeSurfaceHistory(id) {
 }
 function initDialogFocusLifecycle() {
     ensureActionDialog();
-    const surfaces = [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.quickCreateMenu, els.mobileToolsSheet,
+    const surfaces = [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.quickCreateMenu, els.mobileToolsSheet,
         ...["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"].map(id => document.getElementById(id)).filter(Boolean)].filter(Boolean);
     const openState = new WeakMap();
     const isOpen = el => el === els.overlay ? el.classList.contains("open") : !el.hidden;
     surfaces.forEach(el => { openState.set(el, isOpen(el)); new MutationObserver(() => { const prev = openState.get(el), next = isOpen(el); if (prev === next)
         return; openState.set(el, next); const dialog = el === els.overlay ? (!els.settingsModal.hidden ? els.settingsModal : els.profileModal) : (el.querySelector('[role="dialog"]') || el); const hid = modalHistoryId(el); if (next) {
+        clearManagedSurfaceInertPath(el);
+        el.dataset.modalOpenSeq = String(++modalOpenSequence);
         rememberDialogOpener(dialog);
         pushSurfaceHistory(hid);
     }
     else {
         restoreDialogOpener(dialog);
         consumeSurfaceHistory(hid);
-    } syncDialogInert(); syncModalPageScrollLock(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
+    } syncModalLayerOrder(); syncDialogInert(); syncModalPageScrollLock(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
+    syncModalLayerOrder();
 }
 /* 统一模态表面识别，包含长期使用增强界面 */
 function initV79() {
@@ -20822,8 +21368,8 @@ function initV79() {
     renderTrashBin();
     initMultiTabSync();
     initShareMode();
-    ["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop"].forEach(id => { const el = document.getElementById(id); watchModalSurface(el); new MutationObserver(() => { syncDialogInert(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
-    [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop].forEach(el => new MutationObserver(syncDialogInert).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }));
+    ["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "externalBackupBrowserBackdrop"].forEach(id => { const el = document.getElementById(id); watchModalSurface(el); if (el) new MutationObserver(() => { syncDialogInert(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
+    [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop].filter(Boolean).forEach(el => new MutationObserver(syncDialogInert).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }));
     document.addEventListener("keydown", handleGlobalKeys, true);
     document.getElementById("globalSearchInput").addEventListener("input", () => { globalSearchVisibleCount = GLOBAL_SEARCH_BATCH; globalSearchActiveIndex = 0; clearTimeout(globalSearchTimer); globalSearchTimer = setTimeout(renderGlobalSearch, 70); });
     document.getElementById("settingsSearchInput").addEventListener("input", () => { clearTimeout(settingsSearchTimer); settingsSearchTimer = setTimeout(renderSettingsSearch, 80); });
@@ -20865,7 +21411,6 @@ function initV79() {
     document.getElementById("openMigrationExportBtn").addEventListener("click", openMigrationWizard);
     document.getElementById("openMigrationImportBtn").addEventListener("click", openMigrationWizard);
     document.getElementById("closeMigrationWizardBtn").addEventListener("click", closeMigrationWizard);
-    document.getElementById("closeMigrationWizardFootBtn").addEventListener("click", closeMigrationWizard);
     document.getElementById("migrationWizardBackdrop").addEventListener("click", e => { if (e.target.id === "migrationWizardBackdrop")
         closeMigrationWizard(); });
     document.getElementById("migrationWizardExportBtn").addEventListener("click", openMigrationExport);
@@ -20987,20 +21532,25 @@ function flushEditorDraftNow() { clearTimeout(editorDraftTimer); editorDraftTime
 }
 catch (err) { } }
 function scheduleEditorDraft(kind) { clearTimeout(editorDraftTimer); editorDraftTimer = setTimeout(flushEditorDraftNow, 450); }
-function flushPendingInteractionSaves() { try {
-    flushPlanInputSave();
+function flushPendingInteractionSaves() {
+    let ok = true;
+    try {
+        const planId = planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId;
+        if (planId) { flushPlanInputSave(); if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId) ok = false; }
+    }
+    catch (err) { ok = false; }
+    try {
+        const recordId = recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId;
+        if (recordId) { flushRecordInputSave(); if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId) ok = false; }
+    }
+    catch (err) { ok = false; }
+    try { flushEditorDraftNow(); }
+    catch (err) { }
+    try { if (selfIntroDirty()) commitSelfIntroDraft(); }
+    catch (err) { }
+    return ok;
 }
-catch (err) { } try {
-    flushRecordInputSave();
-}
-catch (err) { } try {
-    flushEditorDraftNow();
-}
-catch (err) { } try {
-    if (selfIntroDirty())
-        commitSelfIntroDraft();
-}
-catch (err) { } }
+
 function applyProfileDraftToForm() { if (!draft)
     return; const self = isSelfProfile(draft); els.name.value = self ? SELF_DEFAULT_NAME : draft.name; els.name.disabled = self; els.contact.value = draft.contact || ""; els.birthDate.value = draft.birthDate || ""; els.startDate.value = draft.startDate || ""; els.gender.value = draft.gender || ""; els.usualRpLength.value = draft.usualRpLength || ""; els.rpLengthMin.value = draft.rpLengthMin || ""; els.rpLengthMax.value = draft.rpLengthMax || ""; renderProfileStatusEditor(); renderSliderEditor(); renderEditRuns(); updateAllEditorStateIndicators(); }
 async function offerEditorDraftRecovery(kind) {
@@ -21648,9 +22198,11 @@ els.planEditorContent.addEventListener("input", e => {
         return;
     if (e.target.matches("[data-plan-module-query]")) {
         const value = e.target.value, current = runPlans.find(p => p.id === planId), linked = moduleById(current === null || current === void 0 ? void 0 : current.moduleId);
-        queuePlanInputMutation(planId, plan => { plan.moduleName = value; if (!linked || normalizedEntityNameKey(value) !== normalizedEntityNameKey(linked.name))
-            plan.moduleId = ""; }, "已自动保存：模组名称");
-        els.planEditorTitle.textContent = value.trim() || "新建开团计划";
+        // 已经有关联时，输入框只作为“搜索替换模组”的查询框；只有明确点选结果才改变正式关联。
+        if (!linked) {
+            queuePlanInputMutation(planId, plan => { plan.moduleName = value; }, "已自动保存：模组名称");
+            els.planEditorTitle.textContent = value.trim() || "新建开团计划";
+        }
         updatePlanModulePicker(planId, { open: true });
         return;
     }
@@ -21696,11 +22248,8 @@ els.planEditorContent.addEventListener("change", e => {
     if (e.target.matches("[data-plan-module-query]")) {
         if ((planInputPending === null || planInputPending === void 0 ? void 0 : planInputPending.planId) === planId)
             flushPlanInputSave();
-        const plan = runPlans.find(p => p.id === planId), matches = modulesByNormalizedName(e.target.value);
-        if (matches.length === 1 && (plan === null || plan === void 0 ? void 0 : plan.moduleId) !== matches[0].id)
-            linkPlanToModule(planId, matches[0].id);
-        else
-            updatePlanModulePicker(planId, { open: matches.length !== 1 });
+        // change / 失焦只刷新候选，不再偷偷更换正式模组关联。
+        updatePlanModulePicker(planId, { open: true });
         return;
     }
     if (e.target.matches("[data-plan-editor-kp-profile]")) {
@@ -21737,8 +22286,15 @@ els.planEditorContent.addEventListener("focusout", e => {
     if (e.target.matches("[data-plan-module-query]")) {
         const wrap = e.target.closest("[data-editor-plan-id]");
         if (wrap)
-            setTimeout(() => { const options = wrap.querySelector("[data-plan-module-options]"); if (options && !wrap.contains(document.activeElement))
-                options.hidden = true; }, 140);
+            setTimeout(() => {
+                const options = wrap.querySelector("[data-plan-module-options]");
+                if (options && !wrap.contains(document.activeElement)) {
+                    options.hidden = true;
+                    const planId = wrap.dataset.editorPlanId, plan = runPlans.find(p => p.id === planId), linked = moduleById(plan === null || plan === void 0 ? void 0 : plan.moduleId);
+                    // 搜索替换模组时没有明确选择就恢复正式关联名称，避免“输入框看起来换了、实际没换”的错觉。
+                    if (linked && e.target.value !== linked.name) e.target.value = linked.name;
+                }
+            }, 140);
     }
     if (e.target.matches("[data-editor-add-pl-query]")) {
         const wrap = e.target.closest("[data-editor-plan-id]");
@@ -22419,8 +22975,13 @@ els.recordsBoard.addEventListener("click", e => {
     }
     const doneMode = e.target.closest("[data-record-done]");
     if (doneMode) {
-        if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId)
+        if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId) {
             flushRecordInputSave();
+            if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId) {
+                showToast("当前记录尚未保存，已保持编辑状态");
+                return;
+            }
+        }
         recordEditingIds.delete(recordId);
         delete runRecordTransientCollapseState[recordId];
         renderRunRecords({ preservePageScroll: true, centerSelected: false });
@@ -22949,7 +23510,6 @@ els.grid.addEventListener("click", e => { const scoreToggle = e.target.closest("
     return; if (card)
     openEditor(card.dataset.id); });
 els.closeHoOrganizer.addEventListener("click", closeHoOrganizer);
-els.closeHoOrganizerFoot.addEventListener("click", closeHoOrganizer);
 els.hoOrganizerBackdrop.addEventListener("click", e => { if (e.target === els.hoOrganizerBackdrop)
     closeHoOrganizer(); });
 els.hoShowEmptyColumns.addEventListener("change", () => { hoOrganizerShowEmpty = els.hoShowEmptyColumns.checked; renderHoOrganizer(); });
@@ -23266,7 +23826,6 @@ if (els.externalBackupNoticeClose) {
     els.externalBackupNoticeClose.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); hideExternalBackupSuccessNotice(); });
 }
 els.closeExternalBackupBrowser.addEventListener("click", closeExternalBackupBrowser);
-els.closeExternalBackupBrowserFoot.addEventListener("click", closeExternalBackupBrowser);
 els.refreshExternalBackupBrowser.addEventListener("click", () => { void openExternalBackupBrowser(); });
 els.changeExternalBackupLocationFromBrowser.addEventListener("click", async () => { closeExternalBackupBrowser(); await chooseExternalBackupTarget(); });
 els.externalBackupBrowserBackdrop.addEventListener("click", e => { if (e.target === els.externalBackupBrowserBackdrop) closeExternalBackupBrowser(); });
@@ -23390,6 +23949,13 @@ document.addEventListener("keydown", e => {
     else
         closeEditor(true);
 });
+/* 最近编辑历史：设置页直接恢复单个对象，恢复前仍走整库安全恢复点。 */
+const revisionHistoryListEl = document.getElementById("revisionHistoryList");
+if (revisionHistoryListEl) revisionHistoryListEl.addEventListener("click", e => { const btn = e.target.closest("[data-revision-restore]"); if (btn) void restoreEntityRevision(btn.dataset.revisionRestore); });
+const clearRevisionHistoryBtnEl = document.getElementById("clearRevisionHistoryBtn");
+if (clearRevisionHistoryBtnEl) clearRevisionHistoryBtnEl.addEventListener("click", () => void clearEntityRevisionHistory());
+renderRevisionHistory();
+
 /* ---------- 28. 应用启动：生成排序选项、恢复免责声明状态并显示当前全部档案 ---------- */
 // 初始渲染：全站折叠区默认收起；用户手动状态优先且跨刷新记忆。
 initPersistentCollapseUX();
@@ -23572,6 +24138,317 @@ document.addEventListener("click", e => { var _a, _b, _c, _d; const clear = (_b 
     e.preventDefault();
     resetModuleStructuredFilters();
 } }, true);
+
+/* v8.1.8.1 · 第三层防呆：数据异常预防、备份新鲜度、恢复冲突与安全修复 */
+let dataProtectionMode = false, dataProtectionBypassDepth = 0;
+function archiveDataFingerprint(payload) {
+    try { return stableTextHash(JSON.stringify((payload && payload.data) || payload || {})); }
+    catch (err) { return ""; }
+}
+function verifyBackupPayloadRoundTrip(payload, serialized = "") {
+    assertCanonicalIntegrity(payload);
+    const text = serialized || JSON.stringify(payload), parsed = assertSafeImportedObject(JSON.parse(text));
+    if (!isCanonicalArchive(parsed)) throw new Error("生成的备份未能回读为完整档案");
+    assertCanonicalIntegrity(parsed);
+    const before = archiveCountsFromPayload(payload), after = archiveCountsFromPayload(parsed);
+    if (JSON.stringify(before) !== JSON.stringify(after)) throw new Error("备份回读后的条目数量与当前档案不一致");
+    const f1 = archiveDataFingerprint(payload), f2 = archiveDataFingerprint(parsed);
+    if (!f1 || f1 !== f2) throw new Error("备份回读校验指纹不一致");
+    return { counts: after, fingerprint: f2, bytes: new Blob([text]).size };
+}
+function buildEmergencyRawBackup(reason = "") {
+    return {
+        emergencyBackup: true,
+        emergencyFormat: "PL收集梦想生活-emergency-raw-v1",
+        createdAt: new Date().toISOString(),
+        appVersion: APP_UI_VERSION,
+        schemaVersion: DATA_SCHEMA_VERSION,
+        reason: String(reason || ""),
+        settings: clone(settings),
+        profiles: clone(profiles),
+        runPlans: clone(runPlans),
+        runRecords: clone(runRecords),
+        modules: clone(modules)
+    };
+}
+function exportEmergencyRawBackup(reason = "", options = {}) {
+    const payload = buildEmergencyRawBackup(reason), text = JSON.stringify(payload, null, 2), parsed = assertSafeImportedObject(JSON.parse(text));
+    if (!Array.isArray(parsed.profiles) || !Array.isArray(parsed.runPlans) || !Array.isArray(parsed.runRecords) || !Array.isArray(parsed.modules)) throw new Error("应急备份回读结构不完整");
+    const before = { profiles: payload.profiles.length, modules: payload.modules.length, plans: payload.runPlans.length, records: payload.runRecords.length };
+    const after = { profiles: parsed.profiles.length, modules: parsed.modules.length, plans: parsed.runPlans.length, records: parsed.runRecords.length };
+    if (JSON.stringify(before) !== JSON.stringify(after)) throw new Error("应急备份回读数量不一致");
+    const d = new Date(), stamp = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}_${String(d.getHours()).padStart(2,"0")}${String(d.getMinutes()).padStart(2,"0")}`;
+    downloadBlobFile(new Blob([text], { type: "application/json;charset=utf-8" }), `${APP_NAME}_应急原始备份_${stamp}.json`);
+    if (!options.silent) appNotice("标准完整备份无法通过结构自校验，系统已改为导出一份“应急原始备份”。它保留当前内存中的 PL、模组、计划、跑团记录和设置，可通过导入功能作为旧版结构恢复。请处理完整性问题后再重新导出标准完整备份。", "已先保住当前原始数据");
+    return true;
+}
+async function ensureRepairRecoveryPoint(reason) {
+    try {
+        await createSafetySnapshot(reason);
+        return "snapshot";
+    } catch (err) {
+        console.warn("标准恢复点创建失败，改为应急原始备份", err);
+        exportEmergencyRawBackup(`${reason}: ${err?.message || err}`, { silent: true });
+        showToast("标准恢复点不可用，已先下载应急原始备份");
+        return "emergency";
+    }
+}
+function getBackupChangeCount() { try { return Math.max(0, Number(localStorage.getItem(BACKUP_CHANGE_COUNT_KEY) || 0) || 0); } catch (err) { return 0; } }
+function setBackupChangeCount(n) { try { localStorage.setItem(BACKUP_CHANGE_COUNT_KEY, String(Math.max(0, Number(n) || 0))); } catch (err) {} }
+function backupChangeThreshold(counts = currentDataCounts()) { const total = Number(counts.profiles||0)+Number(counts.modules||0)+Number(counts.plans||0)+Number(counts.records||0); return Math.max(10, Math.min(50, Math.ceil(Math.max(1,total) * .25))); }
+function recordSuccessfulDataMutation() {
+    try {
+        const payload = buildCanonicalArchive(false), fp = archiveDataFingerprint(payload), previous = String(localStorage.getItem(BACKUP_LAST_SAVE_FINGERPRINT_KEY) || "");
+        if (previous && fp && previous !== fp) setBackupChangeCount(getBackupChangeCount() + 1);
+        localStorage.setItem(BACKUP_LAST_SAVE_FINGERPRINT_KEY, fp || previous);
+    } catch (err) { console.warn("记录备份新鲜度失败", err); }
+}
+const v8181BackupReminderDueInfo = backupReminderDueInfo;
+backupReminderDueInfo = function() {
+    const base = v8181BackupReminderDueInfo(), changes = getBackupChangeCount(), threshold = backupChangeThreshold(), meta = safeReadLocalMeta(LAST_EXPORT_META_KEY);
+    if (!hasMeaningfulData()) return { due:false, changes, threshold, meta };
+    if (getBackupReminderDays() === 0) return { due:false, changes, threshold, meta };
+    const changeDue = changes >= threshold;
+    return Object.assign({}, base, { due: Boolean(base.due || changeDue), changeDue, changes, threshold, meta: base.meta || meta });
+};
+const v8181RenderBackupReminderBanner = renderBackupReminderBanner;
+renderBackupReminderBanner = function() {
+    v8181RenderBackupReminderBanner();
+    if (!els?.dataSafetyBanner || els.dataSafetyBanner.hidden) return;
+    const info = backupReminderDueInfo(), ageDays = info.meta?.exportedAt ? Math.floor((Date.now()-Number(info.meta.exportedAt))/86400000) : 0;
+    if (info.meta) {
+        els.dataSafetyBannerTitle.textContent = "建议更新完整备份";
+        const reasons = [];
+        if (ageDays > 0) reasons.push(`距上次完整备份约 ${ageDays} 天`);
+        if (info.changes > 0) reasons.push(`期间约 ${info.changes} 次有效修改`);
+        els.dataSafetyBannerText.textContent = `${reasons.join("，") || "当前档案已发生变化"}。自动保存和恢复点不能替代完整备份。`;
+    }
+};
+function looseModuleNameKey(value) {
+    const base = normalizedEntityNameKey(value);
+    return base.replace(/[\s\-‐‑‒–—―_·•・:：/\\|.。]+/g, "").replace(/[（）()\[\]【】{}<>《》]/g, "");
+}
+function modulesByLooseName(name, excludeId="") {
+    const key = looseModuleNameKey(name); if (!key || key.length < 2) return [];
+    return modules.filter(m => m.id !== excludeId && looseModuleNameKey(m.name) === key && normalizedEntityNameKey(m.name) !== normalizedEntityNameKey(name));
+}
+const v8181UpdateModuleHint = updateModuleAntiMistakeHint;
+updateModuleAntiMistakeHint = function() {
+    v8181UpdateModuleHint();
+    if (!nativeModuleDraft || els.nativeModuleEditorBackdrop.hidden) return;
+    const input = els.nativeModuleEditorContent.querySelector('[data-native-module-field="name"]'), hint = input && antiEnsureHint(input, "module-duplicate");
+    if (!input || !hint || input.dataset.antiError === "1") return;
+    const near = modulesByLooseName(antiCleanSingleLine(input.value), nativeModuleEditingId || "");
+    hint.classList.toggle("near", Boolean(near.length));
+    if (near.length) {
+        hint.hidden = false; input.dataset.antiWarning = "1";
+        hint.innerHTML = `<div><strong>发现可能是同一模组的档案</strong><br>${near.slice(0,3).map(m=>escapeHTML(m.name)).join("、")}<br>系统已忽略全半角、空格、大小写和常见分隔符差异，请确认是否需要关联已有档案。</div><button type="button" class="btn small" data-anti-open-module="${escapeHTML(near[0].id)}">打开可能重复档案</button>`;
+    } else { hint.classList.remove("near"); input.dataset.antiWarning = "0"; }
+};
+let allowNearDuplicateModuleSaveOnce = false;
+els.saveNativeModuleEditor.addEventListener("click", async e => {
+    if (!nativeModuleDraft || allowNearDuplicateModuleSaveOnce) { allowNearDuplicateModuleSaveOnce = false; return; }
+    syncNativeModuleDraftFromForm();
+    if (moduleByNormalizedName(nativeModuleDraft.name, nativeModuleEditingId)) return;
+    const near = modulesByLooseName(nativeModuleDraft.name, nativeModuleEditingId || "");
+    if (!near.length) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    const ok = await appConfirm(`“${nativeModuleDraft.name}”与已有模组“${near[0].name}”高度相似（已忽略空格、全半角、大小写和常见分隔符）。\n\n请先确认这确实是不同模组。`, {title:"可能重复的模组", confirmText:"仍然保存为独立模组", cancelText:"返回检查"});
+    if (ok) { allowNearDuplicateModuleSaveOnce = true; els.saveNativeModuleEditor.click(); }
+}, true);
+
+function importSimulation(incoming, mode, policy) {
+    if (mode === "replace") return { add: incoming.profiles.length + incoming.modules.length + incoming.runPlans.length + incoming.runRecords.length, update:0, conflict:0, ignore:0, replace:true };
+    const currentProfileIds=new Set(profiles.map(p=>p.id)), currentModuleIds=new Set(modules.map(m=>m.id)), currentRunIds=new Set([...runPlans,...runRecords].map(r=>r.id));
+    const profileNames=new Set(profiles.map(p=>normalizedEntityNameKey(rawProfileName(p)))), moduleNames=new Set(modules.map(m=>normalizedEntityNameKey(m.name)));
+    let add=0,update=0,conflict=0,ignore=0;
+    incoming.profiles.forEach(p=>{ const hitId=currentProfileIds.has(p.id), hitName=!hitId&&profileNames.has(normalizedEntityNameKey(rawProfileName(p))); if(hitId||hitName){conflict++; if(policy==="incoming") update++; else if(policy==="both") add++; else ignore++;} else add++; });
+    incoming.modules.forEach(m=>{ const hitId=currentModuleIds.has(m.id), hitName=!hitId&&moduleNames.has(normalizedEntityNameKey(m.name)); if(hitId||hitName){conflict++; if(policy==="incoming") update++; else if(policy==="both") add++; else ignore++;} else add++; });
+    [...incoming.runPlans,...incoming.runRecords].forEach(r=>{ if(currentRunIds.has(r.id)){conflict++; if(policy==="incoming") update++; else if(policy==="both") add++; else ignore++;} else add++; });
+    return {add,update,conflict,ignore,replace:false};
+}
+function renderImportOutcomeSimulation() {
+    if (!pendingImportPreview) return; const box=document.getElementById("importOutcomeSummary"); if(!box) return;
+    const mode=document.querySelector('input[name="importMode"]:checked')?.value||"merge", policy=document.getElementById("importConflictPolicy")?.value||"current", x=importSimulation(pendingImportPreview.incoming,mode,policy);
+    box.innerHTML=x.replace?`<strong>模拟结果：完整替换</strong><span>当前档案会先建立恢复点，然后整体替换。替换完成后预计保留 ${pendingImportPreview.incoming.profiles.length} PL · ${pendingImportPreview.incoming.modules.length} 模组 · ${pendingImportPreview.incoming.runPlans.length} 计划 · ${pendingImportPreview.incoming.runRecords.length} 记录。</span>`:`<strong>模拟结果：写入前不会修改当前档案</strong><div class="import-outcome-pills"><span>预计新增 ${x.add}</span><span>预计更新 ${x.update}</span><span>冲突 ${x.conflict}</span><span>预计忽略 ${x.ignore}</span></div><span>这里是按当前冲突策略计算的预估结果；真正写入前仍会创建恢复点并进行落盘校验。</span>`;
+}
+const v8181OpenImportPreview = openImportPreview;
+openImportPreview = function(...args){ const out=v8181OpenImportPreview.apply(this,args); renderImportOutcomeSimulation(); return out; };
+document.getElementById("importPreviewBackdrop")?.addEventListener("change", e=>{ if(e.target.matches('input[name="importMode"],#importConflictPolicy,#importSettingsToo')) queueMicrotask(renderImportOutcomeSimulation); });
+
+function mergeMissingDeep(current, older) {
+    if (current === null || current === undefined || current === "") return clone(older);
+    if (Array.isArray(current) && Array.isArray(older)) {
+        if (!current.length) return clone(older);
+        if (current.every(x=>["string","number","boolean"].includes(typeof x)) && older.every(x=>["string","number","boolean"].includes(typeof x))) return [...new Set([...current,...older])];
+        return current;
+    }
+    if (typeof current === "object" && current && typeof older === "object" && older && !Array.isArray(current) && !Array.isArray(older)) {
+        const out=clone(current); Object.keys(older).forEach(k=>{ if(["id","createdAt","updatedAt","systemRole"].includes(k)) return; out[k]=mergeMissingDeep(out[k],older[k]); }); return out;
+    }
+    return current;
+}
+function restoreProfileLinksTo(payload,targetId,fallbackName){ let skipped=0; const restoreLink=(run,link)=>{ if(!run){skipped++;return;} if(link.asPl&&!run.plIds.includes(targetId)){run.plIds.push(targetId); const a=clone(link.assignment||{}); a.plId=targetId; run.participantAssignments=[...(run.participantAssignments||[]).filter(x=>x.plId!==targetId),a]; run.participantAssignments=normalizeParticipantAssignments(run.participantAssignments,run.plIds);} if(link.asKp){if(!run.kpProfileId){run.kpProfileId=targetId;run.kp=link.kp||fallbackName;}else if(run.kpProfileId!==targetId) skipped++;} run.updatedAt=Date.now();}; (payload.recLinks||[]).forEach(l=>restoreLink(runRecords.find(r=>r.id===l.id),l)); (payload.planLinks||[]).forEach(l=>restoreLink(runPlans.find(r=>r.id===l.id),l)); return skipped; }
+async function chooseTrashProfileRestore(payload){ const restored=normalizeProfile(payload.profile), sameId=profiles.find(p=>p.id===restored.id), sameName=profiles.find(p=>normalizedEntityNameKey(rawProfileName(p))===normalizedEntityNameKey(rawProfileName(restored))), sameContact=restored.contact?profiles.find(p=>normalizedEntityNameKey(p.contact||"")===normalizedEntityNameKey(restored.contact||"")):null; const conflict=sameId||sameContact||sameName; if(!conflict) return {mode:"new",profile:restored}; const detail=[`当前：${displayProfileName(conflict)} · ${String(conflict.contact||"").trim()||"未填联系方式"}`,`恢复：${rawProfileName(restored)} · ${String(restored.contact||"").trim()||"未填联系方式"}`].join("\n"); const choice=await appSelect(`恢复“${rawProfileName(restored)}”时发现当前已有同名、同联系方式或同编号 PL。\n\n${detail}\n\n可以把旧资料的空白项和历史桌次关联补到现有档案，也可以作为独立档案恢复。`,[{value:"merge",label:`合并到现有“${displayProfileName(conflict)}”（保留当前资料）`},{value:"both",label:"作为独立 PL 恢复"}],"merge",{title:"恢复 PL 时发现冲突",confirmText:"继续"}); if(!choice)return null; return {mode:choice,profile:restored,target:conflict}; }
+async function chooseTrashModuleRestore(raw){ const restored=normalizeRichModule(raw,settings.moduleArchive), conflict=modules.find(m=>m.id===restored.id)||modules.find(m=>normalizedEntityNameKey(m.name)===normalizedEntityNameKey(restored.name)); if(!conflict)return {mode:"new",module:restored}; const choice=await appSelect(`恢复模组“${restored.name}”时发现当前已有同名或同编号档案。`,[{value:"merge",label:`合并到现有“${conflict.name}”（当前内容优先，仅补空白）`},{value:"both",label:"作为独立恢复副本保存"}],"merge",{title:"恢复模组时发现冲突",confirmText:"继续"}); if(!choice)return null; return {mode:choice,module:restored,target:conflict}; }
+const v8181RestoreTrashEntry = restoreTrashEntry;
+restoreTrashEntry = async function(id){
+    const entry=trashEntries.find(x=>x.id===id); if(!entry)return false;
+    if(!["profile","module","moduleBatch"].includes(entry.type)) {
+        dataProtectionBypassDepth++;
+        try { return await v8181RestoreTrashEntry(id); }
+        finally { dataProtectionBypassDepth=Math.max(0,dataProtectionBypassDepth-1); }
+    }
+    const before={profiles:clone(profiles),runPlans:clone(runPlans),runRecords:clone(runRecords),modules:clone(modules)};
+    try{
+        await ensureRepairRecoveryPoint("before-trash-restore");
+        let skipped=0;
+        dataProtectionBypassDepth++;
+        if(entry.type==="profile"){
+            const decision=await chooseTrashProfileRestore(entry.payload); if(!decision)return false;
+            if(decision.mode==="merge"){
+                const idx=profiles.findIndex(p=>p.id===decision.target.id), merged=normalizeProfile(mergeMissingDeep(profiles[idx],decision.profile)); merged.id=profiles[idx].id; merged.systemRole=profiles[idx].systemRole; profiles[idx]=merged; skipped+=restoreProfileLinksTo(entry.payload,merged.id,rawProfileName(merged));
+            }else{
+                const p=decision.profile; if(profiles.some(x=>x.id===p.id))p.id=uid(); profiles.push(p); skipped+=restoreProfileLinksTo(entry.payload,p.id,rawProfileName(p));
+            }
+        }else if(entry.type==="module"){
+            const decision=await chooseTrashModuleRestore(entry.payload); if(!decision)return false;
+            if(decision.mode==="merge"){
+                const idx=modules.findIndex(m=>m.id===decision.target.id), merged=normalizeRichModule(mergeMissingDeep(modules[idx],decision.module),settings.moduleArchive); merged.id=modules[idx].id; modules[idx]=merged;
+            }else{
+                const m=decision.module; if(modules.some(x=>x.id===m.id))m.id=uid(); if(modules.some(x=>normalizedEntityNameKey(x.name)===normalizedEntityNameKey(m.name)))m.name=uniqueImportedName(m.name||"模组",modules,x=>x.name); modules.push(m);
+            }
+        }else{
+            const raws=entry.payload||[], conflicts=raws.filter(raw=>{const m=normalizeRichModule(raw,settings.moduleArchive);return modules.some(x=>x.id===m.id||normalizedEntityNameKey(x.name)===normalizedEntityNameKey(m.name));});
+            let policy="merge"; if(conflicts.length){policy=await appSelect(`这批恢复内容中有 ${conflicts.length} 个模组与当前档案冲突。`,[{value:"merge",label:"冲突项合并到现有档案（当前内容优先）"},{value:"both",label:"冲突项另存为恢复副本"}],"merge",{title:"批量恢复存在冲突",confirmText:"继续"}); if(!policy)return false;}
+            for(const raw of raws){let m=normalizeRichModule(raw,settings.moduleArchive),conflict=modules.find(x=>x.id===m.id)||modules.find(x=>normalizedEntityNameKey(x.name)===normalizedEntityNameKey(m.name)); if(!conflict){modules.push(m);continue;} if(policy==="merge"){const idx=modules.findIndex(x=>x.id===conflict.id),merged=normalizeRichModule(mergeMissingDeep(modules[idx],m),settings.moduleArchive);merged.id=modules[idx].id;modules[idx]=merged;}else{if(modules.some(x=>x.id===m.id))m.id=uid();m.name=uniqueImportedName(m.name||"模组",modules,x=>x.name);modules.push(m);}}
+        }
+        if(!saveState({allowProtectionWrite:true}))throw new Error("恢复后保存失败");
+        const removed=removeTrashEntry(id); renderAllPrimaryViews(); renderDataIntegrity(dataIntegrityReport(),false); showToast(removed?(skipped?`已恢复，${skipped} 项关联因冲突未覆盖`:"已从回收站恢复"):"内容已恢复；回收站记录暂未移除"); return true;
+    }catch(err){profiles=before.profiles;runPlans=before.runPlans;runRecords=before.runRecords;modules=before.modules;renderAllPrimaryViews();console.error(err);appNotice(`恢复失败：${err.message||err}。当前数据未替换。`);return false;}finally{dataProtectionBypassDepth=Math.max(0,dataProtectionBypassDepth-1);}
+};
+
+function criticalIntegrityIssues(report){return (report?.issues||[]).filter(x=>x.critical||/重复编号/.test(String(x.title||"")));}
+function refreshDataProtectionMode(report=dataIntegrityReport()){
+    const critical=criticalIntegrityIssues(report); dataProtectionMode=critical.length>0;
+    const banner=document.getElementById("dataProtectionBanner"),text=document.getElementById("dataProtectionBannerText"); if(banner)banner.hidden=!dataProtectionMode; if(text&&critical.length)text.textContent=`检测到 ${critical.length} 个严重编号冲突。普通修改已暂停；请先导出备份，再到“数据与备份 → 高级诊断”处理。`;
+    document.body.classList.toggle("data-protection-mode",dataProtectionMode); return dataProtectionMode;
+}
+const v8181DataIntegrityReport=dataIntegrityReport;
+dataIntegrityReport=function(){const r=v8181DataIntegrityReport(); let seq=r.issues.length; const looseGroups=new Map(); modules.forEach(m=>{const k=looseModuleNameKey(m.name);if(!k||k.length<2)return;if(!looseGroups.has(k))looseGroups.set(k,[]);looseGroups.get(k).push(m);}); looseGroups.forEach(rows=>{const exact=new Set(rows.map(m=>normalizedEntityNameKey(m.name)));if(rows.length>1&&exact.size>1)r.issues.push({id:`issue_${++seq}`,level:"warn",title:"发现可能重复的模组名称",detail:rows.slice(0,4).map(m=>m.name).join("、"),action:{view:"modules",query:rows[0].name},fix:null});}); r.issues.forEach(x=>{if(/重复编号/.test(String(x.title||"")))x.critical=true;}); r.errors=r.issues.filter(x=>x.level==="error").length; r.warnings=r.issues.filter(x=>x.level==="warn").length; r.critical=criticalIntegrityIssues(r).length; return r;};
+const v8181RenderDataIntegrity=renderDataIntegrity;
+renderDataIntegrity=function(report=dataIntegrityReport(),showList=false){const out=v8181RenderDataIntegrity(report,showList); refreshDataProtectionMode(report); if(els.dataIntegrityHealthValue&&report.critical){els.dataIntegrityHealthValue.textContent=`${report.critical} 个严重问题`;els.dataIntegrityHealthSub.textContent="已进入保护模式，普通写入暂停";} if(els.dataIntegrityResults)els.dataIntegrityResults.querySelectorAll(".integrity-item").forEach(el=>{const issue=integrityIssueById(el.dataset.integrityId);el.classList.toggle("critical",Boolean(issue?.critical));}); return out;};
+
+function cleanSafeString(v){return typeof v==="string"?v.replace(/[\u200B-\u200D\u2060\uFEFF]/g,"").trim():v;}
+function applySafeAutoRepairs(){
+    let changes=0;
+    profiles.forEach(p=>{if(!String(p.id||"").trim()){p.id=uid();changes++;}});
+    modules.forEach(m=>{if(!String(m.id||"").trim()){m.id=uid();changes++;}});
+    runPlans.forEach(r=>{if(!String(r.id||"").trim()){r.id=uid();r.updatedAt=Date.now();changes++;}});
+    runRecords.forEach(r=>{if(!String(r.id||"").trim()){r.id=uid();r.updatedAt=Date.now();changes++;}});
+    const profileIds=new Set(profiles.map(p=>p.id)),moduleIds=new Set(modules.map(m=>m.id));
+    profiles.forEach(p=>{["name","contact"].forEach(k=>{const n=cleanSafeString(p[k]);if(p[k]!==n){p[k]=n;changes++;}});});
+    modules.forEach(m=>{["name","author","era","location"].forEach(k=>{const n=cleanSafeString(m[k]);if(m[k]!==n){m[k]=n;changes++;}});});
+    const repairRun=r=>{let local=0;["moduleName","tableName","kp","logUrl"].forEach(k=>{const n=cleanSafeString(r[k]);if(r[k]!==n){r[k]=n;changes++;local++;}}); if(r.moduleId&&!moduleIds.has(String(r.moduleId))){r.moduleId="";changes++;local++;} if(r.kpProfileId&&!profileIds.has(String(r.kpProfileId))){r.kpProfileId="";changes++;local++;} const ids=[...new Set((r.plIds||[]).map(String).filter(id=>profileIds.has(id)))];if(JSON.stringify(ids)!==JSON.stringify(r.plIds||[])){r.plIds=ids;changes++;local++;} const seen=new Set(),valid=new Set(ids),next=[];for(const a of r.participantAssignments||[]){if(!a?.plId||!valid.has(String(a.plId))||seen.has(String(a.plId))){changes++;local++;continue;}seen.add(String(a.plId));next.push(a);} const normalized=normalizeParticipantAssignments(next,ids);if(JSON.stringify(normalized)!==JSON.stringify(r.participantAssignments||[])){r.participantAssignments=normalized;changes++;local++;} if(local)r.updatedAt=Date.now();}; runPlans.forEach(repairRun);runRecords.forEach(repairRun);return changes;
+}
+async function runSafeAutoRepair(){
+    const before={settings:clone(settings),profiles:clone(profiles),runPlans:clone(runPlans),runRecords:clone(runRecords),modules:clone(modules)};
+    try{await ensureRepairRecoveryPoint("before-safe-auto-repair");dataProtectionBypassDepth++;const changes=applySafeAutoRepairs();if(!changes){showToast("没有发现可以自动修复的轻微问题");renderDataIntegrity(dataIntegrityReport(),true);return true;}if(!saveState({allowProtectionWrite:true,skipAntiIntegrity:true}))throw new Error("修复后保存失败");renderAllPrimaryViews();const report=dataIntegrityReport();renderDataIntegrity(report,true);showToast(`已安全修复 ${changes} 处轻微异常${report.critical?"；严重编号冲突仍需人工处理":""}`);return true;}catch(err){settings=before.settings;profiles=before.profiles;runPlans=before.runPlans;runRecords=before.runRecords;modules=before.modules;console.error(err);appNotice(`自动修复失败：${err.message||err}。已恢复修复前状态。`);return false;}finally{dataProtectionBypassDepth=Math.max(0,dataProtectionBypassDepth-1);}}
+document.getElementById("safeAutoRepairBtn")?.addEventListener("click",()=>void runSafeAutoRepair());
+document.getElementById("dataProtectionBackupBtn")?.addEventListener("click",()=>exportBackup());
+async function repairCriticalIdentityCollisions(){
+    const report=dataIntegrityReport(), critical=criticalIntegrityIssues(report); if(!critical.length){showToast("当前没有需要重编号的严重冲突");return true;}
+    const ok=await appConfirm(`检测到 ${critical.length} 个严重编号冲突。\n\n系统会保留每组第一条编号，其余重复或缺失编号会生成新的唯一编号。无法可靠判断的旧关联会继续指向原第一条对象，修复后请再运行一次完整性检查。\n\n执行前会自动创建恢复点。`,{title:"安全重编号？",confirmText:"创建恢复点并重编号",cancelText:"取消"}); if(!ok)return false;
+    const before={settings:clone(settings),profiles:clone(profiles),runPlans:clone(runPlans),runRecords:clone(runRecords),modules:clone(modules)};
+    try{await ensureRepairRecoveryPoint("before-critical-renumber");dataProtectionBypassDepth++;let changed=0;const fixRows=rows=>{const seen=new Set();rows.forEach(x=>{let id=String(x.id||"");if(!id||seen.has(id)){x.id=uid();changed++;id=x.id;}seen.add(id);});};fixRows(profiles);fixRows(modules);const seenRuns=new Set();[...runPlans,...runRecords].forEach(r=>{let id=String(r.id||"");if(!id||seenRuns.has(id)){r.id=uid();r.updatedAt=Date.now();changed++;id=r.id;}seenRuns.add(id);});if(!saveState({allowProtectionWrite:true,skipAntiIntegrity:true}))throw new Error("重编号后保存失败");renderAllPrimaryViews();const after=dataIntegrityReport();renderDataIntegrity(after,true);showToast(`已重编号 ${changed} 项${after.critical?"；仍有严重问题需要继续检查":"；保护模式已解除"}`);return true;}catch(err){settings=before.settings;profiles=before.profiles;runPlans=before.runPlans;runRecords=before.runRecords;modules=before.modules;console.error(err);appNotice(`重编号失败：${err.message||err}。已恢复操作前状态。`);return false;}finally{dataProtectionBypassDepth=Math.max(0,dataProtectionBypassDepth-1);}
+}
+document.getElementById("dataProtectionRepairBtn")?.addEventListener("click",()=>void repairCriticalIdentityCollisions());
+document.getElementById("dataProtectionOpenBtn")?.addEventListener("click",()=>{openSettings();activateSettingsPanel("data");requestAnimationFrame(()=>{const d=document.querySelector('details[data-collapse-key="settings:data:advanced"]');if(d)d.open=true;document.getElementById("dataIntegrityResults")?.scrollIntoView({block:"center",behavior:preferredScrollBehavior()});renderDataIntegrity(dataIntegrityReport(),true);});});
+
+const v8181SaveState=saveState;
+saveState=function(options={}){
+    if(dataProtectionMode&&!dataProtectionBypassDepth&&!options.allowProtectionWrite&&!options.skipAntiIntegrity){showToast("当前处于档案保护模式，请先处理严重编号冲突");document.getElementById("dataProtectionBanner")?.removeAttribute("hidden");return false;}
+    const ok=v8181SaveState(options); if(ok)recordSuccessfulDataMutation(); return ok;
+};
+const v8181FixIntegrityIssue=fixIntegrityIssue;
+fixIntegrityIssue=async function(issue){dataProtectionBypassDepth++;try{return await v8181FixIntegrityIssue(issue);}finally{dataProtectionBypassDepth=Math.max(0,dataProtectionBypassDepth-1);renderDataIntegrity(dataIntegrityReport(),true);}};
+const v8181ExecuteImportPreview=executeImportPreview;
+executeImportPreview=async function(){dataProtectionBypassDepth++;try{return await v8181ExecuteImportPreview();}finally{dataProtectionBypassDepth=Math.max(0,dataProtectionBypassDepth-1);renderDataIntegrity(dataIntegrityReport(),false);}};
+queueMicrotask(()=>{try{renderDataIntegrity(dataIntegrityReport(),false);renderBackupReminderBanner();renderImportOutcomeSimulation();}catch(err){console.warn("第三层防呆初始化失败",err);}});
+
+/* v8.1.8.3 · 第四层防呆：跨页陈旧状态、存储压力、隐私导出、操作前快照撤回与异常粘贴 */
+const PRIVACY_EXPORT_ACK_KEY="tomato_pl_privacy_export_ack_v1";
+let storagePressureInfo={checked:false,usage:0,quota:0,ratio:0,localBytes:0,archiveBytes:0,level:"unknown"};
+function estimateLocalStorageBytes(){let total=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i)||"",v=localStorage.getItem(k)||"";total+=(k.length+v.length)*2;}}catch(_){ }return total;}
+function storagePressureLevel({ratio=0,localBytes=0,archiveBytes=0}={}){if(ratio>=.9||localBytes>=4.7*1024*1024||archiveBytes>=4.2*1024*1024)return"danger";if(ratio>=.78||localBytes>=4*1024*1024||archiveBytes>=3.3*1024*1024)return"warn";return"ok";}
+async function refreshStoragePressure(showNotice=false){
+    const info={checked:true,usage:0,quota:0,ratio:0,localBytes:estimateLocalStorageBytes(),archiveBytes:Number(lastArchiveByteSize||0),level:"ok"};
+    try{if(navigator.storage?.estimate){const q=await navigator.storage.estimate();info.usage=Number(q.usage||0);info.quota=Number(q.quota||0);info.ratio=info.quota?info.usage/info.quota:0;}}catch(_){ }
+    info.level=storagePressureLevel(info);storagePressureInfo=info;
+    const value=document.getElementById("storagePressureHealthValue"),sub=document.getElementById("storagePressureHealthSub"),card=document.getElementById("storagePressureHealthCard");
+    if(value){value.textContent=info.level==="danger"?"空间紧张":info.level==="warn"?"建议关注":"余量正常";}
+    if(sub){const originPart=info.quota?`浏览器已用 ${Math.round(info.ratio*100)}%`:`本地存储约 ${formatStorageBytes(info.localBytes)}`;sub.textContent=`${originPart} · 主档案 ${formatStorageBytes(info.archiveBytes)}`;}
+    if(card){card.classList.toggle("archive-size-warn",info.level==="warn");card.classList.toggle("archive-size-danger",info.level==="danger");}
+    if(showNotice&&info.level!=="ok")appNotice(`${info.level==="danger"?"当前浏览器存储空间已经比较紧张。":"当前档案体积正在增大。"}\n\n主档案：${formatStorageBytes(info.archiveBytes)}\n本地存储估算：${formatStorageBytes(info.localBytes)}${info.quota?`\n浏览器存储使用率：${Math.round(info.ratio*100)}%`:""}\n\n建议先导出完整备份，并清理不需要的旧恢复点、浏览器缓存或其他网站数据。不要在空间不足提示下连续大量导入。`,"存储空间提醒");
+    return info;
+}
+const v8182RunStorageDiagnostics=runStorageDiagnostics;
+runStorageDiagnostics=async function(showResult=false){const r=await v8182RunStorageDiagnostics(showResult);await refreshStoragePressure(showResult&&storagePressureInfo.level!=="ok");return r;};
+let storagePressureRefreshTimer=0;
+function scheduleStoragePressureRefresh(delay=350){clearTimeout(storagePressureRefreshTimer);storagePressureRefreshTimer=setTimeout(()=>void refreshStoragePressure(false),Math.max(0,Number(delay)||0));}
+const v8182SaveState=saveState;
+saveState=function(options={}){const ok=v8182SaveState(options);if(ok)scheduleStoragePressureRefresh();return ok;};
+
+function sensitiveImageExportButton(btn){return Boolean(btn&&(btn.id==="statsExportBtn"||btn.matches?.("[data-ho-image-style]")));}
+function setPrivacyMaskExplicit(enabled){if(Boolean(enabled)===privacyMaskEnabled)return;privacyMaskEnabled=Boolean(enabled);try{sessionStorage.setItem(PRIVACY_MASK_SESSION_KEY,privacyMaskEnabled?"1":"0");}catch(_){ }updatePrivacyMaskUI();}
+document.addEventListener("click",async e=>{
+    const btn=e.target.closest?.("button");if(!sensitiveImageExportButton(btn)||privacyMaskEnabled)return;
+    if(btn.dataset.privacyExportBypassOnce==="1"){delete btn.dataset.privacyExportBypassOnce;return;}
+    let ack=false;try{ack=sessionStorage.getItem(PRIVACY_EXPORT_ACK_KEY)==="1";}catch(_){ }
+    if(ack)return;
+    e.preventDefault();e.stopImmediatePropagation();
+    const choice=await appSelect("当前隐私遮罩处于关闭状态。导出的跑团整理或个人统计图片可能包含 PL / KP 姓名、桌次关系、评分等个人信息。\n\n可以先开启隐私遮罩再导出，也可以保持原样继续。",[{value:"privacy",label:"开启隐私遮罩后导出（推荐）"},{value:"raw",label:"保持原样导出，本标签页不再提醒"}],"privacy",{title:"导出前检查隐私？",confirmText:"继续"});
+    if(!choice)return;
+    if(choice==="privacy")setPrivacyMaskExplicit(true);else{try{sessionStorage.setItem(PRIVACY_EXPORT_ACK_KEY,"1");}catch(_){ }}
+    btn.dataset.privacyExportBypassOnce="1";btn.click();
+},true);
+
+const HIGH_RISK_REASON_LABELS={
+    "before-plan-archive":"归档开团计划前","before-record-return-to-plan":"跑团记录退回计划前","before-module-merge":"模组合并前","before-import":"导入备份前","before-entity-revision-restore":"恢复编辑历史前","before-integrity-fix":"单项完整性修复前","before-safe-auto-repair":"自动修复轻微问题前","before-critical-renumber":"安全重编号前","before-upgrade-restore":"恢复升级前数据前","before-restore":"恢复本地恢复点前","before-profile-blacklist":"加入黑名单前","before-profile-blacklist-remove":"移出黑名单前","before-profile-blacklist-editor-save":"黑名单编辑保存前","before-high-risk-undo":"恢复最近操作前状态前"
+};
+function highRiskReasonLabel(reason){return HIGH_RISK_REASON_LABELS[String(reason||"")]||String(reason||"").replace(/^before-/,"")||"高风险操作前";}
+async function latestHighRiskSnapshot(){try{const rows=await listRecoverySnapshots();return rows.find(row=>row?.payload&&Object.prototype.hasOwnProperty.call(HIGH_RISK_REASON_LABELS,String(row.reason||"")))||null;}catch(_){return null;}}
+async function renderLastHighRiskSnapshot(){const btn=document.getElementById("restoreLastRiskSnapshotBtn"),sum=document.getElementById("lastRiskSnapshotSummary");if(!btn||!sum)return;const row=await latestHighRiskSnapshot();if(!row){btn.disabled=true;sum.textContent="暂无可用的操作前安全快照。";return;}const c=row.counts||archiveCountsFromPayload(row.payload);btn.disabled=false;btn.dataset.snapshotId=row.id;sum.textContent=`${highRiskReasonLabel(row.reason)} · ${formatSafetyDateTime(row.createdAt)} · PL ${c.profiles} / 模组 ${c.modules} / 计划 ${c.plans} / 记录 ${c.records}`;}
+async function restoreSpecificSafetySnapshot(row){if(!row?.payload)return false;const c=row.counts||archiveCountsFromPayload(row.payload);const ok=await appConfirm(`恢复到“${highRiskReasonLabel(row.reason)}”的安全快照？\n\n时间：${formatSafetyDateTime(row.createdAt)}\nPL ${c.profiles} · 模组 ${c.modules} · 计划 ${c.plans} · 跑团记录 ${c.records}\n\n当前档案会被替换；执行前会再为当前状态创建一个安全快照，所以这次恢复也可以反向撤回。`,{title:"恢复最近操作前状态？",confirmText:"恢复操作前状态",danger:true});if(!ok)return false;
+    const before={settings:clone(settings),profiles:clone(profiles),runPlans:clone(runPlans),runRecords:clone(runRecords),modules:clone(modules)};
+    try{await ensureRepairRecoveryPoint("before-high-risk-undo");dataProtectionBypassDepth++;const incoming=ensureSelfProfileAndLinks(hydrateCanonicalArchive(row.payload));settings=incoming.settings;profiles=incoming.profiles;runPlans=incoming.runPlans;runRecords=incoming.runRecords;modules=incoming.modules||[];settingsDraft=null;draft=null;editingId=null;editingPlanId=null;runRecordsDraft=null;selectedModuleName="";selfIntroDraft=null;selfIntroBaseline=null;selfIntroPendingModules=[];if(!saveState({allowProtectionWrite:true,skipAntiIntegrity:true,allowExternalOverwrite:true}))throw new Error("安全快照恢复后无法写入浏览器存储");applyTheme(settings.theme);applyUiPreferences(settings);renderSortOptions();renderAllPrimaryViews();moduleFrameDirty=true;await postRecoveryVerification("恢复最近高风险操作前状态");showToast("已恢复到最近操作前状态");return true;}catch(err){settings=before.settings;profiles=before.profiles;runPlans=before.runPlans;runRecords=before.runRecords;modules=before.modules;console.error(err);appNotice(`恢复失败：${err.message||err}。已保留恢复前内存状态。`,"恢复未完成");return false;}finally{dataProtectionBypassDepth=Math.max(0,dataProtectionBypassDepth-1);await renderLastHighRiskSnapshot();}}
+document.getElementById("restoreLastRiskSnapshotBtn")?.addEventListener("click",async()=>{const row=await latestHighRiskSnapshot();if(!row){showToast("暂无可用的操作前快照");return;}await restoreSpecificSafetySnapshot(row);});
+const v8182CreateSafetySnapshot=createSafetySnapshot;
+createSafetySnapshot=async function(reason){const row=await v8182CreateSafetySnapshot(reason);queueMicrotask(()=>void renderLastHighRiskSnapshot());return row;};
+
+async function postRecoveryVerification(source="数据恢复"){
+    const report=dataIntegrityReport();renderDataIntegrity(report,false);await refreshStoragePressure(false);
+    if(report.critical||report.errors){appNotice(`${source}已经完成，但自动复核发现 ${report.critical?`${report.critical} 个严重问题`:""}${report.critical&&report.errors?"，":""}${report.errors?`${report.errors} 个错误`:""}。\n\n请前往“设置 → 数据与备份 → 高级诊断”查看并处理；在严重问题解决前，普通写入会继续受到保护。`,"恢复后需要复核");return false;}
+    if(report.warnings)showToast(`${source}完成；复核有 ${report.warnings} 条提示可稍后查看`);return true;
+}
+const v8182RestoreTrashEntry=restoreTrashEntry;
+restoreTrashEntry=async function(id){const ok=await v8182RestoreTrashEntry(id);if(ok)await postRecoveryVerification("回收站恢复");return ok;};
+const v8182RestoreEntityRevision=restoreEntityRevision;
+restoreEntityRevision=async function(id){const ok=await v8182RestoreEntityRevision(id);if(ok)await postRecoveryVerification("编辑历史恢复");return ok;};
+const v8182ExecuteImportPreview=executeImportPreview;
+executeImportPreview=async function(){const ok=await v8182ExecuteImportPreview();if(ok)await postRecoveryVerification("备份导入");return ok;};
+
+function insertPastedText(el,text){const start=Number.isFinite(el.selectionStart)?el.selectionStart:el.value.length,end=Number.isFinite(el.selectionEnd)?el.selectionEnd:start;const next=el.value.slice(0,start)+text+el.value.slice(end);el.value=next;const pos=start+text.length;try{el.setSelectionRange(pos,pos);}catch(_){ }el.dispatchEvent(new Event("input",{bubbles:true}));}
+document.addEventListener("paste",async e=>{
+    const el=e.target;if(!(el instanceof HTMLInputElement||el instanceof HTMLTextAreaElement)||el.readOnly||el.disabled)return;
+    const text=e.clipboardData?.getData("text")||"",limit=el instanceof HTMLTextAreaElement?100000:10000;if(text.length<=limit)return;
+    e.preventDefault();
+    const ok=await appConfirm(`这次粘贴包含约 ${text.length.toLocaleString()} 个字符，明显超过普通${el instanceof HTMLTextAreaElement?"长文本":"单行输入"}内容。\n\n这通常发生在误把整段 Log、网页源码或大段文档粘贴到当前字段。继续粘贴不会自动截断。`,{title:"粘贴内容非常长，继续吗？",confirmText:"仍然粘贴",cancelText:"取消"});
+    if(ok)insertPastedText(el,text);
+},true);
+
+queueMicrotask(()=>{void refreshStoragePressure(false);void renderLastHighRiskSnapshot();});
+
 initV806SearchUX();
 
 </script>
