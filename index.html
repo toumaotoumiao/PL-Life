@@ -4476,7 +4476,7 @@ body{font-size:var(--vu-body);line-height:1.5}
           <div class="eyebrow" data-i18n="app.eyebrow">TRPG · 本地档案管理</div>
           <h1>PL收集梦想生活</h1>
           
-          <details id="heroHelpDetails" class="hero-help">
+          <details id="heroHelpDetails" class="hero-help" data-collapse-key="home:help">
             <summary>
               <span class="hero-help-summary-left">
                 <span class="hero-help-chevron">›</span>
@@ -4810,13 +4810,13 @@ body{font-size:var(--vu-body);line-height:1.5}
         <div id="recordsBoard" class="records-board"></div>
       </section>
       <footer class="site-footer">
-        <details id="disclaimerDetails" class="disclaimer-details">
+        <details id="disclaimerDetails" class="disclaimer-details" data-collapse-key="home:disclaimer">
           <summary class="disclaimer-summary">
             <span class="disclaimer-summary-left">
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.7.4 · 2026-09-07 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.7.5 · 2026-09-07 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4828,7 +4828,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.7.4　·　更新时间：2026-09-07　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.7.5　·　更新时间：2026-09-07　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -4948,7 +4948,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <div><span class="field-label">档案状态</span><strong id="profileStatusValue">正常</strong><span id="profileStatusDetail">当前可正常用于开团计划。</span></div>
             <button id="profileStatusActionBtn" class="btn small" type="button">加入黑名单</button>
           </div>
-          <details id="profileStatusHistory" class="profile-status-history" hidden><summary>状态历史</summary><div id="profileStatusHistoryBody"></div></details>
+          <details id="profileStatusHistory" class="profile-status-history" data-collapse-key="profile-editor:status-history" hidden><summary>状态历史</summary><div id="profileStatusHistoryBody"></div></details>
         </section>
 
         
@@ -4983,7 +4983,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <button id="linkExistingRunBtn" class="btn small" type="button">＋ 关联已有桌</button>
           </div>
 
-          <details class="quick-run-create">
+          <details class="quick-run-create" data-collapse-key="profile-editor:quick-run">
             <summary>暂存新桌次</summary>
             <div class="quick-run-grid">
               <label><span class="field-label">模组名称</span><input id="quickRunModuleInput" class="runs-input" placeholder="输入模组名称"></label>
@@ -5026,8 +5026,8 @@ body{font-size:var(--vu-body);line-height:1.5}
       <div class="modal-body settings-modal-body">
         <div class="settings-layout">
           <aside class="settings-nav" aria-label="设置章节">
-            <button type="button" data-settings-target="data" data-i18n="settings.nav.data">数据与备份</button>
-            <button type="button" class="active" data-settings-target="appearance" data-i18n="settings.nav.appearance">外观</button>
+            <button type="button" class="active" data-settings-target="data" data-i18n="settings.nav.data">数据与备份</button>
+            <button type="button" data-settings-target="appearance" data-i18n="settings.nav.appearance">外观</button>
             <button type="button" data-settings-target="pl-rating" data-i18n="settings.nav.plRating">PL 评分</button>
             <button type="button" data-settings-target="module-rating" data-i18n="settings.nav.moduleRating">模组评分</button>
             <button type="button" data-settings-target="behavior" data-i18n="settings.nav.display">显示设置</button>
@@ -5038,7 +5038,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <div id="settingsSearchResults" class="settings-search-results" hidden></div>
             </div>
             <div class="settings-panels">
-        <section class="settings-section theme-settings" data-settings-panel="appearance">
+        <section class="settings-section theme-settings" data-settings-panel="appearance" hidden>
           <h3>界面主题</h3>
           <div class="section-help">选择主题后立即预览；点击“保存设置”后生效。</div>
           <div id="themePicker" class="theme-grid" role="radiogroup" aria-label="界面主题">
@@ -5065,7 +5065,7 @@ body{font-size:var(--vu-body);line-height:1.5}
           </div>
         </section>
 
-        <details id="scoreSettingsDetails" class="settings-section settings-collapsible" data-settings-panel="pl-rating">
+        <details id="scoreSettingsDetails" class="settings-section settings-collapsible" data-settings-panel="pl-rating" data-collapse-key="settings:pl-rating">
           <summary>
             <div class="settings-summary-main">
               <span class="settings-chevron">›</span>
@@ -5108,12 +5108,11 @@ body{font-size:var(--vu-body);line-height:1.5}
             <label><span><strong>开团计划默认视图</strong><small>仅显示一种日历视图。</small></span><select id="plannerDefaultViewSetting" class="setting-input"><option value="week">周视图</option><option value="month">月视图</option></select></label>
             <label><span><strong>计划周历密度</strong><small>同一时段达到 3–4 场时可自动压缩。</small></span><select id="plannerDensitySetting" class="setting-input"><option value="auto">自动</option><option value="comfortable">舒适</option><option value="compact">紧凑</option></select></label>
             <label><span><strong>跑团记录默认状态</strong><small>默认以查看模式展示，需要时单桌编辑。</small></span><select id="recordDefaultModeSetting" class="setting-input"><option value="view">查看模式</option><option value="edit">编辑模式</option></select></label>
-            <label><span><strong>跑团记录默认展开</strong><small>控制进入记录页时的默认展开范围。</small></span><select id="recordDefaultExpandSetting" class="setting-input"><option value="latest">仅最新一桌</option><option value="all">全部展开</option></select></label>
-            <label><span><strong>PL 跑团足迹默认状态</strong><small>控制 PL 编辑器中跑团足迹的默认展开状态。</small></span><select id="profileFootprintSetting" class="setting-input"><option value="closed">收起</option><option value="open">展开</option></select></label>
+            <label><span><strong data-i18n="settings.collapseDefault.label">折叠区默认状态</strong><small data-i18n="settings.collapseDefault.help">只决定从未手动操作过的折叠区；你亲自展开或收起后，会一直记住直到再次手动切换。</small></span><select id="collapseDefaultSetting" class="setting-input"><option value="closed" data-i18n="settings.collapseDefault.closed">默认收起</option><option value="open" data-i18n="settings.collapseDefault.open">默认展开</option></select></label>
           </div>
         </section>
 
-        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" open=""><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、自动备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" data-collapse-key="settings:data:recovery"><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、自动备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>完整备份</strong><span>普通备份便于恢复；加密备份适合长期保管。</span></div></div>
 <div class="backup-box unified-backup-box friendly-backup-grid">
 <button class="btn" id="exportBtn" type="button">↓ 导出完整备份</button>
@@ -5125,7 +5124,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <input accept=".plbackup,.json,application/json" class="file-input" id="encryptedImportFile" type="file"/>
 <input accept=".json,.html,application/json,text/html" class="file-input" id="legacyModuleImportFile" type="file"/>
 </div>
-<details class="secondary-tools-details">
+<details class="secondary-tools-details" data-collapse-key="settings:data:backup-more">
 <summary>更多备份方式</summary>
 <div class="secondary-tools-body">
 <button class="btn small danger-soft" id="exportPortableBtn" type="button">导出便携 HTML（含数据）</button>
@@ -5154,7 +5153,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>回收站</strong><span>已删除内容在当前浏览器保留 30 天，最多 120 条；不会包含在完整备份或迁移包中。</span></div><button class="btn small danger-soft" id="emptyTrashBtn" type="button">清空回收站</button></div>
 <div class="trash-bin-list" id="trashBinList"></div>
-</section></div></details><details class="data-safety-group daily"><summary><span class="data-safety-group-title"><strong>日常保护</strong><small>保存状态、恢复点和常用保护操作</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><div class="data-health-grid compact-health-grid">
+</section></div></details><details class="data-safety-group daily" data-collapse-key="settings:data:daily"><summary><span class="data-safety-group-title"><strong>日常保护</strong><small>保存状态、恢复点和常用保护操作</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><div class="data-health-grid compact-health-grid">
 <article class="data-health-card"><span class="data-health-label">自动保存</span><strong id="localSaveHealthValue">检查中</strong><span id="localSaveHealthSub">正在检查</span></article>
 <article class="data-health-card"><span class="data-health-label">当前档案</span><strong id="dataScaleHealthValue">—</strong><span id="dataScaleHealthSub">PL / 模组 / 计划 / 记录</span></article>
 <article class="data-health-card" id="archiveSizeHealthCard"><span class="data-health-label">主档案体积</span><strong id="archiveSizeHealthValue">计算中</strong><span id="archiveSizeHealthSub">监测存储空间</span></article>
@@ -5166,7 +5165,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.7.4</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.7.5</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5180,11 +5179,12 @@ body{font-size:var(--vu-body);line-height:1.5}
 <button class="btn small" id="installAppBtn" type="button">安装到设备</button>
 </div>
 </section>
-</div></details><details class="data-safety-group version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.7.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.7.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+</div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.7.5 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.7.5</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.7.5</strong><span>全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换。显示设置新增“折叠区默认状态”，可选择默认收起或默认展开，且只影响从未手动操作过的区块；PL 卡片、评分明细、跑团足迹、单桌记录、跑团整理分组、月历、设置分组、个人偏好以及模组高级工具统一接入同一套逻辑。设置窗口现在每次打开默认进入首项“数据与备份”，避免继续沿用旧版默认“外观”。</span>
 <strong>v8.1.7.4</strong><span>交互与移动端可靠性优化：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理一致的折叠区；更新提示改为刷新后自动更新完成通知“自动更新咯（*＾ワ＾*）请查收新版本”，取消顶部提示中的手动更新按钮；统一加强手机端弹窗关闭键、按钮触控区域、触摸行为和弹层层级保护；全站静态按钮绑定检查通过，并把当前视口可见按钮的遮挡/点击命中检查加入界面自检。</span>
 <strong>v8.1.7.3</strong><span>个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span>
 <strong>v8.1.7.2</strong><span>全站防呆与误操作保护：PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档；新增重复归档拦截、重复成员反馈、出生日期与日期范围前置校验、危险操作口令确认、删除影响明细、按钮级重复执行锁、保存失败保命提示、导入替换与升级恢复事务回滚、关键保存后的静默完整性守门。模组高级工具同步补齐未保存关闭提醒、删除回收站、批量删除恢复、覆盖导入回滚和高风险口令确认。黑名单人员继续采用明确二次确认；不加入人物时间冲突限制。</span>
@@ -5265,14 +5265,14 @@ body{font-size:var(--vu-body);line-height:1.5}
 <strong>v8.1.1</strong><span>增强分享模式、草稿保存、撤销与离线缓存安全。</span>
 <strong>v8.1.0</strong><span>新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span>
 </div></details>
-</section></div></details><details class="data-safety-group advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+</section></div></details><details class="data-safety-group advanced" data-collapse-key="settings:data:advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。</span></div><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button></div>
 <div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>界面与交互自检</strong><span>检查当前界面；深度自检会覆盖主要页面和编辑器，并在完成后恢复当前位置。</span></div><div class="friendly-head-actions"><button class="btn small" id="runInteractionSelfCheckBtn" type="button">运行自检</button><button class="btn small" hidden="" id="copyInteractionSelfCheckBtn" type="button">复制诊断结果</button><button class="btn small primary-soft" id="runDeepInteractionSelfCheckBtn" type="button">深度自检</button></div></div>
 <div class="interaction-self-check-results" hidden="" id="interactionSelfCheckResults"></div>
 <section class="friendly-data-block i18n-diagnostic-block"><div class="friendly-data-head"><div><strong>国际化准备度</strong><span>检查已接入翻译键的界面节点、缺失词条和当前可用语言包。</span></div><div class="friendly-head-actions"><button class="btn small" id="runI18nAuditBtn" type="button">检查国际化底层</button></div></div><div id="i18nAuditResults" class="version-runtime-details" hidden></div></section>
-</section><details class="friend-safety-notes">
+</section><details class="friend-safety-notes" data-collapse-key="settings:data:safety-notes">
 <summary>免责与注意事项</summary>
 <div>
 <p>评分、备注与排序仅代表个人记录，用于整理、复盘和开团参考。</p>
@@ -5413,13 +5413,15 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.7.4 · 作者：番茄
+/* PL收集梦想生活 v8.1.7.5 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
+
 /* ---------- 01. 本机存储配置：定义 localStorage 使用的键名 ---------- */
 const STORAGE_KEY = "trpg_pl_profile_archive_v1"; // 沿用旧存储键，避免改名后读取不到此前已经保存在浏览器里的档案。
 const DISCLAIMER_STATE_KEY = "tomato_pl_disclaimer_collapsed_v2"; // v5.12 固定底栏默认收起；之后继续记住用户选择。
-const HERO_HELP_STATE_KEY = "tomato_pl_hero_help_open_v1"; // 记住首页“使用说明”的展开/收起状态。
+const HERO_HELP_STATE_KEY = "tomato_pl_hero_help_open_v1"; // 旧版折叠状态迁移来源。
+const COLLAPSE_STATE_KEY = "tomato_pl_collapse_state_v1"; // v8.1.7.5：全站折叠区手动状态，本机持久记忆。
 const MOBILE_PROFILE_LAYOUT_KEY = "tomato_pl_mobile_profile_layout_v1"; // 手机端卡片/简要视图单独记忆，不写入档案备份。
 const PLANNER_MONTH_COMPACT_KEY = "tomato_pl_month_compact_v1"; // 月历展开/微缩属于本机界面偏好，不写入备份。
 const PRIVACY_MASK_SESSION_KEY = "tomato_pl_privacy_mask_v1"; // 仅当前标签页记忆打码状态，不写入档案备份。
@@ -5435,7 +5437,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.7.4";
+const APP_UI_VERSION = "8.1.7.5";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -5483,6 +5485,10 @@ const I18N_MESSAGES = {
         "settings.language.help": "只改变程序界面和系统文字，不翻译或修改已有档案内容。",
         "settings.language.foundationTitle": "国际化底层已启用",
         "settings.language.foundationText": "语言选择、回退链、日期与数字格式、动态界面绑定和导出语言接口已经就绪。未完成的语言包暂不开放，避免出现中外文混杂。",
+        "settings.collapseDefault.label": "折叠区默认状态",
+        "settings.collapseDefault.help": "只决定从未手动操作过的折叠区；你亲自展开或收起后，会一直记住直到再次手动切换。",
+        "settings.collapseDefault.closed": "默认收起",
+        "settings.collapseDefault.open": "默认展开",
         "settings.search.placeholder": "搜索设置名称或功能，例如：主题、备份、展开……（支持拼音首字母）",
         "settings.save": "保存设置"
     }
@@ -9104,8 +9110,9 @@ function defaultUiSettings() {
         plannerView: "week",
         plannerDensity: "auto",
         recordDefaultMode: "view",
-        recordDefaultExpand: "latest",
-        profileFootprintsOpen: false,
+        recordDefaultExpand: "latest", // 旧备份兼容：v8.1.7.5 起不再作为折叠默认值使用。
+        profileFootprintsOpen: false, // 旧备份兼容。
+        collapseDefault: "closed",
         moduleLayout: "cards",
         locale: I18N_DEFAULT_LOCALE
     };
@@ -9118,6 +9125,7 @@ function normalizeUiSettings(raw) {
         recordDefaultMode: src.recordDefaultMode === "edit" ? "edit" : "view",
         recordDefaultExpand: src.recordDefaultExpand === "all" ? "all" : "latest",
         profileFootprintsOpen: Boolean(src.profileFootprintsOpen),
+        collapseDefault: src.collapseDefault === "open" ? "open" : "closed",
         moduleLayout: src.moduleLayout === "compact" ? "compact" : "cards",
         locale: I18N_LOCALE_META[String(src.locale || "")] ? String(src.locale) : I18N_DEFAULT_LOCALE
     };
@@ -9343,8 +9351,7 @@ const mobileMedia = window.matchMedia("(max-width:760px)");
 let mobileEditorLastScrollTop = 0;
 let mobileEditorRestoreTop = null;
 let mobileEditorRestoreTimer = 0;
-let expandedCards = new Set();
-let collapsedCards = new Set();
+let profileCardCollapseState = {};
 let editingPlanId = null;
 const planEditorPlSearchQueries = new Map();
 let plannerSelectedDate = "";
@@ -9359,11 +9366,10 @@ let plannerDragCancelledByEscape = false;
 let plannerViewMode = ((_a = settings.ui) === null || _a === void 0 ? void 0 : _a.plannerView) || "week";
 let plannerMobileSection = "calendar";
 const PLANNER_MOBILE_SECTION_KEY = "trpg_planner_mobile_section_v1";
-let expandedCompactScoreIds = new Set();
 let globalSearchVisibleCount = 40;
 const GLOBAL_SEARCH_BATCH = 40;
 let recordEditingIds = new Set();
-let activeSettingsPanel = "appearance";
+let activeSettingsPanel = "data";
 let moduleNativeQuery = "";
 let moduleNativeHo = "";
 let moduleNativeLocation = "";
@@ -9380,14 +9386,148 @@ let hoOrganizerFilter = "all";
 let hoOrganizerShowEmpty = false;
 let hoOrganizerMode = "pl";
 let kpOrganizerSort = "recent";
-const plOrganizerExpandedKeys = new Set();
-const kpOrganizerExpandedKeys = new Set();
+let collapseState = null;
+let collapseObserver = null;
+function loadCollapseState() {
+    if (collapseState && typeof collapseState === "object")
+        return collapseState;
+    let loaded = {};
+    try {
+        const raw = JSON.parse(localStorage.getItem(COLLAPSE_STATE_KEY) || "{}");
+        if (raw && typeof raw === "object" && !Array.isArray(raw))
+            loaded = raw;
+        // 将旧版两个独立折叠记忆迁入统一状态；只迁移一次，不再继续写旧键。
+        if (!Object.prototype.hasOwnProperty.call(loaded, "home:disclaimer")) {
+            if (Object.prototype.hasOwnProperty.call(loaded, "details:disclaimerDetails"))
+                loaded["home:disclaimer"] = Boolean(loaded["details:disclaimerDetails"]);
+            else {
+                const oldDisclaimer = localStorage.getItem(DISCLAIMER_STATE_KEY);
+                if (oldDisclaimer !== null)
+                    loaded["home:disclaimer"] = oldDisclaimer === "0";
+            }
+        }
+        if (!Object.prototype.hasOwnProperty.call(loaded, "home:help")) {
+            if (Object.prototype.hasOwnProperty.call(loaded, "details:heroHelpDetails"))
+                loaded["home:help"] = Boolean(loaded["details:heroHelpDetails"]);
+            else {
+                const oldHero = localStorage.getItem(HERO_HELP_STATE_KEY);
+                if (oldHero !== null)
+                    loaded["home:help"] = oldHero === "1";
+            }
+        }
+    }
+    catch (err) {
+        console.warn("无法读取全站折叠状态", err);
+        loaded = {};
+    }
+    collapseState = loaded;
+    return collapseState;
+}
+function persistCollapseState() {
+    try {
+        localStorage.setItem(COLLAPSE_STATE_KEY, JSON.stringify(loadCollapseState()));
+    }
+    catch (err) {
+        console.warn("无法保存全站折叠状态", err);
+    }
+}
+function collapseDefaultOpen(source = settings) {
+    return normalizeUiSettings(source === null || source === void 0 ? void 0 : source.ui).collapseDefault === "open";
+}
+function collapseStateOpen(key, source = settings) {
+    const id = String(key || "");
+    const stateMap = loadCollapseState();
+    if (id && Object.prototype.hasOwnProperty.call(stateMap, id))
+        return Boolean(stateMap[id]);
+    return collapseDefaultOpen(source);
+}
+function rememberCollapseState(key, open) {
+    const id = String(key || "");
+    if (!id)
+        return;
+    let latest = {};
+    try {
+        const raw = JSON.parse(localStorage.getItem(COLLAPSE_STATE_KEY) || "{}");
+        if (raw && typeof raw === "object" && !Array.isArray(raw))
+            latest = raw;
+    }
+    catch (err) { }
+    collapseState = Object.assign({}, loadCollapseState(), latest);
+    collapseState[id] = Boolean(open);
+    persistCollapseState();
+}
+function detailsCollapseKey(details) {
+    if (!details)
+        return "";
+    if (details.dataset && details.dataset.collapseKey)
+        return String(details.dataset.collapseKey);
+    if (details.id)
+        return `details:${details.id}`;
+    const owner = details.closest && details.closest("[data-record-id],[data-id],[data-profile-id]");
+    const ownerKey = owner ? String(owner.getAttribute("data-record-id") || owner.getAttribute("data-id") || owner.getAttribute("data-profile-id") || "") : "";
+    const summary = details.firstElementChild && details.firstElementChild.tagName === "SUMMARY" ? details.firstElementChild : null;
+    const text = summary ? String(summary.textContent || "").replace(/\s+/g, " ").trim().slice(0, 80) : "details";
+    const generated = `details:auto:${ownerKey}:${text}`;
+    if (details.dataset)
+        details.dataset.collapseKey = generated;
+    return generated;
+}
+function bindPersistentDetails(details, source = settings) {
+    if (!(details instanceof HTMLDetailsElement))
+        return;
+    const key = detailsCollapseKey(details);
+    if (!key)
+        return;
+    details.open = collapseStateOpen(key, source);
+    if (details.dataset.collapseBound === "1")
+        return;
+    details.dataset.collapseBound = "1";
+    const summary = details.firstElementChild && details.firstElementChild.tagName === "SUMMARY" ? details.firstElementChild : null;
+    if (!summary)
+        return;
+    summary.addEventListener("click", event => {
+        const nested = event.target && event.target.closest ? event.target.closest("button,a,input,select,textarea,label") : null;
+        if (nested)
+            return;
+        setTimeout(() => rememberCollapseState(detailsCollapseKey(details), details.open), 0);
+    });
+}
+function applyPersistentDetailsState(root = document, source = settings) {
+    const items = [];
+    if (root instanceof HTMLDetailsElement)
+        items.push(root);
+    if (root && root.querySelectorAll)
+        items.push(...root.querySelectorAll("details"));
+    items.forEach(details => bindPersistentDetails(details, source));
+}
+function initPersistentCollapseUX() {
+    loadCollapseState();
+    applyPersistentDetailsState(document, settings);
+    if (collapseObserver)
+        collapseObserver.disconnect();
+    collapseObserver = new MutationObserver(records => {
+        records.forEach(record => record.addedNodes.forEach(node => {
+            if (node && node.nodeType === 1)
+                applyPersistentDetailsState(node, settings);
+        }));
+    });
+    collapseObserver.observe(document.body, { childList: true, subtree: true });
+}
 function applyUiPreferences(source = settings) {
     const ui = normalizeUiSettings(source === null || source === void 0 ? void 0 : source.ui);
     i18nApplyLocale(ui.locale);
     plannerViewMode = ui.plannerView;
     document.body.dataset.plannerView = plannerViewMode;
     document.body.dataset.planDensity = ui.plannerDensity;
+    try {
+        if (localStorage.getItem(PLANNER_MONTH_COMPACT_KEY) === null)
+            plannerMonthCompact = !collapseDefaultOpen(source);
+    }
+    catch (err) {
+        plannerMonthCompact = !collapseDefaultOpen(source);
+    }
+    if (document.body)
+        applyPersistentDetailsState(document, source);
     if ((els === null || els === void 0 ? void 0 : els.plannerWeekMode) && (els === null || els === void 0 ? void 0 : els.plannerMonthMode)) {
         els.plannerWeekMode.classList.toggle("active", plannerViewMode === "week");
         els.plannerWeekMode.setAttribute("aria-pressed", plannerViewMode === "week" ? "true" : "false");
@@ -11595,7 +11735,7 @@ const els = {
     quickRunModule: document.getElementById("quickRunModuleInput"), quickRunName: document.getElementById("quickRunNameInput"), quickRunKp: document.getElementById("quickRunKpInput"), quickRunStart: document.getElementById("quickRunStartInput"), quickRunEnd: document.getElementById("quickRunEndInput"), quickRunLog: document.getElementById("quickRunLogInput"), createLinkedRun: document.getElementById("createLinkedRunBtn"),
     editRuns: document.getElementById("editRuns"),
     save: document.getElementById("saveBtn"), cancel: document.getElementById("cancelBtn"), closeProfile: document.getElementById("closeProfileBtn"), modalDelete: document.getElementById("modalDeleteBtn"),
-    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupMobileDeliveryRow: document.getElementById("externalBackupMobileDeliveryRow"), externalBackupMobileDelivery: document.getElementById("externalBackupMobileDeliverySelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), viewExternalBackupFiles: document.getElementById("viewExternalBackupFilesBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), externalBackupBrowserBackdrop: document.getElementById("externalBackupBrowserBackdrop"), externalBackupBrowserLocation: document.getElementById("externalBackupBrowserLocation"), externalBackupBrowserSummary: document.getElementById("externalBackupBrowserSummary"), externalBackupFileList: document.getElementById("externalBackupFileList"), closeExternalBackupBrowser: document.getElementById("closeExternalBackupBrowserBtn"), closeExternalBackupBrowserFoot: document.getElementById("closeExternalBackupBrowserFootBtn"), refreshExternalBackupBrowser: document.getElementById("refreshExternalBackupBrowserBtn"), changeExternalBackupLocationFromBrowser: document.getElementById("changeExternalBackupLocationFromBrowserBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), recordDefaultExpandSetting: document.getElementById("recordDefaultExpandSetting"), profileFootprintSetting: document.getElementById("profileFootprintSetting"), interfaceLanguageSetting: document.getElementById("interfaceLanguageSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
+    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupMobileDeliveryRow: document.getElementById("externalBackupMobileDeliveryRow"), externalBackupMobileDelivery: document.getElementById("externalBackupMobileDeliverySelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), viewExternalBackupFiles: document.getElementById("viewExternalBackupFilesBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), externalBackupBrowserBackdrop: document.getElementById("externalBackupBrowserBackdrop"), externalBackupBrowserLocation: document.getElementById("externalBackupBrowserLocation"), externalBackupBrowserSummary: document.getElementById("externalBackupBrowserSummary"), externalBackupFileList: document.getElementById("externalBackupFileList"), closeExternalBackupBrowser: document.getElementById("closeExternalBackupBrowserBtn"), closeExternalBackupBrowserFoot: document.getElementById("closeExternalBackupBrowserFootBtn"), refreshExternalBackupBrowser: document.getElementById("refreshExternalBackupBrowserBtn"), changeExternalBackupLocationFromBrowser: document.getElementById("changeExternalBackupLocationFromBrowserBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), collapseDefaultSetting: document.getElementById("collapseDefaultSetting"), interfaceLanguageSetting: document.getElementById("interfaceLanguageSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
 };
 /* ---------- 10. 通用工具：文本转义、读取字段、评分说明、加权总分等 ---------- */
 function escapeHTML(v = "") { return String(v).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[ch])); }
@@ -12288,28 +12428,43 @@ function setProfileLayout(mode) {
 }
 function initProfileCardCollapseState() {
     try {
-        const saved = JSON.parse(localStorage.getItem(PROFILE_CARD_COLLAPSE_KEY) || "[]");
-        collapsedCards = new Set(Array.isArray(saved) ? saved.map(String) : []);
+        const saved = JSON.parse(localStorage.getItem(PROFILE_CARD_COLLAPSE_KEY) || "{}");
+        if (Array.isArray(saved)) {
+            profileCardCollapseState = {};
+            saved.forEach(id => { profileCardCollapseState[String(id)] = true; });
+            persistProfileCardCollapseState();
+        }
+        else
+            profileCardCollapseState = saved && typeof saved === "object" ? saved : {};
     }
     catch (err) {
-        collapsedCards = new Set();
+        profileCardCollapseState = {};
         console.warn("无法读取卡片折叠状态", err);
     }
 }
 function persistProfileCardCollapseState() {
     try {
-        localStorage.setItem(PROFILE_CARD_COLLAPSE_KEY, JSON.stringify([...collapsedCards]));
+        localStorage.setItem(PROFILE_CARD_COLLAPSE_KEY, JSON.stringify(profileCardCollapseState));
     }
     catch (err) {
         console.warn("无法保存卡片折叠状态", err);
     }
 }
-function toggleProfileCardCollapse(id) {
-    if (collapsedCards.has(id))
-        collapsedCards.delete(id);
-    else
-        collapsedCards.add(id);
+function isProfileCardCollapsed(id) {
+    const key = String(id || "");
+    if (Object.prototype.hasOwnProperty.call(profileCardCollapseState, key))
+        return Boolean(profileCardCollapseState[key]);
+    return !collapseDefaultOpen();
+}
+function setProfileCardCollapsed(id, collapsed) {
+    const key = String(id || "");
+    if (!key)
+        return;
+    profileCardCollapseState[key] = Boolean(collapsed);
     persistProfileCardCollapseState();
+}
+function toggleProfileCardCollapse(id) {
+    setProfileCardCollapsed(id, !isProfileCardCollapsed(id));
     renderProfiles();
 }
 function currentProfileRowsForBulkCollapse() {
@@ -12327,8 +12482,8 @@ function syncProfileBulkCollapseControls(rows = currentProfileRowsForBulkCollaps
     if (!enabled)
         return;
     const ids = rows.map(p => String(p.id));
-    const anyExpanded = ids.some(id => !collapsedCards.has(id));
-    const anyCollapsed = ids.some(id => collapsedCards.has(id));
+    const anyExpanded = ids.some(id => !isProfileCardCollapsed(id));
+    const anyCollapsed = ids.some(id => isProfileCardCollapsed(id));
     if (els.collapseAllProfiles)
         els.collapseAllProfiles.disabled = !ids.length || !anyExpanded;
     if (els.expandAllProfiles)
@@ -12344,10 +12499,7 @@ function setCurrentProfileCardsCollapsed(shouldCollapse) {
     }
     rows.forEach(p => {
         const id = String(p.id);
-        if (shouldCollapse)
-            collapsedCards.add(id);
-        else
-            collapsedCards.delete(id);
+        profileCardCollapseState[id] = Boolean(shouldCollapse);
     });
     persistProfileCardCollapseState();
     renderProfiles();
@@ -12394,12 +12546,12 @@ function blacklistCardHTML(p) {
     return `<article class="blacklist-card" data-id="${escapeHTML(p.id)}">
     <div class="blacklist-card-head"><div><div class="blacklist-card-name">${profileNameHTML(p, "privacy-card-name")}<span class="blacklist-badge">黑名单</span></div><div class="blacklist-contact"><span>联系方式</span><strong>${profileContactHTML(p, "privacy-card-contact")}</strong></div></div><span class="blacklist-added">加入：${escapeHTML(formatBlacklistDate(b.addedAt))}</span></div>
     <div class="blacklist-reason"><span>黑名单原因</span><p>${escapeHTML(b.reason || "未填写原因")}</p></div>
-    <details class="blacklist-archive"><summary>展开档案</summary><div class="blacklist-archive-body">
+    <details class="blacklist-archive" data-collapse-key="blacklist:${escapeHTML(p.id)}:archive"><summary>展开档案</summary><div class="blacklist-archive-body">
       <div class="blacklist-archive-section"><strong>基本资料</strong><span>${meta.length ? meta.map(x => escapeHTML(x)).join(" · ") : "暂无补充资料"}</span></div>
       <div class="blacklist-archive-section"><strong>历史统计</strong><span><span class="privacy-sensitive privacy-score-inline"><span class="privacy-sensitive-text">综合评分 ${total === null ? "无" : `${fmtScore(total)}/10`}</span></span> · KP ${roleStats.kpCount} · PL ${roleStats.plCount} · ${runs.length} 桌记录</span>${roleDegreeHTML(roleStats, true)}</div>
-      <details class="blacklist-inner-details"><summary>评分明细</summary><div class="blacklist-rating-grid">${ratingRows}</div></details>
-      <details class="blacklist-inner-details"><summary>跑团足迹</summary><div class="blacklist-run-list">${runRows}</div></details>
-      <details class="blacklist-inner-details"><summary>状态历史</summary><div class="blacklist-history-list">${blacklistHistoryHTML(p)}</div></details>
+      <details class="blacklist-inner-details" data-collapse-key="blacklist:${escapeHTML(p.id)}:rating"><summary>评分明细</summary><div class="blacklist-rating-grid">${ratingRows}</div></details>
+      <details class="blacklist-inner-details" data-collapse-key="blacklist:${escapeHTML(p.id)}:runs"><summary>跑团足迹</summary><div class="blacklist-run-list">${runRows}</div></details>
+      <details class="blacklist-inner-details" data-collapse-key="blacklist:${escapeHTML(p.id)}:history"><summary>状态历史</summary><div class="blacklist-history-list">${blacklistHistoryHTML(p)}</div></details>
     </div></details>
     <div class="blacklist-card-actions"><button type="button" class="btn small" data-action="edit" data-id="${escapeHTML(p.id)}">编辑档案</button><button type="button" class="btn small" data-action="remove-blacklist" data-id="${escapeHTML(p.id)}">移出黑名单</button></div>
   </article>`;
@@ -12666,7 +12818,7 @@ function renderPlOrganizer(profile) {
         const p = HO_ORGANIZER_PALETTE[ci % HO_ORGANIZER_PALETTE.length], rows = filtered.filter(e => e.column.key === col.key), rowDone = rows.filter(e => e.kind === "record").length, rowPlan = rows.filter(e => e.kind === "plan").length;
         const dates = rows.map(e => String(e.dateText || "")).filter(t => /^\d{4}-\d{2}-\d{2}/.test(t)).sort(), recent = dates[dates.length - 1] || "";
         const summary = [rowDone && `已结团 ${rowDone}`, rowPlan && `计划 ${rowPlan}`].filter(Boolean).join(" · ") || "暂无记录";
-        const key = `pl:${col.key}`, expanded = plOrganizerExpandedKeys.has(key);
+        const key = `pl:${col.key}`, expanded = collapseStateOpen(`organizer:${key}`);
         return `<section class="run-summary-card kp-module-group ho-module-group ${expanded ? "" : "is-collapsed"}" data-pl-group-key="${escapeHTML(key)}" style="--ho-dot:${p.dot};--ho-bg:${p.bg};--ho-border:${p.border};--ho-title:${p.title}"><header class="kp-module-head ho-module-head"><div class="kp-module-title ho-module-title"><strong>${escapeHTML(col.label)}</strong><span>${escapeHTML(recent ? `最近记录 ${recent}` : "HO 分组")}</span></div><div class="kp-module-head-side"><div class="kp-module-count ho-module-count"><strong>${rows.length} 条</strong><span>${escapeHTML(summary)}</span></div><button class="kp-detail-toggle" type="button" data-pl-group-toggle="${escapeHTML(key)}" aria-expanded="${expanded ? "true" : "false"}" title="${expanded ? "收起桌次详情" : "展开桌次详情"}"><span>${expanded ? "收起" : "展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body ho-module-body" ${expanded ? "" : "hidden"}>${rows.length ? rows.map(hoOrganizerEntryHTML).join("") : `<div class="ho-column-empty">暂无记录</div>`}</div></section>`;
     }).join("");
 }
@@ -12683,7 +12835,7 @@ function renderKpOrganizer(profile) {
         return;
     }
     els.hoOrganizerBoard.innerHTML = groups.map(group => {
-        const entries = [...group.entries].sort((a, b) => (b.dateKey || "").localeCompare(a.dateKey || "") || b.updatedAt - a.updatedAt), summary = [group.done && `已带 ${group.done} 桌`, group.planned && `计划 ${group.planned} 桌`].filter(Boolean).join(" · "), recent = group.lastDone ? `最近带团 ${group.lastDone}` : (group.lastAny ? `最近计划 ${group.lastAny}` : "暂无日期"), expanded = kpOrganizerExpandedKeys.has(group.key);
+        const entries = [...group.entries].sort((a, b) => (b.dateKey || "").localeCompare(a.dateKey || "") || b.updatedAt - a.updatedAt), summary = [group.done && `已带 ${group.done} 桌`, group.planned && `计划 ${group.planned} 桌`].filter(Boolean).join(" · "), recent = group.lastDone ? `最近带团 ${group.lastDone}` : (group.lastAny ? `最近计划 ${group.lastAny}` : "暂无日期"), expanded = collapseStateOpen(`organizer:kp:${group.key}`);
         return `<section class="run-summary-card kp-module-group ${expanded ? "" : "is-collapsed"}" data-kp-group-key="${escapeHTML(group.key)}"><header class="kp-module-head"><div class="kp-module-title"><strong>${escapeHTML(group.moduleName)}</strong><span>${escapeHTML(recent)}</span></div><div class="kp-module-head-side"><div class="kp-module-count"><strong>${escapeHTML(summary || `${entries.length} 条`)}</strong>${group.totalPl ? `<span>${group.totalPl} PL 次 · ${group.uniquePl} 人</span>` : ""}</div><button class="kp-detail-toggle" type="button" data-kp-group-toggle="${escapeHTML(group.key)}" aria-expanded="${expanded ? "true" : "false"}" title="${expanded ? "收起桌次详情" : "展开桌次详情"}"><span>${expanded ? "收起" : "展开"}</span><span class="chevron" aria-hidden="true">⌄</span></button></div></header><div class="kp-module-body" ${expanded ? "" : "hidden"}>${entries.map(kpOrganizerEntryHTML).join("")}</div></section>`;
     }).join("");
 }
@@ -12749,8 +12901,6 @@ function openHoOrganizer(profileId) {
     hoOrganizerShowEmpty = false;
     hoOrganizerMode = "pl";
     kpOrganizerSort = "recent";
-    plOrganizerExpandedKeys.clear();
-    kpOrganizerExpandedKeys.clear();
     els.hoOrganizerBackdrop.hidden = false;
     document.body.classList.add("ho-organizer-open");
     syncModalPageScrollLock();
@@ -13075,7 +13225,7 @@ function openHoOrganizerSource(kind, id) {
         if (!r)
             return;
         selectedModuleName = r.moduleName;
-        setRunRecordCollapsed(r.id, false);
+        setRunRecordCollapsed(r.id, false, false);
         recordEditingIds.delete(String(r.id));
         switchView("records");
         requestAnimationFrame(() => { var _a; return (_a = document.querySelector(`[data-record-id="${CSS.escape(r.id)}"]`)) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ block: "center", behavior: preferredScrollBehavior() }); });
@@ -13095,7 +13245,7 @@ function compactRowHTML(p) {
     const age = calculateAge(p.birthDate);
     const personalMeta = [p.gender && `性别 ${p.gender}`, age !== null && `${age}岁`].filter(Boolean).join(" · ");
     const scoreFields = settings.fields.filter(f => f.key !== "kpPlSide");
-    const scoreExpanded = expandedCompactScoreIds.has(String(p.id));
+    const scoreExpanded = collapseStateOpen(`profile:${String(p.id)}:compact-scores`);
     const shownFields = mobileMedia.matches && !scoreExpanded ? scoreFields.slice(0, 4) : scoreFields;
     const scores = shownFields.map(f => {
         const score = profileRatingScore(p, f.key);
@@ -13122,8 +13272,8 @@ function compactRowHTML(p) {
 function cardHTML(p) {
     var _a;
     const live = draft && editingId === p.id;
-    const attrsExpanded = expandedCards.has(p.id);
-    const cardCollapsed = collapsedCards.has(p.id);
+    const attrsExpanded = collapseStateOpen(`profile:${String(p.id)}:ratings-all`);
+    const cardCollapsed = isProfileCardCollapsed(p.id);
     const ratingFields = settings.fields.filter(f => f.key !== "kpPlSide");
     const ratedFields = ratingFields.filter(f => profileRatingScore(p, f.key) !== null);
     const unratedFields = ratingFields.filter(f => profileRatingScore(p, f.key) === null);
@@ -13189,7 +13339,7 @@ function cardHTML(p) {
         }
         if (r.logUrl)
             bodyParts.push(url ? `<div>Log：<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">打开跑团 Log</a></div>` : `<div>Log：${escapeHTML(r.logUrl)}</div>`);
-        return `<details class="run-card ${(self || linkedAsKp) ? "self-kp" : ""}"><summary><span class="run-card-title">${escapeHTML(recordDisplayLabel(r, runSource))}</span><span class="run-card-badges">${dateBadge}${roleBadge}${kpBadge}${pcHoBadge}</span></summary><div class="run-card-body">${bodyParts.join("")}</div></details>`;
+        return `<details class="run-card ${(self || linkedAsKp) ? "self-kp" : ""}" data-collapse-key="profile:${escapeHTML(p.id)}:run:${escapeHTML(r.id)}"><summary><span class="run-card-title">${escapeHTML(recordDisplayLabel(r, runSource))}</span><span class="run-card-badges">${dateBadge}${roleBadge}${kpBadge}${pcHoBadge}</span></summary><div class="run-card-body">${bodyParts.join("")}</div></details>`;
     }).join("") : `<div class="runs-empty">暂无跑团记录</div>`;
     return `<article class="card ${live ? "live" : ""} ${cardCollapsed ? "is-collapsed" : ""} ${roleStats.total ? "role-tinted" : ""}" style="${roleCardStyle(roleStats)}" data-id="${escapeHTML(p.id)}">
     <div class="card-top">
@@ -13217,7 +13367,7 @@ function cardHTML(p) {
         : `<div class="unrated-summary"><div><strong>无评分</strong><span>0/${ratingFields.length} 项 · 可直接开始评分</span></div><button type="button" class="link-btn" data-action="edit" data-id="${escapeHTML(p.id)}">开始评分</button></div>`}
     ${ratingFields.length > 6 && ratedCount ? `<div class="more-row"><button type="button" class="link-btn" data-action="toggle" data-id="${escapeHTML(p.id)}">${attrsExpanded ? "收起属性" : `显示全部 ${ratingFields.length} 项评分`}</button></div>` : ""}
     <div class="runs">
-      <details class="runs-details" ${((_a = settings.ui) === null || _a === void 0 ? void 0 : _a.profileFootprintsOpen) ? "open" : ""}>
+      <details class="runs-details" data-collapse-key="profile:${escapeHTML(p.id)}:footprints">
         <summary>
           <span class="runs-summary-left"><span class="runs-chevron">›</span><span class="track"></span><span>跑团足迹</span><span class="runs-role-summary">KP ${roleStats.kpCount} · PL ${roleStats.plCount}</span></span>
           <span style="display:flex;align-items:center;gap:6px"><button class="link-btn" data-action="runs" data-id="${escapeHTML(p.id)}" type="button">管理</button><span class="run-count">${runs.length} 桌</span></span>
@@ -13792,10 +13942,10 @@ function monthCursorFor(value) {
 function initPlannerUIPreferences() {
     try {
         const saved = localStorage.getItem(PLANNER_MONTH_COMPACT_KEY);
-        plannerMonthCompact = saved !== "0";
+        plannerMonthCompact = saved === null ? !collapseDefaultOpen() : saved !== "0";
     }
     catch (err) {
-        plannerMonthCompact = true;
+        plannerMonthCompact = !collapseDefaultOpen();
     }
     plannerViewMode = normalizeUiSettings(settings.ui).plannerView;
     applyUiPreferences(settings);
@@ -14196,7 +14346,7 @@ function boundaryLevelOptions(current) { return SELF_INTRO_BOUNDARY_LEVELS.map(v
 function introSelectOptions(values, current, emptyLabel = "未设置") { return values.map(v => `<option value="${escapeHTML(v)}" ${String(current || "") === String(v) ? "selected" : ""}>${escapeHTML(v || emptyLabel)}</option>`).join(""); }
 function boundaryRowsFor(items, d) { return items.map(key => { const current = (d.kp.boundaries && d.kp.boundaries[key]) || ""; return `<label class="intro-boundary-row"><span>${escapeHTML(key)}</span><select data-intro-boundary="${escapeHTML(key)}">${boundaryLevelOptions(current)}</select></label>`; }).join(""); }
 function kpInteractionRows(d) { return SELF_INTRO_KP_INTERACTION_ITEMS.map(([key, label, desc]) => { const current = (d.kp.interaction && d.kp.interaction[key]) || ""; return `<label class="intro-preference-row"><span class="intro-preference-copy"><strong>${escapeHTML(label)}</strong><small>${escapeHTML(desc)}</small></span><select class="intro-select" data-intro-field="kp.interaction.${escapeHTML(key)}">${introSelectOptions(SELF_INTRO_KP_INTERACTION_LEVELS, current)}</select></label>`; }).join(""); }
-function kpLegacyDetails(d) { const legacyBoundary = SELF_INTRO_KP_LEGACY_BOUNDARY_ITEMS.filter(key => d.kp.boundaries && d.kp.boundaries[key]); const hasLegacy = Boolean(d.kp.issueThreshold || d.kp.logReuse || d.kp.futureContact || legacyBoundary.length); if (!hasLegacy) return ""; return `<details class="intro-subdetails intro-legacy-details"><summary>旧版细项（已有数据）</summary><div class="intro-subdetails-body">${legacyBoundary.length ? `<div class="self-intro-section"><div class="self-intro-section-head"><strong>旧版边界项</strong><span>仅已有数据时显示</span></div><div class="intro-boundary-list">${boundaryRowsFor(legacyBoundary, d)}</div></div>` : ""}<div class="self-intro-section intro-two-col">${d.kp.issueThreshold ? `<label class="intro-field-wrap"><span>旧版：同类问题累计次数</span><select class="intro-select" data-intro-field="kp.issueThreshold"><option value="">未设置</option>${[1,2,3,4,5].map(n => `<option value="${n}" ${String(d.kp.issueThreshold)===String(n)?"selected":""}>${n} 次</option>`).join("")}</select></label>` : ""}${d.kp.logReuse ? `<label class="intro-field-wrap"><span>旧版：合作终止后的 Log 使用</span><select class="intro-select" data-intro-field="kp.logReuse">${introSelectOptions(["", "不可以", "最好不要", "无所谓", "可以"], d.kp.logReuse)}</select></label>` : ""}${d.kp.futureContact ? `<label class="intro-field-wrap"><span>旧版：后续是否继续约团</span><select class="intro-select" data-intro-field="kp.futureContact">${introSelectOptions(["", "不可以", "最好不要", "视情况", "可以"], d.kp.futureContact)}</select></label>` : ""}</div></div></details>`; }
+function kpLegacyDetails(d) { const legacyBoundary = SELF_INTRO_KP_LEGACY_BOUNDARY_ITEMS.filter(key => d.kp.boundaries && d.kp.boundaries[key]); const hasLegacy = Boolean(d.kp.issueThreshold || d.kp.logReuse || d.kp.futureContact || legacyBoundary.length); if (!hasLegacy) return ""; return `<details class="intro-subdetails intro-legacy-details" data-collapse-key="self-intro:kp:legacy"><summary>旧版细项（已有数据）</summary><div class="intro-subdetails-body">${legacyBoundary.length ? `<div class="self-intro-section"><div class="self-intro-section-head"><strong>旧版边界项</strong><span>仅已有数据时显示</span></div><div class="intro-boundary-list">${boundaryRowsFor(legacyBoundary, d)}</div></div>` : ""}<div class="self-intro-section intro-two-col">${d.kp.issueThreshold ? `<label class="intro-field-wrap"><span>旧版：同类问题累计次数</span><select class="intro-select" data-intro-field="kp.issueThreshold"><option value="">未设置</option>${[1,2,3,4,5].map(n => `<option value="${n}" ${String(d.kp.issueThreshold)===String(n)?"selected":""}>${n} 次</option>`).join("")}</select></label>` : ""}${d.kp.logReuse ? `<label class="intro-field-wrap"><span>旧版：合作终止后的 Log 使用</span><select class="intro-select" data-intro-field="kp.logReuse">${introSelectOptions(["", "不可以", "最好不要", "无所谓", "可以"], d.kp.logReuse)}</select></label>` : ""}${d.kp.futureContact ? `<label class="intro-field-wrap"><span>旧版：后续是否继续约团</span><select class="intro-select" data-intro-field="kp.futureContact">${introSelectOptions(["", "不可以", "最好不要", "视情况", "可以"], d.kp.futureContact)}</select></label>` : ""}</div></div></details>`; }
 function introModulePrefsSections(side) {
     const base = `${side}.modulePrefs`, mp = selfIntroPathGet(selfIntroDraft, base) || defaultIntroModulePrefs();
     return `
@@ -14223,7 +14373,7 @@ function renderSelfIntroView({ reset = false } = {}) {
     const tableBoundaryRows = boundaryRowsFor(SELF_INTRO_KP_TABLE_ITEMS, d);
     const legacyDetails = kpLegacyDetails(d);
     els.selfIntroGrid.innerHTML = selfIntroDatalist() + `
-    <details class="self-intro-card" open><summary><span>常用信息<small>平台、形式、时间、频率与通用说明集中整理</small></span></summary><div class="self-intro-card-body intro-basics-layout">
+    <details class="self-intro-card" data-collapse-key="self-intro:common"><summary><span>常用信息<small>平台、形式、时间、频率与通用说明集中整理</small></span></summary><div class="self-intro-card-body intro-basics-layout">
       <div class="intro-basic-block bio"><div class="intro-basic-label"><strong>一句话介绍</strong><span>跑团年限、常用规则或个人定位</span></div><textarea class="intro-textarea" data-intro-field="bio" placeholder="例如：长期 COC / DND 玩家，文字与语音均可。">${escapeHTML(d.bio)}</textarea></div>
       <div class="intro-basic-block"><div class="intro-basic-label"><strong>常用平台</strong><span>可多选</span></div>${introChipGroup("platforms", INTRO_OPTIONS.platforms)}<input class="intro-field" data-intro-field="platformOther" placeholder="其他平台或补充" value="${escapeHTML(d.platformOther)}"></div>
       <div class="intro-basic-block"><div class="intro-basic-label"><strong>跑团形式</strong><span>可多选</span></div>${introChipGroup("formats", INTRO_OPTIONS.formats)}</div>
@@ -14251,15 +14401,15 @@ function renderSelfIntroView({ reset = false } = {}) {
 
           <div class="self-intro-section"><div class="self-intro-section-head"><strong>带团方式</strong><span>核心带团倾向</span></div><div class="intro-two-col">${introScale("kp.moduleAdaptation", "模组处理尺度")}${introScale("kp.npcHandling", "NPC 处理尺度")}${introScale("kp.plFreedom", "PL 行动自由度")}${introScale("kp.originalFlavor", "原旨倾向")}${introScale("kp.ruleStrictness", "规则执行尺度")}</div></div>
 
-          <div class="self-intro-section"><details class="intro-subdetails"><summary>团内互动偏好</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><span>只保留影响桌内体验的高频项</span></div><div class="intro-preference-list">${kpInteractionRows(d)}</div></div></div></details></div>
+          <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:interaction"><summary>团内互动偏好</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><span>只保留影响桌内体验的高频项</span></div><div class="intro-preference-list">${kpInteractionRows(d)}</div></div></div></details></div>
 
-          <div class="self-intro-section"><details class="intro-subdetails" open><summary>内容接受度</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><strong>内容与桌型</strong><span>未设置不会被视为默认立场</span></div><div class="intro-boundary-list">${contentBoundaryRows}</div></div></div></details></div>
+          <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:content"><summary>内容接受度</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><strong>内容与桌型</strong><span>未设置不会被视为默认立场</span></div><div class="intro-boundary-list">${contentBoundaryRows}</div></div></div></details></div>
 
-          <div class="self-intro-section"><details class="intro-subdetails"><summary>组桌与桌务</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><strong>明显会影响合作的行为</strong><span>低频细节不再单独拆字段</span></div><div class="intro-boundary-list">${tableBoundaryRows}</div></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.avoids" placeholder="其他需要提前避免或沟通的桌务问题；没有可留空。">${escapeHTML(d.kp.avoids)}</textarea></div></div></details></div>
+          <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:table"><summary>组桌与桌务</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><strong>明显会影响合作的行为</strong><span>低频细节不再单独拆字段</span></div><div class="intro-boundary-list">${tableBoundaryRows}</div></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.avoids" placeholder="其他需要提前避免或沟通的桌务问题；没有可留空。">${escapeHTML(d.kp.avoids)}</textarea></div></div></details></div>
 
-          <div class="self-intro-section"><details class="intro-subdetails"><summary>售后与场外交流</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><span>不区分群聊、私聊等具体渠道</span></div><div class="intro-aftercare-grid"><label class="intro-field-wrap"><span>结团后继续交流</span><select class="intro-select" data-intro-field="kp.aftercare.chat">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_CHAT_LEVELS, d.kp.aftercare.chat)}</select></label><label class="intro-field-wrap"><span>模组口嗨 / 稿件分享</span><select class="intro-select" data-intro-field="kp.aftercare.sharing">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_SHARE_LEVELS, d.kp.aftercare.sharing)}</select></label><label class="intro-field-wrap"><span>交流持续倾向</span><select class="intro-select" data-intro-field="kp.aftercare.duration">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_DURATION, d.kp.aftercare.duration)}</select></label></div><textarea class="intro-textarea" data-intro-field="kp.aftercare.notes" placeholder="售后或场外交流有特殊边界时再写；没有可留空。">${escapeHTML(d.kp.aftercare.notes)}</textarea></div></div></details></div>
+          <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:aftercare"><summary>售后与场外交流</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><span>不区分群聊、私聊等具体渠道</span></div><div class="intro-aftercare-grid"><label class="intro-field-wrap"><span>结团后继续交流</span><select class="intro-select" data-intro-field="kp.aftercare.chat">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_CHAT_LEVELS, d.kp.aftercare.chat)}</select></label><label class="intro-field-wrap"><span>模组口嗨 / 稿件分享</span><select class="intro-select" data-intro-field="kp.aftercare.sharing">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_SHARE_LEVELS, d.kp.aftercare.sharing)}</select></label><label class="intro-field-wrap"><span>交流持续倾向</span><select class="intro-select" data-intro-field="kp.aftercare.duration">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_DURATION, d.kp.aftercare.duration)}</select></label></div><textarea class="intro-textarea" data-intro-field="kp.aftercare.notes" placeholder="售后或场外交流有特殊边界时再写；没有可留空。">${escapeHTML(d.kp.aftercare.notes)}</textarea></div></div></details></div>
 
-          <div class="self-intro-section"><details class="intro-subdetails"><summary>协作与处理</summary><div class="intro-subdetails-body"><div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>期望 PL 的协作方式</span><textarea class="intro-textarea" data-intro-field="kp.wishes">${escapeHTML(d.kp.wishes)}</textarea></label><label class="intro-field-wrap"><span>出现问题时的处理倾向</span><select class="intro-select" data-intro-field="kp.issueAction"><option value="">未设置</option>${["提醒警告", "协商后继续", "停止本次团", "不再约团"].map(v => `<option value="${escapeHTML(v)}" ${d.kp.issueAction === v ? "selected" : ""}>${escapeHTML(v)}</option>`).join("")}</select></label></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.boundaryNotes" placeholder="红线、特殊情况或处理原则；具体次数、Log 沿用等低频情况可直接写在这里。">${escapeHTML(d.kp.boundaryNotes)}</textarea></div>${legacyDetails}</div></details></div>
+          <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:cooperation"><summary>协作与处理</summary><div class="intro-subdetails-body"><div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>期望 PL 的协作方式</span><textarea class="intro-textarea" data-intro-field="kp.wishes">${escapeHTML(d.kp.wishes)}</textarea></label><label class="intro-field-wrap"><span>出现问题时的处理倾向</span><select class="intro-select" data-intro-field="kp.issueAction"><option value="">未设置</option>${["提醒警告", "协商后继续", "停止本次团", "不再约团"].map(v => `<option value="${escapeHTML(v)}" ${d.kp.issueAction === v ? "selected" : ""}>${escapeHTML(v)}</option>`).join("")}</select></label></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.boundaryNotes" placeholder="红线、特殊情况或处理原则；具体次数、Log 沿用等低频情况可直接写在这里。">${escapeHTML(d.kp.boundaryNotes)}</textarea></div>${legacyDetails}</div></details></div>
 
           <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.notes" placeholder="KP 侧其他补充，例如改模原则、常用规则、开团习惯等；没有可留空。">${escapeHTML(d.kp.notes)}</textarea></div>
           ${moduleIntentSection("host", "可带模组", "从模组档案选择或直接输入新模组")}
@@ -16348,7 +16498,7 @@ function renderPlanEditor() {
       </div>
       <div class="plan-editor-help">PL 档案可直接选作本桌 KP；KPC 不计入 PL 人数。</div>
       ${currentKpProfile && isBlacklistedProfile(currentKpProfile) ? `<div class="blacklist-plan-warning">当前 KP 在黑名单中：${escapeHTML(((_a = currentKpProfile.blacklist) === null || _a === void 0 ? void 0 : _a.reason) || "未填写原因")}</div>` : ""}
-      ${blacklistedKpOptions.length ? `<details class="blacklist-plan-picker"><summary>从黑名单选择 KP</summary><div class="blacklist-plan-picker-row"><select class="plan-participant-select" data-editor-blacklist-kp-select><option value="">选择黑名单 PL…</option>${blacklistedKpOptions.map(p => `<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))}</option>`).join("")}</select><button class="btn small" type="button" data-editor-blacklist-kp>设为 KP</button></div></details>` : ""}
+      ${blacklistedKpOptions.length ? `<details class="blacklist-plan-picker" data-collapse-key="plan-editor:blacklist-kp"><summary>从黑名单选择 KP</summary><div class="blacklist-plan-picker-row"><select class="plan-participant-select" data-editor-blacklist-kp-select><option value="">选择黑名单 PL…</option>${blacklistedKpOptions.map(p => `<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))}</option>`).join("")}</select><button class="btn small" type="button" data-editor-blacklist-kp>设为 KP</button></div></details>` : ""}
       ${kpcEditorHTML(plan, "plan")}
     </section>
 
@@ -16370,7 +16520,7 @@ function renderPlanEditor() {
         </div>
         <div class="plan-editor-add-hint ${planPlPickerQuery(plan.id).trim() && !filteredAvailable.length ? "empty" : ""}" data-editor-add-pl-hint>${planPlPickerQuery(plan.id).trim() ? (filteredAvailable.length ? `找到 ${filteredAvailable.length} 位；支持姓名、英文名和拼音首字母。` : `没有找到匹配的 PL。`) : (available.length ? `点击输入框展开 ${available.length} 位可添加 PL；按 A～Z（拼音 / 英文）排列。` : "没有可添加的 PL。")}</div>
       </div>
-      ${blacklistedAvailable.length ? `<details class="blacklist-plan-picker"><summary>从黑名单添加 PL</summary><div class="blacklist-plan-picker-row"><select class="plan-participant-select" data-editor-add-blacklist-pl-select><option value="">选择黑名单 PL…</option>${blacklistedAvailable.map(p => { var _a; return `<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))} · ${escapeHTML(String(((_a = p.blacklist) === null || _a === void 0 ? void 0 : _a.reason) || "未填写原因").slice(0, 28))}</option>`; }).join("")}</select><button class="btn small" type="button" data-editor-add-blacklist-pl>仍然添加</button></div></details>` : ""}
+      ${blacklistedAvailable.length ? `<details class="blacklist-plan-picker" data-collapse-key="plan-editor:blacklist-pl"><summary>从黑名单添加 PL</summary><div class="blacklist-plan-picker-row"><select class="plan-participant-select" data-editor-add-blacklist-pl-select><option value="">选择黑名单 PL…</option>${blacklistedAvailable.map(p => { var _a; return `<option value="${escapeHTML(p.id)}">${escapeHTML(displayProfileName(p))} · ${escapeHTML(String(((_a = p.blacklist) === null || _a === void 0 ? void 0 : _a.reason) || "未填写原因").slice(0, 28))}</option>`; }).join("")}</select><button class="btn small" type="button" data-editor-add-blacklist-pl>仍然添加</button></div></details>` : ""}
       <div class="participant-assignment-list">
         ${participants.length ? participants.map(p => participantAssignmentRowHTML(plan, p, "plan", "data-editor-remove-pl", "data-editor-open-profile")).join("") : `<span class="plan-editor-empty">未关联 PL。</span>`}
       </div>
@@ -16400,26 +16550,27 @@ function loadRunRecordCollapseState() {
     }
 }
 let runRecordCollapseState = loadRunRecordCollapseState();
+let runRecordTransientCollapseState = {};
 function defaultRunRecordCollapsed(recordId) {
-    var _a;
-    const rec = runRecords.find(r => String(r.id) === String(recordId));
-    if (!rec)
-        return false;
-    if (normalizeUiSettings(settings.ui).recordDefaultExpand === "all")
-        return false;
-    const list = recordsForSameModuleEntity(rec, runRecords);
-    return list.length > 1 && ((_a = list[list.length - 1]) === null || _a === void 0 ? void 0 : _a.id) !== rec.id;
+    return !collapseDefaultOpen();
 }
 function isRunRecordCollapsed(recordId) {
     const id = String(recordId || "");
+    if (Object.prototype.hasOwnProperty.call(runRecordTransientCollapseState, id))
+        return Boolean(runRecordTransientCollapseState[id]);
     if (Object.prototype.hasOwnProperty.call(runRecordCollapseState, id))
         return Boolean(runRecordCollapseState[id]);
     return defaultRunRecordCollapsed(id);
 }
-function setRunRecordCollapsed(recordId, collapsed) {
+function setRunRecordCollapsed(recordId, collapsed, remember = true) {
     const id = String(recordId || "");
     if (!id)
         return;
+    if (!remember) {
+        runRecordTransientCollapseState[id] = Boolean(collapsed);
+        return;
+    }
+    delete runRecordTransientCollapseState[id];
     runRecordCollapseState[id] = Boolean(collapsed);
     try {
         localStorage.setItem(RUN_RECORD_COLLAPSE_KEY, JSON.stringify(runRecordCollapseState));
@@ -16630,7 +16781,7 @@ function recordReadonlyBodyHTML(r) {
       <div class="record-view-people">${recordReadonlyParticipantsHTML(r) || `<span class="record-view-empty">尚未关联PL</span>`}</div>
       ${r.sharedHoNote && moduleHoSystemForEntity(r) === "has" ? `<div class="record-view-note"><span>共通HO</span><strong>${escapeHTML(r.sharedHoNote)}</strong></div>` : ""}
     </section>
-    ${extra.length ? `<details class="record-view-extra"><summary>本桌补充 · ${extra.length}项</summary><div>${extra.map(x => `<p>${escapeHTML(x)}</p>`).join("")}</div></details>` : ""}
+    ${extra.length ? `<details class="record-view-extra" data-collapse-key="run-record:${escapeHTML(r.id)}:readonly-extra"><summary>本桌补充 · ${extra.length}项</summary><div>${extra.map(x => `<p>${escapeHTML(x)}</p>`).join("")}</div></details>` : ""}
     <footer class="table-record-footer"><div class="table-record-footer-meta"><span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span></div><div class="table-record-footer-actions"><button class="btn small" type="button" data-record-edit="${escapeHTML(r.id)}">编辑此桌</button><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt ? "退回计划" : "转为计划"}</button></div></footer>
   </div>`;
 }
@@ -16728,7 +16879,7 @@ function recordTableHTML(r, index) {
         ${moduleHoSystemForEntity(r) === "has" ? `<label class="shared-ho-note"><span class="field-label">共通 HO / 补充（可选）</span><input class="text-input" data-record-field="sharedHoNote" value="${escapeHTML(r.sharedHoNote || "")}" placeholder="输入共通 HO 或补充说明"></label>` : ""}
       </section>
 
-      <details class="record-extra-details">
+      <details class="record-extra-details" data-collapse-key="run-record:${escapeHTML(r.id)}:extra">
         <summary><span>本桌补充记录</span><span class="record-extra-summary-hint">${r.actualDuration || r.thoughts || r.runNotes ? "已有内容" : "按需展开"}</span></summary>
         <div class="record-extra-grid">
           <label><span class="field-label">实际时长</span><input class="text-input" data-record-field="actualDuration" value="${escapeHTML(r.actualDuration || "")}" placeholder="输入实际时长"></label>
@@ -16999,7 +17150,7 @@ function openSettings() {
     renderSettings();
     syncBehaviorSettingsUI();
     renderModuleRatingSettingsSummary();
-    activateSettingsPanel(activeSettingsPanel || "appearance");
+    activateSettingsPanel("data");
     updateDataSafetyUI();
     renderDataIntegrity(dataIntegrityReport(), false);
     renderTrashBin();
@@ -17011,7 +17162,7 @@ function openSettings() {
         setTimeout(() => { var _a; return (_a = document.getElementById("settingsSearchInput")) === null || _a === void 0 ? void 0 : _a.focus({ preventScroll: true }); }, 30);
 }
 function activateSettingsPanel(key) {
-    activeSettingsPanel = key || "appearance";
+    activeSettingsPanel = key || "data";
     let activeBtn = null;
     document.querySelectorAll(".settings-nav [data-settings-target]").forEach(btn => {
         const active = btn.dataset.settingsTarget === activeSettingsPanel;
@@ -17036,10 +17187,8 @@ function syncBehaviorSettingsUI() {
         els.plannerDensitySetting.value = ui.plannerDensity;
     if (els.recordDefaultModeSetting)
         els.recordDefaultModeSetting.value = ui.recordDefaultMode;
-    if (els.recordDefaultExpandSetting)
-        els.recordDefaultExpandSetting.value = ui.recordDefaultExpand;
-    if (els.profileFootprintSetting)
-        els.profileFootprintSetting.value = ui.profileFootprintsOpen ? "open" : "closed";
+    if (els.collapseDefaultSetting)
+        els.collapseDefaultSetting.value = ui.collapseDefault;
     if (els.interfaceLanguageSetting)
         els.interfaceLanguageSetting.value = ui.locale;
 }
@@ -17102,7 +17251,7 @@ function renderSettings() {
       </div>`;
         }
         const labels = f.labels || genericLabels;
-        const details = `<details class="details"><summary>编辑 1–10 分评分说明</summary><div class="desc-grid">${labels.map((t, i) => `<label class="desc-item"><span>${i + 1}分</span><input class="desc-input" data-field-index="${index}" data-label-index="${i}" value="${escapeHTML(t)}"></label>`).join("")}</div></details>`;
+        const details = `<details class="details" data-collapse-key="pl-rating:${escapeHTML(f.key)}:labels"><summary>编辑 1–10 分评分说明</summary><div class="desc-grid">${labels.map((t, i) => `<label class="desc-item"><span>${i + 1}分</span><input class="desc-input" data-field-index="${index}" data-label-index="${i}" value="${escapeHTML(t)}"></label>`).join("")}</div></details>`;
         return `<div class="field-row" data-field-index="${index}"><div class="field-main"><div class="field-name-wrap">${isCustom ? `<input class="setting-input custom-name" data-name-index="${index}" value="${escapeHTML(f.label)}" placeholder="属性名称">` : `<div class="field-name">${escapeHTML(f.label)}</div>`}<div class="field-meta">${isCustom ? "自定义字段" : "内置字段"}</div></div><label class="include-box"><input type="checkbox" data-include-index="${index}" ${f.includeInTotal ? "checked" : ""}>计入综合评分</label><div class="weight-wrap"><input class="weight-input" type="number" min="0" max="100" step="0.01" data-weight-index="${index}" value="${fmtWeight(f.weight)}" ${f.includeInTotal ? "" : "disabled"}></div><div class="field-actions">${isCustom ? `<button type="button" class="btn small danger" data-remove-field="${index}">删除属性</button>` : `<span class="builtin-badge">内置</span>`}</div></div>${details}</div>`;
     }).join("");
     updateSettingsFooterState();
@@ -18075,7 +18224,7 @@ function nativeModuleEditorFormHTML(m) {
 
     <label class="wide"><span class="field-label">档案备注</span><textarea class="text-input native-module-textarea" data-native-module-field="notes" placeholder="输入档案备注（可选）">${escapeHTML(m.notes)}</textarea></label>
 
-    <details class="wide native-module-recruit-details">
+    <details class="wide native-module-recruit-details" data-collapse-key="native-module:${escapeHTML((nativeModuleDraft && nativeModuleDraft.id) || nativeModuleEditingId || 'new')}:recruit">
       <summary>招募与车卡资料</summary>
       <div class="native-module-editor-grid inner">
         <label><span class="field-label">规则</span><input class="text-input" data-native-module-field="rules" value="${escapeHTML(m.rules)}" placeholder="输入规则版本（可选）"></label>
@@ -18271,7 +18420,7 @@ function moduleToLegacyBridge(m) {
 function buildModuleBridgeState() {
     buildCanonicalCollections();
     moduleBridgeSessionId = `module_bridge_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    return { version: 17, meta: { createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }, settings: Object.assign({ theme: parentThemeToModule(settings.theme) }, clone(settings.moduleArchive)), modules: modules.map(moduleToLegacyBridge), __unifiedBridge: { sessionId: moduleBridgeSessionId, moduleIds: modules.map(m => m.id), runIdsByModule: Object.fromEntries(modules.map(m => [m.id, runRecords.filter(r => r.moduleId === m.id).map(r => r.id)])) } };
+    return { version: 17, meta: { createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }, settings: Object.assign({}, clone(settings.moduleArchive), { theme: parentThemeToModule(settings.theme), collapsibleDefault: normalizeUiSettings(settings.ui).collapseDefault }), modules: modules.map(moduleToLegacyBridge), __unifiedBridge: { sessionId: moduleBridgeSessionId, moduleIds: modules.map(m => m.id), runIdsByModule: Object.fromEntries(modules.map(m => [m.id, runRecords.filter(r => r.moduleId === m.id).map(r => r.id)])) } };
 }
 function moduleRunRoleFlags(role) { const s = String(role || "").toUpperCase(); return { kp: /KP/.test(s), pl: /PL/.test(s) }; }
 function moduleRunFingerprint(moduleId, r) { return [moduleId, normalizeDateValue(r === null || r === void 0 ? void 0 : r.date), normalizePersonToken(r === null || r === void 0 ? void 0 : r.kp), splitParticipantNames(r === null || r === void 0 ? void 0 : r.participants).map(normalizePersonToken).sort().join(","), String((r === null || r === void 0 ? void 0 : r.role) || "").toUpperCase()].join("|"); }
@@ -19104,7 +19253,7 @@ async function deleteRunPlan(planId) { const plan = runPlans.find(p => p.id === 
 ;
 async function deleteRunRecord(recordId) { const rec = runRecords.find(r => r.id === recordId); if (!rec)
     return; const label = recordDisplayLabel(rec, runRecords); if (!await appConfirm(`将“${label}”移入回收站吗？`, { title: "删除跑团记录？", confirmText: "移入回收站", danger: true }))
-    return; setRunRecordCollapsed(recordId, false); const ids = [...new Set([...rec.plIds, rec.kpProfileId].filter(Boolean))]; const entry = addTrashEntry("record", label, rec); if (!entry)
+    return; const ids = [...new Set([...rec.plIds, rec.kpProfileId].filter(Boolean))]; const entry = addTrashEntry("record", label, rec); if (!entry)
     return; const before = runRecords; runRecords = runRecords.filter(r => r.id !== recordId); touchProfiles(ids); if (!saveState()) {
     runRecords = before;
     removeTrashEntry(entry.id);
@@ -19181,8 +19330,9 @@ async function deleteProfile(id, fromModal = false) {
         return;
     }
     expandedCards.delete(id);
-    collapsedCards.delete(id);
+    delete profileCardCollapseState[String(id)];
     persistProfileCardCollapseState();
+
     if (fromModal) {
         draft = null;
         editingId = null;
@@ -19809,7 +19959,7 @@ else if (a.view === "records") {
     const r = runRecords.find(x => x.id === a.runId);
     if (r) {
         selectedModuleName = r.moduleName;
-        setRunRecordCollapsed(r.id, false);
+        setRunRecordCollapsed(r.id, false, false);
     }
     switchView("records");
     requestAnimationFrame(() => { var _a; return (_a = document.querySelector(`[data-record-id="${CSS.escape(a.runId || "")}"]`)) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ block: "center" }); });
@@ -19939,7 +20089,7 @@ else {
     const rec = runRecords.find(x => x.id === r.action.id);
     if (rec) {
         selectedModuleName = rec.moduleName;
-        setRunRecordCollapsed(rec.id, false);
+        setRunRecordCollapsed(rec.id, false, false);
     }
     switchView("records");
     requestAnimationFrame(() => { var _a; return (_a = document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ block: "center" }); });
@@ -20695,7 +20845,7 @@ async function offerEditorDraftRecovery(kind) {
             renderSettings();
             syncBehaviorSettingsUI();
             renderModuleRatingSettingsSummary();
-            activateSettingsPanel(activeSettingsPanel || "appearance");
+            activateSettingsPanel(activeSettingsPanel || "data");
             updateAllEditorStateIndicators();
         }
         showToast("已恢复上次未保存编辑");
@@ -20748,7 +20898,7 @@ function restoreLinkedReturnContext(ctx) { if (!ctx)
     selectedModuleName = ctx.selectedModuleName; if (ctx.plannerSelectedDate)
     plannerSelectedDate = ctx.plannerSelectedDate; if (ctx.plannerMonthCursor)
     plannerMonthCursor = ctx.plannerMonthCursor; switchView(view, { historyMode: "replace", restoreScroll: false }); requestAnimationFrame(() => requestAnimationFrame(() => { var _a, _b; window.scrollTo({ top: Math.max(0, Number(ctx.scrollY) || 0), behavior: "auto" }); if (view === "records" && ctx.recordId) {
-    setRunRecordCollapsed(ctx.recordId, false);
+    setRunRecordCollapsed(ctx.recordId, false, false);
     renderRunRecords({ preservePageScroll: true, centerSelected: false });
     (_a = document.querySelector(`[data-record-id="${CSS.escape(ctx.recordId)}"]`)) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ block: "center" });
 } if (view === "plans" && ctx.planId) {
@@ -22035,7 +22185,7 @@ els.recordsBoard.addEventListener("click", e => {
     const editMode = e.target.closest("[data-record-edit]");
     if (editMode) {
         recordEditingIds.add(recordId);
-        setRunRecordCollapsed(recordId, false);
+        setRunRecordCollapsed(recordId, false, false);
         renderRunRecords({ preservePageScroll: true, centerSelected: false });
         return;
     }
@@ -22044,6 +22194,7 @@ els.recordsBoard.addEventListener("click", e => {
         if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId)
             flushRecordInputSave();
         recordEditingIds.delete(recordId);
+        delete runRecordTransientCollapseState[recordId];
         renderRunRecords({ preservePageScroll: true, centerSelected: false });
         return;
     }
@@ -22517,12 +22668,12 @@ document.addEventListener("click", e => {
     }
 });
 els.globalCreate.addEventListener("click", e => { e.stopPropagation(); toggleQuickCreateMenu(); });
-[els.interfaceLanguageSetting, els.plannerDefaultViewSetting, els.plannerDensitySetting, els.recordDefaultModeSetting, els.recordDefaultExpandSetting, els.profileFootprintSetting].forEach(control => {
+[els.interfaceLanguageSetting, els.plannerDefaultViewSetting, els.plannerDensitySetting, els.recordDefaultModeSetting, els.collapseDefaultSetting].forEach(control => {
     control === null || control === void 0 ? void 0 : control.addEventListener("change", () => {
         var _a;
         if (!settingsDraft)
             return;
-        settingsDraft.ui = normalizeUiSettings(Object.assign(Object.assign({}, settingsDraft.ui), { locale: (els.interfaceLanguageSetting && els.interfaceLanguageSetting.value) || I18N_DEFAULT_LOCALE, plannerView: els.plannerDefaultViewSetting.value, plannerDensity: ((_a = els.plannerDensitySetting) === null || _a === void 0 ? void 0 : _a.value) || "auto", recordDefaultMode: els.recordDefaultModeSetting.value, recordDefaultExpand: els.recordDefaultExpandSetting.value, profileFootprintsOpen: els.profileFootprintSetting.value === "open" }));
+        settingsDraft.ui = normalizeUiSettings(Object.assign(Object.assign({}, settingsDraft.ui), { locale: (els.interfaceLanguageSetting && els.interfaceLanguageSetting.value) || I18N_DEFAULT_LOCALE, plannerView: els.plannerDefaultViewSetting.value, plannerDensity: ((_a = els.plannerDensitySetting) === null || _a === void 0 ? void 0 : _a.value) || "auto", recordDefaultMode: els.recordDefaultModeSetting.value, collapseDefault: (els.collapseDefaultSetting && els.collapseDefaultSetting.value) || "closed" }));
         i18nApplyLocale(settingsDraft.ui.locale);
         updateSettingsFooterState();
     });
@@ -22536,7 +22687,7 @@ els.sort.addEventListener("change", () => { settings.sortMode = els.sort.value; 
 els.grid.addEventListener("click", e => { const scoreToggle = e.target.closest("[data-toggle-compact-scores]"); if (scoreToggle) {
     e.stopPropagation();
     const id = String(scoreToggle.dataset.toggleCompactScores);
-    expandedCompactScoreIds.has(id) ? expandedCompactScoreIds.delete(id) : expandedCompactScoreIds.add(id);
+    rememberCollapseState(`profile:${id}:compact-scores`, !collapseStateOpen(`profile:${id}:compact-scores`));
     renderProfiles();
     return;
 } const actionEl = e.target.closest("[data-action]"); const card = e.target.closest(".card,.compact-row,.blacklist-card"); if (actionEl) {
@@ -22559,7 +22710,7 @@ els.grid.addEventListener("click", e => { const scoreToggle = e.target.closest("
     if (action === "delete")
         deleteProfile(id);
     if (action === "toggle") {
-        expandedCards.has(id) ? expandedCards.delete(id) : expandedCards.add(id);
+        rememberCollapseState(`profile:${id}:ratings-all`, !collapseStateOpen(`profile:${id}:ratings-all`));
         renderProfiles();
     }
     if (action === "collapse-card") {
@@ -22588,22 +22739,21 @@ els.hoShowEmptyColumns.addEventListener("change", () => { hoOrganizerShowEmpty =
     const selector = hoOrganizerMode === "kp" ? "[data-kp-group-toggle]" : "[data-pl-group-toggle]", toggles = [...els.hoOrganizerBoard.querySelectorAll(selector)];
     if (!toggles.length)
         return;
-    const allExpanded = toggles.every(t => t.getAttribute("aria-expanded") === "true"), set = hoOrganizerMode === "kp" ? kpOrganizerExpandedKeys : plOrganizerExpandedKeys;
-    toggles.forEach(t => { const key = String(hoOrganizerMode === "kp" ? t.dataset.kpGroupToggle : t.dataset.plGroupToggle || ""); if (!key)
-        return; if (allExpanded)
-        set.delete(key);
-    else
-        set.add(key); });
+    const allExpanded = toggles.every(t => t.getAttribute("aria-expanded") === "true");
+    toggles.forEach(t => {
+        const key = String(hoOrganizerMode === "kp" ? t.dataset.kpGroupToggle : t.dataset.plGroupToggle || "");
+        if (!key)
+            return;
+        const stateKey = hoOrganizerMode === "kp" ? `organizer:kp:${key}` : `organizer:${key}`;
+        rememberCollapseState(stateKey, !allExpanded);
+    });
     renderHoOrganizer();
 });
 els.hoOrganizerBoard.addEventListener("click", e => {
     const plToggle = e.target.closest("[data-pl-group-toggle]");
     if (plToggle) {
-        const key = String(plToggle.dataset.plGroupToggle || ""), group = plToggle.closest(".run-summary-card"), body = group === null || group === void 0 ? void 0 : group.querySelector(".kp-module-body"), expanded = !plOrganizerExpandedKeys.has(key);
-        if (expanded)
-            plOrganizerExpandedKeys.add(key);
-        else
-            plOrganizerExpandedKeys.delete(key);
+        const key = String(plToggle.dataset.plGroupToggle || ""), group = plToggle.closest(".run-summary-card"), body = group === null || group === void 0 ? void 0 : group.querySelector(".kp-module-body"), stateKey = `organizer:${key}`, expanded = !collapseStateOpen(stateKey);
+        rememberCollapseState(stateKey, expanded);
         group === null || group === void 0 ? void 0 : group.classList.toggle("is-collapsed", !expanded);
         if (body)
             body.hidden = !expanded;
@@ -22616,11 +22766,8 @@ els.hoOrganizerBoard.addEventListener("click", e => {
     }
     const kpToggle = e.target.closest("[data-kp-group-toggle]");
     if (kpToggle) {
-        const key = String(kpToggle.dataset.kpGroupToggle || ""), group = kpToggle.closest(".run-summary-card"), body = group === null || group === void 0 ? void 0 : group.querySelector(".kp-module-body"), expanded = !kpOrganizerExpandedKeys.has(key);
-        if (expanded)
-            kpOrganizerExpandedKeys.add(key);
-        else
-            kpOrganizerExpandedKeys.delete(key);
+        const key = String(kpToggle.dataset.kpGroupToggle || ""), group = kpToggle.closest(".run-summary-card"), body = group === null || group === void 0 ? void 0 : group.querySelector(".kp-module-body"), stateKey = `organizer:kp:${key}`, expanded = !collapseStateOpen(stateKey);
+        rememberCollapseState(stateKey, expanded);
         group === null || group === void 0 ? void 0 : group.classList.toggle("is-collapsed", !expanded);
         if (body)
             body.hidden = !expanded;
@@ -23004,47 +23151,8 @@ document.addEventListener("keydown", e => {
         closeEditor(true);
 });
 /* ---------- 28. 应用启动：生成排序选项、恢复免责声明状态并显示当前全部档案 ---------- */
-function initDisclaimerState() {
-    const details = document.getElementById("disclaimerDetails");
-    if (!details)
-        return;
-    // v5.12 起固定底栏默认收起；用户后续主动展开 / 收起的选择继续记忆。
-    let saved = null;
-    try {
-        saved = localStorage.getItem(DISCLAIMER_STATE_KEY);
-    }
-    catch (err) {
-        console.warn("无法读取免责声明折叠状态", err);
-    }
-    details.open = saved === "0";
-    details.addEventListener("toggle", () => {
-        try {
-            localStorage.setItem(DISCLAIMER_STATE_KEY, details.open ? "0" : "1");
-        }
-        catch (err) {
-            console.warn("无法保存免责声明折叠状态", err);
-        }
-    });
-}
-/* 首页“使用说明”默认收起；用户一旦展开或收起，就记住该选择。 */
-function initHeroHelpState() {
-    const details = document.getElementById("heroHelpDetails");
-    if (!details)
-        return;
-    try {
-        const saved = localStorage.getItem(HERO_HELP_STATE_KEY);
-        details.open = saved === "1";
-        details.addEventListener("toggle", () => {
-            localStorage.setItem(HERO_HELP_STATE_KEY, details.open ? "1" : "0");
-        });
-    }
-    catch (err) {
-        console.warn("无法读取或保存首页使用说明状态", err);
-    }
-}
-// 初始渲染
-initDisclaimerState();
-initHeroHelpState();
+// 初始渲染：全站折叠区默认收起；用户手动状态优先且跨刷新记忆。
+initPersistentCollapseUX();
 initMobileUX();
 initProfileCardCollapseState();
 initPlannerUIPreferences();
