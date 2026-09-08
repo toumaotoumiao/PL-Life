@@ -314,7 +314,6 @@
     .table-record{position:relative;border:1px solid #dfe1db;border-radius:14px;background:#fff;padding:11px;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
     .table-record-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.table-record-no{font-size:11px;font-weight:760;color:#515852}.table-record-name{color:#333a35}.table-record-time{font-size:9px;color:#9a9d98}
     .table-fields{display:grid;grid-template-columns:.9fr .72fr .82fr .82fr 1.28fr;gap:8px}.table-fields label{min-width:0}.table-fields .text-input{padding:8px 10px;font-size:11px}
-    .legacy-duration-note{margin-top:7px;padding:6px 8px;border-radius:9px;background:#fff8eb;border:1px solid #eee0bf;color:#8a7753;font-size:9.5px}
     .participants{margin-top:10px;padding-top:9px;border-top:1px dashed #e1e3dd}.participants-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:7px}.participants-title{font-size:10.5px;color:#747974;font-weight:650}
     .participant-add{display:flex;gap:6px;align-items:center}.participant-select{min-width:170px;height:38px;border:1px solid #d9dbd4;border-radius:10px;background:#fff;color:#505550;padding:0 8px;font-size:10.5px}
     .participant-chips{display:flex;flex-wrap:wrap;gap:6px}.participant-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid #d8ddd7;background:#f7f8f5;border-radius:999px;padding:5px 6px 5px 9px;font-size:10.5px;color:#505651}
@@ -1932,13 +1931,6 @@
     }
 
     
-    .record-legacy-badge{
-      display:inline-flex;align-items:center;margin-left:6px;padding:2px 6px;
-      border:1px solid var(--t-warning-line);border-radius:999px;
-      background:var(--t-warning-soft);color:var(--t-warning);font-size:8px;font-weight:700
-    }
-
-    
     .hero-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
     .autosave-status-chip{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:6px 9px;border:1px solid var(--t-line);border-radius:999px;background:color-mix(in srgb,var(--t-surface) 82%,transparent);color:var(--t-muted);font-size:9px;white-space:nowrap}
     .autosave-status-dot{width:7px;height:7px;border-radius:50%;background:var(--t-success);box-shadow:0 0 0 3px color-mix(in srgb,var(--t-success) 13%,transparent)}
@@ -1982,10 +1974,6 @@
     .assignment-remove{width:28px;height:28px;align-self:start;border-radius:50%}
     .participants-subtitle{margin-top:2px;color:var(--t-muted);font-size:8px}
     .shared-ho-note{display:grid;gap:4px;margin-top:8px}
-    .legacy-ho-migration-note{
-      margin-top:8px;padding:8px 10px;border:1px solid var(--t-warning-line);border-radius:10px;
-      background:var(--t-warning-soft);color:var(--t-warning);font-size:8.5px;line-height:1.5
-    }
 
     .kpc-panel{
       margin-top:9px;padding:9px 10px;border:1px dashed var(--t-line-strong);border-radius:12px;
@@ -3426,7 +3414,7 @@
     .search,.settings-search,.global-search-box{position:relative}.search input,.settings-search input,.global-search-box input{min-width:0;padding-right:30px}.search-clear{flex:0 0 auto;display:grid;place-items:center;width:28px;height:28px;min-width:28px;min-height:28px;margin-left:-2px;padding:0;border:0;border-radius:9px;background:transparent;color:var(--t-muted);font:700 18px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;touch-action:manipulation;transition:background .12s ease,color .12s ease,transform .12s ease}.search-clear:hover{background:var(--t-surface-3);color:var(--t-ink)}.search-clear:active{transform:scale(.92)}.search-clear[hidden]{display:none!important}input[type="search"]::-webkit-search-cancel-button{display:none}
     .select-affordance{display:flex;align-items:center;gap:7px;min-width:0;min-height:var(--ui-control-h);padding:0 8px 0 10px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-input);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--t-surface) 92%,transparent);transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}.select-affordance:focus-within{border-color:var(--t-line-strong);box-shadow:0 0 0 3px var(--t-focus)}.select-affordance-label{flex:0 0 auto;font-size:9px;font-weight:760;color:var(--t-faint);letter-spacing:.02em;white-space:nowrap}.select-affordance>.sort-select{flex:1 1 auto;width:auto;min-width:0;max-width:none!important;border:0!important;border-radius:0!important;padding-left:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}.toolbar>.select-affordance{max-width:340px}.module-native-controls>.select-affordance{width:100%;max-width:100%}
     .count,.search-result-count{font-variant-numeric:tabular-nums}.search-result-count{margin:6px 2px 0;color:var(--t-muted);font-size:9.5px;line-height:1.35;white-space:nowrap}.records-search-row .search-result-count{margin:0;align-self:center}
-    html[data-theme] :is(.status-ok,.plan-row-status.active,.integrity-ok){background:var(--status-success-bg)!important;border-color:var(--status-success-line)!important;color:var(--t-success)!important}html[data-theme] :is(.plan-row-status.upcoming,.record-summary-chip.archive,.archived-schedule-label,.record-view-archive){background:var(--status-info-bg)!important;border-color:var(--status-info-line)!important;color:var(--t-muted)!important}html[data-theme] :is(.pending-badge,.plan-row-status.overdue,.legacy-duration-note,.record-legacy-badge,.integrity-item.warn){background:var(--status-warning-bg)!important;border-color:var(--status-warning-line)!important;color:var(--t-warning)!important}html[data-theme] :is(.integrity-item.error,.settings-warning.error){background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)!important}.plan-row-status.unscheduled{background:var(--t-surface-3)!important;border-color:var(--t-line)!important;color:var(--t-muted)!important}
+    html[data-theme] :is(.status-ok,.plan-row-status.active,.integrity-ok){background:var(--status-success-bg)!important;border-color:var(--status-success-line)!important;color:var(--t-success)!important}html[data-theme] :is(.plan-row-status.upcoming,.record-summary-chip.archive,.archived-schedule-label,.record-view-archive){background:var(--status-info-bg)!important;border-color:var(--status-info-line)!important;color:var(--t-muted)!important}html[data-theme] :is(.pending-badge,.plan-row-status.overdue,.integrity-item.warn){background:var(--status-warning-bg)!important;border-color:var(--status-warning-line)!important;color:var(--t-warning)!important}html[data-theme] :is(.integrity-item.error,.settings-warning.error){background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)!important}.plan-row-status.unscheduled{background:var(--t-surface-3)!important;border-color:var(--t-line)!important;color:var(--t-muted)!important}
     .plan-row-status,.month-event,.week-day-head-cell span,.week-time-label span,.calendar-event-time,.week-slot-capacity,.record-summary-chip,.record-section-note,.module-tab-meta,.table-record-time,.record-view-fact span,.record-view-section-title span,.record-view-note span,.native-module-score span,.native-module-row-main span,.native-module-row-tags span,.global-search-result-type,.integrity-item small,.trash-row-main span,.assignment-mini-label,.participant-empty-panel span,.module-ho-inline-label,.compact-save-status,.updated-chip,.runs-role-summary{font-size:9px!important}
     @media(max-width:760px){.records-search-row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"search batch" "count count";gap:6px;padding-top:8px}.records-search-batch{justify-self:end;gap:4px}.records-search-batch .btn{min-height:42px;padding-inline:9px;font-size:10.5px}.records-search-row .search-result-count{text-align:left;margin:0 2px!important}.records-search{min-height:46px}
     html[data-theme] .settings-nav button.active{box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}html[data-theme] .module-tab.active{box-shadow:inset 0 -2px 0 var(--t-accent),0 2px 8px var(--t-shadow-soft)!important}.toolbar>.select-affordance{grid-column:1/2!important;grid-row:2!important;width:100%;max-width:none}.toolbar>.select-affordance>.sort-select{font-size:16px!important}.select-affordance-label{font-size:9.5px}.search-clear{width:34px;height:34px;min-width:34px;min-height:34px;border-radius:10px}.search-result-count{font-size:10px}}
@@ -3826,7 +3814,7 @@
     .intro-boundary-row[data-boundary-tone="accept"] select{border-color:color-mix(in srgb,var(--t-success) 24%,var(--t-line));background:color-mix(in srgb,var(--t-success) 7%,var(--t-surface));color:color-mix(in srgb,var(--t-success) 78%,var(--t-text));font-weight:720}
     .intro-boundary-row[data-boundary-tone="success"]{border-color:color-mix(in srgb,var(--t-success) 32%,var(--t-line));background:color-mix(in srgb,var(--t-success) 9%,var(--t-surface));box-shadow:inset 3px 0 0 color-mix(in srgb,var(--t-success) 54%,transparent)}
     .intro-boundary-row[data-boundary-tone="success"] select{border-color:color-mix(in srgb,var(--t-success) 42%,var(--t-line));background:color-mix(in srgb,var(--t-success) 13%,var(--t-surface));color:var(--t-success);font-weight:780}
-    .intro-preference-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.intro-preference-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(116px,145px);gap:8px;align-items:center;padding:8px 9px;border:1px solid color-mix(in srgb,var(--t-line) 72%,transparent);border-radius:11px;background:color-mix(in srgb,var(--t-surface-2) 78%,var(--t-surface))}.intro-preference-copy{display:grid;gap:2px;min-width:0}.intro-preference-copy strong{font-size:9.7px;line-height:1.25;color:var(--t-text-2)}.intro-preference-copy small{font-size:7.8px;line-height:1.35;color:var(--t-muted)}.intro-preference-row .intro-select{min-width:0;width:100%}.intro-kp-group-title{display:flex;align-items:center;justify-content:space-between;gap:8px}.intro-kp-group-title strong{font-size:13px}.intro-kp-group-title span{font-size:8.2px;color:var(--t-muted)}.intro-aftercare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.intro-aftercare-grid .intro-field-wrap{padding:8px 9px;border:1px solid color-mix(in srgb,var(--t-line) 72%,transparent);border-radius:11px;background:var(--t-surface-2)}.intro-legacy-details{opacity:.88}
+    .intro-preference-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.intro-preference-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(116px,145px);gap:8px;align-items:center;padding:8px 9px;border:1px solid color-mix(in srgb,var(--t-line) 72%,transparent);border-radius:11px;background:color-mix(in srgb,var(--t-surface-2) 78%,var(--t-surface))}.intro-preference-copy{display:grid;gap:2px;min-width:0}.intro-preference-copy strong{font-size:9.7px;line-height:1.25;color:var(--t-text-2)}.intro-preference-copy small{font-size:7.8px;line-height:1.35;color:var(--t-muted)}.intro-preference-row .intro-select{min-width:0;width:100%}.intro-kp-group-title{display:flex;align-items:center;justify-content:space-between;gap:8px}.intro-kp-group-title strong{font-size:13px}.intro-kp-group-title span{font-size:8.2px;color:var(--t-muted)}.intro-aftercare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.intro-aftercare-grid .intro-field-wrap{padding:8px 9px;border:1px solid color-mix(in srgb,var(--t-line) 72%,transparent);border-radius:11px;background:var(--t-surface-2)}
     @media(max-width:1100px){.intro-preference-list{grid-template-columns:1fr}.intro-aftercare-grid{grid-template-columns:1fr 1fr}.intro-aftercare-grid .intro-field-wrap:last-child{grid-column:1/-1}}
     @media(max-width:760px){.intro-preference-row{grid-template-columns:1fr}.intro-aftercare-grid{grid-template-columns:1fr}.intro-aftercare-grid .intro-field-wrap:last-child{grid-column:auto}}
     .intro-subdetails{border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2);overflow:hidden}.intro-subdetails>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;color:var(--t-ink);font-size:11.5px;font-weight:850}.intro-subdetails>summary::-webkit-details-marker{display:none}.intro-subdetails>summary::after{content:'⌄';color:var(--t-muted)}.intro-subdetails[open]>summary::after{transform:rotate(180deg)}.intro-subdetails-body{display:grid;gap:10px;padding:0 10px 11px;border-top:1px solid var(--t-line)}
@@ -4924,7 +4912,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.8.4 · 2026-09-07 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.8.5 · 2026-09-08 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4936,7 +4924,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.8.4　·　更新时间：2026-09-07　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.8.5　·　更新时间：2026-09-08　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5281,7 +5269,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.8.4</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.8.5</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5304,10 +5292,11 @@ body{font-size:var(--vu-body);line-height:1.5}
   <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.8.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.8.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.8.5 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.8.5</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
 <details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<strong>v8.1.8.5</strong><span>历史兼容字段静默保留：已被新版结构替代的个人偏好细项、旧持续时间、旧 HO 数量提示及迁移标记继续保存在档案与备份中，但从正常页面、搜索、统计明细、个人偏好图片导出和高级模组工具中隐藏；历史兼容数据只参与内部兼容与恢复，不再重新出现在日常使用和分享内容里。</span>
 <strong>v8.1.8.4</strong><span>偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新；个人偏好图片导出同步保留边界提示底色，其中“绝对不行”使用浅红底和红色强调，便于分享时快速识别红线。</span>
 <strong>v8.1.8.3</strong><span>交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮；跑团记录把“完成编辑/编辑此桌”独立放到右侧主操作区，更换模组、退回计划与删除统一放左侧次级操作区。</span>
 <strong>v8.1.8.2</strong><span>第四层防呆强化：高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据；新增浏览器存储余量监测与大档案预警、敏感图片导出前隐私提醒、最近高风险操作前安全快照一键恢复、异常超长粘贴二次确认，以及导入/恢复后的自动完整性复核。</span>
@@ -5324,7 +5313,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <strong>v8.1.7.1</strong><span>完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案；动态 DOM 新增/更新时自动绑定翻译键，并加入用户档案原文保护，避免把 PL 名称、联系方式、模组资料、备注、Log 等既有内容误当系统文案翻译。高级模组工具同步主页面语言状态；简体中文继续作为唯一开放语言，为后续繁中、英文、日文词包直接填充做好准备。</span>
               <strong>v8.1.7.0</strong><span>建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容；显示设置加入界面语言入口，并为英文长文本与日文断行预留跨端布局规则。首版仅开放简体中文，繁中、英文、日文词库将在后续逐步上线。</span>
 <strong>v8.1.6.42</strong><span>手机浏览器外备份改为下载目录优先：移动端默认不再尝试可能无响应的文件夹选择器，而是按频率自动尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截无点击自动下载，提示中提供“重新下载”。同时保留“到期提醒后再下载”模式，并增强移动浏览器下载兼容写法。</span>
-<strong>v8.1.6.41</strong><span>个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段；低频异常处理收进折叠区，旧版已有细项继续保留可编辑，避免数据丢失。</span>
+<strong>v8.1.6.41</strong><span>个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段；低频异常处理收进折叠区，历史兼容数据继续保留以避免数据丢失。</span>
 <strong>v8.1.6.40</strong><span>个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏；同时加入“一键自动紧凑”恢复，并移除个人偏好导出图片顶部的导出范围与版面参数标签。</span>
 <strong>v8.1.6.39</strong><span>进一步完善手机端导出预览拖动：移动端抓手扩大为更易触控的横向拖动条，并在预览层禁用系统长按菜单、文本选择和原生图片拖拽；同时统一移除所有导出图片底部的“应用名 / 版本 / 生成日期”等元数据脚注，并收紧对应底部留白。</span>
 <strong>v8.1.6.38</strong><span>修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域，同时保留左侧上下按钮作为兼容降级。</span>
@@ -5546,7 +5535,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.8.4 · 作者：番茄
+/* PL收集梦想生活 v8.1.8.5 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5573,7 +5562,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.8.4";
+const APP_UI_VERSION = "8.1.8.5";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -9414,13 +9403,13 @@ function normalizeSelfIntro(raw) {
 }
 function selfIntroHasContent(raw) {
     const d = normalizeSelfIntro(raw), pms = [d.pl.modulePrefs, d.kp.modulePrefs];
-    if ([d.bio, d.platformOther, d.generalNotes, d.pl.rpStyle, d.pl.wishes, d.pl.avoids, d.pl.notes, d.kp.wishes, d.kp.avoids, d.kp.notes, d.kp.boundaryNotes, d.frequency, d.pl.ocPcRelation, d.kp.issueThreshold, d.kp.issueAction, d.kp.logReuse, d.kp.futureContact, d.kp.aftercare.chat, d.kp.aftercare.sharing, d.kp.aftercare.duration, d.kp.aftercare.notes, ...Object.values(d.kp.interaction || {}), ...pms.flatMap(mp => [mp.eraOther, mp.regionOther, mp.structureOther, mp.elementOther, mp.notes])].some(v => String(v || "").trim()))
+    if ([d.bio, d.platformOther, d.generalNotes, d.pl.rpStyle, d.pl.wishes, d.pl.avoids, d.pl.notes, d.kp.wishes, d.kp.avoids, d.kp.notes, d.kp.boundaryNotes, d.frequency, d.pl.ocPcRelation, d.kp.issueAction, d.kp.aftercare.chat, d.kp.aftercare.sharing, d.kp.aftercare.duration, d.kp.aftercare.notes, ...Object.values(d.kp.interaction || {}), ...pms.flatMap(mp => [mp.eraOther, mp.regionOther, mp.structureOther, mp.elementOther, mp.notes])].some(v => String(v || "").trim()))
         return true;
     if ([d.platforms, d.formats, d.timeSlots, d.availability, d.pl.focus, d.pl.wantModules, d.kp.canHostModules, ...pms.flatMap(mp => [mp.eras, mp.regions, mp.structures, mp.elements])].some(a => Array.isArray(a) && a.length))
         return true;
     if ([d.pl.rpIntensity, d.pl.npcAttitude, d.pl.actionStyle, d.pl.originalFlavor, d.pl.socialStyle, d.pl.decisionStyle, d.pl.cardLossAttitude, d.pl.kpChatStyle, d.pl.kpMercyStyle, d.kp.moduleAdaptation, d.kp.npcHandling, d.kp.plFreedom, d.kp.originalFlavor, d.kp.ruleStrictness].some(v => introScaleValue(v) !== 3))
         return true;
-    return Object.values(d.kp.boundaries || {}).some(Boolean);
+    return [...SELF_INTRO_KP_CONTENT_ITEMS, ...SELF_INTRO_KP_TABLE_ITEMS].some(key => Boolean(d.kp.boundaries && d.kp.boundaries[key]));
 }
 let startupDataReport = { source: "fresh", sourceKey: "", sourceSchema: null, sourceAppVersion: "", embedded: false, inherited: false, migrated: false, error: "" };
 let storageDiagnostics = { checked: false, localStorage: false, indexedDb: false, persistent: null, usage: null, quota: null, mode: "", error: "" };
@@ -9948,7 +9937,7 @@ async function setModuleHoSystemInline(entity, system) {
     const hasHoDetail = item => {
         const assigned = (item.participantAssignments || []).some(a => ["number", "custom"].includes(normalizePcHoMode(a.hoMode)) || String(a.hoCustom || "").trim());
         const kpc = normalizeKpc(item.kpc), kpcAssigned = kpc.enabled && (["number", "custom"].includes(normalizePcHoMode(kpc.hoMode)) || String(kpc.hoCustom || "").trim());
-        return Boolean(assigned || kpcAssigned || String(item.sharedHoNote || "").trim() || Number(item.legacyHoSlots || 0));
+        return Boolean(assigned || kpcAssigned || String(item.sharedHoNote || "").trim());
     };
     const affected = linked.filter(hasHoDetail);
     if (next === "none" && affected.length) {
@@ -10183,12 +10172,6 @@ function mutateKpcAssignment(entity, mutator) {
     mutator(k);
     entity.kpc = normalizeKpc(k);
     return entity.kpc;
-}
-function legacyHoMigrationNote(entity) {
-    if (moduleHoSystemForEntity(entity) !== "has")
-        return "";
-    const n = Math.max(0, Math.min(5, Math.floor(Number(entity === null || entity === void 0 ? void 0 : entity.legacyHoSlots) || 0)));
-    return n ? `<div class="legacy-ho-migration-note">旧版仅记录“本桌有 ${n} 个 HO 位”，未记录具体分配。系统不会自动推断，请在每个 PL / PC 行逐项设置。</div>` : "";
 }
 function normalizePostRunDraft(raw) {
     var _a, _b, _c, _d, _e, _f;
@@ -12479,9 +12462,17 @@ function draftTitleHTML() {
     const name = (draft === null || draft === void 0 ? void 0 : draft.name) || "未命名 PL";
     return `编辑：${profileNameHTML({ id: draft === null || draft === void 0 ? void 0 : draft.id, name }, "privacy-title-name")}`;
 }
+function visibleRecordTableName(r) {
+    const value = String((r && r.tableName) || "");
+    return (r && r.legacyCountOnly && /^历史补记\s*·\s*(?:PL|KP)\s*侧\s*\d+$/i.test(value.trim())) ? "" : value;
+}
+function visibleRecordRunNotes(r) {
+    const value = String((r && r.runNotes) || "");
+    return (r && r.legacyCountOnly && /^由旧模组档案的历史\s*PL\s*\/\s*KP\s*侧次数迁移/.test(value.trim())) ? "" : value;
+}
 function recordDisplayLabel(r, source = runRecords) {
-    const ordinal = recordOrdinal(r, source);
-    return `${r.moduleName}${r.tableName ? ` · ${r.tableName}` : ""} · 第${ordinal}桌`;
+    const ordinal = recordOrdinal(r, source), tableName = visibleRecordTableName(r);
+    return `${r.moduleName}${tableName ? ` · ${tableName}` : ""} · 第${ordinal}桌`;
 }
 function formatRunDateRange(r) {
     if (r.startDate && r.endDate)
@@ -12490,7 +12481,7 @@ function formatRunDateRange(r) {
         return `${r.startDate} 起`;
     if (r.endDate)
         return `截至 ${r.endDate}`;
-    return r.legacyDuration || "";
+    return "";
 }
 function touchProfiles(ids) {
     const now = Date.now(), set = new Set(ids || []);
@@ -12914,14 +12905,6 @@ function kpOrganizerParticipantKeys(run) {
     } };
     ((run === null || run === void 0 ? void 0 : run.plIds) || []).forEach(rawId => { const id = String(rawId || "").trim(); if (!id)
         return; add(`id:${id}`); });
-    const extras = [...(Array.isArray(run === null || run === void 0 ? void 0 : run.legacyPlNames) ? run.legacyPlNames : []), ...splitLegacyParticipantText((run === null || run === void 0 ? void 0 : run.participantText) || "")];
-    extras.forEach(name => {
-        const token = normalizePersonToken(name);
-        if (!token)
-            return;
-        const linked = profileByExactName(name);
-        add(linked ? `id:${linked.id}` : `name:${token}`);
-    });
     return keys;
 }
 function kpOrganizerParticipantCount(run) { return kpOrganizerParticipantKeys(run).length; }
@@ -13519,8 +13502,6 @@ function cardHTML(p) {
             bodyParts.push(`<div>开始日期：${escapeHTML(r.startDate)}</div>`);
         if (r.endDate)
             bodyParts.push(`<div>结束日期：${escapeHTML(r.endDate)}</div>`);
-        if (r.legacyDuration && !r.startDate && !r.endDate)
-            bodyParts.push(`<div>旧版时间记录：${escapeHTML(r.legacyDuration)}</div>`);
         if (archivedSessionText(r).length)
             bodyParts.push(`<div>归档安排：${archivedSessionText(r).map(escapeHTML).join("；")}</div>`);
         if (r.kpProfileId || r.kp)
@@ -14555,7 +14536,6 @@ function applyBoundaryTone(select) {
 function introSelectOptions(values, current, emptyLabel = "未设置") { return values.map(v => `<option value="${escapeHTML(v)}" ${String(current || "") === String(v) ? "selected" : ""}>${escapeHTML(v || emptyLabel)}</option>`).join(""); }
 function boundaryRowsFor(items, d) { return items.map(key => { const current = (d.kp.boundaries && d.kp.boundaries[key]) || "", tone = boundaryLevelTone(current); return `<label class="intro-boundary-row"${tone ? ` data-boundary-tone="${tone}"` : ""}><span>${escapeHTML(key)}</span><select data-intro-boundary="${escapeHTML(key)}">${boundaryLevelOptions(current)}</select></label>`; }).join(""); }
 function kpInteractionRows(d) { return SELF_INTRO_KP_INTERACTION_ITEMS.map(([key, label, desc]) => { const current = (d.kp.interaction && d.kp.interaction[key]) || ""; return `<label class="intro-preference-row"><span class="intro-preference-copy"><strong>${escapeHTML(label)}</strong><small>${escapeHTML(desc)}</small></span><select class="intro-select" data-intro-field="kp.interaction.${escapeHTML(key)}">${introSelectOptions(SELF_INTRO_KP_INTERACTION_LEVELS, current)}</select></label>`; }).join(""); }
-function kpLegacyDetails(d) { const legacyBoundary = SELF_INTRO_KP_LEGACY_BOUNDARY_ITEMS.filter(key => d.kp.boundaries && d.kp.boundaries[key]); const hasLegacy = Boolean(d.kp.issueThreshold || d.kp.logReuse || d.kp.futureContact || legacyBoundary.length); if (!hasLegacy) return ""; return `<details class="intro-subdetails intro-legacy-details" data-collapse-key="self-intro:kp:legacy"><summary>旧版细项（已有数据）</summary><div class="intro-subdetails-body">${legacyBoundary.length ? `<div class="self-intro-section"><div class="self-intro-section-head"><strong>旧版边界项</strong><span>仅已有数据时显示</span></div><div class="intro-boundary-list">${boundaryRowsFor(legacyBoundary, d)}</div></div>` : ""}<div class="self-intro-section intro-two-col">${d.kp.issueThreshold ? `<label class="intro-field-wrap"><span>旧版：同类问题累计次数</span><select class="intro-select" data-intro-field="kp.issueThreshold"><option value="">未设置</option>${[1,2,3,4,5].map(n => `<option value="${n}" ${String(d.kp.issueThreshold)===String(n)?"selected":""}>${n} 次</option>`).join("")}</select></label>` : ""}${d.kp.logReuse ? `<label class="intro-field-wrap"><span>旧版：合作终止后的 Log 使用</span><select class="intro-select" data-intro-field="kp.logReuse">${introSelectOptions(["", "不可以", "最好不要", "无所谓", "可以"], d.kp.logReuse)}</select></label>` : ""}${d.kp.futureContact ? `<label class="intro-field-wrap"><span>旧版：后续是否继续约团</span><select class="intro-select" data-intro-field="kp.futureContact">${introSelectOptions(["", "不可以", "最好不要", "视情况", "可以"], d.kp.futureContact)}</select></label>` : ""}</div></div></details>`; }
 function introModulePrefsSections(side) {
     const base = `${side}.modulePrefs`, mp = selfIntroPathGet(selfIntroDraft, base) || defaultIntroModulePrefs();
     return `
@@ -14580,7 +14560,6 @@ function renderSelfIntroView({ reset = false } = {}) {
         return;
     const contentBoundaryRows = boundaryRowsFor(SELF_INTRO_KP_CONTENT_ITEMS, d);
     const tableBoundaryRows = boundaryRowsFor(SELF_INTRO_KP_TABLE_ITEMS, d);
-    const legacyDetails = kpLegacyDetails(d);
     els.selfIntroGrid.innerHTML = selfIntroDatalist() + `
     <details class="self-intro-card" data-collapse-key="self-intro:common"><summary><span>常用信息<small>平台、形式、时间、频率与通用说明集中整理</small></span></summary><div class="self-intro-card-body intro-basics-layout">
       <div class="intro-basic-block bio"><div class="intro-basic-label"><strong>一句话介绍</strong><span>跑团年限、常用规则或个人定位</span></div><textarea class="intro-textarea" data-intro-field="bio" placeholder="例如：长期 COC / DND 玩家，文字与语音均可。">${escapeHTML(d.bio)}</textarea></div>
@@ -14618,7 +14597,7 @@ function renderSelfIntroView({ reset = false } = {}) {
 
           <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:aftercare"><summary>售后与场外交流</summary><div class="intro-subdetails-body"><div class="self-intro-section"><div class="self-intro-section-head"><span>不区分群聊、私聊等具体渠道</span></div><div class="intro-aftercare-grid"><label class="intro-field-wrap"><span>结团后继续交流</span><select class="intro-select" data-intro-field="kp.aftercare.chat">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_CHAT_LEVELS, d.kp.aftercare.chat)}</select></label><label class="intro-field-wrap"><span>模组口嗨 / 稿件分享</span><select class="intro-select" data-intro-field="kp.aftercare.sharing">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_SHARE_LEVELS, d.kp.aftercare.sharing)}</select></label><label class="intro-field-wrap"><span>交流持续倾向</span><select class="intro-select" data-intro-field="kp.aftercare.duration">${introSelectOptions(SELF_INTRO_KP_AFTERCARE_DURATION, d.kp.aftercare.duration)}</select></label></div><textarea class="intro-textarea" data-intro-field="kp.aftercare.notes" placeholder="售后或场外交流有特殊边界时再写；没有可留空。">${escapeHTML(d.kp.aftercare.notes)}</textarea></div></div></details></div>
 
-          <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:cooperation"><summary>协作与处理</summary><div class="intro-subdetails-body"><div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>期望 PL 的协作方式</span><textarea class="intro-textarea" data-intro-field="kp.wishes">${escapeHTML(d.kp.wishes)}</textarea></label><label class="intro-field-wrap"><span>出现问题时的处理倾向</span><select class="intro-select" data-intro-field="kp.issueAction"><option value="">未设置</option>${["提醒警告", "协商后继续", "停止本次团", "不再约团"].map(v => `<option value="${escapeHTML(v)}" ${d.kp.issueAction === v ? "selected" : ""}>${escapeHTML(v)}</option>`).join("")}</select></label></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.boundaryNotes" placeholder="红线、特殊情况或处理原则；具体次数、Log 沿用等低频情况可直接写在这里。">${escapeHTML(d.kp.boundaryNotes)}</textarea></div>${legacyDetails}</div></details></div>
+          <div class="self-intro-section"><details class="intro-subdetails" data-collapse-key="self-intro:kp:cooperation"><summary>协作与处理</summary><div class="intro-subdetails-body"><div class="self-intro-section intro-two-col"><label class="intro-field-wrap"><span>期望 PL 的协作方式</span><textarea class="intro-textarea" data-intro-field="kp.wishes">${escapeHTML(d.kp.wishes)}</textarea></label><label class="intro-field-wrap"><span>出现问题时的处理倾向</span><select class="intro-select" data-intro-field="kp.issueAction"><option value="">未设置</option>${["提醒警告", "协商后继续", "停止本次团", "不再约团"].map(v => `<option value="${escapeHTML(v)}" ${d.kp.issueAction === v ? "selected" : ""}>${escapeHTML(v)}</option>`).join("")}</select></label></div><div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.boundaryNotes" placeholder="红线、特殊情况或处理原则；具体次数、Log 沿用等低频情况可直接写在这里。">${escapeHTML(d.kp.boundaryNotes)}</textarea></div></div></details></div>
 
           <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="kp.notes" placeholder="KP 侧其他补充，例如改模原则、常用规则、开团习惯等；没有可留空。">${escapeHTML(d.kp.notes)}</textarea></div>
           ${moduleIntentSection("host", "可带模组", "从模组档案选择或直接输入新模组")}
@@ -14712,10 +14691,6 @@ function selfIntroExportSections(d, side) {
         const handlingLines = [...(String(x.wishes || "").trim() ? [`期望协作：${String(x.wishes).trim()}`] : []), ...(x.issueAction ? [`出现问题时：${x.issueAction}`] : []), ...(String(x.boundaryNotes || "").trim() ? [`处理原则：${String(x.boundaryNotes).trim()}`] : [])];
         if (handlingLines.length)
             sections.push({ title: "协作与处理", lines: handlingLines });
-        const legacyBoundaryRows = SELF_INTRO_KP_LEGACY_BOUNDARY_ITEMS.filter(k => x.boundaries && x.boundaries[k]).map(k => ({ label: k, value: x.boundaries[k], tone: boundaryLevelTone(x.boundaries[k]) }));
-        const legacyLines = [...(x.issueThreshold ? [`旧版同类问题累计：${x.issueThreshold} 次`] : []), ...(x.logReuse ? [`旧版停止合作后 Log：${x.logReuse}`] : []), ...(x.futureContact ? [`旧版后续约团：${x.futureContact}`] : [])];
-        if (legacyBoundaryRows.length || legacyLines.length)
-            sections.push({ title: "旧版已有细项", lines: legacyLines, boundaryRows: legacyBoundaryRows });
         if (String(x.notes || "").trim())
             sections.push({ title: "其他补充", lines: [String(x.notes).trim()] });
         sections.push({ title: "可带模组", lines: selfIntroExportIntentLines(x.canHostModules, "带团备注") });
@@ -15390,8 +15365,6 @@ function statsParticipantRefs(run) {
     ((run === null || run === void 0 ? void 0 : run.plIds) || []).forEach(id => { if (id === selfId)
         return; const p = profileById(id); const ref = p ? statsPersonRefFromProfile(p) : null; if (ref)
         out.set(ref.key, ref); });
-    splitParticipantNames(run === null || run === void 0 ? void 0 : run.participantText).forEach(name => { const ref = statsPersonRefFromName(name); if (ref && ref.profileId !== selfId)
-        out.set(ref.key, ref); });
     return [...out.values()];
 }
 function statsKpRef(run) {
@@ -15579,7 +15552,7 @@ function statsTrendHTML(data, view) {
 }
 function statsCompleteness(runs) {
     const total = runs.length, selfId = selfProfileId();
-    const log = runs.filter(r => String(r.logUrl || "").trim()).length, duration = runs.filter(r => String(r.actualDuration || r.legacyDuration || "").trim()).length;
+    const log = runs.filter(r => String(r.logUrl || "").trim()).length, duration = runs.filter(r => String(r.actualDuration || "").trim()).length;
     const hoApplicable = runs.filter(r => moduleHoSystemForEntity(r) === "has");
     const ho = hoApplicable.filter(r => { if (String(r.ho || "").trim())
         return true; const roles = statsRunRoles(r); if (roles.pl && selfId) {
@@ -16169,12 +16142,12 @@ function groupedRunRecords() {
 }
 function recordSearchCoreValues(r, moduleName) {
     var _a;
-    return [moduleName, r.tableName, kpTextLabel(r), r.kp, (r.plIds || []).map(profileNameById), (r.participantAssignments || []).map(a => a === null || a === void 0 ? void 0 : a.pcName), (_a = r.kpc) === null || _a === void 0 ? void 0 : _a.pcName];
+    return [moduleName, visibleRecordTableName(r), kpTextLabel(r), r.kp, (r.plIds || []).map(profileNameById), (r.participantAssignments || []).map(a => a === null || a === void 0 ? void 0 : a.pcName), (_a = r.kpc) === null || _a === void 0 ? void 0 : _a.pcName];
 }
 function recordSearchSecondaryValues(r) {
     var _a;
     const slots = (r.sessionSlots || []).flatMap(s => [s.date, daypartInfo(s.daypart).label, formatPlanSlot(s)]);
-    return [r.startDate, r.endDate, r.legacyDuration, r.logUrl, r.actualDuration, r.thoughts, r.runNotes, hoAssignmentSummary(r), r.sharedHoNote, (r.participantAssignments || []).map(a => a === null || a === void 0 ? void 0 : a.hoCustom), (_a = r.kpc) === null || _a === void 0 ? void 0 : _a.hoCustom, ...slots];
+    return [r.startDate, r.endDate, r.logUrl, r.actualDuration, r.thoughts, visibleRecordRunNotes(r), hoAssignmentSummary(r), r.sharedHoNote, (r.participantAssignments || []).map(a => a === null || a === void 0 ? void 0 : a.hoCustom), (_a = r.kpc) === null || _a === void 0 ? void 0 : _a.hoCustom, ...slots];
 }
 function recordSearchRank(r, moduleName, q) {
     var _a;
@@ -16846,7 +16819,6 @@ function renderPlanEditor() {
         <div><div class="plan-editor-block-title">${moduleHoSystemForEntity(plan) === "has" ? "PL / PC / HO" : "PL / PC"} · ${participants.length} 人</div><div class="plan-editor-help">${moduleHoSystemForEntity(plan) === "has" ? "HO 分配到本桌具体 PC；PC 名可留空。" : "PC 属于本桌；右侧可设置模组是否有 HO 位。"}</div></div>
         ${moduleHoInlineControlHTML(plan)}
       </div>
-      ${legacyHoMigrationNote(plan)}
       ${participants.some(isBlacklistedProfile) ? `<div class="blacklist-plan-warning">本桌包含 ${participants.filter(isBlacklistedProfile).length} 位黑名单 PL。请确认后续安排。</div>` : ""}
       <div class="plan-editor-add-panel">
         <div class="plan-pl-combobox" data-editor-pl-combobox>
@@ -16951,11 +16923,10 @@ function recordHeaderSummaryChips(r) {
     }).join("");
 }
 function recordHeaderTitle(r, index) {
-    const tableName = String((r === null || r === void 0 ? void 0 : r.tableName) || "").trim();
+    const tableName = visibleRecordTableName(r).trim();
     return `<span class="record-index-badge">${String(index + 1).padStart(2, "0")}</span>
     <span class="record-title-main">第${index + 1}桌</span>
-    ${tableName ? `<span class="record-title-divider">·</span><span class="record-title-name">${escapeHTML(tableName)}</span>` : ""}
-    ${(r === null || r === void 0 ? void 0 : r.legacyCountOnly) ? `<span class="record-legacy-badge" title="由旧数据迁移，桌次明细不完整">历史补记</span>` : ""}`;
+    ${tableName ? `<span class="record-title-divider">·</span><span class="record-title-name">${escapeHTML(tableName)}</span>` : ""}`;
 }
 function renderRunRecords(options = {}) {
     const preservePageScroll = Boolean(options.preservePageScroll);
@@ -17139,13 +17110,13 @@ function recordReadonlyParticipantsHTML(r) {
 function recordReadonlyBodyHTML(r) {
     const log = safeLogUrl(r.logUrl);
     const schedule = archivedSessionText(r);
-    const extra = [r.actualDuration && `实际时长：${r.actualDuration}`, r.thoughts && `感想：${r.thoughts}`, r.runNotes && `备注：${r.runNotes}`].filter(Boolean);
+    const extra = [r.actualDuration && `实际时长：${r.actualDuration}`, r.thoughts && `感想：${r.thoughts}`, visibleRecordRunNotes(r) && `备注：${visibleRecordRunNotes(r)}`].filter(Boolean);
     return `<div class="record-view-mode">
     <section class="record-view-summary">
       <div class="record-view-fact"><span>KP</span><strong>${kpDisplayHTML(r, "privacy-chip-name")}</strong></div>
       <div class="record-view-fact"><span>日期</span><strong>${escapeHTML(recordDateSummary(r))}</strong></div>
       <div class="record-view-fact"><span>Log</span><strong>${r.logUrl ? (log ? `<a href="${escapeHTML(log)}" target="_blank" rel="noopener noreferrer">打开 ↗</a>` : escapeHTML(r.logUrl)) : "未填写"}</strong></div>
-      ${r.tableName ? `<div class="record-view-fact"><span>桌名</span><strong>${escapeHTML(r.tableName)}</strong></div>` : ""}
+      ${visibleRecordTableName(r) ? `<div class="record-view-fact"><span>桌名</span><strong>${escapeHTML(visibleRecordTableName(r))}</strong></div>` : ""}
     </section>
     ${schedule.length ? `<div class="record-view-archive"><strong>归档安排</strong><span>${schedule.map(escapeHTML).join(" · ")}</span></div>` : ""}
     <section class="record-view-cast">
@@ -17187,7 +17158,7 @@ function recordTableHTML(r, index) {
         </div>
 
         <div class="table-fields">
-          <label><span class="field-label">桌名（可选）</span><input class="text-input" data-record-field="tableName" value="${escapeHTML(r.tableName)}" placeholder="输入桌名（可选）"></label>
+          <label><span class="field-label">桌名（可选）</span><input class="text-input" data-record-field="tableName" value="${escapeHTML(visibleRecordTableName(r))}" placeholder="输入桌名（可选）"></label>
           <div class="record-kp-field">
             <span class="field-label">KP</span>
             <div class="record-kp-controls">
@@ -17206,8 +17177,6 @@ function recordTableHTML(r, index) {
           <label><span class="field-label">结束日期</span><input class="text-input" data-record-field="endDate" type="date" value="${escapeHTML(r.endDate)}"></label>
           <label><span class="field-label">Log</span><input class="text-input" data-record-field="logUrl" value="${escapeHTML(r.logUrl)}" placeholder="https://..."></label>
         </div>
-
-        ${r.legacyDuration && !r.startDate && !r.endDate ? `<div class="legacy-duration-note">旧版“持续时间”未能自动识别为日期：${escapeHTML(r.legacyDuration)}。补填开始 / 结束日期后会自动消失。</div>` : ""}
 
         ${schedule.length ? `<div class="archived-schedule">
           <div class="archived-schedule-label"><span class="archived-dot"></span><strong>从开团计划归档</strong><span>${schedule.length} 次安排</span></div>
@@ -17242,7 +17211,6 @@ function recordTableHTML(r, index) {
           </div>
         </div>
 
-        ${legacyHoMigrationNote(r)}
 
         <div class="participant-assignment-list">
           ${participants.length ? participants.map(p => participantAssignmentRowHTML(r, p, "record", "data-remove-pl", "data-open-profile")).join("") : `<div class="participant-empty-panel"><strong>未关联 PL</strong><span>从右上角选择 PL 并添加。</span></div>`}
@@ -17252,11 +17220,11 @@ function recordTableHTML(r, index) {
       </section>
 
       <details class="record-extra-details" data-collapse-key="run-record:${escapeHTML(r.id)}:extra">
-        <summary><span>本桌补充记录</span><span class="record-extra-summary-hint">${r.actualDuration || r.thoughts || r.runNotes ? "已有内容" : "按需展开"}</span></summary>
+        <summary><span>本桌补充记录</span><span class="record-extra-summary-hint">${r.actualDuration || r.thoughts || visibleRecordRunNotes(r) ? "已有内容" : "按需展开"}</span></summary>
         <div class="record-extra-grid">
           <label><span class="field-label">实际时长</span><input class="text-input" data-record-field="actualDuration" value="${escapeHTML(r.actualDuration || "")}" placeholder="输入实际时长"></label>
           <label class="wide"><span class="field-label">跑后感想</span><textarea class="text-input record-textarea" data-record-field="thoughts" placeholder="记录本桌感想">${escapeHTML(r.thoughts || "")}</textarea></label>
-          <label class="wide"><span class="field-label">本桌备注</span><textarea class="text-input record-textarea" data-record-field="runNotes" placeholder="记录复盘或后续事项">${escapeHTML(r.runNotes || "")}</textarea></label>
+          <label class="wide"><span class="field-label">本桌备注</span><textarea class="text-input record-textarea" data-record-field="runNotes" placeholder="记录复盘或后续事项">${escapeHTML(visibleRecordRunNotes(r))}</textarea></label>
         </div>
       </details>
 
@@ -18900,12 +18868,10 @@ function moduleSideStats(moduleId) {
 function centralRunToModuleRun(r) {
     const selfId = selfProfileId(), selfKp = selfId && r.kpProfileId === selfId, selfPl = selfId && r.plIds.includes(selfId);
     const role = r.sideRole || (selfKp && selfPl ? "PL/KP" : selfKp ? "KP" : selfPl ? "PL" : "");
-    const linked = participantDisplaySummary(r);
-    const legacyPeople = splitParticipantNames(r.participantText).join("、");
-    const people = [linked, legacyPeople].filter(Boolean).join("、");
+    const people = participantDisplaySummary(r);
     const ho = [hoAssignmentSummary(r), r.ho].filter(Boolean).join("；");
-    return { id: r.id, date: r.startDate || (r.sessionSlots || []).map(s => s.date).filter(Boolean).sort()[0] || "", role, actualDuration: r.actualDuration || "", kp: kpTextLabel(r), participants: people, ho, thoughts: r.thoughts || "", notes: r.runNotes || "",
-        _central: { endDate: r.endDate || "", legacyDuration: r.legacyDuration || "", logUrl: r.logUrl || "", sessionSlots: clone(r.sessionSlots || []), tableName: r.tableName || "", createdAt: r.createdAt, archivedAt: r.archivedAt } };
+    return { id: r.id, date: r.startDate || (r.sessionSlots || []).map(s => s.date).filter(Boolean).sort()[0] || "", role, actualDuration: r.actualDuration || "", kp: kpTextLabel(r), participants: people, ho, thoughts: r.thoughts || "", notes: visibleRecordRunNotes(r),
+        _central: { endDate: r.endDate || "", legacyDuration: "", logUrl: r.logUrl || "", sessionSlots: clone(r.sessionSlots || []), tableName: visibleRecordTableName(r), createdAt: r.createdAt, archivedAt: r.archivedAt } };
 }
 function moduleToLegacyBridge(m) {
     const stat = moduleSideStats(m.id);
@@ -18949,7 +18915,7 @@ function moduleRunToCentral(module, run, existing = null) {
     base.actualDuration = String((run === null || run === void 0 ? void 0 : run.actualDuration) || "").trim();
     base.ho = String((run === null || run === void 0 ? void 0 : run.ho) || "").trim();
     base.thoughts = String((run === null || run === void 0 ? void 0 : run.thoughts) || "").trim();
-    base.runNotes = String((run === null || run === void 0 ? void 0 : run.notes) || "").trim();
+    base.runNotes = String((run === null || run === void 0 ? void 0 : run.notes) || (base.legacyCountOnly ? base.runNotes : "") || "").trim();
     const date = normalizeDateValue(run === null || run === void 0 ? void 0 : run.date);
     if (date) {
         const oldStart = base.startDate;
@@ -18979,7 +18945,9 @@ function moduleRunToCentral(module, run, existing = null) {
     if (flags.pl && selfId && !ids.includes(selfId))
         ids.push(selfId);
     base.plIds = ids;
-    base.participantText = participantNames.filter(name => !profileByExactName(name)).join("、");
+    const unmatchedParticipantNames = participantNames.filter(name => !profileByExactName(name));
+    /* 旧版未能关联到 PL 档案的姓名不再展示给用户，但高级工具保存时也不能静默抹掉。 */
+    base.participantText = unmatchedParticipantNames.length ? unmatchedParticipantNames.join("、") : String(base.participantText || "");
     base.updatedAt = Date.now();
     return normalizeRunRecord(base, new Set(profiles.map(p => p.id)));
 }
@@ -19070,7 +19038,8 @@ function mergeLegacyModuleState(incoming) {
         (Array.isArray(raw.runs) ? raw.runs : []).filter(legacyModuleRunHasContent).forEach(run => {
             let existing = runRecords.find(r => r.id === String(run.id || "")) || fingerprints.get(moduleRunFingerprint(target.id, run));
             const converted = moduleRunToCentral(target, run, existing || null);
-            converted.legacyCountOnly = false;
+            /* 兼容占位记录在高级工具里会被刻意隐藏其旧迁移标签；保存高级工具时继续保留该标记，避免旧标签重新暴露。 */
+            converted.legacyCountOnly = Boolean(existing && existing.legacyCountOnly);
             if (existing) {
                 runRecords[runRecords.findIndex(r => r.id === existing.id)] = Object.assign(Object.assign({}, converted), { id: existing.id });
                 mergedRuns++;
@@ -19512,7 +19481,7 @@ function profileDirectSearchText(p) {
 function profileRelatedSearchText(p) {
     const related = recordsForProfileView(p);
     /* 只索引这位 PL 自己的跑团信息，不把同桌其他 PL 的姓名写进搜索索引，避免“搜一个人却把所有同桌人都搜出来”。 */
-    const runText = related.flatMap(r => [r.moduleName, r.tableName, r.startDate, r.endDate, r.legacyDuration, kpTextLabel(r), r.kp, r.logUrl, hoAssignmentSummary(r), r.sharedHoNote]);
+    const runText = related.flatMap(r => [r.moduleName, visibleRecordTableName(r), r.startDate, r.endDate, kpTextLabel(r), r.kp, r.logUrl, hoAssignmentSummary(r), r.sharedHoNote]);
     return buildSearchIndex(runText);
 }
 function profileExactNameSearchMatch(p, q) {
