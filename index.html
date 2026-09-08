@@ -3818,12 +3818,12 @@
     @media(max-width:1100px){.intro-preference-list{grid-template-columns:1fr}.intro-aftercare-grid{grid-template-columns:1fr 1fr}.intro-aftercare-grid .intro-field-wrap:last-child{grid-column:1/-1}}
     @media(max-width:760px){.intro-preference-row{grid-template-columns:1fr}.intro-aftercare-grid{grid-template-columns:1fr}.intro-aftercare-grid .intro-field-wrap:last-child{grid-column:auto}}
     .intro-subdetails{border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2);overflow:hidden}.intro-subdetails>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;color:var(--t-ink);font-size:11.5px;font-weight:850}.intro-subdetails>summary::-webkit-details-marker{display:none}.intro-subdetails>summary::after{content:'⌄';color:var(--t-muted)}.intro-subdetails[open]>summary::after{transform:rotate(180deg)}.intro-subdetails-body{display:grid;gap:10px;padding:0 10px 11px;border-top:1px solid var(--t-line)}
-    .intro-intent-box{display:grid;gap:10px}.intro-intent-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.intro-intent-actions{display:flex;gap:6px;align-items:stretch}.intro-intent-actions .btn{white-space:nowrap}.intro-module-chips{display:grid;gap:8px}.intro-module-chip{display:grid;gap:8px;max-width:100%;padding:10px 11px;border:1px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 16%,var(--t-line));border-radius:14px;background:linear-gradient(180deg,color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 34%,var(--t-surface)),var(--t-surface-2))}.intro-module-chip-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:start}.intro-module-chip-main{display:grid;gap:2px;min-width:0}.intro-module-chip strong{font-size:10.2px;line-height:1.35;overflow:hidden;text-overflow:ellipsis}.intro-module-chip small{font-size:8px;color:var(--t-muted);line-height:1.45;overflow:hidden;text-overflow:ellipsis}.intro-module-chip-remove{width:28px;height:28px;border:1px solid color-mix(in srgb,var(--t-line) 82%,transparent);border-radius:10px;background:var(--t-surface);color:var(--t-muted);cursor:pointer;transition:background .14s ease,border-color .14s ease,color .14s ease}.intro-module-chip-remove:hover{background:color-mix(in srgb,var(--t-danger) 8%,var(--t-surface));border-color:color-mix(in srgb,var(--t-danger) 24%,var(--t-line));color:var(--t-danger)}.intro-module-note-field{display:grid;gap:5px}.intro-module-note-field span{font-size:8.2px;font-weight:780;color:var(--t-muted)}.intro-module-note-field .intro-textarea{min-height:64px;padding-top:8px;padding-bottom:8px;border-radius:11px;background:color-mix(in srgb,var(--t-surface) 68%,var(--t-surface-2))}.intro-intent-head-copy{flex:1 1 auto;min-width:0;display:grid;gap:2px}.intro-intent-head-copy>span{font-size:8.5px;color:var(--t-muted)}.intro-intent-head-actions{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.intro-intent-head-actions .image-export-btn{min-height:30px!important}.intro-empty{padding:9px 10px;border:1px dashed var(--t-line);border-radius:10px;color:var(--t-muted);font-size:8.5px}.intro-helper{font-size:8.3px;line-height:1.55;color:var(--t-muted)}
+    .intro-intent-box{display:grid;gap:10px}.intro-intent-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px;align-items:start}.intro-intent-actions{display:flex;gap:6px;align-items:stretch}.intro-intent-actions .btn{white-space:nowrap}.self-intro-side.has-open-module-picker{overflow:visible;position:relative;z-index:8}.self-intro-side.has-open-module-picker>.self-intro-side-head{border-radius:17px 17px 0 0}.intro-module-combobox{position:relative;min-width:0}.intro-module-suggestions{position:absolute;z-index:70;top:calc(100% + 5px);left:0;right:0;max-height:270px;overflow:auto;overscroll-behavior:contain;padding:5px;border:1px solid var(--t-line-strong);border-radius:12px;background:var(--t-surface);box-shadow:0 16px 38px var(--t-shadow);display:grid;gap:3px}.intro-module-suggestions[hidden]{display:none!important}.intro-module-suggestion{width:100%;min-height:44px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;align-items:center;text-align:left;padding:9px 10px;border:0;border-radius:9px;background:transparent;color:var(--t-text-2);cursor:pointer;touch-action:manipulation}.intro-module-suggestion:hover,.intro-module-suggestion:focus-visible,.intro-module-suggestion.is-active{background:var(--t-accent-soft)}.intro-module-suggestion-main{min-width:0;display:grid;gap:2px}.intro-module-suggestion-main strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;color:var(--t-ink)}.intro-module-suggestion-main span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8.4px;color:var(--t-muted)}.intro-module-suggestion-tag{font-size:8px;font-weight:760;color:var(--t-accent-strong);white-space:nowrap}.intro-module-suggestion-empty{padding:10px 11px;color:var(--t-muted);font-size:8.6px;line-height:1.55}.intro-module-chips{display:grid;gap:8px}.intro-module-chip{display:grid;gap:8px;max-width:100%;padding:10px 11px;border:1px solid color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 16%,var(--t-line));border-radius:14px;background:linear-gradient(180deg,color-mix(in srgb,var(--intro-side-soft,var(--t-accent-soft)) 34%,var(--t-surface)),var(--t-surface-2))}.intro-module-chip-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:start}.intro-module-chip-main{display:grid;gap:2px;min-width:0}.intro-module-chip strong{font-size:10.2px;line-height:1.35;overflow:hidden;text-overflow:ellipsis}.intro-module-chip small{font-size:8px;color:var(--t-muted);line-height:1.45;overflow:hidden;text-overflow:ellipsis}.intro-module-chip-remove{width:28px;height:28px;border:1px solid color-mix(in srgb,var(--t-line) 82%,transparent);border-radius:10px;background:var(--t-surface);color:var(--t-muted);cursor:pointer;transition:background .14s ease,border-color .14s ease,color .14s ease}.intro-module-chip-remove:hover{background:color-mix(in srgb,var(--t-danger) 8%,var(--t-surface));border-color:color-mix(in srgb,var(--t-danger) 24%,var(--t-line));color:var(--t-danger)}.intro-module-note-field{display:grid;gap:5px}.intro-module-note-field span{font-size:8.2px;font-weight:780;color:var(--t-muted)}.intro-module-note-field .intro-textarea{min-height:64px;padding-top:8px;padding-bottom:8px;border-radius:11px;background:color-mix(in srgb,var(--t-surface) 68%,var(--t-surface-2))}.intro-intent-head-copy{flex:1 1 auto;min-width:0;display:grid;gap:2px}.intro-intent-head-copy>span{font-size:8.5px;color:var(--t-muted)}.intro-intent-head-actions{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.intro-intent-head-actions .image-export-btn{min-height:30px!important}.intro-empty{padding:9px 10px;border:1px dashed var(--t-line);border-radius:10px;color:var(--t-muted);font-size:8.5px}.intro-helper{font-size:8.3px;line-height:1.55;color:var(--t-muted)}
     .intro-radio-grid{display:flex;flex-wrap:wrap;gap:6px}.intro-radio-grid label{position:relative}.intro-radio-grid input{position:absolute;opacity:0}.intro-radio-grid span{display:inline-flex;align-items:center;gap:5px;min-height:32px;padding:0 11px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);font-size:9px;color:var(--t-text-2);cursor:pointer;transition:.15s ease}.intro-radio-grid input:checked+span{background:var(--intro-side-color,var(--t-accent));border-color:var(--intro-side-color,var(--t-accent));color:var(--t-surface);font-weight:820;box-shadow:0 4px 12px color-mix(in srgb,var(--intro-side-color,var(--t-accent)) 20%,transparent)}.intro-radio-grid input:checked+span::before{content:'●';font-size:7px}
     @media(max-width:900px){.self-intro-dual{grid-template-columns:1fr}.intro-two-col{grid-template-columns:1fr}.intro-basics-layout{grid-template-columns:1fr}.intro-basic-wide{grid-column:auto}.intro-basic-block:nth-child(n+2){border-top:1px dashed color-mix(in srgb,var(--t-line) 72%,transparent)}.intro-time-ranges{grid-template-columns:1fr 1fr}}
     @media(max-width:620px){.intro-time-ranges{grid-template-columns:1fr}.intro-schedule-row{grid-template-columns:1fr;gap:4px}.intro-schedule-row>.intro-inline-label{padding-top:0}.intro-time-range-row{grid-template-columns:42px minmax(0,1fr) auto minmax(0,1fr)}.intro-time-help{padding-left:0}.intro-basic-label{align-items:flex-start;flex-direction:column;gap:2px}}
     @media(max-width:360px){.intro-time-range-row{grid-template-columns:1fr 1fr;gap:5px}.intro-time-range-slot{grid-column:1/-1}.intro-time-range-sep{display:none}.intro-time-select{min-height:40px}}
-    @media(max-width:760px){.self-intro-view{padding-right:var(--mobile-rail-safe)}.self-intro-toolbar .view-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}.self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1;width:100%;box-sizing:border-box}.self-intro-toolbar .view-toolbar-actions>.btn{width:100%;min-width:0}.self-intro-grid{gap:8px}.self-intro-card,.self-intro-side{border-radius:14px}.self-intro-card>summary{padding:12px}.self-intro-card-body{padding:0 11px 13px}.self-intro-side-head{padding:13px 12px}.self-intro-side-body{padding:0 11px 13px}.intro-boundary-row{grid-template-columns:1fr}.intro-intent-add{grid-template-columns:1fr}.intro-intent-actions{display:grid;grid-template-columns:1fr 1fr}.intro-intent-add .btn{width:100%}}
+    @media(max-width:760px){.self-intro-view{padding-right:var(--mobile-rail-safe)}.self-intro-toolbar .view-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}.self-intro-toolbar .view-toolbar-actions>.self-intro-save-state{grid-column:1/-1;width:100%;box-sizing:border-box}.self-intro-toolbar .view-toolbar-actions>.btn{width:100%;min-width:0}.self-intro-grid{gap:8px}.self-intro-card,.self-intro-side{border-radius:14px}.self-intro-card>summary{padding:12px}.self-intro-card-body{padding:0 11px 13px}.self-intro-side-head{padding:13px 12px}.self-intro-side-body{padding:0 11px 13px}.intro-boundary-row{grid-template-columns:1fr}.intro-intent-add{grid-template-columns:1fr}.intro-intent-actions{display:grid;grid-template-columns:1fr}.intro-intent-add .btn{width:100%}.intro-module-suggestions{max-height:230px}}
 
     /* ---------- v8.1.6.28 · 个人偏好统一导出中心 ---------- */
     .image-export-center{position:relative;min-width:0}
@@ -4912,7 +4912,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.8.5 · 2026-09-08 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.8.6 · 2026-09-08 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4924,7 +4924,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.8.5　·　更新时间：2026-09-08　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.8.6　·　更新时间：2026-09-08　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5269,7 +5269,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.8.5</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.8.6</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5292,10 +5292,11 @@ body{font-size:var(--vu-body);line-height:1.5}
   <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.8.5 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.8.5</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.8.6 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.8.6</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="release-notes-box" id="releaseNotesBox">
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-log-item"><strong>v8.1.8.6</strong><span>个人偏好模组选择器改为连续快速选择：想跑模组 / 可带模组的输入框使用自定义已有模组下拉，点击现有模组即直接加入，不再需要二次点击“选择已有”；加入后下拉保持展开、列表滚动回顶部并清空输入，可连续添加多个已有模组。新增“＋ 添加”只负责创建当前档案中不存在的新模组；局部更新列表避免整页重绘和滚动跳回顶部。</span></div>
+<div class="release-notes-box" id="releaseNotesBox">
 <strong>v8.1.8.5</strong><span>历史兼容字段静默保留：已被新版结构替代的个人偏好细项、旧持续时间、旧 HO 数量提示及迁移标记继续保存在档案与备份中，但从正常页面、搜索、统计明细、个人偏好图片导出和高级模组工具中隐藏；历史兼容数据只参与内部兼容与恢复，不再重新出现在日常使用和分享内容里。</span>
 <strong>v8.1.8.4</strong><span>偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新；个人偏好图片导出同步保留边界提示底色，其中“绝对不行”使用浅红底和红色强调，便于分享时快速识别红线。</span>
 <strong>v8.1.8.3</strong><span>交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮；跑团记录把“完成编辑/编辑此桌”独立放到右侧主操作区，更换模组、退回计划与删除统一放左侧次级操作区。</span>
@@ -5535,7 +5536,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.8.5 · 作者：番茄
+/* PL收集梦想生活 v8.1.8.6 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5562,7 +5563,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.8.5";
+const APP_UI_VERSION = "8.1.8.6";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -5628,7 +5629,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.0074ae3f3c23": "旧版本数据已升级",
     "legacy.exact.009d2f86d363": "新版仍在准备，请稍后再试",
     "legacy.exact.00a3717a1128": "场外闲聊 / 刷屏影响推进",
-    "legacy.exact.00a6e1a2df29": "输入模组名称或拼音首字母；匹配已有或新建",
+    "legacy.exact.00a6e1a2df29": "输入模组名称或拼音首字母；点击已有模组直接加入",
     "legacy.exact.00bbe09d823c": "需要合并判断：",
     "legacy.exact.00ce0c2e778f": "未知错误",
     "legacy.exact.00f04656711a": "选择迁移包并输入创建时的密码，随后会进入导入预览。",
@@ -14524,7 +14525,7 @@ function selfIntroIntentNoteLabel(kind) { return kind === "host" ? "带团备注
 function selfIntroIntentNotePlaceholder(kind) { return kind === "host" ? "写这个模组的带团补充，例如擅长风格、改模方向、开团提醒。" : "写这个模组的补充，例如想跑原因、偏好版本、想体验的方向。"; }
 function selfIntroIntentRows(kind) { return selfIntroPathGet(selfIntroDraft, kind === "want" ? "pl.wantModules" : "kp.canHostModules") || []; }
 function moduleIntentCard(ref, kind) { const mod = currentOrPendingModule(ref), name = (mod === null || mod === void 0 ? void 0 : mod.name) || (ref === null || ref === void 0 ? void 0 : ref.name) || "未命名模组", pending = Boolean(selfIntroPendingModules.some(m => m.id === (ref === null || ref === void 0 ? void 0 : ref.moduleId))), meta = mod ? [mod.author, mod.era, mod.location].filter(Boolean).join(" · ") : "", note = String((ref === null || ref === void 0 ? void 0 : ref.note) || ""); return `<div class="intro-module-chip"><div class="intro-module-chip-head"><span class="intro-module-chip-main"><strong>${escapeHTML(name)}</strong><small>${escapeHTML(pending ? "保存后新建模组档案" : meta || "已关联模组档案")}</small></span><button class="intro-module-chip-remove" type="button" data-intro-remove-module="${escapeHTML(kind)}" data-module-id="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.moduleId) || "")}" data-module-name="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.name) || name)}" aria-label="移除">×</button></div><label class="intro-module-note-field"><span>${escapeHTML(selfIntroIntentNoteLabel(kind))}</span><textarea class="intro-textarea" data-intro-module-note="${escapeHTML(kind)}" data-module-id="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.moduleId) || "")}" data-module-name="${escapeHTML((ref === null || ref === void 0 ? void 0 : ref.name) || name)}" placeholder="${escapeHTML(selfIntroIntentNotePlaceholder(kind))}">${escapeHTML(note)}</textarea></label></div>`; }
-function moduleIntentSection(kind, title, desc) { const rows = selfIntroIntentRows(kind); return `<div class="self-intro-section intro-intent-section"><div class="self-intro-section-head"><div class="intro-intent-head-copy"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div></div><div class="intro-intent-box"><div class="intro-module-chips">${rows.length ? rows.map(r => moduleIntentCard(r, kind)).join("") : `<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" list="selfIntroModuleOptions" placeholder="输入模组名称或拼音首字母；匹配已有或新建"><div class="intro-intent-actions"><button class="btn" type="button" data-intro-pick-module="${escapeHTML(kind)}">选择已有</button><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div></div></div>`; }
+function moduleIntentSection(kind, title, desc) { const rows = selfIntroIntentRows(kind), pickerId = `selfIntroModuleSuggestions-${kind}`; return `<div class="self-intro-section intro-intent-section" data-intro-module-kind="${escapeHTML(kind)}"><div class="self-intro-section-head"><div class="intro-intent-head-copy"><strong>${escapeHTML(title)}</strong><span>${escapeHTML(desc)}</span></div></div><div class="intro-intent-box"><div class="intro-module-chips" data-intro-module-chips="${escapeHTML(kind)}">${rows.length ? rows.map(r => moduleIntentCard(r, kind)).join("") : `<div class="intro-empty">暂未添加模组。</div>`}</div><div class="intro-intent-add"><div class="intro-module-combobox" data-intro-module-combobox="${escapeHTML(kind)}"><input class="intro-field" data-intro-module-input="${escapeHTML(kind)}" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${escapeHTML(pickerId)}" placeholder="输入模组名称或拼音首字母；点击已有模组直接加入"><div class="intro-module-suggestions" id="${escapeHTML(pickerId)}" data-intro-module-suggestions="${escapeHTML(kind)}" role="listbox" hidden></div></div><div class="intro-intent-actions"><button class="btn primary" type="button" data-intro-add-module="${escapeHTML(kind)}">＋ 添加</button></div></div><div class="intro-helper">下拉中的已有模组点击即加入；“＋ 添加”仅用于创建档案中没有的新模组。</div></div></div>`; }
 function boundaryLevelOptions(current) { return SELF_INTRO_BOUNDARY_LEVELS.map(v => `<option value="${escapeHTML(v)}" ${current === v ? "selected" : ""}>${escapeHTML(v || "未设置")}</option>`).join(""); }
 function boundaryLevelTone(value) { return ({ "绝对不行": "danger", "协商调整": "warning", "可以接受": "accept", "完全没问题": "success" })[String(value || "")] || ""; }
 function applyBoundaryTone(select) {
@@ -14546,7 +14547,6 @@ function introModulePrefsSections(side) {
   <div class="self-intro-section">${introMultiSelectHead("要素偏好", `${base}.elements`, INTRO_OPTIONS.elements)}${introChipGroup(`${base}.elements`, INTRO_OPTIONS.elements)}<input class="intro-field" data-intro-field="${base}.elementOther" placeholder="其他偏好要素" value="${escapeHTML(mp.elementOther)}"></div>
   <div class="self-intro-section"><textarea class="intro-textarea" data-intro-field="${base}.notes" placeholder="补充该侧的模组偏好，例如回避题材、重点偏好或带团方向。">${escapeHTML(mp.notes)}</textarea></div>`;
 }
-function selfIntroDatalist() { const names = [...new Set([...modules, ...selfIntroPendingModules].map(m => m.name).filter(Boolean))].sort((a, b) => a.localeCompare(b, "zh-CN")); return `<datalist id="selfIntroModuleOptions">${names.map(n => `<option value="${escapeHTML(n)}"></option>`).join("")}</datalist>`; }
 function renderSelfIntroView({ reset = false } = {}) {
     var _a;
     if (!els.selfIntroGrid)
@@ -14560,7 +14560,7 @@ function renderSelfIntroView({ reset = false } = {}) {
         return;
     const contentBoundaryRows = boundaryRowsFor(SELF_INTRO_KP_CONTENT_ITEMS, d);
     const tableBoundaryRows = boundaryRowsFor(SELF_INTRO_KP_TABLE_ITEMS, d);
-    els.selfIntroGrid.innerHTML = selfIntroDatalist() + `
+    els.selfIntroGrid.innerHTML = `
     <details class="self-intro-card" data-collapse-key="self-intro:common"><summary><span>常用信息<small>平台、形式、时间、频率与通用说明集中整理</small></span></summary><div class="self-intro-card-body intro-basics-layout">
       <div class="intro-basic-block bio"><div class="intro-basic-label"><strong>一句话介绍</strong><span>跑团年限、常用规则或个人定位</span></div><textarea class="intro-textarea" data-intro-field="bio" placeholder="例如：长期 COC / DND 玩家，文字与语音均可。">${escapeHTML(d.bio)}</textarea></div>
       <div class="intro-basic-block"><div class="intro-basic-label"><strong>常用平台</strong><span>可多选</span></div>${introChipGroup("platforms", INTRO_OPTIONS.platforms)}<input class="intro-field" data-intro-field="platformOther" placeholder="其他平台或补充" value="${escapeHTML(d.platformOther)}"></div>
@@ -14605,7 +14605,7 @@ function renderSelfIntroView({ reset = false } = {}) {
       </section>
     </div>`;
     if (shareModeEnabled) {
-        els.selfIntroGrid.querySelectorAll("input,textarea,select,button[data-intro-add-module],button[data-intro-pick-module],button[data-intro-remove-module],button[data-intro-scale-step]").forEach(el => { el.disabled = true; el.setAttribute("aria-disabled", "true"); });
+        els.selfIntroGrid.querySelectorAll("input,textarea,select,button[data-intro-add-module],button[data-intro-select-module],button[data-intro-remove-module],button[data-intro-scale-step]").forEach(el => { el.disabled = true; el.setAttribute("aria-disabled", "true"); });
     }
     updateSelfIntroSaveState();
 }
@@ -15204,7 +15204,7 @@ function commitSelfIntroDraft() {
     if (!self)
         return false;
     updateSelfIntroSaveState("saving");
-    const beforeProfiles = clone(profiles), beforeModules = clone(modules);
+    const beforeProfiles = clone(profiles), beforeModules = clone(modules), hadPendingModules = selfIntroPendingModules.length > 0;
     try {
         const idRemap = new Map();
         for (const pending of selfIntroPendingModules) {
@@ -15237,6 +15237,7 @@ function commitSelfIntroDraft() {
         selfIntroPendingModules = [];
         selfIntroLastSaveError = "";
         updateSelfIntroSaveState();
+        if (hadPendingModules) { refreshSelfIntroIntentCards("want"); refreshSelfIntroIntentCards("host"); }
         return true;
     }
     catch (err) {
@@ -15248,68 +15249,142 @@ function commitSelfIntroDraft() {
         return false;
     }
 }
-async function pickSelfIntroModuleIntent(kind) {
+function selfIntroIntentPath(kind) { return kind === "want" ? "pl.wantModules" : "kp.canHostModules"; }
+function selfIntroIntentExistingMatches(kind, query = "") {
     ensureSelfIntroDraft();
-    if (!modules.length) {
-        showToast("暂无模组档案，可直接输入名称创建");
-        return;
+    const rows = selfIntroIntentRows(kind), selectedIds = new Set(rows.map(r => String((r === null || r === void 0 ? void 0 : r.moduleId) || "")).filter(Boolean)), selectedNames = new Set(rows.map(r => normalizedEntityNameKey(r === null || r === void 0 ? void 0 : r.name)).filter(Boolean));
+    const q = normalizedEntityNameKey(query), list = modules.filter(m => !selectedIds.has(String(m.id || "")) && !selectedNames.has(normalizedEntityNameKey(m.name)));
+    return list.filter(m => !q || searchTextMatches([m.name, m.author, m.location, m.era, m.nature], q)).sort((a, b) => {
+        if (!q) return profilePickerNameCollator.compare(String(a.name || ""), String(b.name || ""));
+        const ar = bestSearchFieldRank([a.name, a.author, a.location, a.era, a.nature], q), br = bestSearchFieldRank([b.name, b.author, b.location, b.era, b.nature], q);
+        return ar - br || profilePickerNameCollator.compare(String(a.name || ""), String(b.name || ""));
+    });
+}
+function selfIntroModuleSuggestionsHTML(kind, query = "") {
+    const matches = selfIntroIntentExistingMatches(kind, query);
+    if (!matches.length) {
+        const hasQuery = Boolean(String(query || "").trim());
+        return `<div class="intro-module-suggestion-empty">${hasQuery ? "没有匹配的未添加模组；如果这是新模组，请使用右侧“＋ 添加”。" : "没有可继续添加的已有模组。"}</div>`;
     }
-    const value = await appSelect("从模组档案选择。", [...modules].sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), "zh-CN")).map(m => ({ value: m.id, label: `${m.name} · ${modulePickerMeta(m)}` })), "", { title: kind === "want" ? "选择想跑的模组" : "选择可带的模组", confirmText: "添加" });
-    if (!value)
-        return;
-    const mod = moduleById(value);
-    if (!mod)
-        return;
-    const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", rows = selfIntroPathGet(selfIntroDraft, path) || [];
-    if (rows.some(r => r.moduleId === mod.id)) {
+    return matches.map(m => `<button class="intro-module-suggestion" type="button" role="option" data-intro-select-module="${escapeHTML(kind)}" data-module-id="${escapeHTML(m.id)}"><span class="intro-module-suggestion-main"><strong>${escapeHTML(m.name || "未命名模组")}</strong><span>${escapeHTML(modulePickerMeta(m))}</span></span><span class="intro-module-suggestion-tag">直接加入</span></button>`).join("");
+}
+function setSelfIntroModuleSuggestionActive(panel, index) {
+    if (!panel) return;
+    const items = [...panel.querySelectorAll("[data-intro-select-module]")];
+    if (!items.length) { panel.dataset.activeIndex = "-1"; return; }
+    let next = Number(index);
+    if (!Number.isFinite(next)) next = -1;
+    if (next >= items.length) next = 0;
+    if (next < 0) next = items.length - 1;
+    panel.dataset.activeIndex = String(next);
+    items.forEach((btn, i) => btn.classList.toggle("is-active", i === next));
+    items[next] && items[next].scrollIntoView({ block: "nearest" });
+}
+function updateSelfIntroModuleSuggestions(kind, { open = true, resetScroll = false } = {}) {
+    const root = els.selfIntroView && els.selfIntroView.querySelector(`[data-intro-module-kind="${CSS.escape(kind)}"]`);
+    if (!root) return;
+    const input = root.querySelector(`[data-intro-module-input="${CSS.escape(kind)}"]`), panel = root.querySelector(`[data-intro-module-suggestions="${CSS.escape(kind)}"]`);
+    if (!input || !panel) return;
+    if (open) {
+        document.querySelectorAll("[data-intro-module-suggestions]").forEach(other => {
+            if (other === panel) return;
+            other.hidden = true;
+            other.dataset.activeIndex = "-1";
+            const otherCombo = other.closest("[data-intro-module-combobox]"), otherInput = otherCombo && otherCombo.querySelector("[data-intro-module-input]");
+            if (otherInput) otherInput.setAttribute("aria-expanded", "false");
+            const otherSide = other.closest(".self-intro-side");
+            if (otherSide) otherSide.classList.remove("has-open-module-picker");
+        });
+    }
+    panel.innerHTML = selfIntroModuleSuggestionsHTML(kind, input.value || "");
+    panel.hidden = !open;
+    input.setAttribute("aria-expanded", open ? "true" : "false");
+    const side = root.closest(".self-intro-side");
+    if (side) side.classList.toggle("has-open-module-picker", open);
+    panel.dataset.activeIndex = "-1";
+    if (resetScroll) panel.scrollTop = 0;
+}
+function closeSelfIntroModuleSuggestions(kind = "") {
+    const selector = kind ? `[data-intro-module-suggestions="${CSS.escape(kind)}"]` : "[data-intro-module-suggestions]";
+    document.querySelectorAll(selector).forEach(panel => {
+        panel.hidden = true;
+        panel.dataset.activeIndex = "-1";
+        const combo = panel.closest("[data-intro-module-combobox]");
+        const input = combo && combo.querySelector("[data-intro-module-input]");
+        if (input) input.setAttribute("aria-expanded", "false");
+        const side = panel.closest(".self-intro-side");
+        if (side) side.classList.remove("has-open-module-picker");
+    });
+}
+function refreshSelfIntroIntentCards(kind, anchorInput = null) {
+    const root = els.selfIntroView && els.selfIntroView.querySelector(`[data-intro-module-kind="${CSS.escape(kind)}"]`);
+    if (!root) return;
+    const chips = root.querySelector(`[data-intro-module-chips="${CSS.escape(kind)}"]`);
+    if (!chips) return;
+    const input = anchorInput || root.querySelector(`[data-intro-module-input="${CSS.escape(kind)}"]`), beforeTop = input && input.getBoundingClientRect ? input.getBoundingClientRect().top : null;
+    const rows = selfIntroIntentRows(kind);
+    chips.innerHTML = rows.length ? rows.map(r => moduleIntentCard(r, kind)).join("") : `<div class="intro-empty">暂未添加模组。</div>`;
+    if (beforeTop !== null && input && input.getBoundingClientRect) {
+        const delta = input.getBoundingClientRect().top - beforeTop;
+        if (Math.abs(delta) > .5) window.scrollBy(0, delta);
+    }
+}
+function selectSelfIntroExistingModule(kind, moduleId) {
+    ensureSelfIntroDraft();
+    const mod = moduleById(moduleId);
+    if (!mod) { showToast("该模组档案已不存在，请刷新后重试"); updateSelfIntroModuleSuggestions(kind, { open: true, resetScroll: true }); return false; }
+    const path = selfIntroIntentPath(kind), rows = selfIntroPathGet(selfIntroDraft, path) || [];
+    if (rows.some(r => r.moduleId === mod.id || normalizedEntityNameKey(r.name) === normalizedEntityNameKey(mod.name))) {
         showToast("该模组已在列表中");
-        return;
     }
-    rows.push({ moduleId: mod.id, name: mod.name, note: "", addedAt: Date.now() });
-    selfIntroPathSet(selfIntroDraft, path, rows);
-    renderSelfIntroView();
-    queueSelfIntroSave(80);
+    else {
+        rows.push({ moduleId: mod.id, name: mod.name, note: "", addedAt: Date.now() });
+        selfIntroPathSet(selfIntroDraft, path, rows);
+        const root = els.selfIntroView && els.selfIntroView.querySelector(`[data-intro-module-kind="${CSS.escape(kind)}"]`), input = root && root.querySelector(`[data-intro-module-input="${CSS.escape(kind)}"]`);
+        refreshSelfIntroIntentCards(kind, input);
+        queueSelfIntroSave(80);
+    }
+    const root = els.selfIntroView && els.selfIntroView.querySelector(`[data-intro-module-kind="${CSS.escape(kind)}"]`), input = root && root.querySelector(`[data-intro-module-input="${CSS.escape(kind)}"]`);
+    if (input) input.value = "";
+    updateSelfIntroModuleSuggestions(kind, { open: true, resetScroll: true });
+    requestAnimationFrame(() => { if (input && document.contains(input)) { try { input.focus({ preventScroll: true }); } catch (err) { input.focus(); } } });
+    return true;
 }
 async function addSelfIntroModuleIntent(kind) {
-    var _a;
     ensureSelfIntroDraft();
-    const input = (_a = els.selfIntroView) === null || _a === void 0 ? void 0 : _a.querySelector(`[data-intro-module-input="${kind}"]`), name = String((input === null || input === void 0 ? void 0 : input.value) || "").trim();
-    if (!name) {
-        showToast("请输入模组名称");
+    const root = els.selfIntroView && els.selfIntroView.querySelector(`[data-intro-module-kind="${CSS.escape(kind)}"]`), input = root && root.querySelector(`[data-intro-module-input="${CSS.escape(kind)}"]`), name = String((input === null || input === void 0 ? void 0 : input.value) || "").trim();
+    if (!name) { showToast("请输入新模组名称"); if (input) input.focus(); updateSelfIntroModuleSuggestions(kind, { open: true, resetScroll: true }); return; }
+    const path = selfIntroIntentPath(kind), rows = selfIntroPathGet(selfIntroDraft, path) || [], key = normalizedEntityNameKey(name);
+    const exactExisting = modulesByNormalizedName(name);
+    if (exactExisting.length) {
+        const alreadyAdded = exactExisting.some(m => rows.some(r => r.moduleId === m.id || normalizedEntityNameKey(r.name) === normalizedEntityNameKey(m.name)));
+        showToast(alreadyAdded ? "该模组已在列表中" : exactExisting.length > 1 ? "已有同名模组，请从下拉列表选择正确档案" : "这个模组已经存在，请直接点击下拉里的已有模组");
+        if (alreadyAdded && input) input.value = "";
+        updateSelfIntroModuleSuggestions(kind, { open: true, resetScroll: true });
+        if (input) input.focus();
         return;
     }
-    const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", rows = selfIntroPathGet(selfIntroDraft, path) || [], key = normalizedEntityNameKey(name);
     let mod = selfIntroPendingModules.find(m => normalizedEntityNameKey(m.name) === key) || null;
-    let matches = modulesByNormalizedName(name);
-    if (!matches.length) {
-        const initialMatches = modules.filter(m => exactSearchFieldMatch(m.name, name));
-        if (initialMatches.length)
-            matches = initialMatches;
-    }
-    if (!mod && matches.length === 1)
-        mod = matches[0];
-    if (!mod && matches.length > 1) {
-        const value = await appSelect(`找到 ${matches.length} 个匹配模组，请选择要关联的档案。`, matches.map(m => ({ value: m.id, label: `${m.name} · ${modulePickerMeta(m)}` })), matches[0].id, { title: "选择模组档案", confirmText: "关联" });
-        if (!value)
-            return;
-        mod = modules.find(m => m.id === value) || null;
+    if (mod && rows.some(r => r.moduleId === mod.id || normalizedEntityNameKey(r.name) === key)) {
+        showToast("该模组已在列表中");
+        if (input) input.value = "";
+        updateSelfIntroModuleSuggestions(kind, { open: true, resetScroll: true });
+        return;
     }
     if (!mod) {
         const now = Date.now();
         mod = normalizeRichModule({ id: uid(), name, createdAt: now, updatedAt: now }, settings.moduleArchive);
         selfIntroPendingModules.push(mod);
     }
-    if (rows.some(r => r.moduleId === mod.id || normalizedEntityNameKey(r.name) === normalizedEntityNameKey(mod.name))) {
-        showToast("该模组已在列表中");
-        return;
-    }
     rows.push({ moduleId: mod.id, name: mod.name, note: "", addedAt: Date.now() });
     selfIntroPathSet(selfIntroDraft, path, rows);
-    renderSelfIntroView();
+    refreshSelfIntroIntentCards(kind, input);
+    if (input) input.value = "";
+    updateSelfIntroModuleSuggestions(kind, { open: true, resetScroll: true });
     queueSelfIntroSave(80);
+    requestAnimationFrame(() => { if (input && document.contains(input)) { try { input.focus({ preventScroll: true }); } catch (err) { input.focus(); } } });
 }
-function removeSelfIntroModuleIntent(kind, moduleId, moduleName) { ensureSelfIntroDraft(); const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", key = normalizedEntityNameKey(moduleName); const rows = (selfIntroPathGet(selfIntroDraft, path) || []).filter(r => !(moduleId && r.moduleId === moduleId) && !(key && normalizedEntityNameKey(r.name) === key)); selfIntroPathSet(selfIntroDraft, path, rows); const stillUsed = [...(selfIntroDraft.pl.wantModules || []), ...(selfIntroDraft.kp.canHostModules || [])].some(r => r.moduleId === moduleId); if (!stillUsed)
-    selfIntroPendingModules = selfIntroPendingModules.filter(m => m.id !== moduleId); renderSelfIntroView(); queueSelfIntroSave(120); }
+function removeSelfIntroModuleIntent(kind, moduleId, moduleName) { ensureSelfIntroDraft(); const path = selfIntroIntentPath(kind), key = normalizedEntityNameKey(moduleName); const rows = (selfIntroPathGet(selfIntroDraft, path) || []).filter(r => !(moduleId && r.moduleId === moduleId) && !(key && normalizedEntityNameKey(r.name) === key)); selfIntroPathSet(selfIntroDraft, path, rows); const stillUsed = [...(selfIntroDraft.pl.wantModules || []), ...(selfIntroDraft.kp.canHostModules || [])].some(r => r.moduleId === moduleId); if (!stillUsed) selfIntroPendingModules = selfIntroPendingModules.filter(m => m.id !== moduleId); const root = els.selfIntroView && els.selfIntroView.querySelector(`[data-intro-module-kind="${CSS.escape(kind)}"]`), input = root && root.querySelector(`[data-intro-module-input="${CSS.escape(kind)}"]`); refreshSelfIntroIntentCards(kind, input); updateSelfIntroModuleSuggestions(kind, { open: Boolean(root && root.querySelector(`[data-intro-module-suggestions="${CSS.escape(kind)}"]`) && !root.querySelector(`[data-intro-module-suggestions="${CSS.escape(kind)}"]`).hidden), resetScroll: false }); queueSelfIntroSave(120); }
 function updateSelfIntroModuleIntentNote(kind, moduleId, moduleName, note) { ensureSelfIntroDraft(); const path = kind === "want" ? "pl.wantModules" : "kp.canHostModules", key = normalizedEntityNameKey(moduleName), rows = selfIntroPathGet(selfIntroDraft, path) || []; const row = rows.find(r => (moduleId && r.moduleId === moduleId) || (key && normalizedEntityNameKey(r.name) === key)); if (!row)
     return; row.note = String(note || "").trim(); queueSelfIntroSave(); }
 function selfIntroSearchText() { var _a; const d = normalizeSelfIntro((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro), mps = [d.pl.modulePrefs, d.kp.modulePrefs]; return buildSearchIndex([d.bio, d.platformOther, d.generalNotes, d.pl.rpStyle, d.pl.wishes, d.pl.avoids, d.pl.notes, d.kp.wishes, d.kp.avoids, d.kp.notes, d.kp.boundaryNotes, d.kp.aftercare.chat, d.kp.aftercare.sharing, d.kp.aftercare.duration, d.kp.aftercare.notes, ...Object.values(d.kp.interaction || {}), ...d.platforms, ...d.formats, ...d.timeSlots, ...Object.values(d.timeRanges || {}).flatMap(r => [r.start, r.end]), ...d.availability, ...mps.flatMap(mp => [mp.eraOther, mp.regionOther, mp.structureOther, mp.elementOther, mp.notes, ...mp.eras, ...mp.regions, ...mp.structures, ...mp.elements]), ...d.pl.focus, ...d.pl.wantModules.flatMap(x => [x.name, x.note]), ...d.kp.canHostModules.flatMap(x => [x.name, x.note]), ...Object.keys(d.kp.boundaries).filter(k => d.kp.boundaries[k])]); }
@@ -20874,7 +20949,7 @@ function focusSettingsSearchResult(key, q) { activateSettingsPanel(key); const p
     return; const candidates = [...panel.querySelectorAll("h3,strong,label,summary,button")], target = candidates.find(el => searchTextMatches(el.textContent || "", q)) || panel; requestAnimationFrame(() => { const group = target.closest("details.data-safety-group,details.settings-collapsible"); if (group)
     group.open = true; target.scrollIntoView({ block: "center", behavior: "smooth" }); target.classList.add("settings-search-flash"); setTimeout(() => target.classList.remove("settings-search-flash"), 1400); }); document.getElementById("settingsSearchResults").hidden = true; }
 /* 分享模式 */
-const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-pick-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
+const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-select-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
 function updateShareModeUI() { document.body.classList.toggle("share-mode", shareModeEnabled); const btn = document.getElementById("shareModeBtn"); if (btn) {
     btn.textContent = shareModeEnabled ? "退" : "分";
     btn.setAttribute("aria-pressed", shareModeEnabled ? "true" : "false");
@@ -21207,15 +21282,17 @@ function closeTransientEscapeLayer(target) {
         if (els.selfIntroExport) els.selfIntroExport.focus();
         return true;
     }
-    const selectors = ["[data-plan-module-options]", "[data-editor-pl-options]", "[data-pc-options]", "[data-record-kp-options]", "[data-record-pl-options]"];
+    const selectors = ["[data-intro-module-suggestions]", "[data-plan-module-options]", "[data-editor-pl-options]", "[data-pc-options]", "[data-record-kp-options]", "[data-record-pl-options]"];
     for (const selector of selectors) {
         const list = [...document.querySelectorAll(selector)].find(el => !el.hidden && el.getClientRects().length);
         if (!list)
             continue;
         list.hidden = true;
-        const combo = list.closest('[role="combobox"],.plan-module-picker,.assignment-pc-combobox,.record-picker-combobox,.profile-picker-combobox') || list.parentElement;
+        const combo = list.closest('[role="combobox"],.intro-module-combobox,.plan-module-picker,.assignment-pc-combobox,.record-picker-combobox,.profile-picker-combobox') || list.parentElement;
         const input = combo && combo.querySelector('input[aria-expanded="true"]');
         if (input) input.setAttribute("aria-expanded", "false");
+        const introSide = list.closest(".self-intro-side");
+        if (introSide) introSide.classList.remove("has-open-module-picker");
         return true;
     }
     return false;
@@ -23245,8 +23322,11 @@ els.recordsBoard.addEventListener("click", e => {
         out.textContent = selfIntroScaleText(path, value);
     queueSelfIntroSave(220);
     return;
-} const pick = e.target.closest("[data-intro-pick-module]"); if (pick) {
-    pickSelfIntroModuleIntent(pick.dataset.introPickModule);
+} const existingModule = e.target.closest("[data-intro-select-module]"); if (existingModule) {
+    selectSelfIntroExistingModule(existingModule.dataset.introSelectModule, existingModule.dataset.moduleId);
+    return;
+} const moduleInput = e.target.closest("[data-intro-module-input]"); if (moduleInput) {
+    updateSelfIntroModuleSuggestions(moduleInput.dataset.introModuleInput, { open: true, resetScroll: false });
     return;
 } const add = e.target.closest("[data-intro-add-module]"); if (add) {
     addSelfIntroModuleIntent(add.dataset.introAddModule);
@@ -23255,11 +23335,14 @@ els.recordsBoard.addEventListener("click", e => {
     removeSelfIntroModuleIntent(rem.dataset.introRemoveModule, rem.dataset.moduleId, rem.dataset.moduleName);
     return;
 } });
-(_m = els.selfIntroView) === null || _m === void 0 ? void 0 : _m.addEventListener("keydown", e => { if (shareModeEnabled)
-    return; const input = e.target.closest("[data-intro-module-input]"); if (input && e.key === "Enter") {
-    e.preventDefault();
-    addSelfIntroModuleIntent(input.dataset.introModuleInput);
-} });
+(_m = els.selfIntroView) === null || _m === void 0 ? void 0 : _m.addEventListener("keydown", e => { if (shareModeEnabled) return; const input = e.target.closest("[data-intro-module-input]"); if (!input) return; const kind = input.dataset.introModuleInput, root = input.closest(`[data-intro-module-kind="${CSS.escape(kind)}"]`), panel = root && root.querySelector(`[data-intro-module-suggestions="${CSS.escape(kind)}"]`), items = panel ? [...panel.querySelectorAll("[data-intro-select-module]")] : [];
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (panel && panel.hidden) updateSelfIntroModuleSuggestions(kind, { open: true, resetScroll: false }); const freshItems = panel ? [...panel.querySelectorAll("[data-intro-select-module]")] : []; if (!freshItems.length) return; const current = Number(panel.dataset.activeIndex || -1); setSelfIntroModuleSuggestionActive(panel, e.key === "ArrowDown" ? current + 1 : current - 1); return; }
+    if (e.key === "Escape") { if (panel && !panel.hidden) { e.preventDefault(); e.stopPropagation(); closeSelfIntroModuleSuggestions(kind); } return; }
+    if (e.key === "Enter") { e.preventDefault(); if (panel && !panel.hidden && items.length) { let index = Number(panel.dataset.activeIndex || -1); if (!Number.isFinite(index) || index < 0 || index >= items.length) index = 0; const btn = items[index]; if (btn) { selectSelfIntroExistingModule(kind, btn.dataset.moduleId); return; } } addSelfIntroModuleIntent(kind); }
+});
+els.selfIntroView === null || els.selfIntroView === void 0 ? void 0 : els.selfIntroView.addEventListener("input", e => { if (shareModeEnabled) return; const input = e.target.closest("[data-intro-module-input]"); if (!input) return; updateSelfIntroModuleSuggestions(input.dataset.introModuleInput, { open: true, resetScroll: true }); });
+els.selfIntroView === null || els.selfIntroView === void 0 ? void 0 : els.selfIntroView.addEventListener("focusin", e => { if (shareModeEnabled) return; const input = e.target.closest("[data-intro-module-input]"); if (!input) return; updateSelfIntroModuleSuggestions(input.dataset.introModuleInput, { open: true, resetScroll: false }); });
+document.addEventListener("pointerdown", e => { if (e.target && e.target.closest && e.target.closest("[data-intro-module-combobox]")) return; closeSelfIntroModuleSuggestions(); }, true);
 (_o = els.selfIntroExport) === null || _o === void 0 ? void 0 : _o.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); toggleSelfIntroExportCenter(); });
 els.selfIntroExportPanelClose === null || els.selfIntroExportPanelClose === void 0 ? void 0 : els.selfIntroExportPanelClose.addEventListener("click", () => toggleSelfIntroExportCenter(false));
 els.selfIntroExportReset === null || els.selfIntroExportReset === void 0 ? void 0 : els.selfIntroExportReset.addEventListener("click", () => { selfIntroExportState = defaultSelfIntroExportState(); saveSelfIntroExportState(); renderSelfIntroExportCenter(); });
