@@ -1,22 +1,22 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="mist">
+<!DOCTYPE html>
+
+<html data-theme="mist" lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta id="themeColorMeta" name="theme-color" content="#f4f3ee" />
-  
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; connect-src 'none'; img-src 'self' data: blob:; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'self' data: blob:; worker-src 'self'; manifest-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
-  <meta name="referrer" content="no-referrer">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="color-scheme" content="light dark">
-  <meta name="application-name" content="PL收集梦想生活">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" href="./icon-192.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="./icon-192.png">
-  <title>PL收集梦想生活</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#f4f3ee" id="themeColorMeta" name="theme-color"/>
+<meta content="default-src 'self' data: blob:; connect-src 'none'; img-src 'self' data: blob:; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'self' data: blob:; worker-src 'self'; manifest-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';" http-equiv="Content-Security-Policy"/>
+<meta content="no-referrer" name="referrer"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="PL收集梦想生活" name="application-name"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<link href="./manifest.webmanifest" rel="manifest"/>
+<link href="./icon-192.png" rel="icon" sizes="192x192"/>
+<link href="./icon-192.png" rel="apple-touch-icon"/>
+<title>PL收集梦想生活</title>
+<style>
         /* ---------- 全局设计变量：统一背景、文字、边框、强调色等 ---------- */
         :root{--bg:#f4f3ee;--panel:rgba(255,255,252,.93);--ink:#1f211f;--muted:#747872;--line:#dcddd6;--accent:#405249;--accent-strong:#32443b;--accent-soft:#edf1ed;--danger:#955050;--hairline:rgba(73,82,76,.11);--shadow:0 18px 54px rgba(38,45,41,.11);--focus:rgba(48,73,59,.72);--control-h:42px;--radius-control:12px;--ease:cubic-bezier(.2,.8,.2,1)}
     /* ---------- 基础重置与页面整体布局 ---------- */
@@ -3419,7 +3419,7 @@
     @media(max-width:760px){.anti-mistake-hint{font-size:9.5px;flex-wrap:wrap}.anti-mistake-hint .btn{margin-left:0}}
 
 </style>
-  <style id="v808-interaction-reliability">
+<style id="v808-interaction-reliability">
     /* PL 编辑器是复合模态：正文与快捷操作栏都必须参与触摸与键盘交互。 */
     #profileActionRail{pointer-events:auto!important}
     #profileActionRail .profile-rail-btn{pointer-events:auto!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -3432,12 +3432,11 @@
       #profileActionRail .profile-rail-btn{position:relative;z-index:1}
     }
   </style>
-
-  <style id="semantic-hidden-invariant">
+<style id="semantic-hidden-invariant">
     html [hidden]{display:none!important}
     @media(max-width:760px){body.modal-scroll-locked .mobile-side-rail{display:none!important}}
   </style>
-  <style id="v806-ux-refinement">
+<style id="v806-ux-refinement">
     html[data-theme]{--status-success-bg:color-mix(in srgb,var(--t-success) 12%,var(--t-surface));--status-success-line:color-mix(in srgb,var(--t-success) 34%,var(--t-line));--status-info-bg:color-mix(in srgb,var(--t-muted) 8%,var(--t-surface));--status-info-line:color-mix(in srgb,var(--t-muted) 24%,var(--t-line));--status-warning-bg:var(--t-warning-soft);--status-warning-line:var(--t-warning-line);--status-danger-bg:var(--t-danger-soft);--status-danger-line:var(--t-danger-line)}
     html[data-theme] :is(.view-tab,.compact-nav button,.layout-btn).active{background:color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface))!important;color:var(--t-accent-strong)!important;border-color:color-mix(in srgb,var(--t-accent) 24%,var(--t-line))!important;box-shadow:inset 0 -2px 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 14%,transparent),0 1px 5px var(--t-shadow-soft)!important}
     html[data-theme] .settings-nav button.active{background:color-mix(in srgb,var(--t-accent-soft) 88%,var(--t-surface))!important;color:var(--t-accent-strong)!important;box-shadow:inset 3px 0 0 var(--t-accent),inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 13%,transparent)!important}
@@ -4239,8 +4238,6 @@
     }
 
 </style>
-
-
 <style id="visual-unification-v81619">
 /* v8.1.6.19 · 全站视觉收口 1.0
    目标：更少的框、更清楚的层级、更大的有效字号、更稳定的操作位置。 */
@@ -4533,8 +4530,6 @@ body{font-size:var(--vu-body);line-height:1.5}
   .record-view-summary{grid-template-columns:1fr 1fr}
 }
 </style>
-
-
 <style id="v8174-mobile-dialog-reliability">
   /* v8.1.7.4 · 手机弹层与按钮触控可靠性：统一使用点击语义，扩大关键关闭区域。 */
   button,[role="button"],summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -4549,7 +4544,6 @@ body{font-size:var(--vu-body);line-height:1.5}
     .app-update-banner>div:last-child .btn{min-height:44px;white-space:nowrap}
   }
 </style>
-
 <style id="v8178-interaction-polish">
   /* v8.1.8.0 · 通知条应做到“只要看得到，就一定点得到”。 */
   #externalBackupNotice{z-index:2140!important;pointer-events:auto!important}
@@ -4561,7 +4555,6 @@ body{font-size:var(--vu-body);line-height:1.5}
   /* 番茄园使用番茄红选中 + 叶片绿外圈，和主题本身保持一致。 */
   .theme-preview-tomato.active .theme-card-check{background:#cb5147!important;border-color:#b7443d!important;color:#fffdfb!important;box-shadow:0 0 0 3px rgba(107,138,82,.18)!important}
 </style>
-
 <style id="v8180-safety-layer">
 
   /* v8.1.8.1 · 第三层防呆：保护模式、导入模拟与近似重复提示 */
@@ -4586,7 +4579,6 @@ body{font-size:var(--vu-body);line-height:1.5}
   .revision-history-actions{display:flex;gap:6px;align-items:center}
   @media(max-width:760px){.revision-history-row{grid-template-columns:1fr}.revision-history-actions .btn{width:100%;min-height:42px}}
 </style>
-
 <style id="v8190-ux-refinement">
 /* v8.1.9.3 · 一键按周期排期单页工作台 */
 .periodic-section-card{display:grid;gap:11px;padding:13px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-surface-2)}
@@ -4707,683 +4699,643 @@ body[data-planner-view="three"] .week-panel{display:block!important}
   .view-toolbar{padding-top:10px!important;padding-bottom:10px!important}.plan-editor-block{padding:10px}.periodic-modal-body{padding:11px 12px}
 }
 </style>
-
+<style id="v8194-version-history-unified">
+/* 版本记录：统一为“版本号 + 更新内容”两列结构 */
+.version-history-details{overflow:hidden}
+.version-history-list{display:grid;margin:0;border-top:1px solid var(--t-line);background:var(--t-surface)}
+.version-log-header,.version-log-item{display:grid;grid-template-columns:84px minmax(0,1fr);align-items:start;gap:12px}
+.version-log-header{padding:7px 11px;background:var(--t-surface-2);border-bottom:1px solid var(--t-line);font-size:7.5px;font-weight:760;color:var(--t-muted)}
+.version-log-item{padding:9px 11px;border-bottom:1px solid var(--t-line);font-size:8.8px;line-height:1.5;color:var(--t-text-2)}
+.version-log-item:last-child{border-bottom:0}
+.version-log-version{font-size:9px;line-height:1.5;color:var(--t-ink);font-weight:820;white-space:nowrap;font-variant-numeric:tabular-nums}
+.version-log-copy{min-width:0;overflow-wrap:anywhere;color:var(--t-text-2)}
+.version-log-item:hover{background:color-mix(in srgb,var(--t-accent-soft) 35%,var(--t-surface))}
+.version-log-item:first-of-type{background:color-mix(in srgb,var(--t-accent-soft) 52%,var(--t-surface))}
+.version-log-item:first-of-type .version-log-version{color:var(--t-accent-strong)}
+@media(max-width:620px){
+  .version-log-header,.version-log-item{grid-template-columns:72px minmax(0,1fr);gap:8px}
+  .version-log-header{padding:7px 9px}
+  .version-log-item{padding:9px 9px;font-size:8.5px}.version-log-version{font-size:8.7px}
+}
+</style>
 </head>
 <body>
-  
-  <div id="appRoot" class="app">
-    <main class="shell">
-      
-      <section class="hero">
-        <div>
-          <div class="eyebrow" data-i18n="app.eyebrow">TRPG · 本地档案管理</div>
-          <h1>PL收集梦想生活</h1>
-          
-          <details id="heroHelpDetails" class="hero-help" data-collapse-key="home:help">
-            <summary>
-              <span class="hero-help-summary-left">
-                <span class="hero-help-chevron">›</span>
-                <span class="hero-help-title" data-i18n="help.title">使用说明</span>
-              </span>
-              <span class="hero-help-meta" data-i18n="help.meta">6 项快速指引</span>
-            </summary>
-            <div class="hero-help-body">
-              <div class="hero-guide">
-                <div class="guide-item">
-                  <span class="guide-no">01</span>
-                  <div><strong>新建或编辑 PL</strong><span>进入“PL 档案”，点击“新建 PL”；已有档案可直接打开编辑。</span></div>
-                </div>
-                <div class="guide-item">
-                  <span class="guide-no">02</span>
-                  <div><strong>安排开团计划</strong><span>进入“开团计划”，选择计划并安排日期与时段。电脑支持拖放，手机支持点选。</span></div>
-                </div>
-                <div class="guide-item">
-                  <span class="guide-no">03</span>
-                  <div><strong>归档已结束计划</strong><span>计划结束后点击“归档”，系统会生成跑团记录并同步 PL 足迹。</span></div>
-                </div>
-                <div class="guide-item">
-                  <span class="guide-no">04</span>
-                  <div><strong>管理评分设置</strong><span>在“设置”中调整主题、评分字段、权重和评分标准。</span></div>
-                </div>
-                <div class="guide-item">
-                  <span class="guide-no">05</span>
-                  <div><strong>自动保存与备份</strong><span>数据自动保存在当前浏览器，并定期创建恢复点。请定期导出完整备份。</span></div>
-                </div>
-                <div class="guide-item">
-                  <span class="guide-no">06</span>
-                  <div><strong>问题反馈</strong><span>有问题联系企鹅：3353671383</span></div>
-                </div>
-              </div>
-            </div>
-          </details>
-        </div>
-        <div class="hero-actions">
-          <div id="autoSaveHeroStatus" class="autosave-status-chip" role="status" aria-live="polite" title="当前浏览器本地保存状态">
-            <span class="autosave-status-dot"></span><span id="autoSaveHeroText">正在检查本地保存</span>
-          </div>
-          <button type="button" id="settingsBtn" class="btn ghost"><span aria-hidden="true">⚙</span> <span data-i18n="common.settings">设置</span></button>
-        </div>
-      </section>
-
-      <header id="compactAppBar" class="compact-app-bar" aria-label="紧凑导航">
-        <button class="compact-brand" type="button" data-scroll-home title="回到页面顶部">
-          <span class="compact-brand-mark">TRPG</span><strong>PL收集梦想生活</strong>
-        </button>
-        <nav class="compact-nav" aria-label="主界面快捷切换">
-          <button type="button" data-view-target="profiles" data-i18n="nav.profiles.short">PL</button>
-          <button type="button" data-view-target="modules" data-i18n="nav.modules.short">模组</button>
-          <button type="button" data-view-target="plans" data-i18n="nav.plans.short">计划</button>
-          <button type="button" data-view-target="records" data-i18n="nav.records.short">记录</button>
-          <button type="button" data-view-target="selfIntro" data-i18n="nav.preferences.short">个人偏好</button>
-          <button type="button" data-view-target="stats" data-i18n="nav.stats.short">个人统计</button>
-        </nav>
-        <div class="compact-actions">
-          <span id="compactSaveStatus" class="compact-save-status">已保存</span>
-          <button type="button" class="compact-icon-btn" data-open-quick-create aria-label="快速新建" title="快速新建">＋</button>
-          <button type="button" class="compact-icon-btn" data-open-settings aria-label="设置" title="设置">⚙</button>
-        </div>
-      </header>
-
-      <section id="dataSafetyBanner" class="data-safety-banner" hidden aria-live="polite">
-        <div class="data-safety-banner-main"><span class="data-safety-banner-icon">↧</span><div><strong id="dataSafetyBannerTitle">建议备份数据</strong><span id="dataSafetyBannerText"></span></div></div>
-        <div class="data-safety-banner-actions"><button type="button" id="dataSafetyBackupNowBtn" class="btn small primary">立即导出</button><button type="button" id="dataSafetyDismissBtn" class="btn small">稍后提醒</button></div>
-      </section>
-      <section id="dataProtectionBanner" class="data-safety-banner data-protection-banner" hidden role="alert" aria-live="assertive">
-        <div class="data-safety-banner-main"><span class="data-safety-banner-icon">!</span><div><strong>档案进入保护模式</strong><span id="dataProtectionBannerText">检测到可能导致关联错乱的严重编号冲突。普通修改已暂停。</span></div></div>
-        <div class="data-safety-banner-actions"><button type="button" id="dataProtectionBackupBtn" class="btn small">先导出备份</button><button type="button" id="dataProtectionRepairBtn" class="btn small">安全重编号</button><button type="button" id="dataProtectionOpenBtn" class="btn small primary">查看并处理</button></div>
-      </section>
-
-      
-      <nav class="view-switch" role="group" aria-label="主界面切换">
-        <div class="view-switch-group" role="group" aria-label="档案相关">
-          <button id="profilesViewBtn" class="view-tab active" type="button" aria-pressed="true" data-i18n="nav.profiles">PL 档案</button>
-          <button id="modulesViewBtn" class="view-tab" type="button" aria-pressed="false" data-i18n="nav.modules">模组档案</button>
-        </div>
-        <div class="view-switch-group" role="group" aria-label="跑团流程">
-          <button id="plansViewBtn" class="view-tab" type="button" aria-pressed="false" data-i18n="nav.plans">开团计划</button>
-          <button id="recordsViewBtn" class="view-tab" type="button" aria-pressed="false" data-i18n="nav.records">跑团记录</button>
-        </div>
-        <div class="view-switch-group" role="group" aria-label="个人">
-          <button id="selfIntroViewBtn" class="view-tab" type="button" aria-pressed="false" data-i18n="nav.preferences">个人偏好</button>
-          <button id="statsViewBtn" class="view-tab" type="button" aria-pressed="false" data-i18n="nav.stats">个人统计</button>
-        </div>
-      </nav>
-
-      <section id="profilesView" class="profiles-view">
-        
-        <div class="view-toolbar profiles-toolbar">
-          <div class="view-toolbar-title">
-            <strong id="profilesToolbarTitle">PL 档案</strong>
-            <span id="profilesToolbarSubtitle">管理 PL 档案，支持搜索、评分排序、视图切换和跑团记录联动。</span>
-          </div>
-          <div class="view-toolbar-actions">
-            <button id="blacklistBtn" class="btn" type="button">黑名单</button>
-            <button id="newBtn" class="btn primary" type="button">＋ 新建 PL</button>
-          </div>
-        </div>
-
-        
-        <div class="toolbar sticky-searchbar profiles-search-toolbar">
-          <div class="profile-search-line">
-            <label class="search"><span>⌕</span><input id="searchInput" placeholder="搜索姓名、联系方式、模组或备注" /></label>
-            <div id="profileCollapseActions" class="profile-collapse-actions" role="group" aria-label="PL 卡片批量折叠">
-              <button id="collapseAllProfilesBtn" class="btn small" type="button" title="折叠当前列表中的全部 PL 卡片">全部折叠</button>
-              <button id="expandAllProfilesBtn" class="btn small" type="button" title="展开当前列表中的全部 PL 卡片">全部展开</button>
-            </div>
-          </div>
-          <select id="sortSelect" class="sort-select" aria-label="排序方式"></select>
-          <div class="profile-layout-switch" role="group" aria-label="PL 档案显示方式">
-            <button id="cardLayoutBtn" class="layout-btn active" type="button" aria-pressed="true" title="卡片视图">▦ 卡片</button>
-            <button id="compactLayoutBtn" class="layout-btn" type="button" aria-pressed="false" title="简要视图">☷ 简要</button>
-          </div>
-          <div id="countText" class="count" aria-live="polite">0 位 PL</div>
-        </div>
-
-        
-        <section id="profileGrid" class="grid"></section>
-      </section>
-
-
-      <section id="selfIntroView" class="self-intro-view" hidden>
-        <div class="view-toolbar self-intro-toolbar">
-          <div class="view-toolbar-title">
-            <strong>个人偏好</strong>
-            <span>整理常用信息、PL / KP 偏好、想跑模组、可带模组与协作边界。<small class="self-intro-credit">（参考来源：@云染、@冒冒、@江鸿、@削面及匿名或是不知名作者的偏好表格；如有遗漏，欢迎补充来源信息。）</small></span>
-          </div>
-          <div class="view-toolbar-actions">
-            <div id="selfIntroExportCenter" class="image-export-center self-intro-export-center">
-              <button id="selfIntroExportBtn" class="btn image-export-btn has-menu" type="button" aria-expanded="false" aria-controls="selfIntroExportPanel">导出图片</button>
-              <div id="selfIntroExportPanel" class="export-center-panel" role="dialog" aria-label="个人偏好导出设置" hidden>
-                <div class="export-center-head">
-                  <div><strong>导出个人偏好</strong><span>选择内容、顺序与版面；右侧会实时显示最终图片预览。</span></div>
-                  <button id="selfIntroExportPanelClose" class="export-center-close" type="button" aria-label="关闭导出设置">×</button>
-                </div>
-                <div class="export-center-body export-composer-body">
-                  <div class="export-composer-grid">
-                    <div class="export-composer-controls">
-                      <section class="export-center-section">
-                        <div class="export-center-section-head"><strong>快捷组合</strong><span>快速选择常用导出内容</span></div>
-                        <div class="export-preset-grid export-preset-grid-compact" role="group" aria-label="导出组合">
-                          <button type="button" data-self-intro-export-preset="all">全部</button>
-                          <button type="button" data-self-intro-export-preset="prefs">仅偏好</button>
-                          <button type="button" data-self-intro-export-preset="modules">仅模组</button>
-                        </div>
-                      </section>
-                      <section class="export-center-section">
-                        <div class="export-center-section-head"><strong>内容与版面</strong><span>勾选、排序，并设置每个区域占整行或半栏</span></div>
-                        <div id="selfIntroExportScopeList" class="export-scope-list"></div>
-                      </section>
-                      <div class="export-composer-rule-note">空白项自动省略。</div>
-                      <div id="selfIntroExportSummary" class="export-center-summary" role="status" aria-live="polite"></div>
-                    </div>
-                    <aside class="export-preview-pane" aria-label="导出预览">
-                      <div class="export-preview-head"><div><strong>实时预览</strong><span>拖动模块可改变顺序和左右栏；拖到底部“继续向下排列”区域即可继续往下追加，预览会自动延伸。</span></div><button id="selfIntroExportCompactBtn" class="btn small export-preview-compact-btn" type="button">自动紧凑</button></div>
-                      <div id="selfIntroExportPreviewStage" class="export-preview-stage"><div class="export-preview-empty">选择导出内容后会在这里预览。</div></div>
-                    </aside>
-                  </div>
-                </div>
-                <div class="export-center-foot">
-                  <button id="selfIntroExportResetBtn" class="btn" type="button">恢复默认</button>
-                  <button id="selfIntroExportNowBtn" class="btn primary image-export-btn" type="button">导出图片</button>
-                </div>
-              </div>
-            </div>
-            <span id="selfIntroSaveState" class="self-intro-save-state" role="status" aria-live="polite">已保存</span>
-            <button id="selfIntroSaveBtn" class="btn primary" type="button">保存偏好</button>
-          </div>
-        </div>
-        <div id="selfIntroGrid" class="self-intro-grid"></div>
-      </section>
-
-      <section id="statsView" class="stats-view" hidden>
-        <div class="view-toolbar stats-toolbar">
-          <div class="view-toolbar-title">
-            <strong>个人统计</strong>
-            <span>汇总我已经归档的跑团记录，查看和谁跑得最多、跑过和带过哪些模组、跑团趋势和历史记录填写情况。</span>
-          </div>
-          <div class="view-toolbar-actions stats-toolbar-actions">
-            <button id="statsExportBtn" class="btn image-export-btn" type="button">导出图片</button>
-            <label class="stats-filter-field"><span>统计范围</span><select id="statsRangeSelect" class="sort-select" aria-label="统计时间范围">
-              <option value="all">全部时间</option>
-              <option value="year">今年</option>
-              <option value="12m">近 12 个月</option>
-              <option value="custom">自定义</option>
-            </select></label>
-            <div id="statsCustomRange" class="stats-custom-range" hidden>
-              <label><span>开始</span><input id="statsStartDate" type="date" class="text-input"></label>
-              <span class="stats-range-arrow">→</span>
-              <label><span>结束</span><input id="statsEndDate" type="date" class="text-input"></label>
-            </div>
-          </div>
-        </div>
-        <div id="statsContent" class="stats-content" aria-live="polite"></div>
-      </section>
-
-      <section id="modulesView" class="modules-view" hidden>
-        <div class="view-toolbar modules-toolbar">
-          <div class="view-toolbar-title">
-            <strong>模组档案</strong>
-            <span>管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。招募、Excel 与高级评分请使用“高级工具”。</span>
-          </div>
-          <div class="view-toolbar-actions">
-            <button id="newNativeModuleBtn" class="btn primary" type="button">＋ 新建模组</button>
-            <button id="openModuleAdvancedBtn" class="btn" type="button">高级工具</button>
-          </div>
-        </div>
-
-        <div id="moduleNativeStats" class="module-native-stats" aria-live="polite"></div>
-
-        <div class="module-native-controls sticky-searchbar">
-          <label class="search"><span>⌕</span><input id="moduleNativeSearch" placeholder="搜索模组名称、作者、地点、时代或备注（名称优先・支持拼音首字母）"></label>
-          <select id="moduleNativeHoFilter" class="sort-select" aria-label="HO筛选">
-            <option value="">全部 HO 设置</option>
-            <option value="has">有 HO 位</option>
-            <option value="none">无 HO 位</option>
-            <option value="unset">未设置</option>
-          </select>
-          <select id="moduleNativeLocationFilter" class="sort-select" aria-label="地点筛选"><option value="">全部地点</option></select>
-          <select id="moduleNativeSort" class="sort-select" aria-label="模组排序">
-            <option value="updated">最近编辑</option>
-            <option value="runs">跑团桌数</option>
-            <option value="rating">评分</option>
-            <option value="name">名称</option>
-          </select>
-          <div class="profile-layout-switch module-layout-switch" role="group" aria-label="模组显示方式">
-            <button id="moduleCardsLayoutBtn" class="layout-btn active" type="button" aria-pressed="true">▦ 卡片</button>
-            <button id="moduleCompactLayoutBtn" class="layout-btn" type="button" aria-pressed="false">☷ 简表</button>
-          </div>
-        </div>
-        <section id="moduleNativeGrid" class="module-native-grid"></section>
-
-        <div id="nativeModuleEditorBackdrop" class="native-module-editor-backdrop" hidden>
-          <section class="native-module-editor" role="dialog" aria-modal="true" aria-labelledby="nativeModuleEditorTitle">
-            <header class="native-module-editor-head">
-              <div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>编辑模组资料；完整评分与批量工具请使用“高级工具”。</span><div class="editor-state-line"><span id="moduleEditStatus" class="editor-state-chip clean">未修改</span></div></div>
-              <button id="closeNativeModuleEditorBtn" class="icon-close" type="button" aria-label="关闭">×</button>
-            </header>
-            <div id="nativeModuleEditorContent" class="native-module-editor-body"></div>
-            <footer class="native-module-editor-foot">
-              <button id="cancelNativeModuleEditorBtn" class="btn" type="button">取消</button>
-              <button id="saveNativeModuleEditorBtn" class="btn primary" type="button">保存模组</button>
-            </footer>
-          </section>
-        </div>
-
-        <div id="moduleAdvancedBackdrop" class="module-advanced-backdrop" hidden>
-          <section class="module-advanced-shell" role="dialog" aria-modal="true" aria-labelledby="moduleAdvancedTitle">
-            <header class="module-advanced-head">
-              <div><strong id="moduleAdvancedTitle">模组高级工具</strong><span>评分、招募、Excel 与完整模组编辑</span></div>
-              <button id="closeModuleAdvancedBtn" class="icon-close" type="button" aria-label="关闭">×</button>
-            </header>
-            <iframe id="moduleArchiveFrame" class="module-archive-frame" title="模组高级工具" loading="eager"></iframe>
-          </section>
-        </div>
-      </section>
-
-      <section id="plansView" class="plans-view" hidden>
-        <div class="view-toolbar plans-toolbar">
-          <div class="view-toolbar-title">
-            <strong>开团计划</strong>
-            <span>管理待开团计划与排期。选择计划后，可通过点选或拖放安排时段。</span>
-          </div>
-          <div class="view-toolbar-actions planner-toolbar-actions">
-            <div class="planner-view-switch" role="group" aria-label="日历视图">
-              <button id="plannerWeekModeBtn" class="layout-btn active" type="button" aria-pressed="true">周</button>
-              <button id="plannerMonthModeBtn" class="layout-btn" type="button" aria-pressed="false">月</button>
-            </div>
-            <button id="newPlanBtn" class="btn primary" type="button">＋ 新建开团计划</button>
-          </div>
-        </div>
-
-        <div id="plannerMobileSectionSwitch" class="planner-mobile-section-switch" role="group" aria-label="手机计划页面区域">
-          <button id="plannerMobileCalendarBtn" class="active" type="button" data-planner-mobile-section="calendar" aria-pressed="true">日历</button>
-          <button id="plannerMobileQueueBtn" type="button" data-planner-mobile-section="queue" aria-pressed="false">待排计划 <span id="plannerMobileQueueCount">0</span></button>
-        </div>
-
-        <div class="planner-layout">
-          <aside class="planner-sidebar" aria-label="开团计划列表">
-            <div class="planner-sidebar-head">
-              <div>
-                <strong>计划</strong>
-                <span>按下一次安排排序</span>
-              </div>
-              <div class="planner-sidebar-head-actions">
-                <div id="planCountText" class="count" aria-live="polite">0 个</div>
-                <button id="periodicScheduleBtn" class="planner-periodic-btn" type="button">＋ 一键按周期排期</button>
-              </div>
-            </div>
-            <label class="search plan-search"><span>⌕</span><input id="planSearchInput" placeholder="搜索模组、桌名、KP、PL、PC 或日期（支持拼音首字母）"></label>
-            <div class="plan-role-legend" aria-label="我的身份颜色说明"><span class="kp"><i></i>我做 KP</span><span class="pl"><i></i>我做 PL</span></div>
-            <div class="planner-drag-hint" aria-label="排期操作提示"><span class="planner-drag-hint-desktop">按住卡片左侧 <strong>“拖到日历”</strong> 可直接排期</span><span class="planner-drag-hint-mobile">点击 <strong>“安排”</strong> 后选择日历时段</span></div>
-            <section id="planBoard" class="plan-board"></section>
-          </aside>
-
-          <section class="planner-calendar" aria-label="开团计划日历">
-            <div id="planMonthCalendar" class="calendar-panel month-panel"></div>
-            <div id="planWeekCalendar" class="calendar-panel week-panel"></div>
-          </section>
-        </div>
-
-        
-        <div id="periodicScheduleBackdrop" class="periodic-schedule-backdrop" hidden>
-          <section class="periodic-schedule-modal" role="dialog" aria-modal="true" aria-labelledby="periodicScheduleTitle">
-            <header class="periodic-modal-head">
-              <div><h3 id="periodicScheduleTitle">一键按周期排期</h3><p>设置周期并预览日期。</p></div>
-              <button id="closePeriodicScheduleBtn" class="icon-close" type="button" aria-label="关闭一键按周期排期">×</button>
-            </header>
-            <div id="periodicScheduleContent" class="periodic-modal-body"></div>
-            <footer id="periodicScheduleFooter" class="periodic-modal-foot"><span id="periodicScheduleFootHint" class="muted"></span><div class="right"><button id="cancelPeriodicScheduleBtn" class="btn" type="button">取消</button><button id="confirmPeriodicScheduleBtn" class="btn primary" type="button">确认排期</button></div></footer>
-          </section>
-        </div>
-
-        <div id="planEditorBackdrop" class="plan-editor-backdrop" hidden>
-          <aside id="planEditorDrawer" class="plan-editor-drawer" role="dialog" aria-modal="true" aria-labelledby="planEditorTitle">
-            <header class="plan-editor-drawer-head">
-              <div>
-                <div id="planEditorTitle" class="plan-editor-drawer-title">编辑开团计划</div>
-                <div class="plan-editor-drawer-sub">自动保存修改</div>
-              </div>
-              <button id="closePlanEditorBtn" class="icon-close" type="button" aria-label="关闭开团计划编辑">×</button>
-            </header>
-            <div id="planEditorContent" class="plan-editor-drawer-body"></div>
-          </aside>
-        </div>
-      </section>
-
-      <section id="recordsView" class="records-view" hidden>
-        <div class="view-toolbar records-toolbar">
-          <div class="view-toolbar-title">
-            <strong>跑团记录</strong>
-            <span>集中维护已归档跑团记录；PL 足迹及模组关联信息均由此同步。</span>
-          </div>
-          <div class="view-toolbar-actions records-toolbar-actions">
-            <div id="newModuleNameCombobox" class="record-module-combobox">
-              <input id="newModuleNameInput" class="text-input" placeholder="输入模组名称" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="newModuleSuggestions">
-              <div id="newModuleSuggestions" class="record-module-suggestions" role="listbox" aria-label="已有模组匹配" hidden></div>
-            </div>
-            <button id="createModuleRecordBtn" class="btn primary" type="button">＋ 新建跑团记录</button>
-          </div>
-          <div class="records-search-row">
-            <label class="search records-search"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、PC、日期或 Log（支持拼音首字母）"></label>
-            <div class="records-search-batch" role="group" aria-label="跑团记录批量展开与收起">
-              <button id="expandAllRecordsBtn" class="btn small" type="button">全部展开</button>
-              <button id="collapseAllRecordsBtn" class="btn small" type="button">全部收起</button>
-            </div>
-          </div>
-        </div>
-        <div id="recordsBoard" class="records-board"></div>
-      </section>
-      <footer class="site-footer">
-        <details id="disclaimerDetails" class="disclaimer-details" data-collapse-key="home:disclaimer">
-          <summary class="disclaimer-summary">
-            <span class="disclaimer-summary-left">
-              <span class="disclaimer-chevron">›</span>
-              <span class="footer-title">说明与隐私提示</span>
-            </span>
-            <span class="footer-meta-inline">v8.1.9.3 · 2026-09-09 · 作者：番茄</span>
-          </summary>
-          <div class="disclaimer-body">
-            <p>
+<div class="app" id="appRoot">
+<main class="shell">
+<section class="hero">
+<div>
+<div class="eyebrow" data-i18n="app.eyebrow">TRPG · 本地档案管理</div>
+<h1>PL收集梦想生活</h1>
+<details class="hero-help" data-collapse-key="home:help" id="heroHelpDetails">
+<summary>
+<span class="hero-help-summary-left">
+<span class="hero-help-chevron">›</span>
+<span class="hero-help-title" data-i18n="help.title">使用说明</span>
+</span>
+<span class="hero-help-meta" data-i18n="help.meta">6 项快速指引</span>
+</summary>
+<div class="hero-help-body">
+<div class="hero-guide">
+<div class="guide-item">
+<span class="guide-no">01</span>
+<div><strong>新建或编辑 PL</strong><span>进入“PL 档案”，点击“新建 PL”；已有档案可直接打开编辑。</span></div>
+</div>
+<div class="guide-item">
+<span class="guide-no">02</span>
+<div><strong>安排开团计划</strong><span>进入“开团计划”，选择计划并安排日期与时段。电脑支持拖放，手机支持点选。</span></div>
+</div>
+<div class="guide-item">
+<span class="guide-no">03</span>
+<div><strong>归档已结束计划</strong><span>计划结束后点击“归档”，系统会生成跑团记录并同步 PL 足迹。</span></div>
+</div>
+<div class="guide-item">
+<span class="guide-no">04</span>
+<div><strong>管理评分设置</strong><span>在“设置”中调整主题、评分字段、权重和评分标准。</span></div>
+</div>
+<div class="guide-item">
+<span class="guide-no">05</span>
+<div><strong>自动保存与备份</strong><span>数据自动保存在当前浏览器，并定期创建恢复点。请定期导出完整备份。</span></div>
+</div>
+<div class="guide-item">
+<span class="guide-no">06</span>
+<div><strong>问题反馈</strong><span>有问题联系企鹅：3353671383</span></div>
+</div>
+</div>
+</div>
+</details>
+</div>
+<div class="hero-actions">
+<div aria-live="polite" class="autosave-status-chip" id="autoSaveHeroStatus" role="status" title="当前浏览器本地保存状态">
+<span class="autosave-status-dot"></span><span id="autoSaveHeroText">正在检查本地保存</span>
+</div>
+<button class="btn ghost" id="settingsBtn" type="button"><span aria-hidden="true">⚙</span> <span data-i18n="common.settings">设置</span></button>
+</div>
+</section>
+<header aria-label="紧凑导航" class="compact-app-bar" id="compactAppBar">
+<button class="compact-brand" data-scroll-home="" title="回到页面顶部" type="button">
+<span class="compact-brand-mark">TRPG</span><strong>PL收集梦想生活</strong>
+</button>
+<nav aria-label="主界面快捷切换" class="compact-nav">
+<button data-i18n="nav.profiles.short" data-view-target="profiles" type="button">PL</button>
+<button data-i18n="nav.modules.short" data-view-target="modules" type="button">模组</button>
+<button data-i18n="nav.plans.short" data-view-target="plans" type="button">计划</button>
+<button data-i18n="nav.records.short" data-view-target="records" type="button">记录</button>
+<button data-i18n="nav.preferences.short" data-view-target="selfIntro" type="button">个人偏好</button>
+<button data-i18n="nav.stats.short" data-view-target="stats" type="button">个人统计</button>
+</nav>
+<div class="compact-actions">
+<span class="compact-save-status" id="compactSaveStatus">已保存</span>
+<button aria-label="快速新建" class="compact-icon-btn" data-open-quick-create="" title="快速新建" type="button">＋</button>
+<button aria-label="设置" class="compact-icon-btn" data-open-settings="" title="设置" type="button">⚙</button>
+</div>
+</header>
+<section aria-live="polite" class="data-safety-banner" hidden="" id="dataSafetyBanner">
+<div class="data-safety-banner-main"><span class="data-safety-banner-icon">↧</span><div><strong id="dataSafetyBannerTitle">建议备份数据</strong><span id="dataSafetyBannerText"></span></div></div>
+<div class="data-safety-banner-actions"><button class="btn small primary" id="dataSafetyBackupNowBtn" type="button">立即导出</button><button class="btn small" id="dataSafetyDismissBtn" type="button">稍后提醒</button></div>
+</section>
+<section aria-live="assertive" class="data-safety-banner data-protection-banner" hidden="" id="dataProtectionBanner" role="alert">
+<div class="data-safety-banner-main"><span class="data-safety-banner-icon">!</span><div><strong>档案进入保护模式</strong><span id="dataProtectionBannerText">检测到可能导致关联错乱的严重编号冲突。普通修改已暂停。</span></div></div>
+<div class="data-safety-banner-actions"><button class="btn small" id="dataProtectionBackupBtn" type="button">先导出备份</button><button class="btn small" id="dataProtectionRepairBtn" type="button">安全重编号</button><button class="btn small primary" id="dataProtectionOpenBtn" type="button">查看并处理</button></div>
+</section>
+<nav aria-label="主界面切换" class="view-switch" role="group">
+<div aria-label="档案相关" class="view-switch-group" role="group">
+<button aria-pressed="true" class="view-tab active" data-i18n="nav.profiles" id="profilesViewBtn" type="button">PL 档案</button>
+<button aria-pressed="false" class="view-tab" data-i18n="nav.modules" id="modulesViewBtn" type="button">模组档案</button>
+</div>
+<div aria-label="跑团流程" class="view-switch-group" role="group">
+<button aria-pressed="false" class="view-tab" data-i18n="nav.plans" id="plansViewBtn" type="button">开团计划</button>
+<button aria-pressed="false" class="view-tab" data-i18n="nav.records" id="recordsViewBtn" type="button">跑团记录</button>
+</div>
+<div aria-label="个人" class="view-switch-group" role="group">
+<button aria-pressed="false" class="view-tab" data-i18n="nav.preferences" id="selfIntroViewBtn" type="button">个人偏好</button>
+<button aria-pressed="false" class="view-tab" data-i18n="nav.stats" id="statsViewBtn" type="button">个人统计</button>
+</div>
+</nav>
+<section class="profiles-view" id="profilesView">
+<div class="view-toolbar profiles-toolbar">
+<div class="view-toolbar-title">
+<strong id="profilesToolbarTitle">PL 档案</strong>
+<span id="profilesToolbarSubtitle">管理 PL 档案，支持搜索、评分排序、视图切换和跑团记录联动。</span>
+</div>
+<div class="view-toolbar-actions">
+<button class="btn" id="blacklistBtn" type="button">黑名单</button>
+<button class="btn primary" id="newBtn" type="button">＋ 新建 PL</button>
+</div>
+</div>
+<div class="toolbar sticky-searchbar profiles-search-toolbar">
+<div class="profile-search-line">
+<label class="search"><span>⌕</span><input id="searchInput" placeholder="搜索姓名、联系方式、模组或备注"/></label>
+<div aria-label="PL 卡片批量折叠" class="profile-collapse-actions" id="profileCollapseActions" role="group">
+<button class="btn small" id="collapseAllProfilesBtn" title="折叠当前列表中的全部 PL 卡片" type="button">全部折叠</button>
+<button class="btn small" id="expandAllProfilesBtn" title="展开当前列表中的全部 PL 卡片" type="button">全部展开</button>
+</div>
+</div>
+<select aria-label="排序方式" class="sort-select" id="sortSelect"></select>
+<div aria-label="PL 档案显示方式" class="profile-layout-switch" role="group">
+<button aria-pressed="true" class="layout-btn active" id="cardLayoutBtn" title="卡片视图" type="button">▦ 卡片</button>
+<button aria-pressed="false" class="layout-btn" id="compactLayoutBtn" title="简要视图" type="button">☷ 简要</button>
+</div>
+<div aria-live="polite" class="count" id="countText">0 位 PL</div>
+</div>
+<section class="grid" id="profileGrid"></section>
+</section>
+<section class="self-intro-view" hidden="" id="selfIntroView">
+<div class="view-toolbar self-intro-toolbar">
+<div class="view-toolbar-title">
+<strong>个人偏好</strong>
+<span>整理常用信息、PL / KP 偏好、想跑模组、可带模组与协作边界。<small class="self-intro-credit">（参考来源：@云染、@冒冒、@江鸿、@削面及匿名或是不知名作者的偏好表格；如有遗漏，欢迎补充来源信息。）</small></span>
+</div>
+<div class="view-toolbar-actions">
+<div class="image-export-center self-intro-export-center" id="selfIntroExportCenter">
+<button aria-controls="selfIntroExportPanel" aria-expanded="false" class="btn image-export-btn has-menu" id="selfIntroExportBtn" type="button">导出图片</button>
+<div aria-label="个人偏好导出设置" class="export-center-panel" hidden="" id="selfIntroExportPanel" role="dialog">
+<div class="export-center-head">
+<div><strong>导出个人偏好</strong><span>选择内容、顺序与版面；右侧会实时显示最终图片预览。</span></div>
+<button aria-label="关闭导出设置" class="export-center-close" id="selfIntroExportPanelClose" type="button">×</button>
+</div>
+<div class="export-center-body export-composer-body">
+<div class="export-composer-grid">
+<div class="export-composer-controls">
+<section class="export-center-section">
+<div class="export-center-section-head"><strong>快捷组合</strong><span>快速选择常用导出内容</span></div>
+<div aria-label="导出组合" class="export-preset-grid export-preset-grid-compact" role="group">
+<button data-self-intro-export-preset="all" type="button">全部</button>
+<button data-self-intro-export-preset="prefs" type="button">仅偏好</button>
+<button data-self-intro-export-preset="modules" type="button">仅模组</button>
+</div>
+</section>
+<section class="export-center-section">
+<div class="export-center-section-head"><strong>内容与版面</strong><span>勾选、排序，并设置每个区域占整行或半栏</span></div>
+<div class="export-scope-list" id="selfIntroExportScopeList"></div>
+</section>
+<div class="export-composer-rule-note">空白项自动省略。</div>
+<div aria-live="polite" class="export-center-summary" id="selfIntroExportSummary" role="status"></div>
+</div>
+<aside aria-label="导出预览" class="export-preview-pane">
+<div class="export-preview-head"><div><strong>实时预览</strong><span>拖动模块可改变顺序和左右栏；拖到底部“继续向下排列”区域即可继续往下追加，预览会自动延伸。</span></div><button class="btn small export-preview-compact-btn" id="selfIntroExportCompactBtn" type="button">自动紧凑</button></div>
+<div class="export-preview-stage" id="selfIntroExportPreviewStage"><div class="export-preview-empty">选择导出内容后会在这里预览。</div></div>
+</aside>
+</div>
+</div>
+<div class="export-center-foot">
+<button class="btn" id="selfIntroExportResetBtn" type="button">恢复默认</button>
+<button class="btn primary image-export-btn" id="selfIntroExportNowBtn" type="button">导出图片</button>
+</div>
+</div>
+</div>
+<span aria-live="polite" class="self-intro-save-state" id="selfIntroSaveState" role="status">已保存</span>
+<button class="btn primary" id="selfIntroSaveBtn" type="button">保存偏好</button>
+</div>
+</div>
+<div class="self-intro-grid" id="selfIntroGrid"></div>
+</section>
+<section class="stats-view" hidden="" id="statsView">
+<div class="view-toolbar stats-toolbar">
+<div class="view-toolbar-title">
+<strong>个人统计</strong>
+<span>汇总我已经归档的跑团记录，查看和谁跑得最多、跑过和带过哪些模组、跑团趋势和历史记录填写情况。</span>
+</div>
+<div class="view-toolbar-actions stats-toolbar-actions">
+<button class="btn image-export-btn" id="statsExportBtn" type="button">导出图片</button>
+<label class="stats-filter-field"><span>统计范围</span><select aria-label="统计时间范围" class="sort-select" id="statsRangeSelect">
+<option value="all">全部时间</option>
+<option value="year">今年</option>
+<option value="12m">近 12 个月</option>
+<option value="custom">自定义</option>
+</select></label>
+<div class="stats-custom-range" hidden="" id="statsCustomRange">
+<label><span>开始</span><input class="text-input" id="statsStartDate" type="date"/></label>
+<span class="stats-range-arrow">→</span>
+<label><span>结束</span><input class="text-input" id="statsEndDate" type="date"/></label>
+</div>
+</div>
+</div>
+<div aria-live="polite" class="stats-content" id="statsContent"></div>
+</section>
+<section class="modules-view" hidden="" id="modulesView">
+<div class="view-toolbar modules-toolbar">
+<div class="view-toolbar-title">
+<strong>模组档案</strong>
+<span>管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。招募、Excel 与高级评分请使用“高级工具”。</span>
+</div>
+<div class="view-toolbar-actions">
+<button class="btn primary" id="newNativeModuleBtn" type="button">＋ 新建模组</button>
+<button class="btn" id="openModuleAdvancedBtn" type="button">高级工具</button>
+</div>
+</div>
+<div aria-live="polite" class="module-native-stats" id="moduleNativeStats"></div>
+<div class="module-native-controls sticky-searchbar">
+<label class="search"><span>⌕</span><input id="moduleNativeSearch" placeholder="搜索模组名称、作者、地点、时代或备注（名称优先・支持拼音首字母）"/></label>
+<select aria-label="HO筛选" class="sort-select" id="moduleNativeHoFilter">
+<option value="">全部 HO 设置</option>
+<option value="has">有 HO 位</option>
+<option value="none">无 HO 位</option>
+<option value="unset">未设置</option>
+</select>
+<select aria-label="地点筛选" class="sort-select" id="moduleNativeLocationFilter"><option value="">全部地点</option></select>
+<select aria-label="模组排序" class="sort-select" id="moduleNativeSort">
+<option value="updated">最近编辑</option>
+<option value="runs">跑团桌数</option>
+<option value="rating">评分</option>
+<option value="name">名称</option>
+</select>
+<div aria-label="模组显示方式" class="profile-layout-switch module-layout-switch" role="group">
+<button aria-pressed="true" class="layout-btn active" id="moduleCardsLayoutBtn" type="button">▦ 卡片</button>
+<button aria-pressed="false" class="layout-btn" id="moduleCompactLayoutBtn" type="button">☷ 简表</button>
+</div>
+</div>
+<section class="module-native-grid" id="moduleNativeGrid"></section>
+<div class="native-module-editor-backdrop" hidden="" id="nativeModuleEditorBackdrop">
+<section aria-labelledby="nativeModuleEditorTitle" aria-modal="true" class="native-module-editor" role="dialog">
+<header class="native-module-editor-head">
+<div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>编辑模组资料；完整评分与批量工具请使用“高级工具”。</span><div class="editor-state-line"><span class="editor-state-chip clean" id="moduleEditStatus">未修改</span></div></div>
+<button aria-label="关闭" class="icon-close" id="closeNativeModuleEditorBtn" type="button">×</button>
+</header>
+<div class="native-module-editor-body" id="nativeModuleEditorContent"></div>
+<footer class="native-module-editor-foot">
+<button class="btn" id="cancelNativeModuleEditorBtn" type="button">取消</button>
+<button class="btn primary" id="saveNativeModuleEditorBtn" type="button">保存模组</button>
+</footer>
+</section>
+</div>
+<div class="module-advanced-backdrop" hidden="" id="moduleAdvancedBackdrop">
+<section aria-labelledby="moduleAdvancedTitle" aria-modal="true" class="module-advanced-shell" role="dialog">
+<header class="module-advanced-head">
+<div><strong id="moduleAdvancedTitle">模组高级工具</strong><span>评分、招募、Excel 与完整模组编辑</span></div>
+<button aria-label="关闭" class="icon-close" id="closeModuleAdvancedBtn" type="button">×</button>
+</header>
+<iframe class="module-archive-frame" id="moduleArchiveFrame" loading="eager" title="模组高级工具"></iframe>
+</section>
+</div>
+</section>
+<section class="plans-view" hidden="" id="plansView">
+<div class="view-toolbar plans-toolbar">
+<div class="view-toolbar-title">
+<strong>开团计划</strong>
+<span>管理待开团计划与排期。选择计划后，可通过点选或拖放安排时段。</span>
+</div>
+<div class="view-toolbar-actions planner-toolbar-actions">
+<div aria-label="日历视图" class="planner-view-switch" role="group">
+<button aria-pressed="true" class="layout-btn active" id="plannerWeekModeBtn" type="button">周</button>
+<button aria-pressed="false" class="layout-btn" id="plannerMonthModeBtn" type="button">月</button>
+</div>
+<button class="btn primary" id="newPlanBtn" type="button">＋ 新建开团计划</button>
+</div>
+</div>
+<div aria-label="手机计划页面区域" class="planner-mobile-section-switch" id="plannerMobileSectionSwitch" role="group">
+<button aria-pressed="true" class="active" data-planner-mobile-section="calendar" id="plannerMobileCalendarBtn" type="button">日历</button>
+<button aria-pressed="false" data-planner-mobile-section="queue" id="plannerMobileQueueBtn" type="button">待排计划 <span id="plannerMobileQueueCount">0</span></button>
+</div>
+<div class="planner-layout">
+<aside aria-label="开团计划列表" class="planner-sidebar">
+<div class="planner-sidebar-head">
+<div>
+<strong>计划</strong>
+<span>按下一次安排排序</span>
+</div>
+<div class="planner-sidebar-head-actions">
+<div aria-live="polite" class="count" id="planCountText">0 个</div>
+<button class="planner-periodic-btn" id="periodicScheduleBtn" type="button">＋ 一键按周期排期</button>
+</div>
+</div>
+<label class="search plan-search"><span>⌕</span><input id="planSearchInput" placeholder="搜索模组、桌名、KP、PL、PC 或日期（支持拼音首字母）"/></label>
+<div aria-label="我的身份颜色说明" class="plan-role-legend"><span class="kp"><i></i>我做 KP</span><span class="pl"><i></i>我做 PL</span></div>
+<div aria-label="排期操作提示" class="planner-drag-hint"><span class="planner-drag-hint-desktop">按住卡片左侧 <strong>“拖到日历”</strong> 可直接排期</span><span class="planner-drag-hint-mobile">点击 <strong>“安排”</strong> 后选择日历时段</span></div>
+<section class="plan-board" id="planBoard"></section>
+</aside>
+<section aria-label="开团计划日历" class="planner-calendar">
+<div class="calendar-panel month-panel" id="planMonthCalendar"></div>
+<div class="calendar-panel week-panel" id="planWeekCalendar"></div>
+</section>
+</div>
+<div class="periodic-schedule-backdrop" hidden="" id="periodicScheduleBackdrop">
+<section aria-labelledby="periodicScheduleTitle" aria-modal="true" class="periodic-schedule-modal" role="dialog">
+<header class="periodic-modal-head">
+<div><h3 id="periodicScheduleTitle">一键按周期排期</h3><p>设置周期并预览日期。</p></div>
+<button aria-label="关闭一键按周期排期" class="icon-close" id="closePeriodicScheduleBtn" type="button">×</button>
+</header>
+<div class="periodic-modal-body" id="periodicScheduleContent"></div>
+<footer class="periodic-modal-foot" id="periodicScheduleFooter"><span class="muted" id="periodicScheduleFootHint"></span><div class="right"><button class="btn" id="cancelPeriodicScheduleBtn" type="button">取消</button><button class="btn primary" id="confirmPeriodicScheduleBtn" type="button">确认排期</button></div></footer>
+</section>
+</div>
+<div class="plan-editor-backdrop" hidden="" id="planEditorBackdrop">
+<aside aria-labelledby="planEditorTitle" aria-modal="true" class="plan-editor-drawer" id="planEditorDrawer" role="dialog">
+<header class="plan-editor-drawer-head">
+<div>
+<div class="plan-editor-drawer-title" id="planEditorTitle">编辑开团计划</div>
+<div class="plan-editor-drawer-sub">自动保存修改</div>
+</div>
+<button aria-label="关闭开团计划编辑" class="icon-close" id="closePlanEditorBtn" type="button">×</button>
+</header>
+<div class="plan-editor-drawer-body" id="planEditorContent"></div>
+</aside>
+</div>
+</section>
+<section class="records-view" hidden="" id="recordsView">
+<div class="view-toolbar records-toolbar">
+<div class="view-toolbar-title">
+<strong>跑团记录</strong>
+<span>集中维护已归档跑团记录；PL 足迹及模组关联信息均由此同步。</span>
+</div>
+<div class="view-toolbar-actions records-toolbar-actions">
+<div class="record-module-combobox" id="newModuleNameCombobox">
+<input aria-autocomplete="list" aria-controls="newModuleSuggestions" aria-expanded="false" autocomplete="off" class="text-input" id="newModuleNameInput" placeholder="输入模组名称" role="combobox"/>
+<div aria-label="已有模组匹配" class="record-module-suggestions" hidden="" id="newModuleSuggestions" role="listbox"></div>
+</div>
+<button class="btn primary" id="createModuleRecordBtn" type="button">＋ 新建跑团记录</button>
+</div>
+<div class="records-search-row">
+<label class="search records-search"><span>⌕</span><input id="recordsSearchInput" placeholder="搜索模组、桌名、KP、PL、PC、日期或 Log（支持拼音首字母）"/></label>
+<div aria-label="跑团记录批量展开与收起" class="records-search-batch" role="group">
+<button class="btn small" id="expandAllRecordsBtn" type="button">全部展开</button>
+<button class="btn small" id="collapseAllRecordsBtn" type="button">全部收起</button>
+</div>
+</div>
+</div>
+<div class="records-board" id="recordsBoard"></div>
+</section>
+<footer class="site-footer">
+<details class="disclaimer-details" data-collapse-key="home:disclaimer" id="disclaimerDetails">
+<summary class="disclaimer-summary">
+<span class="disclaimer-summary-left">
+<span class="disclaimer-chevron">›</span>
+<span class="footer-title">说明与隐私提示</span>
+</span>
+<span class="footer-meta-inline">v8.1.9.4 · 2026-09-09 · 作者：番茄</span>
+</summary>
+<div class="disclaimer-body">
+<p>
               评分、备注与排序仅代表个人记录，会受 KP 风格、模组类型、团员组合和样本数量等因素影响。
             </p>
-            <p>
+<p>
               本工具仅用于个人整理、复盘与开团参考，不构成对玩家能力、人格或现实表现的客观评价，也不应作为公开排名或争议裁决依据。
             </p>
-            <p>
+<p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.9.3　·　更新时间：2026-09-09　·　作者：番茄</div>
-          </div>
-        </details>
-      </footer>
-    </main>
-      
-      <nav class="scroll-rail" aria-label="页面快捷操作">
-        <button id="scrollTopBtn" class="scroll-rail-btn" type="button" aria-label="回到页面顶部" title="回到顶部">↑</button>
-        <div class="scroll-rail-divider" aria-hidden="true"></div>
-        <button id="globalCreateBtn" class="scroll-rail-btn global-create-rail" type="button" aria-label="快速新建" title="快速新建">＋</button>
-        <div class="scroll-rail-divider" aria-hidden="true"></div>
-        <button id="globalSearchBtn" class="scroll-rail-btn" type="button" aria-label="全局搜索" title="全局搜索（Ctrl+K）">⌕</button>
-        <div class="scroll-rail-divider" aria-hidden="true"></div>
-        <button id="shareModeBtn" class="scroll-rail-btn" type="button" aria-pressed="false" aria-label="开启分享模式" title="分享模式">分</button>
-        <div class="scroll-rail-divider" aria-hidden="true"></div>
-        <button id="privacyMaskBtn" class="scroll-rail-btn privacy-toggle" type="button" aria-pressed="false" aria-label="开启 PL 隐私遮罩" title="隐私遮罩">隐</button>
-        <div class="scroll-rail-divider" aria-hidden="true"></div>
-        <button id="scrollBottomBtn" class="scroll-rail-btn" type="button" aria-label="前往页面底部" title="前往底部">↓</button>
-      </nav>
-
-
-      <div id="hoOrganizerBackdrop" class="ho-organizer-backdrop" hidden>
-        <section class="ho-organizer-modal" role="dialog" aria-modal="true" aria-labelledby="hoOrganizerTitle">
-          <header class="ho-organizer-head">
-            <div class="ho-organizer-title-wrap">
-              <span class="ho-organizer-eyebrow">PL / KP · 跑团整理</span>
-              <h2 id="hoOrganizerTitle">跑团整理</h2>
-              <p id="hoOrganizerSubtitle">自动汇总参团与带团记录，不重复保存数据。</p>
-            </div>
-            <button id="closeHoOrganizerBtn" class="icon-close" type="button" aria-label="关闭">×</button>
-          </header>
-
-          <div class="run-organizer-mode-tabs" role="tablist" aria-label="跑团整理视图">
-            <button type="button" class="active" data-run-organizer-mode="pl" role="tab" aria-selected="true">PL 参团 <span class="mode-count" data-run-organizer-count="pl">0</span></button>
-            <button type="button" data-run-organizer-mode="kp" role="tab" aria-selected="false">KP 带团 <span class="mode-count" data-run-organizer-count="kp">0</span></button>
-          </div>
-
-          <div class="ho-organizer-toolbar">
-            <div id="hoOrganizerStats" class="ho-organizer-stats"></div>
-            <div class="ho-organizer-toolbar-actions">
-              <div class="ho-view-filter" role="group" aria-label="记录范围">
-                <button type="button" class="active" data-ho-filter="all">全部</button>
-                <button type="button" data-ho-filter="record">已结团</button>
-                <button type="button" data-ho-filter="plan">计划中</button>
-              </div>
-              <button id="toggleOrganizerAllBtn" class="btn small organizer-expand-all-btn" type="button">展开全部</button>
-              <div class="ho-mode-specific-slot">
-                <label class="ho-empty-toggle ho-only-control"><input id="hoShowEmptyColumns" type="checkbox"><span>显示空 HO 列</span></label>
-                <label id="kpOrganizerSortWrap" class="kp-sort-wrap" hidden><span>排序</span><select id="kpOrganizerSort"><option value="recent">最近带团</option><option value="count">带团次数</option><option value="name">模组名称</option></select></label>
-              </div>
-              <div class="ho-image-export-wrap">
-                <button id="hoImageExportBtn" class="btn small image-export-btn has-menu" type="button" aria-expanded="false">导出图片</button>
-                <div id="hoImageExportMenu" class="ho-image-export-menu" hidden>
-                  <div class="ho-image-export-options">
-                    <span>导出内容状态</span>
-                    <div class="ho-image-export-state" role="group" aria-label="跑团整理图片导出内容状态">
-                      <button type="button" data-ho-export-detail="current">跟随页面</button>
-                      <button type="button" data-ho-export-detail="collapsed">全部收起</button>
-                      <button type="button" data-ho-export-detail="expanded">全部展开</button>
-                    </div>
-                  </div>
-                  <button type="button" data-ho-image-style="wide"><strong>宽幅 PNG</strong><span>横向整理当前结果，适合电脑或群聊</span></button>
-                  <button type="button" data-ho-image-style="long"><strong>长图 PNG</strong><span>纵向整理当前结果，适合手机查看</span></button>
-                </div>
-              </div>
-              <button id="copyHoOrganizerBtn" class="btn small" type="button">复制结果</button>
-            </div>
-          </div>
-
-          <div id="hoOrganizerNotice" class="ho-organizer-notice"></div>
-          <div id="hoOrganizerBoard" class="ho-organizer-board"></div>
-
-          <footer class="ho-organizer-foot">
-            <span>点击记录可打开对应跑团记录或开团计划。</span>
-          </footer>
-        </section>
-      </div>
-      <div id="quickCreateMenu" class="quick-create-menu" hidden>
-        <button type="button" data-quick-create="profile"><strong>PL</strong><span>新建 PL 档案</span></button>
-        <button type="button" data-quick-create="module"><strong>模组</strong><span>新建模组档案</span></button>
-        <button type="button" data-quick-create="plan"><strong>计划</strong><span>新建开团计划</span></button>
-        <button type="button" data-quick-create="record"><strong>记录</strong><span>新建跑团记录</span></button>
-      </div>
-
-
-      <nav id="mobileSideRail" class="mobile-side-rail" aria-label="手机快捷操作">
-        <button type="button" data-mobile-create aria-label="快速新建" title="快速新建"><span>＋</span></button>
-        <button type="button" data-mobile-top aria-label="回到顶部" title="回到顶部"><span>↑</span></button>
-        <button type="button" data-mobile-bottom aria-label="前往底部" title="前往底部"><span>↓</span></button>
-        <button type="button" data-mobile-tools aria-label="更多工具" title="更多工具"><span>•••</span></button>
-        <button type="button" data-open-settings aria-label="设置" title="设置"><span>⚙</span></button>
-      </nav>
-      <nav id="mobileBottomNav" class="mobile-bottom-nav" aria-label="手机主导航">
-        <button type="button" data-view-target="profiles"><span>PL</span><small>档案</small></button>
-        <button type="button" data-view-target="modules"><span>模组</span><small>档案</small></button>
-        <button type="button" data-view-target="plans"><span>计划</span><small>排期</small></button>
-        <button type="button" data-view-target="records"><span>记录</span><small>归档</small></button>
-        <button type="button" data-view-target="selfIntro"><span>个人偏好</span><small>我的</small></button>
-        <button type="button" data-view-target="stats"><span>个人统计</span><small>我的</small></button>
-      </nav>
-      <div id="mobileToolsSheet" class="mobile-tools-sheet" hidden>
-        <button type="button" data-mobile-search>⌕ 搜索</button>
-        <button type="button" data-mobile-share>分 分享</button>
-        <button type="button" data-mobile-privacy>隐 隐私</button>
-      </div>
-  </div>
-
-  
-  <div id="overlay" class="overlay" aria-hidden="true">
-    
-    <div id="profileModalWrap" class="profile-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <section id="profileModal" class="modal">
-      <header class="modal-head">
-        <div><h2 id="modalTitle">编辑 PL</h2><div class="sub">评分采用行为锚定标准；备注会同步显示在 PL 卡片。</div><div class="editor-state-line"><span id="profileEditStatus" class="editor-state-chip clean">未修改</span><button id="profileReturnBtn" class="editor-return-btn" type="button" hidden>← 返回原位置</button></div></div>
-        <button type="button" id="closeProfileBtn" class="close icon-close" aria-label="关闭">×</button>
-      </header>
-      <div class="modal-body">
-        <div class="basic">
-          <label><span class="field-label">姓名</span><input id="nameInput" class="text-input" placeholder="输入姓名或常用称呼" autocomplete="off"></label>
-          <label><span class="field-label">联系方式</span><input id="contactInput" class="text-input" placeholder="输入联系方式（可选）" autocomplete="off"></label>
-        </div>
-
-        <section id="profileStatusSection" class="profile-status-editor">
-          <div class="profile-status-editor-main">
-            <div><span class="field-label">档案状态</span><strong id="profileStatusValue">正常</strong><span id="profileStatusDetail">当前可正常用于开团计划。</span></div>
-            <button id="profileStatusActionBtn" class="btn small" type="button">加入黑名单</button>
-          </div>
-          <details id="profileStatusHistory" class="profile-status-history" data-collapse-key="profile-editor:status-history" hidden><summary>状态历史</summary><div id="profileStatusHistoryBody"></div></details>
-        </section>
-
-        
-        <div class="profile-extra-grid">
-          <label><span class="field-label">出生日期</span><input id="birthDateInput" class="text-input" type="date"></label>
-          <label><span class="field-label">开始跑团日期</span><input id="startDateInput" class="text-input" type="date"></label>
-          <label><span class="field-label">性别</span><input id="genderInput" class="text-input" placeholder="自由填写（可选）" autocomplete="off"></label>
-        </div>
-
-        
-        <section class="rp-length-editor">
-          <div class="special-editor-title">
-            <strong>RP 长度</strong><span>不计入综合评分</span>
-          </div>
-          <div class="rp-length-grid">
-            <label><span class="field-label">惯用 RP 长度（字/次）</span><input id="usualRpLengthInput" class="text-input" type="number" min="0" step="1" placeholder="填写平均字数"></label>
-            <label><span class="field-label">RP 长度范围 · 最短（字/次）</span><input id="rpLengthMinInput" class="text-input" type="number" min="0" step="1" placeholder="填写最短字数"></label>
-            <label><span class="field-label">RP 长度范围 · 最长（字/次）</span><input id="rpLengthMaxInput" class="text-input" type="number" min="0" step="1" placeholder="填写最长字数"></label>
-          </div>
-        </section>
-
-        <div id="sliderSection" class="slider-section"></div>
-        <section id="profileRunsEditor" class="runs-editor">
-          <strong>跑团足迹</strong>
-          <div class="hint">跑团足迹与跑团记录同步。可关联已有桌次，或暂存新桌次并在保存 PL 后自动建立记录。</div>
-
-          <div class="run-link-row">
-            <label>
-              <span class="field-label">关联已有桌</span>
-              <select id="existingRunSelect" class="run-link-select"></select>
-            </label>
-            <button id="linkExistingRunBtn" class="btn small" type="button">＋ 关联已有桌</button>
-          </div>
-
-          <details class="quick-run-create" data-collapse-key="profile-editor:quick-run">
-            <summary>暂存新桌次</summary>
-            <div class="quick-run-grid">
-              <label><span class="field-label">模组名称</span><input id="quickRunModuleInput" class="runs-input" placeholder="输入模组名称"></label>
-              <label><span class="field-label">桌名（可选）</span><input id="quickRunNameInput" class="runs-input" placeholder="输入桌名（可选）"></label>
-              <label><span class="field-label">KP</span><input id="quickRunKpInput" class="runs-input" placeholder="输入 KP 名称"></label>
-              <label><span class="field-label">开始时间</span><input id="quickRunStartInput" class="runs-input" type="date"></label>
-              <label><span class="field-label">结束时间</span><input id="quickRunEndInput" class="runs-input" type="date"></label>
-              <label><span class="field-label">Log</span><input id="quickRunLogInput" class="runs-input" type="url" placeholder="https://..."></label>
-              <button id="createLinkedRunBtn" class="btn small" type="button">暂存并关联</button>
-            </div>
-          </details>
-
-          <div id="editRuns" class="linked-run-list"></div>
-        </section>
-      </div>
-    </section>
-
-    
-    <nav id="profileActionRail" class="profile-action-rail" aria-label="PL详情快捷操作">
-      <button id="profileScrollTopBtn" class="profile-rail-btn" type="button" title="回到此档案顶部">
-        <span class="rail-icon">↑</span><span class="rail-label">顶部</span>
-      </button>
-      <button id="profileScrollBottomBtn" class="profile-rail-btn" type="button" title="前往此档案底部">
-        <span class="rail-icon">↓</span><span class="rail-label">底部</span>
-      </button>
-      <div class="profile-rail-separator" aria-hidden="true"></div>
-      <button id="saveBtn" class="profile-rail-btn save" type="button" title="保存档案">保存</button>
-      <button id="cancelBtn" class="profile-rail-btn cancel" type="button" title="放弃本次修改">取消</button>
-      <div class="profile-rail-separator" aria-hidden="true"></div>
-      <button id="modalDeleteBtn" class="profile-rail-btn danger" type="button" title="删除此 PL 档案">删除</button>
-    </nav>
-    </div>
-
-    
-    <section id="settingsModal" class="modal settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
-      <header class="modal-head">
-        <div><h2 id="settingsTitle" data-i18n="settings.title">设置</h2><div class="sub" data-i18n="settings.subtitle">管理主题、评分、显示偏好和数据备份。</div></div>
-        <button type="button" id="closeSettingsBtn" class="close icon-close" aria-label="关闭">×</button>
-      </header>
-      <div class="modal-body settings-modal-body">
-        <div class="settings-layout">
-          <aside class="settings-nav" aria-label="设置章节">
-            <button type="button" class="active" data-settings-target="data" data-i18n="settings.nav.data">数据与备份</button>
-            <button type="button" data-settings-target="appearance" data-i18n="settings.nav.appearance">外观</button>
-            <button type="button" data-settings-target="pl-rating" data-i18n="settings.nav.plRating">PL 评分</button>
-            <button type="button" data-settings-target="module-rating" data-i18n="settings.nav.moduleRating">模组评分</button>
-            <button type="button" data-settings-target="behavior" data-i18n="settings.nav.display">显示设置</button>
-          </aside>
-          <div class="settings-main">
-            <div class="settings-search-wrap">
-              <label class="settings-search"><span>⌕</span><input id="settingsSearchInput" type="search" placeholder="搜索设置名称或功能，例如：主题、备份、展开……（支持拼音首字母）" data-i18n-placeholder="settings.search.placeholder" autocomplete="off"></label>
-              <div id="settingsSearchResults" class="settings-search-results" hidden></div>
-            </div>
-            <div class="settings-panels">
-        <section class="settings-section theme-settings" data-settings-panel="appearance" hidden>
-          <h3>界面主题</h3>
-          <div class="section-help">选择主题后立即预览；点击“保存设置”后生效。</div>
-          <div id="themePicker" class="theme-grid" role="radiogroup" aria-label="界面主题">
-            <button type="button" class="theme-card theme-preview-mist" data-theme-choice="mist" role="radio" aria-checked="false">
-              <span class="theme-card-top"><span class="theme-card-name">雾森</span><span class="theme-card-check">✓</span></span>
-              <span class="theme-card-desc">米白 · 鼠尾草绿 · 柔和</span>
-              <span class="theme-swatches" aria-hidden="true"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
-            </button>
-            <button type="button" class="theme-card theme-preview-rain" data-theme-choice="rain" role="radio" aria-checked="false">
-              <span class="theme-card-top"><span class="theme-card-name">雨青</span><span class="theme-card-check">✓</span></span>
-              <span class="theme-card-desc">雾蓝 · 青灰 · 清爽</span>
-              <span class="theme-swatches" aria-hidden="true"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
-            </button>
-            <button type="button" class="theme-card theme-preview-night" data-theme-choice="night" role="radio" aria-checked="false">
-              <span class="theme-card-top"><span class="theme-card-name">夜航</span><span class="theme-card-check">✓</span></span>
-              <span class="theme-card-desc">深蓝绿 · 暖灰 · 低亮度</span>
-              <span class="theme-swatches" aria-hidden="true"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
-            </button>
-            <button type="button" class="theme-card theme-preview-tomato" data-theme-choice="tomato" role="radio" aria-checked="false">
-              <span class="theme-card-top"><span class="theme-card-name">番茄园</span><span class="theme-card-check">✓</span></span>
-              <span class="theme-card-desc">番茄红 · 叶片绿 · 温暖</span>
-              <span class="theme-swatches" aria-hidden="true"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
-            </button>
-          </div>
-        </section>
-
-        <details id="scoreSettingsDetails" class="settings-section settings-collapsible" data-settings-panel="pl-rating" data-collapse-key="settings:pl-rating">
-          <summary>
-            <div class="settings-summary-main">
-              <span class="settings-chevron">›</span>
-              <div class="settings-summary-text">
-                <h3>评分字段与权重</h3>
-                <div class="settings-summary-sub">展开后可查看评分标准、新增字段并调整权重。</div>
-              </div>
-            </div>
-            <div class="settings-summary-right">
-              <span class="collapse-hint">展开设置</span>
-              <div id="weightTotal" class="weight-total">总权重 100%</div>
-            </div>
-          </summary>
-          <div class="settings-collapse-body">
-            <div class="section-help">综合评分按字段分数与权重计算。建议以最近 3–5 次同类跑团为主要参考；自动身份倾向字段与 RP 长度资料不计入综合评分。</div>
-            <div class="setting-buttons">
-              <button type="button" id="addFieldBtn" class="btn small">＋ 新增评分字段</button>
-              <button type="button" id="equalizeBtn" class="btn small">平均分配权重</button>
-            </div>
-            <div class="field-list-head" aria-hidden="true"><span>评分字段</span><span>综合评分</span><span>权重</span><span>操作</span></div>
-            <div id="fieldList" class="field-list"></div>
-          </div>
-        </details>
-
-        <section class="settings-section module-rating-settings" data-settings-panel="module-rating" hidden>
-          <h3>模组评分</h3>
-          <div class="section-help">主模组页显示评分结果；评分体系在“高级工具”中维护。</div>
-          <div class="settings-callout">
-            <div><strong>当前评分体系</strong><span id="moduleRatingSystemSummary">读取中</span></div>
-            <button id="openModuleAdvancedSettingsBtn" class="btn" type="button">打开高级工具</button>
-          </div>
-        </section>
-
-        <section class="settings-section behavior-settings" data-settings-panel="behavior" hidden>
-          <h3 data-i18n="settings.display.title">显示设置</h3>
-          <div class="section-help" data-i18n="settings.display.help">这些设置只影响界面显示与操作，不修改档案内容。</div>
-          <div class="behavior-setting-list">
-            <label class="locale-setting-row"><span><strong data-i18n="settings.language.label">界面语言</strong><small data-i18n="settings.language.help">只改变程序界面和系统文字，不翻译或修改已有档案内容。</small></span><select id="interfaceLanguageSetting" class="setting-input" aria-label="界面语言"><option value="zh-CN">简体中文</option><option value="zh-TW" disabled>繁體中文 · 词库准备中</option><option value="en" disabled>English · translation pending</option><option value="ja" disabled>日本語 · 翻訳準備中</option></select></label>
-            <div class="locale-foundation-note"><strong data-i18n="settings.language.foundationTitle">国际化底层已启用</strong><span data-i18n="settings.language.foundationText">当前仅开放简体中文。</span></div>
-            <label><span><strong>开团计划默认视图</strong><small>仅显示一种日历视图。</small></span><select id="plannerDefaultViewSetting" class="setting-input"><option value="week">周视图</option><option value="month">月视图</option></select></label>
-            <label><span><strong>计划周历密度</strong><small>同一时段达到 3–4 场时可自动压缩。</small></span><select id="plannerDensitySetting" class="setting-input"><option value="auto">自动</option><option value="comfortable">舒适</option><option value="compact">紧凑</option></select></label>
-            <label><span><strong>跑团记录默认状态</strong><small>默认以查看模式展示，需要时单桌编辑。</small></span><select id="recordDefaultModeSetting" class="setting-input"><option value="view">查看模式</option><option value="edit">编辑模式</option></select></label>
-            <label><span><strong data-i18n="settings.collapseDefault.label">折叠区默认状态</strong><small data-i18n="settings.collapseDefault.help">只决定从未手动操作过的折叠区；你亲自展开或收起后，会一直记住直到再次手动切换。</small></span><select id="collapseDefaultSetting" class="setting-input"><option value="closed" data-i18n="settings.collapseDefault.closed">默认收起</option><option value="open" data-i18n="settings.collapseDefault.open">默认展开</option></select></label>
-          </div>
-        </section>
-
-        <section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" data-collapse-key="settings:data:recovery"><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、自动备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+<div class="footer-meta">版本：v8.1.9.4　·　更新时间：2026-09-09　·　作者：番茄</div>
+</div>
+</details>
+</footer>
+</main>
+<nav aria-label="页面快捷操作" class="scroll-rail">
+<button aria-label="回到页面顶部" class="scroll-rail-btn" id="scrollTopBtn" title="回到顶部" type="button">↑</button>
+<div aria-hidden="true" class="scroll-rail-divider"></div>
+<button aria-label="快速新建" class="scroll-rail-btn global-create-rail" id="globalCreateBtn" title="快速新建" type="button">＋</button>
+<div aria-hidden="true" class="scroll-rail-divider"></div>
+<button aria-label="全局搜索" class="scroll-rail-btn" id="globalSearchBtn" title="全局搜索（Ctrl+K）" type="button">⌕</button>
+<div aria-hidden="true" class="scroll-rail-divider"></div>
+<button aria-label="开启分享模式" aria-pressed="false" class="scroll-rail-btn" id="shareModeBtn" title="分享模式" type="button">分</button>
+<div aria-hidden="true" class="scroll-rail-divider"></div>
+<button aria-label="开启 PL 隐私遮罩" aria-pressed="false" class="scroll-rail-btn privacy-toggle" id="privacyMaskBtn" title="隐私遮罩" type="button">隐</button>
+<div aria-hidden="true" class="scroll-rail-divider"></div>
+<button aria-label="前往页面底部" class="scroll-rail-btn" id="scrollBottomBtn" title="前往底部" type="button">↓</button>
+</nav>
+<div class="ho-organizer-backdrop" hidden="" id="hoOrganizerBackdrop">
+<section aria-labelledby="hoOrganizerTitle" aria-modal="true" class="ho-organizer-modal" role="dialog">
+<header class="ho-organizer-head">
+<div class="ho-organizer-title-wrap">
+<span class="ho-organizer-eyebrow">PL / KP · 跑团整理</span>
+<h2 id="hoOrganizerTitle">跑团整理</h2>
+<p id="hoOrganizerSubtitle">自动汇总参团与带团记录，不重复保存数据。</p>
+</div>
+<button aria-label="关闭" class="icon-close" id="closeHoOrganizerBtn" type="button">×</button>
+</header>
+<div aria-label="跑团整理视图" class="run-organizer-mode-tabs" role="tablist">
+<button aria-selected="true" class="active" data-run-organizer-mode="pl" role="tab" type="button">PL 参团 <span class="mode-count" data-run-organizer-count="pl">0</span></button>
+<button aria-selected="false" data-run-organizer-mode="kp" role="tab" type="button">KP 带团 <span class="mode-count" data-run-organizer-count="kp">0</span></button>
+</div>
+<div class="ho-organizer-toolbar">
+<div class="ho-organizer-stats" id="hoOrganizerStats"></div>
+<div class="ho-organizer-toolbar-actions">
+<div aria-label="记录范围" class="ho-view-filter" role="group">
+<button class="active" data-ho-filter="all" type="button">全部</button>
+<button data-ho-filter="record" type="button">已结团</button>
+<button data-ho-filter="plan" type="button">计划中</button>
+</div>
+<button class="btn small organizer-expand-all-btn" id="toggleOrganizerAllBtn" type="button">展开全部</button>
+<div class="ho-mode-specific-slot">
+<label class="ho-empty-toggle ho-only-control"><input id="hoShowEmptyColumns" type="checkbox"/><span>显示空 HO 列</span></label>
+<label class="kp-sort-wrap" hidden="" id="kpOrganizerSortWrap"><span>排序</span><select id="kpOrganizerSort"><option value="recent">最近带团</option><option value="count">带团次数</option><option value="name">模组名称</option></select></label>
+</div>
+<div class="ho-image-export-wrap">
+<button aria-expanded="false" class="btn small image-export-btn has-menu" id="hoImageExportBtn" type="button">导出图片</button>
+<div class="ho-image-export-menu" hidden="" id="hoImageExportMenu">
+<div class="ho-image-export-options">
+<span>导出内容状态</span>
+<div aria-label="跑团整理图片导出内容状态" class="ho-image-export-state" role="group">
+<button data-ho-export-detail="current" type="button">跟随页面</button>
+<button data-ho-export-detail="collapsed" type="button">全部收起</button>
+<button data-ho-export-detail="expanded" type="button">全部展开</button>
+</div>
+</div>
+<button data-ho-image-style="wide" type="button"><strong>宽幅 PNG</strong><span>横向整理当前结果，适合电脑或群聊</span></button>
+<button data-ho-image-style="long" type="button"><strong>长图 PNG</strong><span>纵向整理当前结果，适合手机查看</span></button>
+</div>
+</div>
+<button class="btn small" id="copyHoOrganizerBtn" type="button">复制结果</button>
+</div>
+</div>
+<div class="ho-organizer-notice" id="hoOrganizerNotice"></div>
+<div class="ho-organizer-board" id="hoOrganizerBoard"></div>
+<footer class="ho-organizer-foot">
+<span>点击记录可打开对应跑团记录或开团计划。</span>
+</footer>
+</section>
+</div>
+<div class="quick-create-menu" hidden="" id="quickCreateMenu">
+<button data-quick-create="profile" type="button"><strong>PL</strong><span>新建 PL 档案</span></button>
+<button data-quick-create="module" type="button"><strong>模组</strong><span>新建模组档案</span></button>
+<button data-quick-create="plan" type="button"><strong>计划</strong><span>新建开团计划</span></button>
+<button data-quick-create="record" type="button"><strong>记录</strong><span>新建跑团记录</span></button>
+</div>
+<nav aria-label="手机快捷操作" class="mobile-side-rail" id="mobileSideRail">
+<button aria-label="快速新建" data-mobile-create="" title="快速新建" type="button"><span>＋</span></button>
+<button aria-label="回到顶部" data-mobile-top="" title="回到顶部" type="button"><span>↑</span></button>
+<button aria-label="前往底部" data-mobile-bottom="" title="前往底部" type="button"><span>↓</span></button>
+<button aria-label="更多工具" data-mobile-tools="" title="更多工具" type="button"><span>•••</span></button>
+<button aria-label="设置" data-open-settings="" title="设置" type="button"><span>⚙</span></button>
+</nav>
+<nav aria-label="手机主导航" class="mobile-bottom-nav" id="mobileBottomNav">
+<button data-view-target="profiles" type="button"><span>PL</span><small>档案</small></button>
+<button data-view-target="modules" type="button"><span>模组</span><small>档案</small></button>
+<button data-view-target="plans" type="button"><span>计划</span><small>排期</small></button>
+<button data-view-target="records" type="button"><span>记录</span><small>归档</small></button>
+<button data-view-target="selfIntro" type="button"><span>个人偏好</span><small>我的</small></button>
+<button data-view-target="stats" type="button"><span>个人统计</span><small>我的</small></button>
+</nav>
+<div class="mobile-tools-sheet" hidden="" id="mobileToolsSheet">
+<button data-mobile-search="" type="button">⌕ 搜索</button>
+<button data-mobile-share="" type="button">分 分享</button>
+<button data-mobile-privacy="" type="button">隐 隐私</button>
+</div>
+</div>
+<div aria-hidden="true" class="overlay" id="overlay">
+<div aria-labelledby="modalTitle" aria-modal="true" class="profile-modal-wrap" id="profileModalWrap" role="dialog">
+<section class="modal" id="profileModal">
+<header class="modal-head">
+<div><h2 id="modalTitle">编辑 PL</h2><div class="sub">评分采用行为锚定标准；备注会同步显示在 PL 卡片。</div><div class="editor-state-line"><span class="editor-state-chip clean" id="profileEditStatus">未修改</span><button class="editor-return-btn" hidden="" id="profileReturnBtn" type="button">← 返回原位置</button></div></div>
+<button aria-label="关闭" class="close icon-close" id="closeProfileBtn" type="button">×</button>
+</header>
+<div class="modal-body">
+<div class="basic">
+<label><span class="field-label">姓名</span><input autocomplete="off" class="text-input" id="nameInput" placeholder="输入姓名或常用称呼"/></label>
+<label><span class="field-label">联系方式</span><input autocomplete="off" class="text-input" id="contactInput" placeholder="输入联系方式（可选）"/></label>
+</div>
+<section class="profile-status-editor" id="profileStatusSection">
+<div class="profile-status-editor-main">
+<div><span class="field-label">档案状态</span><strong id="profileStatusValue">正常</strong><span id="profileStatusDetail">当前可正常用于开团计划。</span></div>
+<button class="btn small" id="profileStatusActionBtn" type="button">加入黑名单</button>
+</div>
+<details class="profile-status-history" data-collapse-key="profile-editor:status-history" hidden="" id="profileStatusHistory"><summary>状态历史</summary><div id="profileStatusHistoryBody"></div></details>
+</section>
+<div class="profile-extra-grid">
+<label><span class="field-label">出生日期</span><input class="text-input" id="birthDateInput" type="date"/></label>
+<label><span class="field-label">开始跑团日期</span><input class="text-input" id="startDateInput" type="date"/></label>
+<label><span class="field-label">性别</span><input autocomplete="off" class="text-input" id="genderInput" placeholder="自由填写（可选）"/></label>
+</div>
+<section class="rp-length-editor">
+<div class="special-editor-title">
+<strong>RP 长度</strong><span>不计入综合评分</span>
+</div>
+<div class="rp-length-grid">
+<label><span class="field-label">惯用 RP 长度（字/次）</span><input class="text-input" id="usualRpLengthInput" min="0" placeholder="填写平均字数" step="1" type="number"/></label>
+<label><span class="field-label">RP 长度范围 · 最短（字/次）</span><input class="text-input" id="rpLengthMinInput" min="0" placeholder="填写最短字数" step="1" type="number"/></label>
+<label><span class="field-label">RP 长度范围 · 最长（字/次）</span><input class="text-input" id="rpLengthMaxInput" min="0" placeholder="填写最长字数" step="1" type="number"/></label>
+</div>
+</section>
+<div class="slider-section" id="sliderSection"></div>
+<section class="runs-editor" id="profileRunsEditor">
+<strong>跑团足迹</strong>
+<div class="hint">跑团足迹与跑团记录同步。可关联已有桌次，或暂存新桌次并在保存 PL 后自动建立记录。</div>
+<div class="run-link-row">
+<label>
+<span class="field-label">关联已有桌</span>
+<select class="run-link-select" id="existingRunSelect"></select>
+</label>
+<button class="btn small" id="linkExistingRunBtn" type="button">＋ 关联已有桌</button>
+</div>
+<details class="quick-run-create" data-collapse-key="profile-editor:quick-run">
+<summary>暂存新桌次</summary>
+<div class="quick-run-grid">
+<label><span class="field-label">模组名称</span><input class="runs-input" id="quickRunModuleInput" placeholder="输入模组名称"/></label>
+<label><span class="field-label">桌名（可选）</span><input class="runs-input" id="quickRunNameInput" placeholder="输入桌名（可选）"/></label>
+<label><span class="field-label">KP</span><input class="runs-input" id="quickRunKpInput" placeholder="输入 KP 名称"/></label>
+<label><span class="field-label">开始时间</span><input class="runs-input" id="quickRunStartInput" type="date"/></label>
+<label><span class="field-label">结束时间</span><input class="runs-input" id="quickRunEndInput" type="date"/></label>
+<label><span class="field-label">Log</span><input class="runs-input" id="quickRunLogInput" placeholder="https://..." type="url"/></label>
+<button class="btn small" id="createLinkedRunBtn" type="button">暂存并关联</button>
+</div>
+</details>
+<div class="linked-run-list" id="editRuns"></div>
+</section>
+</div>
+</section>
+<nav aria-label="PL详情快捷操作" class="profile-action-rail" id="profileActionRail">
+<button class="profile-rail-btn" id="profileScrollTopBtn" title="回到此档案顶部" type="button">
+<span class="rail-icon">↑</span><span class="rail-label">顶部</span>
+</button>
+<button class="profile-rail-btn" id="profileScrollBottomBtn" title="前往此档案底部" type="button">
+<span class="rail-icon">↓</span><span class="rail-label">底部</span>
+</button>
+<div aria-hidden="true" class="profile-rail-separator"></div>
+<button class="profile-rail-btn save" id="saveBtn" title="保存档案" type="button">保存</button>
+<button class="profile-rail-btn cancel" id="cancelBtn" title="放弃本次修改" type="button">取消</button>
+<div aria-hidden="true" class="profile-rail-separator"></div>
+<button class="profile-rail-btn danger" id="modalDeleteBtn" title="删除此 PL 档案" type="button">删除</button>
+</nav>
+</div>
+<section aria-labelledby="settingsTitle" aria-modal="true" class="modal settings-modal" hidden="" id="settingsModal" role="dialog">
+<header class="modal-head">
+<div><h2 data-i18n="settings.title" id="settingsTitle">设置</h2><div class="sub" data-i18n="settings.subtitle">管理主题、评分、显示偏好和数据备份。</div></div>
+<button aria-label="关闭" class="close icon-close" id="closeSettingsBtn" type="button">×</button>
+</header>
+<div class="modal-body settings-modal-body">
+<div class="settings-layout">
+<aside aria-label="设置章节" class="settings-nav">
+<button class="active" data-i18n="settings.nav.data" data-settings-target="data" type="button">数据与备份</button>
+<button data-i18n="settings.nav.appearance" data-settings-target="appearance" type="button">外观</button>
+<button data-i18n="settings.nav.plRating" data-settings-target="pl-rating" type="button">PL 评分</button>
+<button data-i18n="settings.nav.moduleRating" data-settings-target="module-rating" type="button">模组评分</button>
+<button data-i18n="settings.nav.display" data-settings-target="behavior" type="button">显示设置</button>
+</aside>
+<div class="settings-main">
+<div class="settings-search-wrap">
+<label class="settings-search"><span>⌕</span><input autocomplete="off" data-i18n-placeholder="settings.search.placeholder" id="settingsSearchInput" placeholder="搜索设置名称或功能，例如：主题、备份、展开……（支持拼音首字母）" type="search"/></label>
+<div class="settings-search-results" hidden="" id="settingsSearchResults"></div>
+</div>
+<div class="settings-panels">
+<section class="settings-section theme-settings" data-settings-panel="appearance" hidden="">
+<h3>界面主题</h3>
+<div class="section-help">选择主题后立即预览；点击“保存设置”后生效。</div>
+<div aria-label="界面主题" class="theme-grid" id="themePicker" role="radiogroup">
+<button aria-checked="false" class="theme-card theme-preview-mist" data-theme-choice="mist" role="radio" type="button">
+<span class="theme-card-top"><span class="theme-card-name">雾森</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc">米白 · 鼠尾草绿 · 柔和</span>
+<span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
+</button>
+<button aria-checked="false" class="theme-card theme-preview-rain" data-theme-choice="rain" role="radio" type="button">
+<span class="theme-card-top"><span class="theme-card-name">雨青</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc">雾蓝 · 青灰 · 清爽</span>
+<span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
+</button>
+<button aria-checked="false" class="theme-card theme-preview-night" data-theme-choice="night" role="radio" type="button">
+<span class="theme-card-top"><span class="theme-card-name">夜航</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc">深蓝绿 · 暖灰 · 低亮度</span>
+<span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
+</button>
+<button aria-checked="false" class="theme-card theme-preview-tomato" data-theme-choice="tomato" role="radio" type="button">
+<span class="theme-card-top"><span class="theme-card-name">番茄园</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc">番茄红 · 叶片绿 · 温暖</span>
+<span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
+</button>
+</div>
+</section>
+<details class="settings-section settings-collapsible" data-collapse-key="settings:pl-rating" data-settings-panel="pl-rating" id="scoreSettingsDetails">
+<summary>
+<div class="settings-summary-main">
+<span class="settings-chevron">›</span>
+<div class="settings-summary-text">
+<h3>评分字段与权重</h3>
+<div class="settings-summary-sub">展开后可查看评分标准、新增字段并调整权重。</div>
+</div>
+</div>
+<div class="settings-summary-right">
+<span class="collapse-hint">展开设置</span>
+<div class="weight-total" id="weightTotal">总权重 100%</div>
+</div>
+</summary>
+<div class="settings-collapse-body">
+<div class="section-help">综合评分按字段分数与权重计算。建议以最近 3–5 次同类跑团为主要参考；自动身份倾向字段与 RP 长度资料不计入综合评分。</div>
+<div class="setting-buttons">
+<button class="btn small" id="addFieldBtn" type="button">＋ 新增评分字段</button>
+<button class="btn small" id="equalizeBtn" type="button">平均分配权重</button>
+</div>
+<div aria-hidden="true" class="field-list-head"><span>评分字段</span><span>综合评分</span><span>权重</span><span>操作</span></div>
+<div class="field-list" id="fieldList"></div>
+</div>
+</details>
+<section class="settings-section module-rating-settings" data-settings-panel="module-rating" hidden="">
+<h3>模组评分</h3>
+<div class="section-help">主模组页显示评分结果；评分体系在“高级工具”中维护。</div>
+<div class="settings-callout">
+<div><strong>当前评分体系</strong><span id="moduleRatingSystemSummary">读取中</span></div>
+<button class="btn" id="openModuleAdvancedSettingsBtn" type="button">打开高级工具</button>
+</div>
+</section>
+<section class="settings-section behavior-settings" data-settings-panel="behavior" hidden="">
+<h3 data-i18n="settings.display.title">显示设置</h3>
+<div class="section-help" data-i18n="settings.display.help">这些设置只影响界面显示与操作，不修改档案内容。</div>
+<div class="behavior-setting-list">
+<label class="locale-setting-row"><span><strong data-i18n="settings.language.label">界面语言</strong><small data-i18n="settings.language.help">只改变程序界面和系统文字，不翻译或修改已有档案内容。</small></span><select aria-label="界面语言" class="setting-input" id="interfaceLanguageSetting"><option value="zh-CN">简体中文</option><option disabled="" value="zh-TW">繁體中文 · 词库准备中</option><option disabled="" value="en">English · translation pending</option><option disabled="" value="ja">日本語 · 翻訳準備中</option></select></label>
+<div class="locale-foundation-note"><strong data-i18n="settings.language.foundationTitle">国际化底层已启用</strong><span data-i18n="settings.language.foundationText">当前仅开放简体中文。</span></div>
+<label><span><strong>开团计划默认视图</strong><small>仅显示一种日历视图。</small></span><select class="setting-input" id="plannerDefaultViewSetting"><option value="week">周视图</option><option value="month">月视图</option></select></label>
+<label><span><strong>计划周历密度</strong><small>同一时段达到 3–4 场时可自动压缩。</small></span><select class="setting-input" id="plannerDensitySetting"><option value="auto">自动</option><option value="comfortable">舒适</option><option value="compact">紧凑</option></select></label>
+<label><span><strong>跑团记录默认状态</strong><small>默认以查看模式展示，需要时单桌编辑。</small></span><select class="setting-input" id="recordDefaultModeSetting"><option value="view">查看模式</option><option value="edit">编辑模式</option></select></label>
+<label><span><strong data-i18n="settings.collapseDefault.label">折叠区默认状态</strong><small data-i18n="settings.collapseDefault.help">只决定从未手动操作过的折叠区；你亲自展开或收起后，会一直记住直到再次手动切换。</small></span><select class="setting-input" id="collapseDefaultSetting"><option data-i18n="settings.collapseDefault.closed" value="closed">默认收起</option><option data-i18n="settings.collapseDefault.open" value="open">默认展开</option></select></label>
+</div>
+</section>
+<section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" data-collapse-key="settings:data:recovery"><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、自动备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>完整备份</strong><span>普通备份便于恢复；加密备份适合长期保管。</span></div></div>
 <div class="backup-box unified-backup-box friendly-backup-grid">
 <button class="btn" id="exportBtn" type="button">↓ 导出完整备份</button>
@@ -5406,14 +5358,14 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </div>
 </details>
 </section><section class="friendly-data-block external-backup-block">
-<div class="friendly-data-head"><div><strong>浏览器外自动备份</strong><span>桌面端可固定保存位置；手机端使用浏览器下载目录。默认每 30 分钟一次。</span></div><span id="externalBackupSupportBadge" class="external-backup-support-badge">检查中</span></div>
+<div class="friendly-data-head"><div><strong>浏览器外自动备份</strong><span>桌面端可固定保存位置；手机端使用浏览器下载目录。默认每 30 分钟一次。</span></div><span class="external-backup-support-badge" id="externalBackupSupportBadge">检查中</span></div>
 <div class="external-backup-grid">
-<label class="external-backup-toggle-row"><span><strong>启用定时备份</strong><small>页面或已安装的网页应用运行时自动执行；关闭期间错过的备份会在再次打开时补做最近一次。</small></span><input id="externalBackupEnabledToggle" type="checkbox" aria-label="启用浏览器外自动备份"></label>
-<label class="external-backup-time-row"><span><strong>自动备份频率</strong><small>默认每 30 分钟。频率越高，外部“最新备份”越接近当前数据。</small></span><select id="externalBackupIntervalSelect" aria-label="自动备份频率"><option value="30">每 30 分钟</option><option value="60">每 1 小时</option><option value="120">每 2 小时</option><option value="360">每 6 小时</option><option value="720">每 12 小时</option><option value="1440">每 24 小时</option></select></label>
-<label id="externalBackupMobileDeliveryRow" class="external-backup-time-row" hidden><span><strong>手机保存方式</strong><small>默认保存到浏览器下载目录。</small></span><select id="externalBackupMobileDeliverySelect" aria-label="手机自动备份保存方式"><option value="auto">自动尝试下载（推荐）</option><option value="prompt">到期提醒后再下载</option></select></label>
+<label class="external-backup-toggle-row"><span><strong>启用定时备份</strong><small>页面或已安装的网页应用运行时自动执行；关闭期间错过的备份会在再次打开时补做最近一次。</small></span><input aria-label="启用浏览器外自动备份" id="externalBackupEnabledToggle" type="checkbox"/></label>
+<label class="external-backup-time-row"><span><strong>自动备份频率</strong><small>默认每 30 分钟。频率越高，外部“最新备份”越接近当前数据。</small></span><select aria-label="自动备份频率" id="externalBackupIntervalSelect"><option value="30">每 30 分钟</option><option value="60">每 1 小时</option><option value="120">每 2 小时</option><option value="360">每 6 小时</option><option value="720">每 12 小时</option><option value="1440">每 24 小时</option></select></label>
+<label class="external-backup-time-row" hidden="" id="externalBackupMobileDeliveryRow"><span><strong>手机保存方式</strong><small>默认保存到浏览器下载目录。</small></span><select aria-label="手机自动备份保存方式" id="externalBackupMobileDeliverySelect"><option value="auto">自动尝试下载（推荐）</option><option value="prompt">到期提醒后再下载</option></select></label>
 </div>
-<div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未设置浏览器外备份方式</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" id="viewExternalBackupFilesBtn" type="button" hidden>查看备份文件</button><button class="btn small" id="reauthorizeExternalBackupBtn" type="button" hidden>重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
-<div id="externalBackupStatusNote" class="external-backup-status">桌面端可固定保存位置；手机端使用浏览器下载目录。</div>
+<div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未设置浏览器外备份方式</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" hidden="" id="viewExternalBackupFilesBtn" type="button">查看备份文件</button><button class="btn small" hidden="" id="reauthorizeExternalBackupBtn" type="button">重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
+<div class="external-backup-status" id="externalBackupStatusNote">桌面端可固定保存位置；手机端使用浏览器下载目录。</div>
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>设备迁移</strong><span>通过迁移包在设备间转移档案，无需账号或云同步。</span></div></div>
 <div class="device-migration-actions">
@@ -5437,7 +5389,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.9.3</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.9.4</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5452,118 +5404,25 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </div>
 </section>
 <section class="friendly-data-block revision-history-block">
-  <div class="friendly-data-head"><div><strong>最近编辑历史</strong><span>每个对象最多保留 5 个最近版本。</span></div><button class="btn small" id="clearRevisionHistoryBtn" type="button">清空历史</button></div>
-  <div id="revisionHistoryList" class="revision-history-list"><div class="revision-history-empty">暂无编辑历史。</div></div>
+<div class="friendly-data-head"><div><strong>最近编辑历史</strong><span>每个对象最多保留 5 个最近版本。</span></div><button class="btn small" id="clearRevisionHistoryBtn" type="button">清空历史</button></div>
+<div class="revision-history-list" id="revisionHistoryList"><div class="revision-history-empty">暂无编辑历史。</div></div>
 </section>
 <section class="friendly-data-block" id="lastRiskSnapshotBlock">
-  <div class="friendly-data-head"><div><strong>最近高风险操作退路</strong><span>显示最近一次高风险操作前的安全快照。</span></div><button class="btn small" id="restoreLastRiskSnapshotBtn" type="button" disabled>恢复操作前状态</button></div>
-  <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
+<div class="friendly-data-head"><div><strong>最近高风险操作退路</strong><span>显示最近一次高风险操作前的安全快照。</span></div><button class="btn small" disabled="" id="restoreLastRiskSnapshotBtn" type="button">恢复操作前状态</button></div>
+<div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.9.3 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.9.3</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.9.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.9.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-log-item"><strong>v8.1.9.3</strong><span>周期排期改为单页工作台，排期记录并入同一窗口。</span></div> <div class="version-log-item"><strong>v8.1.9.2</strong><span>精简全站说明文案，移除重复解释和修正说明。</span></div> <div class="version-log-item"><strong>v8.1.9.1</strong><span>一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div> <div class="version-log-item"><strong>v8.1.9.0</strong><span>全站体验与视觉层级整理：统一按钮风险/主次层级与选中状态；周历卡片重排信息层级并强化容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式；计划与跑团记录长表单增加分区直达和待补项跳转；个人统计与跑团整理导出增加统一图片预览确认；统一主要弹窗尺寸、标题/操作栏与页面密度。</span></div> <div class="version-log-item"><strong>v8.1.8.7</strong><span>新增一键按周期排期与排期记录。</span></div>
-<div class="version-log-item"><strong>v8.1.8.6</strong><span>个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div>
-<div class="release-notes-box" id="releaseNotesBox">
-<strong>v8.1.8.5</strong><span>历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span>
-<strong>v8.1.8.4</strong><span>偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新；个人偏好图片导出同步保留边界提示底色，其中“绝对不行”使用浅红底和红色强调，便于分享时快速识别红线。</span>
-<strong>v8.1.8.3</strong><span>交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮；跑团记录把“完成编辑/编辑此桌”独立放到右侧主操作区，更换模组、退回计划与删除统一放左侧次级操作区。</span>
-<strong>v8.1.8.2</strong><span>第四层防呆强化：高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据；新增浏览器存储余量监测与大档案预警、敏感图片导出前隐私提醒、最近高风险操作前安全快照一键恢复、异常超长粘贴二次确认，以及导入/恢复后的自动完整性复核。</span>
-<strong>v8.1.8.1</strong><span>第三层防呆强化：新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常。保护模式只拦截普通写入，导出、已有恢复点恢复、升级前恢复、导入和安全修复仍可继续。</span>
-<strong>v8.1.8.0</strong><span>第二层防呆强化：统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒；切换模组或关闭 HO 显示前增加影响提示，模组搜索输入不再边输入边解除已有关联；新增 PL、模组、开团计划、跑团记录最近编辑历史，每个对象最多保留 5 个版本，可从设置中安全恢复。</span>
-<strong>v8.1.7.9</strong><span>开团计划编辑器调整底部操作层级：“完成”改为明确的“保存”，并作为右侧唯一主操作；“归档”移至左侧与“删除计划”并列，使用次级样式并保留归档确认与重复归档防呆，降低保存与归档相邻造成的误触风险。</span>
-<strong>v8.1.7.8</strong><span>修复外部自动备份完成提示在模态弹窗同时出现时“看得见却点不到关闭键”的交互层级问题，并强化提示条与按钮的触控事件；夜航主题降低未选中主题选择圆点的亮度与边框反差，番茄园主题的选择状态图标改为番茄红与叶片绿协调样式。跑团整理图片导出新增“跟随页面 / 全部收起 / 全部展开”三种内容状态，可独立于网页当前展开状态生成摘要图或完整详情图，并记住上次导出选择。</span>
-<strong>v8.1.7.7</strong><span>个人偏好页“参考来源”说明补充 @江鸿、@削面，并将来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，确保页面初始显示和重新渲染后的文案一致，其余功能与数据结构不变。</span>
-<strong>v8.1.7.6</strong><span>跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数；支持鼠标/触屏点选、方向键选择、Enter 确认与 Esc 收起。选择已有模组后会精确沿用对应模组档案，减少重复建档和同名误关联；无匹配时仍保留新建模组与第一桌记录流程。</span>
-<strong>v8.1.7.5</strong><span>全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换。显示设置新增“折叠区默认状态”，可选择默认收起或默认展开，且只影响从未手动操作过的区块；PL 卡片、评分明细、跑团足迹、单桌记录、跑团整理分组、月历、设置分组、个人偏好以及模组高级工具统一接入同一套逻辑。设置窗口现在每次打开默认进入首项“数据与备份”，避免继续沿用旧版默认“外观”。</span>
-<strong>v8.1.7.4</strong><span>交互与移动端可靠性优化：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理一致的折叠区；更新提示改为刷新后自动更新完成通知“自动更新咯（*＾ワ＾*）请查收新版本”，取消顶部提示中的手动更新按钮；统一加强手机端弹窗关闭键、按钮触控区域、触摸行为和弹层层级保护；全站静态按钮绑定检查通过，并把当前视口可见按钮的遮挡/点击命中检查加入界面自检。</span>
-<strong>v8.1.7.3</strong><span>个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span>
-<strong>v8.1.7.2</strong><span>全站防呆与误操作保护：PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档；新增重复归档拦截、重复成员反馈、出生日期与日期范围前置校验、危险操作口令确认、删除影响明细、按钮级重复执行锁、保存失败保命提示、导入替换与升级恢复事务回滚、关键保存后的静默完整性守门。模组高级工具同步补齐未保存关闭提醒、删除回收站、批量删除恢复、覆盖导入回滚和高风险口令确认。黑名单人员继续采用明确二次确认；不加入人物时间冲突限制。</span>
-<strong>v8.1.7.1</strong><span>完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案；动态 DOM 新增/更新时自动绑定翻译键，并加入用户档案原文保护，避免把 PL 名称、联系方式、模组资料、备注、Log 等既有内容误当系统文案翻译。高级模组工具同步主页面语言状态；简体中文继续作为唯一开放语言，为后续繁中、英文、日文词包直接填充做好准备。</span>
-              <strong>v8.1.7.0</strong><span>建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容；显示设置加入界面语言入口，并为英文长文本与日文断行预留跨端布局规则。首版仅开放简体中文，繁中、英文、日文词库将在后续逐步上线。</span>
-<strong>v8.1.6.42</strong><span>手机浏览器外备份改为下载目录优先：移动端默认不再尝试可能无响应的文件夹选择器，而是按频率自动尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截无点击自动下载，提示中提供“重新下载”。同时保留“到期提醒后再下载”模式，并增强移动浏览器下载兼容写法。</span>
-<strong>v8.1.6.41</strong><span>个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段；低频异常处理收进折叠区，历史兼容数据继续保留以避免数据丢失。</span>
-<strong>v8.1.6.40</strong><span>个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏；同时加入“一键自动紧凑”恢复，并移除个人偏好导出图片顶部的导出范围与版面参数标签。</span>
-<strong>v8.1.6.39</strong><span>进一步完善手机端导出预览拖动：移动端抓手扩大为更易触控的横向拖动条，并在预览层禁用系统长按菜单、文本选择和原生图片拖拽；同时统一移除所有导出图片底部的“应用名 / 版本 / 生成日期”等元数据脚注，并收紧对应底部留白。</span>
-<strong>v8.1.6.38</strong><span>修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域，同时保留左侧上下按钮作为兼容降级。</span>
-<strong>v8.1.6.37</strong><span>重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出，可查看文件名、大小、修改时间、完整性状态，并支持查看 JSON 内容或下载副本；更改保存位置仍保留为独立操作。</span>
-<strong>v8.1.6.36</strong><span>修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入；UC、夸克、iOS Safari、Firefox Android 等缺少相应权限时自动提供手机兼容备份，到期准备完整备份并提示“保存到手机”，优先调用系统保存/分享面板，不支持时下载到浏览器默认目录，并明确区分“已写入并可核验”和“已请求手机保存”。</span>
-<strong>v8.1.6.35</strong><span>浏览器外自动备份升级为可配置频率，默认每 30 分钟；每次成功写入后显示非阻塞备份提示，并可核验“最新备份”文件的存在、大小、更新时间与完整性。受浏览器安全限制无法直接定位系统文件夹时，可从核验弹窗打开文件夹选择器查看目录。</span>
-<strong>v8.1.6.34</strong><span>个人偏好导出预览支持直接拖动模块排序；左侧上下按钮继续保留作为键盘、旧浏览器和精细调整的备用操作。半栏布局改为自动填充较短列的紧凑双栏排版，消除不同高度模块之间的大块空白。</span>
-<strong>v8.1.6.33</strong><span>优化个人偏好导出中的 PL / KP 偏好尺：五档轨道改为居中紧凑宽度并缩短行高，保留项目名、当前值和两端语义，减少信息量较少时的横向空耗，让双栏导出更紧凑清晰。</span>
-<strong>v8.1.6.32</strong><span>定位并修复“GitHub Pages 已更新但浏览器仍运行旧程序”的更新链路问题：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，发现页面版本落后时明确提示安全刷新；Service Worker 注册禁用脚本缓存，HTML 导航优先请求最新网络文件。并再次回归验证个人偏好导出：想跑模组 / 可带模组无论有无内容，只要勾选就会进入预览与最终图片。</span>
-<strong>v8.1.6.31</strong><span>修复个人偏好导出中心“已勾选区域却不出现在预览/导出图”的问题：明确勾选现在始终保留整个区域，区域内部空白字段仍自动省略；空的想跑模组 / 可带模组会显示清晰空状态，不再整块消失。</span>
-<strong>v8.1.6.30</strong><span>个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度；每个导出区域可独立设置整行 / 半栏并实时预览，支持自由排序与组合；空白“其他”输入、空备注和未填写文字自动省略。</span>
-<strong>v8.1.6.29</strong><span>重新整理“数据与备份”的信息结构：浏览器外自动备份移动到“恢复与迁移”分组内，并放在完整备份之后、设备迁移之前；“日常保护”继续聚焦自动保存、恢复点、冗余副本与存储保护。同步修正设置页残留的旧版本显示。</span>
-<strong>v8.1.6.28</strong><span>个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式，以及隐藏空白、空备注、说明文字和个人姓名等选项；导出设置会记住上次选择，并同步优化电脑、平板和手机端弹层布局。</span>
-<strong>v8.1.6.27</strong><span>个人偏好前半部分改为更紧凑的“常用信息”布局；平台、形式、日期、频率与时间重新分组，选择上午 / 中午 / 下午 / 晚上 / 凌晨后可继续设置 30 分钟粒度的具体起止时间，并保持手机、平板和电脑自适应。</span>
-<strong>v8.1.6.26</strong><span>调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span>
-<strong>v8.1.6.25</strong><span>加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本；若主 localStorage 在浏览器更新或存储迁移后变空，启动时会自动检测冗余副本与恢复点并提示恢复。</span>
-<strong>v8.1.6.24</strong><span>数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护；新增浏览器外固定时间自动备份，可选择 / 更改电脑或手机保存位置，支持时自动写入“最新备份 + 每日备份”，页面关闭错过后再次打开会补做。</span>
-<strong>v8.1.6.23</strong><span>“想跑模组 / 可带模组”支持单独导出图片，并且可在每个模组下写备注；导出内容会带上对应备注，方便单独分享或留档。</span>
-<strong>v8.1.6.22</strong><span>继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。</span>
-<strong>v8.1.6.21</strong><span>统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。</span>
-<strong>v8.1.6.20</strong><span>个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span>
-<strong>v8.1.6.19</strong><span>全站视觉收口 1.0：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态；减少框套框与重复说明，强化卡片信息优先级，并重新优化 PL、模组、计划、记录、个人偏好、个人统计、设置及各编辑器在电脑、平板和手机端的视觉密度与操作布局。</span>
-<strong>v8.1.6.18</strong><span>全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动；同时复查全部主页面、PL 编辑、模组编辑、设置与个人统计的横向溢出，并让可换行的操作区优先换行。</span>
-<strong>v8.1.6.17</strong><span>开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。</span>
-<strong>v8.1.6.16</strong><span>修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底，并下调主脚本语法目标，避免旧内核在初始化阶段直接停止执行。</span>
-<strong>v8.1.6.15</strong><span>统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果；跑团记录搜索会优先定位最相关模组，并在非模组关键词搜索时只显示命中的桌次；全局搜索按精准度跨页面排序；设置搜索增加常用功能词匹配。所有搜索继续支持拼音首字母。</span>
-<strong>v8.1.6.14</strong><span>修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息；同时移除“同桌其他 PL 姓名”造成的连带误匹配。</span>
-<strong>v8.1.6.13</strong><span>重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”；KP、PL 与 PC 名选择加入可搜索匹配，支持拼音首字母，PC 名无历史匹配时可直接输入保存为新名字。</span>
-<strong>v8.1.6.11</strong><span>修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span>
-<strong>v8.1.6.10</strong><span>精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span>
-<strong>v8.1.6.9</strong><span>补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span>
-<strong>v8.1.6.8</strong><span>校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写；同时把 PC 名缺省、无日期提示和 PL 参团分布等文案改得更中性准确。</span>
-<strong>v8.1.6.7</strong><span>统一“偏好 / 统计”命名：将主导航与对应页面标题调整为“个人偏好”“个人统计”，让第三组导航含义更完整，也与现有个人信息语境更一致。</span>
-<strong>v8.1.6.6</strong><span>新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度；人物与模组支持排名表/条形图切换，趋势支持折线/柱状/表格切换，全部统计均在本地离线完成。</span>
-<strong>v8.1.6.5</strong><span>调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。</span>
-<strong>v8.1.6.4</strong><span>调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。</span>
-<strong>v8.1.6.3</strong><span>重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span>
-<strong>v8.1.6.2</strong><span>完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”；补强 Android WebView / 第三方浏览器的滚动兜底，并检查主页面、编辑器、固定导航中的文字、图标遮挡、按钮可点击性与横向溢出。</span>
-<strong>v8.1.6.1</strong><span>PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span>
-<strong>v8.1.6.0</strong><span>全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条；同步收敛模组、计划、记录、偏好与编辑器的窄屏宽度，并补回跑团偏好保存状态逻辑。</span>
-<strong>v8.1.5.9</strong><span>统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span>
-<strong>v8.1.5.8</strong><span>优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。</span>
-<strong>v8.1.5.7</strong><span>继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。</span>
-<strong>v8.1.5.6</strong><span>强化开团计划编辑抽屉中的分区标题：放大“基本信息”“KP / KPC”“PL / PC”等标题字号，并加入主题色短划线装饰，让层级更清晰、观感更精致。</span>
-<strong>v8.1.5.5</strong><span>优化开团计划中的人物下拉框：统一圆角与主题配色，替换浏览器原生黑色箭头，增加轻量悬停、聚焦反馈，并保持手机端触控尺寸。</span>
-<strong>v8.1.5.4</strong><span>调整主导航顺序，将“跑团偏好”移至最后；PL 评分改为打开即可直接操作、未操作保持“无”，并保留一键设为无；开团计划增强拖放入口与日历落点提示。</span>
-<strong>v8.1.5.3</strong><span>统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span>
-<strong>v8.1.5.2</strong><span>统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span>
-<strong>v8.1.5.1</strong><span>跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span>
-<strong>v8.1.5</strong><span>隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span>
-</div>
-<div class="version-history-item">
-<strong>v8.1.4.15</strong><span>常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。</span>
-<strong>v8.1.4.14</strong><span>重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。</span>
-<strong>v8.1.4.13</strong><span>“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。</span>
-<strong>v8.1.4.12</strong><span>自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；多选选中态加强，并新增双栏图片导出。</span>
-<strong>v8.1.4.11</strong><span>新增“自我介绍”：整理通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span>
-<strong>v8.1.4.10</strong><span>新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span>
-<strong>v8.1.4.9</strong><span>KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。</span>
-<strong>v8.1.4.8</strong><span>统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。</span>
-<strong>v8.1.4.7</strong><span>新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span>
-<strong>v8.1.4.6</strong><span>修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span>
-<strong>v8.1.4.5</strong><span>修复设置页版本区适配；新增每次启动自动检查。</span>
-<strong>v8.1.4.4</strong><span>新增 PL 黑名单、状态历史与排团风险提示。</span>
-<strong>v8.1.4.3</strong><span>新增跑团记录退回计划、同名模组合并与关联治理。</span>
-<strong>v8.1.4.2</strong><span>强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。</span>
-<strong>v8.1.4.1</strong><span>统一企业级 UX 文案与术语。</span>
-<strong>v8.1.4</strong><span>增强多标签页并发保存，避免竞态覆盖；保持 v18 数据结构兼容。</span>
-<strong>v8.1.3</strong><span>增强保存冲突、恢复点、回收站与大档案保护。</span>
-<strong>v8.1.2</strong><span>优化移动端计划、跑团记录、搜索与数据管理。</span>
-<strong>v8.1.1</strong><span>增强分享模式、草稿保存、撤销与离线缓存安全。</span>
-<strong>v8.1.0</strong><span>新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span>
-</div></details>
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-history-list" id="releaseNotesBox"><div class="version-log-header"><span>版本</span><span>更新内容</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.4</strong><span class="version-log-copy">统一全站版本记录的内容结构、信息层级、字号与缩进，历史版本全部采用同一列表格式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.3</strong><span class="version-log-copy">周期排期改为单页工作台，排期记录并入同一窗口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.2</strong><span class="version-log-copy">精简全站说明文案，统一为简洁、直接的功能说明。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.1</strong><span class="version-log-copy">一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.0</strong><span class="version-log-copy">全站体验与视觉层级整理：统一按钮风险/主次层级与选中状态；周历卡片重排信息层级并强化容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.7</strong><span class="version-log-copy">新增一键按周期排期与排期记录。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.6</strong><span class="version-log-copy">个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.5</strong><span class="version-log-copy">历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.4</strong><span class="version-log-copy">偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.3</strong><span class="version-log-copy">交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.2</strong><span class="version-log-copy">高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.1</strong><span class="version-log-copy">新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.0</strong><span class="version-log-copy">统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.9</strong><span class="version-log-copy">开团计划编辑器调整底部操作层级：“完成”改为明确的“保存”，并作为右侧唯一主操作；“归档”移至左侧与“删除计划”并列，使用次级样式并保留归档确认与重复归档防呆，降低保存与归档相邻造成的误触风险。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.8</strong><span class="version-log-copy">修复外部自动备份完成提示在模态弹窗同时出现时“看得见却点不到关闭键”的交互层级问题，并强化提示条与按钮的触控事件等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.7</strong><span class="version-log-copy">个人偏好页“参考来源”说明补充 @江鸿、@削面，并将来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，确保页面初始显示和重新渲染后的文案一致，其余功能与数据结构不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.6</strong><span class="version-log-copy">跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.5</strong><span class="version-log-copy">全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.4</strong><span class="version-log-copy">交互与移动端可靠性优化：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理一致的折叠区等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.3</strong><span class="version-log-copy">个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.2</strong><span class="version-log-copy">PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.1</strong><span class="version-log-copy">完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.0</strong><span class="version-log-copy">建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.42</strong><span class="version-log-copy">手机浏览器外备份改为下载目录优先：移动端默认不再尝试可能无响应的文件夹选择器，而是按频率自动尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截无点击自动下载，提示中提供“重新下载”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.41</strong><span class="version-log-copy">个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.40</strong><span class="version-log-copy">个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.39</strong><span class="version-log-copy">进一步完善手机端导出预览拖动：移动端抓手扩大为更易触控的横向拖动条，并在预览层禁用系统长按菜单、文本选择和原生图片拖拽等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.38</strong><span class="version-log-copy">修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.37</strong><span class="version-log-copy">重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.36</strong><span class="version-log-copy">修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.35</strong><span class="version-log-copy">浏览器外自动备份升级为可配置频率，默认每 30 分钟；每次成功写入后显示非阻塞备份提示，并可核验“最新备份”文件的存在、大小、更新时间与完整性等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.34</strong><span class="version-log-copy">个人偏好导出预览支持直接拖动模块排序；左侧上下按钮继续保留作为键盘、旧浏览器和精细调整的备用操作。半栏布局改为自动填充较短列的紧凑双栏排版，消除不同高度模块之间的大块空白。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.33</strong><span class="version-log-copy">优化个人偏好导出中的 PL / KP 偏好尺：五档轨道改为居中紧凑宽度并缩短行高，保留项目名、当前值和两端语义，减少信息量较少时的横向空耗，让双栏导出更紧凑清晰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.32</strong><span class="version-log-copy">定位并修复“GitHub Pages 已更新但浏览器仍运行旧程序”的更新链路问题：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，发现页面版本落后时明确提示安全刷新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.31</strong><span class="version-log-copy">修复个人偏好导出中心“已勾选区域却不出现在预览/导出图”的问题：明确勾选现在始终保留整个区域，区域内部空白字段仍自动省略；空的想跑模组 / 可带模组会显示清晰空状态，不再整块消失。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.30</strong><span class="version-log-copy">个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.29</strong><span class="version-log-copy">重新整理“数据与备份”的信息结构：浏览器外自动备份移动到“恢复与迁移”分组内，并放在完整备份之后、设备迁移之前；“日常保护”继续聚焦自动保存、恢复点、冗余副本与存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.28</strong><span class="version-log-copy">个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.27</strong><span class="version-log-copy">个人偏好前半部分改为更紧凑的“常用信息”布局等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.26</strong><span class="version-log-copy">调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.25</strong><span class="version-log-copy">加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.24</strong><span class="version-log-copy">数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.23</strong><span class="version-log-copy">“想跑模组 / 可带模组”支持单独导出图片，并且可在每个模组下写备注；导出内容会带上对应备注，方便单独分享或留档。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.22</strong><span class="version-log-copy">继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.21</strong><span class="version-log-copy">统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.20</strong><span class="version-log-copy">个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.19</strong><span class="version-log-copy">全站视觉收口 1.0：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.18</strong><span class="version-log-copy">全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.17</strong><span class="version-log-copy">开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.16</strong><span class="version-log-copy">修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.15</strong><span class="version-log-copy">统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.14</strong><span class="version-log-copy">修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.13</strong><span class="version-log-copy">重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.11</strong><span class="version-log-copy">修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.10</strong><span class="version-log-copy">精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.9</strong><span class="version-log-copy">补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.8</strong><span class="version-log-copy">校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.7</strong><span class="version-log-copy">统一“偏好 / 统计”命名：将主导航与对应页面标题调整为“个人偏好”“个人统计”，让第三组导航含义更完整，也与现有个人信息语境更一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.6</strong><span class="version-log-copy">新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.5</strong><span class="version-log-copy">调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.4</strong><span class="version-log-copy">调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.3</strong><span class="version-log-copy">重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.2</strong><span class="version-log-copy">完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.1</strong><span class="version-log-copy">PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.0</strong><span class="version-log-copy">全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.9</strong><span class="version-log-copy">统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.8</strong><span class="version-log-copy">优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.7</strong><span class="version-log-copy">继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.6</strong><span class="version-log-copy">强化开团计划编辑抽屉中的分区标题：放大“基本信息”“KP / KPC”“PL / PC”等标题字号，并加入主题色短划线装饰，让层级更清晰、观感更精致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.5</strong><span class="version-log-copy">优化开团计划中的人物下拉框：统一圆角与主题配色，替换浏览器原生黑色箭头，增加轻量悬停、聚焦反馈，并保持手机端触控尺寸。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.4</strong><span class="version-log-copy">调整主导航顺序，将“跑团偏好”移至最后；PL 评分改为打开即可直接操作、未操作保持“无”，并保留一键设为无；开团计划增强拖放入口与日历落点提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.3</strong><span class="version-log-copy">统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.2</strong><span class="version-log-copy">统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.1</strong><span class="version-log-copy">跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5</strong><span class="version-log-copy">隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.15</strong><span class="version-log-copy">常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.14</strong><span class="version-log-copy">重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.13</strong><span class="version-log-copy">“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.12</strong><span class="version-log-copy">自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；多选选中态加强，并新增双栏图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.11</strong><span class="version-log-copy">新增“自我介绍”：整理通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.10</strong><span class="version-log-copy">新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.9</strong><span class="version-log-copy">KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.8</strong><span class="version-log-copy">统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.7</strong><span class="version-log-copy">新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.6</strong><span class="version-log-copy">修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.5</strong><span class="version-log-copy">修复设置页版本区适配；新增每次启动自动检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.4</strong><span class="version-log-copy">新增 PL 黑名单、状态历史与排团风险提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.3</strong><span class="version-log-copy">新增跑团记录退回计划、同名模组合并与关联治理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.2</strong><span class="version-log-copy">强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.1</strong><span class="version-log-copy">统一企业级 UX 文案与术语。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4</strong><span class="version-log-copy">增强多标签页并发保存，避免竞态覆盖；保持 v18 数据结构兼容。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.3</strong><span class="version-log-copy">增强保存冲突、恢复点、回收站与大档案保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.2</strong><span class="version-log-copy">优化移动端计划、跑团记录、搜索与数据管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.1</strong><span class="version-log-copy">增强分享模式、草稿保存、撤销与离线缓存安全。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.0</strong><span class="version-log-copy">新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span></div></div></details>
 </section></div></details><details class="data-safety-group advanced" data-collapse-key="settings:data:advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。严重编号冲突会自动进入保护模式。</span></div><div class="friendly-head-actions"><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button><button class="btn small primary-soft" id="safeAutoRepairBtn" type="button">安全修复轻微问题</button></div></div>
 <div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
 </section><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>界面与交互自检</strong><span>检查当前界面；深度自检会覆盖主要页面和编辑器，并在完成后恢复当前位置。</span></div><div class="friendly-head-actions"><button class="btn small" id="runInteractionSelfCheckBtn" type="button">运行自检</button><button class="btn small" hidden="" id="copyInteractionSelfCheckBtn" type="button">复制诊断结果</button><button class="btn small primary-soft" id="runDeepInteractionSelfCheckBtn" type="button">深度自检</button></div></div>
 <div class="interaction-self-check-results" hidden="" id="interactionSelfCheckResults"></div>
-<section class="friendly-data-block i18n-diagnostic-block"><div class="friendly-data-head"><div><strong>国际化准备度</strong><span>检查已接入翻译键的界面节点、缺失词条和当前可用语言包。</span></div><div class="friendly-head-actions"><button class="btn small" id="runI18nAuditBtn" type="button">检查国际化底层</button></div></div><div id="i18nAuditResults" class="version-runtime-details" hidden></div></section>
+<section class="friendly-data-block i18n-diagnostic-block"><div class="friendly-data-head"><div><strong>国际化准备度</strong><span>检查已接入翻译键的界面节点、缺失词条和当前可用语言包。</span></div><div class="friendly-head-actions"><button class="btn small" id="runI18nAuditBtn" type="button">检查国际化底层</button></div></div><div class="version-runtime-details" hidden="" id="i18nAuditResults"></div></section>
 </section><details class="friend-safety-notes" data-collapse-key="settings:data:safety-notes">
 <summary>免责与注意事项</summary>
 <div>
@@ -5572,111 +5431,101 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <p>备份和截图可能包含个人资料，请妥善保管；对外分享时请使用空白程序。</p>
 </div>
 </details></div></details></section>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="modal-foot">
-        <div class="settings-foot-status"><span id="settingsEditStatus" class="editor-state-chip clean">未修改</span><div id="settingsWarning" class="settings-warning" role="status" aria-live="polite"></div></div>
-        <div class="foot-right"><button type="button" id="cancelSettingsBtn" class="btn" data-i18n="common.cancel">取消</button><button type="button" id="saveSettingsBtn" class="btn primary" data-i18n="settings.save">保存设置</button></div>
-      </footer>
-    </section>
-  </div>
-
-  
-  <div id="secureBackupBackdrop" class="secure-backup-backdrop" hidden>
-    <section class="secure-backup-modal" role="dialog" aria-modal="true" aria-labelledby="secureBackupTitle">
-      <header><div><h3 id="secureBackupTitle">加密备份</h3><p id="secureBackupSubtitle">密码仅在当前设备用于加密或解密，不会上传。</p></div><button id="closeSecureBackupBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
-      <div class="secure-backup-body">
-        <label><span>密码</span><input id="secureBackupPassword" type="password" autocomplete="new-password" placeholder="至少 8 个字符"></label>
-        <label id="secureBackupConfirmRow"><span>再次输入密码</span><input id="secureBackupPasswordConfirm" type="password" autocomplete="new-password" placeholder="再次输入密码"></label>
-        <div id="secureBackupHint" class="secure-backup-hint">请记住密码。忘记密码后无法恢复加密备份。</div>
-      </div>
-      <footer><button id="cancelSecureBackupBtn" class="btn" type="button">取消</button><button id="confirmSecureBackupBtn" class="btn primary" type="button">导出加密备份</button></footer>
-    </section>
-  </div>
-
-  <div id="appUpdateBanner" class="app-update-banner" data-modal-inert-exempt hidden role="status" aria-live="polite">
-    <div><strong>自动更新咯（*＾ワ＾*）请查收新版本</strong><span id="appUpdateNoticeText">当前程序已刷新到最新版本。</span></div>
-    <div><button id="dismissAppUpdateBtn" class="btn small primary" type="button">知道啦</button></div>
-  </div>
-
-  <div id="externalSyncBanner" class="external-sync-banner" data-modal-inert-exempt hidden>
-    <div><strong>另一页面刚刚修改了档案</strong><span id="externalSyncMessage">本页有尚未保存的内容，请选择如何处理。</span></div>
-    <div><button id="dismissExternalSyncBtn" class="btn small" type="button">暂不处理</button><button id="keepLocalExternalSyncBtn" class="btn small danger-soft" type="button" title="明确用本页当前状态覆盖另一页面刚保存的数据">保留本页并覆盖</button><button id="applyExternalSyncBtn" class="btn small primary" type="button">同步最新数据</button></div>
-  </div>
-
-  <div id="undoDeleteToast" class="undo-delete-toast" data-modal-inert-exempt hidden>
-    <span id="undoDeleteText">已移入回收站</span><button id="undoDeleteBtn" type="button">撤销</button>
-  </div>
-
-  <div id="globalSearchBackdrop" class="global-search-backdrop" hidden>
-    <section class="global-search-modal" role="dialog" aria-modal="true" aria-labelledby="globalSearchTitle">
-      <header><div><h3 id="globalSearchTitle">全局搜索</h3><p>搜索 PL、个人偏好、模组、开团计划和跑团记录。</p></div><button id="closeGlobalSearchBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
-      <label class="global-search-box"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="跨 PL、模组、计划、记录与个人页面搜索（支持拼音首字母）" autocomplete="off"></label>
-      <div id="globalSearchResults" class="global-search-results" role="listbox"></div>
-      <footer><span>Ctrl + K 打开 · ↑↓ 选择 · Enter 跳转 · Esc 关闭</span></footer>
-    </section>
-  </div>
-
-  <div id="importPreviewBackdrop" class="import-preview-backdrop" hidden>
-    <section class="import-preview-modal" role="dialog" aria-modal="true" aria-labelledby="importPreviewTitle">
-      <header><div><h3 id="importPreviewTitle">导入预览</h3><p id="importPreviewSubtitle">先确认内容和处理方式，再写入当前档案。</p></div><button id="closeImportPreviewBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
-      <div class="import-preview-body">
-        <div id="importPreviewCounts" class="import-preview-counts"></div>
-        <div id="importConflictSummary" class="import-conflict-summary"></div>
-        <div id="importOutcomeSummary" class="import-outcome-summary" aria-live="polite"></div>
-        <div class="import-mode-grid">
-          <label><input type="radio" name="importMode" value="merge" checked><span><strong>智能合并</strong><small>保留当前档案，并合并导入内容。</small></span></label>
-          <label><input type="radio" name="importMode" value="replace"><span><strong>替换当前档案</strong><small>先创建恢复点，再用导入文件完整替换。</small></span></label>
-        </div>
-        <div id="mergeOptionsPanel" class="merge-options-panel">
-          <label><span><strong>同名冲突</strong><small>仅在编号不同但名称相同的 PL / 模组出现时使用。</small></span>
-            <select id="importConflictPolicy"><option value="current">保留当前内容</option><option value="incoming">使用导入内容</option><option value="both">两份都保留（导入项自动改名）</option></select>
-          </label>
-          <label class="check-row"><input id="importSettingsToo" type="checkbox"><span>同时采用导入文件中的界面与评分设置</span></label>
-        </div>
-      </div>
-      <footer><button id="cancelImportPreviewBtn" class="btn" type="button">取消</button><button id="confirmImportPreviewBtn" class="btn primary" type="button">开始导入</button></footer>
-    </section>
-  </div>
-
-  <div id="migrationWizardBackdrop" class="migration-wizard-backdrop" hidden>
-    <section class="migration-wizard-modal" role="dialog" aria-modal="true" aria-labelledby="migrationWizardTitle">
-      <header><div><h3 id="migrationWizardTitle">设备迁移</h3><p>使用密码加密迁移包，把档案带到另一台设备。</p></div><button id="closeMigrationWizardBtn" class="close icon-close" type="button" aria-label="关闭">×</button></header>
-      <div class="migration-wizard-body">
-        <article><span>1</span><div><strong>旧设备</strong><p>生成迁移包并保存到你能在新设备打开的位置。</p></div><button id="migrationWizardExportBtn" class="btn primary-soft" type="button">生成迁移包</button></article>
-        <article><span>2</span><div><strong>新设备</strong><p>选择迁移包并输入创建时的密码，随后会进入导入预览。</p></div><button id="migrationWizardImportBtn" class="btn" type="button">选择迁移包</button></article>
-      </div>
-      <footer><span>迁移包经过密码加密；请自行保管密码。</span></footer>
-    </section>
-  </div>
-
-  <div id="onboardingBackdrop" class="onboarding-backdrop" hidden>
-    <section class="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
-      <header><div><span class="onboarding-kicker">欢迎使用</span><h2 id="onboardingTitle">3 步开始整理跑团档案</h2><p>所有内容默认保存在当前浏览器；可以随时导出备份。</p></div><button id="skipOnboardingBtn" class="close icon-close" type="button" aria-label="暂时关闭引导">×</button></header>
-      <div class="onboarding-steps">
-        <article><span>01</span><strong>建立 PL</strong><p>记录常用资料与评分；新建档案的评分默认均为“无”。</p></article>
-        <article><span>02</span><strong>建立模组或计划</strong><p>为桌次关联 KP、PL、PC 和 HO；计划可以直接安排到日历。</p></article>
-        <article><span>03</span><strong>跑完后归档</strong><p>跑团记录是桌次数据的统一来源，PL 足迹与模组关联信息会自动同步。</p></article>
-      </div>
-      <footer><button id="onboardingLaterBtn" class="btn" type="button">不再提示</button><button id="onboardingStartBtn" class="btn primary" type="button">新建首个 PL</button></footer>
-    </section>
-  </div>
-  <div id="toast" class="toast"></div>
-  <aside id="externalBackupNotice" class="external-backup-notice" data-modal-inert-exempt role="status" aria-live="polite" hidden>
-    <div class="external-backup-notice-copy"><strong id="externalBackupNoticeTitle">外部备份已完成</strong><span id="externalBackupNoticeText">刚刚已写入备份。</span></div>
-    <div class="external-backup-notice-actions"><button id="externalBackupVerifyBtn" class="btn small" type="button">查看备份文件</button><button id="externalBackupNoticeCloseBtn" class="external-backup-notice-close" type="button" aria-label="关闭备份提示">×</button></div>
-  </aside>
-  <div id="externalBackupBrowserBackdrop" class="external-backup-browser-backdrop" hidden>
-    <section class="external-backup-browser-modal" role="dialog" aria-modal="true" aria-labelledby="externalBackupBrowserTitle">
-      <header class="external-backup-browser-head"><div><h3 id="externalBackupBrowserTitle">外部备份文件</h3><p>读取当前保存位置中的 JSON 备份文件。</p></div><button id="closeExternalBackupBrowserBtn" class="icon-close" type="button" aria-label="关闭外部备份文件列表">×</button></header>
-      <div class="external-backup-browser-summary"><span><strong id="externalBackupBrowserLocation">正在读取保存位置…</strong><small id="externalBackupBrowserSummary">请稍候</small></span><div class="external-backup-browser-summary-actions"><button id="changeExternalBackupLocationFromBrowserBtn" class="btn small" type="button">更改保存位置</button><button id="refreshExternalBackupBrowserBtn" class="btn small" type="button">刷新列表</button></div></div>
-      <div id="externalBackupFileList" class="external-backup-file-list"><div class="external-backup-browser-empty">正在读取备份文件…</div></div>
-    </section>
-  </div>
-  <div id="undoToast" class="undo-toast" data-modal-inert-exempt hidden><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
-
+</div>
+</div>
+</div>
+</div>
+<footer class="modal-foot">
+<div class="settings-foot-status"><span class="editor-state-chip clean" id="settingsEditStatus">未修改</span><div aria-live="polite" class="settings-warning" id="settingsWarning" role="status"></div></div>
+<div class="foot-right"><button class="btn" data-i18n="common.cancel" id="cancelSettingsBtn" type="button">取消</button><button class="btn primary" data-i18n="settings.save" id="saveSettingsBtn" type="button">保存设置</button></div>
+</footer>
+</section>
+</div>
+<div class="secure-backup-backdrop" hidden="" id="secureBackupBackdrop">
+<section aria-labelledby="secureBackupTitle" aria-modal="true" class="secure-backup-modal" role="dialog">
+<header><div><h3 id="secureBackupTitle">加密备份</h3><p id="secureBackupSubtitle">密码仅在当前设备用于加密或解密，不会上传。</p></div><button aria-label="关闭" class="close icon-close" id="closeSecureBackupBtn" type="button">×</button></header>
+<div class="secure-backup-body">
+<label><span>密码</span><input autocomplete="new-password" id="secureBackupPassword" placeholder="至少 8 个字符" type="password"/></label>
+<label id="secureBackupConfirmRow"><span>再次输入密码</span><input autocomplete="new-password" id="secureBackupPasswordConfirm" placeholder="再次输入密码" type="password"/></label>
+<div class="secure-backup-hint" id="secureBackupHint">请记住密码。忘记密码后无法恢复加密备份。</div>
+</div>
+<footer><button class="btn" id="cancelSecureBackupBtn" type="button">取消</button><button class="btn primary" id="confirmSecureBackupBtn" type="button">导出加密备份</button></footer>
+</section>
+</div>
+<div aria-live="polite" class="app-update-banner" data-modal-inert-exempt="" hidden="" id="appUpdateBanner" role="status">
+<div><strong>自动更新咯（*＾ワ＾*）请查收新版本</strong><span id="appUpdateNoticeText">当前程序已刷新到最新版本。</span></div>
+<div><button class="btn small primary" id="dismissAppUpdateBtn" type="button">知道啦</button></div>
+</div>
+<div class="external-sync-banner" data-modal-inert-exempt="" hidden="" id="externalSyncBanner">
+<div><strong>另一页面刚刚修改了档案</strong><span id="externalSyncMessage">本页有尚未保存的内容，请选择如何处理。</span></div>
+<div><button class="btn small" id="dismissExternalSyncBtn" type="button">暂不处理</button><button class="btn small danger-soft" id="keepLocalExternalSyncBtn" title="明确用本页当前状态覆盖另一页面刚保存的数据" type="button">保留本页并覆盖</button><button class="btn small primary" id="applyExternalSyncBtn" type="button">同步最新数据</button></div>
+</div>
+<div class="undo-delete-toast" data-modal-inert-exempt="" hidden="" id="undoDeleteToast">
+<span id="undoDeleteText">已移入回收站</span><button id="undoDeleteBtn" type="button">撤销</button>
+</div>
+<div class="global-search-backdrop" hidden="" id="globalSearchBackdrop">
+<section aria-labelledby="globalSearchTitle" aria-modal="true" class="global-search-modal" role="dialog">
+<header><div><h3 id="globalSearchTitle">全局搜索</h3><p>搜索 PL、个人偏好、模组、开团计划和跑团记录。</p></div><button aria-label="关闭" class="close icon-close" id="closeGlobalSearchBtn" type="button">×</button></header>
+<label class="global-search-box"><span>⌕</span><input autocomplete="off" id="globalSearchInput" placeholder="跨 PL、模组、计划、记录与个人页面搜索（支持拼音首字母）" type="search"/></label>
+<div class="global-search-results" id="globalSearchResults" role="listbox"></div>
+<footer><span>Ctrl + K 打开 · ↑↓ 选择 · Enter 跳转 · Esc 关闭</span></footer>
+</section>
+</div>
+<div class="import-preview-backdrop" hidden="" id="importPreviewBackdrop">
+<section aria-labelledby="importPreviewTitle" aria-modal="true" class="import-preview-modal" role="dialog">
+<header><div><h3 id="importPreviewTitle">导入预览</h3><p id="importPreviewSubtitle">先确认内容和处理方式，再写入当前档案。</p></div><button aria-label="关闭" class="close icon-close" id="closeImportPreviewBtn" type="button">×</button></header>
+<div class="import-preview-body">
+<div class="import-preview-counts" id="importPreviewCounts"></div>
+<div class="import-conflict-summary" id="importConflictSummary"></div>
+<div aria-live="polite" class="import-outcome-summary" id="importOutcomeSummary"></div>
+<div class="import-mode-grid">
+<label><input checked="" name="importMode" type="radio" value="merge"/><span><strong>智能合并</strong><small>保留当前档案，并合并导入内容。</small></span></label>
+<label><input name="importMode" type="radio" value="replace"/><span><strong>替换当前档案</strong><small>先创建恢复点，再用导入文件完整替换。</small></span></label>
+</div>
+<div class="merge-options-panel" id="mergeOptionsPanel">
+<label><span><strong>同名冲突</strong><small>仅在编号不同但名称相同的 PL / 模组出现时使用。</small></span>
+<select id="importConflictPolicy"><option value="current">保留当前内容</option><option value="incoming">使用导入内容</option><option value="both">两份都保留（导入项自动改名）</option></select>
+</label>
+<label class="check-row"><input id="importSettingsToo" type="checkbox"/><span>同时采用导入文件中的界面与评分设置</span></label>
+</div>
+</div>
+<footer><button class="btn" id="cancelImportPreviewBtn" type="button">取消</button><button class="btn primary" id="confirmImportPreviewBtn" type="button">开始导入</button></footer>
+</section>
+</div>
+<div class="migration-wizard-backdrop" hidden="" id="migrationWizardBackdrop">
+<section aria-labelledby="migrationWizardTitle" aria-modal="true" class="migration-wizard-modal" role="dialog">
+<header><div><h3 id="migrationWizardTitle">设备迁移</h3><p>使用密码加密迁移包，把档案带到另一台设备。</p></div><button aria-label="关闭" class="close icon-close" id="closeMigrationWizardBtn" type="button">×</button></header>
+<div class="migration-wizard-body">
+<article><span>1</span><div><strong>旧设备</strong><p>生成迁移包并保存到你能在新设备打开的位置。</p></div><button class="btn primary-soft" id="migrationWizardExportBtn" type="button">生成迁移包</button></article>
+<article><span>2</span><div><strong>新设备</strong><p>选择迁移包并输入创建时的密码，随后会进入导入预览。</p></div><button class="btn" id="migrationWizardImportBtn" type="button">选择迁移包</button></article>
+</div>
+<footer><span>迁移包经过密码加密；请自行保管密码。</span></footer>
+</section>
+</div>
+<div class="onboarding-backdrop" hidden="" id="onboardingBackdrop">
+<section aria-labelledby="onboardingTitle" aria-modal="true" class="onboarding-modal" role="dialog">
+<header><div><span class="onboarding-kicker">欢迎使用</span><h2 id="onboardingTitle">3 步开始整理跑团档案</h2><p>所有内容默认保存在当前浏览器；可以随时导出备份。</p></div><button aria-label="暂时关闭引导" class="close icon-close" id="skipOnboardingBtn" type="button">×</button></header>
+<div class="onboarding-steps">
+<article><span>01</span><strong>建立 PL</strong><p>记录常用资料与评分；新建档案的评分默认均为“无”。</p></article>
+<article><span>02</span><strong>建立模组或计划</strong><p>为桌次关联 KP、PL、PC 和 HO；计划可以直接安排到日历。</p></article>
+<article><span>03</span><strong>跑完后归档</strong><p>跑团记录是桌次数据的统一来源，PL 足迹与模组关联信息会自动同步。</p></article>
+</div>
+<footer><button class="btn" id="onboardingLaterBtn" type="button">不再提示</button><button class="btn primary" id="onboardingStartBtn" type="button">新建首个 PL</button></footer>
+</section>
+</div>
+<div class="toast" id="toast"></div>
+<aside aria-live="polite" class="external-backup-notice" data-modal-inert-exempt="" hidden="" id="externalBackupNotice" role="status">
+<div class="external-backup-notice-copy"><strong id="externalBackupNoticeTitle">外部备份已完成</strong><span id="externalBackupNoticeText">刚刚已写入备份。</span></div>
+<div class="external-backup-notice-actions"><button class="btn small" id="externalBackupVerifyBtn" type="button">查看备份文件</button><button aria-label="关闭备份提示" class="external-backup-notice-close" id="externalBackupNoticeCloseBtn" type="button">×</button></div>
+</aside>
+<div class="external-backup-browser-backdrop" hidden="" id="externalBackupBrowserBackdrop">
+<section aria-labelledby="externalBackupBrowserTitle" aria-modal="true" class="external-backup-browser-modal" role="dialog">
+<header class="external-backup-browser-head"><div><h3 id="externalBackupBrowserTitle">外部备份文件</h3><p>读取当前保存位置中的 JSON 备份文件。</p></div><button aria-label="关闭外部备份文件列表" class="icon-close" id="closeExternalBackupBrowserBtn" type="button">×</button></header>
+<div class="external-backup-browser-summary"><span><strong id="externalBackupBrowserLocation">正在读取保存位置…</strong><small id="externalBackupBrowserSummary">请稍候</small></span><div class="external-backup-browser-summary-actions"><button class="btn small" id="changeExternalBackupLocationFromBrowserBtn" type="button">更改保存位置</button><button class="btn small" id="refreshExternalBackupBrowserBtn" type="button">刷新列表</button></div></div>
+<div class="external-backup-file-list" id="externalBackupFileList"><div class="external-backup-browser-empty">正在读取备份文件…</div></div>
+</section>
+</div>
+<div class="undo-toast" data-modal-inert-exempt="" hidden="" id="undoToast"><span id="undoToastText"></span><button id="undoToastBtn" type="button">撤销</button></div>
 <script id="compatBootstrap">
 (function(){
   'use strict';
@@ -5705,7 +5554,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.9.3 · 作者：番茄
+/* PL收集梦想生活 v8.1.9.4 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5732,7 +5581,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.9.3";
+const APP_UI_VERSION = "8.1.9.4";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -25003,7 +24852,6 @@ queueMicrotask(()=>{void refreshStoragePressure(false);void renderLastHighRiskSn
 initV806SearchUX();
 
 </script>
-
 <script id="v8190-ux-refinement-script">
 (function(){
   var UX_VIEW_KEY="trpg_planner_view_mode_v8190";
@@ -25156,6 +25004,5 @@ initV806SearchUX();
   enhancePlanEditorNav();enhanceRecordEditorNav();
 })();
 </script>
-
 </body>
 </html>
