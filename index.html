@@ -3388,7 +3388,7 @@
     }
     .global-create-rail{font-weight:760!important}
 
-    /* 站内确认 / 输入面板，替代高频系统 confirm / prompt。 */
+    /* 站内确认 / 输入面板，用于替代系统 confirm / prompt。 */
     .action-dialog-backdrop{position:fixed;inset:0;z-index:1900;display:grid;place-items:center;padding:18px;background:var(--t-overlay);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
     .action-dialog-backdrop[hidden]{display:none!important}
     .action-dialog{width:min(470px,100%);max-height:calc(100dvh - 36px);overflow:auto;padding:16px;border:1px solid var(--t-line-strong);border-radius:18px;background:var(--t-surface);box-shadow:0 24px 70px rgba(0,0,0,.20)}
@@ -3489,7 +3489,7 @@
     }
 
 
-    /* v8.1.0 长期可靠性与高频操作统一 */
+    /* v8.1.0 保存可靠性与常用操作样式统一 */
     .editor-state-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}.editor-state-chip{display:inline-flex;align-items:center;min-height:25px;padding:4px 8px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface-2);color:var(--t-muted);font-size:9px;font-weight:760;letter-spacing:.01em}.editor-state-chip.dirty{background:var(--status-warning-bg);border-color:var(--status-warning-line);color:var(--t-warning)}.editor-state-chip.saved{background:var(--status-success-bg);border-color:var(--status-success-line);color:var(--t-success)}.editor-return-btn{min-height:28px;padding:4px 9px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface);color:var(--t-accent-strong);font-size:9px;font-weight:720}.editor-return-btn:hover{background:var(--t-accent-soft)}.settings-foot-status{display:flex;align-items:center;gap:8px;min-width:0}.settings-foot-status .settings-warning{min-width:0}.friendly-head-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}.version-runtime-details{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;padding:8px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);color:var(--t-muted);font-size:9px}.interaction-self-check-results{display:grid;gap:6px;margin-top:8px}.self-check-summary{padding:9px 10px;border-radius:10px;font-size:10px;font-weight:760}.self-check-summary.ok{background:var(--status-success-bg);color:var(--t-success);border:1px solid var(--status-success-line)}.self-check-summary.warn{background:var(--status-warning-bg);color:var(--t-warning);border:1px solid var(--status-warning-line)}.self-check-list{display:grid;gap:5px}.self-check-row{display:grid;grid-template-columns:22px minmax(0,1fr);gap:7px;align-items:start;padding:7px 8px;border-radius:9px;background:var(--t-surface-2);font-size:9px}.self-check-row>b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--t-surface);border:1px solid var(--t-line)}.self-check-row.error>b{background:var(--status-danger-bg);border-color:var(--status-danger-line);color:var(--t-danger)}.self-check-row.warn>b{background:var(--status-warning-bg);border-color:var(--status-warning-line);color:var(--t-warning)}.self-check-row.ok>b{background:var(--status-success-bg);border-color:var(--status-success-line);color:var(--t-success)}.self-check-row span{color:var(--t-muted);line-height:1.5}.undo-toast{position:fixed;left:50%;bottom:max(22px,calc(env(safe-area-inset-bottom) + 16px));z-index:var(--z-toast);transform:translateX(-50%);display:flex;align-items:center;gap:10px;max-width:min(92vw,620px);padding:9px 10px 9px 13px;border:1px solid var(--t-line-strong);border-radius:13px;background:color-mix(in srgb,var(--t-ink) 92%,var(--t-surface));color:var(--t-surface);box-shadow:0 14px 36px rgba(20,28,24,.22);font-size:10px}.undo-toast[hidden]{display:none!important}.undo-toast button{min-height:32px;padding:5px 10px;border:1px solid color-mix(in srgb,var(--t-surface) 28%,transparent);border-radius:9px;background:color-mix(in srgb,var(--t-surface) 14%,transparent);color:inherit;font-weight:800}.week-board.density-compact .week-slot,.week-board.density-compact .week-time-label{min-height:50px}.week-board.density-compact .week-slot{padding:3px}.week-board.density-compact .week-slot-events{gap:3px}.week-board.density-compact .calendar-event{padding:4px 18px 4px 6px;min-height:0}.week-board.density-compact .calendar-event-time{font-size:7px!important}.week-board.density-compact .calendar-event-name{font-size:8.5px;line-height:1.15}.week-board.density-comfortable .week-slot,.week-board.density-comfortable .week-time-label{min-height:64px}.profile-rail-btn.save:disabled{opacity:.42;filter:saturate(.55);cursor:default}.native-module-editor-foot .btn.primary:disabled{opacity:.48;cursor:default}
     @media(max-width:760px){.editor-state-line{margin-top:4px}.editor-state-chip,.editor-return-btn{font-size:9.5px;min-height:30px}.settings-foot-status{align-items:flex-start;flex-direction:column;gap:4px}.friendly-data-head{align-items:flex-start}.friendly-head-actions{width:100%;justify-content:flex-start}.version-runtime-details{display:grid;grid-template-columns:1fr}.undo-toast{bottom:calc(76px + env(safe-area-inset-bottom));font-size:10px}.week-board.density-compact .week-slot,.week-board.density-compact .week-time-label{min-height:48px}.week-board.density-comfortable .week-slot,.week-board.density-comfortable .week-time-label{min-height:58px}}
 
@@ -3598,7 +3598,7 @@
     .select-affordance-value{display:none;min-width:0}
     .profile-sort-affordance{position:relative}
 
-    /* ---------- 高频辅助字再提升一档；保持装饰性微字不被全局放大 ---------- */
+    /* ---------- 调整辅助文字字号；装饰性微字保持原尺寸 ---------- */
     .module-tab-count,.plan-row-meta,.native-module-runline,.native-module-row-stats,.record-view-person>span:last-child,.profile-meta,.compact-meta,.run-item,.run-mini-meta{font-size:9px!important}
     .ho-column-kicker,.ho-column-count small,.ho-status,.ho-entry-role,.ho-entry-character span,.ho-entry-meta{font-size:8.5px!important}
 
@@ -3697,27 +3697,27 @@
     /* v8.1.6.18 · 全端响应式修复：计划编辑抽屉改为自身宽度收敛，彻底消除人物/PC/HO 区域横向溢出，并复查电脑、平板、手机各主页面与编辑器。 */
     /* v8.1.6.17 · 开团计划身份配色：我做 KP 与我做 PL 的计划在列表、周历、月历中使用不同颜色，并提供文字标签。 */
     /* v8.1.6.16 · UC / 夸克兼容修复：移除会导致部分移动内核整段脚本停止的高风险语法/接口依赖，并增加兼容兜底与启动错误提示。 */
-    /* v8.1.6.15 · 全站搜索逻辑优化：模组、计划、记录、全局与设置搜索按各自场景做精准匹配与相关性排序，保留拼音首字母支持。 */
+    /* v8.1.6.15 · 全站搜索逻辑：模组、计划、记录、全局与设置搜索分别使用匹配与相关性排序，保留拼音首字母支持。 */
     /* v8.1.6.14 · PL 搜索相关性修复：完整姓名 / 完整拼音首字母命中时只显示目标 PL；普通搜索按“本人资料 → 关联跑团信息”排序，并移除同桌其他 PL 姓名造成的误匹配。 */
     /* v8.1.6.13 · 跑团记录结构与选择器升级：整行展开收起、操作按钮归一到右下角、模组操作文案明确化，并为 KP / PL / PC 选择加入搜索与拼音首字母匹配。 */
     /* v8.1.6.11 · 个人统计隐私范围修正：仅遮罩人物姓名等身份信息，统计数字、图表、模组名和控件保持可见。 */
-    /* v8.1.6.10 · 个人统计界面精简：移除冗余“统计口径”提示条，保留时间筛选与必要的局部说明；延续统计模块隐私雾面保护。 */
+    /* v8.1.6.10 · 个人统计界面：移除顶部“统计口径”提示条，保留时间筛选、局部说明与统计模块隐私雾面。 */
     /* v8.1.6.9 · 隐私遮罩补全：个人统计的总览、人物、模组、趋势与资料记录卡统一纳入雾面保护，并同步隐私切换时的统计重绘。 */
     /* v8.1.6.8 · 统计语义校正：可选字段从“完整度/缺失”改为中性的记录率表达，并统一 PC 名等可选信息的缺省文案。 */
-    /* v8.1.6.7 · 偏好与统计命名优化：主导航与页面标题统一改为“个人偏好”“个人统计”，保持双端风格一致。 */
+    /* v8.1.6.7 · 偏好与统计命名：主导航与页面标题统一改为“个人偏好”“个人统计”。 */
     /* v8.1.6.6 · 新增“我的跑团统计”：人物关系、模组排名、时间趋势、复跑分布、记录完整度与多视图切换；保持全离线计算。 */
-    /* v8.1.6.5 · 跑团记录搜索工具栏重排：将“全部展开 / 全部收起”移动到搜索框右侧，并完善手机窄屏布局。 */
+    /* v8.1.6.5 · 跑团记录搜索工具栏重排：将“全部展开 / 全部收起”移动到搜索框右侧，并调整手机窄屏布局。 */
     /* v8.1.6.4 · PL 搜索工具栏操作重排：将“全部折叠 / 全部展开”移动到搜索框右侧，并补做桌面与窄屏布局避让。 */
-    /* v8.1.6.3 · 主导航分组优化：将主视图切换整理为 3 组，扩大按钮字号与点击范围，并补做中等宽度下的排版避让。 */
+    /* v8.1.6.3 · 主导航分组：主视图切换整理为 3 组，调整按钮字号、点击范围与中等宽度下的排列。 */
     /* v8.1.6.2 · 全站按钮与双端交互审计：修复手机侧栏/PL 编辑器滚动按钮、跑团偏好图片导出，并完成字体图形冲突与响应式检查。 */
     /* v8.1.6.1 · PL 卡片批量折叠：新增“全部折叠 / 全部展开”，支持当前搜索结果并记忆折叠状态。 */
     /* v8.1.6.0 · 手机端全局稳定化：修复 PL 卡片头部挤压、窄屏控件溢出，并补回跑团偏好保存状态逻辑。 */
     /* v8.1.5.9 · 搜索体验统一：PL 添加改为单一可搜索下拉框，并为主要搜索框加入拼音首字母匹配。 */
-    /* v8.1.5.8 · 开团计划 PL 添加器优化：添加区前置、支持名字搜索，并将下拉名单改为 A～Z（拼音 / 英文）排序。 */
-    /* v8.1.5.7 · 开团计划编辑抽屉整体视觉精修：分区卡片层级、标题间距、状态标签、底部操作区与 HO 控件统一优化。 */
-    /* v8.1.5.6 · 开团计划编辑抽屉分区标题强化：标题字号增大，并加入主题色短划线，提升层级与区分度。 */
-    /* v8.1.5.5 · 开团计划人物下拉框视觉优化：圆角、主题化箭头、悬停与聚焦反馈。 */
-    /* v8.1.5.4 · 导航、评分直达与计划拖放可发现性优化。 */
+    /* v8.1.5.8 · 开团计划 PL 添加器：添加区前置、支持名字搜索，下拉名单按 A～Z（拼音 / 英文）排序。 */
+    /* v8.1.5.7 · 开团计划编辑抽屉：统一分区卡片层级、标题间距、状态标签、底部操作区与 HO 控件样式。 */
+    /* v8.1.5.6 · 开团计划编辑抽屉分区标题：增大标题字号并加入主题色短划线。 */
+    /* v8.1.5.5 · 开团计划人物下拉框：圆角、主题化箭头、悬停与聚焦状态。 */
+    /* v8.1.5.4 · 调整导航、评分入口与计划拖放提示。 */
     /* v8.1.5.3 · 全站图片导出统一：导出图沿用网页卡片视觉，不使用水果/emoji 装饰。 */
     /* v8.1.5.2 · 跑团整理视觉统一：PL / KP 使用同一套概览卡、折叠详情与响应式网格。 */
     .ho-organizer-board.pl-mode,.ho-organizer-board.kp-mode{
@@ -3856,7 +3856,7 @@
       .external-sync-banner>div:last-child{width:100%;display:grid!important;grid-template-columns:1fr 1fr;gap:6px}.external-sync-banner>div:last-child .primary{grid-column:1/-1}
     }
 
-    /* v8.1.2 · 移动端信息架构与长期使用优化 */
+    /* v8.1.2 · 移动端信息架构与响应式调整 */
     .planner-mobile-section-switch{display:none}
     .compact-score-more{flex:0 0 auto;min-height:30px;padding:4px 9px;border:1px dashed var(--t-line-strong);border-radius:999px;background:var(--t-surface-2);color:var(--t-accent-strong);font-size:9.5px;font-weight:750;cursor:pointer}
     .global-search-progress{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 11px;border-top:1px solid var(--t-line);color:var(--t-muted);font-size:9.5px}
@@ -4356,7 +4356,7 @@
       .stats-table td.num{white-space:nowrap!important;text-align:right}
     }
 
-    /* ---------- v8.1.9.9 · 个人偏好字段精简与补充 ---------- */
+    /* ---------- v8.1.9.9 · 个人偏好字段调整 ---------- */
     .settings-rating-panel{display:grid;gap:12px;min-width:0}
     .settings-rating-panel[hidden]{display:none!important}
     .settings-rating-panel>.settings-section{margin:0;min-width:0}
@@ -4412,7 +4412,7 @@
 </style>
 <style id="visual-unification-v81619">
 /* v8.1.6.19 · 全站视觉收口 1.0
-   目标：更少的框、更清楚的层级、更大的有效字号、更稳定的操作位置。 */
+   目标：调整卡片数量、层级、字号与操作位置。 */
 :root{
   --vu-space-1:4px;
   --vu-space-2:8px;
@@ -4584,7 +4584,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 }
 .card-collapse-btn,.compact-icon-btn{width:38px;height:38px;border-radius:10px}
 
-/* 18 · 侧栏继续保留高频入口，但默认更安静。 */
+/* 18 · 侧栏保留常用入口并降低默认视觉强调。 */
 .scroll-rail{opacity:.24!important;box-shadow:none!important}
 .scroll-rail:hover,.scroll-rail:focus-within{opacity:1!important;box-shadow:0 10px 28px var(--t-shadow)!important}
 
@@ -4892,7 +4892,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </style>
 
 <style id="self-intro-visual-v81100">
-/* v8.1.10.1 · 个人偏好界面文案精简。 */
+/* v8.1.10.2 · 全站界面说明文案客观化检查。 */
 .self-intro-grid{gap:14px}
 .intro-common-card{border-color:color-mix(in srgb,var(--t-line) 86%,transparent);overflow:hidden}
 .intro-common-card>summary{min-height:54px;background:linear-gradient(180deg,color-mix(in srgb,var(--t-surface-2) 54%,var(--t-surface)),var(--t-surface))}
@@ -5043,7 +5043,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </div>
 <div class="guide-item">
 <span class="guide-no">05</span>
-<div><strong>自动保存与备份</strong><span>数据自动保存在当前浏览器，并定期创建恢复点。请定期导出完整备份。</span></div>
+<div><strong>自动保存与备份</strong><span>数据自动保存在当前浏览器，并定期创建恢复点。完整备份可用于浏览器数据丢失后的恢复。</span></div>
 </div>
 <div class="guide-item">
 <span class="guide-no">06</span>
@@ -5079,7 +5079,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </div>
 </header>
 <section aria-live="polite" class="data-safety-banner" hidden="" id="dataSafetyBanner">
-<div class="data-safety-banner-main"><span class="data-safety-banner-icon">↧</span><div><strong id="dataSafetyBannerTitle">建议备份数据</strong><span id="dataSafetyBannerText"></span></div></div>
+<div class="data-safety-banner-main"><span class="data-safety-banner-icon">↧</span><div><strong id="dataSafetyBannerTitle">备份提醒</strong><span id="dataSafetyBannerText"></span></div></div>
 <div class="data-safety-banner-actions"><button class="btn small primary" id="dataSafetyBackupNowBtn" type="button">立即导出</button><button class="btn small" id="dataSafetyDismissBtn" type="button">稍后提醒</button></div>
 </section>
 <section aria-live="assertive" class="data-safety-banner data-protection-banner" hidden="" id="dataProtectionBanner" role="alert">
@@ -5205,7 +5205,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="view-toolbar modules-toolbar">
 <div class="view-toolbar-title">
 <strong>模组档案</strong>
-<span>管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。招募、Excel 与高级评分请使用“高级工具”。</span>
+<span>管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。评分体系、招募与 Excel 工具位于“高级工具”。</span>
 </div>
 <div class="view-toolbar-actions">
 <button class="btn primary" id="newNativeModuleBtn" type="button">＋ 新建模组</button>
@@ -5237,7 +5237,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="native-module-editor-backdrop" hidden="" id="nativeModuleEditorBackdrop">
 <section aria-labelledby="nativeModuleEditorTitle" aria-modal="true" class="native-module-editor" role="dialog">
 <header class="native-module-editor-head">
-<div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>编辑模组资料；完整评分与批量工具请使用“高级工具”。</span><div class="editor-state-line"><span class="editor-state-chip clean" id="moduleEditStatus">未修改</span></div></div>
+<div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>编辑模组资料；评分体系与批量工具位于“高级工具”。</span><div class="editor-state-line"><span class="editor-state-chip clean" id="moduleEditStatus">未修改</span></div></div>
 <button aria-label="关闭" class="icon-close" id="closeNativeModuleEditorBtn" type="button">×</button>
 </header>
 <div class="native-module-editor-body" id="nativeModuleEditorContent"></div>
@@ -5250,7 +5250,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="module-advanced-backdrop" hidden="" id="moduleAdvancedBackdrop">
 <section aria-labelledby="moduleAdvancedTitle" aria-modal="true" class="module-advanced-shell" role="dialog">
 <header class="module-advanced-head">
-<div><strong id="moduleAdvancedTitle">模组高级工具</strong><span>评分、招募、Excel 与完整模组编辑</span></div>
+<div><strong id="moduleAdvancedTitle">模组高级工具</strong><span>评分体系、招募、Excel 与模组编辑</span></div>
 <button aria-label="关闭" class="icon-close" id="closeModuleAdvancedBtn" type="button">×</button>
 </header>
 <iframe class="module-archive-frame" id="moduleArchiveFrame" loading="eager" title="模组高级工具"></iframe>
@@ -5350,19 +5350,19 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <span class="disclaimer-chevron">›</span>
 <span class="footer-title">说明与隐私提示</span>
 </span>
-<span class="footer-meta-inline">v8.1.10.1 · 2026-09-09 · 作者：番茄</span>
+<span class="footer-meta-inline">v8.1.10.2 · 2026-09-09 · 作者：番茄</span>
 </summary>
 <div class="disclaimer-body">
 <p>
-              评分、备注与排序仅代表个人记录，会受 KP 风格、模组类型、团员组合和样本数量等因素影响。
+              评分、备注与排序为个人记录；结果与 KP 风格、模组类型、团员组合和样本数量相关。
             </p>
 <p>
-              本工具仅用于个人整理、复盘与开团参考，不构成对玩家能力、人格或现实表现的客观评价，也不应作为公开排名或争议裁决依据。
+              本工具保存个人整理、复盘与开团记录。评分字段描述档案中的个人记录，不表示玩家人格或现实表现。
             </p>
 <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-<div class="footer-meta">版本：v8.1.10.1　·　更新时间：2026-09-09　·　作者：番茄</div>
+<div class="footer-meta">版本：v8.1.10.2　·　更新时间：2026-09-09　·　作者：番茄</div>
 </div>
 </details>
 </footer>
@@ -5418,8 +5418,8 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <button data-ho-export-detail="expanded" type="button">全部展开</button>
 </div>
 </div>
-<button data-ho-image-style="wide" type="button"><strong>宽幅 PNG</strong><span>横向整理当前结果，适合电脑或群聊</span></button>
-<button data-ho-image-style="long" type="button"><strong>长图 PNG</strong><span>纵向整理当前结果，适合手机查看</span></button>
+<button data-ho-image-style="wide" type="button"><strong>宽幅 PNG</strong><span>横向版 · 电脑 / 群聊</span></button>
+<button data-ho-image-style="long" type="button"><strong>长图 PNG</strong><span>纵向版 · 手机</span></button>
 </div>
 </div>
 <button class="btn small" id="copyHoOrganizerBtn" type="button">复制结果</button>
@@ -5605,7 +5605,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </div>
 </summary>
 <div class="settings-collapse-body">
-<div class="section-help">综合评分按字段分数与权重计算。建议以最近 3–5 次同类跑团为主要参考；自动身份倾向字段与 RP 长度资料不计入综合评分。</div>
+<div class="section-help">综合评分按字段分数与权重计算。评分样本范围可记录最近 3–5 次同类跑团；自动身份倾向字段与 RP 长度资料不计入综合评分。</div>
 <div class="setting-buttons">
 <button class="btn small" id="addFieldBtn" type="button">＋ 新增评分字段</button>
 <button class="btn small" id="equalizeBtn" type="button">平均分配权重</button>
@@ -5638,18 +5638,18 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </div>
 <section class="settings-section behavior-settings" data-settings-panel="behavior" hidden="">
 <h3 data-i18n="settings.display.title">显示设置</h3>
-<div class="section-help" data-i18n="settings.display.help">这些设置只影响界面显示与操作，不修改档案内容。</div>
+<div class="section-help" data-i18n="settings.display.help">这些设置作用于界面显示与操作；档案内容保持不变。</div>
 <div class="behavior-setting-list">
-<label class="locale-setting-row"><span><strong data-i18n="settings.language.label">界面语言</strong><small data-i18n="settings.language.help">只改变程序界面和系统文字，不翻译或修改已有档案内容。</small></span><select aria-label="界面语言" class="setting-input" id="interfaceLanguageSetting"><option data-i18n="settings.language.zhCN" value="zh-CN">简体中文</option><option data-i18n="settings.language.zhHantPending" disabled="" lang="zh-Hant" value="zh-Hant">繁體中文 · 詞庫準備中</option><option data-i18n="settings.language.enPending" disabled="" lang="en" value="en">English · translation pending</option><option data-i18n="settings.language.jaPending" disabled="" lang="ja" value="ja">日本語 · 翻訳準備中</option></select></label>
-<div class="locale-foundation-note"><strong data-i18n="settings.language.foundationTitle">国际化底层已启用</strong><span data-i18n="settings.language.foundationText">当前仅开放简体中文。</span></div>
-<label><span><strong>开团计划默认视图</strong><small>仅显示一种日历视图。</small></span><select class="setting-input" id="plannerDefaultViewSetting"><option value="week">周视图</option><option value="month">月视图</option></select></label>
+<label class="locale-setting-row"><span><strong data-i18n="settings.language.label">界面语言</strong><small data-i18n="settings.language.help">界面语言作用于程序界面和系统文字；已有档案内容保持原文。</small></span><select aria-label="界面语言" class="setting-input" id="interfaceLanguageSetting"><option data-i18n="settings.language.zhCN" value="zh-CN">简体中文</option><option data-i18n="settings.language.zhHantPending" disabled="" lang="zh-Hant" value="zh-Hant">繁體中文 · 詞庫準備中</option><option data-i18n="settings.language.enPending" disabled="" lang="en" value="en">English · translation pending</option><option data-i18n="settings.language.jaPending" disabled="" lang="ja" value="ja">日本語 · 翻訳準備中</option></select></label>
+<div class="locale-foundation-note"><strong data-i18n="settings.language.foundationTitle">国际化底层已启用</strong><span data-i18n="settings.language.foundationText">当前开放语言：简体中文。</span></div>
+<label><span><strong>开团计划默认视图</strong><small>日历显示所选视图。</small></span><select class="setting-input" id="plannerDefaultViewSetting"><option value="week">周视图</option><option value="month">月视图</option></select></label>
 <label><span><strong>计划周历密度</strong><small>同一时段达到 3–4 场时可自动压缩。</small></span><select class="setting-input" id="plannerDensitySetting"><option value="auto">自动</option><option value="comfortable">舒适</option><option value="compact">紧凑</option></select></label>
 <label><span><strong>跑团记录默认状态</strong><small>默认以查看模式展示，需要时单桌编辑。</small></span><select class="setting-input" id="recordDefaultModeSetting"><option value="view">查看模式</option><option value="edit">编辑模式</option></select></label>
-<label><span><strong data-i18n="settings.collapseDefault.label">折叠区默认状态</strong><small data-i18n="settings.collapseDefault.help">只决定从未手动操作过的折叠区；你亲自展开或收起后，会一直记住直到再次手动切换。</small></span><select class="setting-input" id="collapseDefaultSetting"><option data-i18n="settings.collapseDefault.closed" value="closed">默认收起</option><option data-i18n="settings.collapseDefault.open" value="open">默认展开</option></select></label>
+<label><span><strong data-i18n="settings.collapseDefault.label">折叠区默认状态</strong><small data-i18n="settings.collapseDefault.help">该设置作用于尚未手动操作的折叠区；手动展开或收起后会记录当前状态，直到再次切换。</small></span><select class="setting-input" id="collapseDefaultSetting"><option data-i18n="settings.collapseDefault.closed" value="closed">默认收起</option><option data-i18n="settings.collapseDefault.open" value="open">默认展开</option></select></label>
 </div>
 </section>
-<section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" data-collapse-key="settings:data:recovery"><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、自动备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
-<div class="friendly-data-head"><div><strong>完整备份</strong><span>普通备份便于恢复；加密备份适合长期保管。</span></div></div>
+<section class="settings-section data-safety-section" data-settings-panel="data"><div class="data-safety-heading"><div><h3>数据与备份</h3><div class="section-help">档案自动保存在当前浏览器。完整备份与加密备份均可用于数据恢复；加密备份恢复时需要密码。</div></div><span class="data-safety-overall-badge" id="dataSafetyOverallBadge">检查中</span></div><details class="data-safety-group recovery" data-collapse-key="settings:data:recovery"><summary><span class="data-safety-group-title"><strong>恢复与迁移</strong><small>备份、自动备份、导入、设备迁移与回收站</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
+<div class="friendly-data-head"><div><strong>完整备份</strong><span>普通备份为 JSON 文件；加密备份为加密 JSON 文件，恢复时需要密码。</span></div></div>
 <div class="backup-box unified-backup-box friendly-backup-grid">
 <button class="btn" id="exportBtn" type="button">↓ 导出完整备份</button>
 <button class="btn primary-soft" id="exportEncryptedBtn" type="button">↓ 导出加密备份</button>
@@ -5667,7 +5667,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <button class="btn small danger-soft" id="relayUpgradeBtn" type="button">迁移数据到新版 HTML</button>
 <button class="btn small" id="restoreUpgradeGuardBtn" type="button">恢复升级前数据</button>
 <input accept=".html,text/html" class="file-input" id="relayUpgradeFile" type="file"/>
-<p>文件可能包含个人资料，仅用于完整备份，请勿公开分享。</p>
+<p>文件可能包含个人资料。公开分享会同时暴露文件中的档案内容。</p>
 </div>
 </details>
 </section><section class="friendly-data-block external-backup-block">
@@ -5675,7 +5675,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="external-backup-grid">
 <label class="external-backup-toggle-row"><span><strong>启用定时备份</strong><small>页面或已安装的网页应用运行时自动执行；关闭期间错过的备份会在再次打开时补做最近一次。</small></span><input aria-label="启用浏览器外自动备份" id="externalBackupEnabledToggle" type="checkbox"/></label>
 <label class="external-backup-time-row"><span><strong>自动备份频率</strong><small>默认每 30 分钟。频率越高，外部“最新备份”越接近当前数据。</small></span><select aria-label="自动备份频率" id="externalBackupIntervalSelect"><option value="30">每 30 分钟</option><option value="60">每 1 小时</option><option value="120">每 2 小时</option><option value="360">每 6 小时</option><option value="720">每 12 小时</option><option value="1440">每 24 小时</option></select></label>
-<label class="external-backup-time-row" hidden="" id="externalBackupMobileDeliveryRow"><span><strong>手机保存方式</strong><small>默认保存到浏览器下载目录。</small></span><select aria-label="手机自动备份保存方式" id="externalBackupMobileDeliverySelect"><option value="auto">自动尝试下载（推荐）</option><option value="prompt">到期提醒后再下载</option></select></label>
+<label class="external-backup-time-row" hidden="" id="externalBackupMobileDeliveryRow"><span><strong>手机保存方式</strong><small>默认保存到浏览器下载目录。</small></span><select aria-label="手机自动备份保存方式" id="externalBackupMobileDeliverySelect"><option value="auto">自动尝试下载（默认）</option><option value="prompt">到期提醒后再下载</option></select></label>
 </div>
 <div class="external-backup-location"><span><strong>保存位置</strong><small id="externalBackupLocationText">尚未设置浏览器外备份方式</small></span><div class="external-backup-location-actions"><button class="btn small" id="chooseExternalBackupFolderBtn" type="button">选择保存文件夹</button><button class="btn small" hidden="" id="viewExternalBackupFilesBtn" type="button">查看备份文件</button><button class="btn small" hidden="" id="reauthorizeExternalBackupBtn" type="button">重新授权</button><button class="btn small" id="externalBackupNowBtn" type="button">立即备份测试</button></div></div>
 <div class="external-backup-status" id="externalBackupStatusNote">桌面端可固定保存位置；手机端使用浏览器下载目录。</div>
@@ -5701,8 +5701,8 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <article class="data-health-card"><span class="data-health-label">档案完整性</span><strong id="dataIntegrityHealthValue">待检查</strong><span id="dataIntegrityHealthSub">检查关联、重复与冲突</span></article>
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
-<article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.10.1</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">尚未记录完整备份</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.10.2</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5725,10 +5725,10 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.10.1 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.10.1</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.10.2 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.10.2</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-history-list" id="releaseNotesBox"><div class="version-log-header"><span>版本</span><span>更新内容</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.1</strong><span class="version-log-copy">精简个人偏好页说明文案，改为直接描述偏好内容与填写用途。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.0</strong><span class="version-log-copy">重构个人偏好页视觉结构：常用信息按阅读顺序重排；PL / KP 双栏统一为“模组偏好—游玩 / 带团方式—内容接受度—协作与补充—模组意向”五级结构；减少框套框与虚线分隔，优化偏好刻度、边界卡片和移动端层级。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.9</strong><span class="version-log-copy">个人偏好新增模组长度与 NPC 死亡态度；移除模组偏好中的“当代”“都市”“追逐”；PL 侧新增与 KP 侧同结构的内容接受度，并同步保存、搜索与图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.8</strong><span class="version-log-copy">合并 PL 评分与模组评分为统一“评分设置”；精修个人统计排名表与趋势表的表头、数字、列宽和移动端对齐。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.7</strong><span class="version-log-copy">新增“樱雾”“鸢尾”主题，并将六套主题同步到主页面与模组高级工具。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.6</strong><span class="version-log-copy">精简中文语言显示名称，界面统一使用“简体中文”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.5</strong><span class="version-log-copy">校正国际化语言与地区语义：繁體中文改用通用 zh-Hant 规划，修正中文地区回退、区域格式化和语言状态显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.4</strong><span class="version-log-copy">统一全站版本记录的内容结构、信息层级、字号与缩进，历史版本全部采用同一列表格式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.3</strong><span class="version-log-copy">周期排期改为单页工作台，排期记录并入同一窗口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.2</strong><span class="version-log-copy">精简全站说明文案，统一为简洁、直接的功能说明。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.1</strong><span class="version-log-copy">一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.0</strong><span class="version-log-copy">全站体验与视觉层级整理：统一按钮风险/主次层级与选中状态；周历卡片重排信息层级并强化容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.7</strong><span class="version-log-copy">新增一键按周期排期与排期记录。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.6</strong><span class="version-log-copy">个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.5</strong><span class="version-log-copy">历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.4</strong><span class="version-log-copy">偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.3</strong><span class="version-log-copy">交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.2</strong><span class="version-log-copy">高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.1</strong><span class="version-log-copy">新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.0</strong><span class="version-log-copy">统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.9</strong><span class="version-log-copy">开团计划编辑器调整底部操作层级：“完成”改为明确的“保存”，并作为右侧唯一主操作；“归档”移至左侧与“删除计划”并列，使用次级样式并保留归档确认与重复归档防呆，降低保存与归档相邻造成的误触风险。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.8</strong><span class="version-log-copy">修复外部自动备份完成提示在模态弹窗同时出现时“看得见却点不到关闭键”的交互层级问题，并强化提示条与按钮的触控事件等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.7</strong><span class="version-log-copy">个人偏好页“参考来源”说明补充 @江鸿、@削面，并将来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，确保页面初始显示和重新渲染后的文案一致，其余功能与数据结构不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.6</strong><span class="version-log-copy">跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.5</strong><span class="version-log-copy">全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.4</strong><span class="version-log-copy">交互与移动端可靠性优化：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理一致的折叠区等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.3</strong><span class="version-log-copy">个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.2</strong><span class="version-log-copy">PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.1</strong><span class="version-log-copy">完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.0</strong><span class="version-log-copy">建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.42</strong><span class="version-log-copy">手机浏览器外备份改为下载目录优先：移动端默认不再尝试可能无响应的文件夹选择器，而是按频率自动尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截无点击自动下载，提示中提供“重新下载”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.41</strong><span class="version-log-copy">个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.40</strong><span class="version-log-copy">个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.39</strong><span class="version-log-copy">进一步完善手机端导出预览拖动：移动端抓手扩大为更易触控的横向拖动条，并在预览层禁用系统长按菜单、文本选择和原生图片拖拽等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.38</strong><span class="version-log-copy">修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.37</strong><span class="version-log-copy">重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.36</strong><span class="version-log-copy">修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.35</strong><span class="version-log-copy">浏览器外自动备份升级为可配置频率，默认每 30 分钟；每次成功写入后显示非阻塞备份提示，并可核验“最新备份”文件的存在、大小、更新时间与完整性等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.34</strong><span class="version-log-copy">个人偏好导出预览支持直接拖动模块排序；左侧上下按钮继续保留作为键盘、旧浏览器和精细调整的备用操作。半栏布局改为自动填充较短列的紧凑双栏排版，消除不同高度模块之间的大块空白。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.33</strong><span class="version-log-copy">优化个人偏好导出中的 PL / KP 偏好尺：五档轨道改为居中紧凑宽度并缩短行高，保留项目名、当前值和两端语义，减少信息量较少时的横向空耗，让双栏导出更紧凑清晰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.32</strong><span class="version-log-copy">定位并修复“GitHub Pages 已更新但浏览器仍运行旧程序”的更新链路问题：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，发现页面版本落后时明确提示安全刷新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.31</strong><span class="version-log-copy">修复个人偏好导出中心“已勾选区域却不出现在预览/导出图”的问题：明确勾选现在始终保留整个区域，区域内部空白字段仍自动省略；空的想跑模组 / 可带模组会显示清晰空状态，不再整块消失。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.30</strong><span class="version-log-copy">个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.29</strong><span class="version-log-copy">重新整理“数据与备份”的信息结构：浏览器外自动备份移动到“恢复与迁移”分组内，并放在完整备份之后、设备迁移之前；“日常保护”继续聚焦自动保存、恢复点、冗余副本与存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.28</strong><span class="version-log-copy">个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.27</strong><span class="version-log-copy">个人偏好前半部分改为更紧凑的“常用信息”布局等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.26</strong><span class="version-log-copy">调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.25</strong><span class="version-log-copy">加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.24</strong><span class="version-log-copy">数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.23</strong><span class="version-log-copy">“想跑模组 / 可带模组”支持单独导出图片，并且可在每个模组下写备注；导出内容会带上对应备注，方便单独分享或留档。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.22</strong><span class="version-log-copy">继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.21</strong><span class="version-log-copy">统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.20</strong><span class="version-log-copy">个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.19</strong><span class="version-log-copy">全站视觉收口 1.0：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.18</strong><span class="version-log-copy">全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.17</strong><span class="version-log-copy">开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.16</strong><span class="version-log-copy">修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.15</strong><span class="version-log-copy">统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.14</strong><span class="version-log-copy">修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.13</strong><span class="version-log-copy">重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.11</strong><span class="version-log-copy">修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.10</strong><span class="version-log-copy">精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.9</strong><span class="version-log-copy">补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.8</strong><span class="version-log-copy">校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.7</strong><span class="version-log-copy">统一“偏好 / 统计”命名：将主导航与对应页面标题调整为“个人偏好”“个人统计”，让第三组导航含义更完整，也与现有个人信息语境更一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.6</strong><span class="version-log-copy">新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.5</strong><span class="version-log-copy">调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.4</strong><span class="version-log-copy">调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.3</strong><span class="version-log-copy">重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.2</strong><span class="version-log-copy">完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.1</strong><span class="version-log-copy">PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.0</strong><span class="version-log-copy">全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.9</strong><span class="version-log-copy">统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.8</strong><span class="version-log-copy">优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.7</strong><span class="version-log-copy">继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.6</strong><span class="version-log-copy">强化开团计划编辑抽屉中的分区标题：放大“基本信息”“KP / KPC”“PL / PC”等标题字号，并加入主题色短划线装饰，让层级更清晰、观感更精致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.5</strong><span class="version-log-copy">优化开团计划中的人物下拉框：统一圆角与主题配色，替换浏览器原生黑色箭头，增加轻量悬停、聚焦反馈，并保持手机端触控尺寸。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.4</strong><span class="version-log-copy">调整主导航顺序，将“跑团偏好”移至最后；PL 评分改为打开即可直接操作、未操作保持“无”，并保留一键设为无；开团计划增强拖放入口与日历落点提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.3</strong><span class="version-log-copy">统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.2</strong><span class="version-log-copy">统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.1</strong><span class="version-log-copy">跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5</strong><span class="version-log-copy">隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.15</strong><span class="version-log-copy">常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.14</strong><span class="version-log-copy">重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.13</strong><span class="version-log-copy">“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.12</strong><span class="version-log-copy">自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；多选选中态加强，并新增双栏图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.11</strong><span class="version-log-copy">新增“自我介绍”：整理通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.10</strong><span class="version-log-copy">新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.9</strong><span class="version-log-copy">KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.8</strong><span class="version-log-copy">统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.7</strong><span class="version-log-copy">新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.6</strong><span class="version-log-copy">修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.5</strong><span class="version-log-copy">修复设置页版本区适配；新增每次启动自动检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.4</strong><span class="version-log-copy">新增 PL 黑名单、状态历史与排团风险提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.3</strong><span class="version-log-copy">新增跑团记录退回计划、同名模组合并与关联治理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.2</strong><span class="version-log-copy">强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.1</strong><span class="version-log-copy">统一企业级 UX 文案与术语。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4</strong><span class="version-log-copy">增强多标签页并发保存，避免竞态覆盖；保持 v18 数据结构兼容。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.3</strong><span class="version-log-copy">增强保存冲突、恢复点、回收站与大档案保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.2</strong><span class="version-log-copy">优化移动端计划、跑团记录、搜索与数据管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.1</strong><span class="version-log-copy">增强分享模式、草稿保存、撤销与离线缓存安全。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.0</strong><span class="version-log-copy">新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span></div></div></details>
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-history-list" id="releaseNotesBox"><div class="version-log-header"><span>版本</span><span>更新内容</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.2</strong><span class="version-log-copy">全站界面说明文案按功能、状态、范围、操作结果和风险信息重新检查；个人偏好、设置、备份提示、导出说明、历史版本记录及动态提示中的主观评价性表述改为客观描述。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.1</strong><span class="version-log-copy">个人偏好页说明文案改为字段内容与填写用途描述。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.0</strong><span class="version-log-copy">个人偏好页结构调整：常用信息按阅读顺序重排；PL / KP 双栏采用“模组偏好—游玩 / 带团方式—内容接受度—协作与补充—模组意向”结构；调整分隔、偏好刻度、边界卡片和移动端排列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.9</strong><span class="version-log-copy">个人偏好新增模组长度与 NPC 死亡态度；移除模组偏好中的“当代”“都市”“追逐”；PL 侧新增与 KP 侧同结构的内容接受度，并同步保存、搜索与图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.8</strong><span class="version-log-copy">PL 评分与模组评分合并到“评分设置”；调整个人统计排名表与趋势表的表头、数字、列宽和移动端对齐。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.7</strong><span class="version-log-copy">新增“樱雾”“鸢尾”主题，并将六套主题同步到主页面与模组高级工具。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.6</strong><span class="version-log-copy">中文语言显示名称统一为“简体中文”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.5</strong><span class="version-log-copy">校正国际化语言与地区语义：繁體中文改用通用 zh-Hant 规划，修正中文地区回退、区域格式化和语言状态显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.4</strong><span class="version-log-copy">统一全站版本记录的内容结构、信息层级、字号与缩进，历史版本全部采用同一列表格式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.3</strong><span class="version-log-copy">周期排期改为单页工作台，排期记录并入同一窗口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.2</strong><span class="version-log-copy">全站说明文案改为功能、状态与操作说明。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.1</strong><span class="version-log-copy">一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.0</strong><span class="version-log-copy">调整全站视觉层级：统一按钮风险/主次层级与选中状态；周历卡片调整信息顺序并增加容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.7</strong><span class="version-log-copy">新增一键按周期排期与排期记录。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.6</strong><span class="version-log-copy">个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.5</strong><span class="version-log-copy">历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.4</strong><span class="version-log-copy">个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”分别使用红、黄、浅绿、绿底提示，选择后即时更新。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.3</strong><span class="version-log-copy">调整模态弹层与关闭逻辑：修复嵌套弹窗残留 inert 导致按钮无法点击的问题；外部备份、跑团整理与设备迁移移除重复关闭按钮。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.2</strong><span class="version-log-copy">高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.1</strong><span class="version-log-copy">新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.0</strong><span class="version-log-copy">统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.9</strong><span class="version-log-copy">开团计划编辑器底部操作调整：“完成”改为“保存”并位于右侧；“归档”移至左侧与“删除计划”并列，保留归档确认与重复归档检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.8</strong><span class="version-log-copy">修复外部自动备份提示与模态弹窗同时出现时关闭按钮无法点击的问题，并调整提示条与按钮的触控事件。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.7</strong><span class="version-log-copy">个人偏好页“参考来源”说明补充 @江鸿、@削面，来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，页面初始显示和重新渲染使用相同文案，数据结构保持不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.6</strong><span class="version-log-copy">跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.5</strong><span class="version-log-copy">全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.4</strong><span class="version-log-copy">调整移动端交互：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理相同的折叠结构。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.3</strong><span class="version-log-copy">个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.2</strong><span class="version-log-copy">PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.1</strong><span class="version-log-copy">完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.0</strong><span class="version-log-copy">建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.42</strong><span class="version-log-copy">手机浏览器外备份改为下载目录模式：移动端按设定频率尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截自动下载，提示中提供“重新下载”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.41</strong><span class="version-log-copy">个人偏好重新分区：KP 偏好分为带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理；头像、具体聊天渠道、群聊/私聊字段未纳入该页，异常处理内容放入折叠区。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.40</strong><span class="version-log-copy">个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.39</strong><span class="version-log-copy">调整手机端导出预览拖动：增大横向拖动条尺寸，并在预览层关闭系统长按菜单、文本选择和原生图片拖拽。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.38</strong><span class="version-log-copy">修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.37</strong><span class="version-log-copy">“查看备份”流程调整：桌面端直接读取已授权保存位置中的 JSON 备份文件并在网页内列出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.36</strong><span class="version-log-copy">修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.35</strong><span class="version-log-copy">浏览器外自动备份支持配置频率，默认每 30 分钟；每次成功写入后显示备份提示，并核验“最新备份”文件的存在、大小、更新时间与完整性。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.34</strong><span class="version-log-copy">个人偏好导出预览支持拖动模块排序；左侧上下按钮保留键盘与旧浏览器操作。半栏布局按两列剩余高度自动放置模块。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.33</strong><span class="version-log-copy">调整个人偏好导出的 PL / KP 偏好尺：五档轨道居中并缩短行高，保留项目名、当前值和两端语义。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.32</strong><span class="version-log-copy">修复 GitHub Pages 更新后浏览器继续运行旧程序的更新链路：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，检测到页面版本落后时提示刷新程序文件。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.31</strong><span class="version-log-copy">修复个人偏好导出中心勾选区域未进入预览或导出图的问题：勾选区域会保留，区域内部空白字段自动省略；空的想跑模组 / 可带模组显示空状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.30</strong><span class="version-log-copy">个人偏好导出中心改为可视化编排：修复调整顺序时弹层自动关闭；移除三套导出样式、姓名与区域说明选项，导出宽度统一为 1080 px。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.29</strong><span class="version-log-copy">“数据与备份”的信息结构调整：浏览器外自动备份移动到“恢复与迁移”分组内，位于完整备份之后、设备迁移之前；“日常保护”包含自动保存、恢复点、冗余副本与存储保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.28</strong><span class="version-log-copy">个人偏好导出改为统一入口，可选择导出区域、组合、顺序、快捷预设及完整 / 紧凑 / 分享三种样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.27</strong><span class="version-log-copy">个人偏好前半部分调整为“常用信息”布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.26</strong><span class="version-log-copy">调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.25</strong><span class="version-log-copy">每次成功保存会额外写入 IndexedDB 独立冗余副本，用于浏览器存储异常后的恢复。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.24</strong><span class="version-log-copy">自动恢复点新增创建间隔与保留数量设置，并增加浏览器持久化存储状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.23</strong><span class="version-log-copy">“想跑模组 / 可带模组”支持单独导出图片和模组备注；导出内容包含对应备注。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.22</strong><span class="version-log-copy">弹窗右上角关闭按钮与底部操作区采用统一尺寸、圆角和间距；“展开全部 / 收起全部”改为双态按钮；图片导出按钮统一图标、尺寸与下拉箭头。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.21</strong><span class="version-log-copy">“导出图片”按钮采用统一样式；跑团整理弹窗中 PL / KP 视图使用相同的操作顺序与对齐规则。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.20</strong><span class="version-log-copy">个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.19</strong><span class="version-log-copy">统一全站字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.18</strong><span class="version-log-copy">修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按自身宽度调整，PL / PC / HO、人物搜索、模组选择和底部操作区取消横向滚动。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.17</strong><span class="version-log-copy">开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览使用 KP 暖棕 / PL 蓝绿色，并同时显示文字身份标签。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.16</strong><span class="version-log-copy">修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.15</strong><span class="version-log-copy">调整全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序；开团计划、跑团记录、全局搜索与设置搜索使用各自的相关性排序规则。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.14</strong><span class="version-log-copy">修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.13</strong><span class="version-log-copy">重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.11</strong><span class="version-log-copy">修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.10</strong><span class="version-log-copy">个人统计页面移除顶部“统计口径”说明条，保留时间范围筛选、统计模块说明和隐私雾面遮罩。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.9</strong><span class="version-log-copy">补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.8</strong><span class="version-log-copy">校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.7</strong><span class="version-log-copy">主导航与对应页面标题中的“偏好 / 统计”调整为“个人偏好”“个人统计”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.6</strong><span class="version-log-copy">新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.5</strong><span class="version-log-copy">调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端搜索与批量操作同排，手机端使用窄屏布局并允许结果计数换行。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.4</strong><span class="version-log-copy">PL 档案的“全部折叠 / 全部展开”移到搜索框右侧；调整桌面、平板和窄屏下的搜索、批量操作、排序与视图切换布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.3</strong><span class="version-log-copy">重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.2</strong><span class="version-log-copy">完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.1</strong><span class="version-log-copy">PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.0</strong><span class="version-log-copy">修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，并调整姓名、RP 长度、KP / PL 度与评分区的窄屏排列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.9</strong><span class="version-log-copy">统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.8</strong><span class="version-log-copy">开团计划的“添加已有 PL”移动到已添加列表上方，支持 PL 名称搜索，下拉名单按 A～Z（拼音 / 英文）排序。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.7</strong><span class="version-log-copy">调整开团计划编辑抽屉的分区卡片、标题与说明间距、状态标签、HO 选择和底部操作区样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.6</strong><span class="version-log-copy">开团计划编辑抽屉增大“基本信息”“KP / KPC”“PL / PC”等分区标题字号，并加入主题色短划线。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.5</strong><span class="version-log-copy">开团计划人物下拉框统一圆角与主题配色，替换浏览器原生箭头，并增加悬停、聚焦状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.4</strong><span class="version-log-copy">调整主导航顺序；PL 评分打开后可直接操作，未操作状态为“无”；开团计划增加拖放入口与日历落点提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.3</strong><span class="version-log-copy">跑团整理与跑团偏好图片导出使用统一卡片结构、标题层级、留白与配色；移除番茄/水果式装饰图形。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.2</strong><span class="version-log-copy">统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组默认显示概览，详情可展开。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.1</strong><span class="version-log-copy">跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5</strong><span class="version-log-copy">隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.15</strong><span class="version-log-copy">常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈联系方式调整为企鹅。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.14</strong><span class="version-log-copy">跑团偏好双栏中想跑团 / 可带团固定在各栏末尾；分组标题使用统一层级；导出图片显示偏好刻度左右尺度与五段位置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.13</strong><span class="version-log-copy">“自我介绍”调整为“跑团偏好”；PL / KP 模组偏好说明同步调整；拖动滑杆改为五段点击刻度，并保留现代、当代等时代选项。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.12</strong><span class="version-log-copy">自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；调整多选选中态，并新增双栏图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.11</strong><span class="version-log-copy">新增“自我介绍”：包含通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.10</strong><span class="version-log-copy">新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.9</strong><span class="version-log-copy">KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.8</strong><span class="version-log-copy">PL / KP 跑团整理使用响应式卡片布局；修复中小屏内容重叠与横向 HO 看板问题。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.7</strong><span class="version-log-copy">新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.6</strong><span class="version-log-copy">修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.5</strong><span class="version-log-copy">修复设置页版本区适配；新增每次启动自动检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.4</strong><span class="version-log-copy">新增 PL 黑名单、状态历史与排团风险提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.3</strong><span class="version-log-copy">新增跑团记录退回计划、同名模组合并与关联治理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.2</strong><span class="version-log-copy">模组使用唯一编号关联；支持同一时段排序和拖出日历取消安排。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.1</strong><span class="version-log-copy">统一界面文案与术语。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4</strong><span class="version-log-copy">多标签页并发保存加入冲突处理；数据结构保持 v18 兼容。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.3</strong><span class="version-log-copy">新增保存冲突处理、恢复点、回收站与大档案处理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.2</strong><span class="version-log-copy">调整移动端计划、跑团记录、搜索与数据管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.1</strong><span class="version-log-copy">新增分享模式、草稿保存、撤销与离线缓存相关处理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.0</strong><span class="version-log-copy">新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span></div></div></details>
 </section></div></details><details class="data-safety-group advanced" data-collapse-key="settings:data:advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。严重编号冲突会自动进入保护模式。</span></div><div class="friendly-head-actions"><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button><button class="btn small primary-soft" id="safeAutoRepairBtn" type="button">安全修复轻微问题</button></div></div>
 <div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
@@ -5739,7 +5739,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 </section><details class="friend-safety-notes" data-collapse-key="settings:data:safety-notes">
 <summary>免责与注意事项</summary>
 <div>
-<p>评分、备注与排序仅代表个人记录，用于整理、复盘和开团参考。</p>
+<p>评分、备注与排序为个人记录，用于整理、复盘和开团安排。</p>
 <p>清理浏览器数据、更换设备或浏览器故障可能导致数据丢失，请定期导出完整备份。</p>
 <p>备份和截图可能包含个人资料，请妥善保管；对外分享时请使用空白程序。</p>
 </div>
@@ -5867,7 +5867,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.10.1 · 作者：番茄
+/* PL收集梦想生活 v8.1.10.2 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5894,7 +5894,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.10.1";
+const APP_UI_VERSION = "8.1.10.2";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -5936,11 +5936,11 @@ const I18N_MESSAGES = {
         "settings.nav.rating": "评分设置",
         "settings.nav.display": "显示设置",
         "settings.display.title": "显示设置",
-        "settings.display.help": "这些设置只影响界面显示与操作，不修改档案内容。",
+        "settings.display.help": "这些设置作用于界面显示与操作；档案内容保持不变。",
         "settings.language.label": "界面语言",
-        "settings.language.help": "只改变程序界面和系统文字，不翻译或修改已有档案内容。",
+        "settings.language.help": "界面语言作用于程序界面和系统文字；已有档案内容保持原文。",
         "settings.language.foundationTitle": "国际化底层已启用",
-        "settings.language.foundationText": "当前仅开放简体中文。",
+        "settings.language.foundationText": "当前开放语言：简体中文。",
         "settings.language.zhCN": "简体中文",
         "settings.language.zhHantPending": "繁體中文 · 詞庫準備中",
         "settings.language.enPending": "English · translation pending",
@@ -5958,7 +5958,7 @@ const I18N_MESSAGES = {
         "settings.theme.iris.name": "鸢尾",
         "settings.theme.iris.desc": "灰紫 · 薰衣草 · 安静",
         "settings.collapseDefault.label": "折叠区默认状态",
-        "settings.collapseDefault.help": "只决定从未手动操作过的折叠区；你亲自展开或收起后，会一直记住直到再次手动切换。",
+        "settings.collapseDefault.help": "该设置作用于尚未手动操作的折叠区；手动展开或收起后会记录当前状态，直到再次切换。",
         "settings.collapseDefault.closed": "默认收起",
         "settings.collapseDefault.open": "默认展开",
         "settings.search.placeholder": "搜索设置名称或功能，例如：主题、备份、展开……（支持拼音首字母）",
@@ -5984,7 +5984,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.0151e96520cc": "背景简介",
     "legacy.exact.01765b4403b2": "常规短RP通常≤30秒，且仍能给出完整有效回应",
     "legacy.exact.018924a1cc65": "收起当前全部分组",
-    "legacy.exact.018c459e2dd5": "普通备份便于恢复；加密备份适合长期保管。",
+    "legacy.exact.018c459e2dd5": "普通备份为 JSON 文件；加密备份为加密 JSON 文件，恢复时需要密码。",
     "legacy.exact.0192200b9463": "删除开团计划？",
     "legacy.exact.0196c33179d1": "修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底，并下调主脚本语法目标，避免旧内核在初始化阶段直接停止执行。",
     "legacy.exact.01a36ac45af1": "选择",
@@ -6091,7 +6091,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.0cd2ff01f82d": "切换排序方向",
     "legacy.exact.0ce39c3690bb": "汇总我已经归档的跑团记录，查看和谁跑得最多、跑过和带过哪些模组、跑团趋势和历史记录填写情况。",
     "legacy.exact.0cefa3867661": "手机备份保存位置",
-    "legacy.exact.0d01f5489f77": "建议备份数据",
+    "legacy.exact.0d01f5489f77": "备份提醒",
     "legacy.exact.0d10bf01ea5a": "模组资料有未保存修改，确定放弃吗？",
     "legacy.exact.0d491af46421": "填写了实际时长的记录",
     "legacy.exact.0d59ff5532d2": "按每桌记录中的 KP / PL 身份统计；同一桌同时满足两种身份时，两边都会计入。",
@@ -6104,9 +6104,9 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.0e4664b99d99": "间隔2周以上仍能保持关键线索与时间顺序，能主动接续此前计划",
     "legacy.exact.0e4a6970bd0c": "暂无可整理的 PL 参团记录",
     "legacy.exact.0e58c7b29a01": "保存位置已重新授权",
-    "legacy.exact.0e60bfad645f": "强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。",
+    "legacy.exact.0e60bfad645f": "模组使用唯一编号关联；支持同一时段排序和拖出日历取消安排。",
     "legacy.exact.0e92a05e5a0a": "请先关联模组",
-    "legacy.exact.0ea7231b4fd0": "按每位 PL 跟我跑过的桌数分组，方便查看一次参团和多次参团的比例。",
+    "legacy.exact.0ea7231b4fd0": "按每位 PL 跟我跑过的桌数分组，显示一次参团和多次参团的比例。",
     "legacy.exact.0f16792e35e7": "本人",
     "legacy.exact.0f3927e55e6f": "现实灵感",
     "legacy.exact.0f49ef54366e": "存在多个同名模组，请从列表中选择正确档案。",
@@ -6147,7 +6147,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.1305a6fb5c43": "个人偏好_自定义组合",
     "legacy.exact.13074db2ce9d": "哦",
     "legacy.exact.132f45165c3e": "作为 KP 时的带团方式、团内互动、内容边界、桌务与售后偏好。",
-    "legacy.exact.135f5aa07d37": "这些设置只影响界面显示与操作，不修改档案内容。",
+    "legacy.exact.135f5aa07d37": "这些设置作用于界面显示与操作；档案内容保持不变。",
     "legacy.exact.13871cfc5e00": "均可",
     "legacy.exact.13913ce6afc2": "只统计我作为 PL 的记录",
     "legacy.exact.13b1cfefa3a1": "通过迁移包在设备间转移档案，无需账号或云同步。",
@@ -6201,7 +6201,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.181d843851d0": "计划编辑器无法打开",
     "legacy.exact.181f5b65b963": "保留本页并覆盖",
     "legacy.exact.1823a53f54f3": "关键词：",
-    "legacy.exact.18302c5a19d6": "数据自动保存在当前浏览器，并定期创建恢复点。请定期导出完整备份。",
+    "legacy.exact.18302c5a19d6": "数据自动保存在当前浏览器，并定期创建恢复点。完整备份可用于浏览器数据丢失后的恢复。",
     "legacy.exact.183baa7830f7": "设备迁移",
     "legacy.exact.185132323ee8": "删除已取消",
     "legacy.exact.18587fd10e7a": "交流持续倾向",
@@ -6216,7 +6216,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.194f04cb24c6": "恢复点数据库暂不可用",
     "legacy.exact.1965deb2db05": "恢复后的主档案写入失败",
     "legacy.exact.1966cfb25dbb": "全部性质",
-    "legacy.exact.1980e0e7f7fb": "统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。",
+    "legacy.exact.1980e0e7f7fb": "统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组默认显示概览，详情可展开。",
     "legacy.exact.198e48a79616": "启用浏览器外自动备份",
     "legacy.exact.19b6254978a7": "暂无日期",
     "legacy.exact.19b770e6866e": "无法安全退回",
@@ -6285,7 +6285,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.20e60e3a391e": "删除自定义字段？",
     "legacy.exact.21129f53cf9b": "KP · 带团侧",
     "legacy.exact.2119636cd8a5": "全部 HO 设置",
-    "legacy.exact.2119d326e1f3": "全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条；同步收敛模组、计划、记录、偏好与编辑器的窄屏宽度，并补回跑团偏好保存状态逻辑。",
+    "legacy.exact.2119d326e1f3": "修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行；模组、计划、记录、偏好与编辑器的窄屏宽度同步调整，并补回跑团偏好保存状态逻辑。",
     "legacy.exact.2131b743b090": "KP 模外交流",
     "legacy.exact.2174386833d5": "当前手机浏览器没有向网页开放“固定文件夹长期写入”权限，所以网页无法读取浏览器下载目录里的实际文件列表。\n\n请到浏览器的“下载/我的下载”记录或手机系统“下载”目录确认。具体保存位置由浏览器自身的下载设置决定。",
     "legacy.exact.217be869e325": "作为 PL",
@@ -6293,7 +6293,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.219040c6d089": "至少保留一套评分体系",
     "legacy.exact.21b0caf54fd0": "当前数据无法创建恢复点。系统将直接执行安全修复",
     "legacy.exact.21d67470c01d": "小时",
-    "legacy.exact.2202fbc50902": "保留主档内容（推荐）",
+    "legacy.exact.2202fbc50902": "保留主档内容（默认）",
     "legacy.exact.221f0b4a68e3": "更多工具",
     "legacy.exact.2236ac80bacd": "HTML 备份内容过大",
     "legacy.exact.223c4853084a": "恢复",
@@ -6307,7 +6307,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.22d4f81326ce": "募集备注",
     "legacy.exact.2339818469d6": "常用信息",
     "legacy.exact.233f0ee6c996": "新版本已准备好",
-    "legacy.exact.234e4a5bb6f2": "每 30 分钟一档；新选择时段会自动填入建议范围，可随时修改。",
+    "legacy.exact.234e4a5bb6f2": "每 30 分钟一档；新选择时段会自动填入预设范围，可修改。",
     "legacy.exact.235521c05002": "不限",
     "legacy.exact.236c28a9969a": "近8次约团中≥7次在±5分钟内到；变动通常至少提前数小时说明",
     "legacy.exact.2370b33bffbf": "最短时长",
@@ -6315,7 +6315,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.2395a2948df3": "全部次数",
     "legacy.exact.23f2fd8b9b34": "主页面显示状态异常",
     "legacy.exact.2413e27ac0a0": "本地恢复存储写入失败",
-    "legacy.exact.241f071b60b9": "能先查高价值目标、后补低价值区域；明显减少无目的的全图重复搜索",
+    "legacy.exact.241f071b60b9": "会先调查与当前目标或已有线索直接相关的对象，再补查其余区域；较少重复调查已经没有新增信息的对象",
     "legacy.exact.2423fba9637d": "分享模式入口保护不完整",
     "legacy.exact.242faa997d58": "可以安全去重",
     "legacy.exact.245aea29ad04": "跑团侧重",
@@ -6379,11 +6379,11 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.2914e7a8e4bf": "跑团流程",
     "legacy.exact.295d2fcaa431": "完整备份已导出",
     "legacy.exact.2986a3d09ee6": "删除模组",
-    "legacy.exact.298ddeead676": "个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度；每个导出区域可独立设置整行 / 半栏并实时预览，支持自由排序与组合；空白“其他”输入、空备注和未填写文字自动省略。",
+    "legacy.exact.298ddeead676": "个人偏好导出中心改为可视化编排：修复调整顺序时弹层自动关闭；移除三套导出样式、姓名与区域说明选项，导出宽度统一为 1080 px；每个导出区域可独立设置整行 / 半栏并实时预览，支持排序与组合；空白“其他”输入、空备注和未填写文字自动省略。",
     "legacy.exact.299a29269216": "计划已自动保存",
     "legacy.exact.29d895a6b6af": "模组背景/简介",
     "legacy.exact.29eef1ca5e71": "恢复数据",
-    "legacy.exact.2a0b35d45fdd": "调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。",
+    "legacy.exact.2a0b35d45fdd": "PL 档案的“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧；同步调整桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。",
     "legacy.exact.2a0bcf591e0d": "更换此桌所属模组",
     "legacy.exact.2a18bf1a8009": "个人偏好前半部分改为更紧凑的“常用信息”布局；平台、形式、日期、频率与时间重新分组，选择上午 / 中午 / 下午 / 晚上 / 凌晨后可继续设置 30 分钟粒度的具体起止时间，并保持手机、平板和电脑自适应。",
     "legacy.exact.2a5a080c84a2": "个人偏好保存失败。请先导出备份或释放浏览器存储空间后重试。",
@@ -6414,7 +6414,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.2c848b57ea8a": "四",
     "legacy.exact.2c84c977df9b": "较安静",
     "legacy.exact.2cb8de27bcf9": "开始导入",
-    "legacy.exact.2cc8954ff43d": "常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。",
+    "legacy.exact.2cc8954ff43d": "常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈联系方式调整为企鹅。",
     "legacy.exact.2cca44e9f789": "担任KP约71–80%：KP侧",
     "legacy.exact.2ce3cd829a90": "高级评分与 Excel",
     "legacy.exact.2d01ef83db4c": "已恢复最近恢复点",
@@ -6518,7 +6518,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.36851a787552": "当前范围内没有带日期的跑团记录。",
     "legacy.exact.369b61e3b6d5": "红线、特殊情况或处理原则（选填）",
     "legacy.exact.370d2d516209": "已自动保存：模组名称",
-    "legacy.exact.373a332268b9": "评分、备注与排序仅代表个人记录，用于整理、复盘和开团参考。",
+    "legacy.exact.373a332268b9": "评分、备注与排序为个人记录，用于整理、复盘和开团安排。",
     "legacy.exact.37406305c511": "其他需要提前避免或沟通的桌务问题（选填）",
     "legacy.exact.37968ba75aed": "真情相待",
     "legacy.exact.37bd1039a1a4": "取消",
@@ -6533,7 +6533,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.38db014df675": "浏览器已记住保存位置，但本次会话需要重新授权后才能自动写入。点击“重新授权”即可。",
     "legacy.exact.390ac14b7a9d": "协商调整",
     "legacy.exact.391e60fb130e": "严格按规则",
-    "legacy.exact.3926b83e01c4": "统一企业级 UX 文案与术语。",
+    "legacy.exact.3926b83e01c4": "统一界面文案与术语。",
     "legacy.exact.3950615a0357": "自动文件夹备份",
     "legacy.exact.39553315a4b9": "同名同作者处理",
     "legacy.exact.39705c33d89a": "选择黑名单 PL…",
@@ -6555,12 +6555,12 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.3a8ed3645960": "新建模组，或导入 Excel / 完整备份。",
     "legacy.exact.3a925a043894": "看我作为 KP 时，不同 PL 分别跟过我多少桌。",
     "legacy.exact.3a9d62824a14": "暂无可导出的 HO 分组",
-    "legacy.exact.3aa2258bf8fa": "精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。",
+    "legacy.exact.3aa2258bf8fa": "个人统计页面移除顶部“统计口径”说明条，保留时间范围筛选、统计模块说明和隐私雾面遮罩。",
     "legacy.exact.3aaf1fc18aef": "卡片视图",
     "legacy.exact.3ab6371da842": "再次确认：模组档案、关联跑团记录和模组评分设置将永久删除。",
     "legacy.exact.3ac21cbe5cf1": "统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。",
     "legacy.exact.3ad647a69414": "填写最短字数",
-    "legacy.exact.3adfa109ee4f": "桌内体验相关高频项",
+    "legacy.exact.3adfa109ee4f": "桌内体验相关项",
     "legacy.exact.3b24e3647b72": "雾蓝 · 青灰 · 清爽",
     "legacy.exact.3b76e24792be": "已连接统一档案 · 暂无模组",
     "legacy.exact.3b913809630f": "模组统计",
@@ -6595,7 +6595,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.3e69944b6892": "会主动回应NPC的复杂性和剧情基调；发现桌面氛围偏离时能帮助拉回共同叙事",
     "legacy.exact.3e6fa93ab445": "暂无历史状态。",
     "legacy.exact.3e71e841afb2": "已授权位置",
-    "legacy.exact.3e7fd4228489": "个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段；低频异常处理收进折叠区，旧版已有细项继续保留可编辑，避免数据丢失。",
+    "legacy.exact.3e7fd4228489": "个人偏好重新分区：KP 偏好分为带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理；头像、具体聊天渠道、群聊/私聊字段未纳入该页；异常处理内容放入折叠区，旧版已有细项继续保留可编辑。",
     "legacy.exact.3e826e22b67e": "替换当前档案",
     "legacy.exact.3e994d5b822e": "当前浏览器不支持本地加密功能",
     "legacy.exact.3ece23b971c5": "— 不导入 —",
@@ -6623,7 +6623,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.41012d084090": "未识别为“PL收集梦想生活”程序文件。",
     "legacy.exact.41322ce4545f": "经常打断未结束的发言或错过明确点名；需KP直接分配发言时机",
     "legacy.exact.416088cf9128": "主档案体积",
-    "legacy.exact.41a72907a073": "建议更新完整备份",
+    "legacy.exact.41a72907a073": "完整备份已达到提醒周期",
     "legacy.exact.4201e054468e": "便携 HTML 导出失败，请重试。",
     "legacy.exact.420f0c9ecd42": "内容与桌型",
     "legacy.exact.421bcfad1c96": "PL 参团次数分布",
@@ -6718,7 +6718,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.4ab3d0a3a67d": "偏工具",
     "legacy.exact.4ab9018bdd1f": "最好不要",
     "legacy.exact.4ac7ae5be3ea": "近8次约团中约2次无故缺席，或≥4次迟到＞20分钟",
-    "legacy.exact.4aebbc057a79": "调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。",
+    "legacy.exact.4aebbc057a79": "调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端搜索与批量操作同排，手机端使用窄屏布局并允许结果计数换行。",
     "legacy.exact.4af1857d8bf7": "体验",
     "legacy.exact.4af60ade2cb9": "模组综合评分",
     "legacy.exact.4b041bd7516d": "无法读取卡片折叠状态",
@@ -6838,7 +6838,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.5485c23dd081": "加密备份已导出",
     "legacy.exact.54a890235bad": "可带模组清单；可包含每个模组的带团备注。",
     "legacy.exact.54c2b6e4072e": "手机快捷操作",
-    "legacy.exact.55187229357c": "统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。",
+    "legacy.exact.55187229357c": "PL / KP 跑团整理使用响应式卡片布局；修复中小屏内容重叠与横向 HO 看板问题。",
     "legacy.exact.551ca6fc577a": "能区分较可能与较不可能的解释，并给出至少一种验证路径",
     "legacy.exact.5546ed8b116d": "暂无 KP 带团记录",
     "legacy.exact.554ee67bc841": "搜索设置名称或功能，例如：主题、备份、展开……（支持拼音首字母）",
@@ -6852,7 +6852,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.55fbcd3ddbce": "作为 PL 时的模组偏好、RP 方式、行动与同桌协作习惯。",
     "legacy.exact.560922207cff": "想到就做",
     "legacy.exact.56175b2286b3": "有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。",
-    "legacy.exact.561b0ce0569d": "建议先处理需要修复的关联",
+    "legacy.exact.561b0ce0569d": "存在需要修复的关联",
     "legacy.exact.5622bdb0c058": "选择主题可立即预览，保存后生效。",
     "legacy.exact.56230c306f36": "归档跑团记录后，这里会自动汇总我带过和跑过的模组。",
     "legacy.exact.5633a427476d": "已进入安排模式，请选择周历时段。",
@@ -6921,14 +6921,14 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.5c27f55f58de": "kp是谁",
     "legacy.exact.5c5434b5a7e8": "同桌/玩家",
     "legacy.exact.5c976f4dab81": "模组时长",
-    "legacy.exact.5cc363714d51": "当前浏览器无法可靠生成浏览器外备份。建议改用现代浏览器或手动导出完整备份。",
+    "legacy.exact.5cc363714d51": "当前浏览器未提供所需的浏览器外写入能力。可使用手动导出完整备份。",
     "legacy.exact.5cdd47b1173c": "模组显示方式",
     "legacy.exact.5d32ef11f28e": "确认合并模组？",
     "legacy.exact.5d623f3b0c1c": "已保护",
     "legacy.exact.5d65a9939c3b": "体积已较大，接近部分浏览器本地存储常见容量；请保持近期完整备份",
     "legacy.exact.5d67f1995aeb": "主档案体积较大",
     "legacy.exact.5d7343c61614": "多数常规场景符合人设；关键反应偶有突兀或缺少动机承接",
-    "legacy.exact.5d8ae7732762": "数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护；新增浏览器外固定时间自动备份，可选择 / 更改电脑或手机保存位置，支持时自动写入“最新备份 + 每日备份”，页面关闭错过后再次打开会补做。",
+    "legacy.exact.5d8ae7732762": "自动恢复点新增创建间隔与保留数量设置；增加浏览器持久化存储状态；新增浏览器外固定时间自动备份，可选择或更改保存位置，支持时写入“最新备份 + 每日备份”，页面关闭错过后再次打开会补做。",
     "legacy.exact.5d960e0043a2": "只统计设置了 HO 位的记录",
     "legacy.exact.5dbd1b24bc50": "全部收起",
     "legacy.exact.5dbff758c330": "恢复后保存失败",
@@ -6963,7 +6963,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.6033bde5a10b": "RP速度",
     "legacy.exact.603ee0a07d6f": "故事完成度、主题表达与核心创意",
     "legacy.exact.60473e069b7e": "请在主页面“跑团记录”管理记录",
-    "legacy.exact.606642f39ec0": "统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。",
+    "legacy.exact.606642f39ec0": "跑团整理与跑团偏好图片导出使用统一卡片结构、标题层级、留白与配色；移除番茄/水果式装饰图形。",
     "legacy.exact.607b18468c08": "模组已保存",
     "legacy.exact.608803cbf714": "有信息需要确认",
     "legacy.exact.60884ca7dcd5": "点击展开本桌内容",
@@ -6990,11 +6990,11 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.62134ee4d388": "页面无异常横向溢出",
     "legacy.exact.62165a077507": "已恢复升级前数据",
     "legacy.exact.623cfef1ac6b": "档案",
-    "legacy.exact.62405feb11e1": "优化个人偏好导出中的 PL / KP 偏好尺：五档轨道改为居中紧凑宽度并缩短行高，保留项目名、当前值和两端语义，减少信息量较少时的横向空耗，让双栏导出更紧凑清晰。",
+    "legacy.exact.62405feb11e1": "调整个人偏好导出的 PL / KP 偏好尺：五档轨道居中并缩短行高，保留项目名、当前值和两端语义。",
     "legacy.exact.625bb25c65a8": "黑名单为空",
     "legacy.exact.6260dc30cb28": "元素位于 inert 区域内",
     "legacy.exact.627611f96c08": "开团备注",
-    "legacy.exact.628937a8452a": "个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式，以及隐藏空白、空备注、说明文字和个人姓名等选项；导出设置会记住上次选择，并同步优化电脑、平板和手机端弹层布局。",
+    "legacy.exact.628937a8452a": "个人偏好导出改为统一入口，可选择导出区域、组合、顺序、快捷预设、完整 / 紧凑 / 分享三种样式，以及隐藏空白、空备注、说明文字和个人姓名等选项；导出设置会记住上次选择，并同步调整电脑、平板和手机端弹层布局。",
     "legacy.exact.62a07769bac7": "放弃未保存修改？",
     "legacy.exact.62a49eea356b": "强 KP 侧",
     "legacy.exact.62b00a7d814a": "正在保存…",
@@ -7033,7 +7033,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.668f3095fdc9": "迁移包经过密码加密；请自行保管密码。",
     "legacy.exact.668f98a74a51": "文字",
     "legacy.exact.66da88af4003": "选择保存文件夹",
-    "legacy.exact.66e727d50360": "遇到细节或关键词时，通常能提出1–2个合理可能",
+    "legacy.exact.66e727d50360": "遇到细节或关键词时，通常能提出1–2个与现有信息一致的可能解释",
     "legacy.exact.674c1b1ce746": "结团后一段时间",
     "legacy.exact.675b813c8de7": "简体中文",
     "legacy.exact.67634f3aa3c4": "激烈冲突、失败或道德灰区中仍能保持场内外边界，并兼顾其他玩家的体验空间",
@@ -7047,14 +7047,14 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.680b05fbe94e": "多人场景中能判断何时短回应、何时完整展开；很少挤占别人的回合",
     "legacy.exact.68245574294a": "该模组仍有关联记录或计划，暂不能删除。请先处理关联数据。",
     "legacy.exact.6834728100d2": "跑团方式",
-    "legacy.exact.6839d8d2f1c1": "综合评分按字段分数与权重计算。建议以最近 3–5 次同类跑团为主要参考；自动身份倾向字段与 RP 长度资料不计入综合评分。",
+    "legacy.exact.6839d8d2f1c1": "综合评分按字段分数与权重计算。评分样本范围可记录最近 3–5 次同类跑团；自动身份倾向字段与 RP 长度资料不计入综合评分。",
     "legacy.exact.68aa5874a1dc": "PL评分",
     "legacy.exact.68adbafaf156": "归档",
     "legacy.exact.68dc2305395e": "本地恢复存储写入校验失败",
     "legacy.exact.68f3abf5bfe3": "暂无可关联的模组档案。请先在“模组档案”中新建模组。",
     "legacy.exact.6942d4c3d5dd": "新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。",
     "legacy.exact.69463d302eda": "能主动让出聚光灯，并在剧情转折或冷场前后抓住关键切入点",
-    "legacy.exact.6971380751c2": "纵向整理当前结果，适合手机查看",
+    "legacy.exact.6971380751c2": "纵向版 · 手机",
     "legacy.exact.69863b969c69": "无法读取保存位置",
     "legacy.exact.69a7d3207ee5": "暂无备注",
     "legacy.exact.69ac81559f73": "加入黑名单",
@@ -7067,11 +7067,11 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.6a88b994804d": "角色位",
     "legacy.exact.6a96a39fd4af": "TRPG · 本地档案管理",
     "legacy.exact.6aa61cd36f46": "归档跑团记录并关联好“我”、KP 和 PL 后，这里会自动生成统计。",
-    "legacy.exact.6aaf51bfef2e": "统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果；跑团记录搜索会优先定位最相关模组，并在非模组关键词搜索时只显示命中的桌次；全局搜索按精准度跨页面排序；设置搜索增加常用功能词匹配。所有搜索继续支持拼音首字母。",
+    "legacy.exact.6aaf51bfef2e": "调整全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序；开团计划按相关性展示结果；跑团记录根据模组名或桌次内容匹配；全局搜索按匹配规则跨页面排序；设置搜索增加常用功能词匹配。所有搜索继续支持拼音首字母。",
     "legacy.exact.6abbe5e9fbb3": "将该 PL 移出黑名单？保存档案后生效，历史记录会保留。",
     "legacy.exact.6ae305390c5e": "KP 带团",
     "legacy.exact.6b59d1bf16e4": "文件已存在",
-    "legacy.exact.6b665b715696": "全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动；同时复查全部主页面、PL 编辑、模组编辑、设置与个人统计的横向溢出，并让可换行的操作区优先换行。",
+    "legacy.exact.6b665b715696": "修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按自身宽度调整，PL / PC / HO、人物搜索、模组选择和底部操作区取消横向滚动；主页面、PL 编辑、模组编辑、设置与个人统计的可换行操作区允许自动换行。",
     "legacy.exact.6b7abf65e104": "不尊重 KP",
     "legacy.exact.6b7ad8cc8952": "偏原作",
     "legacy.exact.6b7c656b320a": "当前范围内还没有我作为 KP 的 PL 参团记录。",
@@ -7087,7 +7087,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.6d116f9fa45f": "如低、中、高",
     "legacy.exact.6d2eb027eece": "养成",
     "legacy.exact.6d3e428acae0": "玩家侧次数",
-    "legacy.exact.6d4511a52b3f": "将当前档案写入所选新版 HTML。生成文件包含真实数据，仅用于升级或备份。是否继续？",
+    "legacy.exact.6d4511a52b3f": "将当前档案写入所选新版 HTML。生成文件包含真实数据，可用于升级或备份。是否继续？",
     "legacy.exact.6d4a027dca85": "离线功能初始化失败",
     "legacy.exact.6d4ea2da82aa": "工作日",
     "legacy.exact.6d5b628373ae": "招募说明",
@@ -7153,7 +7153,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.7297610c0a9e": "显示设置",
     "legacy.exact.72992ce067af": "保存诊断元数据回正失败",
     "legacy.exact.72a449e94447": "KP偏好",
-    "legacy.exact.72ae0e386782": "统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。",
+    "legacy.exact.72ae0e386782": "所有“导出图片”按钮使用同一套样式；“跑团整理”弹窗中 PL / KP 两种视图使用相同的操作顺序与对齐规则。",
     "legacy.exact.72bac7f89c82": "支持安装与离线使用",
     "legacy.exact.7309ae1fa080": "关闭隐私遮罩",
     "legacy.exact.730f44809186": "长期稳定做到；复杂、突发情境下仍能保持",
@@ -7244,11 +7244,11 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.7af045f852f2": "暂不支持 ZIP 压缩方式",
     "legacy.exact.7b0b5c6d2dfb": "跑团记录已保存",
     "legacy.exact.7b3a161141bd": "暂无升级前备份",
-    "legacy.exact.7b6a4b94ff70": "只改变程序界面和系统文字，不翻译或修改已有档案内容。",
+    "legacy.exact.7b6a4b94ff70": "界面语言作用于程序界面和系统文字；已有档案内容保持原文。",
     "legacy.exact.7b75700ce51f": "看我作为 KP 时，哪些 PL 跟我的团最多。",
     "legacy.exact.7b77143e54d2": "已满",
     "legacy.exact.7b7ec0d8f7f5": "清理浏览器数据、更换设备或浏览器故障可能导致数据丢失，请定期导出完整备份。",
-    "legacy.exact.7b8b06d67475": "多个方向并存时能优先选择高收益路径；发现无效后及时止损",
+    "legacy.exact.7b8b06d67475": "多个方向并存时，会先处理与当前目标直接相关且已有线索支持的路径；连续行动未产生新信息或状态变化后会调整方向",
     "legacy.exact.7b926e3fd451": "展开当前列表中的全部 PL 卡片",
     "legacy.exact.7b957bdc31da": "已撤销模组与第一桌",
     "legacy.exact.7b9e61ea6639": "雾森",
@@ -7284,7 +7284,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.7f060d59a280": "来源：跑团记录",
     "legacy.exact.7f1f7649cedd": "招募：车卡要求",
     "legacy.exact.7f2d3fc7dacf": "评分项",
-    "legacy.exact.7f36bb75b522": "开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。",
+    "legacy.exact.7f36bb75b522": "开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览使用 KP 暖棕 / PL 蓝绿色，并同时显示文字身份标签。",
     "legacy.exact.7f6b6c95ba53": "基本可用",
     "legacy.exact.7f748d6c3d75": "自动保存与恢复正常",
     "legacy.exact.7f9a38916a5a": "偏灵活",
@@ -7352,7 +7352,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.861887db9ced": "读取中",
     "legacy.exact.862fdfdc860f": "输入地点",
     "legacy.exact.864b3bd74e3f": "编辑 PL",
-    "legacy.exact.866fe0aebfbf": "建议创建首次完整备份",
+    "legacy.exact.866fe0aebfbf": "尚未创建完整备份",
     "legacy.exact.86732482b74b": "愿意",
     "legacy.exact.86813adeb230": "新增跑团记录退回计划、同名模组合并与关联治理。",
     "legacy.exact.869c1d9a39fb": "检测到其他标签页更新，请先处理同步",
@@ -7389,7 +7389,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.8aadaf11589e": "黑名单",
     "legacy.exact.8ab63ca983f8": "选择备份文件",
     "legacy.exact.8ab7fc410f61": "导入文件过大，最大允许 16 MB",
-    "legacy.exact.8ae2aa849a2d": "强化开团计划编辑抽屉中的分区标题：放大“基本信息”“KP / KPC”“PL / PC”等标题字号，并加入主题色短划线装饰，让层级更清晰、观感更精致。",
+    "legacy.exact.8ae2aa849a2d": "开团计划编辑抽屉增大“基本信息”“KP / KPC”“PL / PC”等分区标题字号，并加入主题色短划线。",
     "legacy.exact.8ae4eabebd7a": "分享模式具备入口层交互保护",
     "legacy.exact.8b26b444fb1d": "正在读取档案…",
     "legacy.exact.8b2aa3a67c52": "建议技能",
@@ -7487,7 +7487,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.9353884445cc": "PL · 玩家侧",
     "legacy.exact.936317746cea": "显示",
     "legacy.exact.939f107efa3d": "协商后继续",
-    "legacy.exact.93aa456c4d95": "横向整理当前结果，适合电脑或群聊",
+    "legacy.exact.93aa456c4d95": "横向版 · 电脑 / 群聊",
     "legacy.exact.93b090f6c927": "招募：LOST 概率",
     "legacy.exact.93c9c8928f1d": "恢复草稿",
     "legacy.exact.93d3729a460a": "删除此 PL 档案",
@@ -7517,7 +7517,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.96e849c2f028": "已自动保存 KP",
     "legacy.exact.96eb0a92df2a": "时代地点",
     "legacy.exact.96ece062709f": "未识别到旧模组档案数据",
-    "legacy.exact.96eea5c82a61": "档案自动保存在当前浏览器。请定期导出完整备份；重要数据可使用加密备份。",
+    "legacy.exact.96eea5c82a61": "档案自动保存在当前浏览器。完整备份与加密备份均可用于数据恢复；加密备份恢复时需要密码。",
     "legacy.exact.97179634a12e": "评分采用行为锚定标准；备注会同步显示在 PL 卡片。",
     "legacy.exact.9771c9b234a1": "常规短RP通常10–15分钟",
     "legacy.exact.977a93ad0f9f": "十",
@@ -7596,13 +7596,13 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.9eccf6b53cf0": "未关联 PL",
     "legacy.exact.9ecfb0e46640": "数值",
     "legacy.exact.9eda06b87119": "跑团时长",
-    "legacy.exact.9ef77fddb3b2": "优化开团计划中的人物下拉框：统一圆角与主题配色，替换浏览器原生黑色箭头，增加轻量悬停、聚焦反馈，并保持手机端触控尺寸。",
+    "legacy.exact.9ef77fddb3b2": "开团计划人物下拉框统一圆角与主题配色，替换浏览器原生箭头，并增加悬停、聚焦状态。",
     "legacy.exact.9ef894dd4fb1": "↓ 导出加密备份",
     "legacy.exact.9f00257e9141": "担任KP约81–90%：明显KP侧",
     "legacy.exact.9f293f822567": "作为 KP",
     "legacy.exact.9f34081171be": "PL 档案可直接选作本桌 KP；KPC 不计入 PL 人数。",
     "legacy.exact.9f345bc5f83a": "最近编辑",
-    "legacy.exact.9f374877a50d": "优化移动端计划、跑团记录、搜索与数据管理。",
+    "legacy.exact.9f374877a50d": "调整移动端计划、跑团记录、搜索与数据管理。",
     "legacy.exact.9f4e3ac77fa2": "担任KP约11–20%：明显PL侧",
     "legacy.exact.9f4eb94c4cde": "请先保存设置，再导出备份。",
     "legacy.exact.9f58d8c70e6f": "确认覆盖",
@@ -7610,7 +7610,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.9f7106d1bef0": "模组：PL 侧次数",
     "legacy.exact.9f91d507467b": "暂无",
     "legacy.exact.9f93399c8d03": "其他标签页已完成保存。本次保存已停止，请先选择同步方式。",
-    "legacy.exact.9fafb3c657b5": "定位并修复“GitHub Pages 已更新但浏览器仍运行旧程序”的更新链路问题：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，发现页面版本落后时明确提示安全刷新；Service Worker 注册禁用脚本缓存，HTML 导航优先请求最新网络文件。并再次回归验证个人偏好导出：想跑模组 / 可带模组无论有无内容，只要勾选就会进入预览与最终图片。",
+    "legacy.exact.9fafb3c657b5": "修复 GitHub Pages 更新后浏览器继续运行旧程序的更新链路：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，检测到页面版本落后时提示刷新程序文件；Service Worker 注册禁用脚本缓存，HTML 导航请求网络文件。个人偏好导出中，想跑模组 / 可带模组勾选后进入预览与最终图片。",
     "legacy.exact.9fcd6bdbaf4e": "设置已同步。",
     "legacy.exact.9fd87848dff0": "导入迁移包",
     "legacy.exact.9fe5bc31ca85": "模组：地点",
@@ -7675,7 +7675,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.a6672033764c": "管理主题、评分体系、导入导出和本地设置。",
     "legacy.exact.a683ca1eedd5": "再次带团",
     "legacy.exact.a69df3b3ecb3": "编号",
-    "legacy.exact.a6a55c6d0222": "新增“自我介绍”：整理通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。",
+    "legacy.exact.a6a55c6d0222": "新增“自我介绍”：包含通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。",
     "legacy.exact.a6accc0f5ba2": "无匹配结果",
     "legacy.exact.a6bd6e52bc4d": "模组资料",
     "legacy.exact.a6c5dc7906c4": "档案保存失败",
@@ -7705,14 +7705,14 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.a99b1dfbc575": "离线缓存：检查中",
     "legacy.exact.a9a0eec084e9": "当前范围内没有带日期的跑团记录，暂时无法生成趋势图。",
     "legacy.exact.a9c28949d572": "技能推荐",
-    "legacy.exact.a9d309c8bf18": "优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。",
+    "legacy.exact.a9d309c8bf18": "开团计划的“添加已有 PL”移动到已添加列表上方，支持 PL 名称搜索，下拉名单按 A～Z（拼音 / 英文）排序。",
     "legacy.exact.a9f4bff3d4a5": "当前没有可保存的 PL 草稿。",
     "legacy.exact.a9f52e3d968f": "雨青",
     "legacy.exact.aa19a25c08ae": "手机备份下载请求失败",
     "legacy.exact.aa2ab8de416e": "深色",
     "legacy.exact.aa2d34eb7973": "导入完整备份",
     "legacy.exact.aa953d8447a5": "偏轻",
-    "legacy.exact.aa9aa0fe8512": "按模组多列展示全部桌次，适合电脑或群聊",
+    "legacy.exact.aa9aa0fe8512": "按模组多列 · 电脑 / 群聊",
     "legacy.exact.aac821ee2043": "接受撕卡",
     "legacy.exact.aaf06a5840e8": "JSON 完整备份",
     "legacy.exact.ab0c1fe6cdae": "结束时间不能早于开始时间。",
@@ -7725,7 +7725,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.abb90e490f9e": "其他补充",
     "legacy.exact.abd94ece8e06": "今天",
     "legacy.exact.abe65c675425": "松开以导入 Excel",
-    "legacy.exact.abf17fab0710": "文件可能包含个人资料，仅用于完整备份，请勿公开分享。",
+    "legacy.exact.abf17fab0710": "文件可能包含个人资料。公开分享会同时暴露文件中的档案内容。",
     "legacy.exact.ac0466f4808c": "有时出现；常规场景仍不够稳定",
     "legacy.exact.ac08594bb3e9": "搜索或输入模组名称",
     "legacy.exact.ac15cb1e8eec": "按已归档跑团记录中的 KP / PL 位置次数自动计算",
@@ -7755,7 +7755,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.af285b368496": "要素偏好",
     "legacy.exact.af476434ec92": "每 7 天",
     "legacy.exact.af746abd7f47": "输入姓名或常用称呼",
-    "legacy.exact.af7c4d34d0ad": "统一“偏好 / 统计”命名：将主导航与对应页面标题调整为“个人偏好”“个人统计”，让第三组导航含义更完整，也与现有个人信息语境更一致。",
+    "legacy.exact.af7c4d34d0ad": "主导航与对应页面标题中的“偏好 / 统计”调整为“个人偏好”“个人统计”。",
     "legacy.exact.af825261f0c5": "跑团整理",
     "legacy.exact.af8bf27c1e08": "线下",
     "legacy.exact.af912468f2b3": "读取失败",
@@ -7770,8 +7770,8 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.b0a3a9e979ac": "稍后提醒",
     "legacy.exact.b0a835ef1f5e": "个人统计",
     "legacy.exact.b0c85b38570d": "无法识别这份备份",
-    "legacy.exact.b0ca81342c08": "KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。",
-    "legacy.exact.b0e6c02e36f8": "“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。",
+    "legacy.exact.b0ca81342c08": "KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出。",
+    "legacy.exact.b0e6c02e36f8": "“自我介绍”调整为“跑团偏好”；PL / KP 模组偏好说明同步调整；拖动滑杆改为五段点击刻度，并保留现代、当代等时代选项。",
     "legacy.exact.b0f7cd677c60": "约半数行动能带来新信息或状态变化；仍较依赖明显提示",
     "legacy.exact.b0fd3db4ab2e": "近8次全部准时／提前到；如有变动均提前说明并主动协调替代时间",
     "legacy.exact.b107cba7cff9": "招募：规则",
@@ -7809,7 +7809,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.b387a27af6c5": "是否愿意再次带团",
     "legacy.exact.b3b64dece96c": "PL · 玩家侧 · 跑团整理",
     "legacy.exact.b3c623efe058": "经历：当时作为 PL / KP 侧",
-    "legacy.exact.b3cbf82ffebd": "当前仅开放简体中文。",
+    "legacy.exact.b3cbf82ffebd": "当前开放语言：简体中文。",
     "legacy.exact.b3d9a0ccc9b2": "编辑计划",
     "legacy.exact.b3fa6d94cac0": "权重",
     "legacy.exact.b4199f0b6bc6": "输入 KP 名称",
@@ -7825,14 +7825,14 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.b5187f6cc59f": "募集注意事项",
     "legacy.exact.b519f0ba27f5": "内置自动字段 · 根据已归档 KP / PL 次数计算 · 不计综合评分",
     "legacy.exact.b53f5d7545b0": "输入模组名称",
-    "legacy.exact.b5655719d8cb": "当前为本地文件模式。请定期导出完整备份；使用固定网址时更新更稳定。",
+    "legacy.exact.b5655719d8cb": "当前为本地文件模式。完整备份可用于数据恢复；固定网址模式支持自动更新检查。",
     "legacy.exact.b59699886c8d": "该 HTML 未包含档案数据。旧 PL 请先导出“完整备份 JSON”；旧模组工具请导出“JSON 完整备份”或“便携 HTML”。",
     "legacy.exact.b5abc35df82c": "带团备注",
-    "legacy.exact.b5c24266ea53": "重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。",
+    "legacy.exact.b5c24266ea53": "跑团偏好双栏中想跑团 / 可带团固定在各栏末尾；分组标题使用统一层级；导出图片显示偏好刻度左右尺度与五段位置。",
     "legacy.exact.b5e9fab422c9": "暂未添加模组",
     "legacy.exact.b5f45852e708": "通用模组评分",
     "legacy.exact.b5f5e1e145da": "模组名称",
-    "legacy.exact.b60ee93e619d": "自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；多选选中态加强，并新增双栏图片导出。",
+    "legacy.exact.b60ee93e619d": "自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；调整多选选中态，并新增双栏图片导出。",
     "legacy.exact.b6194f2e7bbe": "桌次缺少编号",
     "legacy.exact.b621e0625206": "自动保存与备份",
     "legacy.exact.b63afbc938a2": "管理主题、评分、显示偏好和数据备份。",
@@ -7840,14 +7840,14 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.b66a588b82c0": "保存失败",
     "legacy.exact.b6840c13f4f0": "较跟随",
     "legacy.exact.b6a2fcd7a092": "· 今天",
-    "legacy.exact.b6bca07ad502": "评分、招募、Excel 与完整模组编辑",
+    "legacy.exact.b6bca07ad502": "评分体系、招募、Excel 与模组编辑",
     "legacy.exact.b6d43b5cff05": "常规短RP通常3–5分钟",
     "legacy.exact.b6de6b6258ed": "文件夹备份",
     "legacy.exact.b6f5139b5117": "近8次中约7次按原定周期与时段进行；临时变动很少",
     "legacy.exact.b7019b2cc61f": "新桌已暂存，已关联现有模组。",
     "legacy.exact.b708fd16aed4": "多数字句脱离既定人设；常需提醒角色立场、关系或动机",
     "legacy.exact.b74476093461": "我的",
-    "legacy.exact.b786ea538f2e": "当前已有档案数据，建议导出首次完整备份。",
+    "legacy.exact.b786ea538f2e": "当前已有档案数据，尚未记录完整备份。",
     "legacy.exact.b78ad5a0072f": "售后或场外交流的特殊边界（选填）",
     "legacy.exact.b795100d4f8b": "从模组档案选择或直接输入新模组",
     "legacy.exact.b7c7df33baf7": "补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。",
@@ -7856,7 +7856,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.b7f696af6712": "同日或短暂停顿后也常忘记当前目标、人物身份或刚获得的核心信息",
     "legacy.exact.b801ae5cc4f2": "＋ 新增一桌",
     "legacy.exact.b822dea16d97": "KP 带团整理",
-    "legacy.exact.b829a6686362": "建议定期导出",
+    "legacy.exact.b829a6686362": "尚未记录完整备份",
     "legacy.exact.b82e3291ae0d": "高级工具",
     "legacy.exact.b83ccf866d44": "偏跟随",
     "legacy.exact.b84c6d260611": "角色反应长期稳定且有发展轨迹；每次明显变化都能由已发生经历解释",
@@ -7916,7 +7916,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.bd87da9ae6f6": "开启 PL 隐私遮罩",
     "legacy.exact.bd96cd99b227": "微信",
     "legacy.exact.bd9a58b353fe": "记忆力",
-    "legacy.exact.bd9e649fd8c8": "自动尝试下载（推荐）",
+    "legacy.exact.bd9e649fd8c8": "自动尝试下载（默认）",
     "legacy.exact.bdcda02b1a77": "KPC名（可选）",
     "legacy.exact.bdcdb661cf7d": "合并旧模组档案？",
     "legacy.exact.bdd861c4e202": "新建",
@@ -8008,7 +8008,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.c5c3a127cdf9": "低",
     "legacy.exact.c5e2d3e1beba": "PL 人次",
     "legacy.exact.c5e50eb061af": "保留历史档案，重点显示联系方式、加入原因和状态记录。",
-    "legacy.exact.c5f207ee1efe": "低频细节不再单独拆字段",
+    "legacy.exact.c5f207ee1efe": "相关细节合并记录",
     "legacy.exact.c5f9dfd59292": "读取本机档案失败",
     "legacy.exact.c5fe183b9ea9": "跑后感想",
     "legacy.exact.c60f5f15b626": "页面脚本未能正常启动",
@@ -8034,7 +8034,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.c829e6f9fc49": "角色卡要求",
     "legacy.exact.c82fa1a8e6e2": "搜索姓名、联系方式或黑名单原因",
     "legacy.exact.c8491907082c": "偶尔出现过度吐槽、无动机敌意或强行拆台；提醒后通常能够停止",
-    "legacy.exact.c850aca3878e": "手机浏览器通常没有开放“网页长期写入指定文件夹”的权限，所以“选择保存文件夹”在部分 UC、夸克或移动内核上会无响应。\n\n建议改用手机下载备份：默认每到备份时间自动尝试下载 JSON 到浏览器默认下载位置。若浏览器拦截自动下载，页面会保留“重新下载”按钮，你点一下即可完成下载。\n\n网页无法强制指定系统中的具体目录；实际位置由浏览器下载设置决定。",
+    "legacy.exact.c850aca3878e": "手机浏览器通常没有开放“网页长期写入指定文件夹”的权限，所以“选择保存文件夹”在部分 UC、夸克或移动内核上会无响应。\n\n手机备份方式：到达备份时间后自动尝试下载 JSON 到浏览器默认下载位置。浏览器拦截自动下载时，页面会显示“重新下载”按钮。\n\n网页无法强制指定系统中的具体目录；实际位置由浏览器下载设置决定。",
     "legacy.exact.c86da092edb7": "点击“＋ 新建 PL”开始记录。",
     "legacy.exact.c86daef5a262": "更新前保护失败，请先导出一次备份后再更新。",
     "legacy.exact.c878e1e03bfc": "请在浏览器中直接打开",
@@ -8043,7 +8043,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.c8a8c2df7b3f": "每 24 小时",
     "legacy.exact.c8eebce67c33": "升级保护",
     "legacy.exact.c8ffd3c0251f": "总评分",
-    "legacy.exact.c91574230eef": "评分、备注与排序仅代表个人记录，会受 KP 风格、模组类型、团员组合和样本数量等因素影响。",
+    "legacy.exact.c91574230eef": "评分、备注与排序为个人记录；结果与 KP 风格、模组类型、团员组合和样本数量相关。",
     "legacy.exact.c91c2a552146": "看狀況",
     "legacy.exact.c91cf4872c4f": "大多数时候能等上一段结束；偶尔切入过早、过晚或打断场面节奏",
     "legacy.exact.c94238f86710": "暂无 PL 档案",
@@ -8057,7 +8057,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.c9d0f2286acd": "检查保存状态",
     "legacy.exact.ca26414551cc": "模组口嗨 / 稿件分享",
     "legacy.exact.ca75a79d6784": "当代",
-    "legacy.exact.ca82e468290b": "加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本；若主 localStorage 在浏览器更新或存储迁移后变空，启动时会自动检测冗余副本与恢复点并提示恢复。",
+    "legacy.exact.ca82e468290b": "每次成功保存会额外写入 IndexedDB 独立冗余副本；若主 localStorage 在浏览器更新或存储迁移后为空，启动时会检测冗余副本与恢复点并提示恢复。",
     "legacy.exact.ca8e2d3d512a": "回收站",
     "legacy.exact.ca932c2598be": "模组：预计时长",
     "legacy.exact.ca99995338de": "修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入；UC、夸克、iOS Safari、Firefox Android 等缺少相应权限时自动提供手机兼容备份，到期准备完整备份并提示“保存到手机”，优先调用系统保存/分享面板，不支持时下载到浏览器默认目录，并明确区分“已写入并可核验”和“已请求手机保存”。",
@@ -8083,8 +8083,8 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.cc4d1f137087": "无声明投骰",
     "legacy.exact.cc5b1c6074ba": "关闭自动恢复点",
     "legacy.exact.cc7198816f6d": "整行",
-    "legacy.exact.cc7ee2dd5520": "按模组纵向展示全部桌次，适合手机",
-    "legacy.exact.ccceeb995025": "本工具仅用于个人整理、复盘与开团参考，不构成对玩家能力、人格或现实表现的客观评价，也不应作为公开排名或争议裁决依据。",
+    "legacy.exact.cc7ee2dd5520": "按模组纵向版 · 手机",
+    "legacy.exact.ccceeb995025": "本工具保存个人整理、复盘与开团记录。评分字段描述档案中的个人记录，不表示玩家人格或现实表现。",
     "legacy.exact.ccd4620cd67a": "开启分享模式",
     "legacy.exact.ccdc7fea018d": "自动保存",
     "legacy.exact.ccfe1d58560a": "模组：带团最多",
@@ -8094,13 +8094,13 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.cd54745ddb48": "最近备份",
     "legacy.exact.cd6742ae70d2": "立即导出",
     "legacy.exact.cd7995f3eff0": "已达到备份提醒周期。自动保存和恢复点不能替代完整备份。",
-    "legacy.exact.cd836fa9c49f": "按 HO 分组纵向展示，适合手机",
+    "legacy.exact.cd836fa9c49f": "按 HO 分组纵向版 · 手机",
     "legacy.exact.cd992c70142e": "情感",
     "legacy.exact.cdbf80e51fdd": "最少人数",
     "legacy.exact.cdce31ce9d7f": "背景",
     "legacy.exact.cdfa94472791": "已填写 Log 链接的已归档记录",
     "legacy.exact.ce10b5b595b3": "未填写联系方式",
-    "legacy.exact.ce3997a66090": "横向展示全部 HO，适合电脑或群聊",
+    "legacy.exact.ce3997a66090": "全部 HO 横向版 · 电脑 / 群聊",
     "legacy.exact.ce7021b8e041": "例如：长期 COC / DND 玩家，文字与语音均可。",
     "legacy.exact.ce85a4ff853c": "无需合并",
     "legacy.exact.cef7a6b4621f": "模组数据已清空",
@@ -8117,7 +8117,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.cf6c2514a81b": "身份",
     "legacy.exact.cf7b1142cd4d": "来源/发布平台",
     "legacy.exact.cf80848ab41b": "偏 KP",
-    "legacy.exact.cf825bf508fc": "全站视觉收口 1.0：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态；减少框套框与重复说明，强化卡片信息优先级，并重新优化 PL、模组、计划、记录、个人偏好、个人统计、设置及各编辑器在电脑、平板和手机端的视觉密度与操作布局。",
+    "legacy.exact.cf825bf508fc": "全站视觉结构调整：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态；调整卡片嵌套与说明数量，并同步调整 PL、模组、计划、记录、个人偏好、个人统计、设置及各编辑器在电脑、平板和手机端的布局。",
     "legacy.exact.cfaf2a4f5ced": "卡片",
     "legacy.exact.cfb1bd41b225": "尚未完成保存校验",
     "legacy.exact.cfcc04a8fd68": "底部",
@@ -8168,7 +8168,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.d37b408fbd87": "已同步另一页面的最新修改",
     "legacy.exact.d38feb5a1135": "输入公开背景或简介",
     "legacy.exact.d3bfc759568e": "删除跑团记录？",
-    "legacy.exact.d3c798d8d87d": "建议尽快导出首次完整备份",
+    "legacy.exact.d3c798d8d87d": "尚未记录首次完整备份",
     "legacy.exact.d3d7dfc4c212": "正常",
     "legacy.exact.d3f1fc829d43": "启用定时备份",
     "legacy.exact.d3fc3e2d9d22": "隐私与备份",
@@ -8205,7 +8205,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.d690caddd5fa": "长图",
     "legacy.exact.d6f1fe71eb7a": "可修改默认体系，或创建自定义评分模板。",
     "legacy.exact.d70c0606de3f": "刷新程序文件？",
-    "legacy.exact.d717c00c2425": "仅显示一种日历视图。",
+    "legacy.exact.d717c00c2425": "日历显示所选视图。",
     "legacy.exact.d75469435bee": "节奏与结构",
     "legacy.exact.d7569ca65908": "正在解密…",
     "legacy.exact.d75dd9739b7e": "趋势",
@@ -8230,7 +8230,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.d97c2d99791f": "当前黑名单",
     "legacy.exact.d9840620073c": "当前体积处于轻量范围",
     "legacy.exact.d99463bafde2": "招募信息",
-    "legacy.exact.d9a00051b23d": "继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。",
+    "legacy.exact.d9a00051b23d": "调整开团计划编辑抽屉的分区卡片、标题与说明间距、状态标签、HO 选择和底部操作区样式。",
     "legacy.exact.d9c9abdd3a5a": "退回开团计划？",
     "legacy.exact.da0374366298": "完整备份已恢复",
     "legacy.exact.da042859b939": "间隔1–2周仍能记住目标、关系和未解决线索；通常只需简短回顾",
@@ -8273,7 +8273,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.dbde5c83b75d": "当前查看：我作为 PL 跑过哪些模组，以及各自跑了多少桌。",
     "legacy.exact.dbe4861b37b0": "当前浏览器不支持此功能",
     "legacy.exact.dc20c4756a3a": "采用最近更新的内容",
-    "legacy.exact.dc20ca6bceb5": "清空全部模组数据？相关模组资料、跑团记录和评分设置将删除；PL 档案保留。建议先导出完整备份。",
+    "legacy.exact.dc20ca6bceb5": "清空全部模组数据？相关模组资料、跑团记录和评分设置将删除；PL 档案保留。完整备份可用于恢复清空前的数据。",
     "legacy.exact.dc7d59197850": "沙盒",
     "legacy.exact.dc94201130d7": "展开 PC 名列表",
     "legacy.exact.dc96ad55e0e0": "查看单项评分",
@@ -8300,14 +8300,14 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.de761540636a": "KP／PL倾向（自动）",
     "legacy.exact.dea03e7166f8": "备份格式无效。",
     "legacy.exact.deb5e449d4f1": "保留 30 个",
-    "legacy.exact.dec05339dd11": "修复个人偏好导出中心“已勾选区域却不出现在预览/导出图”的问题：明确勾选现在始终保留整个区域，区域内部空白字段仍自动省略；空的想跑模组 / 可带模组会显示清晰空状态，不再整块消失。",
+    "legacy.exact.dec05339dd11": "修复个人偏好导出中心勾选区域未进入预览或导出图的问题：勾选区域会保留，区域内部空白字段自动省略；空的想跑模组 / 可带模组显示空状态。",
     "legacy.exact.def0b1077150": "LOST 概率",
     "legacy.exact.df001d916d9a": "修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。",
     "legacy.exact.df73e7bb9f16": "KP 侧其他补充，例如改模原则、常用规则、开团习惯等（选填）",
     "legacy.exact.df9c394bca55": "跳过",
     "legacy.exact.dfdad1309853": "恢复本地数据？",
     "legacy.exact.dfdfc4f5a395": "应急恢复点写入失败",
-    "legacy.exact.dfe33f88aea5": "编辑模组资料；完整评分与批量工具请使用“高级工具”。",
+    "legacy.exact.dfe33f88aea5": "编辑模组资料；评分体系与批量工具位于“高级工具”。",
     "legacy.exact.dfe726cf2adc": "新建计划",
     "legacy.exact.e044da38ab7d": "PL 档案有未保存修改，确定放弃吗？",
     "legacy.exact.e078650797ed": "简要视图",
@@ -8322,7 +8322,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.e0d897880355": "招募注意",
     "legacy.exact.e0dfdbd6eed7": "格式不正确",
     "legacy.exact.e104957f173f": "模组：备注",
-    "legacy.exact.e1113b0bd3e2": "建议开启；无法防止手动清除网站数据",
+    "legacy.exact.e1113b0bd3e2": "浏览器持久化存储未开启；手动清除网站数据仍会删除档案",
     "legacy.exact.e14159f3260f": "保存名称",
     "legacy.exact.e162d6e11524": "保存失败，请先导出完整备份后重试",
     "legacy.exact.e1667a5f9387": "新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度；人物与模组支持排名表/条形图切换，趋势支持折线/柱状/表格切换，全部统计均在本地离线完成。",
@@ -8404,13 +8404,13 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.e8fc241ae113": "隐藏界面状态正常",
     "legacy.exact.e909647eee24": "快速选择常用导出内容",
     "legacy.exact.e9210138dfbf": "＋ 新建开团计划",
-    "legacy.exact.e95423137f28": "“想跑模组 / 可带模组”支持单独导出图片，并且可在每个模组下写备注；导出内容会带上对应备注，方便单独分享或留档。",
+    "legacy.exact.e95423137f28": "“想跑模组 / 可带模组”支持单独导出图片，并可在每个模组下填写备注；导出内容包含对应备注。",
     "legacy.exact.e95480289f4e": "计划编辑器检查跳过：暂无计划",
     "legacy.exact.e9585c9db7f3": "模组：KP 侧次数",
     "legacy.exact.e97483c2648e": "尽量保活",
     "legacy.exact.e9886c99cafa": "是否再带",
     "legacy.exact.e9b6047c81c2": "宽幅",
-    "legacy.exact.e9c4d1febee0": "建议检查当前视口下的固定栏或长内容",
+    "legacy.exact.e9c4d1febee0": "检测到固定栏或长内容可能产生横向溢出",
     "legacy.exact.e9dad6741495": "正在加密…",
     "legacy.exact.e9e741b253d2": "现代",
     "legacy.exact.e9fe7dd056b0": "评分 高→低",
@@ -8553,7 +8553,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.f64b18906796": "从黑名单添加 PL",
     "legacy.exact.f64b4deba53d": "半栏",
     "legacy.exact.f6751097924f": "创建新模组？",
-    "legacy.exact.f682b588ea55": "继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。",
+    "legacy.exact.f682b588ea55": "弹窗右上角关闭按钮与底部操作区采用统一尺寸、圆角和间距；“展开全部 / 收起全部”改为双态按钮；图片导出按钮统一图标、尺寸与下拉箭头。",
     "legacy.exact.f69a22801409": "对于故事和NPC的态度",
     "legacy.exact.f69c17eddcb7": "新版迁移 HTML",
     "legacy.exact.f6a18573bda1": "输入联系方式（可选）",
@@ -8573,7 +8573,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.f8403551e5f1": "中等长图",
     "legacy.exact.f85ba868573e": "仍然设为 KP",
     "legacy.exact.f8725e47f54e": "需要调整评分模板时再展开。",
-    "legacy.exact.f8756c572f6b": "管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。招募、Excel 与高级评分请使用“高级工具”。",
+    "legacy.exact.f8756c572f6b": "管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。评分体系、招募与 Excel 工具位于“高级工具”。",
     "legacy.exact.f882c343d7b1": "其他地域",
     "legacy.exact.f897722cfd46": "压",
     "legacy.exact.f8993c9d7295": "请打开该桌次确认日期",
@@ -8955,7 +8955,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.pattern.9701df5e4874": "{p2} 桌经历",
     "legacy.pattern.98c4bca2a26b": "跑团记录 {p1} 的 PL 与 PC/HO 分配数量不一致",
     "legacy.pattern.9a00280c020f": "记录 · {p28}",
-    "legacy.pattern.9a3505f8256a": "当前约 {p1}，建议保持近期完整备份",
+    "legacy.pattern.9a3505f8256a": "当前约 {p1}；完整备份记录可在“数据与备份”中查看",
     "legacy.pattern.9a5291dcdfe0": "已带团 {p1} 桌 · 计划中 {p2} 桌 · 已带模组 {p3} · 已带 PL {p4} 次 · {p5} 人",
     "legacy.pattern.9a5fa9b263b8": "检测到 {p1} 个同名档案。\n\n请选择合并后保留的主档案。",
     "legacy.pattern.9afe8ca9c064": "{p1} / {p2} 位 PL",
@@ -9548,7 +9548,7 @@ const MODULE_RENDER_BATCH = 60;
 /* ---------- 02. 自定义字段默认评价模板：新增字段时复制这套 1–10 分文字 ---------- */
 const genericLabels = ["几乎不出现；需要持续提示或外部推动", "很少出现；仅在明确提醒后发生", "偶尔出现；简单场景下能够做到", "有时出现；常规场景仍不够稳定", "约半数相关场景能够做到", "多数相关场景能够做到；复杂场景偶有波动", "通常能够稳定做到；很少需要提醒", "绝大多数相关场景稳定做到；复杂场景也能维持", "几乎始终稳定做到，并能主动修正偏差", "长期稳定做到；复杂、突发情境下仍能保持"];
 /* ---------- 03. 内置评分字段：字段名、是否计分、1–10 分行为锚定文字 ---------- */
-const baseFields = [{ "key": "rpEffect", "label": "RP效果", "includeInTotal": true, "labels": ["多数字句脱离既定人设；常需提醒角色立场、关系或动机", "能复述人设，但行动与语气仍常随PL即时想法变化", "简单场景能贴合人设；压力、冲突或取舍场景容易失去一致性", "多数常规场景符合人设；关键反应偶有突兀或缺少动机承接", "多数场景能从既定动机出发；行动、台词与情绪基本连贯", "关键场景也能抓住角色立场；反应能由经历、关系或目标解释", "持续让角色经历与人际关系影响选择；很少需要外部提醒", "面对矛盾信息或两难选择仍保持人物逻辑，并形成有辨识度的反应", "会主动回收早先人设细节；关系变化与经历会稳定反映到后续行为", "角色反应长期稳定且有发展轨迹；每次明显变化都能由已发生经历解释"] }, { "key": "rpSpeed", "label": "RP速度", "includeInTotal": true, "labels": ["常规短RP通常＞15分钟，或经常需要催促才能继续", "常规短RP通常10–15分钟", "常规短RP通常7–10分钟", "常规短RP通常5–7分钟", "常规短RP通常3–5分钟", "常规短RP通常2–3分钟", "常规短RP通常90秒–2分钟", "常规短RP通常60–90秒", "常规短RP通常30–60秒", "常规短RP通常≤30秒，且仍能给出完整有效回应"] }, { "key": "actionEffect", "label": "RP行动效果", "includeInTotal": true, "labels": ["多数行动缺少明确对象或方法；KP常需追问后才能执行", "能提出动作，但经常与当前目标无关、重复无效尝试或无法落地", "简单调查能执行；遇到阻碍后常停住，或继续重复同类动作", "约半数行动能带来新信息或状态变化；仍较依赖明显提示", "多数行动具备“对象＋方法”；通常能推进当前小目标", "会根据结果调整下一步；连续2–3个行动能形成有效推进链", "能把已有线索转成验证行动；无效重复明显减少", "关键场景能主动设定行动目标、验证假设并改变局面", "多个方向并存时能优先选择高收益路径；发现无效后及时止损", "长期稳定把线索转成可执行策略，并能创造原本未显露的有效推进路径"] }, { "key": "timing", "label": "知道在哪里说话", "includeInTotal": true, "labels": ["经常打断未结束的发言或错过明确点名；需KP直接分配发言时机", "较常抢在他人行动结算前插入，或在轮到自己时长时间没有回应", "知道等待基本轮次，但仍常错过交接点、截断NPC或与他人撞话", "大多数时候能等上一段结束；偶尔切入过早、过晚或打断场面节奏", "能识别明确的发言交接和行动窗口；通常在合适时机回应", "能读到停顿、提问和视线焦点等暗示；较少需要KP点名", "会主动给他人把话说完；能在自然空档及时接入自己的行动或台词", "多人场景中能判断何时短回应、何时完整展开；很少挤占别人的回合", "能主动让出聚光灯，并在剧情转折或冷场前后抓住关键切入点", "几乎始终与桌面节奏同步；既能避免抢话，也能在停滞时自然恢复推进"] }, { "key": "npcInitiative", "label": "与NPC互动／对话主动性", "includeInTotal": true, "labels": ["几乎只在NPC直接提问时回应；很少主动向NPC发起交流", "以被动回应为主；偶尔追加一个事实性问题，但通常不继续追问", "明显线索场景会主动问1–2个基础问题；其他NPC多等待对方先开口", "每次团通常能主动开启至少一次与当前目标有关的NPC对话", "约半数有可互动NPC的场景会主动询问、确认或表达立场", "多数相关场景都会主动开口，并能根据回答继续追问1–2轮", "除取情报外，也会主动澄清关系、态度或动机；不会长期垄断对话", "能根据NPC身份和反应调整话术，并稳定维持3轮以上有效交流", "会跨场景回访NPC、追踪未完话题或维护既有关系；主动互动有连续性", "线索场景与日常场景都能自然创造有意义的NPC互动，同时主动给其他PC留空间"] }, { "key": "exploration", "label": "场景探索熟练度", "includeInTotal": true, "labels": ["缺少明确提示时很少主动调查；明显可查对象也常被遗漏", "主要检查最显眼的单个对象；调查后通常等待KP继续给方向", "会按显眼地点或物件逐项查看；次级区域、人物和文件较容易漏", "能覆盖主要区域，并为明显对象选择基本合适的调查方式或技能", "形成基础探索顺序；空间、物件、人物／文件等主要信息源较少漏查", "获得新线索后会回查相关地点或换一种方法验证；调查具有前后关联", "会交叉核对不同来源，并区分“没发现”与“可以确认不存在”", "能先查高价值目标、后补低价值区域；明显减少无目的的全图重复搜索", "会建立场景结构，针对信息空缺、矛盾点和异常点逐项验证", "熟悉常规套路后仍会根据场景反馈调整策略；能识别反套路并保持调查效率"] }, { "key": "inspiration", "label": "现实灵感", "includeInTotal": true, "labels": ["通常把线索当作孤立事实；很少自行联想到现实含义或后续可能", "只有关联被明显提示时才会连接信息；自主联想较少", "能从明显关键词产生一个直接、常识性的关联", "遇到细节或关键词时，通常能提出1–2个合理可能", "能提出多个合理假设，但常停留在“可能是……”而缺少验证办法", "能区分较可能与较不可能的解释，并给出至少一种验证路径", "能把跨场景线索或现实知识接起来，同时保留两种以上备选解释", "能较快生成多种假设，并按已有证据给出优先顺序", "会主动寻找反例或否证信息；发现新证据后能及时修正原假设", "面对弱线索也能完成“生成假设→排序→验证→淘汰”，且较少陷入无依据脑补"] }, { "key": "comprehension", "label": "话语理解程度", "includeInTotal": true, "labels": ["经常误读明确的主客体、因果或行动要求；需要整段重新解释", "能理解字面大意，但常漏掉否定、时间、范围等关键限定", "单一步骤信息基本能懂；包含多个条件时常遗漏其中一项", "能正确复述主要意思；指代、细节或条件偶尔出现偏差", "能抓住主要信息和大部分限制条件，并据此做出基本正确的行动", "多数时候能区分“已知事实、NPC说法、推测、未知”四类信息", "能准确跟踪指代、时间顺序、条件关系和话外要求，较少抓错重点", "多名NPC或多份文本的信息并存时，能整合而不把互相矛盾的说法混为一谈", "能主动识别歧义、信息缺口和不确定处，并在行动前提出针对性确认", "能准确概括复杂多步信息，同时保留事实层级、优先级与尚未证实的部分"] }, { "key": "memory", "label": "记忆力", "includeInTotal": true, "labels": ["同日或短暂停顿后也常忘记当前目标、人物身份或刚获得的核心信息", "隔到下一次跑团时通常需要重述大部分前情，才能恢复当前状态", "能记住当前主目标，但人物关系、专有名词和已得线索遗漏较多", "间隔数日后能记住主线和主要NPC；具体线索之间的联系较容易丢", "间隔约1周后仍能记住核心剧情和多数关键线索，少量提示即可继续", "间隔1–2周仍能记住目标、关系和未解决线索；通常只需简短回顾", "间隔2周以上仍能保持关键线索与时间顺序，能主动接续此前计划", "除主线外也能保留较小但相关的细节，并在受到提示时准确调取", "会在合适时机主动回忆早先细节，并把它与当前信息重新连接", "长间隔后仍能较完整恢复剧情网络、关系与细节；同时很少把错误记忆当成事实"] }, { "key": "punctuality", "label": "准时程度", "includeInTotal": true, "labels": ["近8次约团中≥3次无故缺席／临开前失约，或多次迟到＞30分钟", "近8次约团中约2次无故缺席，或≥4次迟到＞20分钟", "近8次约团中≥4次迟到＞10分钟；变动多在开团前才说明", "近8次约团中约3次迟到10–20分钟；临时改约较常见", "近8次约团中1–2次迟到10–20分钟；其余基本按约到场", "近8次约团中多数在约定时间±10分钟内到；无法参加通常会提前说明", "近8次约团中≥6次在±5分钟内到；很少临时改约", "近8次约团中≥7次在±5分钟内到；变动通常至少提前数小时说明", "近8次几乎全部准时；无法参加通常提前≥24小时说明", "近8次全部准时／提前到；如有变动均提前说明并主动协调替代时间"] }, { "key": "scheduleStability", "label": "固定时间的跑团规律度", "includeInTotal": true, "labels": ["无法形成固定周期或固定时段；每次基本都需重新约时间", "近8次中约1次按原定周期与时段进行，其余多需改期", "近8次中约2次按原定周期与时段进行", "近8次中约3次按原定周期与时段进行", "近8次中约4次按原定周期与时段进行；规律性约一半", "近8次中约5次按原定周期与时段进行", "近8次中约6次按原定周期与时段进行；固定安排已较稳定", "近8次中约7次按原定周期与时段进行；临时变动很少", "近8次均能维持原定周期与时段；固定安排稳定连续", "连续至少3个月维持固定周期、时段与单次时长；变动后也能主动恢复原节奏"] }, { "key": "storyAttitude", "label": "对于故事和NPC的态度", "includeInTotal": true, "labels": ["被明确提醒后仍反复以场外辱骂、针对或故意拆台破坏共同叙事与边界", "频繁对NPC进行无角色动机支撑的侮辱／凌虐，或持续用场外嘲讽打断严肃情节", "较常把NPC只当作工具或发泄对象；重要情节中仍频繁以场外玩笑消解内容", "偶尔出现过度吐槽、无动机敌意或强行拆台；提醒后通常能够停止", "总体尊重故事基调和NPC功能；偶有过界玩笑或敌意，但能及时调整", "能区分“PC对NPC的敌意”和“PL对故事／KP的态度”；面对灰色角色能就事论事", "能接受NPC有自主立场和行为后果；剧情不合个人预期时仍继续在故事逻辑内回应", "激烈冲突、失败或道德灰区中仍能保持场内外边界，并兼顾其他玩家的体验空间", "会主动回应NPC的复杂性和剧情基调；发现桌面氛围偏离时能帮助拉回共同叙事", "长期稳定尊重共同创作、边界与故事灰度；允许PC冲突和激烈选择，同时不把冲突外溢到玩家／KP"] }, { "key": "kpPlSide", "label": "KP／PL倾向（自动）", "includeInTotal": false, "labels": ["近一年／最近10次跑团中，担任KP约91–100%：强KP侧", "担任KP约81–90%：明显KP侧", "担任KP约71–80%：KP侧", "担任KP约61–70%：偏KP的KPL", "担任KP约51–60%：KPL略偏KP", "担任KP约41–50%：KPL近似均衡", "担任KP约31–40%：KPL略偏PL", "担任KP约21–30%：偏PL的KPL", "担任KP约11–20%：明显PL侧", "担任KP约0–10%：强PL侧"] }];
+const baseFields = [{ "key": "rpEffect", "label": "RP效果", "includeInTotal": true, "labels": ["多数字句脱离既定人设；常需提醒角色立场、关系或动机", "能复述人设，但行动与语气仍常随PL即时想法变化", "简单场景能贴合人设；压力、冲突或取舍场景容易失去一致性", "多数常规场景符合人设；关键反应偶有突兀或缺少动机承接", "多数场景能从既定动机出发；行动、台词与情绪基本连贯", "关键场景也能抓住角色立场；反应能由经历、关系或目标解释", "持续让角色经历与人际关系影响选择；很少需要外部提醒", "面对矛盾信息或两难选择仍保持人物逻辑，并形成有辨识度的反应", "会主动回收早先人设细节；关系变化与经历会稳定反映到后续行为", "角色反应长期稳定且有发展轨迹；每次明显变化都能由已发生经历解释"] }, { "key": "rpSpeed", "label": "RP速度", "includeInTotal": true, "labels": ["常规短RP通常＞15分钟，或经常需要催促才能继续", "常规短RP通常10–15分钟", "常规短RP通常7–10分钟", "常规短RP通常5–7分钟", "常规短RP通常3–5分钟", "常规短RP通常2–3分钟", "常规短RP通常90秒–2分钟", "常规短RP通常60–90秒", "常规短RP通常30–60秒", "常规短RP通常≤30秒，且仍能给出完整有效回应"] }, { "key": "actionEffect", "label": "RP行动效果", "includeInTotal": true, "labels": ["多数行动缺少明确对象或方法；KP常需追问后才能执行", "能提出动作，但经常与当前目标无关、重复无效尝试或无法落地", "简单调查能执行；遇到阻碍后常停住，或继续重复同类动作", "约半数行动能带来新信息或状态变化；仍较依赖明显提示", "多数行动具备“对象＋方法”；通常能推进当前小目标", "会根据结果调整下一步；连续2–3个行动能形成有效推进链", "能把已有线索转成验证行动；无效重复明显减少", "关键场景能主动设定行动目标、验证假设并改变局面", "多个方向并存时，会先处理与当前目标直接相关且已有线索支持的路径；连续行动未产生新信息或状态变化后会调整方向", "长期稳定把线索转成可执行策略，并能创造原本未显露的有效推进路径"] }, { "key": "timing", "label": "知道在哪里说话", "includeInTotal": true, "labels": ["经常打断未结束的发言或错过明确点名；需KP直接分配发言时机", "较常抢在他人行动结算前插入，或在轮到自己时长时间没有回应", "知道等待基本轮次，但仍常错过交接点、截断NPC或与他人撞话", "大多数时候能等上一段结束；偶尔切入过早、过晚或打断场面节奏", "能识别明确的发言交接和行动窗口；通常在合适时机回应", "能读到停顿、提问和视线焦点等暗示；较少需要KP点名", "会主动给他人把话说完；能在自然空档及时接入自己的行动或台词", "多人场景中能判断何时短回应、何时完整展开；很少挤占别人的回合", "能主动让出聚光灯，并在剧情转折或冷场前后抓住关键切入点", "几乎始终与桌面节奏同步；既能避免抢话，也能在停滞时自然恢复推进"] }, { "key": "npcInitiative", "label": "与NPC互动／对话主动性", "includeInTotal": true, "labels": ["几乎只在NPC直接提问时回应；很少主动向NPC发起交流", "以被动回应为主；偶尔追加一个事实性问题，但通常不继续追问", "明显线索场景会主动问1–2个基础问题；其他NPC多等待对方先开口", "每次团通常能主动开启至少一次与当前目标有关的NPC对话", "约半数有可互动NPC的场景会主动询问、确认或表达立场", "多数相关场景都会主动开口，并能根据回答继续追问1–2轮", "除取情报外，也会主动澄清关系、态度或动机；不会长期垄断对话", "能根据NPC身份和反应调整话术，并稳定维持3轮以上有效交流", "会跨场景回访NPC、追踪未完话题或维护既有关系；主动互动有连续性", "线索场景与日常场景都能自然创造有意义的NPC互动，同时主动给其他PC留空间"] }, { "key": "exploration", "label": "场景探索熟练度", "includeInTotal": true, "labels": ["缺少明确提示时很少主动调查；明显可查对象也常被遗漏", "主要检查最显眼的单个对象；调查后通常等待KP继续给方向", "会按显眼地点或物件逐项查看；次级区域、人物和文件较容易漏", "能覆盖主要区域，并为明显对象选择基本合适的调查方式或技能", "形成基础探索顺序；空间、物件、人物／文件等主要信息源较少漏查", "获得新线索后会回查相关地点或换一种方法验证；调查具有前后关联", "会交叉核对不同来源，并区分“没发现”与“可以确认不存在”", "会先调查与当前目标或已有线索直接相关的对象，再补查其余区域；较少重复调查已经没有新增信息的对象", "会建立场景结构，针对信息空缺、矛盾点和异常点逐项验证", "熟悉常规套路后仍会根据场景反馈调整策略；能识别反套路并保持调查效率"] }, { "key": "inspiration", "label": "现实灵感", "includeInTotal": true, "labels": ["通常把线索当作孤立事实；很少自行联想到现实含义或后续可能", "只有关联被明显提示时才会连接信息；自主联想较少", "能从明显关键词产生一个直接、常识性的关联", "遇到细节或关键词时，通常能提出1–2个与现有信息一致的可能解释", "能提出多个合理假设，但常停留在“可能是……”而缺少验证办法", "能区分较可能与较不可能的解释，并给出至少一种验证路径", "能把跨场景线索或现实知识接起来，同时保留两种以上备选解释", "能较快生成多种假设，并按已有证据给出优先顺序", "会主动寻找反例或否证信息；发现新证据后能及时修正原假设", "面对弱线索也能完成“生成假设→排序→验证→淘汰”，且较少陷入无依据脑补"] }, { "key": "comprehension", "label": "话语理解程度", "includeInTotal": true, "labels": ["经常误读明确的主客体、因果或行动要求；需要整段重新解释", "能理解字面大意，但常漏掉否定、时间、范围等关键限定", "单一步骤信息基本能懂；包含多个条件时常遗漏其中一项", "能正确复述主要意思；指代、细节或条件偶尔出现偏差", "能抓住主要信息和大部分限制条件，并据此做出基本正确的行动", "多数时候能区分“已知事实、NPC说法、推测、未知”四类信息", "能准确跟踪指代、时间顺序、条件关系和话外要求，较少抓错重点", "多名NPC或多份文本的信息并存时，能整合而不把互相矛盾的说法混为一谈", "能主动识别歧义、信息缺口和不确定处，并在行动前提出针对性确认", "能准确概括复杂多步信息，同时保留事实层级、优先级与尚未证实的部分"] }, { "key": "memory", "label": "记忆力", "includeInTotal": true, "labels": ["同日或短暂停顿后也常忘记当前目标、人物身份或刚获得的核心信息", "隔到下一次跑团时通常需要重述大部分前情，才能恢复当前状态", "能记住当前主目标，但人物关系、专有名词和已得线索遗漏较多", "间隔数日后能记住主线和主要NPC；具体线索之间的联系较容易丢", "间隔约1周后仍能记住核心剧情和多数关键线索，少量提示即可继续", "间隔1–2周仍能记住目标、关系和未解决线索；通常只需简短回顾", "间隔2周以上仍能保持关键线索与时间顺序，能主动接续此前计划", "除主线外也能保留较小但相关的细节，并在受到提示时准确调取", "会在合适时机主动回忆早先细节，并把它与当前信息重新连接", "长间隔后仍能较完整恢复剧情网络、关系与细节；同时很少把错误记忆当成事实"] }, { "key": "punctuality", "label": "准时程度", "includeInTotal": true, "labels": ["近8次约团中≥3次无故缺席／临开前失约，或多次迟到＞30分钟", "近8次约团中约2次无故缺席，或≥4次迟到＞20分钟", "近8次约团中≥4次迟到＞10分钟；变动多在开团前才说明", "近8次约团中约3次迟到10–20分钟；临时改约较常见", "近8次约团中1–2次迟到10–20分钟；其余基本按约到场", "近8次约团中多数在约定时间±10分钟内到；无法参加通常会提前说明", "近8次约团中≥6次在±5分钟内到；很少临时改约", "近8次约团中≥7次在±5分钟内到；变动通常至少提前数小时说明", "近8次几乎全部准时；无法参加通常提前≥24小时说明", "近8次全部准时／提前到；如有变动均提前说明并主动协调替代时间"] }, { "key": "scheduleStability", "label": "固定时间的跑团规律度", "includeInTotal": true, "labels": ["无法形成固定周期或固定时段；每次基本都需重新约时间", "近8次中约1次按原定周期与时段进行，其余多需改期", "近8次中约2次按原定周期与时段进行", "近8次中约3次按原定周期与时段进行", "近8次中约4次按原定周期与时段进行；规律性约一半", "近8次中约5次按原定周期与时段进行", "近8次中约6次按原定周期与时段进行；固定安排已较稳定", "近8次中约7次按原定周期与时段进行；临时变动很少", "近8次均能维持原定周期与时段；固定安排稳定连续", "连续至少3个月维持固定周期、时段与单次时长；变动后也能主动恢复原节奏"] }, { "key": "storyAttitude", "label": "对于故事和NPC的态度", "includeInTotal": true, "labels": ["被明确提醒后仍反复以场外辱骂、针对或故意拆台破坏共同叙事与边界", "频繁对NPC进行无角色动机支撑的侮辱／凌虐，或持续用场外嘲讽打断严肃情节", "较常把NPC只当作工具或发泄对象；重要情节中仍频繁以场外玩笑消解内容", "偶尔出现过度吐槽、无动机敌意或强行拆台；提醒后通常能够停止", "总体尊重故事基调和NPC功能；偶有过界玩笑或敌意，但能及时调整", "能区分“PC对NPC的敌意”和“PL对故事／KP的态度”；面对灰色角色能就事论事", "能接受NPC有自主立场和行为后果；剧情不合个人预期时仍继续在故事逻辑内回应", "激烈冲突、失败或道德灰区中仍能保持场内外边界，并兼顾其他玩家的体验空间", "会主动回应NPC的复杂性和剧情基调；发现桌面氛围偏离时能帮助拉回共同叙事", "长期稳定尊重共同创作、边界与故事灰度；允许PC冲突和激烈选择，同时不把冲突外溢到玩家／KP"] }, { "key": "kpPlSide", "label": "KP／PL倾向（自动）", "includeInTotal": false, "labels": ["近一年／最近10次跑团中，担任KP约91–100%：强KP侧", "担任KP约81–90%：明显KP侧", "担任KP约71–80%：KP侧", "担任KP约61–70%：偏KP的KPL", "担任KP约51–60%：KPL略偏KP", "担任KP约41–50%：KPL近似均衡", "担任KP约31–40%：KPL略偏PL", "担任KP约21–30%：偏PL的KPL", "担任KP约11–20%：明显PL侧", "担任KP约0–10%：强PL侧"] }];
 /* ---------- 04. 设置初始化与版本迁移：建立默认设置并兼容旧版本 ---------- */
 function clone(v) { return JSON.parse(JSON.stringify(v)); }
 const THEME_IDS = new Set(["mist", "rain", "night", "tomato", "sakura", "iris"]);
@@ -11586,7 +11586,7 @@ function isLocalFileStorageContext(protocol = location.protocol) { return protoc
 function storagePersistenceApplicable(protocol = location.protocol) { var _a; return protocol !== "file:" && protocol !== "data:" && protocol !== "about:" && Boolean(globalThis.isSecureContext) && Boolean((_a = navigator.storage) === null || _a === void 0 ? void 0 : _a.persisted); }
 function currentStorageContextText() {
     if (isLocalFileStorageContext())
-        return "当前为本地文件模式。请定期导出完整备份；使用固定网址时更新更稳定。";
+        return "当前为本地文件模式。完整备份可用于数据恢复；固定网址模式支持自动更新检查。";
     return "本地保存环境正常。存储保护可降低浏览器自动清理概率；浏览器外备份用于抵御手动清除网站数据。";
 }
 function getInheritanceStatusHTML() { const r = startupDataReport || {}; if (r.source === "legacy-local")
@@ -11706,7 +11706,7 @@ async function updatePersistentStorageStatus() {
         els.requestPersistentStorage.disabled = ok;
         els.requestPersistentStorage.textContent = ok ? "存储保护已开启" : "开启存储保护";
         els.requestPersistentStorage.title = ok ? "浏览器会优先保留本站数据；手动清除网站数据仍会删除" : "申请浏览器持久化存储，降低系统自动回收数据的概率";
-        setHealth(ok ? "已开启" : "未开启", ok ? "降低浏览器自动回收概率；手动清除仍会删除" : "建议开启；无法防止手动清除网站数据");
+        setHealth(ok ? "已开启" : "未开启", ok ? "降低浏览器自动回收概率；手动清除仍会删除" : "浏览器持久化存储未开启；手动清除网站数据仍会删除档案");
     }
     catch (err) {
         els.requestPersistentStorage.disabled = true;
@@ -11779,7 +11779,7 @@ async function chooseExternalBackupTarget() {
         }
         const ok = await appConfirm(`手机浏览器通常没有开放“网页长期写入指定文件夹”的权限，所以“选择保存文件夹”在部分 UC、夸克或移动内核上会无响应。
 
-建议改用手机下载备份：默认每到备份时间自动尝试下载 JSON 到浏览器默认下载位置。若浏览器拦截自动下载，页面会保留“重新下载”按钮，你点一下即可完成下载。
+手机备份方式：到达备份时间后自动尝试下载 JSON 到浏览器默认下载位置。浏览器拦截自动下载时，页面会显示“重新下载”按钮。
 
 网页无法强制指定系统中的具体目录；实际位置由浏览器下载设置决定。`, { title: "启用手机自动下载备份", confirmText: "启用自动下载", cancelText: "取消" });
         if (!ok) return false;
@@ -12081,7 +12081,7 @@ async function updateExternalBackupUI(options = {}) {
     if (els.externalBackupHealthValue) els.externalBackupHealthValue.textContent = !supported ? "浏览器不支持" : !configured ? "未设置" : needsAuth ? "需重新授权" : mobileMode ? (enabled ? "等待点按保存" : "已暂停") : enabled ? "已启用" : "已暂停";
     if (els.externalBackupHealthSub) els.externalBackupHealthSub.textContent = pendingAt ? `待保存：${formatSafetyDateTime(pendingAt)} · ${intervalLabel}` : lastAt ? `最近：${formatSafetyDateTime(lastAt)} · ${intervalLabel}` : configured ? `${intervalLabel} · 尚未写入` : directSupported ? "选择保存位置后可启用" : "可启用手机兼容备份";
     let note = "", cls = "external-backup-status";
-    if (!supported) { note = "当前浏览器无法可靠生成浏览器外备份。建议改用现代浏览器或手动导出完整备份。"; cls += " warn"; }
+    if (!supported) { note = "当前浏览器未提供所需的浏览器外写入能力。可使用手动导出完整备份。"; cls += " warn"; }
     else if (mobileMode) {
         const delivery = getExternalBackupMobileDeliveryMode();
         if (options.error) { note = `最近一次手机备份准备失败：${options.error}`; cls += " warn"; }
@@ -12122,7 +12122,7 @@ function renderBackupReminderBanner() { if (!(els === null || els === void 0 ? v
     until = Number(localStorage.getItem(BACKUP_REMINDER_DISMISS_KEY) || 0);
 }
 catch (err) { } const show = info.due && Date.now() >= until; els.dataSafetyBanner.hidden = !show; if (!show)
-    return; els.dataSafetyBannerTitle.textContent = info.meta ? "建议更新完整备份" : "建议创建首次完整备份"; els.dataSafetyBannerText.textContent = info.meta ? "已达到备份提醒周期。自动保存和恢复点不能替代完整备份。" : "当前已有档案数据，建议导出首次完整备份。"; }
+    return; els.dataSafetyBannerTitle.textContent = info.meta ? "完整备份已达到提醒周期" : "尚未创建完整备份"; els.dataSafetyBannerText.textContent = info.meta ? "已达到备份提醒周期。自动保存和恢复点不能替代完整备份。" : "当前已有档案数据，尚未记录完整备份。"; }
 function dismissBackupReminder() { try {
     localStorage.setItem(BACKUP_REMINDER_DISMISS_KEY, String(Date.now() + 86400000));
 }
@@ -12144,7 +12144,7 @@ function updateDataSafetyUI() { const sm = currentSaveMeta(), em = safeReadLocal
     els.dataScaleHealthValue.textContent = `${c.profiles} PL · ${c.modules} 模组`;
     els.dataScaleHealthSub.textContent = `${c.plans} 计划 · ${c.records} 跑团记录`;
     els.exportHealthValue.textContent = (em === null || em === void 0 ? void 0 : em.exportedAt) ? formatSafetyDateTime(em.exportedAt) : "未导出";
-    els.exportHealthSub.textContent = (em === null || em === void 0 ? void 0 : em.exportedAt) ? `${em.kind || "完整备份"}${em.verified ? " · 已校验" : ""}` : "建议尽快导出首次完整备份";
+    els.exportHealthSub.textContent = (em === null || em === void 0 ? void 0 : em.exportedAt) ? `${em.kind || "完整备份"}${em.verified ? " · 已校验" : ""}` : "尚未记录首次完整备份";
     els.inheritanceStatusNote.innerHTML = getInheritanceStatusHTML();
     els.storageContextNote.innerHTML = currentStorageContextText();
     els.backupReminderDays.value = String(getBackupReminderDays());
@@ -13442,9 +13442,9 @@ function renderHoOrganizer() {
     toggleHoImageExportMenu(false);
     const exportWide = (_c = els.hoImageExportMenu) === null || _c === void 0 ? void 0 : _c.querySelector('[data-ho-image-style="wide"] span'), exportLong = (_d = els.hoImageExportMenu) === null || _d === void 0 ? void 0 : _d.querySelector('[data-ho-image-style="long"] span');
     if (exportWide)
-        exportWide.textContent = hoOrganizerMode === "kp" ? "按模组多列展示全部桌次，适合电脑或群聊" : "横向展示全部 HO，适合电脑或群聊";
+        exportWide.textContent = hoOrganizerMode === "kp" ? "按模组多列 · 电脑 / 群聊" : "全部 HO 横向版 · 电脑 / 群聊";
     if (exportLong)
-        exportLong.textContent = hoOrganizerMode === "kp" ? "按模组纵向展示全部桌次，适合手机" : "按 HO 分组纵向展示，适合手机";
+        exportLong.textContent = hoOrganizerMode === "kp" ? "按模组纵向版 · 手机" : "按 HO 分组纵向版 · 手机";
     syncHoImageExportDetailControls();
     if (hoOrganizerMode === "kp")
         renderKpOrganizer(profile);
@@ -14914,7 +14914,7 @@ function syncIntroToggleAll(section, path) { if (!section)
     return; const boxes = [...section.querySelectorAll(`input[type="checkbox"][data-intro-array="${CSS.escape(path)}"]`)]; btn.textContent = boxes.length && boxes.every(box => box.checked) ? "清空" : "全选"; }
 function introRadioGroup(path, options) { const value = String(selfIntroPathGet(selfIntroDraft, path) || ""); return `<div class="intro-radio-grid">${options.map(([v, label]) => `<label><input type="radio" name="intro_${escapeHTML(path)}" data-intro-field="${escapeHTML(path)}" value="${escapeHTML(v)}" ${value === v ? "checked" : ""}><span>${escapeHTML(label)}</span></label>`).join("")}</div>`; }
 function introTimeSelectOptions(selected, include24 = false) { let html = ""; for (let h = 0; h < 24; h++) { for (const min of [0, 30]) { const value = `${String(h).padStart(2, "0")}:${String(min).padStart(2, "0")}`; html += `<option value="${value}" ${selected === value ? "selected" : ""}>${value}</option>`; } } if (include24) html += `<option value="24:00" ${selected === "24:00" ? "selected" : ""}>24:00</option>`; return html; }
-function introTimeRangesHTML() { const slots = selfIntroPathGet(selfIntroDraft, "timeSlots") || [], ranges = selfIntroPathGet(selfIntroDraft, "timeRanges") || {}; if (!slots.length) return `<div class="intro-helper">选择“上午 / 中午 / 下午 / 晚上 / 凌晨”后，会出现对应的具体时间范围。</div>`; return `<div class="intro-time-ranges">${slots.map(slot => { const def = INTRO_TIME_RANGE_DEFAULTS[slot] || ["08:00", "12:00"], range = ranges[slot] || { start: def[0], end: def[1] }; return `<div class="intro-time-range-row"><span class="intro-time-range-slot">${escapeHTML(slot)}</span><select class="intro-time-select" data-intro-time-range-slot="${escapeHTML(slot)}" data-intro-time-range-side="start" aria-label="${escapeHTML(slot)}开始时间">${introTimeSelectOptions(range.start, false)}</select><span class="intro-time-range-sep">至</span><select class="intro-time-select" data-intro-time-range-slot="${escapeHTML(slot)}" data-intro-time-range-side="end" aria-label="${escapeHTML(slot)}结束时间">${introTimeSelectOptions(range.end, true)}</select></div>`; }).join("")}</div><div class="intro-time-help">每 30 分钟一档；新选择时段会自动填入建议范围，可随时修改。</div>`; }
+function introTimeRangesHTML() { const slots = selfIntroPathGet(selfIntroDraft, "timeSlots") || [], ranges = selfIntroPathGet(selfIntroDraft, "timeRanges") || {}; if (!slots.length) return `<div class="intro-helper">选择“上午 / 中午 / 下午 / 晚上 / 凌晨”后，会出现对应的具体时间范围。</div>`; return `<div class="intro-time-ranges">${slots.map(slot => { const def = INTRO_TIME_RANGE_DEFAULTS[slot] || ["08:00", "12:00"], range = ranges[slot] || { start: def[0], end: def[1] }; return `<div class="intro-time-range-row"><span class="intro-time-range-slot">${escapeHTML(slot)}</span><select class="intro-time-select" data-intro-time-range-slot="${escapeHTML(slot)}" data-intro-time-range-side="start" aria-label="${escapeHTML(slot)}开始时间">${introTimeSelectOptions(range.start, false)}</select><span class="intro-time-range-sep">至</span><select class="intro-time-select" data-intro-time-range-slot="${escapeHTML(slot)}" data-intro-time-range-side="end" aria-label="${escapeHTML(slot)}结束时间">${introTimeSelectOptions(range.end, true)}</select></div>`; }).join("")}</div><div class="intro-time-help">每 30 分钟一档；新选择时段会自动填入预设范围，可修改。</div>`; }
 function updateIntroTimeRangesPanel() { const panel = els.selfIntroView && els.selfIntroView.querySelector("[data-intro-time-ranges]"); if (panel) panel.innerHTML = introTimeRangesHTML(); }
 function ensureIntroTimeRangeForSlot(slot) { if (!selfIntroDraft.timeRanges || typeof selfIntroDraft.timeRanges !== "object") selfIntroDraft.timeRanges = {}; if (!selfIntroDraft.timeRanges[slot]) { const def = INTRO_TIME_RANGE_DEFAULTS[slot] || ["08:00", "12:00"]; selfIntroDraft.timeRanges[slot] = { start: def[0], end: def[1] }; } }
 function updateIntroTimeRange(slot, side, value, field) { ensureSelfIntroDraft(); ensureIntroTimeRangeForSlot(slot); const range = selfIntroDraft.timeRanges[slot], previous = String(range[side] || ""); range[side] = String(value || ""); if (introClockMinutes(range.end) <= introClockMinutes(range.start)) { range[side] = previous; if (field) field.value = previous; showToast("结束时间需要晚于开始时间"); return false; } queueSelfIntroSave(220); return true; }
@@ -16083,7 +16083,7 @@ function statsRepeatHTML(people) {
     const counts = people.filter(r => r.ledByMe > 0).map(r => r.ledByMe), total = counts.length, buckets = [{ label: "1 桌", n: counts.filter(n => n === 1).length }, { label: "2–4 桌", n: counts.filter(n => n >= 2 && n <= 4).length }, { label: "5–9 桌", n: counts.filter(n => n >= 5 && n <= 9).length }, { label: "10+ 桌", n: counts.filter(n => n >= 10).length }];
     if (!total)
         return `<div class="stats-empty">当前范围内还没有我作为 KP 的 PL 参团记录。</div>`;
-    return `<div class="stats-repeat-grid">${buckets.map(b => { const pct = Math.round(b.n / total * 100); return `<div class="stats-repeat-card"><span>${b.label}</span><strong>${b.n} 人</strong><i style="--pct:${pct}%"></i><span>${pct}%</span></div>`; }).join("")}</div><div class="stats-footnote">按每位 PL 跟我跑过的桌数分组，方便查看一次参团和多次参团的比例。</div>`;
+    return `<div class="stats-repeat-grid">${buckets.map(b => { const pct = Math.round(b.n / total * 100); return `<div class="stats-repeat-card"><span>${b.label}</span><strong>${b.n} 人</strong><i style="--pct:${pct}%"></i><span>${pct}%</span></div>`; }).join("")}</div><div class="stats-footnote">按每位 PL 跟我跑过的桌数分组，显示一次参团和多次参团的比例。</div>`;
 }
 
 function statsRangeSummaryLabel() {
@@ -16836,7 +16836,7 @@ function renderPeriodicScheduleDialog(){
       <section class="periodic-config-block"><strong>时段与时间</strong><div class="periodic-config-row"><label class="periodic-field"><span>日历时段</span><select data-periodic-daypart>${PLAN_DAYPARTS.map(x=>`<option value="${x.key}" ${x.key===d.daypart?"selected":""}>${x.label}</option>`).join("")}</select></label><label class="periodic-field"><span>开始时间</span><input type="time" data-periodic-start-time value="${escapeHTML(d.startTime)}"></label><label class="periodic-field"><span>结束时间</span><input type="time" data-periodic-end-time value="${escapeHTML(d.endTime)}"></label></div></section>
       <section class="periodic-config-block"><strong>日期范围</strong><div class="periodic-config-row two"><label class="periodic-field"><span>开始日期</span><input type="date" data-periodic-start-date value="${escapeHTML(d.startDate)}"></label><label class="periodic-field"><span>结束日期</span><input type="date" data-periodic-end-date value="${escapeHTML(d.endDate)}"></label></div><div class="periodic-range-hint">匹配 <strong>${rows.length}</strong> 个日期</div></section>
       ${error?`<div class="periodic-form-error">${escapeHTML(error)}</div>`:""}
-    </div><aside class="periodic-workspace-preview"><section class="periodic-preview-card"><div class="periodic-preview-head"><strong>排期预览</strong><span class="periodic-status ${error?"full":"ok"}">${error?"待完善":"可排期"}</span></div><div class="periodic-preview-sub">${escapeHTML(sourceLabel)} · ${escapeHTML(dayText)} · ${escapeHTML(daypartInfo(d.daypart).label)} · ${escapeHTML(d.startTime)}–${escapeHTML(d.endTime)}</div><div class="periodic-result-stats"><span><b>${rows.length}</b>匹配</span><span><b>${sum.available}</b>可新增</span><span><b>${sum.excluded}</b>已排除</span><span><b>${sum.duplicate}</b>已存在</span><span><b>${sum.full}</b>已满</span></div></section><section class="periodic-section-card"><div class="periodic-section-head"><strong>日期</strong><span>取消勾选可排除</span></div><div class="periodic-preview-list">${preview}</div></section></aside></div></div>`;
+    </div><aside class="periodic-workspace-preview"><section class="periodic-preview-card"><div class="periodic-preview-head"><strong>排期预览</strong><span class="periodic-status ${error?"full":"ok"}">${error?"信息未完整":"可排期"}</span></div><div class="periodic-preview-sub">${escapeHTML(sourceLabel)} · ${escapeHTML(dayText)} · ${escapeHTML(daypartInfo(d.daypart).label)} · ${escapeHTML(d.startTime)}–${escapeHTML(d.endTime)}</div><div class="periodic-result-stats"><span><b>${rows.length}</b>匹配</span><span><b>${sum.available}</b>可新增</span><span><b>${sum.excluded}</b>已排除</span><span><b>${sum.duplicate}</b>已存在</span><span><b>${sum.full}</b>已满</span></div></section><section class="periodic-section-card"><div class="periodic-section-head"><strong>日期</strong><span>取消勾选可排除</span></div><div class="periodic-preview-list">${preview}</div></section></aside></div></div>`;
     if(els.periodicScheduleFooter)els.periodicScheduleFooter.hidden=false;
     if(els.confirmPeriodicSchedule) els.confirmPeriodicSchedule.disabled=Boolean(error)||sum.available<1;
     if(els.periodicScheduleFootHint) els.periodicScheduleFootHint.textContent=error?error:`可新增 ${sum.available} · 跳过 ${sum.duplicate+sum.full+sum.excluded}`;
@@ -19218,7 +19218,7 @@ async function mergeDuplicateModules(seedId) { if (shareModeBlock("合并模组"
     appNotice("当前没有可合并的同名模组。", "无需合并");
     return false;
 } const options = group.map(m => ({ value: m.id, label: `${m.name} · ${modulePickerMeta(m)} · ${moduleRunCount(m)}桌` })), primaryId = await appSelect(`检测到 ${group.length} 个同名档案。\n\n请选择合并后保留的主档案。`, options, seed.id, { title: "合并同名模组", confirmText: "下一步" }); if (!primaryId)
-    return false; const strategy = await appSelect("当两个档案的同一字段都有不同内容时，选择处理方式。", [{ value: "main", label: "保留主档内容（推荐）" }, { value: "newest", label: "采用最近更新的内容" }, { value: "ask", label: "逐项确认冲突字段" }], "main", { title: "资料冲突处理", confirmText: "继续" }); if (!strategy)
+    return false; const strategy = await appSelect("当两个档案的同一字段都有不同内容时，选择处理方式。", [{ value: "main", label: "保留主档内容（默认）" }, { value: "newest", label: "采用最近更新的内容" }, { value: "ask", label: "逐项确认冲突字段" }], "main", { title: "资料冲突处理", confirmText: "继续" }); if (!strategy)
     return false; const primary = moduleById(primaryId), sources = group.filter(m => m.id !== primaryId); if (!primary || !sources.length)
     return false; const sourceIds = new Set(sources.map(m => m.id)), linkedRecords = runRecords.filter(r => sourceIds.has(r.moduleId)).length, linkedPlans = runPlans.filter(r => sourceIds.has(r.moduleId)).length; if (!await appConfirm(`主档：${primary.name} · ${modulePickerMeta(primary)}\n待合并：${sources.length} 个档案\n将迁移：${linkedRecords} 条跑团记录 · ${linkedPlans} 条开团计划\n\n合并后，待合并档案会删除，所有桌次统一关联主档。`, { title: "确认合并模组？", confirmText: "合并模组", danger: true }))
     return false; try {
@@ -20149,7 +20149,7 @@ function setSelectedModuleRecordsCollapsed(collapsed) {
     group[1].forEach(r => setRunRecordCollapsed(r.id, collapsed));
     renderRunRecords({ preservePageScroll: true, centerSelected: false });
 }
-/* ---------- v7.9+ 长期使用增强 ---------- */
+/* ---------- v7.9+ 长期使用相关功能 ---------- */
 let trashEntries = [];
 let lastUndoTrashId = "";
 let undoToastTimer = null;
@@ -21386,7 +21386,7 @@ renderDataIntegrity = function (report = dataIntegrityReport(), showList = false
     els.dataIntegrityHealthValue.textContent = report.errors ? `${report.errors} 个问题` : report.warnings ? `${report.warnings} 个提醒` : "正常";
     els.dataIntegrityHealthValue.classList.toggle("warn", Boolean(report.errors || report.warnings));
 } if (els.dataIntegrityHealthSub)
-    els.dataIntegrityHealthSub.textContent = report.errors ? "建议先处理需要修复的关联" : report.warnings ? "有信息需要确认" : "档案检查通过"; if (els.dataIntegrityResults) {
+    els.dataIntegrityHealthSub.textContent = report.errors ? "存在需要修复的关联" : report.warnings ? "存在待确认信息" : "档案检查通过"; if (els.dataIntegrityResults) {
     if (!showList && report.issues.length === 0) {
         els.dataIntegrityResults.hidden = true;
         return report;
@@ -22106,7 +22106,7 @@ function initDialogFocusLifecycle() {
     } syncModalLayerOrder(); syncDialogInert(); syncModalPageScrollLock(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
     syncModalLayerOrder();
 }
-/* 统一模态表面识别，包含长期使用增强界面 */
+/* 统一模态表面识别，包含长期使用相关界面 */
 function initV79() {
     var _a, _b, _c, _d, _e, _f, _g;
     loadTrashEntries();
@@ -22592,7 +22592,7 @@ async function runInteractionSelfCheck() {
         oks.push("隐藏界面状态正常");
     const overflow = Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth);
     if (overflow > 2)
-        issues.push({ level: "warn", title: `页面横向溢出 ${overflow}px`, detail: "建议检查当前视口下的固定栏或长内容" });
+        issues.push({ level: "warn", title: `页面横向溢出 ${overflow}px`, detail: "检测到固定栏或长内容可能产生横向溢出" });
     else
         oks.push("页面无异常横向溢出");
     const ids = [...document.querySelectorAll("[id]")].map(x => x.id), dups = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
@@ -22640,7 +22640,7 @@ async function runInteractionSelfCheck() {
         issues.push({ level: "warn", title: "页面版本与离线缓存可能不同步", detail: `页面 v${APP_UI_VERSION} · 缓存 ${cache}` });
     const archiveBytes = currentArchiveStoredBytes();
     if (archiveBytes >= ARCHIVE_DANGER_BYTES)
-        issues.push({ level: "warn", title: "主档案体积较大", detail: `当前约 ${formatStorageBytes(archiveBytes)}，建议保持近期完整备份` });
+        issues.push({ level: "warn", title: "主档案体积较大", detail: `当前约 ${formatStorageBytes(archiveBytes)}；完整备份记录可在“数据与备份”中查看` });
     else
         oks.push(`主档案体积：${formatStorageBytes(archiveBytes)}`);
     const smoke = runBuiltInRegressionSmoke();
@@ -24622,7 +24622,7 @@ els.refreshExternalBackupBrowser.addEventListener("click", () => { void openExte
 els.changeExternalBackupLocationFromBrowser.addEventListener("click", async () => { closeExternalBackupBrowser(); await chooseExternalBackupTarget(); });
 els.externalBackupBrowserBackdrop.addEventListener("click", e => { if (e.target === els.externalBackupBrowserBackdrop) closeExternalBackupBrowser(); });
 els.externalBackupFileList.addEventListener("click", e => { const view=e.target.closest("[data-external-backup-view]"); if(view){void openExternalBackupFileContent(view.dataset.externalBackupView);return;} const dl=e.target.closest("[data-external-backup-download]"); if(dl){void downloadExternalBackupFileCopy(dl.dataset.externalBackupDownload);} });
-els.relayUpgrade.addEventListener("click", async () => { if (await appConfirm("将当前档案写入所选新版 HTML。生成文件包含真实数据，仅用于升级或备份。是否继续？", { title: "生成新版迁移文件？", confirmText: "继续" }))
+els.relayUpgrade.addEventListener("click", async () => { if (await appConfirm("将当前档案写入所选新版 HTML。生成文件包含真实数据，可用于升级或备份。是否继续？", { title: "生成新版迁移文件？", confirmText: "继续" }))
     els.relayUpgradeFile.click(); });
 els.relayUpgradeFile.addEventListener("change", () => { var _a; const file = (_a = els.relayUpgradeFile.files) === null || _a === void 0 ? void 0 : _a[0]; if (file)
     void relayCurrentDataIntoNewVersion(file); });
@@ -25012,7 +25012,7 @@ renderBackupReminderBanner = function() {
     if (!els?.dataSafetyBanner || els.dataSafetyBanner.hidden) return;
     const info = backupReminderDueInfo(), ageDays = info.meta?.exportedAt ? Math.floor((Date.now()-Number(info.meta.exportedAt))/86400000) : 0;
     if (info.meta) {
-        els.dataSafetyBannerTitle.textContent = "建议更新完整备份";
+        els.dataSafetyBannerTitle.textContent = "完整备份已达到提醒周期";
         const reasons = [];
         if (ageDays > 0) reasons.push(`距上次完整备份约 ${ageDays} 天`);
         if (info.changes > 0) reasons.push(`期间约 ${info.changes} 次有效修改`);
@@ -25181,10 +25181,10 @@ async function refreshStoragePressure(showNotice=false){
     try{if(navigator.storage?.estimate){const q=await navigator.storage.estimate();info.usage=Number(q.usage||0);info.quota=Number(q.quota||0);info.ratio=info.quota?info.usage/info.quota:0;}}catch(_){ }
     info.level=storagePressureLevel(info);storagePressureInfo=info;
     const value=document.getElementById("storagePressureHealthValue"),sub=document.getElementById("storagePressureHealthSub"),card=document.getElementById("storagePressureHealthCard");
-    if(value){value.textContent=info.level==="danger"?"空间紧张":info.level==="warn"?"建议关注":"余量正常";}
+    if(value){value.textContent=info.level==="danger"?"达到提醒阈值":info.level==="warn"?"接近提醒阈值":"低于提醒阈值";}
     if(sub){const originPart=info.quota?`浏览器已用 ${Math.round(info.ratio*100)}%`:`本地存储约 ${formatStorageBytes(info.localBytes)}`;sub.textContent=`${originPart} · 主档案 ${formatStorageBytes(info.archiveBytes)}`;}
     if(card){card.classList.toggle("archive-size-warn",info.level==="warn");card.classList.toggle("archive-size-danger",info.level==="danger");}
-    if(showNotice&&info.level!=="ok")appNotice(`${info.level==="danger"?"当前浏览器存储空间已经比较紧张。":"当前档案体积正在增大。"}\n\n主档案：${formatStorageBytes(info.archiveBytes)}\n本地存储估算：${formatStorageBytes(info.localBytes)}${info.quota?`\n浏览器存储使用率：${Math.round(info.ratio*100)}%`:""}\n\n建议先导出完整备份，并清理不需要的旧恢复点、浏览器缓存或其他网站数据。不要在空间不足提示下连续大量导入。`,"存储空间提醒");
+    if(showNotice&&info.level!=="ok")appNotice(`${info.level==="danger"?"当前浏览器存储使用率已达到提醒阈值。":"当前档案体积已接近存储提醒阈值。"}\n\n主档案：${formatStorageBytes(info.archiveBytes)}\n本地存储估算：${formatStorageBytes(info.localBytes)}${info.quota?`\n浏览器存储使用率：${Math.round(info.ratio*100)}%`:""}\n\n完整备份可用于数据恢复。旧恢复点、浏览器缓存或其他网站数据可释放存储空间；达到空间提醒阈值时连续大量导入可能导致保存失败。`,"存储空间提醒");
     return info;
 }
 const v8182RunStorageDiagnostics=runStorageDiagnostics;
@@ -25202,7 +25202,7 @@ document.addEventListener("click",async e=>{
     let ack=false;try{ack=sessionStorage.getItem(PRIVACY_EXPORT_ACK_KEY)==="1";}catch(_){ }
     if(ack)return;
     e.preventDefault();e.stopImmediatePropagation();
-    const choice=await appSelect("当前导出可能包含 PL / KP 姓名、桌次关系和评分。",[{value:"privacy",label:"开启隐私遮罩后导出（推荐）"},{value:"raw",label:"直接导出"}],"privacy",{title:"导出前检查隐私？",confirmText:"继续"});
+    const choice=await appSelect("当前导出可能包含 PL / KP 姓名、桌次关系和评分。",[{value:"privacy",label:"开启隐私遮罩后导出（默认）"},{value:"raw",label:"直接导出"}],"privacy",{title:"导出前检查隐私？",confirmText:"继续"});
     if(!choice)return;
     if(choice==="privacy")setPrivacyMaskExplicit(true);else{try{sessionStorage.setItem(PRIVACY_EXPORT_ACK_KEY,"1");}catch(_){ }}
     btn.dataset.privacyExportBypassOnce="1";btn.click();
@@ -25377,7 +25377,7 @@ initV806SearchUX();
   var uxOrigRenderRunRecords=renderRunRecords;
   renderRunRecords=function(){var r=uxOrigRenderRunRecords.apply(this,arguments);enhanceRecordEditorNav();applyButtonHierarchy(els.recordsView);return r;};
 
-  /* 统一图片导出预览：个人偏好已有成熟预览，这里补齐个人统计与跑团整理 */
+  /* 统一图片导出预览：沿用个人偏好预览结构，并加入个人统计与跑团整理 */
   function ensureExportPreviewModal(){if(document.getElementById("uxExportPreviewBackdrop"))return;var wrap=document.createElement("div");wrap.id="uxExportPreviewBackdrop";wrap.className="ux-export-preview-backdrop";wrap.hidden=true;wrap.innerHTML='<section class="ux-export-preview-modal" role="dialog" aria-modal="true" aria-labelledby="uxExportPreviewTitle"><header class="ux-export-preview-head"><div class="ux-export-preview-copy"><strong id="uxExportPreviewTitle">导出预览</strong><span id="uxExportPreviewMeta">确认内容与版面后再导出。</span></div><button id="uxExportPreviewClose" class="icon-close" type="button" aria-label="关闭导出预览">×</button></header><div class="ux-export-preview-body"><div id="uxExportPreviewStage" class="ux-export-preview-stage"></div></div><footer class="ux-export-preview-foot"><span class="muted">预览与最终 PNG 使用同一画布。</span><div class="right"><button id="uxExportPreviewCancel" class="btn" type="button">取消</button><button id="uxExportPreviewDownload" class="btn primary" type="button">导出图片</button></div></footer></section>';document.body.appendChild(wrap);
     function close(){wrap.hidden=true;uxPendingExport=null;document.getElementById("uxExportPreviewStage").innerHTML="";}
     document.getElementById("uxExportPreviewClose").addEventListener("click",close);document.getElementById("uxExportPreviewCancel").addEventListener("click",close);wrap.addEventListener("click",function(e){if(e.target===wrap)close();});
