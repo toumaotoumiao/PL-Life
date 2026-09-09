@@ -1384,6 +1384,13 @@
     }
     .planner-sidebar-head strong{display:block;font-size:13px;color:var(--t-ink)}
     .planner-sidebar-head span{display:block;margin-top:2px;font-size:9px;color:var(--t-muted)}
+    .planner-sidebar-head-actions{display:grid;justify-items:end;gap:6px;min-width:126px}
+    .planner-periodic-btn{min-height:32px;padding:6px 9px;border:1px solid var(--t-line-strong);border-radius:9px;background:var(--t-accent-soft);color:var(--t-accent-strong);font-size:8.6px;font-weight:800;cursor:pointer;white-space:nowrap}
+    .planner-periodic-btn:hover{border-color:var(--t-accent);box-shadow:0 4px 12px var(--t-shadow-soft)}
+    .planner-sidebar-footer{position:sticky;bottom:-10px;z-index:8;margin:10px -10px -10px;padding:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--t-surface-glass) 0%,transparent),var(--t-surface-glass) 28%,var(--t-surface-glass) 100%)}
+    .planner-schedule-records-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:38px;padding:8px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);color:var(--t-text-2);font-size:9px;font-weight:760;cursor:pointer;box-shadow:0 3px 12px var(--t-shadow-soft)}
+    .planner-schedule-records-btn:hover{border-color:var(--t-line-strong);background:var(--t-surface-2)}
+    .planner-schedule-records-btn .count{padding:2px 6px;border-radius:999px;background:var(--t-accent-soft);color:var(--t-accent-strong);font-size:8px}
     .plan-search{min-height:40px;margin-bottom:9px;background:var(--t-input)}
     .plan-board{display:grid;gap:9px}
     .plan-board>.empty{margin-top:2px}
@@ -1614,6 +1621,35 @@
     body.schedule-dragging .calendar-event{opacity:.7}
 
     /* 编辑抽屉：所有计划细节只在一个地方维护，列表保持轻。 */
+    .periodic-schedule-backdrop,.periodic-records-backdrop{position:fixed;inset:0;z-index:1680;display:grid;place-items:center;padding:18px;background:rgba(27,31,29,.34);backdrop-filter:blur(7px)}
+    .periodic-schedule-backdrop[hidden],.periodic-records-backdrop[hidden]{display:none!important}
+    .periodic-schedule-modal,.periodic-records-modal{width:min(760px,100%);max-height:min(88vh,860px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface);box-shadow:0 28px 80px rgba(0,0,0,.2)}
+    .periodic-records-modal{width:min(720px,100%);grid-template-rows:auto minmax(0,1fr)}
+    .periodic-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 15px;border-bottom:1px solid var(--t-line)}
+    .periodic-modal-head>div{display:grid;gap:3px}.periodic-modal-head h3{margin:0;font-size:15px;color:var(--t-ink)}.periodic-modal-head p{margin:0;color:var(--t-muted);font-size:8.8px;line-height:1.45}
+    .periodic-modal-body{overflow:auto;padding:14px 15px;overscroll-behavior:contain}
+    .periodic-modal-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 15px;border-top:1px solid var(--t-line);background:var(--t-surface)}
+    .periodic-modal-foot .right{margin-left:auto;display:flex;gap:7px}
+    .periodic-form{display:grid;gap:12px}.periodic-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.periodic-grid .wide{grid-column:1/-1}
+    .periodic-field{display:grid;gap:5px}.periodic-field>span,.periodic-section-title{font-size:8.6px;font-weight:760;color:var(--t-text-2)}
+    .periodic-field select,.periodic-field input{width:100%;min-height:40px;padding:8px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-input);color:var(--t-ink);outline:none}
+    .periodic-field select:focus,.periodic-field input:focus{border-color:var(--t-accent);box-shadow:0 0 0 3px var(--t-focus)}
+    .periodic-weekdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.periodic-weekday{min-height:36px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-text-2);font-size:8.5px;font-weight:760;cursor:pointer}.periodic-weekday.active{border-color:var(--t-accent);background:var(--t-accent-soft);color:var(--t-accent-strong)}
+    .periodic-inline-check{display:flex;align-items:flex-start;gap:7px;padding:9px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);font-size:8.7px;color:var(--t-text-2);line-height:1.45}.periodic-inline-check input{margin-top:1px}
+    .periodic-preview-summary{display:flex;flex-wrap:wrap;gap:6px;padding:9px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2)}
+    .periodic-preview-summary span{padding:4px 7px;border-radius:999px;background:var(--t-surface);color:var(--t-muted);font-size:8px}.periodic-preview-summary strong{color:var(--t-ink)}
+    .periodic-preview-list{display:grid;gap:5px;max-height:280px;overflow:auto;padding-right:2px}.periodic-preview-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px;padding:8px 9px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface)}
+    .periodic-preview-row.disabled{opacity:.64;background:var(--t-surface-2)}.periodic-preview-row strong{display:block;font-size:9px;color:var(--t-ink)}.periodic-preview-row small{display:block;margin-top:2px;font-size:7.8px;color:var(--t-muted)}
+    .periodic-status{padding:3px 6px;border-radius:999px;font-size:7.6px;font-weight:760;white-space:nowrap}.periodic-status.ok{background:var(--status-success-bg);color:var(--t-success)}.periodic-status.skip{background:var(--status-warning-bg);color:var(--t-warning)}.periodic-status.full{background:var(--status-danger-bg);color:var(--t-danger)}
+    .periodic-form-note{padding:8px 9px;border-radius:9px;background:var(--t-accent-soft);color:var(--t-text-2);font-size:8.2px;line-height:1.5}
+    .periodic-form-error{padding:8px 9px;border:1px solid var(--status-danger-line);border-radius:9px;background:var(--status-danger-bg);color:var(--t-danger);font-size:8.3px;line-height:1.45}
+    .periodic-records-list{display:grid;gap:9px}.periodic-record-card{padding:11px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface);box-shadow:0 3px 12px var(--t-shadow-soft)}
+    .periodic-record-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.periodic-record-head strong{display:block;font-size:10.5px;color:var(--t-ink)}.periodic-record-head span{display:block;margin-top:2px;font-size:8px;color:var(--t-muted)}
+    .periodic-record-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.periodic-record-meta span{padding:3px 6px;border-radius:999px;background:var(--t-surface-2);color:var(--t-muted);font-size:7.8px}.periodic-record-meta .warn{background:var(--status-warning-bg);color:var(--t-warning)}
+    .periodic-record-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.periodic-record-actions .danger-soft{border-color:var(--status-danger-line);background:var(--status-danger-bg);color:var(--t-danger)}
+    .periodic-records-empty{padding:28px 16px;text-align:center;color:var(--t-muted);font-size:9px}
+    @media(max-width:720px){.periodic-schedule-backdrop,.periodic-records-backdrop{align-items:end;padding:0}.periodic-schedule-modal,.periodic-records-modal{width:100%;max-height:91vh;border-radius:18px 18px 0 0}.periodic-grid{grid-template-columns:1fr}.periodic-grid .wide{grid-column:auto}.periodic-weekdays{grid-template-columns:repeat(4,minmax(0,1fr))}.periodic-modal-foot{padding-bottom:max(10px,env(safe-area-inset-bottom))}.planner-sidebar-head{align-items:flex-start}.planner-sidebar-head-actions{min-width:118px}}
+
     .plan-editor-backdrop{
       position:fixed;inset:0;z-index:1350;
       background:color-mix(in srgb,var(--t-bg) 42%,rgba(0,0,0,.34));
@@ -3121,7 +3157,7 @@
 
     body.share-mode .contact,body.share-mode .profile-meta,body.share-mode .note-inline,body.share-mode .native-module-note,body.share-mode .record-view-fact:nth-child(3),body.share-mode .record-view-extra,body.share-mode .record-extra-details,body.share-mode .run-card-body a,body.share-mode .run-card-body div:has(a){display:none!important}
     body.share-mode .attr-text{font-size:0}body.share-mode .attr-text::after{content:var(--i18n-share-score-hidden,"评分说明已在分享模式隐藏");font-size:8px;color:var(--t-faint)}
-    body.share-mode #newBtn,body.share-mode #blacklistBtn,body.share-mode #profileStatusSection,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-action="add-blacklist"],body.share-mode [data-action="remove-blacklist"],body.share-mode [data-editor-add-blacklist-pl],body.share-mode [data-editor-blacklist-kp],body.share-mode .blacklist-plan-picker,body.share-mode .blacklist-plan-warning,body.share-mode .blacklist-badge,body.share-mode .plan-blacklist-risk,body.share-mode .calendar-risk-badge,body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
+    body.share-mode #newBtn,body.share-mode #blacklistBtn,body.share-mode #profileStatusSection,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #periodicScheduleBtn,body.share-mode #periodicScheduleRecordsBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-action="add-blacklist"],body.share-mode [data-action="remove-blacklist"],body.share-mode [data-editor-add-blacklist-pl],body.share-mode [data-editor-blacklist-kp],body.share-mode .blacklist-plan-picker,body.share-mode .blacklist-plan-warning,body.share-mode .blacklist-badge,body.share-mode .plan-blacklist-risk,body.share-mode .calendar-risk-badge,body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
     body.share-mode #shareModeBtn{background:var(--t-success)!important;color:#fff!important;opacity:1!important}
 
     .integrity-item-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.integrity-item-actions button{min-height:28px}
@@ -4853,12 +4889,18 @@ body{font-size:var(--vu-body);line-height:1.5}
                 <strong>计划</strong>
                 <span>按下一次安排排序</span>
               </div>
-              <div id="planCountText" class="count" aria-live="polite">0 个</div>
+              <div class="planner-sidebar-head-actions">
+                <div id="planCountText" class="count" aria-live="polite">0 个</div>
+                <button id="periodicScheduleBtn" class="planner-periodic-btn" type="button">＋ 一键按周期排期</button>
+              </div>
             </div>
             <label class="search plan-search"><span>⌕</span><input id="planSearchInput" placeholder="搜索模组、桌名、KP、PL、PC 或日期（支持拼音首字母）"></label>
             <div class="plan-role-legend" aria-label="我的身份颜色说明"><span class="kp"><i></i>我做 KP</span><span class="pl"><i></i>我做 PL</span></div>
             <div class="planner-drag-hint" aria-label="排期操作提示"><span class="planner-drag-hint-desktop">按住卡片左侧 <strong>“拖到日历”</strong> 可直接排期</span><span class="planner-drag-hint-mobile">点击 <strong>“安排”</strong> 后选择日历时段</span></div>
             <section id="planBoard" class="plan-board"></section>
+            <div class="planner-sidebar-footer">
+              <button id="periodicScheduleRecordsBtn" class="planner-schedule-records-btn" type="button"><span>排期记录</span><span><span id="periodicScheduleRecordCount" class="count">0</span>　›</span></button>
+            </div>
           </aside>
 
           <section class="planner-calendar" aria-label="开团计划日历">
@@ -4868,6 +4910,26 @@ body{font-size:var(--vu-body);line-height:1.5}
         </div>
 
         
+        <div id="periodicScheduleBackdrop" class="periodic-schedule-backdrop" hidden>
+          <section class="periodic-schedule-modal" role="dialog" aria-modal="true" aria-labelledby="periodicScheduleTitle">
+            <header class="periodic-modal-head">
+              <div><h3 id="periodicScheduleTitle">一键按周期排期</h3><p>从现有计划复制独立桌次，按周期批量排入日历；每一桌之后都能单独编辑、归档或删除。</p></div>
+              <button id="closePeriodicScheduleBtn" class="icon-close" type="button" aria-label="关闭一键按周期排期">×</button>
+            </header>
+            <div id="periodicScheduleContent" class="periodic-modal-body"></div>
+            <footer class="periodic-modal-foot"><span id="periodicScheduleFootHint" class="muted">先预览，再确认排期。</span><div class="right"><button id="cancelPeriodicScheduleBtn" class="btn" type="button">取消</button><button id="confirmPeriodicScheduleBtn" class="btn primary" type="button">确认排期</button></div></footer>
+          </section>
+        </div>
+        <div id="periodicScheduleRecordsBackdrop" class="periodic-records-backdrop" hidden>
+          <section class="periodic-records-modal" role="dialog" aria-modal="true" aria-labelledby="periodicScheduleRecordsTitle">
+            <header class="periodic-modal-head">
+              <div><h3 id="periodicScheduleRecordsTitle">排期记录</h3><p>管理通过“一键按周期排期”生成的批次；可以继续、再次排期、撤回未修改桌次或只删除这条记录。</p></div>
+              <button id="closePeriodicScheduleRecordsBtn" class="icon-close" type="button" aria-label="关闭排期记录">×</button>
+            </header>
+            <div id="periodicScheduleRecordsContent" class="periodic-modal-body"></div>
+          </section>
+        </div>
+
         <div id="planEditorBackdrop" class="plan-editor-backdrop" hidden>
           <aside id="planEditorDrawer" class="plan-editor-drawer" role="dialog" aria-modal="true" aria-labelledby="planEditorTitle">
             <header class="plan-editor-drawer-head">
@@ -4912,7 +4974,7 @@ body{font-size:var(--vu-body);line-height:1.5}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.8.6 · 2026-09-08 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.8.7 · 2026-09-09 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -4924,7 +4986,7 @@ body{font-size:var(--vu-body);line-height:1.5}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.8.6　·　更新时间：2026-09-08　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.8.7　·　更新时间：2026-09-09　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5269,7 +5331,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.8.6</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.8.7</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5292,10 +5354,11 @@ body{font-size:var(--vu-body);line-height:1.5}
   <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.8.6 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.8.6</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.8.7 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.8.7</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-log-item"><strong>v8.1.8.6</strong><span>个人偏好模组选择器改为连续快速选择：想跑模组 / 可带模组的输入框使用自定义已有模组下拉，点击现有模组即直接加入，不再需要二次点击“选择已有”；加入后下拉保持展开、列表滚动回顶部并清空输入，可连续添加多个已有模组。新增“＋ 添加”只负责创建当前档案中不存在的新模组；局部更新列表避免整页重绘和滚动跳回顶部。</span></div>
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-log-item"><strong>v8.1.8.7</strong><span>开团计划新增“一键按周期排期”：选择已有计划模板、星期、日历时段、具体起止时间与日期范围后批量生成独立计划副本；支持排除单日、容量/重复预览、可选复制 PL，PC/HO/Log 默认清空。新增排期记录，可继续排期、再次排期、只撤回仍未手动修改的计划或仅删除记录；周期具体时间同步保存到日程并显示。</span></div>
+<div class="version-log-item"><strong>v8.1.8.6</strong><span>个人偏好模组选择器改为连续快速选择：想跑模组 / 可带模组的输入框使用自定义已有模组下拉，点击现有模组即直接加入，不再需要二次点击“选择已有”；加入后下拉保持展开、列表滚动回顶部并清空输入，可连续添加多个已有模组。新增“＋ 添加”只负责创建当前档案中不存在的新模组；局部更新列表避免整页重绘和滚动跳回顶部。</span></div>
 <div class="release-notes-box" id="releaseNotesBox">
 <strong>v8.1.8.5</strong><span>历史兼容字段静默保留：已被新版结构替代的个人偏好细项、旧持续时间、旧 HO 数量提示及迁移标记继续保存在档案与备份中，但从正常页面、搜索、统计明细、个人偏好图片导出和高级模组工具中隐藏；历史兼容数据只参与内部兼容与恢复，不再重新出现在日常使用和分享内容里。</span>
 <strong>v8.1.8.4</strong><span>偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新；个人偏好图片导出同步保留边界提示底色，其中“绝对不行”使用浅红底和红色强调，便于分享时快速识别红线。</span>
@@ -5536,7 +5599,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.8.6 · 作者：番茄
+/* PL收集梦想生活 v8.1.8.7 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5563,7 +5626,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.8.6";
+const APP_UI_VERSION = "8.1.8.7";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -9256,13 +9319,32 @@ function normalizeUiSettings(raw) {
         locale: I18N_LOCALE_META[String(src.locale || "")] ? String(src.locale) : I18N_DEFAULT_LOCALE
     };
 }
+function normalizePeriodicScheduleBatchEntry(raw) {
+    const x = raw && typeof raw === "object" ? raw : {};
+    return { planId: String(x.planId || ""), date: normalizeDateValue(x.date) || "", daypart: normalizePlanDaypart(x.daypart) || "evening", fingerprint: String(x.fingerprint || "") };
+}
+function normalizePeriodicScheduleBatch(raw) {
+    const x = raw && typeof raw === "object" ? raw : {};
+    const weekdays = [...new Set((Array.isArray(x.weekdays) ? x.weekdays : []).map(Number).filter(n => n >= 1 && n <= 7))].sort((a,b)=>a-b);
+    return {
+        id: String(x.id || uid()), sourcePlanId: String(x.sourcePlanId || ""), sourceLabel: String(x.sourceLabel || "").trim(), templateSnapshot: x.templateSnapshot && typeof x.templateSnapshot === "object" ? clone(x.templateSnapshot) : null,
+        weekdays, daypart: normalizePlanDaypart(x.daypart) || "evening", startTime: String(x.startTime || "").trim(), endTime: String(x.endTime || "").trim(), startDate: normalizeDateValue(x.startDate) || "", endDate: normalizeDateValue(x.endDate) || "", copyPl: Boolean(x.copyPl),
+        excludedDates: [...new Set((Array.isArray(x.excludedDates) ? x.excludedDates : []).map(normalizeDateValue).filter(Boolean))],
+        generated: (Array.isArray(x.generated) ? x.generated : []).map(normalizePeriodicScheduleBatchEntry).filter(v => v.planId && v.date),
+        skipped: (Array.isArray(x.skipped) ? x.skipped : []).map(v => ({ date: normalizeDateValue(v && v.date) || "", daypart: normalizePlanDaypart(v && v.daypart) || "evening", reason: String((v && v.reason) || "") })).filter(v => v.date),
+        createdAt: Number(x.createdAt || Date.now()), lastWithdrawAt: Number(x.lastWithdrawAt || 0), withdrawnPlanIds: [...new Set((Array.isArray(x.withdrawnPlanIds) ? x.withdrawnPlanIds : []).map(String).filter(Boolean))]
+    };
+}
+function normalizePeriodicScheduleBatches(raw) {
+    return (Array.isArray(raw) ? raw : []).map(normalizePeriodicScheduleBatch).filter(x => x.generated.length || x.sourceLabel || x.templateSnapshot).slice(-120);
+}
 function defaultSettings() {
     const fields = clone(baseFields);
     const scoring = fields.filter(f => f.includeInTotal);
     scoring.forEach(f => f.weight = 100 / scoring.length);
     fields.filter(f => !f.includeInTotal).forEach(f => f.weight = 0);
     fields.forEach(f => { f.builtin = true; });
-    return { version: DATA_SCHEMA_VERSION, fields, sortMode: "total_desc", profileLayout: "cards", theme: "mist", moduleArchive: defaultModuleArchiveSettings(), ui: defaultUiSettings() };
+    return { version: DATA_SCHEMA_VERSION, fields, sortMode: "total_desc", profileLayout: "cards", theme: "mist", moduleArchive: defaultModuleArchiveSettings(), ui: defaultUiSettings(), scheduleBatches: [] };
 }
 function normalizeField(raw, fallback = null) {
     var _a, _b, _c, _d;
@@ -9325,7 +9407,7 @@ function normalizeSettings(raw) {
         sortMode = sortMode.endsWith(":asc") ? "role_kp_desc" : "role_pl_desc";
     const profileLayout = (raw === null || raw === void 0 ? void 0 : raw.profileLayout) === "compact" ? "compact" : "cards";
     const theme = normalizeTheme(raw === null || raw === void 0 ? void 0 : raw.theme);
-    return { version: DATA_SCHEMA_VERSION, fields, sortMode, profileLayout, theme, moduleArchive: normalizeModuleArchiveSettings(raw === null || raw === void 0 ? void 0 : raw.moduleArchive), ui: normalizeUiSettings(raw === null || raw === void 0 ? void 0 : raw.ui) };
+    return { version: DATA_SCHEMA_VERSION, fields, sortMode, profileLayout, theme, moduleArchive: normalizeModuleArchiveSettings(raw === null || raw === void 0 ? void 0 : raw.moduleArchive), ui: normalizeUiSettings(raw === null || raw === void 0 ? void 0 : raw.ui), scheduleBatches: normalizePeriodicScheduleBatches(raw === null || raw === void 0 ? void 0 : raw.scheduleBatches) };
 }
 /* ---------- 05. 唯一 ID：给新档案和自定义字段生成唯一标识 ---------- */
 function uid() { return (typeof crypto !== "undefined" && crypto && typeof crypto.randomUUID === "function" ? crypto.randomUUID() : ("id_" + Date.now() + "_" + Math.random().toString(16).slice(2))); }
@@ -9771,12 +9853,15 @@ function legacyDateFromDateTime(value) {
     const m = s.match(/^(\d{4}-\d{2}-\d{2})T\d{2}:\d{2}/);
     return m ? normalizeDateValue(m[1]) : "";
 }
+function normalizePlanClock(value) { const m = String(value || "").trim().match(/^(\d{1,2}):(\d{2})$/); if (!m) return ""; const h = Number(m[1]), min = Number(m[2]); return h >= 0 && h <= 23 && min >= 0 && min <= 59 ? `${pad2(h)}:${pad2(min)}` : ""; }
 function normalizePlanTimeSlot(raw) {
     const date = normalizeDateValue(raw === null || raw === void 0 ? void 0 : raw.date) || legacyDateFromDateTime(raw === null || raw === void 0 ? void 0 : raw.start) || legacyDateFromDateTime(raw === null || raw === void 0 ? void 0 : raw.end);
     const daypart = normalizePlanDaypart(raw === null || raw === void 0 ? void 0 : raw.daypart) || daypartFromLegacyDateTime(raw === null || raw === void 0 ? void 0 : raw.start) || daypartFromLegacyDateTime(raw === null || raw === void 0 ? void 0 : raw.end) || "evening";
     const orderRaw = Number(raw === null || raw === void 0 ? void 0 : raw.order);
     const order = Number.isFinite(orderRaw) ? Math.max(0, orderRaw) : 0;
-    return { id: String((raw === null || raw === void 0 ? void 0 : raw.id) || uid()), date, daypart, order };
+    const startTime = normalizePlanClock(raw === null || raw === void 0 ? void 0 : raw.startTime);
+    const endTime = normalizePlanClock(raw === null || raw === void 0 ? void 0 : raw.endTime);
+    return { id: String((raw === null || raw === void 0 ? void 0 : raw.id) || uid()), date, daypart, order, startTime, endTime };
 }
 function normalizePlanSlots(raw) {
     const out = [], seen = new Set();
@@ -11885,7 +11970,7 @@ const els = {
     selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportPreview: document.getElementById("selfIntroExportPreviewStage"), selfIntroExportCompact: document.getElementById("selfIntroExportCompactBtn"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
     statsContent: document.getElementById("statsContent"), statsExport: document.getElementById("statsExportBtn"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
     grid: document.getElementById("profileGrid"), count: document.getElementById("countText"), search: document.getElementById("searchInput"), sort: document.getElementById("sortSelect"), cardLayout: document.getElementById("cardLayoutBtn"), compactLayout: document.getElementById("compactLayoutBtn"), blacklistBtn: document.getElementById("blacklistBtn"), profileCollapseActions: document.getElementById("profileCollapseActions"), collapseAllProfiles: document.getElementById("collapseAllProfilesBtn"), expandAllProfiles: document.getElementById("expandAllProfilesBtn"), profilesToolbarTitle: document.getElementById("profilesToolbarTitle"), profilesToolbarSubtitle: document.getElementById("profilesToolbarSubtitle"),
-    planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"),
+    planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"), periodicSchedule: document.getElementById("periodicScheduleBtn"), periodicScheduleRecords: document.getElementById("periodicScheduleRecordsBtn"), periodicScheduleRecordCount: document.getElementById("periodicScheduleRecordCount"), periodicScheduleBackdrop: document.getElementById("periodicScheduleBackdrop"), periodicScheduleContent: document.getElementById("periodicScheduleContent"), closePeriodicSchedule: document.getElementById("closePeriodicScheduleBtn"), cancelPeriodicSchedule: document.getElementById("cancelPeriodicScheduleBtn"), confirmPeriodicSchedule: document.getElementById("confirmPeriodicScheduleBtn"), periodicScheduleFootHint: document.getElementById("periodicScheduleFootHint"), periodicScheduleRecordsBackdrop: document.getElementById("periodicScheduleRecordsBackdrop"), periodicScheduleRecordsContent: document.getElementById("periodicScheduleRecordsContent"), closePeriodicScheduleRecords: document.getElementById("closePeriodicScheduleRecordsBtn"),
     planEditorBackdrop: document.getElementById("planEditorBackdrop"), planEditorDrawer: document.getElementById("planEditorDrawer"), planEditorTitle: document.getElementById("planEditorTitle"), planEditorContent: document.getElementById("planEditorContent"), closePlanEditor: document.getElementById("closePlanEditorBtn"),
     recordsBoard: document.getElementById("recordsBoard"), recordsSearch: document.getElementById("recordsSearchInput"), newModuleName: document.getElementById("newModuleNameInput"), newModuleNameCombobox: document.getElementById("newModuleNameCombobox"), newModuleSuggestions: document.getElementById("newModuleSuggestions"), createModuleRecord: document.getElementById("createModuleRecordBtn"), expandAllRecords: document.getElementById("expandAllRecordsBtn"), collapseAllRecords: document.getElementById("collapseAllRecordsBtn"),
     newBtn: document.getElementById("newBtn"), settingsBtn: document.getElementById("settingsBtn"), overlay: document.getElementById("overlay"), globalCreate: document.getElementById("globalCreateBtn"), quickCreateMenu: document.getElementById("quickCreateMenu"), mobileBottomNav: document.getElementById("mobileBottomNav"), mobileToolsSheet: document.getElementById("mobileToolsSheet"), hoOrganizerBackdrop: document.getElementById("hoOrganizerBackdrop"), hoOrganizerTitle: document.getElementById("hoOrganizerTitle"), hoOrganizerSubtitle: document.getElementById("hoOrganizerSubtitle"), hoOrganizerStats: document.getElementById("hoOrganizerStats"), hoOrganizerNotice: document.getElementById("hoOrganizerNotice"), hoOrganizerBoard: document.getElementById("hoOrganizerBoard"), hoShowEmptyColumns: document.getElementById("hoShowEmptyColumns"), kpOrganizerSortWrap: document.getElementById("kpOrganizerSortWrap"), kpOrganizerSort: document.getElementById("kpOrganizerSort"), hoImageExport: document.getElementById("hoImageExportBtn"), hoImageExportMenu: document.getElementById("hoImageExportMenu"), copyHoOrganizer: document.getElementById("copyHoOrganizerBtn"), closeHoOrganizer: document.getElementById("closeHoOrganizerBtn"),
@@ -13702,7 +13787,7 @@ let modalPageScrollState = null;
 function anyModalSurfaceOpen() {
     var _a;
     return Boolean(((_a = els.overlay) === null || _a === void 0 ? void 0 : _a.classList.contains("open")) ||
-        ["planEditorBackdrop", "nativeModuleEditorBackdrop", "moduleAdvancedBackdrop", "hoOrganizerBackdrop", "secureBackupBackdrop", "externalBackupBrowserBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"]
+        ["planEditorBackdrop", "nativeModuleEditorBackdrop", "moduleAdvancedBackdrop", "hoOrganizerBackdrop", "secureBackupBackdrop", "externalBackupBrowserBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"]
             .some(id => { const el = document.getElementById(id); return el && !el.hidden; }));
 }
 function syncModalPageScrollLock() {
@@ -13736,7 +13821,7 @@ function watchModalSurface(el) {
         return;
     new MutationObserver(syncModalPageScrollLock).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] });
 }
-[els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop].forEach(watchModalSurface);
+[els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop, els.periodicScheduleRecordsBackdrop].forEach(watchModalSurface);
 /* ---------- 14. 弹窗控制：切换 PL 编辑窗口和设置窗口，并虚化背景 ---------- */
 function showOverlay(which) {
     els.profileModalWrap.hidden = which !== "profile";
@@ -14402,7 +14487,8 @@ function formatPlanSlot(slot) {
     if (!d)
         return "";
     const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
-    return `${d.getMonth() + 1}月${d.getDate()}日 ${weekdays[d.getDay()]} · ${daypartInfo(slot.daypart).label}`;
+    const exact = slot.startTime && slot.endTime ? ` · ${slot.startTime}–${slot.endTime}` : "";
+    return `${d.getMonth() + 1}月${d.getDate()}日 ${weekdays[d.getDay()]} · ${daypartInfo(slot.daypart).label}${exact}`;
 }
 function planArchiveDateRange(plan) {
     const dates = sortedPlanSlots(plan).map(s => s.date).filter(Boolean).sort();
@@ -16287,6 +16373,163 @@ function setPlannerMobileSection(section, { persist = true, scroll = true } = {}
     if (scroll && mobileMedia.matches)
         requestAnimationFrame(() => { var _a; return (_a = els.plansView) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ block: "start", behavior: preferredScrollBehavior() }); });
 }
+let periodicScheduleDraft = null;
+function periodicBatches() {
+    if (!Array.isArray(settings.scheduleBatches)) settings.scheduleBatches = [];
+    settings.scheduleBatches = normalizePeriodicScheduleBatches(settings.scheduleBatches);
+    return settings.scheduleBatches;
+}
+function weekdayCodeForDate(dateStr) { const d = parseLocalISODate(dateStr); if (!d) return 0; const x = d.getDay(); return x === 0 ? 7 : x; }
+function weekdayShortLabel(code) { return ({1:"周一",2:"周二",3:"周三",4:"周四",5:"周五",6:"周六",7:"周日"})[Number(code)] || ""; }
+function dateRangeDayCount(startDate, endDate) { const a = parseLocalISODate(startDate), b = parseLocalISODate(endDate); if (!a || !b) return 0; return Math.round((b - a) / 86400000) + 1; }
+function periodicSourceTemplate(plan) {
+    if (!plan) return null;
+    const p = normalizeRunPlan(plan, new Set(profiles.map(x=>x.id))), k = normalizeKpc(p.kpc);
+    return {
+        moduleId:p.moduleId, moduleName:p.moduleName, tableName:p.tableName, kp:p.kp, kpProfileId:p.kpProfileId,
+        plIds:[...(p.plIds||[])], kpc:{enabled:k.enabled,pcName:k.pcName,hoMode:"",hoNumber:0,hoCustom:""}, sharedHoNote:p.sharedHoNote || "",
+        createdAt:Number(p.createdAt || Date.now())
+    };
+}
+function periodicTemplatePlan(draft = periodicScheduleDraft) {
+    if (!draft) return null;
+    const live = runPlans.find(p=>p.id===draft.sourcePlanId);
+    if (live) return periodicSourceTemplate(live);
+    return draft.templateSnapshot ? clone(draft.templateSnapshot) : null;
+}
+function makePeriodicDraft(options={}) {
+    const today = localISODate(new Date()), source = options.sourcePlanId ? runPlans.find(p=>p.id===options.sourcePlanId) : (runPlans.find(p=>planStatusInfo(p).key === "unscheduled") || runPlans[0] || null);
+    const currentWeekday = weekdayCodeForDate(today) || 6;
+    return {
+        mode:String(options.mode || "new"), batchId:String(options.batchId || ""), operationNonce:String(options.operationNonce || uid()), sourcePlanId:String(options.sourcePlanId || ((source && source.id) || "")), templateSnapshot: options.templateSnapshot ? clone(options.templateSnapshot) : null,
+        weekdays:new Set(Array.isArray(options.weekdays) && options.weekdays.length ? options.weekdays.map(Number) : [currentWeekday]), daypart:normalizePlanDaypart(options.daypart) || "evening",
+        startTime:normalizePlanClock(options.startTime) || "19:00", endTime:normalizePlanClock(options.endTime) || "23:00", startDate:normalizeDateValue(options.startDate) || today,
+        endDate:normalizeDateValue(options.endDate) || addLocalDays(today, 28), copyPl:Boolean(options.copyPl), excludedDates:new Set((options.excludedDates || []).map(normalizeDateValue).filter(Boolean))
+    };
+}
+function periodicDraftFromBatch(batch, mode="again") {
+    const b = normalizePeriodicScheduleBatch(batch), span = Math.max(1,dateRangeDayCount(b.startDate,b.endDate));
+    const start = mode === "continue" ? addLocalDays(b.endDate || localISODate(new Date()),1) : b.startDate;
+    const end = mode === "continue" ? addLocalDays(start,span-1) : b.endDate;
+    return makePeriodicDraft({mode,batchId:b.id,sourcePlanId:b.sourcePlanId,templateSnapshot:b.templateSnapshot,weekdays:b.weekdays,daypart:b.daypart,startTime:b.startTime,endTime:b.endTime,startDate:start,endDate:end,copyPl:b.copyPl,excludedDates:mode === "again" ? b.excludedDates : []});
+}
+function periodicOccurrenceDates(draft=periodicScheduleDraft) {
+    if (!draft) return [];
+    const start=parseLocalISODate(draft.startDate), end=parseLocalISODate(draft.endDate); if(!start||!end||end<start) return [];
+    const days=dateRangeDayCount(draft.startDate,draft.endDate); if(days>730) return [];
+    const wanted=draft.weekdays instanceof Set ? draft.weekdays : new Set(draft.weekdays||[]), out=[];
+    for(let i=0;i<days;i++){const date=addLocalDays(draft.startDate,i); if(wanted.has(weekdayCodeForDate(date))) out.push(date); if(out.length>250) break;}
+    return out;
+}
+function periodicGeneratedStillExists(planId){return runPlans.some(p=>p.id===planId)||runRecords.some(r=>r.id===planId);}
+function periodicDuplicateExists(draft,date,daypart){
+    const source=runPlans.find(p=>p.id===draft.sourcePlanId); if(source && planHasDaypart(source,date,daypart)) return true;
+    return periodicBatches().some(batch=>batch.sourcePlanId===draft.sourcePlanId && batch.generated.some(g=>g.date===date && normalizePlanDaypart(g.daypart)===normalizePlanDaypart(daypart) && periodicGeneratedStillExists(g.planId)));
+}
+function periodicPreviewRows(draft=periodicScheduleDraft){
+    const dates=periodicOccurrenceDates(draft), excluded=draft && draft.excludedDates instanceof Set ? draft.excludedDates : new Set((draft && draft.excludedDates) || []);
+    return dates.map(date=>{let status="available",reason="可安排"; if(excluded.has(date)){status="excluded";reason="已排除";} else if(periodicDuplicateExists(draft,date,draft.daypart)){status="duplicate";reason="已有同源排期";} else if(daypartOccupancy(date,draft.daypart)>=MAX_RUNS_PER_DAYPART){status="full";reason="该时段已满";} return {date,daypart:draft.daypart,status,reason};});
+}
+function periodicDraftValidation(draft=periodicScheduleDraft){
+    if(!draft) return "排期信息不存在";
+    if(!periodicTemplatePlan(draft)) return "请选择一个已有开团计划作为模板";
+    if(!(draft.weekdays instanceof Set) || !draft.weekdays.size) return "请至少选择一个星期";
+    if(!parseLocalISODate(draft.startDate)||!parseLocalISODate(draft.endDate)) return "请选择开始和结束日期";
+    const days=dateRangeDayCount(draft.startDate,draft.endDate); if(days<=0) return "结束日期不能早于开始日期"; if(days>730) return "单次周期排期最长支持 730 天，请缩短日期范围";
+    if(!normalizePlanClock(draft.startTime)||!normalizePlanClock(draft.endTime)) return "请填写完整的开始和结束时间"; if(draft.startTime===draft.endTime) return "开始时间和结束时间不能相同";
+    const dates=periodicOccurrenceDates(draft); if(!dates.length) return "当前日期范围内没有符合所选星期的日期"; if(dates.length>250) return "单次最多生成 250 个周期日期，请缩短范围";
+    return "";
+}
+function periodicPreviewSummary(rows){return rows.reduce((a,r)=>{a[r.status]=(a[r.status]||0)+1;return a;},{available:0,excluded:0,duplicate:0,full:0});}
+function periodicPlanFingerprint(plan){
+    if(!plan) return ""; const p=normalizeRunPlan(plan,new Set(profiles.map(x=>x.id))); const moduleId=String(p.moduleId||""); const canonical=canonicalRunFromRuntime(p,"planned",moduleId); delete canonical.updatedAt; return stableTextHash(JSON.stringify(canonical));
+}
+function periodicSourceSelectHTML(draft){
+    const live = runPlans.slice().sort(compareRunPlans), hasLiveSource=live.some(p=>p.id===draft.sourcePlanId), snapshotLabel=draft.templateSnapshot ? (draft.templateSnapshot.moduleName || draft.templateSnapshot.tableName || "排期记录中的模板") : "";
+    const snapshotOption = !hasLiveSource && draft.templateSnapshot ? `<option value="__snapshot__" selected>${escapeHTML(snapshotLabel)} · 使用排期记录中的模板</option>` : "";
+    return `${snapshotOption}${live.map(p=>`<option value="${escapeHTML(p.id)}" ${p.id===draft.sourcePlanId?"selected":""}>${escapeHTML(plannerPlanLabel(p))} · ${escapeHTML(planStatusInfo(p).label)} · ${p.plIds.length} PL</option>`).join("")}`;
+}
+function renderPeriodicScheduleDialog(){
+    if(!periodicScheduleDraft||!els.periodicScheduleContent) return;
+    const d=periodicScheduleDraft, error=periodicDraftValidation(d), rows=periodicPreviewRows(d), sum=periodicPreviewSummary(rows), template=periodicTemplatePlan(d), sourceLabel=template ? `${template.moduleName||"未命名模组"}${template.tableName?` · ${template.tableName}`:""}` : "未选择";
+    const weekdays=[1,2,3,4,5,6,7].map(n=>`<button type="button" class="periodic-weekday ${d.weekdays.has(n)?"active":""}" data-periodic-weekday="${n}" aria-pressed="${d.weekdays.has(n)}">${weekdayShortLabel(n)}</button>`).join("");
+    const preview=rows.length?rows.map(r=>`<label class="periodic-preview-row ${r.status!=="available"?"disabled":""}"><input type="checkbox" data-periodic-date="${escapeHTML(r.date)}" ${r.status==="excluded"?"":"checked"} ${["duplicate","full"].includes(r.status)?"disabled":""}><span><strong>${escapeHTML(formatPlanSlot({date:r.date,daypart:d.daypart,startTime:d.startTime,endTime:d.endTime}))}</strong><small>${r.status==="available"?"将创建独立计划副本":escapeHTML(r.reason)}</small></span><span class="periodic-status ${r.status==="available"?"ok":r.status==="full"?"full":"skip"}">${escapeHTML(r.reason)}</span></label>`).join(""):`<div class="periodic-form-note">当前条件下还没有可预览的周期日期。</div>`;
+    els.periodicScheduleContent.innerHTML=`<div class="periodic-form">
+      <div class="periodic-grid">
+        <label class="periodic-field wide"><span>作为模板的开团计划</span><select data-periodic-source><option value="">请选择已有计划</option>${periodicSourceSelectHTML(d)}</select></label>
+        <div class="periodic-field wide"><span>星期（可多选）</span><div class="periodic-weekdays">${weekdays}</div></div>
+        <label class="periodic-field"><span>日历时段</span><select data-periodic-daypart>${PLAN_DAYPARTS.map(x=>`<option value="${x.key}" ${x.key===d.daypart?"selected":""}>${x.label} · ${x.hint}</option>`).join("")}</select></label>
+        <div class="periodic-grid"><label class="periodic-field"><span>开始时间</span><input type="time" data-periodic-start-time value="${escapeHTML(d.startTime)}"></label><label class="periodic-field"><span>结束时间</span><input type="time" data-periodic-end-time value="${escapeHTML(d.endTime)}"></label></div>
+        <label class="periodic-field"><span>开始日期</span><input type="date" data-periodic-start-date value="${escapeHTML(d.startDate)}"></label>
+        <label class="periodic-field"><span>结束日期</span><input type="date" data-periodic-end-date value="${escapeHTML(d.endDate)}"></label>
+        <label class="periodic-inline-check wide"><input type="checkbox" data-periodic-copy-pl ${d.copyPl?"checked":""}><span><strong>同时复制当前 PL</strong><br>默认只复制模组、KP/KPC、桌名和基础备注；PL 可选择复制，PC / HO 分配与 Log 始终清空。</span></label>
+      </div>
+      <div class="periodic-form-note">模板：<strong>${escapeHTML(sourceLabel)}</strong>。原计划会保留不动；每个周期日期都会生成一条独立计划，因此之后可以分别改 PL、PC、HO、Log、日期并单独归档。</div>
+      ${error?`<div class="periodic-form-error">${escapeHTML(error)}</div>`:""}
+      <div><div class="periodic-section-title">排期预览 · 可取消勾选不想安排的日期</div><div class="periodic-preview-summary"><span>周期日期 <strong>${rows.length}</strong></span><span>可安排 <strong>${sum.available}</strong></span><span>排除 <strong>${sum.excluded}</strong></span><span>重复跳过 <strong>${sum.duplicate}</strong></span><span>时段已满 <strong>${sum.full}</strong></span></div></div>
+      <div class="periodic-preview-list">${preview}</div>
+    </div>`;
+    if(els.confirmPeriodicSchedule) els.confirmPeriodicSchedule.disabled=Boolean(error)||sum.available<1;
+    if(els.periodicScheduleFootHint) els.periodicScheduleFootHint.textContent=error?error:`将新建 ${sum.available} 条独立计划；${sum.duplicate+sum.full+sum.excluded} 个日期会跳过。`;
+}
+function openPeriodicSchedule(options={}){
+    if(shareModeBlock("一键按周期排期")) return false;
+    periodicScheduleDraft = options.batch ? periodicDraftFromBatch(options.batch,options.mode||"again") : makePeriodicDraft({sourcePlanId:options.sourcePlanId||plannerPickedPlanId||""});
+    els.periodicScheduleBackdrop.hidden=false; renderPeriodicScheduleDialog();
+    requestAnimationFrame(()=>{ const select=els.periodicScheduleContent && els.periodicScheduleContent.querySelector("select[data-periodic-source]"); if(select && typeof select.focus === "function") try{ select.focus({preventScroll:true}); }catch(err){ select.focus(); } }); return true;
+}
+function closePeriodicSchedule(){els.periodicScheduleBackdrop.hidden=true; periodicScheduleDraft=null;}
+function currentPeriodicTemplateSnapshot(){return periodicTemplatePlan(periodicScheduleDraft);}
+function buildPeriodicPlanCopy(template,row,batchId,sourcePlanId,copyPl){
+    const valid=new Set(profiles.map(x=>x.id)), now=Date.now(), source=normalizeRunPlan(template,valid), plIds=copyPl?[...(source.plIds||[])]:[], k=normalizeKpc(source.kpc), resolvedModule=moduleById(source.moduleId)||uniqueModuleByNormalizedName(source.moduleName);
+    const blankAssignments=normalizeParticipantAssignments([],plIds);
+    return normalizeRunPlan({id:uid(),moduleId:(resolvedModule && resolvedModule.id)||source.moduleId,moduleName:(resolvedModule && resolvedModule.name)||source.moduleName,tableName:source.tableName,kp:source.kp,kpProfileId:source.kpProfileId,logUrl:"",plIds,participantAssignments:blankAssignments,kpc:{enabled:k.enabled,pcName:k.pcName,hoMode:"",hoNumber:0,hoCustom:""},sharedHoNote:source.sharedHoNote||"",legacyHoSlots:0,timeSlots:[{id:uid(),date:row.date,daypart:row.daypart,startTime:periodicScheduleDraft.startTime,endTime:periodicScheduleDraft.endTime,order:nextScheduleCellOrder(row.date,row.daypart)}],postRunDraft:normalizePostRunDraft(null),createdAt:now,updatedAt:now},valid);
+}
+async function confirmPeriodicSchedule(){
+    const d=periodicScheduleDraft, error=periodicDraftValidation(d); if(error){showToast(error);renderPeriodicScheduleDialog();return false;}
+    const rows=periodicPreviewRows(d), available=rows.filter(r=>r.status==="available"); if(!available.length){showToast("没有可生成的周期日期");return false;}
+    const template=currentPeriodicTemplateSnapshot(); if(!template) return false;
+    const op=beginIdempotentOperation(`periodic-schedule:${d.operationNonce}`,"periodic-schedule",d.sourcePlanId,plannerPlanLabel(normalizeRunPlan(template)));
+    if(!op.ok){appNotice(op.status==="done"?"这一次周期排期已经成功执行过，为避免重复生成计划，本次请求已停止。":"周期排期正在处理中，请稍候，不要重复点击。",op.status==="done"?"已经排过":"正在排期");return false;}
+    if(els.confirmPeriodicSchedule) els.confirmPeriodicSchedule.disabled=true;
+    try{await createSafetySnapshot("before-periodic-schedule");}catch(err){failIdempotentOperation(op.row.id);console.warn(err);appNotice("未能创建周期排期前安全恢复点。请先导出完整备份或释放浏览器存储空间后再试。","无法安全排期");renderPeriodicScheduleDialog();return false;}
+    const beforePlans=clone(runPlans), beforeSettings=clone(settings), batchId=uid(), createdAt=Date.now(), generated=[];
+    try{
+        available.forEach((row,idx)=>{const plan=buildPeriodicPlanCopy(template,row,batchId,d.sourcePlanId,d.copyPl); plan.createdAt=createdAt+idx; plan.updatedAt=createdAt+idx; runPlans.push(plan); generated.push({planId:plan.id,date:row.date,daypart:row.daypart,fingerprint:periodicPlanFingerprint(plan)});});
+        const skipped=rows.filter(r=>r.status!=="available").map(r=>({date:r.date,daypart:r.daypart,reason:r.reason}));
+        const batch=normalizePeriodicScheduleBatch({id:batchId,sourcePlanId:d.sourcePlanId,sourceLabel:plannerPlanLabel(normalizeRunPlan(template)),templateSnapshot:periodicSourceTemplate(normalizeRunPlan(template)),weekdays:[...d.weekdays],daypart:d.daypart,startTime:d.startTime,endTime:d.endTime,startDate:d.startDate,endDate:d.endDate,copyPl:d.copyPl,excludedDates:[...d.excludedDates],generated,skipped,createdAt});
+        settings.scheduleBatches=[...periodicBatches(),batch].slice(-120);
+        if(!saveState()) throw new Error("周期排期写入失败");
+        completeIdempotentOperation(op.row.id,{batchId,generatedPlanIds:generated.map(x=>x.planId),createdAt});
+        closePeriodicSchedule(); if(generated[0]){plannerSelectedDate=generated[0].date;plannerMonthCursor=monthCursorFor(generated[0].date);} renderRunPlans();
+        showToast(`已完成一键按周期排期：新增 ${generated.length} 桌${skipped.length?` · 跳过 ${skipped.length} 个日期`:""}；原模板计划已保留`); return true;
+    }catch(err){failIdempotentOperation(op.row.id);runPlans=beforePlans;settings=beforeSettings;saveState({skipAntiIntegrity:true});renderRunPlans();if(periodicScheduleDraft)renderPeriodicScheduleDialog();console.error(err);appNotice(`${err.message||err}\n\n已恢复到排期前状态。`,"周期排期未完成");return false;}
+}
+function periodicBatchStatus(batch){
+    const b=normalizePeriodicScheduleBatch(batch), result={unchanged:0,modified:0,archived:0,missing:0,total:b.generated.length};
+    b.generated.forEach(g=>{const p=runPlans.find(x=>x.id===g.planId); if(p){if(g.fingerprint&&periodicPlanFingerprint(p)===g.fingerprint)result.unchanged++;else result.modified++;} else if(runRecords.some(r=>r.id===g.planId)) result.archived++; else result.missing++;}); return result;
+}
+function renderPeriodicScheduleRecordButton(){if(els.periodicScheduleRecordCount)els.periodicScheduleRecordCount.textContent=String(periodicBatches().length);}
+function renderPeriodicScheduleRecords(){
+    const rows=[...periodicBatches()].sort((a,b)=>b.createdAt-a.createdAt); renderPeriodicScheduleRecordButton(); if(!els.periodicScheduleRecordsContent)return;
+    if(!rows.length){els.periodicScheduleRecordsContent.innerHTML='<div class="periodic-records-empty">还没有“一键按周期排期”记录。</div>';return;}
+    els.periodicScheduleRecordsContent.innerHTML=`<div class="periodic-records-list">${rows.map(b=>{const st=periodicBatchStatus(b),days=(b.weekdays||[]).map(weekdayShortLabel).join("、"), time=b.startTime&&b.endTime?`${b.startTime}–${b.endTime}`:"未记录具体时间";return `<article class="periodic-record-card"><div class="periodic-record-head"><div><strong>${escapeHTML(b.sourceLabel||"未命名计划")}</strong><span>${escapeHTML(b.startDate)} ～ ${escapeHTML(b.endDate)} · ${escapeHTML(days||"未选星期")} · ${escapeHTML(daypartInfo(b.daypart).label)} ${escapeHTML(time)}</span></div><span>${new Date(b.createdAt).toLocaleString("zh-CN",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</span></div><div class="periodic-record-meta"><span>生成 ${st.total}</span><span>正常 ${st.unchanged}</span>${st.modified?`<span class="warn">手动修改 ${st.modified}</span>`:""}${st.archived?`<span>已归档 ${st.archived}</span>`:""}${st.missing?`<span>已删除/撤回 ${st.missing}</span>`:""}${b.skipped.length?`<span>当时跳过 ${b.skipped.length}</span>`:""}</div><div class="periodic-record-actions"><button class="btn small" type="button" data-periodic-continue="${escapeHTML(b.id)}">继续排期</button><button class="btn small" type="button" data-periodic-again="${escapeHTML(b.id)}">再次排期</button><button class="btn small" type="button" data-periodic-withdraw="${escapeHTML(b.id)}">撤回未修改排期</button><button class="btn small danger-soft" type="button" data-periodic-delete-record="${escapeHTML(b.id)}">删除记录</button></div></article>`;}).join("")}</div>`;
+}
+function openPeriodicScheduleRecords(){if(shareModeBlock("排期记录"))return false;renderPeriodicScheduleRecords();els.periodicScheduleRecordsBackdrop.hidden=false;return true;}
+function closePeriodicScheduleRecords(){els.periodicScheduleRecordsBackdrop.hidden=true;}
+async function withdrawPeriodicBatch(batchId){
+    const batch=periodicBatches().find(b=>b.id===batchId); if(!batch)return false; const st=periodicBatchStatus(batch); const removable=batch.generated.filter(g=>{const p=runPlans.find(x=>x.id===g.planId);return p&&g.fingerprint&&periodicPlanFingerprint(p)===g.fingerprint;});
+    const protectedCount=st.modified+st.archived; if(!removable.length){appNotice(`当前没有可以安全撤回的未修改计划。${protectedCount?`\n\n有 ${protectedCount} 条已经被手动修改或归档，因此不会自动删除。`:""}`,"没有可撤回内容");return false;}
+    if(!await appConfirm(`撤回这次周期排期中仍保持原样的 ${removable.length} 条计划？\n\n${protectedCount?`${protectedCount} 条已经手动修改或归档的桌次会保留，不会删除。\n`:""}已经单独删除的计划也不会受影响。`,{title:"撤回周期排期？",confirmText:`撤回 ${removable.length} 条`,danger:true}))return false;
+    const withdrawKey=`periodic-withdraw:${batchId}:${stableTextHash(removable.map(x=>x.planId).sort().join("|"))}`,op=beginIdempotentOperation(withdrawKey,"periodic-withdraw",batchId,batch.sourceLabel||"");
+    if(!op.ok){appNotice(op.status==="done"?"这一批未修改计划已经撤回过，本次不会重复处理。":"这一批撤回操作正在处理中，请稍候。",op.status==="done"?"已经撤回":"正在撤回");return false;}
+    try{await createSafetySnapshot("before-periodic-withdraw");}catch(err){failIdempotentOperation(op.row.id);appNotice("未能创建撤回前安全恢复点，请先导出完整备份后再试。","无法安全撤回");return false;}
+    const beforePlans=clone(runPlans),beforeSettings=clone(settings); try{const ids=new Set(removable.map(x=>x.planId));runPlans=runPlans.filter(p=>!ids.has(p.id)); const row=periodicBatches().find(b=>b.id===batchId);row.lastWithdrawAt=Date.now();row.withdrawnPlanIds=[...new Set([...(row.withdrawnPlanIds||[]),...ids])]; if(!saveState())throw new Error("撤回写入失败");completeIdempotentOperation(op.row.id,{batchId,withdrawnPlanIds:[...ids]});renderRunPlans();renderPeriodicScheduleRecords();showToast(`已撤回 ${ids.size} 条未修改周期排期`);return true;}catch(err){failIdempotentOperation(op.row.id);runPlans=beforePlans;settings=beforeSettings;saveState({skipAntiIntegrity:true});renderRunPlans();appNotice("撤回失败，已恢复到操作前状态。","撤回未完成");return false;}
+}
+async function deletePeriodicBatchRecord(batchId){
+    const batch=periodicBatches().find(b=>b.id===batchId);if(!batch)return false;if(!await appConfirm(`只删除这条“排期记录”？\n\n已经生成的计划和日历安排都会保留，不会被删除。`,{title:"删除排期记录？",confirmText:"只删除记录",danger:true}))return false;
+    const before=clone(settings);settings.scheduleBatches=periodicBatches().filter(b=>b.id!==batchId);if(!saveState()){settings=before;appNotice("删除记录失败，原记录已保留。","未能删除");return false;}renderPeriodicScheduleRecords();renderPeriodicScheduleRecordButton();showToast("排期记录已删除；已生成计划保持不变");return true;
+}
 function renderRunPlans() {
     ensurePlannerDateState();
     renderPlanList();
@@ -16294,6 +16537,7 @@ function renderRunPlans() {
     applyPlannerMobileSectionUI();
 }
 function renderPlanList() {
+    renderPeriodicScheduleRecordButton();
     const q = normalizedEntityNameKey(els.planSearch.value);
     const filtered = runPlans.filter(p => planMatchesSearch(p, q)).sort((a, b) => {
         if (q) {
@@ -16448,7 +16692,7 @@ function plannerWeekHTML() {
                 const risk = planBlacklistedProfiles(plan);
                 const role = planSelfRoleInfo(plan);
                 return `<div class="calendar-event ${role.className} ${risk.length ? "has-blacklist-risk" : ""}" draggable="true" data-week-event-plan="${escapeHTML(plan.id)}" data-week-event-slot="${escapeHTML(slot.id)}" title="${role.label ? `${role.label}；` : ""}${risk.length ? `包含 ${risk.length} 位黑名单人员；` : ""}拖动改期或排序；拖出日历取消；点击编辑">
-        <div class="calendar-event-time">${part.label}${risk.length ? `<span class="calendar-risk-badge">黑</span>` : ""}</div>
+        <div class="calendar-event-time">${slot.startTime && slot.endTime ? `${escapeHTML(slot.startTime)}–${escapeHTML(slot.endTime)}` : part.label}${risk.length ? `<span class="calendar-risk-badge">黑</span>` : ""}</div>
         <div class="calendar-event-name">${escapeHTML(plannerPlanLabel(plan))}</div>
         <button class="calendar-event-remove" type="button" data-unschedule-event data-unschedule-plan-id="${escapeHTML(plan.id)}" data-unschedule-slot-id="${escapeHTML(slot.id)}" aria-label="取消安排" title="取消安排">×</button>
       </div>`;
@@ -20119,7 +20363,10 @@ function importStateFingerprint(incoming) {
         ...(incoming.runPlans || []).map(x => `q:${x.id}:${Number(x.updatedAt || 0)}`),
         ...(incoming.runRecords || []).map(x => `r:${x.id}:${Number(x.updatedAt || 0)}`)
     ].sort();
-    return stableTextHash(ids.join("|") + `|${Number((incoming.settings || {}).version || 0)}`);
+    let settingsHash = "";
+    try { settingsHash = stableTextHash(JSON.stringify(normalizeSettings(incoming.settings || {}))); }
+    catch (err) { settingsHash = stableTextHash(JSON.stringify(incoming.settings || {})); }
+    return stableTextHash(ids.join("|") + `|${settingsHash}|${Number((incoming.settings || {}).version || 0)}`);
 }
 function operationLedgerLoad() {
     const now = Date.now();
@@ -20949,7 +21196,7 @@ function focusSettingsSearchResult(key, q) { activateSettingsPanel(key); const p
     return; const candidates = [...panel.querySelectorAll("h3,strong,label,summary,button")], target = candidates.find(el => searchTextMatches(el.textContent || "", q)) || panel; requestAnimationFrame(() => { const group = target.closest("details.data-safety-group,details.settings-collapsible"); if (group)
     group.open = true; target.scrollIntoView({ block: "center", behavior: "smooth" }); target.classList.add("settings-search-flash"); setTimeout(() => target.classList.remove("settings-search-flash"), 1400); }); document.getElementById("settingsSearchResults").hidden = true; }
 /* 分享模式 */
-const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-select-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
+const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#periodicScheduleBtn,#periodicScheduleRecordsBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-select-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
 function updateShareModeUI() { document.body.classList.toggle("share-mode", shareModeEnabled); const btn = document.getElementById("shareModeBtn"); if (btn) {
     btn.textContent = shareModeEnabled ? "退" : "分";
     btn.setAttribute("aria-pressed", shareModeEnabled ? "true" : "false");
@@ -21156,7 +21403,7 @@ function modalSurfaceZIndex(el) {
     return Number.isFinite(n) ? n : 0;
 }
 function modalManagedSurfaces() {
-    const ids = ["secureBackupBackdrop", "externalBackupBrowserBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "globalSearchBackdrop", "onboardingBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "planEditorBackdrop", "actionDialogBackdrop"];
+    const ids = ["secureBackupBackdrop", "externalBackupBrowserBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "globalSearchBackdrop", "onboardingBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop", "planEditorBackdrop", "actionDialogBackdrop"];
     return [els.overlay, ...ids.map(id => document.getElementById(id)).filter(Boolean)].filter(Boolean);
 }
 function modalSurfaceBaseZIndex(el) {
@@ -21189,7 +21436,7 @@ function syncModalLayerOrder() {
     open.forEach((el, index) => el.style.setProperty("z-index", String(600 + index * 30), "important"));
 }
 function visibleDialog() {
-    const selectors = ["#secureBackupBackdrop", "#externalBackupBrowserBackdrop", "#importPreviewBackdrop", "#migrationWizardBackdrop", "#globalSearchBackdrop", "#onboardingBackdrop", "#hoOrganizerBackdrop", "#moduleAdvancedBackdrop", "#nativeModuleEditorBackdrop", "#planEditorBackdrop", "#actionDialogBackdrop"];
+    const selectors = ["#secureBackupBackdrop", "#externalBackupBrowserBackdrop", "#importPreviewBackdrop", "#migrationWizardBackdrop", "#globalSearchBackdrop", "#onboardingBackdrop", "#hoOrganizerBackdrop", "#moduleAdvancedBackdrop", "#nativeModuleEditorBackdrop", "#periodicScheduleBackdrop", "#periodicScheduleRecordsBackdrop", "#planEditorBackdrop", "#actionDialogBackdrop"];
     const surfaces = selectors.map(sel => document.querySelector(sel)).filter(el => el && !el.hidden);
     if (els.overlay && els.overlay.classList.contains("open")) surfaces.push(els.overlay);
     if (!surfaces.length) return null;
@@ -21208,7 +21455,7 @@ function syncDialogInert() {
     const active = visibleDialog();
     if (!active)
         return;
-    const activeSurface = active.closest ? active.closest(".overlay,.secure-backup-backdrop,.external-backup-browser-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.global-search-backdrop,.onboarding-backdrop,.ho-organizer-backdrop,.module-advanced-backdrop,.native-module-editor-backdrop,.plan-editor-backdrop,.action-dialog-backdrop") : null;
+    const activeSurface = active.closest ? active.closest(".overlay,.secure-backup-backdrop,.external-backup-browser-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.global-search-backdrop,.onboarding-backdrop,.ho-organizer-backdrop,.module-advanced-backdrop,.native-module-editor-backdrop,.periodic-schedule-backdrop,.periodic-records-backdrop,.plan-editor-backdrop,.action-dialog-backdrop") : null;
     clearManagedSurfaceInertPath(activeSurface || active);
     let node = dialogInteractionRoot(active);
     while (node && node !== document.body) {
@@ -21246,7 +21493,7 @@ function restorePoppedSurfaceGuard(id) { try {
 }
 catch (err) { } }
 function topOpenHistorySurfaceId() {
-    const ids = ["actionDialogBackdrop", "externalBackupBrowserBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "secureBackupBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "planEditorBackdrop", "quickCreateMenu", "mobileToolsSheet", "overlay"];
+    const ids = ["actionDialogBackdrop", "externalBackupBrowserBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "secureBackupBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop", "planEditorBackdrop", "quickCreateMenu", "mobileToolsSheet", "overlay"];
     const rows = ids.map(id => ({ id, el: historySurfaceById(id) })).filter(row => row.el && historySurfaceIsOpen(row.id));
     if (!rows.length)
         return "";
@@ -21268,6 +21515,8 @@ function closeHistorySurfaceById(id) {
     if (id === "hoOrganizerBackdrop") { closeHoOrganizer(); return true; }
     if (id === "moduleAdvancedBackdrop") { closeModuleAdvancedEditor(); return true; }
     if (id === "nativeModuleEditorBackdrop") { void closeNativeModuleEditor(true); return true; }
+    if (id === "periodicScheduleBackdrop") { closePeriodicSchedule(); return true; }
+    if (id === "periodicScheduleRecordsBackdrop") { closePeriodicScheduleRecords(); return true; }
     if (id === "planEditorBackdrop") { closePlanEditor(); return true; }
     if (id === "overlay") {
         if (!els.settingsModal.hidden) void closeSettings(false);
@@ -21448,7 +21697,7 @@ function consumeSurfaceHistory(id) {
 }
 function initDialogFocusLifecycle() {
     ensureActionDialog();
-    const surfaces = [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.quickCreateMenu, els.mobileToolsSheet,
+    const surfaces = [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop, els.periodicScheduleRecordsBackdrop, els.quickCreateMenu, els.mobileToolsSheet,
         ...["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"].map(id => document.getElementById(id)).filter(Boolean)].filter(Boolean);
     const openState = new WeakMap();
     const isOpen = el => el === els.overlay ? el.classList.contains("open") : !el.hidden;
@@ -21472,8 +21721,8 @@ function initV79() {
     renderTrashBin();
     initMultiTabSync();
     initShareMode();
-    ["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "externalBackupBrowserBackdrop"].forEach(id => { const el = document.getElementById(id); watchModalSurface(el); if (el) new MutationObserver(() => { syncDialogInert(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
-    [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop].filter(Boolean).forEach(el => new MutationObserver(syncDialogInert).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }));
+    ["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "externalBackupBrowserBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop"].forEach(id => { const el = document.getElementById(id); watchModalSurface(el); if (el) new MutationObserver(() => { syncDialogInert(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
+    [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop, els.periodicScheduleRecordsBackdrop].filter(Boolean).forEach(el => new MutationObserver(syncDialogInert).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }));
     document.addEventListener("keydown", handleGlobalKeys, true);
     document.getElementById("globalSearchInput").addEventListener("input", () => { globalSearchVisibleCount = GLOBAL_SEARCH_BATCH; globalSearchActiveIndex = 0; clearTimeout(globalSearchTimer); globalSearchTimer = setTimeout(renderGlobalSearch, 70); });
     document.getElementById("settingsSearchInput").addEventListener("input", () => { clearTimeout(settingsSearchTimer); settingsSearchTimer = setTimeout(renderSettingsSearch, 80); });
@@ -22248,6 +22497,30 @@ els.moduleNativeGrid.addEventListener("click", async (e) => {
 els.plannerWeekMode.addEventListener("click", () => setPlannerViewMode("week"));
 els.plannerMonthMode.addEventListener("click", () => setPlannerViewMode("month"));
 els.newPlan.addEventListener("click", createRunPlan);
+if (els.periodicSchedule) els.periodicSchedule.addEventListener("click",()=>openPeriodicSchedule());
+if (els.periodicScheduleRecords) els.periodicScheduleRecords.addEventListener("click",openPeriodicScheduleRecords);
+if (els.closePeriodicSchedule) els.closePeriodicSchedule.addEventListener("click",closePeriodicSchedule);
+if (els.cancelPeriodicSchedule) els.cancelPeriodicSchedule.addEventListener("click",closePeriodicSchedule);
+if (els.confirmPeriodicSchedule) els.confirmPeriodicSchedule.addEventListener("click",()=>void confirmPeriodicSchedule());
+if (els.closePeriodicScheduleRecords) els.closePeriodicScheduleRecords.addEventListener("click",closePeriodicScheduleRecords);
+if (els.periodicScheduleBackdrop) els.periodicScheduleBackdrop.addEventListener("click",e=>{if(e.target===els.periodicScheduleBackdrop)closePeriodicSchedule();});
+if (els.periodicScheduleRecordsBackdrop) els.periodicScheduleRecordsBackdrop.addEventListener("click",e=>{if(e.target===els.periodicScheduleRecordsBackdrop)closePeriodicScheduleRecords();});
+if (els.periodicScheduleContent) els.periodicScheduleContent.addEventListener("click",e=>{
+    if(!periodicScheduleDraft)return; const wd=e.target.closest("[data-periodic-weekday]"); if(wd){const n=Number(wd.dataset.periodicWeekday);periodicScheduleDraft.weekdays.has(n)?periodicScheduleDraft.weekdays.delete(n):periodicScheduleDraft.weekdays.add(n);renderPeriodicScheduleDialog();return;}
+});
+if (els.periodicScheduleContent) els.periodicScheduleContent.addEventListener("change",e=>{
+    if(!periodicScheduleDraft)return; const t=e.target;
+    if(t.matches("[data-periodic-source]")){if(t.value==="__snapshot__"){}else{periodicScheduleDraft.sourcePlanId=t.value;periodicScheduleDraft.templateSnapshot=null;}periodicScheduleDraft.excludedDates.clear();}
+    else if(t.matches("[data-periodic-daypart]")){periodicScheduleDraft.daypart=normalizePlanDaypart(t.value)||"evening";periodicScheduleDraft.excludedDates.clear();}
+    else if(t.matches("[data-periodic-start-time]"))periodicScheduleDraft.startTime=normalizePlanClock(t.value)||t.value;
+    else if(t.matches("[data-periodic-end-time]"))periodicScheduleDraft.endTime=normalizePlanClock(t.value)||t.value;
+    else if(t.matches("[data-periodic-start-date]")){periodicScheduleDraft.startDate=t.value;periodicScheduleDraft.excludedDates.clear();}
+    else if(t.matches("[data-periodic-end-date]")){periodicScheduleDraft.endDate=t.value;periodicScheduleDraft.excludedDates.clear();}
+    else if(t.matches("[data-periodic-copy-pl]"))periodicScheduleDraft.copyPl=t.checked;
+    else if(t.matches("[data-periodic-date]")){const date=t.dataset.periodicDate;if(t.checked)periodicScheduleDraft.excludedDates.delete(date);else periodicScheduleDraft.excludedDates.add(date);}
+    renderPeriodicScheduleDialog();
+});
+if (els.periodicScheduleRecordsContent) els.periodicScheduleRecordsContent.addEventListener("click",async e=>{const again=e.target.closest("[data-periodic-again]"),cont=e.target.closest("[data-periodic-continue]"),withdraw=e.target.closest("[data-periodic-withdraw]"),del=e.target.closest("[data-periodic-delete-record]");const id=(again&&again.dataset.periodicAgain)||(cont&&cont.dataset.periodicContinue)||(withdraw&&withdraw.dataset.periodicWithdraw)||(del&&del.dataset.periodicDeleteRecord);if(!id)return;const batch=periodicBatches().find(b=>b.id===id);if(!batch)return;if(again||cont){closePeriodicScheduleRecords();openPeriodicSchedule({batch,mode:cont?"continue":"again"});return;}if(withdraw){await withdrawPeriodicBatch(id);return;}if(del){await deletePeriodicBatchRecord(id);return;}});
 els.planSearch.addEventListener("input", debouncedPlanRender);
 els.expandAllRecords.addEventListener("click", () => setSelectedModuleRecordsCollapsed(false));
 els.collapseAllRecords.addEventListener("click", () => setSelectedModuleRecordsCollapsed(true));
@@ -24253,7 +24526,10 @@ document.addEventListener("click", e => { var _a, _b, _c, _d; const clear = (_b 
 /* v8.1.8.1 · 第三层防呆：数据异常预防、备份新鲜度、恢复冲突与安全修复 */
 let dataProtectionMode = false, dataProtectionBypassDepth = 0;
 function archiveDataFingerprint(payload) {
-    try { return stableTextHash(JSON.stringify((payload && payload.data) || payload || {})); }
+    try {
+        const core = payload && payload.data ? { settings: payload.settings || {}, data: payload.data } : (payload || {});
+        return stableTextHash(JSON.stringify(core));
+    }
     catch (err) { return ""; }
 }
 function verifyBackupPayloadRoundTrip(payload, serialized = "") {
