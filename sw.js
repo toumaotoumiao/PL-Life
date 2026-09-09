@@ -1,5 +1,5 @@
 const CACHE_PREFIX="tomato-pl-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.10.19`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.10.21`;
 const APP_SHELL=["./","./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 
 self.addEventListener("install",event=>{
