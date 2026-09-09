@@ -880,7 +880,69 @@ button,[role="button"],summary{touch-action:manipulation;-webkit-tap-highlight-c
 .card{padding:16px;min-height:268px}.tags{margin:10px 0}.foot{margin-top:9px;padding-top:8px}
 .modal{border-radius:18px}.mh{min-height:58px;padding:14px 17px}.mb{padding:16px 17px}.mf{min-height:56px;padding:10px 17px calc(10px + env(safe-area-inset-bottom))}.x{width:42px;height:42px;flex-basis:42px;border-radius:12px}
 @media(max-width:700px){.app{padding-top:18px}.card{padding:14px}.mb{padding:13px}.mh{padding:12px 13px}.mf{padding-left:13px;padding-right:13px}}
-</style></head><body><div class="app"><header class="top"><div class="brand"><div class="brand-copy"><h1>模组高级工具</h1><div class="sub">管理模组资料、评分、招募与批量工具 · 跑团记录由主页面统一维护</div><div id="savestate" class="save-state" aria-live="polite">正在读取档案…</div></div></div></header><details class="notice notice-compact" data-collapse-key="module-tools:help"><summary><span><b>本地保存 · 支持离线</b><small>修改后自动保存</small></span><span class="notice-more">使用说明</span></summary><div class="notice-body"><b>数据保存</b><br>模组档案保存在当前浏览器，修改后自动保存。本工具不提供云同步。<br><br><b>隐私与备份</b><br>档案可能包含个人资料。清理浏览器数据、更换设备或使用隐私模式可能导致数据丢失；完整备份可用于数据恢复。<br><br><b>功能</b><br>编辑模组资料、评分与招募；跑团记录请在主页面维护。批量整理可使用 Excel。请定期导出 <b>完整备份</b>。</div></details><section class="stats" id="stats" data-hscroll-key="stats"></section><section class="filter-shell" id="filterShell">
+</style>
+<style id="visual-hierarchy-v811029-module-tools">
+/* v8.1.10.29 · 模组高级工具同步视觉分区 */
+html[data-theme]{
+  --vh-fixed:color-mix(in srgb,var(--section-head) 74%,var(--paper));
+  --vh-fixed-strong:color-mix(in srgb,var(--section-open) 72%,var(--paper-soft));
+  --vh-section:color-mix(in srgb,var(--paper-soft) 78%,var(--paper));
+  --vh-divider:color-mix(in srgb,var(--line-strong) 78%,var(--line));
+}
+.filter-shell{
+  background:var(--vh-fixed-strong)!important;
+  border-bottom:1px solid var(--vh-divider)!important;
+  box-shadow:0 8px 18px color-mix(in srgb,var(--ink) 8%,transparent)!important;
+}
+.float-tools,.edit-quicknav{
+  background:var(--vh-fixed)!important;
+  border-color:var(--vh-divider)!important;
+  box-shadow:var(--dock-shadow)!important;
+}
+.mh,.recruit-head{
+  background:var(--vh-fixed-strong)!important;
+  border-color:var(--vh-divider)!important;
+  box-shadow:0 7px 17px color-mix(in srgb,var(--ink) 7%,transparent)!important;
+}
+.mf,.recruit-actions{
+  background:var(--vh-fixed)!important;
+  border-color:var(--vh-divider)!important;
+  box-shadow:0 -7px 17px color-mix(in srgb,var(--ink) 7%,transparent)!important;
+}
+.data th,.preview th{
+  background:var(--vh-fixed)!important;
+  border-color:var(--vh-divider)!important;
+  box-shadow:inset 0 -1px 0 var(--vh-divider);
+}
+.data th:first-child{background:var(--vh-fixed)!important}
+.stats,.notice,.card,.tablewrap,.filter-panel,.modal,.recruit-box,.sec,.theme-settings{
+  border-color:var(--vh-divider)!important;
+}
+.stats,.notice,.card,.tablewrap,.filter-panel{
+  box-shadow:var(--shadow-sm)!important;
+}
+.sec,.theme-settings{background:var(--section-bg)!important}
+.foldsec>summary{
+  background:var(--vh-section)!important;
+  border-color:var(--vh-divider)!important;
+}
+.foldsec[open]>summary{background:var(--vh-fixed)!important}
+.filter-section+.filter-section,.filter-panel-foot{border-color:var(--vh-divider)!important}
+.filter-section-title,.st{position:relative}
+.filter-section-title::before,.st::before{
+  content:"";display:inline-block;width:3px;height:12px;margin-right:7px;border-radius:999px;background:var(--accent);vertical-align:-1px;
+}
+.card{background:var(--paper)!important}
+.run,.scorebox,.runedit,.sys,.crit{border-color:color-mix(in srgb,var(--vh-divider) 76%,transparent)!important}
+@media(max-width:700px){
+  .filter-shell{background:var(--vh-fixed-strong)!important;box-shadow:0 8px 18px color-mix(in srgb,var(--shadow-md) 38%,transparent)!important}
+  .float-tools{background:var(--vh-fixed-strong)!important}
+  .mh{background:var(--vh-fixed-strong)!important}
+  .mf{background:var(--vh-fixed)!important}
+}
+</style>
+
+</head><body><div class="app"><header class="top"><div class="brand"><div class="brand-copy"><h1>模组高级工具</h1><div class="sub">管理模组资料、评分、招募与批量工具 · 跑团记录由主页面统一维护</div><div id="savestate" class="save-state" aria-live="polite">正在读取档案…</div></div></div></header><details class="notice notice-compact" data-collapse-key="module-tools:help"><summary><span><b>本地保存 · 支持离线</b><small>修改后自动保存</small></span><span class="notice-more">使用说明</span></summary><div class="notice-body"><b>数据保存</b><br>模组档案保存在当前浏览器，修改后自动保存。本工具不提供云同步。<br><br><b>隐私与备份</b><br>档案可能包含个人资料。清理浏览器数据、更换设备或使用隐私模式可能导致数据丢失；完整备份可用于数据恢复。<br><br><b>功能</b><br>编辑模组资料、评分与招募；跑团记录请在主页面维护。批量整理可使用 Excel。请定期导出 <b>完整备份</b>。</div></details><section class="stats" id="stats" data-hscroll-key="stats"></section><section class="filter-shell" id="filterShell">
   <div class="filter-main">
     <div class="search filter-search"><span>⌕</span><input class="control" id="q" placeholder="搜索模组名称、作者、地点、时代、性质或备注"></div>
     <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterPanel"><span>筛选</span><span class="filter-count" id="filterCount" hidden>0</span><span class="filter-chev">⌄</span></button>
