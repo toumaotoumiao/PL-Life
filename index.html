@@ -864,6 +864,98 @@
       --t-theme-color:#fbf4ef;
     }
 
+    html[data-theme="sakura"]{
+      color-scheme:light;
+      --t-page-bg:
+        radial-gradient(circle at 12% 0%,rgba(184,117,130,.11),transparent 29%),
+        radial-gradient(circle at 90% 11%,rgba(217,169,179,.11),transparent 27%),
+        linear-gradient(180deg,#fcf8f9 0%,#f7f2f4 45%,#f4edef 100%);
+      --t-bg:#f7f2f4;
+      --t-surface:#fffafb;
+      --t-surface-2:#fbf5f7;
+      --t-surface-3:#f3e9ed;
+      --t-surface-4:#ecdee3;
+      --t-surface-glass:rgba(255,250,251,.94);
+      --t-ink:#3b3034;
+      --t-text-2:#5d4b51;
+      --t-muted:#75656a;
+      --t-muted-2:#87767c;
+      --t-faint:#95848a;
+      --t-line:#e7d6db;
+      --t-line-strong:#d9bdc5;
+      --t-accent:#a75f6f;
+      --t-accent-strong:#925060;
+      --t-accent-soft:#f6e8ec;
+      --t-accent-soft-2:#ebd5db;
+      --t-accent-on:#fffdfd;
+      --t-success:#6f8b73;
+      --t-warning:#92764e;
+      --t-warning-soft:#fff7e9;
+      --t-warning-line:#ead8b7;
+      --t-danger:#a95656;
+      --t-danger-strong:#934847;
+      --t-danger-soft:#fff3f2;
+      --t-danger-line:#e8c7c5;
+      --t-input:#fffdfd;
+      --t-overlay:rgba(54,39,45,.25);
+      --t-shadow:rgba(74,48,57,.12);
+      --t-shadow-soft:rgba(74,48,57,.07);
+      --t-focus:rgba(184,117,130,.40);
+      --t-scrollbar:#d7bec5;
+      --t-selection:rgba(184,117,130,.18);
+      --t-toast:#46383d;
+      --t-privacy-1:rgba(249,242,245,.92);
+      --t-privacy-2:rgba(235,220,225,.84);
+      --t-privacy-sheen:rgba(255,255,255,.48);
+      --t-theme-color:#f7f2f4;
+    }
+
+    html[data-theme="iris"]{
+      color-scheme:light;
+      --t-page-bg:
+        radial-gradient(circle at 11% 0%,rgba(118,101,138,.11),transparent 30%),
+        radial-gradient(circle at 91% 12%,rgba(179,165,196,.12),transparent 28%),
+        linear-gradient(180deg,#faf8fc 0%,#f4f2f7 44%,#f0edf4 100%);
+      --t-bg:#f4f2f7;
+      --t-surface:#fcfafd;
+      --t-surface-2:#f7f4fa;
+      --t-surface-3:#ece7f2;
+      --t-surface-4:#e3dce9;
+      --t-surface-glass:rgba(252,250,253,.94);
+      --t-ink:#332f3a;
+      --t-text-2:#514a5d;
+      --t-muted:#6d6578;
+      --t-muted-2:#7d7489;
+      --t-faint:#8b8197;
+      --t-line:#ddd6e7;
+      --t-line-strong:#c9bdd8;
+      --t-accent:#76658a;
+      --t-accent-strong:#655374;
+      --t-accent-soft:#ece7f2;
+      --t-accent-soft-2:#ded5e8;
+      --t-accent-on:#ffffff;
+      --t-success:#6f8a78;
+      --t-warning:#8d744e;
+      --t-warning-soft:#fff7e9;
+      --t-warning-line:#e7d7b9;
+      --t-danger:#a4565c;
+      --t-danger-strong:#8f484f;
+      --t-danger-soft:#fff3f3;
+      --t-danger-line:#e6c7ca;
+      --t-input:#fffdfd;
+      --t-overlay:rgba(42,36,51,.25);
+      --t-shadow:rgba(53,45,66,.12);
+      --t-shadow-soft:rgba(53,45,66,.07);
+      --t-focus:rgba(118,101,138,.42);
+      --t-scrollbar:#c9bfd4;
+      --t-selection:rgba(118,101,138,.18);
+      --t-toast:#393341;
+      --t-privacy-1:rgba(245,241,248,.92);
+      --t-privacy-2:rgba(226,218,233,.84);
+      --t-privacy-sheen:rgba(255,255,255,.46);
+      --t-theme-color:#f4f2f7;
+    }
+
     
     html[data-theme]{
       --bg:var(--t-bg);
@@ -1185,7 +1277,7 @@
     html[data-theme] .backup-note{border-color:var(--t-line);background:var(--t-surface-3)}
 
     /* 主题选择器 */
-    .theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:11px}
+    .theme-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:11px}
     .theme-card{
       position:relative;
       min-height:118px;
@@ -1234,6 +1326,26 @@
     .theme-preview-night .theme-swatch:nth-child(2){background:#252d2c}
     .theme-preview-night .theme-swatch:nth-child(3){background:#93b6a6}
     .theme-preview-night .theme-swatch:nth-child(4){background:#c4ad7f}
+    .theme-preview-sakura{background:linear-gradient(155deg,#fffafb 0%,#fbf3f6 68%,#f5e7ec 100%)}
+    .theme-preview-sakura .theme-card-name{color:#8f5865}
+    .theme-preview-sakura .theme-card-check{background:#f8eef1;border-color:#d8bbc4}
+    .theme-preview-sakura:hover .theme-card-check{background:#f2e2e7;border-color:#c995a3}
+    .theme-preview-sakura.active{border-color:#a75f6f;box-shadow:0 0 0 2px rgba(184,117,130,.16),0 7px 18px var(--t-shadow-soft)}
+    .theme-preview-sakura.active .theme-card-check{background:#a75f6f;border-color:#925060;color:#fff;box-shadow:0 0 0 3px rgba(184,117,130,.10)}
+    .theme-preview-sakura .theme-swatch:nth-child(1){background:#f7f2f4}
+    .theme-preview-sakura .theme-swatch:nth-child(2){background:#fffafb}
+    .theme-preview-sakura .theme-swatch:nth-child(3){background:#a75f6f}
+    .theme-preview-sakura .theme-swatch:nth-child(4){background:#ebd5db}
+    .theme-preview-iris{background:linear-gradient(155deg,#fcfafd 0%,#f6f2fa 68%,#ece5f2 100%)}
+    .theme-preview-iris .theme-card-name{color:#645573}
+    .theme-preview-iris .theme-card-check{background:#f0ebf5;border-color:#cbbfd8}
+    .theme-preview-iris:hover .theme-card-check{background:#e8e0ef;border-color:#ad9cbe}
+    .theme-preview-iris.active{border-color:#76658a;box-shadow:0 0 0 2px rgba(118,101,138,.16),0 7px 18px var(--t-shadow-soft)}
+    .theme-preview-iris.active .theme-card-check{background:#76658a;border-color:#655374;color:#fff;box-shadow:0 0 0 3px rgba(118,101,138,.10)}
+    .theme-preview-iris .theme-swatch:nth-child(1){background:#f4f2f7}
+    .theme-preview-iris .theme-swatch:nth-child(2){background:#fcfafd}
+    .theme-preview-iris .theme-swatch:nth-child(3){background:#76658a}
+    .theme-preview-iris .theme-swatch:nth-child(4){background:#ded5e8}
     .theme-preview-tomato{background:linear-gradient(155deg,#fffaf7 0%,#fff5f1 65%,#fdefe8 100%)}
     .theme-preview-tomato::after{
       content:"";position:absolute;right:11px;bottom:12px;width:30px;height:30px;border-radius:50%;pointer-events:none;
@@ -1339,6 +1451,10 @@
     html[data-theme="tomato"] .pill{background:linear-gradient(180deg,#fff7f2,#fff1ea);border-color:#ecd5c9}
     html[data-theme="tomato"] .status-ok,
     html[data-theme="tomato"] .calendar-item.scheduled{background:linear-gradient(180deg,#f0f7ec,#e8f1e1);border-color:#c9dbba;color:#5c7845}
+
+    @media(max-width:1080px) and (min-width:761px){
+      .theme-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
 
     /* 手机端：主题变量继续覆盖所有吸附层与全屏弹窗 */
     @media(max-width:760px){
@@ -1828,6 +1944,9 @@
     html[data-theme="mist"]{--t-role-kp:#b88a68;--t-role-pl:#6f9ba1}
     html[data-theme="rain"]{--t-role-kp:#b48770;--t-role-pl:#6d96a7}
     html[data-theme="night"]{--t-role-kp:#b49377;--t-role-pl:#759dab}
+    html[data-theme="tomato"]{--t-role-kp:#b78369;--t-role-pl:#6d98a0}
+    html[data-theme="sakura"]{--t-role-kp:#b48772;--t-role-pl:#778fa5}
+    html[data-theme="iris"]{--t-role-kp:#ad846f;--t-role-pl:#718fa7}
 
     .card.role-tinted,.compact-row.role-tinted{
       background:
@@ -4237,6 +4356,59 @@
       .stats-table td.num{white-space:nowrap!important;text-align:right}
     }
 
+    /* ---------- v8.1.9.8 · 评分设置合并与统计显示精修 ---------- */
+    .settings-rating-panel{display:grid;gap:12px;min-width:0}
+    .settings-rating-panel[hidden]{display:none!important}
+    .settings-rating-panel>.settings-section{margin:0;min-width:0}
+    .settings-rating-panel .rating-subsection>summary{min-height:68px}
+    .settings-rating-panel .settings-summary-text h3{font-size:14px}
+    .settings-rating-panel .settings-summary-sub{font-size:10px}
+    .settings-rating-panel .rating-system-summary{max-width:min(260px,42vw);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+    .stats-table-wrap{scrollbar-gutter:stable both-edges}
+    .stats-table{font-variant-numeric:tabular-nums}
+    .stats-table th,.stats-table td{vertical-align:middle}
+    .stats-table th{font-size:9.8px;line-height:1.35;letter-spacing:.01em}
+    .stats-table td{font-size:10.8px;line-height:1.45}
+    .stats-table th.num,.stats-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+    .stats-table tbody tr:nth-child(even){background:color-mix(in srgb,var(--t-surface-2) 38%,transparent)}
+    .stats-table tbody tr:hover{background:color-mix(in srgb,var(--t-accent-soft) 24%,var(--t-surface))}
+    .stats-module-table :is(th,td).rank{width:58px;text-align:center}
+    .stats-module-table :is(th,td).date{width:102px;text-align:center;white-space:nowrap}
+    .stats-module-table :is(th,td).num{min-width:74px}
+    .stats-module-table td.name{min-width:150px}
+    .stats-module-table td.name button{display:block;width:100%;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+    .stats-module-table td.rank{font-weight:820;color:var(--t-muted)}
+    .stats-module-table tbody tr:nth-child(-n+3) td.rank{color:var(--t-accent-strong);font-weight:900}
+    .stats-trend-table th.num,.stats-trend-table td.num{min-width:72px}
+    .stats-ranking-row{grid-template-columns:30px minmax(0,1fr) minmax(76px,auto)}
+    .stats-rank-value{min-width:76px}
+    .stats-rank-value strong,.stats-bar-value,.stats-role-row strong,.stats-metric-card strong,.stats-repeat-card strong,.stats-completeness-value{font-variant-numeric:tabular-nums}
+    .stats-role-row{font-size:10px}.stats-role-row strong{font-size:10.8px}
+    .stats-identity-copy p{font-size:9.5px}.stats-donut-center span{font-size:9px}
+    .stats-repeat-card{gap:7px;padding:12px}.stats-repeat-card span{font-size:9.5px}.stats-repeat-card strong{font-size:18px}
+    .stats-completeness-row{grid-template-columns:minmax(104px,144px) minmax(0,1fr) 56px;gap:10px}
+    .stats-completeness-label strong{font-size:10.5px}.stats-completeness-label span{font-size:9px;line-height:1.35}
+    .stats-completeness-track{height:9px}.stats-completeness-value{font-size:10.5px}
+    .stats-footnote{font-size:9.3px;line-height:1.5}
+    .stats-bar-row{grid-template-columns:minmax(88px,148px) minmax(0,1fr) 52px}
+    .stats-bar-value{white-space:nowrap}
+
+    @media(max-width:760px){
+      .settings-rating-panel{gap:9px}
+      .settings-rating-panel .rating-subsection>summary{min-height:60px}
+      .settings-rating-panel .rating-system-summary{max-width:52vw}
+      .stats-module-table{min-width:100%!important;width:100%!important;table-layout:auto!important}
+      .stats-module-table :is(th,td).rank{width:42px}
+      .stats-module-table :is(th,td).date{width:auto}
+      .stats-module-table td.name{min-width:96px}
+      .stats-module-table td.name button{white-space:normal;overflow-wrap:anywhere}
+      .stats-module-table th,.stats-module-table td{font-size:9.6px!important;line-height:1.35}
+      .stats-completeness-row{grid-template-columns:90px minmax(0,1fr) 48px;gap:7px}
+      .stats-completeness-label strong{font-size:9.8px}.stats-completeness-label span{font-size:8.5px}
+      .stats-bar-row{grid-template-columns:minmax(82px,124px) minmax(0,1fr) 48px}
+    }
+
 </style>
 <style id="visual-unification-v81619">
 /* v8.1.6.19 · 全站视觉收口 1.0
@@ -4506,7 +4678,7 @@ body{font-size:var(--vu-body);line-height:1.5}
   .stats-dashboard-grid{grid-template-columns:1fr}.stats-panel{border-radius:15px}.stats-panel-head{display:grid;gap:9px;padding:12px}
   .stats-panel-controls{justify-content:flex-start}.stats-panel-body{padding:12px}
   .stats-segmented{max-width:100%;overflow-x:auto}.stats-segmented button{font-size:10px}
-  .stats-table-wrap{overflow-x:auto}.stats-table{min-width:430px}
+  .stats-table-wrap{overflow-x:auto}.stats-table{min-width:430px}.stats-module-table{min-width:100%!important}
 
   .self-intro-side-head{padding:13px}.self-intro-side-body{padding:0 12px 13px}
   .intro-two-col{grid-template-columns:1fr}
@@ -5061,7 +5233,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <span class="disclaimer-chevron">›</span>
 <span class="footer-title">说明与隐私提示</span>
 </span>
-<span class="footer-meta-inline">v8.1.9.4 · 2026-09-09 · 作者：番茄</span>
+<span class="footer-meta-inline">v8.1.9.8 · 2026-09-09 · 作者：番茄</span>
 </summary>
 <div class="disclaimer-body">
 <p>
@@ -5073,7 +5245,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-<div class="footer-meta">版本：v8.1.9.4　·　更新时间：2026-09-09　·　作者：番茄</div>
+<div class="footer-meta">版本：v8.1.9.8　·　更新时间：2026-09-09　·　作者：番茄</div>
 </div>
 </details>
 </footer>
@@ -5255,8 +5427,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <aside aria-label="设置章节" class="settings-nav">
 <button class="active" data-i18n="settings.nav.data" data-settings-target="data" type="button">数据与备份</button>
 <button data-i18n="settings.nav.appearance" data-settings-target="appearance" type="button">外观</button>
-<button data-i18n="settings.nav.plRating" data-settings-target="pl-rating" type="button">PL 评分</button>
-<button data-i18n="settings.nav.moduleRating" data-settings-target="module-rating" type="button">模组评分</button>
+<button data-i18n="settings.nav.rating" data-settings-target="rating" type="button">评分设置</button>
 <button data-i18n="settings.nav.display" data-settings-target="behavior" type="button">显示设置</button>
 </aside>
 <div class="settings-main">
@@ -5270,34 +5441,45 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="section-help">选择主题后立即预览；点击“保存设置”后生效。</div>
 <div aria-label="界面主题" class="theme-grid" id="themePicker" role="radiogroup">
 <button aria-checked="false" class="theme-card theme-preview-mist" data-theme-choice="mist" role="radio" type="button">
-<span class="theme-card-top"><span class="theme-card-name">雾森</span><span class="theme-card-check">✓</span></span>
-<span class="theme-card-desc">米白 · 鼠尾草绿 · 柔和</span>
+<span class="theme-card-top"><span class="theme-card-name" data-i18n="settings.theme.mist.name">雾森</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc" data-i18n="settings.theme.mist.desc">米白 · 鼠尾草绿 · 柔和</span>
 <span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
 </button>
 <button aria-checked="false" class="theme-card theme-preview-rain" data-theme-choice="rain" role="radio" type="button">
-<span class="theme-card-top"><span class="theme-card-name">雨青</span><span class="theme-card-check">✓</span></span>
-<span class="theme-card-desc">雾蓝 · 青灰 · 清爽</span>
+<span class="theme-card-top"><span class="theme-card-name" data-i18n="settings.theme.rain.name">雨青</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc" data-i18n="settings.theme.rain.desc">雾蓝 · 青灰 · 清爽</span>
 <span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
 </button>
 <button aria-checked="false" class="theme-card theme-preview-night" data-theme-choice="night" role="radio" type="button">
-<span class="theme-card-top"><span class="theme-card-name">夜航</span><span class="theme-card-check">✓</span></span>
-<span class="theme-card-desc">深蓝绿 · 暖灰 · 低亮度</span>
+<span class="theme-card-top"><span class="theme-card-name" data-i18n="settings.theme.night.name">夜航</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc" data-i18n="settings.theme.night.desc">深蓝绿 · 暖灰 · 低亮度</span>
 <span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
 </button>
 <button aria-checked="false" class="theme-card theme-preview-tomato" data-theme-choice="tomato" role="radio" type="button">
-<span class="theme-card-top"><span class="theme-card-name">番茄园</span><span class="theme-card-check">✓</span></span>
-<span class="theme-card-desc">番茄红 · 叶片绿 · 温暖</span>
+<span class="theme-card-top"><span class="theme-card-name" data-i18n="settings.theme.tomato.name">番茄园</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc" data-i18n="settings.theme.tomato.desc">番茄红 · 叶片绿 · 温暖</span>
+<span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
+</button>
+<button aria-checked="false" class="theme-card theme-preview-sakura" data-theme-choice="sakura" role="radio" type="button">
+<span class="theme-card-top"><span class="theme-card-name" data-i18n="settings.theme.sakura.name">樱雾</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc" data-i18n="settings.theme.sakura.desc">灰粉 · 奶白 · 柔和</span>
+<span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
+</button>
+<button aria-checked="false" class="theme-card theme-preview-iris" data-theme-choice="iris" role="radio" type="button">
+<span class="theme-card-top"><span class="theme-card-name" data-i18n="settings.theme.iris.name">鸢尾</span><span class="theme-card-check">✓</span></span>
+<span class="theme-card-desc" data-i18n="settings.theme.iris.desc">灰紫 · 薰衣草 · 安静</span>
 <span aria-hidden="true" class="theme-swatches"><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span><span class="theme-swatch"></span></span>
 </button>
 </div>
 </section>
-<details class="settings-section settings-collapsible" data-collapse-key="settings:pl-rating" data-settings-panel="pl-rating" id="scoreSettingsDetails">
+<div class="settings-rating-panel" data-settings-panel="rating" hidden="">
+<details class="settings-section settings-collapsible rating-subsection" data-collapse-key="settings:pl-rating" id="scoreSettingsDetails">
 <summary>
 <div class="settings-summary-main">
 <span class="settings-chevron">›</span>
 <div class="settings-summary-text">
-<h3>评分字段与权重</h3>
-<div class="settings-summary-sub">展开后可查看评分标准、新增字段并调整权重。</div>
+<h3>PL 评分</h3>
+<div class="settings-summary-sub">评分字段、标准与权重。</div>
 </div>
 </div>
 <div class="settings-summary-right">
@@ -5315,19 +5497,33 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="field-list" id="fieldList"></div>
 </div>
 </details>
-<section class="settings-section module-rating-settings" data-settings-panel="module-rating" hidden="">
+<details class="settings-section settings-collapsible module-rating-settings rating-subsection" data-collapse-key="settings:module-rating" id="moduleRatingSettingsDetails">
+<summary>
+<div class="settings-summary-main">
+<span class="settings-chevron">›</span>
+<div class="settings-summary-text">
 <h3>模组评分</h3>
+<div class="settings-summary-sub">评分体系与评分项管理。</div>
+</div>
+</div>
+<div class="settings-summary-right">
+<span class="collapse-hint">展开设置</span>
+<div class="weight-total rating-system-summary" id="moduleRatingSystemSummary">读取中</div>
+</div>
+</summary>
+<div class="settings-collapse-body">
 <div class="section-help">主模组页显示评分结果；评分体系在“高级工具”中维护。</div>
-<div class="settings-callout">
-<div><strong>当前评分体系</strong><span id="moduleRatingSystemSummary">读取中</span></div>
+<div class="setting-buttons">
 <button class="btn" id="openModuleAdvancedSettingsBtn" type="button">打开高级工具</button>
 </div>
-</section>
+</div>
+</details>
+</div>
 <section class="settings-section behavior-settings" data-settings-panel="behavior" hidden="">
 <h3 data-i18n="settings.display.title">显示设置</h3>
 <div class="section-help" data-i18n="settings.display.help">这些设置只影响界面显示与操作，不修改档案内容。</div>
 <div class="behavior-setting-list">
-<label class="locale-setting-row"><span><strong data-i18n="settings.language.label">界面语言</strong><small data-i18n="settings.language.help">只改变程序界面和系统文字，不翻译或修改已有档案内容。</small></span><select aria-label="界面语言" class="setting-input" id="interfaceLanguageSetting"><option value="zh-CN">简体中文</option><option disabled="" value="zh-TW">繁體中文 · 词库准备中</option><option disabled="" value="en">English · translation pending</option><option disabled="" value="ja">日本語 · 翻訳準備中</option></select></label>
+<label class="locale-setting-row"><span><strong data-i18n="settings.language.label">界面语言</strong><small data-i18n="settings.language.help">只改变程序界面和系统文字，不翻译或修改已有档案内容。</small></span><select aria-label="界面语言" class="setting-input" id="interfaceLanguageSetting"><option data-i18n="settings.language.zhCN" value="zh-CN">简体中文</option><option data-i18n="settings.language.zhHantPending" disabled="" lang="zh-Hant" value="zh-Hant">繁體中文 · 詞庫準備中</option><option data-i18n="settings.language.enPending" disabled="" lang="en" value="en">English · translation pending</option><option data-i18n="settings.language.jaPending" disabled="" lang="ja" value="ja">日本語 · 翻訳準備中</option></select></label>
 <div class="locale-foundation-note"><strong data-i18n="settings.language.foundationTitle">国际化底层已启用</strong><span data-i18n="settings.language.foundationText">当前仅开放简体中文。</span></div>
 <label><span><strong>开团计划默认视图</strong><small>仅显示一种日历视图。</small></span><select class="setting-input" id="plannerDefaultViewSetting"><option value="week">周视图</option><option value="month">月视图</option></select></label>
 <label><span><strong>计划周历密度</strong><small>同一时段达到 3–4 场时可自动压缩。</small></span><select class="setting-input" id="plannerDensitySetting"><option value="auto">自动</option><option value="comfortable">舒适</option><option value="compact">紧凑</option></select></label>
@@ -5389,7 +5585,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.9.4</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.9.8</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5412,10 +5608,10 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.9.4 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.9.4</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.9.8 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.9.8</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-history-list" id="releaseNotesBox"><div class="version-log-header"><span>版本</span><span>更新内容</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.4</strong><span class="version-log-copy">统一全站版本记录的内容结构、信息层级、字号与缩进，历史版本全部采用同一列表格式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.3</strong><span class="version-log-copy">周期排期改为单页工作台，排期记录并入同一窗口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.2</strong><span class="version-log-copy">精简全站说明文案，统一为简洁、直接的功能说明。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.1</strong><span class="version-log-copy">一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.0</strong><span class="version-log-copy">全站体验与视觉层级整理：统一按钮风险/主次层级与选中状态；周历卡片重排信息层级并强化容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.7</strong><span class="version-log-copy">新增一键按周期排期与排期记录。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.6</strong><span class="version-log-copy">个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.5</strong><span class="version-log-copy">历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.4</strong><span class="version-log-copy">偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.3</strong><span class="version-log-copy">交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.2</strong><span class="version-log-copy">高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.1</strong><span class="version-log-copy">新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.0</strong><span class="version-log-copy">统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.9</strong><span class="version-log-copy">开团计划编辑器调整底部操作层级：“完成”改为明确的“保存”，并作为右侧唯一主操作；“归档”移至左侧与“删除计划”并列，使用次级样式并保留归档确认与重复归档防呆，降低保存与归档相邻造成的误触风险。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.8</strong><span class="version-log-copy">修复外部自动备份完成提示在模态弹窗同时出现时“看得见却点不到关闭键”的交互层级问题，并强化提示条与按钮的触控事件等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.7</strong><span class="version-log-copy">个人偏好页“参考来源”说明补充 @江鸿、@削面，并将来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，确保页面初始显示和重新渲染后的文案一致，其余功能与数据结构不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.6</strong><span class="version-log-copy">跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.5</strong><span class="version-log-copy">全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.4</strong><span class="version-log-copy">交互与移动端可靠性优化：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理一致的折叠区等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.3</strong><span class="version-log-copy">个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.2</strong><span class="version-log-copy">PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.1</strong><span class="version-log-copy">完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.0</strong><span class="version-log-copy">建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.42</strong><span class="version-log-copy">手机浏览器外备份改为下载目录优先：移动端默认不再尝试可能无响应的文件夹选择器，而是按频率自动尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截无点击自动下载，提示中提供“重新下载”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.41</strong><span class="version-log-copy">个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.40</strong><span class="version-log-copy">个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.39</strong><span class="version-log-copy">进一步完善手机端导出预览拖动：移动端抓手扩大为更易触控的横向拖动条，并在预览层禁用系统长按菜单、文本选择和原生图片拖拽等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.38</strong><span class="version-log-copy">修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.37</strong><span class="version-log-copy">重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.36</strong><span class="version-log-copy">修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.35</strong><span class="version-log-copy">浏览器外自动备份升级为可配置频率，默认每 30 分钟；每次成功写入后显示非阻塞备份提示，并可核验“最新备份”文件的存在、大小、更新时间与完整性等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.34</strong><span class="version-log-copy">个人偏好导出预览支持直接拖动模块排序；左侧上下按钮继续保留作为键盘、旧浏览器和精细调整的备用操作。半栏布局改为自动填充较短列的紧凑双栏排版，消除不同高度模块之间的大块空白。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.33</strong><span class="version-log-copy">优化个人偏好导出中的 PL / KP 偏好尺：五档轨道改为居中紧凑宽度并缩短行高，保留项目名、当前值和两端语义，减少信息量较少时的横向空耗，让双栏导出更紧凑清晰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.32</strong><span class="version-log-copy">定位并修复“GitHub Pages 已更新但浏览器仍运行旧程序”的更新链路问题：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，发现页面版本落后时明确提示安全刷新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.31</strong><span class="version-log-copy">修复个人偏好导出中心“已勾选区域却不出现在预览/导出图”的问题：明确勾选现在始终保留整个区域，区域内部空白字段仍自动省略；空的想跑模组 / 可带模组会显示清晰空状态，不再整块消失。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.30</strong><span class="version-log-copy">个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.29</strong><span class="version-log-copy">重新整理“数据与备份”的信息结构：浏览器外自动备份移动到“恢复与迁移”分组内，并放在完整备份之后、设备迁移之前；“日常保护”继续聚焦自动保存、恢复点、冗余副本与存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.28</strong><span class="version-log-copy">个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.27</strong><span class="version-log-copy">个人偏好前半部分改为更紧凑的“常用信息”布局等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.26</strong><span class="version-log-copy">调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.25</strong><span class="version-log-copy">加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.24</strong><span class="version-log-copy">数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.23</strong><span class="version-log-copy">“想跑模组 / 可带模组”支持单独导出图片，并且可在每个模组下写备注；导出内容会带上对应备注，方便单独分享或留档。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.22</strong><span class="version-log-copy">继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.21</strong><span class="version-log-copy">统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.20</strong><span class="version-log-copy">个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.19</strong><span class="version-log-copy">全站视觉收口 1.0：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.18</strong><span class="version-log-copy">全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.17</strong><span class="version-log-copy">开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.16</strong><span class="version-log-copy">修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.15</strong><span class="version-log-copy">统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.14</strong><span class="version-log-copy">修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.13</strong><span class="version-log-copy">重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.11</strong><span class="version-log-copy">修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.10</strong><span class="version-log-copy">精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.9</strong><span class="version-log-copy">补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.8</strong><span class="version-log-copy">校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.7</strong><span class="version-log-copy">统一“偏好 / 统计”命名：将主导航与对应页面标题调整为“个人偏好”“个人统计”，让第三组导航含义更完整，也与现有个人信息语境更一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.6</strong><span class="version-log-copy">新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.5</strong><span class="version-log-copy">调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.4</strong><span class="version-log-copy">调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.3</strong><span class="version-log-copy">重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.2</strong><span class="version-log-copy">完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.1</strong><span class="version-log-copy">PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.0</strong><span class="version-log-copy">全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.9</strong><span class="version-log-copy">统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.8</strong><span class="version-log-copy">优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.7</strong><span class="version-log-copy">继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.6</strong><span class="version-log-copy">强化开团计划编辑抽屉中的分区标题：放大“基本信息”“KP / KPC”“PL / PC”等标题字号，并加入主题色短划线装饰，让层级更清晰、观感更精致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.5</strong><span class="version-log-copy">优化开团计划中的人物下拉框：统一圆角与主题配色，替换浏览器原生黑色箭头，增加轻量悬停、聚焦反馈，并保持手机端触控尺寸。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.4</strong><span class="version-log-copy">调整主导航顺序，将“跑团偏好”移至最后；PL 评分改为打开即可直接操作、未操作保持“无”，并保留一键设为无；开团计划增强拖放入口与日历落点提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.3</strong><span class="version-log-copy">统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.2</strong><span class="version-log-copy">统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.1</strong><span class="version-log-copy">跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5</strong><span class="version-log-copy">隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.15</strong><span class="version-log-copy">常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.14</strong><span class="version-log-copy">重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.13</strong><span class="version-log-copy">“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.12</strong><span class="version-log-copy">自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；多选选中态加强，并新增双栏图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.11</strong><span class="version-log-copy">新增“自我介绍”：整理通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.10</strong><span class="version-log-copy">新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.9</strong><span class="version-log-copy">KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.8</strong><span class="version-log-copy">统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.7</strong><span class="version-log-copy">新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.6</strong><span class="version-log-copy">修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.5</strong><span class="version-log-copy">修复设置页版本区适配；新增每次启动自动检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.4</strong><span class="version-log-copy">新增 PL 黑名单、状态历史与排团风险提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.3</strong><span class="version-log-copy">新增跑团记录退回计划、同名模组合并与关联治理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.2</strong><span class="version-log-copy">强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.1</strong><span class="version-log-copy">统一企业级 UX 文案与术语。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4</strong><span class="version-log-copy">增强多标签页并发保存，避免竞态覆盖；保持 v18 数据结构兼容。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.3</strong><span class="version-log-copy">增强保存冲突、恢复点、回收站与大档案保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.2</strong><span class="version-log-copy">优化移动端计划、跑团记录、搜索与数据管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.1</strong><span class="version-log-copy">增强分享模式、草稿保存、撤销与离线缓存安全。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.0</strong><span class="version-log-copy">新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span></div></div></details>
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-history-list" id="releaseNotesBox"><div class="version-log-header"><span>版本</span><span>更新内容</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.8</strong><span class="version-log-copy">合并 PL 评分与模组评分为统一“评分设置”；精修个人统计排名表与趋势表的表头、数字、列宽和移动端对齐。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.7</strong><span class="version-log-copy">新增“樱雾”“鸢尾”主题，并将六套主题同步到主页面与模组高级工具。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.6</strong><span class="version-log-copy">精简中文语言显示名称，界面统一使用“简体中文”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.5</strong><span class="version-log-copy">校正国际化语言与地区语义：繁體中文改用通用 zh-Hant 规划，修正中文地区回退、区域格式化和语言状态显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.4</strong><span class="version-log-copy">统一全站版本记录的内容结构、信息层级、字号与缩进，历史版本全部采用同一列表格式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.3</strong><span class="version-log-copy">周期排期改为单页工作台，排期记录并入同一窗口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.2</strong><span class="version-log-copy">精简全站说明文案，统一为简洁、直接的功能说明。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.1</strong><span class="version-log-copy">一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.0</strong><span class="version-log-copy">全站体验与视觉层级整理：统一按钮风险/主次层级与选中状态；周历卡片重排信息层级并强化容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.7</strong><span class="version-log-copy">新增一键按周期排期与排期记录。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.6</strong><span class="version-log-copy">个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.5</strong><span class="version-log-copy">历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.4</strong><span class="version-log-copy">偏好边界强弱视觉提示：个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”按强弱使用低刺激红、黄、浅绿、绿底提示，选择后即时更新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.3</strong><span class="version-log-copy">交互一致性与关闭可靠性优化：修复嵌套弹窗可能残留 inert 导致“看得到但点不到”的问题；外部备份、跑团整理与设备迁移去除重复关闭按钮等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.2</strong><span class="version-log-copy">高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.1</strong><span class="version-log-copy">新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.0</strong><span class="version-log-copy">统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.9</strong><span class="version-log-copy">开团计划编辑器调整底部操作层级：“完成”改为明确的“保存”，并作为右侧唯一主操作；“归档”移至左侧与“删除计划”并列，使用次级样式并保留归档确认与重复归档防呆，降低保存与归档相邻造成的误触风险。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.8</strong><span class="version-log-copy">修复外部自动备份完成提示在模态弹窗同时出现时“看得见却点不到关闭键”的交互层级问题，并强化提示条与按钮的触控事件等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.7</strong><span class="version-log-copy">个人偏好页“参考来源”说明补充 @江鸿、@削面，并将来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，确保页面初始显示和重新渲染后的文案一致，其余功能与数据结构不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.6</strong><span class="version-log-copy">跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.5</strong><span class="version-log-copy">全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.4</strong><span class="version-log-copy">交互与移动端可靠性优化：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理一致的折叠区等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.3</strong><span class="version-log-copy">个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.2</strong><span class="version-log-copy">PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.1</strong><span class="version-log-copy">完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.0</strong><span class="version-log-copy">建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.42</strong><span class="version-log-copy">手机浏览器外备份改为下载目录优先：移动端默认不再尝试可能无响应的文件夹选择器，而是按频率自动尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截无点击自动下载，提示中提供“重新下载”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.41</strong><span class="version-log-copy">个人偏好精简重构第一版：KP 偏好按“带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理”重新分区；删除头像、具体聊天渠道等低价值设计方向，不新增群聊/私聊等细碎字段等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.40</strong><span class="version-log-copy">个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.39</strong><span class="version-log-copy">进一步完善手机端导出预览拖动：移动端抓手扩大为更易触控的横向拖动条，并在预览层禁用系统长按菜单、文本选择和原生图片拖拽等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.38</strong><span class="version-log-copy">修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.37</strong><span class="version-log-copy">重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.36</strong><span class="version-log-copy">修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.35</strong><span class="version-log-copy">浏览器外自动备份升级为可配置频率，默认每 30 分钟；每次成功写入后显示非阻塞备份提示，并可核验“最新备份”文件的存在、大小、更新时间与完整性等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.34</strong><span class="version-log-copy">个人偏好导出预览支持直接拖动模块排序；左侧上下按钮继续保留作为键盘、旧浏览器和精细调整的备用操作。半栏布局改为自动填充较短列的紧凑双栏排版，消除不同高度模块之间的大块空白。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.33</strong><span class="version-log-copy">优化个人偏好导出中的 PL / KP 偏好尺：五档轨道改为居中紧凑宽度并缩短行高，保留项目名、当前值和两端语义，减少信息量较少时的横向空耗，让双栏导出更紧凑清晰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.32</strong><span class="version-log-copy">定位并修复“GitHub Pages 已更新但浏览器仍运行旧程序”的更新链路问题：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，发现页面版本落后时明确提示安全刷新等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.31</strong><span class="version-log-copy">修复个人偏好导出中心“已勾选区域却不出现在预览/导出图”的问题：明确勾选现在始终保留整个区域，区域内部空白字段仍自动省略；空的想跑模组 / 可带模组会显示清晰空状态，不再整块消失。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.30</strong><span class="version-log-copy">个人偏好导出中心升级为可视化编排：修复调整顺序时弹层自动关闭；移除区分度不足的三套导出样式、姓名与区域说明选项，统一采用 1080 px 简洁宽度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.29</strong><span class="version-log-copy">重新整理“数据与备份”的信息结构：浏览器外自动备份移动到“恢复与迁移”分组内，并放在完整备份之后、设备迁移之前；“日常保护”继续聚焦自动保存、恢复点、冗余副本与存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.28</strong><span class="version-log-copy">个人偏好导出重构为统一导出中心：移除“想跑模组 / 可带模组”分散导出按钮，改为一个入口集中选择导出区域、任意组合、调整顺序、快捷预设、完整 / 紧凑 / 分享三种样式等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.27</strong><span class="version-log-copy">个人偏好前半部分改为更紧凑的“常用信息”布局等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.26</strong><span class="version-log-copy">调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.25</strong><span class="version-log-copy">加强浏览器更新后的数据恢复能力：每次成功保存都会额外写入 IndexedDB 独立冗余副本等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.24</strong><span class="version-log-copy">数据保护升级：自动恢复点支持设置创建间隔与保留数量；明确并强化浏览器持久化存储保护等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.23</strong><span class="version-log-copy">“想跑模组 / 可带模组”支持单独导出图片，并且可在每个模组下写备注；导出内容会带上对应备注，方便单独分享或留档。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.22</strong><span class="version-log-copy">继续统一全站交互外观：所有弹窗右上角关闭按钮与底部操作区采用同一套尺寸、圆角和间距；“展开全部 / 收起全部”改为稳定的双态按钮；图片导出按钮统一图标、尺寸与下拉箭头表现。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.21</strong><span class="version-log-copy">统一所有“导出图片”按钮的风格，并整理“跑团整理”弹窗工具区：PL / KP 两种视图共用同一套操作顺序与对齐方式，展开、导出、复制与模式专属控件位置更稳定。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.20</strong><span class="version-log-copy">个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.19</strong><span class="version-log-copy">全站视觉收口 1.0：统一字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.18</strong><span class="version-log-copy">全面修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按抽屉自身宽度重新收敛，PL / PC / HO、人物搜索、模组选择、底部操作区不再产生横向滚动等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.17</strong><span class="version-log-copy">开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览统一区分；沿用个人统计中的 KP 暖棕 / PL 蓝绿色，并增加文字身份标签，避免只靠颜色判断。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.16</strong><span class="version-log-copy">修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.15</strong><span class="version-log-copy">统一优化全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序，完整模组名直接收敛到对应档案；开团计划搜索时按相关性统一展示结果等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.14</strong><span class="version-log-copy">修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.13</strong><span class="version-log-copy">重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.11</strong><span class="version-log-copy">修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.10</strong><span class="version-log-copy">精简个人统计页面：移除顶部“统计口径”说明条，保留时间范围筛选与各统计模块自身必要说明；同时继续保留个人统计全模块的隐私雾面遮罩。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.9</strong><span class="version-log-copy">补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.8</strong><span class="version-log-copy">校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.7</strong><span class="version-log-copy">统一“偏好 / 统计”命名：将主导航与对应页面标题调整为“个人偏好”“个人统计”，让第三组导航含义更完整，也与现有个人信息语境更一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.6</strong><span class="version-log-copy">新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.5</strong><span class="version-log-copy">调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端保持搜索与批量操作同排，手机端做窄屏压缩与结果计数换行，避免文字和按钮互相挤压。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.4</strong><span class="version-log-copy">调整 PL 档案工具栏：将“全部折叠 / 全部展开”从页面标题操作区移动到搜索框右侧，减少顶部操作拥挤；同步优化桌面、平板和窄屏下的搜索框、批量操作、排序与视图切换布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.3</strong><span class="version-log-copy">重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.2</strong><span class="version-log-copy">完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.1</strong><span class="version-log-copy">PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.0</strong><span class="version-log-copy">全面修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，避免姓名、RP 长度和 KP / PL 度被评分区挤成竖条等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.9</strong><span class="version-log-copy">统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.8</strong><span class="version-log-copy">优化开团计划中的 PL 添加区：将“添加已有 PL”前置到已添加列表上方，支持输入 PL 名称搜索，并将下拉名单统一为 A～Z（拼音 / 英文）顺序，添加流程更顺手。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.7</strong><span class="version-log-copy">继续精修开团计划编辑抽屉：分区卡片增加更轻的层级与留白，标题和说明间距重新整理，状态标签、HO 选择和底部操作区统一为更精致的产品化样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.6</strong><span class="version-log-copy">强化开团计划编辑抽屉中的分区标题：放大“基本信息”“KP / KPC”“PL / PC”等标题字号，并加入主题色短划线装饰，让层级更清晰、观感更精致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.5</strong><span class="version-log-copy">优化开团计划中的人物下拉框：统一圆角与主题配色，替换浏览器原生黑色箭头，增加轻量悬停、聚焦反馈，并保持手机端触控尺寸。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.4</strong><span class="version-log-copy">调整主导航顺序，将“跑团偏好”移至最后；PL 评分改为打开即可直接操作、未操作保持“无”，并保留一键设为无；开团计划增强拖放入口与日历落点提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.3</strong><span class="version-log-copy">统一全站图片导出视觉：跑团整理与跑团偏好使用同一套网页卡片风格、标题层级、留白与配色；移除导出图中的番茄/水果式装饰图形与多余装饰。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.2</strong><span class="version-log-copy">统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组改为概览优先、按需展开。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.1</strong><span class="version-log-copy">跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5</strong><span class="version-log-copy">隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.15</strong><span class="version-log-copy">常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈仅保留企鹅联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.14</strong><span class="version-log-copy">重排跑团偏好双栏：想跑团 / 可带团统一固定在各栏末尾并保持对齐；强化分组标题层级；导出图片为偏好刻度补充完整左右尺度与五段位置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.13</strong><span class="version-log-copy">“自我介绍”统一调整为“跑团偏好”；精简 PL / KP 模组偏好说明；将拖动滑杆改为清晰的五段点击刻度，并继续保留现代、当代等时代选项。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.12</strong><span class="version-log-copy">自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；多选选中态加强，并新增双栏图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.11</strong><span class="version-log-copy">新增“自我介绍”：整理通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.10</strong><span class="version-log-copy">新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.9</strong><span class="version-log-copy">KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出；优化桌次较多时的整理浏览。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.8</strong><span class="version-log-copy">统一 PL / KP 跑团整理为响应式卡片布局；修复中小屏内容挤压、重叠与横向 HO 看板问题。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.7</strong><span class="version-log-copy">新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.6</strong><span class="version-log-copy">修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.5</strong><span class="version-log-copy">修复设置页版本区适配；新增每次启动自动检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.4</strong><span class="version-log-copy">新增 PL 黑名单、状态历史与排团风险提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.3</strong><span class="version-log-copy">新增跑团记录退回计划、同名模组合并与关联治理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.2</strong><span class="version-log-copy">强化模组唯一编号关联；支持同一时段自由排序与拖出日历取消安排。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.1</strong><span class="version-log-copy">统一企业级 UX 文案与术语。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4</strong><span class="version-log-copy">增强多标签页并发保存，避免竞态覆盖；保持 v18 数据结构兼容。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.3</strong><span class="version-log-copy">增强保存冲突、恢复点、回收站与大档案保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.2</strong><span class="version-log-copy">优化移动端计划、跑团记录、搜索与数据管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.1</strong><span class="version-log-copy">增强分享模式、草稿保存、撤销与离线缓存安全。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.0</strong><span class="version-log-copy">新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span></div></div></details>
 </section></div></details><details class="data-safety-group advanced" data-collapse-key="settings:data:advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。严重编号冲突会自动进入保护模式。</span></div><div class="friendly-head-actions"><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button><button class="btn small primary-soft" id="safeAutoRepairBtn" type="button">安全修复轻微问题</button></div></div>
 <div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
@@ -5554,7 +5750,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.9.4 · 作者：番茄
+/* PL收集梦想生活 v8.1.9.8 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5581,11 +5777,11 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.9.4";
+const APP_UI_VERSION = "8.1.9.8";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
-    "zh-TW": { label: "繁體中文", htmlLang: "zh-TW", ready: false },
+    "zh-Hant": { label: "繁體中文", htmlLang: "zh-Hant", ready: false },
     "en": { label: "English", htmlLang: "en", ready: false },
     "ja": { label: "日本語", htmlLang: "ja", ready: false }
 };
@@ -5620,8 +5816,7 @@ const I18N_MESSAGES = {
         "settings.subtitle": "管理主题、评分、显示偏好和数据备份。",
         "settings.nav.data": "数据与备份",
         "settings.nav.appearance": "外观",
-        "settings.nav.plRating": "PL 评分",
-        "settings.nav.moduleRating": "模组评分",
+        "settings.nav.rating": "评分设置",
         "settings.nav.display": "显示设置",
         "settings.display.title": "显示设置",
         "settings.display.help": "这些设置只影响界面显示与操作，不修改档案内容。",
@@ -5629,6 +5824,22 @@ const I18N_MESSAGES = {
         "settings.language.help": "只改变程序界面和系统文字，不翻译或修改已有档案内容。",
         "settings.language.foundationTitle": "国际化底层已启用",
         "settings.language.foundationText": "当前仅开放简体中文。",
+        "settings.language.zhCN": "简体中文",
+        "settings.language.zhHantPending": "繁體中文 · 詞庫準備中",
+        "settings.language.enPending": "English · translation pending",
+        "settings.language.jaPending": "日本語 · 翻訳準備中",
+        "settings.theme.mist.name": "雾森",
+        "settings.theme.mist.desc": "米白 · 鼠尾草绿 · 柔和",
+        "settings.theme.rain.name": "雨青",
+        "settings.theme.rain.desc": "雾蓝 · 青灰 · 清爽",
+        "settings.theme.night.name": "夜航",
+        "settings.theme.night.desc": "深蓝绿 · 暖灰 · 低亮度",
+        "settings.theme.tomato.name": "番茄园",
+        "settings.theme.tomato.desc": "番茄红 · 叶片绿 · 温暖",
+        "settings.theme.sakura.name": "樱雾",
+        "settings.theme.sakura.desc": "灰粉 · 奶白 · 柔和",
+        "settings.theme.iris.name": "鸢尾",
+        "settings.theme.iris.desc": "灰紫 · 薰衣草 · 安静",
         "settings.collapseDefault.label": "折叠区默认状态",
         "settings.collapseDefault.help": "只决定从未手动操作过的折叠区；你亲自展开或收起后，会一直记住直到再次手动切换。",
         "settings.collapseDefault.closed": "默认收起",
@@ -5727,7 +5938,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.094aa106fe03": "当前模组均有关联跑团记录，请先在主页面处理关联。",
     "legacy.exact.095283393ec9": "停止本次团",
     "legacy.exact.096c2f64a165": "叙事诡计",
-    "legacy.exact.097f1ff3a073": "繁體中文 · 词库准备中",
+    "legacy.exact.097f1ff3a073": "繁體中文 · 詞庫準備中",
     "legacy.exact.09aa565be250": "删除 PL 档案？",
     "legacy.exact.09d67e8f1f79": "归档安排",
     "legacy.exact.09f953e05ac1": "剧本名",
@@ -6792,7 +7003,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.707403d905d8": "只保留会影响选团、同桌体验和角色扮演方式的长期偏好。",
     "legacy.exact.70813354defc": "六",
     "legacy.exact.708b36143997": "原旨风味",
-    "legacy.exact.70bde1d317ef": "完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案；动态 DOM 新增/更新时自动绑定翻译键，并加入用户档案原文保护，避免把 PL 名称、联系方式、模组资料、备注、Log 等既有内容误当系统文案翻译。高级模组工具同步主页面语言状态；简体中文继续作为唯一开放语言，为后续繁中、英文、日文词包直接填充做好准备。",
+    "legacy.exact.70bde1d317ef": "完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案；动态 DOM 新增/更新时自动绑定翻译键，并加入用户档案原文保护，避免把 PL 名称、联系方式、模组资料、备注、Log 等既有内容误当系统文案翻译。高级模组工具同步主页面语言状态；简体中文继续作为唯一开放语言，为后续繁體中文、英文、日文词包直接填充做好准备。",
     "legacy.exact.70de71aff38d": "挖",
     "legacy.exact.70f04971b0be": "按模组汇总已经归档的带团记录与后续计划。",
     "legacy.exact.70f9679dc275": "回声岛",
@@ -7336,7 +7547,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.a53b670af7a5": "收起设置",
     "legacy.exact.a53c4b19a502": "服务器程序版本检查失败",
     "legacy.exact.a5452debd68f": "通用补充",
-    "legacy.exact.a55b92b8779e": "建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容；显示设置加入界面语言入口，并为英文长文本与日文断行预留跨端布局规则。首版仅开放简体中文，繁中、英文、日文词库将在后续逐步上线。",
+    "legacy.exact.a55b92b8779e": "建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容；显示设置加入界面语言入口，并为英文长文本与日文断行预留跨端布局规则。首版仅开放简体中文，繁體中文、英文、日文词库将在后续逐步上线。",
     "legacy.exact.a55c6d78d685": "能根据NPC身份和反应调整话术，并稳定维持3轮以上有效交流",
     "legacy.exact.a5979ed4284a": "Excel 只有总分时放这里；填写分项后加权分优先。",
     "legacy.exact.a5aa1e775708": "总桌次",
@@ -8860,7 +9071,8 @@ function i18nNormalizeLocale(value) {
     const raw = String(value || "").trim();
     if (I18N_LOCALE_META[raw]) return raw;
     const low = raw.toLowerCase();
-    if (low.indexOf("zh-tw") === 0 || low.indexOf("zh-hk") === 0 || low.indexOf("zh-hant") === 0) return "zh-TW";
+    if (low.indexOf("zh-hant") === 0 || low.indexOf("zh-tw") === 0 || low.indexOf("zh-hk") === 0 || low.indexOf("zh-mo") === 0 || low.indexOf("zh-cht") === 0) return "zh-Hant";
+    if (low.indexOf("zh-hans") === 0 || low.indexOf("zh-cn") === 0 || low.indexOf("zh-sg") === 0 || low.indexOf("zh-chs") === 0 || low === "zh") return "zh-CN";
     if (low.indexOf("zh") === 0) return "zh-CN";
     if (low.indexOf("ja") === 0) return "ja";
     if (low.indexOf("en") === 0) return "en";
@@ -9135,6 +9347,23 @@ function i18nFormatRelativeTime(value, unit, locale) {
     try { if (typeof Intl.RelativeTimeFormat === "function") return new Intl.RelativeTimeFormat(loc, { numeric: "auto" }).format(value, unit || "day"); } catch (err) { }
     return String(value) + " " + String(unit || "day");
 }
+function i18nLocaleDisplayName(locale, includeCode = true) {
+    const id = i18nNormalizeLocale(locale);
+    const meta = I18N_LOCALE_META[id];
+    const label = meta && meta.label ? meta.label : id;
+    return includeCode ? `${label} [${id}]` : label;
+}
+const i18nCollatorCache = new Map();
+function i18nCompareText(a, b, options, locale) {
+    const loc = i18nResolveLocale(locale || i18nActiveLocale);
+    const opts = Object.assign({ numeric: true, sensitivity: "base" }, options || {});
+    const key = loc + "|" + JSON.stringify(opts);
+    try {
+        let collator = i18nCollatorCache.get(key);
+        if (!collator) { collator = new Intl.Collator(loc, opts); i18nCollatorCache.set(key, collator); }
+        return collator.compare(String(a == null ? "" : a), String(b == null ? "" : b));
+    } catch (err) { return String(a == null ? "" : a).localeCompare(String(b == null ? "" : b)); }
+}
 function i18nExportLocale(requested) { return i18nResolveLocale(requested || i18nActiveLocale); }
 function i18nLocaleCoverage(locale) {
     const id = i18nNormalizeLocale(locale), base = I18N_MESSAGES[I18N_DEFAULT_LOCALE] || {}, pack = I18N_MESSAGES[id] || {};
@@ -9176,7 +9405,7 @@ function i18nAudit() {
     const catalogKeys = Object.keys(base).length, patternKeys = Object.keys(base).filter(function (key) { return /\{[\w.-]+\}/.test(String(base[key] || "")); }).length;
     return { locale: i18nActiveLocale, explicitNodes: explicit.length, boundNodes: explicit.length + autoText + autoAttrs, autoTextBindings: autoText, autoAttributeBindings: autoAttrs, uniqueKeys: keys.size, catalogKeys, patternKeys, missingKeys: missing, protectedUserNodes: protectedNodes, unboundChineseNodes: unresolvedChineseNodes, unboundChineseAttributes: unresolvedChineseAttrs, availableLocales: Object.keys(I18N_LOCALE_META).filter(function (id) { return I18N_LOCALE_META[id].ready; }), plannedLocales: Object.keys(I18N_LOCALE_META), coverage: i18nLocaleCoverage(i18nActiveLocale) };
 }
-window.PL_I18N = { t, registerLocale: i18nRegisterLocale, applyLocale: i18nApplyLocale, resolveLocale: i18nResolveLocale, translateSource: i18nTranslateSource, formatNumber: i18nFormatNumber, formatDate: i18nFormatDate, formatDateTime: i18nFormatDateTime, formatRelativeTime: i18nFormatRelativeTime, exportLocale: i18nExportLocale, audit: i18nAudit, coverage: i18nLocaleCoverage, invalidateUserText: i18nInvalidateProtectedUserText, getLocale: function () { return i18nActiveLocale; }, getMessage: i18nGetMessage, localeMeta: I18N_LOCALE_META };
+window.PL_I18N = { t, registerLocale: i18nRegisterLocale, applyLocale: i18nApplyLocale, resolveLocale: i18nResolveLocale, translateSource: i18nTranslateSource, formatNumber: i18nFormatNumber, formatDate: i18nFormatDate, formatDateTime: i18nFormatDateTime, formatRelativeTime: i18nFormatRelativeTime, exportLocale: i18nExportLocale, audit: i18nAudit, coverage: i18nLocaleCoverage, invalidateUserText: i18nInvalidateProtectedUserText, getLocale: function () { return i18nActiveLocale; }, getMessage: i18nGetMessage, localeMeta: I18N_LOCALE_META, localeDisplayName: i18nLocaleDisplayName, compareText: i18nCompareText };
 const DATA_SCHEMA_VERSION = 20;
 const BACKUP_FORMAT = "tomato-pl-archive"; // v17：模组 HO 开关可在桌内直接设置；无 HO / 未设置时彻底收起无效的 HO 区域。
 const SELF_SYSTEM_ROLE = "self";
@@ -9205,8 +9434,8 @@ const genericLabels = ["几乎不出现；需要持续提示或外部推动", "�
 const baseFields = [{ "key": "rpEffect", "label": "RP效果", "includeInTotal": true, "labels": ["多数字句脱离既定人设；常需提醒角色立场、关系或动机", "能复述人设，但行动与语气仍常随PL即时想法变化", "简单场景能贴合人设；压力、冲突或取舍场景容易失去一致性", "多数常规场景符合人设；关键反应偶有突兀或缺少动机承接", "多数场景能从既定动机出发；行动、台词与情绪基本连贯", "关键场景也能抓住角色立场；反应能由经历、关系或目标解释", "持续让角色经历与人际关系影响选择；很少需要外部提醒", "面对矛盾信息或两难选择仍保持人物逻辑，并形成有辨识度的反应", "会主动回收早先人设细节；关系变化与经历会稳定反映到后续行为", "角色反应长期稳定且有发展轨迹；每次明显变化都能由已发生经历解释"] }, { "key": "rpSpeed", "label": "RP速度", "includeInTotal": true, "labels": ["常规短RP通常＞15分钟，或经常需要催促才能继续", "常规短RP通常10–15分钟", "常规短RP通常7–10分钟", "常规短RP通常5–7分钟", "常规短RP通常3–5分钟", "常规短RP通常2–3分钟", "常规短RP通常90秒–2分钟", "常规短RP通常60–90秒", "常规短RP通常30–60秒", "常规短RP通常≤30秒，且仍能给出完整有效回应"] }, { "key": "actionEffect", "label": "RP行动效果", "includeInTotal": true, "labels": ["多数行动缺少明确对象或方法；KP常需追问后才能执行", "能提出动作，但经常与当前目标无关、重复无效尝试或无法落地", "简单调查能执行；遇到阻碍后常停住，或继续重复同类动作", "约半数行动能带来新信息或状态变化；仍较依赖明显提示", "多数行动具备“对象＋方法”；通常能推进当前小目标", "会根据结果调整下一步；连续2–3个行动能形成有效推进链", "能把已有线索转成验证行动；无效重复明显减少", "关键场景能主动设定行动目标、验证假设并改变局面", "多个方向并存时能优先选择高收益路径；发现无效后及时止损", "长期稳定把线索转成可执行策略，并能创造原本未显露的有效推进路径"] }, { "key": "timing", "label": "知道在哪里说话", "includeInTotal": true, "labels": ["经常打断未结束的发言或错过明确点名；需KP直接分配发言时机", "较常抢在他人行动结算前插入，或在轮到自己时长时间没有回应", "知道等待基本轮次，但仍常错过交接点、截断NPC或与他人撞话", "大多数时候能等上一段结束；偶尔切入过早、过晚或打断场面节奏", "能识别明确的发言交接和行动窗口；通常在合适时机回应", "能读到停顿、提问和视线焦点等暗示；较少需要KP点名", "会主动给他人把话说完；能在自然空档及时接入自己的行动或台词", "多人场景中能判断何时短回应、何时完整展开；很少挤占别人的回合", "能主动让出聚光灯，并在剧情转折或冷场前后抓住关键切入点", "几乎始终与桌面节奏同步；既能避免抢话，也能在停滞时自然恢复推进"] }, { "key": "npcInitiative", "label": "与NPC互动／对话主动性", "includeInTotal": true, "labels": ["几乎只在NPC直接提问时回应；很少主动向NPC发起交流", "以被动回应为主；偶尔追加一个事实性问题，但通常不继续追问", "明显线索场景会主动问1–2个基础问题；其他NPC多等待对方先开口", "每次团通常能主动开启至少一次与当前目标有关的NPC对话", "约半数有可互动NPC的场景会主动询问、确认或表达立场", "多数相关场景都会主动开口，并能根据回答继续追问1–2轮", "除取情报外，也会主动澄清关系、态度或动机；不会长期垄断对话", "能根据NPC身份和反应调整话术，并稳定维持3轮以上有效交流", "会跨场景回访NPC、追踪未完话题或维护既有关系；主动互动有连续性", "线索场景与日常场景都能自然创造有意义的NPC互动，同时主动给其他PC留空间"] }, { "key": "exploration", "label": "场景探索熟练度", "includeInTotal": true, "labels": ["缺少明确提示时很少主动调查；明显可查对象也常被遗漏", "主要检查最显眼的单个对象；调查后通常等待KP继续给方向", "会按显眼地点或物件逐项查看；次级区域、人物和文件较容易漏", "能覆盖主要区域，并为明显对象选择基本合适的调查方式或技能", "形成基础探索顺序；空间、物件、人物／文件等主要信息源较少漏查", "获得新线索后会回查相关地点或换一种方法验证；调查具有前后关联", "会交叉核对不同来源，并区分“没发现”与“可以确认不存在”", "能先查高价值目标、后补低价值区域；明显减少无目的的全图重复搜索", "会建立场景结构，针对信息空缺、矛盾点和异常点逐项验证", "熟悉常规套路后仍会根据场景反馈调整策略；能识别反套路并保持调查效率"] }, { "key": "inspiration", "label": "现实灵感", "includeInTotal": true, "labels": ["通常把线索当作孤立事实；很少自行联想到现实含义或后续可能", "只有关联被明显提示时才会连接信息；自主联想较少", "能从明显关键词产生一个直接、常识性的关联", "遇到细节或关键词时，通常能提出1–2个合理可能", "能提出多个合理假设，但常停留在“可能是……”而缺少验证办法", "能区分较可能与较不可能的解释，并给出至少一种验证路径", "能把跨场景线索或现实知识接起来，同时保留两种以上备选解释", "能较快生成多种假设，并按已有证据给出优先顺序", "会主动寻找反例或否证信息；发现新证据后能及时修正原假设", "面对弱线索也能完成“生成假设→排序→验证→淘汰”，且较少陷入无依据脑补"] }, { "key": "comprehension", "label": "话语理解程度", "includeInTotal": true, "labels": ["经常误读明确的主客体、因果或行动要求；需要整段重新解释", "能理解字面大意，但常漏掉否定、时间、范围等关键限定", "单一步骤信息基本能懂；包含多个条件时常遗漏其中一项", "能正确复述主要意思；指代、细节或条件偶尔出现偏差", "能抓住主要信息和大部分限制条件，并据此做出基本正确的行动", "多数时候能区分“已知事实、NPC说法、推测、未知”四类信息", "能准确跟踪指代、时间顺序、条件关系和话外要求，较少抓错重点", "多名NPC或多份文本的信息并存时，能整合而不把互相矛盾的说法混为一谈", "能主动识别歧义、信息缺口和不确定处，并在行动前提出针对性确认", "能准确概括复杂多步信息，同时保留事实层级、优先级与尚未证实的部分"] }, { "key": "memory", "label": "记忆力", "includeInTotal": true, "labels": ["同日或短暂停顿后也常忘记当前目标、人物身份或刚获得的核心信息", "隔到下一次跑团时通常需要重述大部分前情，才能恢复当前状态", "能记住当前主目标，但人物关系、专有名词和已得线索遗漏较多", "间隔数日后能记住主线和主要NPC；具体线索之间的联系较容易丢", "间隔约1周后仍能记住核心剧情和多数关键线索，少量提示即可继续", "间隔1–2周仍能记住目标、关系和未解决线索；通常只需简短回顾", "间隔2周以上仍能保持关键线索与时间顺序，能主动接续此前计划", "除主线外也能保留较小但相关的细节，并在受到提示时准确调取", "会在合适时机主动回忆早先细节，并把它与当前信息重新连接", "长间隔后仍能较完整恢复剧情网络、关系与细节；同时很少把错误记忆当成事实"] }, { "key": "punctuality", "label": "准时程度", "includeInTotal": true, "labels": ["近8次约团中≥3次无故缺席／临开前失约，或多次迟到＞30分钟", "近8次约团中约2次无故缺席，或≥4次迟到＞20分钟", "近8次约团中≥4次迟到＞10分钟；变动多在开团前才说明", "近8次约团中约3次迟到10–20分钟；临时改约较常见", "近8次约团中1–2次迟到10–20分钟；其余基本按约到场", "近8次约团中多数在约定时间±10分钟内到；无法参加通常会提前说明", "近8次约团中≥6次在±5分钟内到；很少临时改约", "近8次约团中≥7次在±5分钟内到；变动通常至少提前数小时说明", "近8次几乎全部准时；无法参加通常提前≥24小时说明", "近8次全部准时／提前到；如有变动均提前说明并主动协调替代时间"] }, { "key": "scheduleStability", "label": "固定时间的跑团规律度", "includeInTotal": true, "labels": ["无法形成固定周期或固定时段；每次基本都需重新约时间", "近8次中约1次按原定周期与时段进行，其余多需改期", "近8次中约2次按原定周期与时段进行", "近8次中约3次按原定周期与时段进行", "近8次中约4次按原定周期与时段进行；规律性约一半", "近8次中约5次按原定周期与时段进行", "近8次中约6次按原定周期与时段进行；固定安排已较稳定", "近8次中约7次按原定周期与时段进行；临时变动很少", "近8次均能维持原定周期与时段；固定安排稳定连续", "连续至少3个月维持固定周期、时段与单次时长；变动后也能主动恢复原节奏"] }, { "key": "storyAttitude", "label": "对于故事和NPC的态度", "includeInTotal": true, "labels": ["被明确提醒后仍反复以场外辱骂、针对或故意拆台破坏共同叙事与边界", "频繁对NPC进行无角色动机支撑的侮辱／凌虐，或持续用场外嘲讽打断严肃情节", "较常把NPC只当作工具或发泄对象；重要情节中仍频繁以场外玩笑消解内容", "偶尔出现过度吐槽、无动机敌意或强行拆台；提醒后通常能够停止", "总体尊重故事基调和NPC功能；偶有过界玩笑或敌意，但能及时调整", "能区分“PC对NPC的敌意”和“PL对故事／KP的态度”；面对灰色角色能就事论事", "能接受NPC有自主立场和行为后果；剧情不合个人预期时仍继续在故事逻辑内回应", "激烈冲突、失败或道德灰区中仍能保持场内外边界，并兼顾其他玩家的体验空间", "会主动回应NPC的复杂性和剧情基调；发现桌面氛围偏离时能帮助拉回共同叙事", "长期稳定尊重共同创作、边界与故事灰度；允许PC冲突和激烈选择，同时不把冲突外溢到玩家／KP"] }, { "key": "kpPlSide", "label": "KP／PL倾向（自动）", "includeInTotal": false, "labels": ["近一年／最近10次跑团中，担任KP约91–100%：强KP侧", "担任KP约81–90%：明显KP侧", "担任KP约71–80%：KP侧", "担任KP约61–70%：偏KP的KPL", "担任KP约51–60%：KPL略偏KP", "担任KP约41–50%：KPL近似均衡", "担任KP约31–40%：KPL略偏PL", "担任KP约21–30%：偏PL的KPL", "担任KP约11–20%：明显PL侧", "担任KP约0–10%：强PL侧"] }];
 /* ---------- 04. 设置初始化与版本迁移：建立默认设置并兼容旧版本 ---------- */
 function clone(v) { return JSON.parse(JSON.stringify(v)); }
-const THEME_IDS = new Set(["mist", "rain", "night", "tomato"]);
-const THEME_META_COLORS = { mist: "#f4f3ee", rain: "#f1f5f5", night: "#181d1e", tomato: "#fbf4ef" };
+const THEME_IDS = new Set(["mist", "rain", "night", "tomato", "sakura", "iris"]);
+const THEME_META_COLORS = { mist: "#f4f3ee", rain: "#f1f5f5", night: "#181d1e", tomato: "#fbf4ef", sakura: "#f7f2f4", iris: "#f4f2f7" };
 function normalizeTheme(value) { return THEME_IDS.has(String(value || "")) ? String(value) : "mist"; }
 function applyTheme(theme) {
     const next = normalizeTheme(theme);
@@ -9271,7 +9500,7 @@ function normalizeUiSettings(raw) {
         profileFootprintsOpen: Boolean(src.profileFootprintsOpen),
         collapseDefault: src.collapseDefault === "open" ? "open" : "closed",
         moduleLayout: src.moduleLayout === "compact" ? "compact" : "cards",
-        locale: I18N_LOCALE_META[String(src.locale || "")] ? String(src.locale) : I18N_DEFAULT_LOCALE
+        locale: (() => { const id = i18nNormalizeLocale(src.locale); const meta = I18N_LOCALE_META[id]; return meta && meta.ready ? id : I18N_DEFAULT_LOCALE; })()
     };
 }
 function normalizePeriodicScheduleBatchEntry(raw) {
@@ -11039,9 +11268,9 @@ catch (err) {
     return null;
 } }
 function formatSafetyDateTime(ts) { const n = Number(ts); if (!Number.isFinite(n) || n <= 0)
-    return "—"; return new Date(n).toLocaleString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }); }
+    return "—"; return i18nFormatDateTime(n, { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }); }
 function formatSafetyShortTime(ts) { const n = Number(ts); if (!Number.isFinite(n) || n <= 0)
-    return "—"; return new Date(n).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", hour12: false }); }
+    return "—"; return i18nFormatDate(n, { hour: "2-digit", minute: "2-digit", hour12: false }); }
 function getBackupReminderDays() { try {
     const raw = localStorage.getItem(BACKUP_REMINDER_DAYS_KEY);
     if (raw === null)
@@ -11571,7 +11800,7 @@ async function listExternalBackupFiles(target = null) {
         const file = await t.handle.getFile(), state = await inspectExternalBackupFileObject(file);
         rows.push({ name:String(file.name || t.handle.name || `${APP_NAME}_自动备份_最新.json`), handle:t.handle, file, size:Number(file.size||0), lastModified:Number(file.lastModified||0), integrity:state.integrity, ok:state.ok });
     }
-    rows.sort((a,b)=>Number(b.lastModified||0)-Number(a.lastModified||0) || String(a.name).localeCompare(String(b.name),"zh-CN"));
+    rows.sort((a,b)=>Number(b.lastModified||0)-Number(a.lastModified||0) || i18nCompareText(a.name,b.name));
     return { target:t, rows };
 }
 function closeExternalBackupBrowser() {
@@ -12327,7 +12556,7 @@ function displayProfileName(profile) {
 const profilePickerNameCollator = createSafeCollator(["zh-CN-u-co-pinyin", "zh-CN", "en"], { numeric: true, sensitivity: "base" });
 function compareProfilesForPicker(a, b) {
     const left = String(rawProfileName(a) || "").trim(), right = String(rawProfileName(b) || "").trim();
-    return profilePickerNameCollator.compare(left, right) || String((a === null || a === void 0 ? void 0 : a.id) || "").localeCompare(String((b === null || b === void 0 ? void 0 : b.id) || ""), "zh-CN");
+    return profilePickerNameCollator.compare(left, right) || String((a === null || a === void 0 ? void 0 : a.id) || "").localeCompare(String((b === null || b === void 0 ? void 0 : b.id) || ""));
 }
 function profilePickerSearchRank(profile, query) {
     const q = normalizedEntityNameKey(query);
@@ -12597,7 +12826,7 @@ function sortProfiles(list) {
     if (mode === "updated_desc")
         return arr.sort((a, b) => cmp(a, b, secondary));
     if (mode === "name_asc")
-        return arr.sort((a, b) => cmp(a, b, (x, y) => (x.name || "").localeCompare(y.name || "", "zh-CN") || secondary(x, y)));
+        return arr.sort((a, b) => cmp(a, b, (x, y) => i18nCompareText(x.name,y.name) || secondary(x, y)));
     if (mode.startsWith("field:")) {
         const parts = mode.split(":"), key = parts[1], dir = parts[2];
         return arr.sort((a, b) => cmp(a, b, (x, y) => {
@@ -12909,7 +13138,7 @@ function hoOrganizerEntriesForProfile(profileId) {
         if (run.kpProfileId === id && ((_a = run.kpc) === null || _a === void 0 ? void 0 : _a.enabled))
             entries.push(hoOrganizerEntryBase("plan", run, run.kpc, "KPC"));
     });
-    return entries.sort((a, b) => b.updatedAt - a.updatedAt || a.moduleName.localeCompare(b.moduleName, "zh-CN"));
+    return entries.sort((a, b) => b.updatedAt - a.updatedAt || i18nCompareText(a.moduleName,b.moduleName));
 }
 function hoOrganizerColumnDefinitions(entries, showEmpty = false) {
     const builtins = [
@@ -12920,7 +13149,7 @@ function hoOrganizerColumnDefinitions(entries, showEmpty = false) {
     const known = new Set(builtins.map(x => x.key)), custom = [];
     entries.forEach(e => { if (!known.has(e.column.key) && !custom.some(x => x.key === e.column.key))
         custom.push(Object.assign({}, e.column)); });
-    const all = [...builtins, ...custom].sort((a, b) => a.order - b.order || a.label.localeCompare(b.label, "zh-CN"));
+    const all = [...builtins, ...custom].sort((a, b) => a.order - b.order || i18nCompareText(a.label,b.label));
     if (showEmpty)
         return all;
     const used = new Set(entries.map(e => e.column.key));
@@ -12981,7 +13210,7 @@ function kpOrganizerEntriesForProfile(profileId) {
             plCount: plKeys.length, plKeys, updatedAt: Number(run.updatedAt || run.createdAt || 0)
         });
     }));
-    return out.sort((a, b) => (b.dateKey || "").localeCompare(a.dateKey || "") || b.updatedAt - a.updatedAt || a.moduleName.localeCompare(b.moduleName, "zh-CN"));
+    return out.sort((a, b) => (b.dateKey || "").localeCompare(a.dateKey || "") || b.updatedAt - a.updatedAt || i18nCompareText(a.moduleName,b.moduleName));
 }
 function kpOrganizerGroups(entries) {
     const map = new Map();
@@ -12998,10 +13227,10 @@ function kpOrganizerGroups(entries) {
     });
     groups.sort((a, b) => {
         if (kpOrganizerSort === "count")
-            return b.done - a.done || b.planned - a.planned || a.moduleName.localeCompare(b.moduleName, "zh-CN");
+            return b.done - a.done || b.planned - a.planned || i18nCompareText(a.moduleName,b.moduleName);
         if (kpOrganizerSort === "name")
-            return a.moduleName.localeCompare(b.moduleName, "zh-CN");
-        return (b.lastDone || b.lastAny || "").localeCompare(a.lastDone || a.lastAny || "") || (b.lastAny || "").localeCompare(a.lastAny || "") || a.moduleName.localeCompare(b.moduleName, "zh-CN");
+            return i18nCompareText(a.moduleName,b.moduleName);
+        return (b.lastDone || b.lastAny || "").localeCompare(a.lastDone || a.lastAny || "") || (b.lastAny || "").localeCompare(a.lastAny || "") || i18nCompareText(a.moduleName,b.moduleName);
     });
     return groups;
 }
@@ -13923,7 +14152,7 @@ function renderEditRuns() {
             groups.get(r.moduleName).push(r);
         });
         els.existingRunSelect.innerHTML = `<option value="">选择已有模组 / 桌次…</option>` +
-            [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0], "zh-CN")).map(([moduleName, list]) => {
+            [...groups.entries()].sort((a, b) => i18nCompareText(a[0],b[0])).map(([moduleName, list]) => {
                 const sorted = [...list].sort(compareRunChronology);
                 return `<optgroup label="${escapeHTML(moduleName)}">${sorted.map(r => {
                     const dateText = formatRunDateRange(r);
@@ -15592,7 +15821,7 @@ function statsRankButton(row, label, kind, index = 0) {
     return `<span class="stats-rank-name">${escapeHTML(label)}</span>`;
 }
 function statsPeopleRowsHTML(rows, metric, view) {
-    const sorted = rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.together - a.together || String(a.name).localeCompare(String(b.name), "zh-CN")).slice(0, 20);
+    const sorted = rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.together - a.together || i18nCompareText(a.name,b.name)).slice(0, 20);
     if (!sorted.length)
         return `<div class="stats-empty">当前范围内还没有可统计的人物跑团记录。<br>归档跑团记录并关联好“我”、KP 和 PL 后，这里会自动生成统计。</div>`;
     const metricLabel = metric === "ledByMe" ? "我带的桌" : metric === "ledMe" ? "带我的桌" : "同桌次数";
@@ -15603,16 +15832,16 @@ function statsPeopleRowsHTML(rows, metric, view) {
     return `<div class="stats-ranking">${sorted.map((r, i) => { const label = statsPersonLabel(r, i); const meta = metric === "together" ? `我当 KP ${r.ledByMe} 桌 · 对方当 KP ${r.ledMe} 桌 · 同为 PL ${r.coPl} 桌` : `累计同桌 ${r.together} 桌 · 最近一次 ${statsFormatDate(r.lastDate)}`; return `<div class="stats-ranking-row"><span class="stats-rank-no">${i + 1}</span><div class="stats-rank-main">${statsRankButton(r, label, "person", i)}<span class="stats-rank-meta">${escapeHTML(meta)}</span></div><div class="stats-rank-value"><strong>${r[metric]} 桌</strong><span>${metricLabel}</span></div></div>`; }).join("")}</div>`;
 }
 function statsModuleRowsHTML(rows, mode, view) {
-    const metric = mode === "kp" ? "kp" : "pl", sorted = rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.kp + b.pl - (a.kp + a.pl) || String(a.name).localeCompare(String(b.name), "zh-CN")).slice(0, 20);
+    const metric = mode === "kp" ? "kp" : "pl", sorted = rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.kp + b.pl - (a.kp + a.pl) || i18nCompareText(a.name,b.name)).slice(0, 20);
     if (!sorted.length)
         return `<div class="stats-empty">当前范围内还没有对应的模组记录。<br>归档跑团记录后，这里会自动汇总我带过和跑过的模组。</div>`;
     if (view === "bar") {
         const max = Math.max(1, ...sorted.map(r => r[metric]));
         return `<div class="stats-bars">${sorted.map(r => `<div class="stats-bar-row"><button class="stats-bar-label" type="button" data-stats-module="${escapeHTML(r.moduleId || "")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button><div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.max(2, r[metric] / max * 100).toFixed(2)}%"></div></div><div class="stats-bar-value">${r[metric]} 桌</div></div>`).join("")}</div>`;
     }
-    const heads = mode === "kp" ? "<th>#</th><th>模组</th><th>带团桌次</th><th>PL 人次</th><th>不同 PL</th><th>最近一次</th>" : "<th>#</th><th>模组</th><th>参团桌次</th><th>不同 KP</th><th>最近一次</th>";
-    const body = sorted.map((r, i) => mode === "kp" ? `<tr><td>${i + 1}</td><td><button type="button" data-stats-module="${escapeHTML(r.moduleId || "")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.kp}</td><td class="num">${r.plAppearances}</td><td class="num">${r.uniquePl.size}</td><td>${statsFormatDate(r.lastDate)}</td></tr>` : `<tr><td>${i + 1}</td><td><button type="button" data-stats-module="${escapeHTML(r.moduleId || "")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.pl}</td><td class="num">${r.uniqueKp.size}</td><td>${statsFormatDate(r.lastDate)}</td></tr>`).join("");
-    return `<div class="stats-table-wrap"><table class="stats-table stats-module-table ${mode}"><thead><tr>${heads}</tr></thead><tbody>${body}</tbody></table></div>`;
+    const heads = mode === "kp" ? `<th scope="col" class="rank">排名</th><th scope="col" class="name">模组</th><th scope="col" class="num">带团桌次</th><th scope="col" class="num">PL 人次</th><th scope="col" class="num">不同 PL</th><th scope="col" class="date">最近一次</th>` : `<th scope="col" class="rank">排名</th><th scope="col" class="name">模组</th><th scope="col" class="num">参团桌次</th><th scope="col" class="num">不同 KP</th><th scope="col" class="date">最近一次</th>`;
+    const body = sorted.map((r, i) => mode === "kp" ? `<tr><td class="rank">${i + 1}</td><td class="name"><button type="button" data-stats-module="${escapeHTML(r.moduleId || "")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.kp}</td><td class="num">${r.plAppearances}</td><td class="num">${r.uniquePl.size}</td><td class="date">${statsFormatDate(r.lastDate)}</td></tr>` : `<tr><td class="rank">${i + 1}</td><td class="name"><button type="button" data-stats-module="${escapeHTML(r.moduleId || "")}" data-stats-module-name="${escapeHTML(r.name)}">${escapeHTML(r.name)}</button></td><td class="num">${r.pl}</td><td class="num">${r.uniqueKp.size}</td><td class="date">${statsFormatDate(r.lastDate)}</td></tr>`).join("");
+    return `<div class="stats-table-wrap"><table class="stats-table stats-module-table ${mode}" aria-label="${mode === "kp" ? "我带过的模组排名" : "我跑过的模组排名"}"><thead><tr>${heads}</tr></thead><tbody>${body}</tbody></table></div>`;
 }
 function statsPeriodKey(date, granularity) { if (!date)
     return ""; return granularity === "year" ? date.slice(0, 4) : date.slice(0, 7); }
@@ -15660,7 +15889,7 @@ function statsTrendHTML(data, view) {
         return `<div class="stats-empty">当前范围内没有带日期的跑团记录，暂时无法生成趋势图。</div>`;
     const series = statsTrendSeries(data), legend = `<div class="stats-trend-legend">${series.map(s => `<span class="${s.cls}"><i></i>${s.label}</span>`).join("")}${statsUiState.trendGranularity === "month" && data.length === 24 ? `<span>月视图最多展示最近 24 个月</span>` : ""}</div>`;
     if (view === "table")
-        return `${legend}<div class="stats-table-wrap"><table class="stats-table"><thead><tr><th>时间</th>${series.map(s => `<th>${s.label}</th>`).join("")}</tr></thead><tbody>${data.map(r => `<tr><td>${r.label}</td>${series.map(s => `<td class="num">${r[s.key]}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+        return `${legend}<div class="stats-table-wrap"><table class="stats-table stats-trend-table"><thead><tr><th scope="col">时间</th>${series.map(s => `<th scope="col" class="num">${s.label}</th>`).join("")}</tr></thead><tbody>${data.map(r => `<tr><td>${r.label}</td>${series.map(s => `<td class="num">${r[s.key]}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
     const max = Math.max(1, ...data.flatMap(r => series.map(s => r[s.key])));
     if (view === "bar")
         return `${legend}<div class="stats-trend-bars-scroll"><div class="stats-trend-bars">${data.map(r => `<div class="stats-trend-bar-group"><div class="stats-trend-bar-area">${series.map(s => `<div class="stats-trend-bar ${s.cls}" title="${r.label} · ${s.label} ${r[s.key]} 桌" style="height:${Math.max(r[s.key] ? 4 : 0, r[s.key] / max * 100).toFixed(2)}%"></div>`).join("")}</div><div class="stats-trend-bar-label">${r.label}</div></div>`).join("")}</div></div>`;
@@ -15733,11 +15962,11 @@ function statsExportPersonLabel(row, index = 0) {
     return `参与者 ${String(index + 1).padStart(2, "0")}`;
 }
 function statsExportTopPeople(rows, metric, limit = 10) {
-    return rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.together - a.together || String(a.name).localeCompare(String(b.name), "zh-CN")).slice(0, limit);
+    return rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.together - a.together || i18nCompareText(a.name,b.name)).slice(0, limit);
 }
 function statsExportTopModules(rows, mode, limit = 10) {
     const metric = mode === "kp" ? "kp" : "pl";
-    return rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.kp + b.pl - (a.kp + a.pl) || String(a.name).localeCompare(String(b.name), "zh-CN")).slice(0, limit);
+    return rows.filter(r => r[metric] > 0).sort((a, b) => b[metric] - a[metric] || b.kp + b.pl - (a.kp + a.pl) || i18nCompareText(a.name,b.name)).slice(0, limit);
 }
 function statsExportPeopleMeta(row, metric) {
     return metric === "together"
@@ -16259,7 +16488,7 @@ function groupedRunRecords() {
         groups.get(name).push(r);
     });
     groups.forEach(list => list.sort(compareRunChronology));
-    return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0], "zh-CN"));
+    return [...groups.entries()].sort((a, b) => i18nCompareText(a[0],b[0]));
 }
 function recordSearchCoreValues(r, moduleName) {
     var _a;
@@ -16307,7 +16536,7 @@ function buildRecordSearchGroups(allGroups, q) {
         if (matched.length)
             groups.push([name, matched, Math.min(...matched.map(r => recordSearchRank(r, name, query))), list.length]);
     });
-    groups.sort((a, b) => a[2] - b[2] || a[0].localeCompare(b[0], "zh-CN"));
+    groups.sort((a, b) => a[2] - b[2] || i18nCompareText(a[0],b[0]));
     return groups;
 }
 function applyPlannerMobileSectionUI() {
@@ -16433,7 +16662,7 @@ function periodicScheduleTabsHTML(){
 function periodicScheduleRecordsHTML(){
     const rows=[...periodicBatches()].sort((a,b)=>b.createdAt-a.createdAt);
     if(!rows.length)return '<div class="periodic-records-empty">暂无排期记录。</div>';
-    return `<div class="periodic-records-pane"><div class="periodic-records-toolbar"><strong>排期记录</strong><span>${rows.length} 条</span></div><div class="periodic-records-list">${rows.map(b=>{const st=periodicBatchStatus(b),days=(b.weekdays||[]).map(weekdayShortLabel).join("、"), time=b.startTime&&b.endTime?`${b.startTime}–${b.endTime}`:"未记录具体时间",legacy=b.mode==="legacy-copy",sourceLive=runPlans.some(p=>p.id===b.sourcePlanId);return `<article class="periodic-record-card ${legacy?"legacy":""}"><div class="periodic-record-head"><div><strong>${escapeHTML(b.sourceLabel||"未命名计划")}${legacy?' <span class="periodic-legacy-badge">历史</span>':''}</strong><span>${escapeHTML(b.startDate)} ～ ${escapeHTML(b.endDate)} · ${escapeHTML(days||"未选星期")} · ${escapeHTML(daypartInfo(b.daypart).label)} ${escapeHTML(time)}</span></div><span>${new Date(b.createdAt).toLocaleString("zh-CN",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</span></div><div class="periodic-record-meta"><span>${legacy?"关联项":"新增日期"} ${st.total}</span><span>未修改 ${st.unchanged}</span>${st.modified?`<span class="warn">手动改动 ${st.modified}</span>`:""}${st.archived?`<span>已归档 ${st.archived}</span>`:""}${st.missing?`<span>已删除/撤回 ${st.missing}</span>`:""}${b.skipped.length?`<span>跳过 ${b.skipped.length}</span>`:""}</div>${!sourceLive&&!legacy?'<div class="periodic-record-source-missing">原计划不可继续排期。</div>':''}<div class="periodic-record-actions"><button class="btn small" type="button" data-periodic-continue="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>继续排期</button><button class="btn small" type="button" data-periodic-again="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>再次排期</button><button class="btn small" type="button" data-periodic-withdraw="${escapeHTML(b.id)}">${legacy?"撤回未修改项":"撤回未修改日期"}</button><button class="btn small danger-soft" type="button" data-periodic-delete-record="${escapeHTML(b.id)}">删除记录</button></div></article>`;}).join("")}</div></div>`;
+    return `<div class="periodic-records-pane"><div class="periodic-records-toolbar"><strong>排期记录</strong><span>${rows.length} 条</span></div><div class="periodic-records-list">${rows.map(b=>{const st=periodicBatchStatus(b),days=(b.weekdays||[]).map(weekdayShortLabel).join("、"), time=b.startTime&&b.endTime?`${b.startTime}–${b.endTime}`:"未记录具体时间",legacy=b.mode==="legacy-copy",sourceLive=runPlans.some(p=>p.id===b.sourcePlanId);return `<article class="periodic-record-card ${legacy?"legacy":""}"><div class="periodic-record-head"><div><strong>${escapeHTML(b.sourceLabel||"未命名计划")}${legacy?' <span class="periodic-legacy-badge">历史</span>':''}</strong><span>${escapeHTML(b.startDate)} ～ ${escapeHTML(b.endDate)} · ${escapeHTML(days||"未选星期")} · ${escapeHTML(daypartInfo(b.daypart).label)} ${escapeHTML(time)}</span></div><span>${i18nFormatDateTime(b.createdAt,{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</span></div><div class="periodic-record-meta"><span>${legacy?"关联项":"新增日期"} ${st.total}</span><span>未修改 ${st.unchanged}</span>${st.modified?`<span class="warn">手动改动 ${st.modified}</span>`:""}${st.archived?`<span>已归档 ${st.archived}</span>`:""}${st.missing?`<span>已删除/撤回 ${st.missing}</span>`:""}${b.skipped.length?`<span>跳过 ${b.skipped.length}</span>`:""}</div>${!sourceLive&&!legacy?'<div class="periodic-record-source-missing">原计划不可继续排期。</div>':''}<div class="periodic-record-actions"><button class="btn small" type="button" data-periodic-continue="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>继续排期</button><button class="btn small" type="button" data-periodic-again="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>再次排期</button><button class="btn small" type="button" data-periodic-withdraw="${escapeHTML(b.id)}">${legacy?"撤回未修改项":"撤回未修改日期"}</button><button class="btn small danger-soft" type="button" data-periodic-delete-record="${escapeHTML(b.id)}">删除记录</button></div></article>`;}).join("")}</div></div>`;
 }
 function renderPeriodicScheduleDialog(){
     if(!periodicScheduleDraft||!els.periodicScheduleContent) return;
@@ -17395,7 +17624,7 @@ async function changeRecordModule(recordId) {
         appNotice("暂无可关联的模组档案。请先在“模组档案”中新建模组。", "暂无模组");
         return false;
     }
-    const options = [...modules].sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), "zh-CN")).map(m => ({ value: m.id, label: recordModuleOptionLabel(m) })), chosen = await appSelect(`当前关联：${((_a = moduleById(rec.moduleId)) === null || _a === void 0 ? void 0 : _a.name) || rec.moduleName || "未关联"}\n\n选择新的模组档案。`, options, rec.moduleId, { title: "更换所属模组", confirmText: "保存关联" });
+    const options = [...modules].sort((a, b) => i18nCompareText(a.name,b.name)).map(m => ({ value: m.id, label: recordModuleOptionLabel(m) })), chosen = await appSelect(`当前关联：${((_a = moduleById(rec.moduleId)) === null || _a === void 0 ? void 0 : _a.name) || rec.moduleName || "未关联"}\n\n选择新的模组档案。`, options, rec.moduleId, { title: "更换所属模组", confirmText: "保存关联" });
     if (!chosen || chosen === rec.moduleId)
         return false;
     const mod = moduleById(chosen);
@@ -17459,9 +17688,9 @@ function recordReadonlyBodyHTML(r) {
   </div>`;
 }
 function recordTableHTML(r, index) {
-    const available = profiles.filter(p => !r.plIds.includes(p.id)).sort((a, b) => (a.name || "").localeCompare(b.name || "", "zh-CN"));
+    const available = profiles.filter(p => !r.plIds.includes(p.id)).sort((a, b) => i18nCompareText(a.name,b.name));
     const participants = r.plIds.map(id => profiles.find(p => p.id === id)).filter(Boolean);
-    const profileOptions = [...profiles].sort((a, b) => (a.name || "").localeCompare(b.name || "", "zh-CN"));
+    const profileOptions = [...profiles].sort((a, b) => i18nCompareText(a.name,b.name));
     const assignmentSummary = hoAssignmentSummary(r);
     const collapsed = isRunRecordCollapsed(r.id);
     const schedule = archivedSessionText(r);
@@ -17582,7 +17811,7 @@ function newModuleSuggestionRows(query) {
         const rank = searchFieldRank(m === null || m === void 0 ? void 0 : m.name, q);
         const tableCount = runRecords.filter(r => String(r.moduleId || "") === String(m.id || "")).length;
         return { module: m, rank, tableCount };
-    }).filter(x => x.rank < 99).sort((a, b) => a.rank - b.rank || b.tableCount - a.tableCount || String(a.module.name || "").localeCompare(String(b.module.name || ""), "zh-CN")).slice(0, 10);
+    }).filter(x => x.rank < 99).sort((a, b) => a.rank - b.rank || b.tableCount - a.tableCount || i18nCompareText(a.module.name,b.module.name)).slice(0, 10);
 }
 function closeNewModuleSuggestions() {
     if (!els.newModuleSuggestions || !els.newModuleName)
@@ -17969,16 +18198,15 @@ function renderModuleRatingSettingsSummary() {
     const sys = ms.ratingSystems.find(s => s.id === ms.defaultRatingSystemId) || ms.ratingSystems[0];
     els.moduleRatingSystemSummary.textContent = sys ? `${sys.name} · ${sys.criteria.length} 个评分项` : "未设置";
 }
-const scoreSettingsDetails = document.getElementById("scoreSettingsDetails");
-if (scoreSettingsDetails) {
+document.querySelectorAll(".settings-rating-panel details.settings-collapsible").forEach(details => {
     const updateCollapseHint = () => {
-        const hint = scoreSettingsDetails.querySelector(".collapse-hint");
+        const hint = details.querySelector(".collapse-hint");
         if (hint)
-            hint.textContent = scoreSettingsDetails.open ? "收起设置" : "展开设置";
+            hint.textContent = details.open ? "收起设置" : "展开设置";
     };
-    scoreSettingsDetails.addEventListener("toggle", updateCollapseHint);
+    details.addEventListener("toggle", updateCollapseHint);
     updateCollapseHint();
-}
+});
 async function closeSettings(force = false) {
     if (!force && hasUnsavedSettings() && !await appConfirm("设置有未保存修改，确定放弃并关闭吗？", { title: "放弃设置修改？", confirmText: "放弃修改", danger: true }))
         return false;
@@ -18926,7 +19154,7 @@ function renderNativeModules() {
     moduleNativeHo = ((_b = els.moduleNativeHoFilter) === null || _b === void 0 ? void 0 : _b.value) || "";
     moduleNativeLocation = ((_c = els.moduleNativeLocationFilter) === null || _c === void 0 ? void 0 : _c.value) || "";
     moduleNativeSortMode = ((_d = els.moduleNativeSort) === null || _d === void 0 ? void 0 : _d.value) || "updated";
-    const locations = [...new Set(modules.map(m => m.location).filter(Boolean))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+    const locations = [...new Set(modules.map(m => m.location).filter(Boolean))].sort((a, b) => i18nCompareText(a,b));
     if (els.moduleNativeLocationFilter) {
         const current = els.moduleNativeLocationFilter.value;
         els.moduleNativeLocationFilter.innerHTML = `<option value="">全部地点</option>${locations.map(x => `<option value="${escapeHTML(x)}">${escapeHTML(x)}</option>`).join("")}`;
@@ -18941,7 +19169,7 @@ function renderNativeModules() {
     const moduleTieSort = (a, b) => {
         var _a, _b;
         if (moduleNativeSortMode === "name")
-            return a.name.localeCompare(b.name, "zh-CN");
+            return i18nCompareText(a.name,b.name);
         if (moduleNativeSortMode === "runs")
             return moduleRunCount(b) - moduleRunCount(a) || (b.updatedAt - a.updatedAt);
         if (moduleNativeSortMode === "rating")
@@ -19175,8 +19403,8 @@ function openNativeModuleRecords(id) {
 }
 const MODULE_ARCHIVE_EXTERNAL_URL = "./module-tools.html";
 function decodeBase64Utf8(b64) { const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0)); return new TextDecoder().decode(bytes); }
-function parentThemeToModule(theme) { return theme === "night" ? "night" : theme === "rain" ? "indigo" : "washi"; }
-function moduleThemeToParent(theme) { return theme === "night" ? "night" : theme === "indigo" ? "rain" : "mist"; }
+function parentThemeToModule(theme) { return theme === "night" ? "night" : theme === "rain" ? "indigo" : theme === "tomato" ? "tomato" : theme === "sakura" ? "sakura" : theme === "iris" ? "iris" : "washi"; }
+function moduleThemeToParent(theme) { return theme === "night" ? "night" : theme === "indigo" ? "rain" : theme === "tomato" ? "tomato" : theme === "sakura" ? "sakura" : theme === "iris" ? "iris" : "mist"; }
 function normalizePersonToken(v) { return normalizedEntityNameKey(String(v || "").replace(/^[@＠]/, "")); }
 function profileByExactName(name) { const token = normalizePersonToken(name); if (!token)
     return null; return profiles.find(p => normalizePersonToken(rawProfileName(p)) === token) || null; }
@@ -21167,11 +21395,10 @@ else {
     requestAnimationFrame(() => { var _a; return (_a = document.querySelector(`[data-record-id="${CSS.escape(r.action.id)}"]`)) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ block: "center" }); });
 } }
 /* 设置搜索 */
-const SETTINGS_LABELS = { appearance: "外观", "pl-rating": "PL 评分", "module-rating": "模组评分", behavior: "显示设置", data: "数据与备份" };
+const SETTINGS_LABELS = { appearance: "外观", rating: "评分设置", behavior: "显示设置", data: "数据与备份" };
 const SETTINGS_SEARCH_ALIASES = {
     appearance: ["主题", "颜色", "配色", "夜间", "深色", "暗色", "护眼", "字体", "外观", "界面"],
-    "pl-rating": ["PL评分", "人物评分", "权重", "评分项", "综合评分"],
-    "module-rating": ["模组评分", "模组权重", "模组评价", "评分项"],
+    rating: ["评分", "评分设置", "PL评分", "人物评分", "综合评分", "评分字段", "权重", "评分项", "模组评分", "模组权重", "模组评价", "评分体系"],
     behavior: ["显示", "展开", "折叠", "默认展开", "卡片", "简表", "周历", "月历", "排期", "行为"],
     data: ["数据", "备份", "导出", "导入", "恢复", "回收站", "存储", "迁移", "升级", "安全", "离线缓存", "安装"]
 };
@@ -21201,7 +21428,7 @@ function renderSettingsSearch() { const input = document.getElementById("setting
     box.innerHTML = "";
     return;
 } const rows = []; document.querySelectorAll("[data-settings-panel]").forEach(panel => { const rank = settingsSearchRank(panel, q); if (rank >= 99)
-    return; rows.push({ key: panel.dataset.settingsPanel, label: SETTINGS_LABELS[panel.dataset.settingsPanel] || panel.dataset.settingsPanel, snippet: settingsSearchSnippet(panel, q), rank }); }); rows.sort((a, b) => a.rank - b.rank || a.label.localeCompare(b.label, "zh-CN")); box.hidden = false; box.innerHTML = rows.length ? rows.map(r => `<button type="button" data-settings-search-target="${r.key}" data-settings-search-query="${escapeHTML(q)}"><strong>${r.label}</strong><span>${escapeHTML(r.snippet)}</span></button>`).join("") : `<button type="button" data-empty-clear-search="settingsSearchInput"><strong>无匹配设置</strong><span>清除搜索以显示全部设置</span></button>`; if (rows.length)
+    return; rows.push({ key: panel.dataset.settingsPanel, label: SETTINGS_LABELS[panel.dataset.settingsPanel] || panel.dataset.settingsPanel, snippet: settingsSearchSnippet(panel, q), rank }); }); rows.sort((a, b) => a.rank - b.rank || i18nCompareText(a.label,b.label)); box.hidden = false; box.innerHTML = rows.length ? rows.map(r => `<button type="button" data-settings-search-target="${r.key}" data-settings-search-query="${escapeHTML(q)}"><strong>${r.label}</strong><span>${escapeHTML(r.snippet)}</span></button>`).join("") : `<button type="button" data-empty-clear-search="settingsSearchInput"><strong>无匹配设置</strong><span>清除搜索以显示全部设置</span></button>`; if (rows.length)
     applySearchHighlights(box, q); }
 function focusSettingsSearchResult(key, q) { activateSettingsPanel(key); const panel = document.querySelector(`[data-settings-panel="${CSS.escape(key)}"]`); if (!panel)
     return; const candidates = [...panel.querySelectorAll("h3,strong,label,summary,button")], target = candidates.find(el => searchTextMatches(el.textContent || "", q)) || panel; requestAnimationFrame(() => { const group = target.closest("details.data-safety-group,details.settings-collapsible"); if (group)
@@ -22268,7 +22495,7 @@ async function runInteractionSelfCheck() {
     const errors = issues.filter(x => x.level === "error").length, warns = issues.length - errors;
     box.hidden = false;
     box.innerHTML = `<div class="self-check-summary ${issues.length ? "warn" : "ok"}">${issues.length ? `发现 ${errors} 项异常 · ${warns} 项提醒` : `✓ 全部正常 · ${oks.length} 项通过`}</div><div class="self-check-list">${[...issues.map(x => (Object.assign({ status: x.level === "error" ? "!" : "•" }, x))), ...oks.map(x => ({ level: "ok", status: "✓", title: x, detail: "" }))].map(x => `<div class="self-check-row ${x.level}"><b>${x.status}</b><span><strong>${escapeHTML(x.title)}</strong>${x.detail ? `<br>${escapeHTML(x.detail)}` : ""}</span></div>`).join("")}</div>`;
-    lastInteractionSelfCheckText = [`PL收集梦想生活 v${APP_UI_VERSION} 界面自检`, `时间：${new Date().toLocaleString("zh-CN")}`, `视口：${innerWidth}×${innerHeight}`, `页面：${currentView}`, "", ...issues.map(x => `[${x.level}] ${x.title}${x.detail ? ` — ${x.detail}` : ""}`), ...oks.map(x => `[ok] ${x}`)].join("\n");
+    lastInteractionSelfCheckText = [`PL收集梦想生活 v${APP_UI_VERSION} 界面自检`, `时间：${i18nFormatDateTime(new Date(), { year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit", second:"2-digit" })}`, `视口：${innerWidth}×${innerHeight}`, `页面：${currentView}`, "", ...issues.map(x => `[${x.level}] ${x.title}${x.detail ? ` — ${x.detail}` : ""}`), ...oks.map(x => `[ok] ${x}`)].join("\n");
     if (copy)
         copy.hidden = false;
     showToast(issues.length ? "自检完成：发现需要确认的项目" : "界面与交互自检全部通过");
@@ -22418,7 +22645,7 @@ async function runDeepInteractionSelfCheck() {
     const errors = issues.filter(x => x.level === "error").length, warns = issues.length - errors;
     box.hidden = false;
     box.innerHTML = `<div class="self-check-summary ${issues.length ? "warn" : "ok"}">${issues.length ? `深度自检：${errors} 项异常 · ${warns} 项提醒` : `✓ 深度自检通过 · ${oks.length} 项`}</div><div class="self-check-list">${[...issues.map(x => (Object.assign({ status: x.level === "error" ? "!" : "•" }, x))), ...oks.map(x => ({ level: "ok", status: "✓", title: x, detail: "" }))].map(x => `<div class="self-check-row ${x.level}"><b>${x.status}</b><span><strong>${escapeHTML(x.title)}</strong>${x.detail ? `<br>${escapeHTML(x.detail)}` : ""}</span></div>`).join("")}</div>`;
-    lastInteractionSelfCheckText = [`PL收集梦想生活 v${APP_UI_VERSION} 深度自检`, `时间：${new Date().toLocaleString("zh-CN")}`, `视口：${innerWidth}×${innerHeight}`, "", ...issues.map(x => `[${x.level}] ${x.title}${x.detail ? ` — ${x.detail}` : ""}`), ...oks.map(x => `[ok] ${x}`)].join("\n");
+    lastInteractionSelfCheckText = [`PL收集梦想生活 v${APP_UI_VERSION} 深度自检`, `时间：${i18nFormatDateTime(new Date(), { year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit", second:"2-digit" })}`, `视口：${innerWidth}×${innerHeight}`, "", ...issues.map(x => `[${x.level}] ${x.title}${x.detail ? ` — ${x.detail}` : ""}`), ...oks.map(x => `[ok] ${x}`)].join("\n");
     if (copy)
         copy.hidden = false;
     showToast(issues.length ? "深度自检完成：发现需要确认的项目" : "深度自检全部通过");
@@ -24364,7 +24591,7 @@ if (runI18nAuditBtn) runI18nAuditBtn.addEventListener("click", function () {
     const report = i18nAudit(), box = document.getElementById("i18nAuditResults");
     if (!box) return;
     box.hidden = false;
-    box.innerHTML = `<span>当前语言：${escapeHTML(report.locale)}</span><span>中文词条目录：${report.catalogKeys}</span><span>参数化词条：${report.patternKeys}</span><span>已绑定节点/属性：${report.boundNodes}</span><span>动态文本绑定：${report.autoTextBindings}</span><span>动态属性绑定：${report.autoAttributeBindings}</span><span>缺失词条：${report.missingKeys}</span><span>待迁移系统中文：${report.unboundChineseNodes + report.unboundChineseAttributes}</span><span>受保护档案原文：${report.protectedUserNodes}</span><span>已开放语言：${escapeHTML(report.availableLocales.join(", ") || I18N_DEFAULT_LOCALE)}</span><span>规划语言：${escapeHTML(report.plannedLocales.join(", "))}</span>`;
+    box.innerHTML = `<span>当前语言：${escapeHTML(i18nLocaleDisplayName(report.locale))}</span><span>中文词条目录：${report.catalogKeys}</span><span>参数化词条：${report.patternKeys}</span><span>已绑定节点/属性：${report.boundNodes}</span><span>动态文本绑定：${report.autoTextBindings}</span><span>动态属性绑定：${report.autoAttributeBindings}</span><span>缺失词条：${report.missingKeys}</span><span>待迁移系统中文：${report.unboundChineseNodes + report.unboundChineseAttributes}</span><span>受保护档案原文：${report.protectedUserNodes}</span><span>已开放语言：${escapeHTML((report.availableLocales.length ? report.availableLocales : [I18N_DEFAULT_LOCALE]).map(id => i18nLocaleDisplayName(id)).join("、"))}</span><span>规划语言：${escapeHTML(report.plannedLocales.map(id => i18nLocaleDisplayName(id)).join("、"))}</span>`;
 });
 applyTheme(settings.theme);
 applyUiPreferences(settings);
@@ -24843,7 +25070,7 @@ document.addEventListener("paste",async e=>{
     const el=e.target;if(!(el instanceof HTMLInputElement||el instanceof HTMLTextAreaElement)||el.readOnly||el.disabled)return;
     const text=e.clipboardData?.getData("text")||"",limit=el instanceof HTMLTextAreaElement?100000:10000;if(text.length<=limit)return;
     e.preventDefault();
-    const ok=await appConfirm(`本次粘贴约 ${text.length.toLocaleString()} 个字符。`,{title:"粘贴内容较长，继续吗？",confirmText:"继续粘贴",cancelText:"取消"});
+    const ok=await appConfirm(`本次粘贴约 ${i18nFormatNumber(text.length)} 个字符。`,{title:"粘贴内容较长，继续吗？",confirmText:"继续粘贴",cancelText:"取消"});
     if(ok)insertPastedText(el,text);
 },true);
 
