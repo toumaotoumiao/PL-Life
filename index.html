@@ -1387,10 +1387,6 @@
     .planner-sidebar-head-actions{display:grid;justify-items:end;gap:6px;min-width:126px}
     .planner-periodic-btn{min-height:32px;padding:6px 9px;border:1px solid var(--t-line-strong);border-radius:9px;background:var(--t-accent-soft);color:var(--t-accent-strong);font-size:8.6px;font-weight:800;cursor:pointer;white-space:nowrap}
     .planner-periodic-btn:hover{border-color:var(--t-accent);box-shadow:0 4px 12px var(--t-shadow-soft)}
-    .planner-sidebar-footer{position:sticky;bottom:-10px;z-index:8;margin:10px -10px -10px;padding:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--t-surface-glass) 0%,transparent),var(--t-surface-glass) 28%,var(--t-surface-glass) 100%)}
-    .planner-schedule-records-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:38px;padding:8px 10px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);color:var(--t-text-2);font-size:9px;font-weight:760;cursor:pointer;box-shadow:0 3px 12px var(--t-shadow-soft)}
-    .planner-schedule-records-btn:hover{border-color:var(--t-line-strong);background:var(--t-surface-2)}
-    .planner-schedule-records-btn .count{padding:2px 6px;border-radius:999px;background:var(--t-accent-soft);color:var(--t-accent-strong);font-size:8px}
     .plan-search{min-height:40px;margin-bottom:9px;background:var(--t-input)}
     .plan-board{display:grid;gap:9px}
     .plan-board>.empty{margin-top:2px}
@@ -1621,14 +1617,14 @@
     body.schedule-dragging .calendar-event{opacity:.7}
 
     /* 编辑抽屉：所有计划细节只在一个地方维护，列表保持轻。 */
-    .periodic-schedule-backdrop,.periodic-records-backdrop{position:fixed;inset:0;z-index:1680;display:grid;place-items:center;padding:18px;background:rgba(27,31,29,.34);backdrop-filter:blur(7px)}
-    .periodic-schedule-backdrop[hidden],.periodic-records-backdrop[hidden]{display:none!important}
-    .periodic-schedule-modal,.periodic-records-modal{width:min(760px,100%);max-height:min(88vh,860px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface);box-shadow:0 28px 80px rgba(0,0,0,.2)}
-    .periodic-records-modal{width:min(720px,100%);grid-template-rows:auto minmax(0,1fr)}
+    .periodic-schedule-backdrop{position:fixed;inset:0;z-index:1680;display:grid;place-items:center;padding:18px;background:rgba(27,31,29,.34);backdrop-filter:blur(7px)}
+    .periodic-schedule-backdrop[hidden]{display:none!important}
+    .periodic-schedule-modal{width:min(1040px,100%);max-height:min(90vh,900px);display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;border:1px solid var(--t-line);border-radius:18px;background:var(--t-surface);box-shadow:0 28px 80px rgba(0,0,0,.2)}
     .periodic-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 15px;border-bottom:1px solid var(--t-line)}
     .periodic-modal-head>div{display:grid;gap:3px}.periodic-modal-head h3{margin:0;font-size:15px;color:var(--t-ink)}.periodic-modal-head p{margin:0;color:var(--t-muted);font-size:8.8px;line-height:1.45}
     .periodic-modal-body{overflow:auto;padding:14px 15px;overscroll-behavior:contain}
     .periodic-modal-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 15px;border-top:1px solid var(--t-line);background:var(--t-surface)}
+    .periodic-modal-foot[hidden]{display:none!important}
     .periodic-modal-foot .right{margin-left:auto;display:flex;gap:7px}
     .periodic-form{display:grid;gap:12px}.periodic-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.periodic-grid .wide{grid-column:1/-1}
     .periodic-field{display:grid;gap:5px}.periodic-field>span,.periodic-section-title{font-size:8.6px;font-weight:760;color:var(--t-text-2)}
@@ -1648,7 +1644,7 @@
     .periodic-record-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.periodic-record-meta span{padding:3px 6px;border-radius:999px;background:var(--t-surface-2);color:var(--t-muted);font-size:7.8px}.periodic-record-meta .warn{background:var(--status-warning-bg);color:var(--t-warning)}
     .periodic-record-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.periodic-record-actions .danger-soft{border-color:var(--status-danger-line);background:var(--status-danger-bg);color:var(--t-danger)}
     .periodic-records-empty{padding:28px 16px;text-align:center;color:var(--t-muted);font-size:9px}
-    @media(max-width:720px){.periodic-schedule-backdrop,.periodic-records-backdrop{align-items:end;padding:0}.periodic-schedule-modal,.periodic-records-modal{width:100%;max-height:91vh;border-radius:18px 18px 0 0}.periodic-grid{grid-template-columns:1fr}.periodic-grid .wide{grid-column:auto}.periodic-weekdays{grid-template-columns:repeat(4,minmax(0,1fr))}.periodic-modal-foot{padding-bottom:max(10px,env(safe-area-inset-bottom))}.planner-sidebar-head{align-items:flex-start}.planner-sidebar-head-actions{min-width:118px}}
+    @media(max-width:720px){.periodic-schedule-backdrop{align-items:end;padding:0}.periodic-schedule-modal{width:100%;max-height:92vh;border-radius:18px 18px 0 0}.periodic-grid{grid-template-columns:1fr}.periodic-grid .wide{grid-column:auto}.periodic-weekdays{grid-template-columns:repeat(4,minmax(0,1fr))}.periodic-modal-foot{padding-bottom:max(10px,env(safe-area-inset-bottom))}.planner-sidebar-head{align-items:flex-start}.planner-sidebar-head-actions{min-width:118px}}
 
     .plan-editor-backdrop{
       position:fixed;inset:0;z-index:1350;
@@ -3157,7 +3153,7 @@
 
     body.share-mode .contact,body.share-mode .profile-meta,body.share-mode .note-inline,body.share-mode .native-module-note,body.share-mode .record-view-fact:nth-child(3),body.share-mode .record-view-extra,body.share-mode .record-extra-details,body.share-mode .run-card-body a,body.share-mode .run-card-body div:has(a){display:none!important}
     body.share-mode .attr-text{font-size:0}body.share-mode .attr-text::after{content:var(--i18n-share-score-hidden,"评分说明已在分享模式隐藏");font-size:8px;color:var(--t-faint)}
-    body.share-mode #newBtn,body.share-mode #blacklistBtn,body.share-mode #profileStatusSection,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #periodicScheduleBtn,body.share-mode #periodicScheduleRecordsBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-action="add-blacklist"],body.share-mode [data-action="remove-blacklist"],body.share-mode [data-editor-add-blacklist-pl],body.share-mode [data-editor-blacklist-kp],body.share-mode .blacklist-plan-picker,body.share-mode .blacklist-plan-warning,body.share-mode .blacklist-badge,body.share-mode .plan-blacklist-risk,body.share-mode .calendar-risk-badge,body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
+    body.share-mode #newBtn,body.share-mode #blacklistBtn,body.share-mode #profileStatusSection,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #periodicScheduleBtn,body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-action="add-blacklist"],body.share-mode [data-action="remove-blacklist"],body.share-mode [data-editor-add-blacklist-pl],body.share-mode [data-editor-blacklist-kp],body.share-mode .blacklist-plan-picker,body.share-mode .blacklist-plan-warning,body.share-mode .blacklist-badge,body.share-mode .plan-blacklist-risk,body.share-mode .calendar-risk-badge,body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
     body.share-mode #shareModeBtn{background:var(--t-success)!important;color:#fff!important;opacity:1!important}
 
     .integrity-item-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.integrity-item-actions button{min-height:28px}
@@ -4592,8 +4588,7 @@ body{font-size:var(--vu-body);line-height:1.5}
 </style>
 
 <style id="v8190-ux-refinement">
-/* v8.1.9.2 · 一键按周期排期：同一计划多日期 + 强分区 */
-.periodic-step-panel{display:grid;gap:12px}
+/* v8.1.9.3 · 一键按周期排期单页工作台 */
 .periodic-section-card{display:grid;gap:11px;padding:13px;border:1px solid var(--t-line);border-radius:13px;background:var(--t-surface-2)}
 .periodic-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:8px;border-bottom:1px dashed var(--t-line)}
 .periodic-section-head strong{font-size:10px;color:var(--t-ink)}
@@ -4605,12 +4600,34 @@ body{font-size:var(--vu-body);line-height:1.5}
 .periodic-source-dates{display:flex;flex-wrap:wrap;gap:5px}.periodic-source-dates span{padding:4px 7px;border-radius:999px;background:var(--t-surface);border:1px solid var(--t-line)}
 .periodic-source-empty{padding:12px;border:1px dashed var(--t-line);border-radius:11px;color:var(--t-muted);font-size:8.5px;text-align:center}
 .periodic-range-hint{font-size:8.3px;color:var(--t-muted)}.periodic-range-hint strong{color:var(--t-ink)}
-.periodic-result-card{display:grid;gap:11px;padding:13px;border:1px solid color-mix(in srgb,var(--t-accent) 38%,var(--t-line));border-radius:13px;background:var(--t-accent-soft)}
-.periodic-result-main{display:grid;gap:4px}.periodic-result-main strong{font-size:11px;color:var(--t-ink)}.periodic-result-main span{font-size:8.4px;color:var(--t-text-2)}
 .periodic-result-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.periodic-result-stats span{display:grid;gap:2px;padding:8px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);font-size:7.6px;color:var(--t-muted);text-align:center}.periodic-result-stats b{font-size:12px;color:var(--t-ink)}
 .periodic-legacy-badge{display:inline-flex!important;margin-left:6px!important;padding:2px 5px!important;border-radius:999px;background:var(--status-warning-bg);color:var(--t-warning)!important;font-size:7px!important;font-weight:760}
 .periodic-record-source-missing{margin-top:8px;padding:7px 8px;border-radius:8px;background:var(--status-warning-bg);color:var(--t-warning);font-size:7.8px}
-@media(max-width:720px){.periodic-section-card,.periodic-result-card{padding:11px}.periodic-section-head{display:grid;gap:3px}.periodic-section-head span{text-align:left}.periodic-result-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.periodic-source-summary>div:first-child{display:grid;gap:3px}}
+@media(max-width:720px){.periodic-section-card{padding:11px}.periodic-section-head{display:grid;gap:3px}.periodic-section-head span{text-align:left}.periodic-result-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.periodic-source-summary>div:first-child{display:grid;gap:3px}}
+
+/* v8.1.9.3 · 周期排期单页工作台 */
+.periodic-workspace{display:grid;gap:12px}
+.periodic-workspace-tabs{display:flex;align-items:center;gap:6px;padding:4px;border:1px solid var(--t-line);border-radius:11px;background:var(--t-surface-2)}
+.periodic-workspace-tab{flex:0 0 auto;min-height:34px;padding:6px 12px;border:0;border-radius:8px;background:transparent;color:var(--t-muted);font-size:8.7px;font-weight:800;cursor:pointer}
+.periodic-workspace-tab.active{background:var(--t-surface);color:var(--t-accent-strong);box-shadow:0 2px 8px var(--t-shadow-soft)}
+.periodic-workspace-tab .count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;margin-left:5px;padding:0 5px;border-radius:999px;background:var(--t-accent-soft);color:var(--t-accent-strong);font-size:7.3px}
+.periodic-workspace-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:12px;align-items:start}
+.periodic-workspace-config,.periodic-workspace-preview{display:grid;gap:10px;min-width:0}
+.periodic-config-block{display:grid;gap:8px;padding:11px 12px;border:1px solid var(--t-line);border-radius:12px;background:var(--t-surface-2)}
+.periodic-config-block>strong,.periodic-preview-head>strong{font-size:9.4px;color:var(--t-ink)}
+.periodic-config-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.periodic-config-row.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.periodic-workspace-preview{position:sticky;top:0}
+.periodic-preview-card{display:grid;gap:9px;padding:11px 12px;border:1px solid color-mix(in srgb,var(--t-accent) 28%,var(--t-line));border-radius:12px;background:color-mix(in srgb,var(--t-accent-soft) 36%,var(--t-surface))}
+.periodic-preview-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.periodic-preview-sub{font-size:8px;color:var(--t-muted);line-height:1.45}
+.periodic-workspace .periodic-preview-list{max-height:420px}
+.periodic-records-pane{display:grid;gap:10px}
+.periodic-records-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 1px}
+.periodic-records-toolbar strong{font-size:10px;color:var(--t-ink)}
+.periodic-records-toolbar span{font-size:8px;color:var(--t-muted)}
+@media(max-width:900px){.periodic-workspace-grid{grid-template-columns:1fr}.periodic-workspace-preview{position:static}.periodic-workspace .periodic-preview-list{max-height:310px}}
+@media(max-width:720px){.periodic-workspace-tabs{position:sticky;top:-1px;z-index:4}.periodic-workspace-tab{flex:1}.periodic-config-row,.periodic-config-row.two{grid-template-columns:1fr}.periodic-config-block{padding:10px}.periodic-preview-card{padding:10px}}
 
 /* v8.1.9.2 · 全站体验与视觉层级整理 */
 :root{--ux-fast:160ms;--ux-mid:200ms}
@@ -4643,14 +4660,6 @@ body.plan-dragging .week-slot:not(.full),body.schedule-dragging .week-slot:not(.
 body.plan-dragging .week-slot:not(.full)::after,body.schedule-dragging .week-slot.drag-over::after{content:"放到这里";position:absolute;inset:8px;z-index:0;display:grid;place-items:center;border:1px dashed color-mix(in srgb,var(--t-accent) 58%,var(--t-line));border-radius:9px;color:var(--t-accent-strong);font-size:8px;font-weight:800;pointer-events:none}
 body.plan-dragging .week-slot.full::after{content:"时段已满";position:absolute;inset:8px;z-index:0;display:grid;place-items:center;border:1px dashed color-mix(in srgb,var(--t-danger) 42%,var(--t-line));border-radius:9px;color:var(--t-danger);font-size:8px;font-weight:800;pointer-events:none}
 .week-slot.drag-over{transform:translateY(-1px);box-shadow:inset 0 0 0 2px var(--t-accent),0 7px 18px var(--t-shadow-soft)}
-/* 5. 周期排期三步式 */
-.periodic-stepper{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:12px}
-.periodic-step{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:7px;padding:7px 8px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface-2);color:var(--t-muted)}
-.periodic-step b{display:grid;place-items:center;width:24px;height:24px;border-radius:999px;background:var(--t-surface);border:1px solid var(--t-line);font-size:8px}
-.periodic-step span{font-size:8px;font-weight:760;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.periodic-step.active{border-color:color-mix(in srgb,var(--t-accent) 46%,var(--t-line));background:var(--t-accent-soft);color:var(--t-accent-strong)}
-.periodic-step.done b{background:var(--t-accent);color:white;border-color:var(--t-accent)}
-.periodic-step-section[hidden]{display:none!important}
 /* 6. 长表单分区导航 */
 .ux-editor-jumpbar{position:sticky;top:-15px;z-index:24;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:-5px -3px 8px;padding:8px 3px 7px;background:linear-gradient(180deg,var(--t-surface) 78%,color-mix(in srgb,var(--t-surface) 86%,transparent));backdrop-filter:blur(10px)}
 .ux-editor-jumpbar button{min-height:28px;padding:4px 8px;border:1px solid var(--t-line);border-radius:999px;background:var(--t-surface);color:var(--t-text-2);font-size:8px;cursor:pointer}
@@ -4671,7 +4680,7 @@ body.plan-dragging .week-slot.full::after{content:"时段已满";position:absolu
 .ux-export-preview-stage canvas{display:block;max-width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px var(--t-shadow)}
 .ux-export-preview-foot .right{display:flex;gap:7px;margin-left:auto}
 /* 8. 弹窗规格和操作栏 */
-.periodic-schedule-modal,.periodic-records-modal,.ux-export-preview-modal{--ux-modal-pad:14px}
+.periodic-schedule-modal,.ux-export-preview-modal{--ux-modal-pad:14px}
 .periodic-modal-head,.native-module-editor-head,.ux-export-preview-head{min-height:58px}
 .periodic-modal-foot,.native-module-editor-foot,.ux-export-preview-foot{min-height:56px}
 .icon-close,.export-center-close{min-width:42px;min-height:42px;border-radius:12px}
@@ -4691,7 +4700,6 @@ body[data-planner-view="three"] .week-panel{display:block!important}
   .planner-view-switch{grid-template-columns:repeat(3,minmax(0,1fr))!important}
   .week-board.three-day-board{grid-template-columns:40px repeat(3,minmax(128px,1fr));min-width:424px}
   .calendar-event{padding:6px 22px 6px 7px}.calendar-event-meta{gap:2px}.calendar-event-meta>span{font-size:6.4px}
-  .periodic-stepper{gap:4px}.periodic-step{grid-template-columns:20px 1fr;padding:6px}.periodic-step b{width:20px;height:20px}.periodic-step span{font-size:7px}
   .ux-export-preview-backdrop{align-items:end;padding:0}.ux-export-preview-modal{width:100%;max-height:92vh;border-radius:18px 18px 0 0}.ux-export-preview-foot{padding-bottom:max(12px,env(safe-area-inset-bottom))}
   .ux-editor-jumpbar{top:-12px;overflow-x:auto;flex-wrap:nowrap;padding-right:8px}.ux-editor-jumpbar button{white-space:nowrap}.ux-editor-jumpbar .ux-editor-missing{margin-left:0}
 }
@@ -5008,9 +5016,6 @@ body[data-planner-view="three"] .week-panel{display:block!important}
             <div class="plan-role-legend" aria-label="我的身份颜色说明"><span class="kp"><i></i>我做 KP</span><span class="pl"><i></i>我做 PL</span></div>
             <div class="planner-drag-hint" aria-label="排期操作提示"><span class="planner-drag-hint-desktop">按住卡片左侧 <strong>“拖到日历”</strong> 可直接排期</span><span class="planner-drag-hint-mobile">点击 <strong>“安排”</strong> 后选择日历时段</span></div>
             <section id="planBoard" class="plan-board"></section>
-            <div class="planner-sidebar-footer">
-              <button id="periodicScheduleRecordsBtn" class="planner-schedule-records-btn" type="button"><span>排期记录</span><span><span id="periodicScheduleRecordCount" class="count">0</span>　›</span></button>
-            </div>
           </aside>
 
           <section class="planner-calendar" aria-label="开团计划日历">
@@ -5023,20 +5028,11 @@ body[data-planner-view="three"] .week-panel{display:block!important}
         <div id="periodicScheduleBackdrop" class="periodic-schedule-backdrop" hidden>
           <section class="periodic-schedule-modal" role="dialog" aria-modal="true" aria-labelledby="periodicScheduleTitle">
             <header class="periodic-modal-head">
-              <div><h3 id="periodicScheduleTitle">一键按周期排期</h3><p>为已有计划批量添加日期。</p></div>
+              <div><h3 id="periodicScheduleTitle">一键按周期排期</h3><p>设置周期并预览日期。</p></div>
               <button id="closePeriodicScheduleBtn" class="icon-close" type="button" aria-label="关闭一键按周期排期">×</button>
             </header>
             <div id="periodicScheduleContent" class="periodic-modal-body"></div>
-            <footer class="periodic-modal-foot"><span id="periodicScheduleFootHint" class="muted"></span><div class="right"><button id="cancelPeriodicScheduleBtn" class="btn" type="button">取消</button><button id="confirmPeriodicScheduleBtn" class="btn primary" type="button">确认排期</button></div></footer>
-          </section>
-        </div>
-        <div id="periodicScheduleRecordsBackdrop" class="periodic-records-backdrop" hidden>
-          <section class="periodic-records-modal" role="dialog" aria-modal="true" aria-labelledby="periodicScheduleRecordsTitle">
-            <header class="periodic-modal-head">
-              <div><h3 id="periodicScheduleRecordsTitle">排期记录</h3><p>查看和管理周期排期记录。</p></div>
-              <button id="closePeriodicScheduleRecordsBtn" class="icon-close" type="button" aria-label="关闭排期记录">×</button>
-            </header>
-            <div id="periodicScheduleRecordsContent" class="periodic-modal-body"></div>
+            <footer id="periodicScheduleFooter" class="periodic-modal-foot"><span id="periodicScheduleFootHint" class="muted"></span><div class="right"><button id="cancelPeriodicScheduleBtn" class="btn" type="button">取消</button><button id="confirmPeriodicScheduleBtn" class="btn primary" type="button">确认排期</button></div></footer>
           </section>
         </div>
 
@@ -5084,7 +5080,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
               <span class="disclaimer-chevron">›</span>
               <span class="footer-title">说明与隐私提示</span>
             </span>
-            <span class="footer-meta-inline">v8.1.9.2 · 2026-09-09 · 作者：番茄</span>
+            <span class="footer-meta-inline">v8.1.9.3 · 2026-09-09 · 作者：番茄</span>
           </summary>
           <div class="disclaimer-body">
             <p>
@@ -5096,7 +5092,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
             <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-            <div class="footer-meta">版本：v8.1.9.2　·　更新时间：2026-09-09　·　作者：番茄</div>
+            <div class="footer-meta">版本：v8.1.9.3　·　更新时间：2026-09-09　·　作者：番茄</div>
           </div>
         </details>
       </footer>
@@ -5441,7 +5437,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">建议定期导出</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.9.2</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.9.3</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -5464,10 +5460,10 @@ body[data-planner-view="three"] .week-panel{display:block!important}
   <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.9.2 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.9.2</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.9.3 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.9.3</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-log-item"><strong>v8.1.9.2</strong><span>精简全站说明文案，移除重复解释和修正说明。</span></div> <div class="version-log-item"><strong>v8.1.9.1</strong><span>一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div> <div class="version-log-item"><strong>v8.1.9.0</strong><span>全站体验与视觉层级整理：统一按钮风险/主次层级与选中状态；周历卡片重排信息层级并强化容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式；计划与跑团记录长表单增加分区直达和待补项跳转；个人统计与跑团整理导出增加统一图片预览确认；统一主要弹窗尺寸、标题/操作栏与页面密度。</span></div> <div class="version-log-item"><strong>v8.1.8.7</strong><span>新增一键按周期排期与排期记录。</span></div>
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-log-item"><strong>v8.1.9.3</strong><span>周期排期改为单页工作台，排期记录并入同一窗口。</span></div> <div class="version-log-item"><strong>v8.1.9.2</strong><span>精简全站说明文案，移除重复解释和修正说明。</span></div> <div class="version-log-item"><strong>v8.1.9.1</strong><span>一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div> <div class="version-log-item"><strong>v8.1.9.0</strong><span>全站体验与视觉层级整理：统一按钮风险/主次层级与选中状态；周历卡片重排信息层级并强化容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式；计划与跑团记录长表单增加分区直达和待补项跳转；个人统计与跑团整理导出增加统一图片预览确认；统一主要弹窗尺寸、标题/操作栏与页面密度。</span></div> <div class="version-log-item"><strong>v8.1.8.7</strong><span>新增一键按周期排期与排期记录。</span></div>
 <div class="version-log-item"><strong>v8.1.8.6</strong><span>个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div>
 <div class="release-notes-box" id="releaseNotesBox">
 <strong>v8.1.8.5</strong><span>历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span>
@@ -5709,7 +5705,7 @@ body[data-planner-view="three"] .week-panel{display:block!important}
 })();
 </script>
 <script>
-/* PL收集梦想生活 v8.1.9.2 · 作者：番茄
+/* PL收集梦想生活 v8.1.9.3 · 作者：番茄
    数据默认保存在当前浏览器；存储键保持兼容旧版本。 */
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _u, _v, _w, _x, _y;
 
@@ -5736,7 +5732,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.8.7";
+const APP_UI_VERSION = "8.1.9.3";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -12085,7 +12081,7 @@ const els = {
     selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportPreview: document.getElementById("selfIntroExportPreviewStage"), selfIntroExportCompact: document.getElementById("selfIntroExportCompactBtn"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
     statsContent: document.getElementById("statsContent"), statsExport: document.getElementById("statsExportBtn"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
     grid: document.getElementById("profileGrid"), count: document.getElementById("countText"), search: document.getElementById("searchInput"), sort: document.getElementById("sortSelect"), cardLayout: document.getElementById("cardLayoutBtn"), compactLayout: document.getElementById("compactLayoutBtn"), blacklistBtn: document.getElementById("blacklistBtn"), profileCollapseActions: document.getElementById("profileCollapseActions"), collapseAllProfiles: document.getElementById("collapseAllProfilesBtn"), expandAllProfiles: document.getElementById("expandAllProfilesBtn"), profilesToolbarTitle: document.getElementById("profilesToolbarTitle"), profilesToolbarSubtitle: document.getElementById("profilesToolbarSubtitle"),
-    planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"), periodicSchedule: document.getElementById("periodicScheduleBtn"), periodicScheduleRecords: document.getElementById("periodicScheduleRecordsBtn"), periodicScheduleRecordCount: document.getElementById("periodicScheduleRecordCount"), periodicScheduleBackdrop: document.getElementById("periodicScheduleBackdrop"), periodicScheduleContent: document.getElementById("periodicScheduleContent"), closePeriodicSchedule: document.getElementById("closePeriodicScheduleBtn"), cancelPeriodicSchedule: document.getElementById("cancelPeriodicScheduleBtn"), confirmPeriodicSchedule: document.getElementById("confirmPeriodicScheduleBtn"), periodicScheduleFootHint: document.getElementById("periodicScheduleFootHint"), periodicScheduleRecordsBackdrop: document.getElementById("periodicScheduleRecordsBackdrop"), periodicScheduleRecordsContent: document.getElementById("periodicScheduleRecordsContent"), closePeriodicScheduleRecords: document.getElementById("closePeriodicScheduleRecordsBtn"),
+    planBoard: document.getElementById("planBoard"), planSearch: document.getElementById("planSearchInput"), planCount: document.getElementById("planCountText"), planMonth: document.getElementById("planMonthCalendar"), planWeek: document.getElementById("planWeekCalendar"), newPlan: document.getElementById("newPlanBtn"), plannerWeekMode: document.getElementById("plannerWeekModeBtn"), plannerMonthMode: document.getElementById("plannerMonthModeBtn"), periodicSchedule: document.getElementById("periodicScheduleBtn"), periodicScheduleBackdrop: document.getElementById("periodicScheduleBackdrop"), periodicScheduleContent: document.getElementById("periodicScheduleContent"), periodicScheduleFooter: document.getElementById("periodicScheduleFooter"), closePeriodicSchedule: document.getElementById("closePeriodicScheduleBtn"), cancelPeriodicSchedule: document.getElementById("cancelPeriodicScheduleBtn"), confirmPeriodicSchedule: document.getElementById("confirmPeriodicScheduleBtn"), periodicScheduleFootHint: document.getElementById("periodicScheduleFootHint"),
     planEditorBackdrop: document.getElementById("planEditorBackdrop"), planEditorDrawer: document.getElementById("planEditorDrawer"), planEditorTitle: document.getElementById("planEditorTitle"), planEditorContent: document.getElementById("planEditorContent"), closePlanEditor: document.getElementById("closePlanEditorBtn"),
     recordsBoard: document.getElementById("recordsBoard"), recordsSearch: document.getElementById("recordsSearchInput"), newModuleName: document.getElementById("newModuleNameInput"), newModuleNameCombobox: document.getElementById("newModuleNameCombobox"), newModuleSuggestions: document.getElementById("newModuleSuggestions"), createModuleRecord: document.getElementById("createModuleRecordBtn"), expandAllRecords: document.getElementById("expandAllRecordsBtn"), collapseAllRecords: document.getElementById("collapseAllRecordsBtn"),
     newBtn: document.getElementById("newBtn"), settingsBtn: document.getElementById("settingsBtn"), overlay: document.getElementById("overlay"), globalCreate: document.getElementById("globalCreateBtn"), quickCreateMenu: document.getElementById("quickCreateMenu"), mobileBottomNav: document.getElementById("mobileBottomNav"), mobileToolsSheet: document.getElementById("mobileToolsSheet"), hoOrganizerBackdrop: document.getElementById("hoOrganizerBackdrop"), hoOrganizerTitle: document.getElementById("hoOrganizerTitle"), hoOrganizerSubtitle: document.getElementById("hoOrganizerSubtitle"), hoOrganizerStats: document.getElementById("hoOrganizerStats"), hoOrganizerNotice: document.getElementById("hoOrganizerNotice"), hoOrganizerBoard: document.getElementById("hoOrganizerBoard"), hoShowEmptyColumns: document.getElementById("hoShowEmptyColumns"), kpOrganizerSortWrap: document.getElementById("kpOrganizerSortWrap"), kpOrganizerSort: document.getElementById("kpOrganizerSort"), hoImageExport: document.getElementById("hoImageExportBtn"), hoImageExportMenu: document.getElementById("hoImageExportMenu"), copyHoOrganizer: document.getElementById("copyHoOrganizerBtn"), closeHoOrganizer: document.getElementById("closeHoOrganizerBtn"),
@@ -13902,7 +13898,7 @@ let modalPageScrollState = null;
 function anyModalSurfaceOpen() {
     var _a;
     return Boolean(((_a = els.overlay) === null || _a === void 0 ? void 0 : _a.classList.contains("open")) ||
-        ["planEditorBackdrop", "nativeModuleEditorBackdrop", "moduleAdvancedBackdrop", "hoOrganizerBackdrop", "secureBackupBackdrop", "externalBackupBrowserBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"]
+        ["planEditorBackdrop", "nativeModuleEditorBackdrop", "moduleAdvancedBackdrop", "hoOrganizerBackdrop", "secureBackupBackdrop", "externalBackupBrowserBackdrop", "periodicScheduleBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"]
             .some(id => { const el = document.getElementById(id); return el && !el.hidden; }));
 }
 function syncModalPageScrollLock() {
@@ -13936,7 +13932,7 @@ function watchModalSurface(el) {
         return;
     new MutationObserver(syncModalPageScrollLock).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] });
 }
-[els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop, els.periodicScheduleRecordsBackdrop].forEach(watchModalSurface);
+[els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop].forEach(watchModalSurface);
 /* ---------- 14. 弹窗控制：切换 PL 编辑窗口和设置窗口，并虚化背景 ---------- */
 function showOverlay(which) {
     els.profileModalWrap.hidden = which !== "profile";
@@ -16580,27 +16576,35 @@ function periodicSelectedPlanSummary(plan){
     const slots=sortedPlanSlots(plan).filter(s=>s.date), recent=slots.slice(0,4).map(formatPlanSlot).filter(Boolean);
     return `<div class="periodic-source-summary"><div><strong>${escapeHTML(plannerPlanLabel(plan))}</strong><span>${escapeHTML(planStatusInfo(plan).label)} · KP ${kpDisplayHTML(plan,"privacy-chip-name")} · ${plan.plIds.length} PL · 已有 ${slots.length} 个日期</span></div>${recent.length?`<div class="periodic-source-dates">${recent.map(x=>`<span>${escapeHTML(x)}</span>`).join("")}${slots.length>4?`<span>＋${slots.length-4}</span>`:""}</div>`:""}</div>`;
 }
+let periodicScheduleView = "schedule";
+function periodicScheduleTabsHTML(){
+    const count=periodicBatches().length;
+    return `<nav class="periodic-workspace-tabs" role="tablist" aria-label="周期排期功能"><button type="button" class="periodic-workspace-tab ${periodicScheduleView==="schedule"?"active":""}" data-periodic-view="schedule" role="tab" aria-selected="${periodicScheduleView==="schedule"}">排期设置</button><button type="button" class="periodic-workspace-tab ${periodicScheduleView==="records"?"active":""}" data-periodic-view="records" role="tab" aria-selected="${periodicScheduleView==="records"}">排期记录 <span class="count">${count}</span></button></nav>`;
+}
+function periodicScheduleRecordsHTML(){
+    const rows=[...periodicBatches()].sort((a,b)=>b.createdAt-a.createdAt);
+    if(!rows.length)return '<div class="periodic-records-empty">暂无排期记录。</div>';
+    return `<div class="periodic-records-pane"><div class="periodic-records-toolbar"><strong>排期记录</strong><span>${rows.length} 条</span></div><div class="periodic-records-list">${rows.map(b=>{const st=periodicBatchStatus(b),days=(b.weekdays||[]).map(weekdayShortLabel).join("、"), time=b.startTime&&b.endTime?`${b.startTime}–${b.endTime}`:"未记录具体时间",legacy=b.mode==="legacy-copy",sourceLive=runPlans.some(p=>p.id===b.sourcePlanId);return `<article class="periodic-record-card ${legacy?"legacy":""}"><div class="periodic-record-head"><div><strong>${escapeHTML(b.sourceLabel||"未命名计划")}${legacy?' <span class="periodic-legacy-badge">历史</span>':''}</strong><span>${escapeHTML(b.startDate)} ～ ${escapeHTML(b.endDate)} · ${escapeHTML(days||"未选星期")} · ${escapeHTML(daypartInfo(b.daypart).label)} ${escapeHTML(time)}</span></div><span>${new Date(b.createdAt).toLocaleString("zh-CN",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</span></div><div class="periodic-record-meta"><span>${legacy?"关联项":"新增日期"} ${st.total}</span><span>未修改 ${st.unchanged}</span>${st.modified?`<span class="warn">手动改动 ${st.modified}</span>`:""}${st.archived?`<span>已归档 ${st.archived}</span>`:""}${st.missing?`<span>已删除/撤回 ${st.missing}</span>`:""}${b.skipped.length?`<span>跳过 ${b.skipped.length}</span>`:""}</div>${!sourceLive&&!legacy?'<div class="periodic-record-source-missing">原计划不可继续排期。</div>':''}<div class="periodic-record-actions"><button class="btn small" type="button" data-periodic-continue="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>继续排期</button><button class="btn small" type="button" data-periodic-again="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>再次排期</button><button class="btn small" type="button" data-periodic-withdraw="${escapeHTML(b.id)}">${legacy?"撤回未修改项":"撤回未修改日期"}</button><button class="btn small danger-soft" type="button" data-periodic-delete-record="${escapeHTML(b.id)}">删除记录</button></div></article>`;}).join("")}</div></div>`;
+}
 function renderPeriodicScheduleDialog(){
     if(!periodicScheduleDraft||!els.periodicScheduleContent) return;
+    if(periodicScheduleView==="records"){
+        els.periodicScheduleContent.innerHTML=`<div class="periodic-workspace">${periodicScheduleTabsHTML()}${periodicScheduleRecordsHTML()}</div>`;
+        if(els.periodicScheduleFooter)els.periodicScheduleFooter.hidden=true;
+        return;
+    }
     const d=periodicScheduleDraft, error=periodicDraftValidation(d), rows=periodicPreviewRows(d), sum=periodicPreviewSummary(rows), plan=periodicTemplatePlan(d), sourceLabel=plan?plannerPlanLabel(plan):"未选择";
     const weekdays=[1,2,3,4,5,6,7].map(n=>`<button type="button" class="periodic-weekday ${d.weekdays.has(n)?"active":""}" data-periodic-weekday="${n}" aria-pressed="${d.weekdays.has(n)}">${weekdayShortLabel(n)}</button>`).join("");
-    const preview=rows.length?rows.map(r=>`<label class="periodic-preview-row ${r.status!=="available"?"disabled":""}"><input type="checkbox" data-periodic-date="${escapeHTML(r.date)}" ${r.status==="excluded"?"":"checked"} ${["duplicate","full"].includes(r.status)?"disabled":""}><span><strong>${escapeHTML(formatPlanSlot({date:r.date,daypart:d.daypart,startTime:d.startTime,endTime:d.endTime}))}</strong><small>${r.status==="available"?`新增日期`:escapeHTML(r.reason)}</small></span><span class="periodic-status ${r.status==="available"?"ok":r.status==="full"?"full":"skip"}">${escapeHTML(r.reason)}</span></label>`).join(""):`<div class="periodic-form-note">当前条件下还没有可预览的周期日期。</div>`;
-    els.periodicScheduleContent.innerHTML=`<div class="periodic-form">
-      <section class="periodic-step-panel" data-periodic-panel="1">
-        <div class="periodic-section-card"><div class="periodic-section-head"><strong>选择要排日期的计划</strong></div><label class="periodic-field"><span>开团计划</span><select data-periodic-source><option value="">请选择已有计划</option>${periodicSourceSelectHTML(d)}</select></label>${periodicSelectedPlanSummary(plan)}</div>
-      </section>
-      <section class="periodic-step-panel" data-periodic-panel="2">
-        <div class="periodic-section-card"><div class="periodic-section-head"><strong>1. 选择星期</strong><span>可多选</span></div><div class="periodic-weekdays">${weekdays}</div></div>
-        <div class="periodic-section-card"><div class="periodic-section-head"><strong>2. 设置时段与时间</strong></div><div class="periodic-grid"><label class="periodic-field"><span>日历时段</span><select data-periodic-daypart>${PLAN_DAYPARTS.map(x=>`<option value="${x.key}" ${x.key===d.daypart?"selected":""}>${x.label}</option>`).join("")}</select></label><div class="periodic-grid"><label class="periodic-field"><span>开始时间</span><input type="time" data-periodic-start-time value="${escapeHTML(d.startTime)}"></label><label class="periodic-field"><span>结束时间</span><input type="time" data-periodic-end-time value="${escapeHTML(d.endTime)}"></label></div></div></div>
-        <div class="periodic-section-card"><div class="periodic-section-head"><strong>3. 设置日期范围</strong><span>匹配所选星期</span></div><div class="periodic-grid"><label class="periodic-field"><span>开始日期</span><input type="date" data-periodic-start-date value="${escapeHTML(d.startDate)}"></label><label class="periodic-field"><span>结束日期</span><input type="date" data-periodic-end-date value="${escapeHTML(d.endDate)}"></label></div><div class="periodic-range-hint">当前范围匹配 <strong>${rows.length}</strong> 个周期日期。</div></div>
-        ${error?`<div class="periodic-form-error">${escapeHTML(error)}</div>`:""}
-      </section>
-      <section class="periodic-step-panel" data-periodic-panel="3">
-        <div class="periodic-result-card"><div class="periodic-result-main"><strong>排期结果</strong><span>${escapeHTML(sourceLabel)} · ${(d.weekdays instanceof Set?[...d.weekdays]:[]).map(weekdayShortLabel).join("、")||"未选星期"} · ${escapeHTML(daypartInfo(d.daypart).label)} · ${escapeHTML(d.startTime)}–${escapeHTML(d.endTime)}</span></div><div class="periodic-result-stats"><span><b>${rows.length}</b>周期日期</span><span><b>${sum.available}</b>可新增</span><span><b>${sum.excluded}</b>已排除</span><span><b>${sum.duplicate}</b>已存在</span><span><b>${sum.full}</b>已满</span></div></div>
-        <div class="periodic-section-card"><div class="periodic-section-head"><strong>具体日期预览</strong><span>取消勾选可排除日期</span></div><div class="periodic-preview-list">${preview}</div></div>
-        ${error?`<div class="periodic-form-error">${escapeHTML(error)}</div>`:""}
-      </section>
-    </div>`;
+    const preview=rows.length?rows.map(r=>`<label class="periodic-preview-row ${r.status!=="available"?"disabled":""}"><input type="checkbox" data-periodic-date="${escapeHTML(r.date)}" ${r.status==="excluded"?"":"checked"} ${["duplicate","full"].includes(r.status)?"disabled":""}><span><strong>${escapeHTML(formatPlanSlot({date:r.date,daypart:d.daypart,startTime:d.startTime,endTime:d.endTime}))}</strong><small>${r.status==="available"?"新增日期":escapeHTML(r.reason)}</small></span><span class="periodic-status ${r.status==="available"?"ok":r.status==="full"?"full":"skip"}">${escapeHTML(r.reason)}</span></label>`).join(""):`<div class="periodic-form-note">当前条件下没有周期日期。</div>`;
+    const dayText=(d.weekdays instanceof Set?[...d.weekdays]:[]).map(weekdayShortLabel).join("、")||"未选星期";
+    els.periodicScheduleContent.innerHTML=`<div class="periodic-workspace">${periodicScheduleTabsHTML()}<div class="periodic-workspace-grid"><div class="periodic-workspace-config">
+      <section class="periodic-config-block"><strong>开团计划</strong><label class="periodic-field"><select data-periodic-source><option value="">请选择已有计划</option>${periodicSourceSelectHTML(d)}</select></label>${periodicSelectedPlanSummary(plan)}</section>
+      <section class="periodic-config-block"><strong>星期</strong><div class="periodic-weekdays">${weekdays}</div></section>
+      <section class="periodic-config-block"><strong>时段与时间</strong><div class="periodic-config-row"><label class="periodic-field"><span>日历时段</span><select data-periodic-daypart>${PLAN_DAYPARTS.map(x=>`<option value="${x.key}" ${x.key===d.daypart?"selected":""}>${x.label}</option>`).join("")}</select></label><label class="periodic-field"><span>开始时间</span><input type="time" data-periodic-start-time value="${escapeHTML(d.startTime)}"></label><label class="periodic-field"><span>结束时间</span><input type="time" data-periodic-end-time value="${escapeHTML(d.endTime)}"></label></div></section>
+      <section class="periodic-config-block"><strong>日期范围</strong><div class="periodic-config-row two"><label class="periodic-field"><span>开始日期</span><input type="date" data-periodic-start-date value="${escapeHTML(d.startDate)}"></label><label class="periodic-field"><span>结束日期</span><input type="date" data-periodic-end-date value="${escapeHTML(d.endDate)}"></label></div><div class="periodic-range-hint">匹配 <strong>${rows.length}</strong> 个日期</div></section>
+      ${error?`<div class="periodic-form-error">${escapeHTML(error)}</div>`:""}
+    </div><aside class="periodic-workspace-preview"><section class="periodic-preview-card"><div class="periodic-preview-head"><strong>排期预览</strong><span class="periodic-status ${error?"full":"ok"}">${error?"待完善":"可排期"}</span></div><div class="periodic-preview-sub">${escapeHTML(sourceLabel)} · ${escapeHTML(dayText)} · ${escapeHTML(daypartInfo(d.daypart).label)} · ${escapeHTML(d.startTime)}–${escapeHTML(d.endTime)}</div><div class="periodic-result-stats"><span><b>${rows.length}</b>匹配</span><span><b>${sum.available}</b>可新增</span><span><b>${sum.excluded}</b>已排除</span><span><b>${sum.duplicate}</b>已存在</span><span><b>${sum.full}</b>已满</span></div></section><section class="periodic-section-card"><div class="periodic-section-head"><strong>日期</strong><span>取消勾选可排除</span></div><div class="periodic-preview-list">${preview}</div></section></aside></div></div>`;
+    if(els.periodicScheduleFooter)els.periodicScheduleFooter.hidden=false;
     if(els.confirmPeriodicSchedule) els.confirmPeriodicSchedule.disabled=Boolean(error)||sum.available<1;
     if(els.periodicScheduleFootHint) els.periodicScheduleFootHint.textContent=error?error:`可新增 ${sum.available} · 跳过 ${sum.duplicate+sum.full+sum.excluded}`;
 }
@@ -16614,11 +16618,12 @@ function syncPeriodicDraftFromSource(planId){
 }
 function openPeriodicSchedule(options={}){
     if(shareModeBlock("一键按周期排期")) return false;
+    periodicScheduleView=options.view==="records"?"records":"schedule";
     periodicScheduleDraft = options.batch ? periodicDraftFromBatch(options.batch,options.mode||"again") : makePeriodicDraft({sourcePlanId:options.sourcePlanId||plannerPickedPlanId||""});
     els.periodicScheduleBackdrop.hidden=false; renderPeriodicScheduleDialog();
-    requestAnimationFrame(()=>{ const select=els.periodicScheduleContent && els.periodicScheduleContent.querySelector("select[data-periodic-source]"); if(select && typeof select.focus === "function") try{ select.focus({preventScroll:true}); }catch(err){ select.focus(); } }); return true;
+    if(periodicScheduleView==="schedule")requestAnimationFrame(()=>{ const select=els.periodicScheduleContent && els.periodicScheduleContent.querySelector("select[data-periodic-source]"); if(select && typeof select.focus === "function") try{ select.focus({preventScroll:true}); }catch(err){ select.focus(); } }); return true;
 }
-function closePeriodicSchedule(){els.periodicScheduleBackdrop.hidden=true; periodicScheduleDraft=null;}
+function closePeriodicSchedule(){els.periodicScheduleBackdrop.hidden=true; periodicScheduleDraft=null; periodicScheduleView="schedule";}
 function currentPeriodicTemplateSnapshot(){return periodicTemplatePlan(periodicScheduleDraft);}
 async function confirmPeriodicSchedule(){
     const d=periodicScheduleDraft, error=periodicDraftValidation(d); if(error){showToast(error);renderPeriodicScheduleDialog();return false;}
@@ -16641,7 +16646,7 @@ async function confirmPeriodicSchedule(){
         rememberEntityRevision("plan",beforePlan,"周期排期前版本");
         completeIdempotentOperation(op.row.id,{batchId,sourcePlanId:d.sourcePlanId,generatedSlotIds:generated.map(x=>x.slotId),createdAt});
         closePeriodicSchedule(); if(generated[0]){plannerSelectedDate=generated[0].date;plannerMonthCursor=monthCursorFor(generated[0].date);} renderRunPlans(); if(editingPlanId===d.sourcePlanId)renderPlanEditor();
-        showToast(`已为“${plannerPlanLabel(runPlans[sourceIndex])}”新增 ${generated.length} 个排期日期${skipped.length?` · 跳过 ${skipped.length} 个日期`:""}`); return true;
+        showToast(`已新增 ${generated.length} 个排期日期${skipped.length?` · 跳过 ${skipped.length} 个`:""}`); return true;
     }catch(err){failIdempotentOperation(op.row.id);runPlans[sourceIndex]=beforePlan;settings=beforeSettings;saveState({skipAntiIntegrity:true});renderRunPlans();if(periodicScheduleDraft)renderPeriodicScheduleDialog();console.error(err);appNotice(`${err.message||err}\n\n已恢复到排期前状态。`,"周期排期未完成");return false;}
 }
 function periodicBatchStatus(batch){
@@ -16654,14 +16659,10 @@ function periodicBatchStatus(batch){
     b.generated.forEach(g=>{const live=plan&&(plan.timeSlots||[]).find(s=>s.id===g.slotId);if(live){if(g.fingerprint&&periodicSlotFingerprint(live)===g.fingerprint)result.unchanged++;else result.modified++;return;}const archived=record&&(record.sessionSlots||[]).find(s=>s.id===g.slotId);if(archived)result.archived++;else result.missing++;});
     return result;
 }
-function renderPeriodicScheduleRecordButton(){if(els.periodicScheduleRecordCount)els.periodicScheduleRecordCount.textContent=String(periodicBatches().length);}
-function renderPeriodicScheduleRecords(){
-    const rows=[...periodicBatches()].sort((a,b)=>b.createdAt-a.createdAt); renderPeriodicScheduleRecordButton(); if(!els.periodicScheduleRecordsContent)return;
-    if(!rows.length){els.periodicScheduleRecordsContent.innerHTML='<div class="periodic-records-empty">还没有“一键按周期排期”记录。</div>';return;}
-    els.periodicScheduleRecordsContent.innerHTML=`<div class="periodic-records-list">${rows.map(b=>{const st=periodicBatchStatus(b),days=(b.weekdays||[]).map(weekdayShortLabel).join("、"), time=b.startTime&&b.endTime?`${b.startTime}–${b.endTime}`:"未记录具体时间",legacy=b.mode==="legacy-copy",sourceLive=runPlans.some(p=>p.id===b.sourcePlanId);return `<article class="periodic-record-card ${legacy?"legacy":""}"><div class="periodic-record-head"><div><strong>${escapeHTML(b.sourceLabel||"未命名计划")}${legacy?' <span class="periodic-legacy-badge">历史</span>':''}</strong><span>${escapeHTML(b.startDate)} ～ ${escapeHTML(b.endDate)} · ${escapeHTML(days||"未选星期")} · ${escapeHTML(daypartInfo(b.daypart).label)} ${escapeHTML(time)}</span></div><span>${new Date(b.createdAt).toLocaleString("zh-CN",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</span></div><div class="periodic-record-meta"><span>${legacy?"关联项":"新增日期"} ${st.total}</span><span>未修改 ${st.unchanged}</span>${st.modified?`<span class="warn">手动改动 ${st.modified}</span>`:""}${st.archived?`<span>已归档 ${st.archived}</span>`:""}${st.missing?`<span>已删除/撤回 ${st.missing}</span>`:""}${b.skipped.length?`<span>当时跳过 ${b.skipped.length}</span>`:""}</div>${!sourceLive&&!legacy?'<div class="periodic-record-source-missing">原计划不可继续排期。</div>':''}<div class="periodic-record-actions"><button class="btn small" type="button" data-periodic-continue="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>继续排期</button><button class="btn small" type="button" data-periodic-again="${escapeHTML(b.id)}" ${!sourceLive&&!legacy?'disabled':''}>再次排期</button><button class="btn small" type="button" data-periodic-withdraw="${escapeHTML(b.id)}">${legacy?"撤回未修改项":"撤回未修改日期"}</button><button class="btn small danger-soft" type="button" data-periodic-delete-record="${escapeHTML(b.id)}">删除记录</button></div></article>`;}).join("")}</div>`;
-}
-function openPeriodicScheduleRecords(){if(shareModeBlock("排期记录"))return false;renderPeriodicScheduleRecords();els.periodicScheduleRecordsBackdrop.hidden=false;return true;}
-function closePeriodicScheduleRecords(){els.periodicScheduleRecordsBackdrop.hidden=true;}
+function renderPeriodicScheduleRecordButton(){}
+function renderPeriodicScheduleRecords(){if(periodicScheduleView==="records"&&periodicScheduleDraft&&!els.periodicScheduleBackdrop.hidden)renderPeriodicScheduleDialog();}
+function openPeriodicScheduleRecords(){return openPeriodicSchedule({view:"records"});}
+function closePeriodicScheduleRecords(){closePeriodicSchedule();}
 async function withdrawPeriodicBatch(batchId){
     const batch=periodicBatches().find(b=>b.id===batchId); if(!batch)return false;
     if(batch.mode==="legacy-copy"){
@@ -21357,7 +21358,7 @@ function focusSettingsSearchResult(key, q) { activateSettingsPanel(key); const p
     return; const candidates = [...panel.querySelectorAll("h3,strong,label,summary,button")], target = candidates.find(el => searchTextMatches(el.textContent || "", q)) || panel; requestAnimationFrame(() => { const group = target.closest("details.data-safety-group,details.settings-collapsible"); if (group)
     group.open = true; target.scrollIntoView({ block: "center", behavior: "smooth" }); target.classList.add("settings-search-flash"); setTimeout(() => target.classList.remove("settings-search-flash"), 1400); }); document.getElementById("settingsSearchResults").hidden = true; }
 /* 分享模式 */
-const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#periodicScheduleBtn,#periodicScheduleRecordsBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-select-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
+const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#periodicScheduleBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-select-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
 function updateShareModeUI() { document.body.classList.toggle("share-mode", shareModeEnabled); const btn = document.getElementById("shareModeBtn"); if (btn) {
     btn.textContent = shareModeEnabled ? "退" : "分";
     btn.setAttribute("aria-pressed", shareModeEnabled ? "true" : "false");
@@ -21564,7 +21565,7 @@ function modalSurfaceZIndex(el) {
     return Number.isFinite(n) ? n : 0;
 }
 function modalManagedSurfaces() {
-    const ids = ["secureBackupBackdrop", "externalBackupBrowserBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "globalSearchBackdrop", "onboardingBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop", "planEditorBackdrop", "actionDialogBackdrop"];
+    const ids = ["secureBackupBackdrop", "externalBackupBrowserBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "globalSearchBackdrop", "onboardingBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "periodicScheduleBackdrop", "planEditorBackdrop", "actionDialogBackdrop"];
     return [els.overlay, ...ids.map(id => document.getElementById(id)).filter(Boolean)].filter(Boolean);
 }
 function modalSurfaceBaseZIndex(el) {
@@ -21597,7 +21598,7 @@ function syncModalLayerOrder() {
     open.forEach((el, index) => el.style.setProperty("z-index", String(600 + index * 30), "important"));
 }
 function visibleDialog() {
-    const selectors = ["#secureBackupBackdrop", "#externalBackupBrowserBackdrop", "#importPreviewBackdrop", "#migrationWizardBackdrop", "#globalSearchBackdrop", "#onboardingBackdrop", "#hoOrganizerBackdrop", "#moduleAdvancedBackdrop", "#nativeModuleEditorBackdrop", "#periodicScheduleBackdrop", "#periodicScheduleRecordsBackdrop", "#planEditorBackdrop", "#actionDialogBackdrop"];
+    const selectors = ["#secureBackupBackdrop", "#externalBackupBrowserBackdrop", "#importPreviewBackdrop", "#migrationWizardBackdrop", "#globalSearchBackdrop", "#onboardingBackdrop", "#hoOrganizerBackdrop", "#moduleAdvancedBackdrop", "#nativeModuleEditorBackdrop", "#periodicScheduleBackdrop", "#planEditorBackdrop", "#actionDialogBackdrop"];
     const surfaces = selectors.map(sel => document.querySelector(sel)).filter(el => el && !el.hidden);
     if (els.overlay && els.overlay.classList.contains("open")) surfaces.push(els.overlay);
     if (!surfaces.length) return null;
@@ -21616,7 +21617,7 @@ function syncDialogInert() {
     const active = visibleDialog();
     if (!active)
         return;
-    const activeSurface = active.closest ? active.closest(".overlay,.secure-backup-backdrop,.external-backup-browser-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.global-search-backdrop,.onboarding-backdrop,.ho-organizer-backdrop,.module-advanced-backdrop,.native-module-editor-backdrop,.periodic-schedule-backdrop,.periodic-records-backdrop,.plan-editor-backdrop,.action-dialog-backdrop") : null;
+    const activeSurface = active.closest ? active.closest(".overlay,.secure-backup-backdrop,.external-backup-browser-backdrop,.import-preview-backdrop,.migration-wizard-backdrop,.global-search-backdrop,.onboarding-backdrop,.ho-organizer-backdrop,.module-advanced-backdrop,.native-module-editor-backdrop,.periodic-schedule-backdrop,.plan-editor-backdrop,.action-dialog-backdrop") : null;
     clearManagedSurfaceInertPath(activeSurface || active);
     let node = dialogInteractionRoot(active);
     while (node && node !== document.body) {
@@ -21654,7 +21655,7 @@ function restorePoppedSurfaceGuard(id) { try {
 }
 catch (err) { } }
 function topOpenHistorySurfaceId() {
-    const ids = ["actionDialogBackdrop", "externalBackupBrowserBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "secureBackupBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop", "planEditorBackdrop", "quickCreateMenu", "mobileToolsSheet", "overlay"];
+    const ids = ["actionDialogBackdrop", "externalBackupBrowserBackdrop", "globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "secureBackupBackdrop", "hoOrganizerBackdrop", "moduleAdvancedBackdrop", "nativeModuleEditorBackdrop", "periodicScheduleBackdrop", "planEditorBackdrop", "quickCreateMenu", "mobileToolsSheet", "overlay"];
     const rows = ids.map(id => ({ id, el: historySurfaceById(id) })).filter(row => row.el && historySurfaceIsOpen(row.id));
     if (!rows.length)
         return "";
@@ -21677,7 +21678,6 @@ function closeHistorySurfaceById(id) {
     if (id === "moduleAdvancedBackdrop") { closeModuleAdvancedEditor(); return true; }
     if (id === "nativeModuleEditorBackdrop") { void closeNativeModuleEditor(true); return true; }
     if (id === "periodicScheduleBackdrop") { closePeriodicSchedule(); return true; }
-    if (id === "periodicScheduleRecordsBackdrop") { closePeriodicScheduleRecords(); return true; }
     if (id === "planEditorBackdrop") { closePlanEditor(); return true; }
     if (id === "overlay") {
         if (!els.settingsModal.hidden) void closeSettings(false);
@@ -21858,7 +21858,7 @@ function consumeSurfaceHistory(id) {
 }
 function initDialogFocusLifecycle() {
     ensureActionDialog();
-    const surfaces = [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop, els.periodicScheduleRecordsBackdrop, els.quickCreateMenu, els.mobileToolsSheet,
+    const surfaces = [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop, els.quickCreateMenu, els.mobileToolsSheet,
         ...["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "actionDialogBackdrop"].map(id => document.getElementById(id)).filter(Boolean)].filter(Boolean);
     const openState = new WeakMap();
     const isOpen = el => el === els.overlay ? el.classList.contains("open") : !el.hidden;
@@ -21882,8 +21882,8 @@ function initV79() {
     renderTrashBin();
     initMultiTabSync();
     initShareMode();
-    ["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "externalBackupBrowserBackdrop", "periodicScheduleBackdrop", "periodicScheduleRecordsBackdrop"].forEach(id => { const el = document.getElementById(id); watchModalSurface(el); if (el) new MutationObserver(() => { syncDialogInert(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
-    [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop, els.periodicScheduleRecordsBackdrop].filter(Boolean).forEach(el => new MutationObserver(syncDialogInert).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }));
+    ["globalSearchBackdrop", "importPreviewBackdrop", "migrationWizardBackdrop", "onboardingBackdrop", "externalBackupBrowserBackdrop", "periodicScheduleBackdrop"].forEach(id => { const el = document.getElementById(id); watchModalSurface(el); if (el) new MutationObserver(() => { syncDialogInert(); }).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }); });
+    [els.overlay, els.planEditorBackdrop, els.nativeModuleEditorBackdrop, els.moduleAdvancedBackdrop, els.hoOrganizerBackdrop, els.secureBackupBackdrop, els.externalBackupBrowserBackdrop, els.periodicScheduleBackdrop].filter(Boolean).forEach(el => new MutationObserver(syncDialogInert).observe(el, { attributes: true, attributeFilter: ["hidden", "class"] }));
     document.addEventListener("keydown", handleGlobalKeys, true);
     document.getElementById("globalSearchInput").addEventListener("input", () => { globalSearchVisibleCount = GLOBAL_SEARCH_BATCH; globalSearchActiveIndex = 0; clearTimeout(globalSearchTimer); globalSearchTimer = setTimeout(renderGlobalSearch, 70); });
     document.getElementById("settingsSearchInput").addEventListener("input", () => { clearTimeout(settingsSearchTimer); settingsSearchTimer = setTimeout(renderSettingsSearch, 80); });
@@ -22659,15 +22659,20 @@ els.plannerWeekMode.addEventListener("click", () => setPlannerViewMode("week"));
 els.plannerMonthMode.addEventListener("click", () => setPlannerViewMode("month"));
 els.newPlan.addEventListener("click", createRunPlan);
 if (els.periodicSchedule) els.periodicSchedule.addEventListener("click",()=>openPeriodicSchedule());
-if (els.periodicScheduleRecords) els.periodicScheduleRecords.addEventListener("click",openPeriodicScheduleRecords);
 if (els.closePeriodicSchedule) els.closePeriodicSchedule.addEventListener("click",closePeriodicSchedule);
 if (els.cancelPeriodicSchedule) els.cancelPeriodicSchedule.addEventListener("click",closePeriodicSchedule);
 if (els.confirmPeriodicSchedule) els.confirmPeriodicSchedule.addEventListener("click",()=>void confirmPeriodicSchedule());
-if (els.closePeriodicScheduleRecords) els.closePeriodicScheduleRecords.addEventListener("click",closePeriodicScheduleRecords);
 if (els.periodicScheduleBackdrop) els.periodicScheduleBackdrop.addEventListener("click",e=>{if(e.target===els.periodicScheduleBackdrop)closePeriodicSchedule();});
-if (els.periodicScheduleRecordsBackdrop) els.periodicScheduleRecordsBackdrop.addEventListener("click",e=>{if(e.target===els.periodicScheduleRecordsBackdrop)closePeriodicScheduleRecords();});
-if (els.periodicScheduleContent) els.periodicScheduleContent.addEventListener("click",e=>{
-    if(!periodicScheduleDraft)return; const wd=e.target.closest("[data-periodic-weekday]"); if(wd){const n=Number(wd.dataset.periodicWeekday);periodicScheduleDraft.weekdays.has(n)?periodicScheduleDraft.weekdays.delete(n):periodicScheduleDraft.weekdays.add(n);renderPeriodicScheduleDialog();return;}
+if (els.periodicScheduleContent) els.periodicScheduleContent.addEventListener("click",async e=>{
+    if(!periodicScheduleDraft)return;
+    const view=e.target.closest("[data-periodic-view]"); if(view){periodicScheduleView=view.dataset.periodicView==="records"?"records":"schedule";renderPeriodicScheduleDialog();return;}
+    const wd=e.target.closest("[data-periodic-weekday]"); if(wd){const n=Number(wd.dataset.periodicWeekday);periodicScheduleDraft.weekdays.has(n)?periodicScheduleDraft.weekdays.delete(n):periodicScheduleDraft.weekdays.add(n);renderPeriodicScheduleDialog();return;}
+    const again=e.target.closest("[data-periodic-again]"),cont=e.target.closest("[data-periodic-continue]"),withdraw=e.target.closest("[data-periodic-withdraw]"),del=e.target.closest("[data-periodic-delete-record]");
+    const id=(again&&again.dataset.periodicAgain)||(cont&&cont.dataset.periodicContinue)||(withdraw&&withdraw.dataset.periodicWithdraw)||(del&&del.dataset.periodicDeleteRecord);
+    if(!id)return;const batch=periodicBatches().find(b=>b.id===id);if(!batch)return;
+    if(again||cont){periodicScheduleDraft=periodicDraftFromBatch(batch,cont?"continue":"again");periodicScheduleView="schedule";renderPeriodicScheduleDialog();return;}
+    if(withdraw){await withdrawPeriodicBatch(id);return;}
+    if(del){await deletePeriodicBatchRecord(id);return;}
 });
 if (els.periodicScheduleContent) els.periodicScheduleContent.addEventListener("change",e=>{
     if(!periodicScheduleDraft)return; const t=e.target;
@@ -22680,7 +22685,6 @@ if (els.periodicScheduleContent) els.periodicScheduleContent.addEventListener("c
     else if(t.matches("[data-periodic-date]")){const date=t.dataset.periodicDate;if(t.checked)periodicScheduleDraft.excludedDates.delete(date);else periodicScheduleDraft.excludedDates.add(date);}
     renderPeriodicScheduleDialog();
 });
-if (els.periodicScheduleRecordsContent) els.periodicScheduleRecordsContent.addEventListener("click",async e=>{const again=e.target.closest("[data-periodic-again]"),cont=e.target.closest("[data-periodic-continue]"),withdraw=e.target.closest("[data-periodic-withdraw]"),del=e.target.closest("[data-periodic-delete-record]");const id=(again&&again.dataset.periodicAgain)||(cont&&cont.dataset.periodicContinue)||(withdraw&&withdraw.dataset.periodicWithdraw)||(del&&del.dataset.periodicDeleteRecord);if(!id)return;const batch=periodicBatches().find(b=>b.id===id);if(!batch)return;if(again||cont){closePeriodicScheduleRecords();openPeriodicSchedule({batch,mode:cont?"continue":"again"});return;}if(withdraw){await withdrawPeriodicBatch(id);return;}if(del){await deletePeriodicBatchRecord(id);return;}});
 els.planSearch.addEventListener("input", debouncedPlanRender);
 els.expandAllRecords.addEventListener("click", () => setSelectedModuleRecordsCollapsed(false));
 els.collapseAllRecords.addEventListener("click", () => setSelectedModuleRecordsCollapsed(true));
@@ -25003,7 +25007,6 @@ initV806SearchUX();
 <script id="v8190-ux-refinement-script">
 (function(){
   var UX_VIEW_KEY="trpg_planner_view_mode_v8190";
-  var uxPeriodicStep=1;
   var uxPendingExport=null;
 
   function uxButtonText(btn){return String((btn&&btn.textContent)||"").replace(/\s+/g," ").trim();}
@@ -25104,40 +25107,6 @@ initV806SearchUX();
   if(els&&els.planBoard){
     els.planBoard.addEventListener("dragstart",function(e){var row=e.target.closest(".plan-row");if(row)row.classList.add("ux-drag-source");},true);
     els.planBoard.addEventListener("dragend",function(){document.querySelectorAll(".ux-drag-source").forEach(function(x){x.classList.remove("ux-drag-source");});},true);
-  }
-
-  /* 周期排期：三步式；同一计划只追加日期，不复制桌次 */
-  var uxOrigOpenPeriodicSchedule=openPeriodicSchedule;
-  openPeriodicSchedule=function(options){uxPeriodicStep=1;return uxOrigOpenPeriodicSchedule(options||{});};
-  var uxOrigRenderPeriodicScheduleDialog=renderPeriodicScheduleDialog;
-  function enhancePeriodicSteps(){
-    if(!els.periodicScheduleContent||!periodicScheduleDraft)return;
-    var form=els.periodicScheduleContent.querySelector(".periodic-form");if(!form)return;
-    var stepper=document.createElement("div");stepper.className="periodic-stepper";
-    ["选择计划","设置周期","确认日期"].forEach(function(label,i){var n=i+1,el=document.createElement("div");el.className="periodic-step "+(n===uxPeriodicStep?'active ':n<uxPeriodicStep?'done ':'');el.innerHTML='<b>'+(n<uxPeriodicStep?'✓':n)+'</b><span>'+label+'</span>';stepper.appendChild(el);});
-    form.insertBefore(stepper,form.firstChild);
-    form.querySelectorAll("[data-periodic-panel]").forEach(function(panel){panel.hidden=Number(panel.getAttribute("data-periodic-panel"))!==uxPeriodicStep;});
-    var right=document.querySelector("#periodicScheduleBackdrop .periodic-modal-foot .right");
-    if(right&&!document.getElementById("periodicScheduleBackBtn")){var back=document.createElement("button");back.id="periodicScheduleBackBtn";back.className="btn";back.type="button";back.textContent="上一步";right.insertBefore(back,right.firstChild);back.addEventListener("click",function(){if(uxPeriodicStep>1){uxPeriodicStep--;renderPeriodicScheduleDialog();}});}
-    var backBtn=document.getElementById("periodicScheduleBackBtn");if(backBtn)backBtn.hidden=uxPeriodicStep===1;
-    var rows=periodicPreviewRows(periodicScheduleDraft),sum=periodicPreviewSummary(rows),err=periodicDraftValidation(periodicScheduleDraft);
-    if(els.confirmPeriodicSchedule){
-      els.confirmPeriodicSchedule.textContent=uxPeriodicStep<3?"下一步":"确认排期";
-      if(uxPeriodicStep===1)els.confirmPeriodicSchedule.disabled=!periodicTemplatePlan(periodicScheduleDraft);
-      else if(uxPeriodicStep===2)els.confirmPeriodicSchedule.disabled=Boolean(err);
-      else els.confirmPeriodicSchedule.disabled=Boolean(err)||sum.available<1;
-    }
-    if(els.periodicScheduleFootHint)els.periodicScheduleFootHint.textContent=uxPeriodicStep<3?"":(err?err:`可新增 ${sum.available} · 跳过 ${sum.duplicate+sum.full+sum.excluded}`);
-  }
-  renderPeriodicScheduleDialog=function(){uxOrigRenderPeriodicScheduleDialog();enhancePeriodicSteps();applyButtonHierarchy(document.getElementById("periodicScheduleBackdrop"));};
-  if(els&&els.confirmPeriodicSchedule){
-    els.confirmPeriodicSchedule.addEventListener("click",function(e){
-      if(uxPeriodicStep>=3)return;
-      e.preventDefault();e.stopImmediatePropagation();
-      if(uxPeriodicStep===1&&!periodicTemplatePlan(periodicScheduleDraft)){showToast("请先选择要排日期的开团计划");return;}
-      if(uxPeriodicStep===2){var err=periodicDraftValidation(periodicScheduleDraft);if(err){showToast(err);return;}}
-      uxPeriodicStep++;renderPeriodicScheduleDialog();
-    },true);
   }
 
   /* 长表单导航 */
