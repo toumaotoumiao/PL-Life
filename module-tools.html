@@ -942,6 +942,31 @@ html[data-theme]{
 }
 </style>
 
+
+<style id="module-tools-mobile-ux-v811032">
+.mobile-tools-more,.mt-mobile-tools-menu{display:none}
+@media(max-width:700px){
+  /* 统计摘要直接换行展示，取消隐藏式横向滑动。 */
+  .stats{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;overflow:visible!important;scroll-snap-type:none!important;padding:0!important}
+  .stat{min-width:0!important;width:auto!important;flex:none!important;margin:0!important;padding:9px 10px!important;scroll-snap-align:none!important}
+  .stat:last-child:nth-child(odd){grid-column:1/-1}
+  .stat b{font-size:19px!important}
+  .active-filter-row{overflow:visible!important;align-items:flex-start!important;flex-wrap:wrap!important}
+  .active-filter-chips{flex-wrap:wrap!important;min-width:0!important}
+  .filter-chip{white-space:normal!important}
+
+  /* 高级工具手机端也收为“新建 + 更多”，不再永久占一整排五个按钮。 */
+  body{padding-bottom:calc(18px + env(safe-area-inset-bottom))!important}
+  .float-tools{left:auto!important;right:max(8px,env(safe-area-inset-right))!important;bottom:max(8px,env(safe-area-inset-bottom))!important;width:46px!important;display:flex!important;flex-direction:column!important;gap:5px!important;padding:3px!important;border-radius:14px!important}
+  .float-tools #scrollTop,.float-tools #scrollBottom,.float-tools #set,.float-tools #viewToggle{display:none!important}
+  .float-tools #new,.float-tools .mobile-tools-more{display:grid!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;flex:none!important;border-radius:10px!important}
+  .mobile-tools-more{font-size:14px!important;letter-spacing:1px!important}
+  .mt-mobile-tools-menu{position:fixed;right:max(8px,env(safe-area-inset-right));bottom:calc(98px + env(safe-area-inset-bottom));z-index:310;display:grid;gap:5px;width:min(210px,calc(100vw - 24px));padding:7px;border:1px solid var(--line);border-radius:14px;background:var(--glass-strong);box-shadow:0 16px 38px rgba(24,33,29,.18);backdrop-filter:blur(16px)}
+  .mt-mobile-tools-menu[hidden]{display:none!important}
+  .mt-mobile-tools-menu button{min-height:42px;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);text-align:left;font-size:10px;font-weight:700}
+  .toastz{bottom:calc(102px + env(safe-area-inset-bottom))!important;right:58px!important}
+}
+</style>
 </head><body><div class="app"><header class="top"><div class="brand"><div class="brand-copy"><h1>模组高级工具</h1><div class="sub">管理模组资料、评分、招募与批量工具 · 跑团记录由主页面统一维护</div><div id="savestate" class="save-state" aria-live="polite">正在读取档案…</div></div></div></header><details class="notice notice-compact" data-collapse-key="module-tools:help"><summary><span><b>本地保存 · 支持离线</b><small>修改后自动保存</small></span><span class="notice-more">使用说明</span></summary><div class="notice-body"><b>数据保存</b><br>模组档案保存在当前浏览器，修改后自动保存。本工具不提供云同步。<br><br><b>隐私与备份</b><br>档案可能包含个人资料。清理浏览器数据、更换设备或使用隐私模式可能导致数据丢失；完整备份可用于数据恢复。<br><br><b>功能</b><br>编辑模组资料、评分与招募；跑团记录请在主页面维护。批量整理可使用 Excel。请定期导出 <b>完整备份</b>。</div></details><section class="stats" id="stats" data-hscroll-key="stats"></section><section class="filter-shell" id="filterShell">
   <div class="filter-main">
     <div class="search filter-search"><span>⌕</span><input class="control" id="q" placeholder="搜索模组名称、作者、地点、时代、性质或备注"></div>
@@ -977,7 +1002,7 @@ html[data-theme]{
     <div class="filter-panel-foot"><span>人数与时长按范围匹配；性质按关键词匹配。</span><button class="clear-filter-btn" id="clearFilters" type="button">清除筛选</button></div>
   </div>
   <div class="active-filter-row" id="activeFilters" data-hscroll-key="filter-chips" hidden><span class="active-label">筛选条件</span><div class="active-filter-chips" id="activeFilterChips"></div><button class="clear-inline" id="clearFiltersInline" type="button">清空</button></div>
-</section><div class="meta"><span id="count"></span></div><main id="content"></main></div><input id="excel" type="file" accept=".xlsx,.csv,.tsv,.xls" hidden><input id="json" type="file" accept=".json" hidden><div id="drop" class="drop"><div>松开以导入 Excel</div></div><div id="toasts" class="toastz" aria-live="polite" aria-atomic="true"></div><div id="modal"></div><nav class="float-tools" aria-label="页面快捷工具"><button id="scrollTop" class="float-btn" type="button" title="回到顶部" aria-label="回到顶部" data-tip="回到顶部">↑</button><button id="new" class="float-btn float-primary" type="button" title="新建模组" aria-label="新建模组" data-tip="新建模组">＋</button><button id="set" class="float-btn" type="button" title="设置" aria-label="设置" data-tip="设置">⚙</button><button id="viewToggle" class="float-btn view-mode" type="button" title="切换视图" aria-label="切换视图" data-tip="切换视图">☷</button><button id="scrollBottom" class="float-btn" type="button" title="前往底部" aria-label="前往底部" data-tip="前往底部">↓</button></nav>
+</section><div class="meta"><span id="count"></span></div><main id="content"></main></div><input id="excel" type="file" accept=".xlsx,.csv,.tsv,.xls" hidden><input id="json" type="file" accept=".json" hidden><div id="drop" class="drop"><div>松开以导入 Excel</div></div><div id="toasts" class="toastz" aria-live="polite" aria-atomic="true"></div><div id="modal"></div><nav class="float-tools" aria-label="页面快捷工具"><button id="scrollTop" class="float-btn" type="button" title="回到顶部" aria-label="回到顶部" data-tip="回到顶部">↑</button><button id="new" class="float-btn float-primary" type="button" title="新建模组" aria-label="新建模组" data-tip="新建模组">＋</button><button id="set" class="float-btn" type="button" title="设置" aria-label="设置" data-tip="设置">⚙</button><button id="viewToggle" class="float-btn view-mode" type="button" title="切换视图" aria-label="切换视图" data-tip="切换视图">☷</button><button id="mobileToolsMore" class="float-btn mobile-tools-more" type="button" title="更多工具" aria-label="更多工具">•••</button><button id="scrollBottom" class="float-btn" type="button" title="前往底部" aria-label="前往底部" data-tip="前往底部">↓</button></nav>
 <script>
 (()=>{'use strict';const MT_I18N_ZH_CN = Object.freeze({
     "legacy.exact.0036ca975904": "招募注意事项",
@@ -1764,4 +1789,27 @@ const originalExportXLSX=exportXLSX;exportXLSX=async function(){let ack=false;tr
 window.App={edit,copy:copyMod,remove:removeModule,recruit:recruitModule,manageRuns:openUnifiedRuns};(async()=>{await load();initModuleCollapseUX();mtI18nInvalidate();bind();render();initHorizontalScrollHints();$('#savestate').textContent=state.modules.length?`已连接统一档案 · ${state.modules.length} 个模组`:'已连接统一档案 · 暂无模组';mtI18nApply()})()})();
 </script><script id="v8190-module-ux-script">
 (function(){function txt(b){return String((b&&b.textContent)||'').replace(/\s+/g,' ').trim()}function tag(root){var scope=root&&root.querySelectorAll?root:document,bs=Array.from(scope.querySelectorAll('button.btn'));if(scope.matches&&scope.matches('button.btn'))bs.unshift(scope);bs.forEach(function(b){var t=txt(b);b.classList.remove('ux-action-primary','ux-action-state','ux-action-danger');if(b.classList.contains('danger')||/删除|清空|永久/.test(t))b.classList.add('ux-action-danger');else if(b.classList.contains('primary')||/保存|确认|导出|新建|添加|开始/.test(t))b.classList.add('ux-action-primary');else if(/恢复|合并|迁移|归档|重置/.test(t))b.classList.add('ux-action-state')})}tag(document);new MutationObserver(function(rs){rs.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1)tag(n)})})}).observe(document.body,{childList:true,subtree:true});})();
-</script></body></html>
+</script>
+<script id="module-tools-mobile-ux-v811032-js">
+(()=>{
+  const more=document.getElementById('mobileToolsMore');
+  if(!more)return;
+  let menu=null;
+  function ensure(){
+    if(menu)return menu;
+    menu=document.createElement('div'); menu.className='mt-mobile-tools-menu'; menu.id='mtMobileToolsMenu'; menu.hidden=true;
+    menu.innerHTML='<button type="button" data-mt-mobile-action="view">切换卡片 / 简表视图</button><button type="button" data-mt-mobile-action="settings">设置</button><button type="button" data-mt-mobile-action="top">回到顶部</button><button type="button" data-mt-mobile-action="bottom">前往底部</button>';
+    document.body.appendChild(menu); return menu;
+  }
+  function toggle(force){const m=ensure(),open=typeof force==='boolean'?force:m.hidden;m.hidden=!open;more.setAttribute('aria-expanded',open?'true':'false');}
+  more.setAttribute('aria-expanded','false');
+  more.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggle();});
+  document.addEventListener('click',e=>{
+    const action=e.target.closest?.('[data-mt-mobile-action]');
+    if(action){const map={view:'viewToggle',settings:'set',top:'scrollTop',bottom:'scrollBottom'};toggle(false);document.getElementById(map[action.dataset.mtMobileAction])?.click();return;}
+    if(menu&&!menu.hidden&&!e.target.closest?.('#mtMobileToolsMenu'))toggle(false);
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu&&!menu.hidden){e.preventDefault();toggle(false);}},true);
+})();
+</script>
+</body></html>
