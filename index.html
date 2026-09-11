@@ -3286,7 +3286,7 @@
 
     body.share-mode .contact,body.share-mode .profile-meta,body.share-mode .note-inline,body.share-mode .native-module-note,body.share-mode .record-view-fact:nth-child(3),body.share-mode .record-view-extra,body.share-mode .record-extra-details,body.share-mode .run-card-body a,body.share-mode .run-card-body div:has(a){display:none!important}
     body.share-mode .attr-text{font-size:0}body.share-mode .attr-text::after{content:var(--i18n-share-score-hidden,"评分说明已在分享模式隐藏");font-size:8px;color:var(--t-faint)}
-    body.share-mode #newBtn,body.share-mode #blacklistBtn,body.share-mode #profileStatusSection,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #periodicScheduleBtn,body.share-mode [data-planner-weekly-availability],body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-action="add-blacklist"],body.share-mode [data-action="remove-blacklist"],body.share-mode [data-editor-add-blacklist-pl],body.share-mode [data-editor-blacklist-kp],body.share-mode .blacklist-plan-picker,body.share-mode .blacklist-plan-warning,body.share-mode .blacklist-badge,body.share-mode .plan-blacklist-risk,body.share-mode .calendar-risk-badge,body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
+    body.share-mode #newBtn,body.share-mode #blacklistBtn,body.share-mode #profileStatusSection,body.share-mode #newNativeModuleBtn,body.share-mode #openModuleAdvancedBtn,body.share-mode #newPlanBtn,body.share-mode #periodicScheduleBtn,body.share-mode [data-planner-weekly-availability],body.share-mode #createModuleRecordBtn,body.share-mode #globalCreateBtn,body.share-mode .global-create-rail,body.share-mode [data-action="edit"],body.share-mode [data-action="delete"],body.share-mode [data-action="runs"],body.share-mode [data-action="ho-organizer"],body.share-mode [data-action="add-blacklist"],body.share-mode [data-action="remove-blacklist"],body.share-mode [data-editor-add-blacklist-pl],body.share-mode [data-editor-blacklist-kp],body.share-mode .blacklist-plan-picker,body.share-mode .blacklist-plan-warning,body.share-mode .blacklist-badge,body.share-mode .plan-blacklist-risk,body.share-mode .calendar-risk-badge,body.share-mode [data-native-module-edit],body.share-mode [data-native-module-delete],body.share-mode [data-record-edit],body.share-mode [data-record-done-next],body.share-mode [data-add-table],body.share-mode [data-delete-record],body.share-mode [data-delete-module],body.share-mode [data-rename-module],body.share-mode [data-open-plan-editor],body.share-mode [data-drag-plan]{display:none!important}
     body.share-mode #shareModeBtn{background:var(--t-success)!important;color:#fff!important;opacity:1!important}
 
     .integrity-item-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.integrity-item-actions button{min-height:28px}
@@ -5677,6 +5677,43 @@ html[data-theme]{
 </style>
 
 <style id="mobile-ux-v811033">
+/* v8.1.10.34 · 手机排期直达与跑团记录连续录入 */
+.mobile-only{display:none!important}
+.planner-mobile-quick-queue{display:none}
+.table-record-footer-primary.record-continuous-actions{gap:6px;flex-wrap:wrap}
+.table-record-footer-primary.record-continuous-actions .btn{min-width:96px}
+@media(max-width:760px){
+  .mobile-only{display:inline-flex!important}
+  .plans-view[data-mobile-section="calendar"] .planner-mobile-quick-queue{display:grid!important;gap:6px;margin:0 0 7px;padding:7px;border:1px solid var(--vh-divider);border-radius:12px;background:var(--vh-section)}
+  .planner-mobile-quick-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+  .planner-mobile-quick-copy{display:grid;gap:1px;min-width:0}.planner-mobile-quick-copy strong{font-size:10px;color:var(--t-ink)}.planner-mobile-quick-copy span{font-size:7.5px;color:var(--t-muted)}
+  .planner-mobile-quick-more{flex:0 0 auto;min-height:32px;padding:4px 8px;border:1px solid var(--t-line);border-radius:9px;background:var(--t-surface);color:var(--t-text-2);font-size:8.5px;font-weight:760}
+  .planner-mobile-quick-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+  .planner-mobile-quick-list.count-3 .planner-mobile-quick-plan:first-child{grid-column:1/-1}
+  .planner-mobile-quick-plan{min-width:0;min-height:44px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name state" "meta state";gap:1px 6px;align-items:center;padding:6px 8px;border:1px solid var(--t-line);border-radius:10px;background:var(--t-surface);color:var(--t-text-2);text-align:left}
+  .planner-mobile-quick-plan strong{grid-area:name;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9.5px;color:var(--t-ink)}
+  .planner-mobile-quick-plan small{grid-area:meta;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7.2px;color:var(--t-muted)}
+  .planner-mobile-quick-plan span{grid-area:state;padding:3px 5px;border-radius:999px;background:var(--t-surface-2);font-size:7px;font-weight:760;white-space:nowrap}
+  .planner-mobile-quick-plan.active{border-color:var(--t-accent);background:var(--t-accent-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--t-accent) 25%,transparent)}
+  .planner-mobile-quick-plan.active strong,.planner-mobile-quick-plan.active span{color:var(--t-accent-strong)}
+  .planner-mobile-quick-empty{padding:7px 8px;border-radius:9px;background:var(--t-surface-2);font-size:8px;color:var(--t-muted)}
+  body[data-planner-view="three"] .week-calendar-scroll{overflow-x:hidden!important}
+  .week-board.three-day-board{grid-template-columns:38px repeat(3,minmax(0,1fr))!important;min-width:0!important;width:100%!important}
+  .week-board.three-day-board .week-slot{min-width:0!important}
+  .week-board.three-day-board .calendar-event-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .records-mobile-module-bar{display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:5px;align-items:stretch}
+  .records-mobile-module-bar>.records-mobile-module-switch{width:auto!important;min-width:0!important}
+  .records-mobile-module-bar>.records-mobile-module-add{width:auto!important;min-width:88px;display:inline-flex!important;align-items:center;justify-content:center;padding:7px 9px!important;border:1px solid color-mix(in srgb,var(--t-accent) 32%,var(--vh-divider))!important;border-radius:12px!important;background:var(--t-accent-soft)!important;color:var(--t-accent-strong)!important;font-size:9px!important;font-weight:800!important;white-space:nowrap;box-shadow:0 3px 10px var(--t-shadow-soft)}
+  .table-record-footer-primary.record-continuous-actions{width:100%;display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important;justify-self:stretch!important}
+  .table-record-footer-primary.record-continuous-actions .btn{width:100%!important;min-width:0!important;min-height:42px!important;padding-inline:7px!important;font-size:9px!important}
+}
+@media(max-width:360px){
+  .planner-mobile-quick-list{grid-template-columns:1fr}
+  .planner-mobile-quick-plan{min-height:40px}
+  .records-mobile-module-bar>.records-mobile-module-add{min-width:78px;padding-inline:7px!important;font-size:8.5px!important}
+}
+body.share-mode .planner-mobile-quick-queue,body.share-mode .records-mobile-module-add{display:none!important}
+
 /* v8.1.10.33 · 移动端连续操作、上下文与返回层级 */
 .self-intro-mobile-context{display:none}
 .calendar-picked-actions{display:flex;align-items:center;gap:5px;margin-left:auto}
@@ -5721,6 +5758,17 @@ html[data-theme]{
   .self-intro-dual{grid-template-columns:1fr}
   .stats-dashboard-grid{grid-template-columns:1fr}
 }
+
+/* v8.1.10.35 · 模组档案去“第二套系统”重构 */
+.module-toolbar-actions{align-items:center}.module-toolbar-more{position:relative}.module-toolbar-more>summary{list-style:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.module-toolbar-more>summary::-webkit-details-marker{display:none}.module-toolbar-more[open]>summary{border-color:var(--accent,#526e64);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent,#526e64) 16%,transparent)}
+.module-toolbar-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:75;width:188px;padding:7px;border:1px solid var(--line,#d8ddd9);border-radius:13px;background:var(--paper,#fff);box-shadow:0 16px 42px rgba(28,39,34,.14);display:grid;gap:3px}.module-toolbar-menu button,.native-module-more-menu button{width:100%;border:0;background:transparent;color:inherit;text-align:left;border-radius:9px;padding:9px 10px;font:inherit;cursor:pointer}.module-toolbar-menu button:hover,.native-module-more-menu button:hover{background:var(--paper-soft,#f3f5f2)}
+.module-mobile-more-btn{display:none}.module-batch-bar{position:sticky;top:var(--sticky-toolbar-top,0);z-index:42;margin:8px 0 12px;padding:10px 12px;border:1px solid var(--line,#d8ddd9);border-radius:14px;background:color-mix(in srgb,var(--paper,#fff) 94%,var(--accent-soft,#e7efeb));box-shadow:0 8px 24px rgba(28,39,34,.08);display:flex;align-items:center;justify-content:space-between;gap:12px}.module-batch-bar[hidden]{display:none!important}.module-batch-copy{display:grid;gap:2px}.module-batch-copy span{font-size:11px;color:var(--muted,#68736d)}.module-batch-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.native-module-card,.native-module-row{position:relative}.native-module-card.batch-selected,.native-module-row.batch-selected{outline:2px solid color-mix(in srgb,var(--accent,#526e64) 45%,transparent);background:color-mix(in srgb,var(--paper,#fff) 91%,var(--accent-soft,#e7efeb))}.native-module-batch-check{position:absolute;z-index:3;right:12px;top:12px;display:flex;align-items:center;gap:6px;min-height:32px;padding:5px 9px;border:1px solid var(--line-strong,#cbd1cc);border-radius:999px;background:var(--paper,#fff);color:var(--muted,#68736d);font:inherit;cursor:pointer}.native-module-batch-check span{width:17px;height:17px;border:1px solid currentColor;border-radius:5px;display:grid;place-items:center;font-size:11px}.native-module-batch-check b{font-size:10px}.native-module-batch-check.selected{background:var(--accent,#526e64);border-color:var(--accent,#526e64);color:#fff}.batch-hidden-actions{visibility:hidden;pointer-events:none}
+.native-module-card-actions,.native-module-actions{align-items:center}.native-module-more{position:relative}.native-module-more>summary{list-style:none;min-width:38px}.native-module-more>summary::-webkit-details-marker{display:none}.native-module-more-menu{position:absolute;right:0;bottom:calc(100% + 7px);z-index:25;width:150px;padding:6px;border:1px solid var(--line,#d8ddd9);border-radius:12px;background:var(--paper,#fff);box-shadow:0 14px 36px rgba(28,39,34,.14)}.native-module-more-menu .danger{color:var(--danger,#9b4d4d)}
+.native-module-rating-details{border:1px solid var(--line,#d8ddd9);border-radius:14px;background:var(--paper-soft,#f7f8f5);overflow:hidden}.native-module-rating-details>summary{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;cursor:pointer;list-style:none;font-weight:760}.native-module-rating-details>summary::-webkit-details-marker{display:none}.native-module-rating-details>summary strong{font-variant-numeric:tabular-nums;color:var(--accent-deep,#395449)}.native-module-rating-body{padding:12px 13px 14px;border-top:1px solid var(--line,#d8ddd9);display:grid;gap:12px}.native-module-rating-top{display:grid;grid-template-columns:1fr 1fr;gap:10px}.native-module-rating-criteria{display:grid;gap:7px}.native-module-rating-row{display:grid;grid-template-columns:minmax(0,1fr) auto 96px;gap:10px;align-items:center;padding:9px 10px;border:1px solid var(--line,#d8ddd9);border-radius:11px;background:var(--paper,#fff)}.native-module-rating-row>span{display:grid;gap:2px}.native-module-rating-row small{color:var(--muted,#68736d);font-size:10px;font-weight:500}.native-module-rating-row em{font-style:normal;color:var(--muted,#68736d);font-size:10px;white-space:nowrap}.native-module-rating-row input{text-align:center}.native-module-rating-result{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:baseline;gap:8px;padding:10px 12px;border-radius:11px;background:color-mix(in srgb,var(--accent-soft,#e7efeb) 56%,var(--paper,#fff))}.native-module-rating-result strong{font-size:20px}.native-module-rating-result small{color:var(--muted,#68736d);font-size:10px}
+.module-rating-settings-toolbar{display:flex;align-items:end;gap:10px;margin:0 0 12px}.module-rating-settings-toolbar label{display:grid;gap:6px;min-width:min(320px,100%)}.module-rating-settings-toolbar label>span,.module-rating-system-card label>span{font-size:10px;color:var(--muted,#68736d);font-weight:700}.module-rating-system-list{display:grid;gap:12px}.module-rating-system-card{border:1px solid var(--line,#d8ddd9);border-radius:14px;background:var(--paper,#fff);padding:12px}.module-rating-system-card>header{display:flex;align-items:end;justify-content:space-between;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line,#d8ddd9)}.module-rating-system-card>header>label{display:grid;gap:5px;min-width:220px;max-width:420px;flex:1}.module-rating-system-head-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}.module-rating-system-head-actions>span{font-size:10px;color:var(--muted,#68736d)}.module-rating-criteria-list{display:grid;gap:8px;padding-top:10px}.module-rating-criterion-row{display:grid;grid-template-columns:minmax(130px,.8fr) 90px minmax(180px,1.5fr) auto;align-items:end;gap:8px}.module-rating-criterion-row label{display:grid;gap:5px}.module-rating-system-card>footer{padding-top:10px}
+.module-excel-backdrop{z-index:125}.module-excel-shell{width:min(860px,calc(100vw - 34px));height:min(76vh,720px);display:grid;grid-template-rows:auto minmax(0,1fr);border:1px solid var(--line,#d8ddd9);border-radius:18px;background:var(--paper,#fff);box-shadow:0 28px 80px rgba(24,33,29,.24);overflow:hidden}.module-excel-head{border-bottom:1px solid var(--line,#d8ddd9)}.module-excel-host{min-height:0;background:var(--paper-soft,#f7f8f5)}.module-excel-frame{width:100%;height:100%;border:0;background:transparent}
+@media(max-width:760px){.modules-toolbar .view-toolbar-actions{display:none!important}.module-native-controls{grid-template-columns:minmax(0,1fr) auto auto!important}.module-native-controls .search{grid-column:1/2!important}.module-mobile-more-btn{display:inline-flex}.module-batch-bar{top:8px;align-items:stretch;flex-direction:column;padding:10px}.module-batch-actions{display:grid;grid-template-columns:1fr 1fr}.native-module-card{padding-top:48px}.native-module-row{padding-top:42px}.native-module-batch-check{left:12px;right:auto}.native-module-card-actions,.native-module-actions{gap:6px}.native-module-card-actions>.btn,.native-module-actions>.btn{flex:1}.native-module-more{flex:0 0 auto}.native-module-more-menu{position:fixed;left:12px;right:12px;bottom:calc(74px + env(safe-area-inset-bottom));width:auto;z-index:155;padding:8px}.native-module-more-menu button{min-height:44px}.native-module-rating-top{grid-template-columns:1fr}.native-module-rating-row{grid-template-columns:minmax(0,1fr) 78px}.native-module-rating-row em{grid-column:1/2}.native-module-rating-row input{grid-column:2/3;grid-row:1/3}.native-module-rating-result{grid-template-columns:auto auto}.native-module-rating-result small{grid-column:1/-1}.module-rating-settings-toolbar{align-items:stretch;flex-direction:column}.module-rating-settings-toolbar label{min-width:0}.module-rating-system-card>header{align-items:stretch;flex-direction:column}.module-rating-system-card>header>label{min-width:0;width:100%;max-width:none}.module-rating-system-head-actions{justify-content:flex-start}.module-rating-criterion-row{grid-template-columns:minmax(0,1fr) 82px}.module-rating-criterion-row .criterion-desc{grid-column:1/-1}.module-rating-criterion-row .criterion-delete{grid-column:1/-1;justify-self:start}.module-excel-shell{width:100%;height:92dvh;border-width:1px 0 0;border-radius:20px 20px 0 0}.module-excel-backdrop{align-items:flex-end!important;padding:0!important}}
 </style>
 </head>
 <body>
@@ -5924,17 +5972,30 @@ html[data-theme]{
 <div class="view-toolbar modules-toolbar">
 <div class="view-toolbar-title">
 <strong>模组档案</strong>
-<span>管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。评分体系、招募与 Excel 工具位于“高级工具”。</span>
+<span>模组资料、招募、评分与跑团经历统一在这里管理；低频工具收纳在“更多”。</span>
 </div>
-<div class="view-toolbar-actions">
+<div class="view-toolbar-actions module-toolbar-actions">
 <button class="btn primary" id="newNativeModuleBtn" type="button">＋ 新建模组</button>
-<button class="btn" id="openModuleAdvancedBtn" type="button">高级工具</button>
+<details class="module-toolbar-more" id="moduleToolbarMore">
+<summary class="btn" aria-label="打开模组更多操作">••• 更多</summary>
+<div class="module-toolbar-menu" role="menu">
+<button type="button" data-module-tool="excel-import">导入 Excel</button>
+<button type="button" data-module-tool="excel-export">导出 Excel</button>
+<button type="button" data-module-tool="portable">便携 HTML</button>
+<button type="button" data-module-tool="rating">评分体系</button>
+<button type="button" data-module-tool="batch">批量管理</button>
+<button type="button" data-module-tool="backup">数据与备份</button>
+</div>
+</details>
+<button id="openModuleAdvancedBtn" type="button" hidden aria-hidden="true" tabindex="-1">兼容入口</button>
+<input id="moduleExcelInput" type="file" accept=".xlsx,.csv,.tsv" hidden aria-hidden="true" tabindex="-1">
 </div>
 </div>
 <div aria-live="polite" class="module-native-stats" id="moduleNativeStats"></div>
 <div class="module-native-controls sticky-searchbar">
 <label class="search"><span>⌕</span><input id="moduleNativeSearch" placeholder="搜索模组名称、作者、地点、时代或备注（名称优先・支持拼音首字母）"/></label>
 <button class="mobile-page-tools-btn" data-mobile-page-sheet="modules" type="button">筛选</button>
+<button class="mobile-page-tools-btn module-mobile-more-btn" data-mobile-page-sheet="moduleTools" type="button">更多</button>
 <select aria-label="HO筛选" class="sort-select" id="moduleNativeHoFilter">
 <option value="">全部 HO 设置</option>
 <option value="has">有 HO 位</option>
@@ -5953,11 +6014,20 @@ html[data-theme]{
 <button aria-pressed="false" class="layout-btn" id="moduleCompactLayoutBtn" type="button">☷ 简表</button>
 </div>
 </div>
+<div class="module-batch-bar" id="moduleBatchBar" hidden>
+  <div class="module-batch-copy"><strong>批量管理</strong><span id="moduleBatchCount">已选择 0 个模组</span></div>
+  <div class="module-batch-actions">
+    <button class="btn small" id="moduleBatchSelectVisibleBtn" type="button">选择当前结果</button>
+    <button class="btn small" id="moduleBatchClearBtn" type="button">清除选择</button>
+    <button class="btn small danger" id="moduleBatchDeleteBtn" type="button">删除已选</button>
+    <button class="btn small" id="moduleBatchDoneBtn" type="button">完成</button>
+  </div>
+</div>
 <section class="module-native-grid" id="moduleNativeGrid"></section>
 <div class="native-module-editor-backdrop" hidden="" id="nativeModuleEditorBackdrop">
 <section aria-labelledby="nativeModuleEditorTitle" aria-modal="true" class="native-module-editor" role="dialog">
 <header class="native-module-editor-head">
-<div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>编辑模组资料；评分体系与批量工具位于“高级工具”。</span><div class="editor-state-line"><span class="editor-state-chip clean" id="moduleEditStatus">未修改</span></div></div>
+<div><strong id="nativeModuleEditorTitle">编辑模组</strong><span>基本资料、招募与评分均在当前编辑器内完成。</span><div class="editor-state-line"><span class="editor-state-chip clean" id="moduleEditStatus">未修改</span></div></div>
 <button aria-label="关闭" class="icon-close" id="closeNativeModuleEditorBtn" type="button">×</button>
 </header>
 <div class="native-module-editor-body" id="nativeModuleEditorContent"></div>
@@ -5967,13 +6037,13 @@ html[data-theme]{
 </footer>
 </section>
 </div>
-<div class="module-advanced-backdrop" hidden="" id="moduleAdvancedBackdrop">
-<section aria-labelledby="moduleAdvancedTitle" aria-modal="true" class="module-advanced-shell" role="dialog">
-<header class="module-advanced-head">
-<div><strong id="moduleAdvancedTitle">模组高级工具</strong><span>评分体系、招募、Excel 与模组编辑</span></div>
-<button aria-label="关闭" class="icon-close" id="closeModuleAdvancedBtn" type="button">×</button>
+<div class="module-advanced-backdrop module-excel-backdrop" hidden="" id="moduleAdvancedBackdrop">
+<section aria-labelledby="moduleAdvancedTitle" aria-modal="true" class="module-excel-shell" role="dialog">
+<header class="module-advanced-head module-excel-head">
+<div><strong id="moduleAdvancedTitle">Excel 模组工具</strong><span>导入时仅显示字段映射；导出直接使用当前模组档案。</span></div>
+<button aria-label="关闭 Excel 工具" class="icon-close" id="closeModuleAdvancedBtn" type="button">×</button>
 </header>
-<iframe class="module-archive-frame" id="moduleArchiveFrame" loading="eager" title="模组高级工具"></iframe>
+<div class="module-excel-host"><iframe class="module-archive-frame module-excel-frame" id="moduleArchiveFrame" loading="eager" title="Excel 模组导入工具"></iframe></div>
 </section>
 </div>
 </section>
@@ -5996,6 +6066,7 @@ html[data-theme]{
 <button aria-pressed="true" class="active" data-planner-mobile-section="calendar" id="plannerMobileCalendarBtn" type="button">日历</button>
 <button aria-pressed="false" data-planner-mobile-section="queue" id="plannerMobileQueueBtn" type="button">待排计划 <span id="plannerMobileQueueCount">0</span></button>
 </div>
+<div class="planner-mobile-quick-queue" id="plannerMobileQuickQueue" aria-label="手机快速排期"></div>
 <div class="planner-layout">
 <aside aria-label="开团计划列表" class="planner-sidebar">
 <div class="planner-sidebar-head">
@@ -6072,7 +6143,7 @@ html[data-theme]{
 <span class="disclaimer-chevron">›</span>
 <span class="footer-title">说明与隐私提示</span>
 </span>
-<span class="footer-meta-inline">v8.1.10.33 · 2026-09-10 · 作者：番茄</span>
+<span class="footer-meta-inline">v8.1.10.35 · 2026-09-11 · 作者：番茄</span>
 </summary>
 <div class="disclaimer-body">
 <p>
@@ -6084,7 +6155,7 @@ html[data-theme]{
 <p>
               档案可能包含个人信息，请谨慎导出、截图或分享。数据保存在当前浏览器，清理浏览器数据或更换设备可能导致丢失，请定期备份。
             </p>
-<div class="footer-meta">版本：v8.1.10.33　·　更新时间：2026-09-10　·　作者：番茄</div>
+<div class="footer-meta">版本：v8.1.10.35　·　更新时间：2026-09-11　·　作者：番茄</div>
 </div>
 </details>
 </footer>
@@ -6364,10 +6435,13 @@ html[data-theme]{
 </div>
 </summary>
 <div class="settings-collapse-body">
-<div class="section-help">主模组页显示评分结果；评分体系在“高级工具”中维护。</div>
-<div class="setting-buttons">
-<button class="btn" id="openModuleAdvancedSettingsBtn" type="button">打开高级工具</button>
+<div class="section-help">这里维护全局评分体系。编辑单个模组时可选择体系、填写各评分项，也可直接填写手动总分。</div>
+<div class="module-rating-settings-toolbar">
+<label><span>默认评分体系</span><select class="setting-input" id="moduleRatingDefaultSelect"></select></label>
+<button class="btn small" id="addModuleRatingSystemBtn" type="button">＋ 新建评分体系</button>
 </div>
+<div class="module-rating-system-list" id="moduleRatingSystemsList"></div>
+<button id="openModuleAdvancedSettingsBtn" type="button" hidden aria-hidden="true" tabindex="-1">兼容入口</button>
 </div>
 </details>
 </div>
@@ -6437,7 +6511,7 @@ html[data-theme]{
 <article class="data-health-card"><span class="data-health-label">升级保护</span><strong id="upgradeGuardHealthValue">正常</strong><span id="upgradeGuardHealthSub">更新前自动备份</span></article>
 <article class="data-health-card"><span class="data-health-label">安装与离线</span><strong id="pwaHealthValue">检查中</strong><span id="pwaHealthSub">支持安装与离线使用</span></article>
 <article class="data-health-card"><span class="data-health-label">最近备份</span><strong id="exportHealthValue">尚未记录</strong><span id="exportHealthSub">尚未记录完整备份</span></article>
-<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.10.30</strong><span id="appVersionHealthSub">正在检查</span></article>
+<article class="data-health-card"><span class="data-health-label">当前版本</span><strong id="appVersionHealthValue">v8.1.10.35</strong><span id="appVersionHealthSub">正在检查</span></article>
 </div><div class="inheritance-status-note" id="inheritanceStatusNote"></div><div class="storage-context-note" id="storageContextNote"></div><div hidden=""><span id="storageModeHealthValue"></span><span id="storageModeHealthSub"></span></div><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>保存与恢复</strong><span>自动保存用于日常使用；恢复点用于误操作；存储保护降低系统自动清理概率。恢复点仍可能随“清除网站数据”一起被删除。</span></div></div>
 <label class="data-safety-select-row"><span><strong>自动恢复点</strong><small>有实际数据变更时按间隔创建，保存在浏览器 IndexedDB 中。</small></span><select aria-label="自动恢复点间隔" class="setting-input" id="recoveryIntervalSelect"><option value="6">每 6 小时</option><option value="12">每 12 小时</option><option value="24">每 24 小时</option><option value="72">每 3 天</option><option value="0">关闭自动恢复点</option></select></label>
@@ -6460,10 +6534,10 @@ html[data-theme]{
 <div class="storage-context-note" id="lastRiskSnapshotSummary">暂无可用的操作前安全快照。</div>
 </section>
 </div></details><details class="data-safety-group version" data-collapse-key="settings:data:version"><summary><span class="data-safety-group-title"><strong>版本与更新</strong><small>检查版本、离线缓存和程序文件</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block version-update-block">
-<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.10.33 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
-<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.10.33</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
+<div class="friendly-data-head"><div><strong>版本与更新</strong><span id="versionUpdateSummary">v8.1.10.35 · 正在检查更新状态</span></div><div class="friendly-head-actions"><button class="btn small" id="checkAppUpdateBtn" type="button">检查更新</button><button class="btn small primary-soft" id="forceReloadAppBtn" type="button">刷新程序文件</button></div></div>
+<div class="version-runtime-details" id="versionRuntimeDetails"><span>页面版本：v8.1.10.35</span><span id="cacheVersionDetail">离线缓存：检查中</span><span id="lastVersionCheckDetail">更新检查：进行中</span><span id="startupCheckDetail">启动检查：进行中</span></div>
 <div class="startup-auto-check"><strong>自动检查</strong><span>每次打开或刷新自动检查版本、档案完整性、存储、恢复点和离线缓存。</span></div>
-<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-history-list" id="releaseNotesBox"><div class="version-log-header"><span>版本</span><span>更新内容</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.33</strong><span class="version-log-copy">继续完善移动端交互：个人偏好增加当前位置与分层快速跳转、偏好项搜索；跑团记录当前模组栏在长记录中保持可见；开团计划的安排模式增加明确的“结束安排”操作；页面底部抽屉纳入手机返回键层级；进一步统一手机中等宽度、固定层级和连续操作反馈。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.32</strong><span class="version-log-copy">继续调整手机端真实操作手感：个人偏好移动端标题与操作区重新收敛；空闲时间状态工具改为边缘竖向悬浮并将范围操作改为“选起止时间”；PL 编辑器底部操作收为保存、取消与更多；跑团记录切换模组取消自动弹出键盘；页面操作按钮改为更直接的功能名称；模组筛选显示已启用条件数量；底部操作面板增加拖拽提示与下滑关闭；设置搜索改为按需展开；统计柱状趋势在手机端按六个时间段分页显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.31</strong><span class="version-log-copy">手机端重整常用操作路径：底部主导航收为五项并加入“我的”菜单；取消常驻右侧多按钮栏，仅在对应页面显示新建入口与滚动后的回顶部；PL、模组、跑团记录、个人偏好和个人统计使用页面操作面板收纳低频筛选与批量功能；跑团记录取消模组横向滑动目录；设置四个一级分类同屏显示；空闲时间设置将状态切换改为跟随屏幕的紧凑工具条，并将“连续时段”改为“选择时间段”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.30</strong><span class="version-log-copy">修复电脑端主导航与滚动后的紧凑顶栏同时显示并重叠的问题：页面主导航随页面正常滚动，完全离开视口后才显示紧凑顶栏，任一时刻只保留一套主导航。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.29</strong><span class="version-log-copy">全站重整视觉分区：固定与粘性区域使用更深一级表面；页面标题区、工具区、内容卡片、卡片标题带与数据区建立统一层级；详细时段、开团计划、跑团记录、模组档案、个人偏好、个人统计、设置页及手机固定导航同步调整。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.28</strong><span class="version-log-copy">手机详细时段与多人空闲时段比对改为与电脑一致的一周竖向表格：时间纵向排列、周一至周日横向分列；取消单日卡片时间板与手机日期切换条，表格按屏幕宽度压缩显示并继续保留悬浮状态编辑。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.27</strong><span class="version-log-copy">详细时段与多人空闲时段比对继续收紧桌面主时间板的列宽和行高，状态块同步缩小并增加留白；展示图与导出图片采用同一套紧凑比例、圆角状态块和分区样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.26</strong><span class="version-log-copy">详细时段与多人空闲时段比对的主时间板在桌面端收窄并居中显示，减少单格横向拉伸；同步调整分段提示条和编辑区留白，排时更紧凑也更易看清。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.25</strong><span class="version-log-copy">手机详细时段强化悬浮编辑条，显示当前状态并将连续时段入口改为明确操作；整天与分段批量按钮改为“应用”表述。多人空闲时段比对在手机端优先显示共同时间结果，再显示时段板与参与人员，并调整时间精度切换层级。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.24</strong><span class="version-log-copy">详细时段与时段比对的入口文案改为“多人空闲时段比对”；1 小时视图改为整小时整块显示，不再在单格中间切分；收紧表格右侧留白，协调最后一列边缘显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.23</strong><span class="version-log-copy">手机详细时段将“可约 / 优先 / 清除”设为编辑区内悬浮状态栏；时段比对、导出图片与保存移动到页面底部；新增整天、整段与连续范围设置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.22</strong><span class="version-log-copy">“设置空闲时间”从日历日期切换区移动到开团计划页顶部操作区，位于周/月切换与新建计划之前；手机端该入口单独占一行。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.21</strong><span class="version-log-copy">近期详细时段与时段比对的手机端改为单日紧凑时间板：24 小时按凌晨、白天、晚间分组，每组采用四列小时卡；30 分钟模式在每个小时内分成两个半小时档位。时间板取消内部横向与纵向滚动，七日切换固定为一屏七列；开团计划手机端详细时段入口增大触控区域。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.20</strong><span class="version-log-copy">近期详细时段与时段比对增加手机单日编辑/查看模式、七日切换条、移动端状态操作栏与触摸滚动处理；开团计划手机端的详细时段入口和日期切换改为整行布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.19</strong><span class="version-log-copy">“设置空闲时间”移动到开团计划日历日期切换控件上方，并增大按钮尺寸；周视图、月视图和手机三日视图均显示该入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.18</strong><span class="version-log-copy">详细时段与时段比对表格右侧、底部增加内侧留白，调整最后一列与容器边缘的距离。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.17</strong><span class="version-log-copy">详细时段表格取消固定滚动条预留空带，调整表格边缘显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.16</strong><span class="version-log-copy">详细时段、时段比对与导出图的每小时交替底色加深一档。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.15</strong><span class="version-log-copy">详细时段、时段比对与导出图的每小时交替底色进行首次加深调整。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.14</strong><span class="version-log-copy">详细时段、时段比对与时段导出图调整时间背景：白天使用基础背景；凌晨与晚间使用轻微色相区分；每小时使用交替底色；08:00 与 16:00 保留分界线。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.13</strong><span class="version-log-copy">“近期详细时段”入口从个人偏好中的常用跑团时间区域移动到开团计划页顶部操作区，入口位置与周/月视图和新建计划操作并列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.12</strong><span class="version-log-copy">修复“时段比对”中“导出我的时段数据”姓名输入弹窗被比对页面遮挡的问题；详细时段、时段比对与站内输入弹窗纳入同一弹层层级管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.11</strong><span class="version-log-copy">详细时段与时段导出图改用轻底纹、分界线与时间分区提示；08:00–16:00 区域使用较浅背景，网格线继续显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.10</strong><span class="version-log-copy">时段比对导出时填写导出者姓名；导入同名人物时可选择覆盖、保留两份或跳过；详细时段顶部将撤回与重做置于左侧，本周置于周切换中间，日期范围显示在周切换下方。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.9</strong><span class="version-log-copy">详细时段新增“时段比对”：可导出当前周时段数据、批量导入多人同周时段数据，并显示全员可约与全员优先的共同时间。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.8</strong><span class="version-log-copy">详细时段 08:00–16:00 区域底色改为正片叠底式背景混合，时间表网格线保持原有显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.7</strong><span class="version-log-copy">个人偏好移除 PL 侧 OC / PC 关系项；详细时段入口改为“设置空闲时间”；展示图改为日期分列、时间分行；窄屏时间网格填充可用宽度。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.6</strong><span class="version-log-copy">PL“协作与补充”和 KP“桌务、交流与协作”新增整组折叠；详细时段保留撤回、重做、时间单位切换与状态切换。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.5</strong><span class="version-log-copy">详细时段新增撤回与重做；PL / KP 模组偏好字段调整；评分说明统一使用“同桌组合”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.4</strong><span class="version-log-copy">详细时段修复“清空本周”确认层级；调整时间行高度与 08:00–16:00 时段底色；新增 1 小时 / 30 分钟安排切换和空格切换设置状态；展示图改为竖向，并显示 30 分钟数据。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.3</strong><span class="version-log-copy">个人偏好“常用跑团时间”新增详细时段入口；新增按周、按小时设置的时段页面，支持拖动设置“可约 / 优先 / 清除”、周切换、快捷填充、展示图预览与 PNG 导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.2</strong><span class="version-log-copy">全站界面说明文案按功能、状态、范围、操作结果和风险信息重新检查；个人偏好、设置、备份提示、导出说明、历史版本记录及动态提示中的主观评价性表述改为客观描述。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.1</strong><span class="version-log-copy">个人偏好页说明文案改为字段内容与填写用途描述。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.0</strong><span class="version-log-copy">个人偏好页结构调整：常用信息按阅读顺序重排；PL / KP 双栏采用“模组偏好—游玩 / 带团方式—内容接受度—协作与补充—模组意向”结构；调整分隔、偏好刻度、边界卡片和移动端排列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.9</strong><span class="version-log-copy">个人偏好新增模组长度与 NPC 死亡态度；移除模组偏好中的“当代”“都市”“追逐”；PL 侧新增与 KP 侧同结构的内容接受度，并同步保存、搜索与图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.8</strong><span class="version-log-copy">PL 评分与模组评分合并到“评分设置”；调整个人统计排名表与趋势表的表头、数字、列宽和移动端对齐。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.7</strong><span class="version-log-copy">新增“樱雾”“鸢尾”主题，并将六套主题同步到主页面与模组高级工具。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.6</strong><span class="version-log-copy">中文语言显示名称统一为“简体中文”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.5</strong><span class="version-log-copy">校正国际化语言与地区语义：繁體中文改用通用 zh-Hant 规划，修正中文地区回退、区域格式化和语言状态显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.4</strong><span class="version-log-copy">统一全站版本记录的内容结构、信息层级、字号与缩进，历史版本全部采用同一列表格式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.3</strong><span class="version-log-copy">周期排期改为单页工作台，排期记录并入同一窗口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.2</strong><span class="version-log-copy">全站说明文案改为功能、状态与操作说明。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.1</strong><span class="version-log-copy">一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.0</strong><span class="version-log-copy">调整全站视觉层级：统一按钮风险/主次层级与选中状态；周历卡片调整信息顺序并增加容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.7</strong><span class="version-log-copy">新增一键按周期排期与排期记录。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.6</strong><span class="version-log-copy">个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.5</strong><span class="version-log-copy">历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.4</strong><span class="version-log-copy">个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”分别使用红、黄、浅绿、绿底提示，选择后即时更新。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.3</strong><span class="version-log-copy">调整模态弹层与关闭逻辑：修复嵌套弹窗残留 inert 导致按钮无法点击的问题；外部备份、跑团整理与设备迁移移除重复关闭按钮。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.2</strong><span class="version-log-copy">高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.1</strong><span class="version-log-copy">新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.0</strong><span class="version-log-copy">统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.9</strong><span class="version-log-copy">开团计划编辑器底部操作调整：“完成”改为“保存”并位于右侧；“归档”移至左侧与“删除计划”并列，保留归档确认与重复归档检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.8</strong><span class="version-log-copy">修复外部自动备份提示与模态弹窗同时出现时关闭按钮无法点击的问题，并调整提示条与按钮的触控事件。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.7</strong><span class="version-log-copy">个人偏好页“参考来源”说明补充 @江鸿、@削面，来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，页面初始显示和重新渲染使用相同文案，数据结构保持不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.6</strong><span class="version-log-copy">跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.5</strong><span class="version-log-copy">全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.4</strong><span class="version-log-copy">调整移动端交互：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理相同的折叠结构。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.3</strong><span class="version-log-copy">个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.2</strong><span class="version-log-copy">PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.1</strong><span class="version-log-copy">完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.0</strong><span class="version-log-copy">建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.42</strong><span class="version-log-copy">手机浏览器外备份改为下载目录模式：移动端按设定频率尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截自动下载，提示中提供“重新下载”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.41</strong><span class="version-log-copy">个人偏好重新分区：KP 偏好分为带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理；头像、具体聊天渠道、群聊/私聊字段未纳入该页，异常处理内容放入折叠区。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.40</strong><span class="version-log-copy">个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.39</strong><span class="version-log-copy">调整手机端导出预览拖动：增大横向拖动条尺寸，并在预览层关闭系统长按菜单、文本选择和原生图片拖拽。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.38</strong><span class="version-log-copy">修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.37</strong><span class="version-log-copy">“查看备份”流程调整：桌面端直接读取已授权保存位置中的 JSON 备份文件并在网页内列出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.36</strong><span class="version-log-copy">修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.35</strong><span class="version-log-copy">浏览器外自动备份支持配置频率，默认每 30 分钟；每次成功写入后显示备份提示，并核验“最新备份”文件的存在、大小、更新时间与完整性。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.34</strong><span class="version-log-copy">个人偏好导出预览支持拖动模块排序；左侧上下按钮保留键盘与旧浏览器操作。半栏布局按两列剩余高度自动放置模块。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.33</strong><span class="version-log-copy">调整个人偏好导出的 PL / KP 偏好尺：五档轨道居中并缩短行高，保留项目名、当前值和两端语义。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.32</strong><span class="version-log-copy">修复 GitHub Pages 更新后浏览器继续运行旧程序的更新链路：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，检测到页面版本落后时提示刷新程序文件。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.31</strong><span class="version-log-copy">修复个人偏好导出中心勾选区域未进入预览或导出图的问题：勾选区域会保留，区域内部空白字段自动省略；空的想跑模组 / 可带模组显示空状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.30</strong><span class="version-log-copy">个人偏好导出中心改为可视化编排：修复调整顺序时弹层自动关闭；移除三套导出样式、姓名与区域说明选项，导出宽度统一为 1080 px。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.29</strong><span class="version-log-copy">“数据与备份”的信息结构调整：浏览器外自动备份移动到“恢复与迁移”分组内，位于完整备份之后、设备迁移之前；“日常保护”包含自动保存、恢复点、冗余副本与存储保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.28</strong><span class="version-log-copy">个人偏好导出改为统一入口，可选择导出区域、组合、顺序、快捷预设及完整 / 紧凑 / 分享三种样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.27</strong><span class="version-log-copy">个人偏好前半部分调整为“常用信息”布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.26</strong><span class="version-log-copy">调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.25</strong><span class="version-log-copy">每次成功保存会额外写入 IndexedDB 独立冗余副本，用于浏览器存储异常后的恢复。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.24</strong><span class="version-log-copy">自动恢复点新增创建间隔与保留数量设置，并增加浏览器持久化存储状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.23</strong><span class="version-log-copy">“想跑模组 / 可带模组”支持单独导出图片和模组备注；导出内容包含对应备注。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.22</strong><span class="version-log-copy">弹窗右上角关闭按钮与底部操作区采用统一尺寸、圆角和间距；“展开全部 / 收起全部”改为双态按钮；图片导出按钮统一图标、尺寸与下拉箭头。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.21</strong><span class="version-log-copy">“导出图片”按钮采用统一样式；跑团整理弹窗中 PL / KP 视图使用相同的操作顺序与对齐规则。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.20</strong><span class="version-log-copy">个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.19</strong><span class="version-log-copy">统一全站字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.18</strong><span class="version-log-copy">修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按自身宽度调整，PL / PC / HO、人物搜索、模组选择和底部操作区取消横向滚动。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.17</strong><span class="version-log-copy">开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览使用 KP 暖棕 / PL 蓝绿色，并同时显示文字身份标签。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.16</strong><span class="version-log-copy">修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.15</strong><span class="version-log-copy">调整全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序；开团计划、跑团记录、全局搜索与设置搜索使用各自的相关性排序规则。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.14</strong><span class="version-log-copy">修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.13</strong><span class="version-log-copy">重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.11</strong><span class="version-log-copy">修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.10</strong><span class="version-log-copy">个人统计页面移除顶部“统计口径”说明条，保留时间范围筛选、统计模块说明和隐私雾面遮罩。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.9</strong><span class="version-log-copy">补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.8</strong><span class="version-log-copy">校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.7</strong><span class="version-log-copy">主导航与对应页面标题中的“偏好 / 统计”调整为“个人偏好”“个人统计”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.6</strong><span class="version-log-copy">新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.5</strong><span class="version-log-copy">调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端搜索与批量操作同排，手机端使用窄屏布局并允许结果计数换行。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.4</strong><span class="version-log-copy">PL 档案的“全部折叠 / 全部展开”移到搜索框右侧；调整桌面、平板和窄屏下的搜索、批量操作、排序与视图切换布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.3</strong><span class="version-log-copy">重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.2</strong><span class="version-log-copy">完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.1</strong><span class="version-log-copy">PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.0</strong><span class="version-log-copy">修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，并调整姓名、RP 长度、KP / PL 度与评分区的窄屏排列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.9</strong><span class="version-log-copy">统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.8</strong><span class="version-log-copy">开团计划的“添加已有 PL”移动到已添加列表上方，支持 PL 名称搜索，下拉名单按 A～Z（拼音 / 英文）排序。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.7</strong><span class="version-log-copy">调整开团计划编辑抽屉的分区卡片、标题与说明间距、状态标签、HO 选择和底部操作区样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.6</strong><span class="version-log-copy">开团计划编辑抽屉增大“基本信息”“KP / KPC”“PL / PC”等分区标题字号，并加入主题色短划线。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.5</strong><span class="version-log-copy">开团计划人物下拉框统一圆角与主题配色，替换浏览器原生箭头，并增加悬停、聚焦状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.4</strong><span class="version-log-copy">调整主导航顺序；PL 评分打开后可直接操作，未操作状态为“无”；开团计划增加拖放入口与日历落点提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.3</strong><span class="version-log-copy">跑团整理与跑团偏好图片导出使用统一卡片结构、标题层级、留白与配色；移除番茄/水果式装饰图形。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.2</strong><span class="version-log-copy">统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组默认显示概览，详情可展开。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.1</strong><span class="version-log-copy">跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5</strong><span class="version-log-copy">隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.15</strong><span class="version-log-copy">常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈联系方式调整为企鹅。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.14</strong><span class="version-log-copy">跑团偏好双栏中想跑团 / 可带团固定在各栏末尾；分组标题使用统一层级；导出图片显示偏好刻度左右尺度与五段位置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.13</strong><span class="version-log-copy">“自我介绍”调整为“跑团偏好”；PL / KP 模组偏好说明同步调整；拖动滑杆改为五段点击刻度，并保留现代、当代等时代选项。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.12</strong><span class="version-log-copy">自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；调整多选选中态，并新增双栏图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.11</strong><span class="version-log-copy">新增“自我介绍”：包含通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.10</strong><span class="version-log-copy">新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.9</strong><span class="version-log-copy">KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.8</strong><span class="version-log-copy">PL / KP 跑团整理使用响应式卡片布局；修复中小屏内容重叠与横向 HO 看板问题。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.7</strong><span class="version-log-copy">新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.6</strong><span class="version-log-copy">修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.5</strong><span class="version-log-copy">修复设置页版本区适配；新增每次启动自动检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.4</strong><span class="version-log-copy">新增 PL 黑名单、状态历史与排团风险提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.3</strong><span class="version-log-copy">新增跑团记录退回计划、同名模组合并与关联治理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.2</strong><span class="version-log-copy">模组使用唯一编号关联；支持同一时段排序和拖出日历取消安排。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.1</strong><span class="version-log-copy">统一界面文案与术语。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4</strong><span class="version-log-copy">多标签页并发保存加入冲突处理；数据结构保持 v18 兼容。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.3</strong><span class="version-log-copy">新增保存冲突处理、恢复点、回收站与大档案处理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.2</strong><span class="version-log-copy">调整移动端计划、跑团记录、搜索与数据管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.1</strong><span class="version-log-copy">新增分享模式、草稿保存、撤销与离线缓存相关处理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.0</strong><span class="version-log-copy">新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span></div></div></details>
+<details class="version-history-details" data-collapse-key="settings:data:version-history"><summary>版本记录</summary><div class="version-history-list" id="releaseNotesBox"><div class="version-log-header"><span>版本</span><span>更新内容</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.35</strong><span class="version-log-copy">重构模组档案工具结构：移除用户可见的“高级工具”第二套模组系统；桌面端改为“更多”轻量菜单，手机端改为独立底部工具面板。单个模组评分整合进模组编辑器；评分体系直接在设置中维护；新增模组批量选择与批量删除，并将卡片常驻操作收敛为跑团记录、编辑与更多。Excel 导入保留字段映射能力但只显示专用导入界面，Excel 导出与便携 HTML 继续保留；“再带意愿”并入主模组编辑器；完整备份继续统一归入“数据与备份”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.34</strong><span class="version-log-copy">继续压缩高频操作路径：手机开团计划在日历页新增快速选计划，可不返回计划列表直接切换安排对象；手机 3 日视图改为贴合屏幕宽度；月历安排时选中日期会直接进入 3 日工作视图。跑团记录的“新建跑团记录”和“新增一桌”会直接进入编辑，手机当前模组栏提供直达“新增一桌”；编辑页新增“完成并下一桌”，存在下一桌时连续编辑，不存在时新建下一桌并仅沿用 KP，其他桌次内容保持空白。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.33</strong><span class="version-log-copy">继续完善移动端交互：个人偏好增加当前位置与分层快速跳转、偏好项搜索；跑团记录当前模组栏在长记录中保持可见；开团计划的安排模式增加明确的“结束安排”操作；页面底部抽屉纳入手机返回键层级；进一步统一手机中等宽度、固定层级和连续操作反馈。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.32</strong><span class="version-log-copy">继续调整手机端真实操作手感：个人偏好移动端标题与操作区重新收敛；空闲时间状态工具改为边缘竖向悬浮并将范围操作改为“选起止时间”；PL 编辑器底部操作收为保存、取消与更多；跑团记录切换模组取消自动弹出键盘；页面操作按钮改为更直接的功能名称；模组筛选显示已启用条件数量；底部操作面板增加拖拽提示与下滑关闭；设置搜索改为按需展开；统计柱状趋势在手机端按六个时间段分页显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.31</strong><span class="version-log-copy">手机端重整常用操作路径：底部主导航收为五项并加入“我的”菜单；取消常驻右侧多按钮栏，仅在对应页面显示新建入口与滚动后的回顶部；PL、模组、跑团记录、个人偏好和个人统计使用页面操作面板收纳低频筛选与批量功能；跑团记录取消模组横向滑动目录；设置四个一级分类同屏显示；空闲时间设置将状态切换改为跟随屏幕的紧凑工具条，并将“连续时段”改为“选择时间段”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.30</strong><span class="version-log-copy">修复电脑端主导航与滚动后的紧凑顶栏同时显示并重叠的问题：页面主导航随页面正常滚动，完全离开视口后才显示紧凑顶栏，任一时刻只保留一套主导航。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.29</strong><span class="version-log-copy">全站重整视觉分区：固定与粘性区域使用更深一级表面；页面标题区、工具区、内容卡片、卡片标题带与数据区建立统一层级；详细时段、开团计划、跑团记录、模组档案、个人偏好、个人统计、设置页及手机固定导航同步调整。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.28</strong><span class="version-log-copy">手机详细时段与多人空闲时段比对改为与电脑一致的一周竖向表格：时间纵向排列、周一至周日横向分列；取消单日卡片时间板与手机日期切换条，表格按屏幕宽度压缩显示并继续保留悬浮状态编辑。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.27</strong><span class="version-log-copy">详细时段与多人空闲时段比对继续收紧桌面主时间板的列宽和行高，状态块同步缩小并增加留白；展示图与导出图片采用同一套紧凑比例、圆角状态块和分区样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.26</strong><span class="version-log-copy">详细时段与多人空闲时段比对的主时间板在桌面端收窄并居中显示，减少单格横向拉伸；同步调整分段提示条和编辑区留白，排时更紧凑也更易看清。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.25</strong><span class="version-log-copy">手机详细时段强化悬浮编辑条，显示当前状态并将连续时段入口改为明确操作；整天与分段批量按钮改为“应用”表述。多人空闲时段比对在手机端优先显示共同时间结果，再显示时段板与参与人员，并调整时间精度切换层级。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.24</strong><span class="version-log-copy">详细时段与时段比对的入口文案改为“多人空闲时段比对”；1 小时视图改为整小时整块显示，不再在单格中间切分；收紧表格右侧留白，协调最后一列边缘显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.23</strong><span class="version-log-copy">手机详细时段将“可约 / 优先 / 清除”设为编辑区内悬浮状态栏；时段比对、导出图片与保存移动到页面底部；新增整天、整段与连续范围设置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.22</strong><span class="version-log-copy">“设置空闲时间”从日历日期切换区移动到开团计划页顶部操作区，位于周/月切换与新建计划之前；手机端该入口单独占一行。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.21</strong><span class="version-log-copy">近期详细时段与时段比对的手机端改为单日紧凑时间板：24 小时按凌晨、白天、晚间分组，每组采用四列小时卡；30 分钟模式在每个小时内分成两个半小时档位。时间板取消内部横向与纵向滚动，七日切换固定为一屏七列；开团计划手机端详细时段入口增大触控区域。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.20</strong><span class="version-log-copy">近期详细时段与时段比对增加手机单日编辑/查看模式、七日切换条、移动端状态操作栏与触摸滚动处理；开团计划手机端的详细时段入口和日期切换改为整行布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.19</strong><span class="version-log-copy">“设置空闲时间”移动到开团计划日历日期切换控件上方，并增大按钮尺寸；周视图、月视图和手机三日视图均显示该入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.18</strong><span class="version-log-copy">详细时段与时段比对表格右侧、底部增加内侧留白，调整最后一列与容器边缘的距离。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.17</strong><span class="version-log-copy">详细时段表格取消固定滚动条预留空带，调整表格边缘显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.16</strong><span class="version-log-copy">详细时段、时段比对与导出图的每小时交替底色加深一档。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.15</strong><span class="version-log-copy">详细时段、时段比对与导出图的每小时交替底色进行首次加深调整。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.14</strong><span class="version-log-copy">详细时段、时段比对与时段导出图调整时间背景：白天使用基础背景；凌晨与晚间使用轻微色相区分；每小时使用交替底色；08:00 与 16:00 保留分界线。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.13</strong><span class="version-log-copy">“近期详细时段”入口从个人偏好中的常用跑团时间区域移动到开团计划页顶部操作区，入口位置与周/月视图和新建计划操作并列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.12</strong><span class="version-log-copy">修复“时段比对”中“导出我的时段数据”姓名输入弹窗被比对页面遮挡的问题；详细时段、时段比对与站内输入弹窗纳入同一弹层层级管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.11</strong><span class="version-log-copy">详细时段与时段导出图改用轻底纹、分界线与时间分区提示；08:00–16:00 区域使用较浅背景，网格线继续显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.10</strong><span class="version-log-copy">时段比对导出时填写导出者姓名；导入同名人物时可选择覆盖、保留两份或跳过；详细时段顶部将撤回与重做置于左侧，本周置于周切换中间，日期范围显示在周切换下方。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.9</strong><span class="version-log-copy">详细时段新增“时段比对”：可导出当前周时段数据、批量导入多人同周时段数据，并显示全员可约与全员优先的共同时间。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.8</strong><span class="version-log-copy">详细时段 08:00–16:00 区域底色改为正片叠底式背景混合，时间表网格线保持原有显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.7</strong><span class="version-log-copy">个人偏好移除 PL 侧 OC / PC 关系项；详细时段入口改为“设置空闲时间”；展示图改为日期分列、时间分行；窄屏时间网格填充可用宽度。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.6</strong><span class="version-log-copy">PL“协作与补充”和 KP“桌务、交流与协作”新增整组折叠；详细时段保留撤回、重做、时间单位切换与状态切换。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.5</strong><span class="version-log-copy">详细时段新增撤回与重做；PL / KP 模组偏好字段调整；评分说明统一使用“同桌组合”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.4</strong><span class="version-log-copy">详细时段修复“清空本周”确认层级；调整时间行高度与 08:00–16:00 时段底色；新增 1 小时 / 30 分钟安排切换和空格切换设置状态；展示图改为竖向，并显示 30 分钟数据。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.3</strong><span class="version-log-copy">个人偏好“常用跑团时间”新增详细时段入口；新增按周、按小时设置的时段页面，支持拖动设置“可约 / 优先 / 清除”、周切换、快捷填充、展示图预览与 PNG 导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.2</strong><span class="version-log-copy">全站界面说明文案按功能、状态、范围、操作结果和风险信息重新检查；个人偏好、设置、备份提示、导出说明、历史版本记录及动态提示中的主观评价性表述改为客观描述。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.1</strong><span class="version-log-copy">个人偏好页说明文案改为字段内容与填写用途描述。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.10.0</strong><span class="version-log-copy">个人偏好页结构调整：常用信息按阅读顺序重排；PL / KP 双栏采用“模组偏好—游玩 / 带团方式—内容接受度—协作与补充—模组意向”结构；调整分隔、偏好刻度、边界卡片和移动端排列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.9</strong><span class="version-log-copy">个人偏好新增模组长度与 NPC 死亡态度；移除模组偏好中的“当代”“都市”“追逐”；PL 侧新增与 KP 侧同结构的内容接受度，并同步保存、搜索与图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.8</strong><span class="version-log-copy">PL 评分与模组评分合并到“评分设置”；调整个人统计排名表与趋势表的表头、数字、列宽和移动端对齐。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.7</strong><span class="version-log-copy">新增“樱雾”“鸢尾”主题，并将六套主题同步到主页面与模组高级工具。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.6</strong><span class="version-log-copy">中文语言显示名称统一为“简体中文”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.5</strong><span class="version-log-copy">校正国际化语言与地区语义：繁體中文改用通用 zh-Hant 规划，修正中文地区回退、区域格式化和语言状态显示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.4</strong><span class="version-log-copy">统一全站版本记录的内容结构、信息层级、字号与缩进，历史版本全部采用同一列表格式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.3</strong><span class="version-log-copy">周期排期改为单页工作台，排期记录并入同一窗口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.2</strong><span class="version-log-copy">全站说明文案改为功能、状态与操作说明。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.1</strong><span class="version-log-copy">一键按周期排期采用三步式界面，同一计划可批量添加多个日期；排期记录支持继续、再次、撤回和删除。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.9.0</strong><span class="version-log-copy">调整全站视觉层级：统一按钮风险/主次层级与选中状态；周历卡片调整信息顺序并增加容量、拖拽与撤销反馈；手机新增 3 日视图；“一键按周期排期”改为 3 步式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.7</strong><span class="version-log-copy">新增一键按周期排期与排期记录。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.6</strong><span class="version-log-copy">个人偏好中的想跑模组 / 可带模组支持连续选择已有模组，并保留“＋ 添加”新建入口。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.5</strong><span class="version-log-copy">历史兼容字段保留在存档中，并从日常页面、搜索、统计和导出中隐藏。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.4</strong><span class="version-log-copy">个人偏好中“绝对不行 / 协商调整 / 可以接受 / 完全没问题”分别使用红、黄、浅绿、绿底提示，选择后即时更新。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.3</strong><span class="version-log-copy">调整模态弹层与关闭逻辑：修复嵌套弹窗残留 inert 导致按钮无法点击的问题；外部备份、跑团整理与设备迁移移除重复关闭按钮。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.2</strong><span class="version-log-copy">高级模组工具增加跨页陈旧状态校验，主页面数据变化后禁止旧 iframe 覆盖新数据等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.1</strong><span class="version-log-copy">新增近似模组名识别、回收站恢复冲突处理、按修改量判断的备份新鲜度提醒、完整与加密备份生成后自校验、导入前结果模拟、严重重复编号保护模式，以及可创建恢复点后一键修复轻微关联异常等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.8.0</strong><span class="version-log-copy">统一模态弹层与可交互通知的层级/焦点/关闭规则；开团计划归档增加操作前恢复点、幂等操作凭据、整笔提交与落盘校验；手机返回键、浏览器后退与 Esc 统一走最上层窗口关闭流程并继续尊重未保存提醒等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.9</strong><span class="version-log-copy">开团计划编辑器底部操作调整：“完成”改为“保存”并位于右侧；“归档”移至左侧与“删除计划”并列，保留归档确认与重复归档检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.8</strong><span class="version-log-copy">修复外部自动备份提示与模态弹窗同时出现时关闭按钮无法点击的问题，并调整提示条与按钮的触控事件。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.7</strong><span class="version-log-copy">个人偏好页“参考来源”说明补充 @江鸿、@削面，来源描述调整为“匿名或是不知名作者的偏好表格”；同步更新国际化中文源词条，页面初始显示和重新渲染使用相同文案，数据结构保持不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.6</strong><span class="version-log-copy">跑团记录新建区新增已有模组实时匹配下拉：输入模组名称时按名称相关性提示现有模组，支持中文、英文与拼音首字母匹配，并显示作者/地点/时代摘要及已有桌数等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.5</strong><span class="version-log-copy">全站折叠状态统一：所有可展开/收起内容默认收起；用户手动展开或收起后会在本机持续记住，刷新和重新打开网页仍保持，直到再次手动切换等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.4</strong><span class="version-log-copy">调整移动端交互：KP 侧“团内互动偏好”改为与内容接受度、组桌与桌务、售后与场外交流、协作与处理相同的折叠结构。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.3</strong><span class="version-log-copy">个人偏好界面微调：将 KP 侧“售后与场外交流”改为与“内容接受度”“组桌与桌务”“协作与处理”一致的折叠区；默认收起，展开后保留原有三项选择与补充备注，数据结构、保存读取和导出内容不变。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.2</strong><span class="version-log-copy">PL 同名改为实时提示并在明确确认后允许继续创建；模组同名继续阻止重复建档等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.1</strong><span class="version-log-copy">完成全站中文翻译键迁移：建立主页面与模组高级工具共用的中文源词条目录，覆盖静态与动态文本、参数化提示、placeholder、title、aria-label、alt 与 CSS 伪元素文案等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.7.0</strong><span class="version-log-copy">建立完整国际化底层：新增语言注册表、翻译键与回退链、DOM 动态翻译绑定、日期/时间/数字/相对时间格式化接口、导出语言接口、语言持久化与跨设备备份兼容等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.42</strong><span class="version-log-copy">手机浏览器外备份改为下载目录模式：移动端按设定频率尝试下载完整 JSON 到浏览器默认下载位置；若浏览器拦截自动下载，提示中提供“重新下载”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.41</strong><span class="version-log-copy">个人偏好重新分区：KP 偏好分为带团方式、团内互动、内容接受度、组桌与桌务、售后与场外交流、协作与处理；头像、具体聊天渠道、群聊/私聊字段未纳入该页，异常处理内容放入折叠区。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.40</strong><span class="version-log-copy">个人偏好导出编排支持向下持续延伸：半栏模块可通过右侧预览直接拖入左列或右列并继续向下追加，预览底部新增“继续向下排列”投放区与拖动自动滚屏等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.39</strong><span class="version-log-copy">调整手机端导出预览拖动：增大横向拖动条尺寸，并在预览层关闭系统长按菜单、文本选择和原生图片拖拽。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.38</strong><span class="version-log-copy">修复手机端个人偏好导出预览拖动时被 UC、夸克等浏览器原生长按菜单打断的问题：拖动抓手关闭系统长按、文本选择和原生拖拽手势，触摸开始即接管排序，扩大手机抓手点击区域等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.37</strong><span class="version-log-copy">“查看备份”流程调整：桌面端直接读取已授权保存位置中的 JSON 备份文件并在网页内列出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.36</strong><span class="version-log-copy">修复手机浏览器无法选择固定备份文件夹时的体验：支持文件夹/固定文件的浏览器继续直接自动写入等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.35</strong><span class="version-log-copy">浏览器外自动备份支持配置频率，默认每 30 分钟；每次成功写入后显示备份提示，并核验“最新备份”文件的存在、大小、更新时间与完整性。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.34</strong><span class="version-log-copy">个人偏好导出预览支持拖动模块排序；左侧上下按钮保留键盘与旧浏览器操作。半栏布局按两列剩余高度自动放置模块。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.33</strong><span class="version-log-copy">调整个人偏好导出的 PL / KP 偏好尺：五档轨道居中并缩短行高，保留项目名、当前值和两端语义。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.32</strong><span class="version-log-copy">修复 GitHub Pages 更新后浏览器继续运行旧程序的更新链路：启动和手动检查会绕过缓存读取服务器 Service Worker 版本，检测到页面版本落后时提示刷新程序文件。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.31</strong><span class="version-log-copy">修复个人偏好导出中心勾选区域未进入预览或导出图的问题：勾选区域会保留，区域内部空白字段自动省略；空的想跑模组 / 可带模组显示空状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.30</strong><span class="version-log-copy">个人偏好导出中心改为可视化编排：修复调整顺序时弹层自动关闭；移除三套导出样式、姓名与区域说明选项，导出宽度统一为 1080 px。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.29</strong><span class="version-log-copy">“数据与备份”的信息结构调整：浏览器外自动备份移动到“恢复与迁移”分组内，位于完整备份之后、设备迁移之前；“日常保护”包含自动保存、恢复点、冗余副本与存储保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.28</strong><span class="version-log-copy">个人偏好导出改为统一入口，可选择导出区域、组合、顺序、快捷预设及完整 / 紧凑 / 分享三种样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.27</strong><span class="version-log-copy">个人偏好前半部分调整为“常用信息”布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.26</strong><span class="version-log-copy">调整“设置”信息层级：左侧“数据与备份”移动到“外观”上方；数据与备份页将“恢复与迁移”移动到“日常保护”之前，并默认展开“恢复与迁移”，其他分组默认收起。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.25</strong><span class="version-log-copy">每次成功保存会额外写入 IndexedDB 独立冗余副本，用于浏览器存储异常后的恢复。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.24</strong><span class="version-log-copy">自动恢复点新增创建间隔与保留数量设置，并增加浏览器持久化存储状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.23</strong><span class="version-log-copy">“想跑模组 / 可带模组”支持单独导出图片和模组备注；导出内容包含对应备注。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.22</strong><span class="version-log-copy">弹窗右上角关闭按钮与底部操作区采用统一尺寸、圆角和间距；“展开全部 / 收起全部”改为双态按钮；图片导出按钮统一图标、尺寸与下拉箭头。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.21</strong><span class="version-log-copy">“导出图片”按钮采用统一样式；跑团整理弹窗中 PL / KP 视图使用相同的操作顺序与对齐规则。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.20</strong><span class="version-log-copy">个人统计新增“导出图片”：按当前统计范围与切换状态生成长图，汇总身份构成、核心数字、跑团关系、模组排名、趋势、PL 参团分布与历史记录填写情况；隐私模式开启时，导出图中的人物名称会自动匿名。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.19</strong><span class="version-log-copy">统一全站字号、间距、圆角、按钮层级、输入与搜索组件、空状态和编辑态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.18</strong><span class="version-log-copy">修复电脑、平板与手机端响应式布局：开团计划编辑抽屉按自身宽度调整，PL / PC / HO、人物搜索、模组选择和底部操作区取消横向滚动。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.17</strong><span class="version-log-copy">开团计划增加“我做 KP / 我做 PL”身份配色：计划列表、周历事件、月历事件与月历概览使用 KP 暖棕 / PL 蓝绿色，并同时显示文字身份标签。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.16</strong><span class="version-log-copy">修复 UC、夸克等部分手机浏览器中页面能显示但按钮全部无响应的问题：为拼音排序、CSS.escape、Array.at、Object.fromEntries、Promise.allSettled 等增加兼容兜底等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.15</strong><span class="version-log-copy">调整全站搜索：模组档案按“模组名 → 基础资料 → 详细备注”排序；开团计划、跑团记录、全局搜索与设置搜索使用各自的相关性排序规则。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.14</strong><span class="version-log-copy">修正 PL 档案搜索相关性：输入完整 PL 姓名或完整拼音首字母时，只显示目标档案；部分关键词搜索时，优先显示姓名、联系方式和备注等本人资料命中，再显示模组等关联跑团信息等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.13</strong><span class="version-log-copy">重构跑团记录单桌交互：展开 / 收起改为整行可点击区域，编辑、所属模组、计划转换和删除等操作统一收到底部；“更改模组”统一改为“更换此桌所属模组”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.11</strong><span class="version-log-copy">修正个人统计的隐私遮罩范围：隐私模式只对人物姓名等身份信息使用雾面遮罩，桌次、人数、百分比、趋势图、模组名和统计控件保持正常显示与可操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.10</strong><span class="version-log-copy">个人统计页面移除顶部“统计口径”说明条，保留时间范围筛选、统计模块说明和隐私雾面遮罩。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.9</strong><span class="version-log-copy">补全隐私模式对个人统计页面的保护：总览数字、人物关系、模组排名、趋势图和资料记录情况均使用统一雾面遮罩；切换隐私模式时同步重绘统计，确保人物匿名状态与遮罩开关保持一致。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.8</strong><span class="version-log-copy">校正个人统计中的可选字段语义：将“历史记录完整度 / 缺失项”调整为“历史资料记录情况 / 字段记录率”，明确 Log、实际时长和 PC 名均为按需填写等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.7</strong><span class="version-log-copy">主导航与对应页面标题中的“偏好 / 统计”调整为“个人偏好”“个人统计”。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.6</strong><span class="version-log-copy">新增“我的跑团统计”页面：统计总桌次与 KP / PL 身份构成、最常同桌的人、我带得最多的 PL、最常带我的 KP、模组带团/参团排名、月/年趋势、PL 复跑分布与 Log/时长/HO/PC 名完整度等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.5</strong><span class="version-log-copy">调整跑团记录工具栏：将“全部展开 / 全部收起”从页面标题操作区移动到下方搜索框右侧；桌面端搜索与批量操作同排，手机端使用窄屏布局并允许结果计数换行。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.4</strong><span class="version-log-copy">PL 档案的“全部折叠 / 全部展开”移到搜索框右侧；调整桌面、平板和窄屏下的搜索、批量操作、排序与视图切换布局。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.3</strong><span class="version-log-copy">重整桌面端主导航：将“PL 档案 + 模组档案”“开团计划 + 跑团记录”分别分组，“跑团偏好”单独成组，同时放大字号和点击范围，并补做中等宽度下的排版避让。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.2</strong><span class="version-log-copy">完成电脑与手机端全站按钮和响应式审计：修复右侧栏“到顶 / 到底”、PL 编辑器内部滚动，以及跑团偏好“导出图片”等。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.1</strong><span class="version-log-copy">PL 档案卡片新增“全部折叠 / 全部展开”批量操作；搜索时仅作用于当前匹配结果，折叠状态继续本地记忆，简表与黑名单视图会自动隐藏该操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.6.0</strong><span class="version-log-copy">修复手机端响应式布局：PL 卡片头部改为身份行与独立评分行，并调整姓名、RP 长度、KP / PL 度与评分区的窄屏排列。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.9</strong><span class="version-log-copy">统一搜索体验：开团计划的 PL 添加整合为一个可输入、可展开、点选即添加的组合框；PL、模组、开团计划、跑团记录、全局搜索、设置搜索和计划内模组搜索均支持拼音首字母匹配。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.8</strong><span class="version-log-copy">开团计划的“添加已有 PL”移动到已添加列表上方，支持 PL 名称搜索，下拉名单按 A～Z（拼音 / 英文）排序。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.7</strong><span class="version-log-copy">调整开团计划编辑抽屉的分区卡片、标题与说明间距、状态标签、HO 选择和底部操作区样式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.6</strong><span class="version-log-copy">开团计划编辑抽屉增大“基本信息”“KP / KPC”“PL / PC”等分区标题字号，并加入主题色短划线。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.5</strong><span class="version-log-copy">开团计划人物下拉框统一圆角与主题配色，替换浏览器原生箭头，并增加悬停、聚焦状态。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.4</strong><span class="version-log-copy">调整主导航顺序；PL 评分打开后可直接操作，未操作状态为“无”；开团计划增加拖放入口与日历落点提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.3</strong><span class="version-log-copy">跑团整理与跑团偏好图片导出使用统一卡片结构、标题层级、留白与配色；移除番茄/水果式装饰图形。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.2</strong><span class="version-log-copy">统一 PL 参团与 KP 带团的整理卡片、折叠详情、信息层级与响应式网格；PL 的 HO 分组默认显示概览，详情可展开。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5.1</strong><span class="version-log-copy">跑团偏好补充偏好表格参考说明；所有标注“可多选”的分组增加“全选 / 清空”快捷操作。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.5</strong><span class="version-log-copy">隐私遮罩现在会完整覆盖 PL 卡片评分区域，包括“综合评分”、分数与“待评分”状态；简表和黑名单历史评分同步保护。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.15</strong><span class="version-log-copy">常用平台新增 FVTT、枭熊、DND Beyond、Roll20、回声岛；问题反馈联系方式调整为企鹅。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.14</strong><span class="version-log-copy">跑团偏好双栏中想跑团 / 可带团固定在各栏末尾；分组标题使用统一层级；导出图片显示偏好刻度左右尺度与五段位置。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.13</strong><span class="version-log-copy">“自我介绍”调整为“跑团偏好”；PL / KP 模组偏好说明同步调整；拖动滑杆改为五段点击刻度，并保留现代、当代等时代选项。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.12</strong><span class="version-log-copy">自我介绍改为 PL / KP 双栏独立偏好；两侧模组口味分别记录；调整多选选中态，并新增双栏图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.11</strong><span class="version-log-copy">新增“自我介绍”：包含通用模组偏好、PL / KP 侧习惯与协作边界；“想跑团 / 可带团”支持关联或自动新建模组档案。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.10</strong><span class="version-log-copy">新增 KP 已带 PL 去重人数统计，并统一跑团整理、模组编辑、计划编辑等弹窗的关闭按钮视觉。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.9</strong><span class="version-log-copy">KP 带团详情支持折叠展开，并新增 KP 宽幅 / 长图图片导出。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.8</strong><span class="version-log-copy">PL / KP 跑团整理使用响应式卡片布局；修复中小屏内容重叠与横向 HO 看板问题。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.7</strong><span class="version-log-copy">新增“我 · 跑团整理”：PL 按 HO 整理参团经历，KP 按模组汇总带团记录、计划与 PL 人次。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.6</strong><span class="version-log-copy">修复按钮、切换项等编辑操作未及时触发可保存状态；补充问题反馈联系方式。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.5</strong><span class="version-log-copy">修复设置页版本区适配；新增每次启动自动检查。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.4</strong><span class="version-log-copy">新增 PL 黑名单、状态历史与排团风险提示。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.3</strong><span class="version-log-copy">新增跑团记录退回计划、同名模组合并与关联治理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.2</strong><span class="version-log-copy">模组使用唯一编号关联；支持同一时段排序和拖出日历取消安排。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4.1</strong><span class="version-log-copy">统一界面文案与术语。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.4</strong><span class="version-log-copy">多标签页并发保存加入冲突处理；数据结构保持 v18 兼容。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.3</strong><span class="version-log-copy">新增保存冲突处理、恢复点、回收站与大档案处理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.2</strong><span class="version-log-copy">调整移动端计划、跑团记录、搜索与数据管理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.1</strong><span class="version-log-copy">新增分享模式、草稿保存、撤销与离线缓存相关处理。</span></div><div class="version-log-item"><strong class="version-log-version">v8.1.0</strong><span class="version-log-copy">新增自检、草稿恢复、计划撤销、周历密度与版本状态。</span></div></div></details>
 </section></div></details><details class="data-safety-group advanced" data-collapse-key="settings:data:advanced"><summary><span class="data-safety-group-title"><strong>高级诊断</strong><small>完整性检查、界面自检和说明</small></span><span class="data-safety-group-chevron">›</span></summary><div class="data-safety-group-body"><section class="friendly-data-block">
 <div class="friendly-data-head"><div><strong>档案完整性</strong><span>检查重复名称、失效关联和日程冲突。严重编号冲突会自动进入保护模式。</span></div><div class="friendly-head-actions"><button class="btn small" id="runDataIntegrityBtn" type="button">立即检查</button><button class="btn small primary-soft" id="safeAutoRepairBtn" type="button">安全修复轻微问题</button></div></div>
 <div class="data-integrity-results" hidden="" id="dataIntegrityResults"></div>
@@ -6629,7 +6703,7 @@ const DEFAULT_RECOVERY_MAX_SNAPSHOTS = 12, DEFAULT_RECOVERY_AUTO_HOURS = 12, DEF
 const EXTERNAL_BACKUP_ENABLED_KEY = "tomato_pl_external_backup_enabled_v1", EXTERNAL_BACKUP_TIME_KEY = "tomato_pl_external_backup_time_v1", EXTERNAL_BACKUP_INTERVAL_KEY = "tomato_pl_external_backup_interval_v1", EXTERNAL_BACKUP_LAST_KEY = "tomato_pl_external_backup_last_v1", EXTERNAL_BACKUP_META_KEY = "tomato_pl_external_backup_meta_v1", EXTERNAL_BACKUP_LOCK_KEY = "tomato_pl_external_backup_lock_v1", EXTERNAL_BACKUP_FALLBACK_KEY = "tomato_pl_external_backup_fallback_v1", EXTERNAL_BACKUP_PENDING_KEY = "tomato_pl_external_backup_pending_v1", EXTERNAL_BACKUP_MOBILE_DELIVERY_KEY = "tomato_pl_external_backup_mobile_delivery_v1";
 const EXTERNAL_BACKUP_DB_NAME = "tomato_pl_external_backup_v1", EXTERNAL_BACKUP_DB_VERSION = 1, EXTERNAL_BACKUP_STORE_NAME = "handles";
 const APP_NAME = "PL收集梦想生活";
-const APP_UI_VERSION = "8.1.10.33";
+const APP_UI_VERSION = "8.1.10.35";
 const I18N_DEFAULT_LOCALE = "zh-CN";
 const I18N_LOCALE_META = {
     "zh-CN": { label: "简体中文", htmlLang: "zh-CN", ready: true },
@@ -6980,7 +7054,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.1ccffbd56a1e": "KP侧",
     "legacy.exact.1cd66254c7ef": "可自动建立空白 PC 记录",
     "legacy.exact.1cf0aba4aa15": "⌕ 搜索",
-    "legacy.exact.1cf26244fcbe": "复制失败，请进入高级工具查看",
+    "legacy.exact.1cf26244fcbe": "复制失败，请打开模组“更多”查看",
     "legacy.exact.1d3e42630cd4": "繁體中文",
     "legacy.exact.1d42699b27d7": "每个 HO 对应本桌具体 PC。",
     "legacy.exact.1d6f85fbfb38": "关键场景也能抓住角色立场；反应能由经历、关系或目标解释",
@@ -7499,7 +7573,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.4e7da6f84872": "暂无已归档记录",
     "legacy.exact.4e8d1dd25e53": "6 项快速指引",
     "legacy.exact.4ebdc71b394b": "说明（可选）",
-    "legacy.exact.4ecdfa68be30": "模组高级工具",
+    "legacy.exact.4ecdfa68be30": "模组工具",
     "legacy.exact.4ed667c93e8e": "可搜索已有 PL 并直接关联；也可以输入外部 KP 名称。",
     "legacy.exact.4f0923973542": "不想",
     "legacy.exact.4f11e8ac536f": "我",
@@ -7732,7 +7806,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.62a49eea356b": "强 KP 侧",
     "legacy.exact.62b00a7d814a": "正在保存…",
     "legacy.exact.62d80d995488": "HO 整理",
-    "legacy.exact.62f63cee5540": "打开高级工具",
+    "legacy.exact.62f63cee5540": "打开模组工具",
     "legacy.exact.62fd84edb931": "导出便携 HTML（含数据）",
     "legacy.exact.630bd29c8394": "找到已有模组，可直接选择关联。",
     "legacy.exact.6329c2c9211f": "流程安排、信息推进与高潮收束",
@@ -8589,7 +8663,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.b801ae5cc4f2": "＋ 新增一桌",
     "legacy.exact.b822dea16d97": "KP 带团整理",
     "legacy.exact.b829a6686362": "尚未记录完整备份",
-    "legacy.exact.b82e3291ae0d": "高级工具",
+    "legacy.exact.b82e3291ae0d": "模组工具",
     "legacy.exact.b83ccf866d44": "偏跟随",
     "legacy.exact.b84c6d260611": "角色反应长期稳定且有发展轨迹；每次明显变化都能由已发生经历解释",
     "legacy.exact.b85e83844959": "中午",
@@ -8617,7 +8691,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.bab0bbdef58c": "重做“查看备份”流程：桌面端不再重新打开只能选文件夹、看不到文件的文件夹选择器，而是直接读取已授权保存位置中的实际 JSON 备份文件并在网页内列出，可查看文件名、大小、修改时间、完整性状态，并支持查看 JSON 内容或下载副本；更改保存位置仍保留为独立操作。",
     "legacy.exact.baba88236164": "请先输入或选择要添加的 PL",
     "legacy.exact.baea2c71e4f9": "当前筛选无可导出的 HO 记录",
-    "legacy.exact.baf3f241d718": "主模组页显示评分结果；评分体系在“高级工具”中维护。",
+    "legacy.exact.baf3f241d718": "模组评分在编辑器中维护；评分体系在“设置 → 评分”中管理。",
     "legacy.exact.bafa242a5cf8": "已暂停",
     "legacy.exact.bb0afece2067": "免责与注意事项",
     "legacy.exact.bb1ccb1e5cab": "设置删除模组和跑团记录时是否确认。",
@@ -9039,7 +9113,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.df9c394bca55": "跳过",
     "legacy.exact.dfdad1309853": "恢复本地数据？",
     "legacy.exact.dfdfc4f5a395": "应急恢复点写入失败",
-    "legacy.exact.dfe33f88aea5": "编辑模组资料；评分体系与批量工具位于“高级工具”。",
+    "legacy.exact.dfe33f88aea5": "编辑模组资料；评分体系位于“设置 → 评分”，批量管理位于“更多”。",
     "legacy.exact.dfe726cf2adc": "新建计划",
     "legacy.exact.e044da38ab7d": "PL 档案有未保存修改，确定放弃吗？",
     "legacy.exact.e078650797ed": "简要视图",
@@ -9305,7 +9379,7 @@ const I18N_MIGRATED_ZH_CN = Object.freeze({
     "legacy.exact.f8403551e5f1": "中等长图",
     "legacy.exact.f85ba868573e": "仍然设为 KP",
     "legacy.exact.f8725e47f54e": "需要调整评分模板时再展开。",
-    "legacy.exact.f8756c572f6b": "管理模组资料与评分；跑团次数及 HO 信息自动读取跑团记录。评分体系、招募与 Excel 工具位于“高级工具”。",
+    "legacy.exact.f8756c572f6b": "管理模组资料、招募与评分；跑团次数及 HO 信息自动读取跑团记录。评分体系位于“设置 → 评分”，Excel 与批量管理位于“更多”。",
     "legacy.exact.f882c343d7b1": "其他地域",
     "legacy.exact.f897722cfd46": "压",
     "legacy.exact.f8993c9d7295": "请打开该桌次确认日期",
@@ -10649,6 +10723,9 @@ let moduleNativeLocation = "";
 let moduleNativeSortMode = "updated";
 let nativeModuleEditingId = "";
 let nativeModuleDraft = null;
+let moduleBatchMode = false;
+let moduleBatchSelectedIds = new Set();
+let moduleBatchVisibleIds = [];
 let secureBackupMode = "";
 let secureBackupPendingPackage = null;
 let deferredInstallPrompt = null;
@@ -13030,7 +13107,7 @@ const els = {
     profilesView: document.getElementById("profilesView"), selfIntroView: document.getElementById("selfIntroView"), statsView: document.getElementById("statsView"), modulesView: document.getElementById("modulesView"), plansView: document.getElementById("plansView"), recordsView: document.getElementById("recordsView"),
     moduleArchiveFrame: document.getElementById("moduleArchiveFrame"),
     compactAppBar: document.getElementById("compactAppBar"), compactSaveStatus: document.getElementById("compactSaveStatus"),
-    moduleNativeStats: document.getElementById("moduleNativeStats"), moduleNativeSearch: document.getElementById("moduleNativeSearch"), moduleNativeHoFilter: document.getElementById("moduleNativeHoFilter"), moduleNativeLocationFilter: document.getElementById("moduleNativeLocationFilter"), moduleNativeSort: document.getElementById("moduleNativeSort"), moduleNativeGrid: document.getElementById("moduleNativeGrid"), newNativeModule: document.getElementById("newNativeModuleBtn"), openModuleAdvanced: document.getElementById("openModuleAdvancedBtn"), moduleCardsLayout: document.getElementById("moduleCardsLayoutBtn"), moduleCompactLayout: document.getElementById("moduleCompactLayoutBtn"), nativeModuleEditorBackdrop: document.getElementById("nativeModuleEditorBackdrop"), nativeModuleEditorTitle: document.getElementById("nativeModuleEditorTitle"), nativeModuleEditorContent: document.getElementById("nativeModuleEditorContent"), closeNativeModuleEditor: document.getElementById("closeNativeModuleEditorBtn"), cancelNativeModuleEditor: document.getElementById("cancelNativeModuleEditorBtn"), saveNativeModuleEditor: document.getElementById("saveNativeModuleEditorBtn"), moduleAdvancedBackdrop: document.getElementById("moduleAdvancedBackdrop"), closeModuleAdvanced: document.getElementById("closeModuleAdvancedBtn"),
+    moduleNativeStats: document.getElementById("moduleNativeStats"), moduleNativeSearch: document.getElementById("moduleNativeSearch"), moduleNativeHoFilter: document.getElementById("moduleNativeHoFilter"), moduleNativeLocationFilter: document.getElementById("moduleNativeLocationFilter"), moduleNativeSort: document.getElementById("moduleNativeSort"), moduleNativeGrid: document.getElementById("moduleNativeGrid"), newNativeModule: document.getElementById("newNativeModuleBtn"), openModuleAdvanced: document.getElementById("openModuleAdvancedBtn"), moduleToolbarMore: document.getElementById("moduleToolbarMore"), moduleExcelInput: document.getElementById("moduleExcelInput"), moduleBatchBar: document.getElementById("moduleBatchBar"), moduleBatchCount: document.getElementById("moduleBatchCount"), moduleBatchSelectVisible: document.getElementById("moduleBatchSelectVisibleBtn"), moduleBatchClear: document.getElementById("moduleBatchClearBtn"), moduleBatchDelete: document.getElementById("moduleBatchDeleteBtn"), moduleBatchDone: document.getElementById("moduleBatchDoneBtn"), moduleCardsLayout: document.getElementById("moduleCardsLayoutBtn"), moduleCompactLayout: document.getElementById("moduleCompactLayoutBtn"), nativeModuleEditorBackdrop: document.getElementById("nativeModuleEditorBackdrop"), nativeModuleEditorTitle: document.getElementById("nativeModuleEditorTitle"), nativeModuleEditorContent: document.getElementById("nativeModuleEditorContent"), closeNativeModuleEditor: document.getElementById("closeNativeModuleEditorBtn"), cancelNativeModuleEditor: document.getElementById("cancelNativeModuleEditorBtn"), saveNativeModuleEditor: document.getElementById("saveNativeModuleEditorBtn"), moduleAdvancedBackdrop: document.getElementById("moduleAdvancedBackdrop"), closeModuleAdvanced: document.getElementById("closeModuleAdvancedBtn"),
     profilesViewBtn: document.getElementById("profilesViewBtn"), selfIntroViewBtn: document.getElementById("selfIntroViewBtn"), statsViewBtn: document.getElementById("statsViewBtn"), modulesViewBtn: document.getElementById("modulesViewBtn"), plansViewBtn: document.getElementById("plansViewBtn"), recordsViewBtn: document.getElementById("recordsViewBtn"),
     selfIntroGrid: document.getElementById("selfIntroGrid"), selfIntroSaveState: document.getElementById("selfIntroSaveState"), selfIntroExportCenter: document.getElementById("selfIntroExportCenter"), selfIntroExport: document.getElementById("selfIntroExportBtn"), selfIntroExportPanel: document.getElementById("selfIntroExportPanel"), selfIntroExportPanelClose: document.getElementById("selfIntroExportPanelClose"), selfIntroExportScopes: document.getElementById("selfIntroExportScopeList"), selfIntroExportSummary: document.getElementById("selfIntroExportSummary"), selfIntroExportPreview: document.getElementById("selfIntroExportPreviewStage"), selfIntroExportCompact: document.getElementById("selfIntroExportCompactBtn"), selfIntroExportReset: document.getElementById("selfIntroExportResetBtn"), selfIntroExportNow: document.getElementById("selfIntroExportNowBtn"), selfIntroSave: document.getElementById("selfIntroSaveBtn"),
     statsContent: document.getElementById("statsContent"), statsExport: document.getElementById("statsExportBtn"), statsRange: document.getElementById("statsRangeSelect"), statsCustomRange: document.getElementById("statsCustomRange"), statsStartDate: document.getElementById("statsStartDate"), statsEndDate: document.getElementById("statsEndDate"),
@@ -13049,7 +13126,7 @@ const els = {
     quickRunModule: document.getElementById("quickRunModuleInput"), quickRunName: document.getElementById("quickRunNameInput"), quickRunKp: document.getElementById("quickRunKpInput"), quickRunStart: document.getElementById("quickRunStartInput"), quickRunEnd: document.getElementById("quickRunEndInput"), quickRunLog: document.getElementById("quickRunLogInput"), createLinkedRun: document.getElementById("createLinkedRunBtn"),
     editRuns: document.getElementById("editRuns"),
     save: document.getElementById("saveBtn"), cancel: document.getElementById("cancelBtn"), closeProfile: document.getElementById("closeProfileBtn"), modalDelete: document.getElementById("modalDeleteBtn"),
-    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupMobileDeliveryRow: document.getElementById("externalBackupMobileDeliveryRow"), externalBackupMobileDelivery: document.getElementById("externalBackupMobileDeliverySelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), viewExternalBackupFiles: document.getElementById("viewExternalBackupFilesBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), externalBackupBrowserBackdrop: document.getElementById("externalBackupBrowserBackdrop"), externalBackupBrowserLocation: document.getElementById("externalBackupBrowserLocation"), externalBackupBrowserSummary: document.getElementById("externalBackupBrowserSummary"), externalBackupFileList: document.getElementById("externalBackupFileList"), closeExternalBackupBrowser: document.getElementById("closeExternalBackupBrowserBtn"), refreshExternalBackupBrowser: document.getElementById("refreshExternalBackupBrowserBtn"), changeExternalBackupLocationFromBrowser: document.getElementById("changeExternalBackupLocationFromBrowserBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), collapseDefaultSetting: document.getElementById("collapseDefaultSetting"), interfaceLanguageSetting: document.getElementById("interfaceLanguageSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
+    closeSettings: document.getElementById("closeSettingsBtn"), cancelSettings: document.getElementById("cancelSettingsBtn"), saveSettings: document.getElementById("saveSettingsBtn"), themePicker: document.getElementById("themePicker"), fieldList: document.getElementById("fieldList"), weightTotal: document.getElementById("weightTotal"), settingsWarning: document.getElementById("settingsWarning"), addField: document.getElementById("addFieldBtn"), equalize: document.getElementById("equalizeBtn"), exportBtn: document.getElementById("exportBtn"), exportEncrypted: document.getElementById("exportEncryptedBtn"), exportPortable: document.getElementById("exportPortableBtn"), importBtn: document.getElementById("importBtn"), importEncrypted: document.getElementById("importEncryptedBtn"), importLegacyModule: document.getElementById("importLegacyModuleBtn"), importFile: document.getElementById("importFile"), encryptedImportFile: document.getElementById("encryptedImportFile"), legacyModuleImportFile: document.getElementById("legacyModuleImportFile"), dataSafetyOverallBadge: document.getElementById("dataSafetyOverallBadge"), localSaveHealthValue: document.getElementById("localSaveHealthValue"), localSaveHealthSub: document.getElementById("localSaveHealthSub"), dataScaleHealthValue: document.getElementById("dataScaleHealthValue"), dataScaleHealthSub: document.getElementById("dataScaleHealthSub"), recoveryHealthValue: document.getElementById("recoveryHealthValue"), recoveryHealthSub: document.getElementById("recoveryHealthSub"), primaryMirrorHealthValue: document.getElementById("primaryMirrorHealthValue"), primaryMirrorHealthSub: document.getElementById("primaryMirrorHealthSub"), storageModeHealthValue: document.getElementById("storageModeHealthValue"), storageModeHealthSub: document.getElementById("storageModeHealthSub"), exportHealthValue: document.getElementById("exportHealthValue"), exportHealthSub: document.getElementById("exportHealthSub"), dataIntegrityHealthValue: document.getElementById("dataIntegrityHealthValue"), dataIntegrityHealthSub: document.getElementById("dataIntegrityHealthSub"), upgradeGuardHealthValue: document.getElementById("upgradeGuardHealthValue"), upgradeGuardHealthSub: document.getElementById("upgradeGuardHealthSub"), pwaHealthValue: document.getElementById("pwaHealthValue"), pwaHealthSub: document.getElementById("pwaHealthSub"), inheritanceStatusNote: document.getElementById("inheritanceStatusNote"), storageContextNote: document.getElementById("storageContextNote"), backupReminderDays: document.getElementById("backupReminderDaysSelect"), recoveryInterval: document.getElementById("recoveryIntervalSelect"), recoveryKeep: document.getElementById("recoveryKeepSelect"), runStorageCheck: document.getElementById("runStorageCheckBtn"), createRecovery: document.getElementById("createRecoveryBtn"), restoreRecovery: document.getElementById("restoreRecoveryBtn"), requestPersistentStorage: document.getElementById("requestPersistentStorageBtn"), persistentHealthValue: document.getElementById("persistentHealthValue"), persistentHealthSub: document.getElementById("persistentHealthSub"), externalBackupHealthValue: document.getElementById("externalBackupHealthValue"), externalBackupHealthSub: document.getElementById("externalBackupHealthSub"), externalBackupSupportBadge: document.getElementById("externalBackupSupportBadge"), externalBackupEnabled: document.getElementById("externalBackupEnabledToggle"), externalBackupInterval: document.getElementById("externalBackupIntervalSelect"), externalBackupMobileDeliveryRow: document.getElementById("externalBackupMobileDeliveryRow"), externalBackupMobileDelivery: document.getElementById("externalBackupMobileDeliverySelect"), externalBackupLocationText: document.getElementById("externalBackupLocationText"), chooseExternalBackupFolder: document.getElementById("chooseExternalBackupFolderBtn"), viewExternalBackupFiles: document.getElementById("viewExternalBackupFilesBtn"), reauthorizeExternalBackup: document.getElementById("reauthorizeExternalBackupBtn"), externalBackupNow: document.getElementById("externalBackupNowBtn"), externalBackupStatusNote: document.getElementById("externalBackupStatusNote"), externalBackupNotice: document.getElementById("externalBackupNotice"), externalBackupNoticeTitle: document.getElementById("externalBackupNoticeTitle"), externalBackupNoticeText: document.getElementById("externalBackupNoticeText"), externalBackupVerify: document.getElementById("externalBackupVerifyBtn"), externalBackupNoticeClose: document.getElementById("externalBackupNoticeCloseBtn"), externalBackupBrowserBackdrop: document.getElementById("externalBackupBrowserBackdrop"), externalBackupBrowserLocation: document.getElementById("externalBackupBrowserLocation"), externalBackupBrowserSummary: document.getElementById("externalBackupBrowserSummary"), externalBackupFileList: document.getElementById("externalBackupFileList"), closeExternalBackupBrowser: document.getElementById("closeExternalBackupBrowserBtn"), refreshExternalBackupBrowser: document.getElementById("refreshExternalBackupBrowserBtn"), changeExternalBackupLocationFromBrowser: document.getElementById("changeExternalBackupLocationFromBrowserBtn"), installApp: document.getElementById("installAppBtn"), runDataIntegrity: document.getElementById("runDataIntegrityBtn"), dataIntegrityResults: document.getElementById("dataIntegrityResults"), relayUpgrade: document.getElementById("relayUpgradeBtn"), relayUpgradeFile: document.getElementById("relayUpgradeFile"), restoreUpgradeGuard: document.getElementById("restoreUpgradeGuardBtn"), plannerDefaultViewSetting: document.getElementById("plannerDefaultViewSetting"), plannerDensitySetting: document.getElementById("plannerDensitySetting"), recordDefaultModeSetting: document.getElementById("recordDefaultModeSetting"), collapseDefaultSetting: document.getElementById("collapseDefaultSetting"), interfaceLanguageSetting: document.getElementById("interfaceLanguageSetting"), moduleRatingSystemSummary: document.getElementById("moduleRatingSystemSummary"), moduleRatingDefaultSelect: document.getElementById("moduleRatingDefaultSelect"), moduleRatingSystemsList: document.getElementById("moduleRatingSystemsList"), addModuleRatingSystem: document.getElementById("addModuleRatingSystemBtn"), openModuleAdvancedSettings: document.getElementById("openModuleAdvancedSettingsBtn"), secureBackupBackdrop: document.getElementById("secureBackupBackdrop"), secureBackupTitle: document.getElementById("secureBackupTitle"), secureBackupSubtitle: document.getElementById("secureBackupSubtitle"), secureBackupPassword: document.getElementById("secureBackupPassword"), secureBackupPasswordConfirm: document.getElementById("secureBackupPasswordConfirm"), secureBackupConfirmRow: document.getElementById("secureBackupConfirmRow"), secureBackupHint: document.getElementById("secureBackupHint"), closeSecureBackup: document.getElementById("closeSecureBackupBtn"), cancelSecureBackup: document.getElementById("cancelSecureBackupBtn"), confirmSecureBackup: document.getElementById("confirmSecureBackupBtn"), toast: document.getElementById("toast"), scrollTop: document.getElementById("scrollTopBtn"), scrollBottom: document.getElementById("scrollBottomBtn"), privacyMask: document.getElementById("privacyMaskBtn"), profileScrollTop: document.getElementById("profileScrollTopBtn"), profileScrollBottom: document.getElementById("profileScrollBottomBtn")
 };
 /* ---------- 10. 通用工具：文本转义、读取字段、评分说明、加权总分等 ---------- */
 function escapeHTML(v = "") { return String(v).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[ch])); }
@@ -18024,7 +18101,8 @@ function applyPlannerMobileSectionUI() {
     document.querySelectorAll("[data-planner-mobile-section]").forEach(btn => { const active = btn.dataset.plannerMobileSection === section; btn.classList.toggle("active", active); btn.setAttribute("aria-pressed", active ? "true" : "false"); });
     const badge = document.getElementById("plannerMobileQueueCount");
     if (badge)
-        badge.textContent = String(runPlans.length);
+        badge.textContent = String(runPlans.filter(p => planStatusInfo(p).key === "unscheduled").length);
+    renderPlannerMobileQuickQueue();
 }
 function setPlannerMobileSection(section, { persist = true, scroll = true } = {}) {
     plannerMobileSection = section === "queue" ? "queue" : "calendar";
@@ -18246,6 +18324,38 @@ async function deletePeriodicBatchRecord(batchId){
     const before=clone(settings);settings.scheduleBatches=periodicBatches().filter(b=>b.id!==batchId);if(!saveState()){settings=before;appNotice("删除记录失败，原记录已保留。","未能删除");return false;}renderPeriodicScheduleRecords();renderPeriodicScheduleRecordButton();showToast("排期记录已删除");return true;
 }
 
+function plannerQuickCandidates() {
+    const rank = { unscheduled: 0, active: 1, upcoming: 1, overdue: 2 };
+    return runPlans.slice().sort((a, b) => {
+        const ar = rank[planStatusInfo(a).key] ?? 9, br = rank[planStatusInfo(b).key] ?? 9;
+        return ar - br || compareRunPlans(a, b);
+    });
+}
+function plannerNextQuickPlanId(currentId) {
+    const rows = plannerQuickCandidates();
+    if (rows.length < 2) return "";
+    const index = rows.findIndex(p => String(p.id) === String(currentId || ""));
+    return rows[(index >= 0 ? index + 1 : 0) % rows.length]?.id || "";
+}
+function renderPlannerMobileQuickQueue() {
+    const root = document.getElementById("plannerMobileQuickQueue");
+    if (!root) return;
+    const rows = plannerQuickCandidates(), pickedId = String(plannerPickedPlanId || "");
+    if (!rows.length) {
+        root.innerHTML = `<div class="planner-mobile-quick-empty">暂无计划。新建计划后可在这里直接选择并排期。</div>`;
+        return;
+    }
+    const picked = rows.find(p => String(p.id) === pickedId);
+    const visible = [];
+    if (picked) visible.push(picked);
+    rows.forEach(p => { if (visible.length < 3 && !visible.some(x => x.id === p.id)) visible.push(p); });
+    const buttons = visible.map(plan => {
+        const status = planStatusInfo(plan), active = String(plan.id) === pickedId;
+        const next = status.nextSlot ? formatPlanSlot(status.nextSlot) : status.key === "unscheduled" ? "尚未安排" : status.label;
+        return `<button type="button" class="planner-mobile-quick-plan ${active ? "active" : ""}" data-mobile-quick-plan="${escapeHTML(plan.id)}" aria-pressed="${active ? "true" : "false"}"><strong>${escapeHTML(plannerPlanLabel(plan))}</strong><small>${escapeHTML(next)}</small><span>${escapeHTML(active ? "已选" : status.label)}</span></button>`;
+    }).join("");
+    root.innerHTML = `<div class="planner-mobile-quick-head"><div class="planner-mobile-quick-copy"><strong>${picked ? "正在安排 · 可直接换计划" : "快速排期"}</strong><span>${picked ? "点另一条计划即可切换，日历位置保持不变" : "直接选计划，再点日历时段"}</span></div><button type="button" class="planner-mobile-quick-more" data-mobile-open-plan-queue>全部 ${rows.length}</button></div><div class="planner-mobile-quick-list count-${visible.length}">${buttons}</div>`;
+}
 function renderRunPlans() {
     ensurePlannerDateState();
     renderPlanList();
@@ -18268,7 +18378,7 @@ function renderPlanList() {
     els.planCount.textContent = q ? `${filtered.length} / ${runPlans.length} 个${visibleUnscheduled ? ` · ${visibleUnscheduled} 未排期` : ""}` : `${runPlans.length} 个${unscheduled ? ` · ${unscheduled} 未排期` : ""}`;
     const mobileCount = document.getElementById("plannerMobileQueueCount");
     if (mobileCount)
-        mobileCount.textContent = String(runPlans.length);
+        mobileCount.textContent = String(unscheduled);
     if (!filtered.length) {
         els.planBoard.innerHTML = `<div class="empty"><strong>${runPlans.length ? "无匹配结果" : "暂无开团计划"}</strong><span>${runPlans.length ? "请调整搜索关键词。" : "点击“＋ 新建开团计划”，建立后再安排时段。"}</span>${runPlans.length && q ? `<div class="empty-actions"><button type="button" class="btn small" data-empty-clear-search="planSearchInput">清除搜索</button></div>` : ""}</div>`;
         return;
@@ -18391,7 +18501,7 @@ function plannerWeekHTML() {
     end.setDate(start.getDate() + 6);
     const weekLabel = `${start.getMonth() + 1}月${start.getDate()}日 – ${end.getMonth() + 1}月${end.getDate()}日`;
     const picked = runPlans.find(p => p.id === plannerPickedPlanId);
-    const pickedHtml = picked ? `<div class="calendar-picked"><span><b>安排模式</b> · <strong>${escapeHTML(plannerPlanLabel(picked))}</strong><small>点击日历空时段可连续安排</small></span><div class="calendar-picked-actions"><button type="button" data-finish-plan-pick>结束安排</button></div></div>` : "";
+    const pickedHtml = picked ? `<div class="calendar-picked"><span><b>安排模式</b> · <strong>${escapeHTML(plannerPlanLabel(picked))}</strong><small>点击空时段连续安排；手机可直接切到下一计划</small></span><div class="calendar-picked-actions">${plannerNextQuickPlanId(picked.id) ? `<button class="mobile-only" type="button" data-pick-next-plan>下一计划</button>` : ""}<button type="button" data-finish-plan-pick>结束安排</button></div></div>` : "";
     const weekday = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
     const days = Array.from({ length: 7 }, (_, i) => {
         const iso = addLocalDays(weekStart, i), d = parseLocalISODate(iso);
@@ -18984,6 +19094,8 @@ function renderRunRecords(options = {}) {
     const sidebar = `<aside class="module-sidebar" aria-label="模组列表">
     ${visibleGroups.map(([name, records, , total]) => { const latest = records[records.length - 1]; const countText = q && records.length < total ? `${records.length}/${total}桌` : `${records.length}桌`; return `<button class="module-tab ${name === moduleName ? "active" : ""}" type="button" data-select-module="${escapeHTML(name)}"><span class="module-tab-name">${escapeHTML(name)}</span><span class="module-tab-meta"><span>${countText}</span><span>最近 ${escapeHTML((latest === null || latest === void 0 ? void 0 : latest.startDate) ? compactRecordDate(latest.startDate) : "未填日期")}</span></span></button>`; }).join("")}
   </aside>`;
+    const fullModuleList = (allGroups.find(([name]) => name === moduleName) || [null, list])[1] || list;
+    const nextRecordById = new Map(fullModuleList.map((record, index) => [String(record.id), fullModuleList[index + 1]?.id || ""]));
     const detail = `<section class="module-detail">
     <header class="module-detail-head">
       <div class="module-detail-title">
@@ -18996,9 +19108,9 @@ function renderRunRecords(options = {}) {
         <button class="btn small danger" type="button" data-delete-module="${escapeHTML(moduleName)}">删除全部记录</button>
       </div>
     </header>
-    <div class="table-list">${list.map((r, index) => recordTableHTML(r, index)).join("")}</div>
+    <div class="table-list">${list.map((r, index) => recordTableHTML(r, index, nextRecordById.get(String(r.id)) || "")).join("")}</div>
   </section>`;
-    const mobileModuleBar = `<div class="records-mobile-module-bar"><button type="button" data-mobile-page-sheet="recordModules"><span>当前模组</span><strong>${escapeHTML(moduleName)}</strong><small>${visibleGroups.length} 个模组 · 点击切换</small><i>⌄</i></button></div>`;
+    const mobileModuleBar = `<div class="records-mobile-module-bar"><button class="records-mobile-module-switch" type="button" data-mobile-page-sheet="recordModules"><span>当前模组</span><strong>${escapeHTML(moduleName)}</strong><small>${moduleTotal} 桌 · ${visibleGroups.length} 个模组 · 点击切换</small><i>⌄</i></button><button class="records-mobile-module-add" type="button" data-add-table="${escapeHTML(moduleName)}">＋ 新增一桌</button></div>`;
     els.recordsBoard.innerHTML = mobileModuleBar + sidebar + detail;
     els.recordsBoard.querySelectorAll("[data-record-id]").forEach(row => {
         if (row.querySelector("[data-record-add-pl-query]"))
@@ -19166,7 +19278,7 @@ function recordReadonlyBodyHTML(r) {
     <footer class="table-record-footer"><div class="table-record-footer-left"><div class="table-record-footer-meta"><span>记录 · ${escapeHTML(String(r.id).slice(-6))}</span></div><div class="table-record-footer-actions"><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt ? "退回计划" : "转为计划"}</button></div></div><div class="table-record-footer-primary"><button class="btn small primary-soft" type="button" data-record-edit="${escapeHTML(r.id)}">编辑此桌</button></div></footer>
   </div>`;
 }
-function recordTableHTML(r, index) {
+function recordTableHTML(r, index, nextRecordId = "") {
     const available = profiles.filter(p => !r.plIds.includes(p.id)).sort((a, b) => i18nCompareText(a.name,b.name));
     const participants = r.plIds.map(id => profiles.find(p => p.id === id)).filter(Boolean);
     const profileOptions = [...profiles].sort((a, b) => i18nCompareText(a.name,b.name));
@@ -19274,7 +19386,7 @@ function recordTableHTML(r, index) {
           </div>
           <div class="table-record-footer-actions"><button class="btn small" type="button" data-change-record-module="${escapeHTML(r.id)}">更换此桌所属模组</button><button class="btn small" type="button" data-return-record-plan="${escapeHTML(r.id)}">${r.archivedAt ? "退回计划" : "转为计划"}</button><button class="btn small danger record-delete-btn" type="button" data-delete-record="${escapeHTML(r.id)}">删除此桌</button></div>
         </div>
-        <div class="table-record-footer-primary"><button class="btn small primary" type="button" ${editing ? `data-record-done="${escapeHTML(r.id)}"` : `data-record-edit="${escapeHTML(r.id)}"`}>${editing ? "完成编辑" : "编辑此桌"}</button></div>
+        <div class="table-record-footer-primary ${editing ? "record-continuous-actions" : ""}">${editing ? `<button class="btn small primary-soft" type="button" data-record-done="${escapeHTML(r.id)}">完成编辑</button><button class="btn small primary" type="button" data-record-done-next="${escapeHTML(r.id)}" data-record-next-id="${escapeHTML(nextRecordId)}">${nextRecordId ? "完成并下一桌" : "完成并新增下一桌"}</button>` : `<button class="btn small primary-soft" type="button" data-record-edit="${escapeHTML(r.id)}">编辑此桌</button>`}</div>
       </footer>` : recordReadonlyBodyHTML(r)}
     </div>
   </article>`;
@@ -19367,6 +19479,36 @@ function selectedNewModuleSuggestion() {
     }
     return mod;
 }
+function scrollRecordCardIntoView(recordId, block = "start") {
+    requestAnimationFrame(() => {
+        const el = document.querySelector(`[data-record-id="${CSS.escape(String(recordId || ""))}"]`);
+        if (el) el.scrollIntoView({ block, behavior: preferredScrollBehavior() });
+    });
+}
+function activateRecordEditing(recordId, { scroll = false } = {}) {
+    const id = String(recordId || "");
+    if (!runRecords.some(r => String(r.id) === id)) return false;
+    if (mobileMedia.matches) recordEditingIds.clear();
+    recordEditingIds.add(id);
+    setRunRecordCollapsed(id, false, false);
+    renderRunRecords({ preservePageScroll: true, centerSelected: false });
+    if (scroll) scrollRecordCardIntoView(id);
+    return true;
+}
+function flushRecordBeforeEditorMove(recordId) {
+    if (recordInputPending?.recordId === recordId) {
+        flushRecordInputSave();
+        if (recordInputPending?.recordId === recordId) {
+            showToast("当前记录尚未保存，已保持编辑状态");
+            return false;
+        }
+    }
+    return true;
+}
+function inheritRecordKp(source) {
+    if (!source) return { kp: "", kpProfileId: "" };
+    return { kp: source.kp || "", kpProfileId: source.kpProfileId || "" };
+}
 async function createFirstRunRecord() {
     if (shareModeBlock("新建跑团记录"))
         return false;
@@ -19385,9 +19527,7 @@ async function createFirstRunRecord() {
         els.newModuleName.value = "";
         newModuleSuggestionSelectedId = "";
         closeNewModuleSuggestions();
-        renderRunRecords({ preservePageScroll: true, centerSelected: true });
-        showToast(`模组“${existingRecord.moduleName}”已有跑团记录，已定位到该档案。`);
-        return;
+        return addTableToModule(existingRecord.moduleName, { moduleId: selectedSuggestion?.id || existingRecord.moduleId || "", editImmediately: true, scroll: true });
     }
     let matches = selectedSuggestion ? [selectedSuggestion] : modulesByNormalizedName(requestedName);
     if (!matches.length)
@@ -19425,38 +19565,63 @@ async function createFirstRunRecord() {
     newModuleSuggestionSelectedId = "";
     closeNewModuleSuggestions();
     moduleFrameDirty = Boolean(createdModule) || moduleFrameDirty;
+    if (mobileMedia.matches) recordEditingIds.clear();
+    recordEditingIds.add(String(created.id));
+    setRunRecordCollapsed(created.id, false, false);
     renderRunRecords({ preservePageScroll: true, centerSelected: true });
+    scrollRecordCardIntoView(created.id);
     renderNativeModules();
     renderProfiles();
     setPlanUndo(createdModule ? { type: "remove-created-record-and-module", recordId: created.id, moduleId: createdModule.id, label: "已新建模组与第一桌" } : { type: "remove-created-record", recordId: created.id, label: "已新增第一桌" });
     showToast(createdModule ? "已新建模组与第一桌" : "已在现有模组下新增第一桌");
 }
-function addTableToModule(moduleName) {
-    if (!passActionGate(`add-table:${normalizedEntityNameKey(moduleName)}`, 650))
+function addTableToModule(moduleName, options = {}) {
+    const requestedModuleId = String(options.moduleId || "");
+    if (!passActionGate(`add-table:${requestedModuleId || normalizedEntityNameKey(moduleName)}`, 650))
         return false;
     const key = normalizedEntityNameKey(moduleName);
-    const linkedIds = [...new Set(runRecords.filter(r => normalizedEntityNameKey(r.moduleName) === key && moduleById(r.moduleId)).map(r => r.moduleId))];
-    if (linkedIds.length > 1) {
-        appNotice(`“${moduleName}”当前关联多个同名模组档案，请先在模组档案确认并整理关联。`, "同名模组需要确认");
-        return false;
+    let linkedModule = requestedModuleId ? moduleById(requestedModuleId) : null;
+    if (linkedModule && normalizedEntityNameKey(linkedModule.name) !== key)
+        linkedModule = null;
+    if (!linkedModule) {
+        const linkedIds = [...new Set(runRecords.filter(r => normalizedEntityNameKey(r.moduleName) === key && moduleById(r.moduleId)).map(r => r.moduleId))];
+        if (linkedIds.length > 1) {
+            appNotice(`“${moduleName}”当前关联多个同名模组档案，请先在模组档案确认并整理关联。`, "同名模组需要确认");
+            return false;
+        }
+        const sameNameModules = modulesByNormalizedName(moduleName);
+        if (!linkedIds.length && sameNameModules.length > 1) {
+            appNotice(`存在 ${sameNameModules.length} 个同名模组“${moduleName}”。请先在模组档案确认正确档案。`, "同名模组需要确认");
+            return false;
+        }
+        linkedModule = linkedIds.length ? moduleById(linkedIds[0]) : sameNameModules[0] || null;
     }
-    const sameNameModules = modulesByNormalizedName(moduleName);
-    if (!linkedIds.length && sameNameModules.length > 1) {
-        appNotice(`存在 ${sameNameModules.length} 个同名模组“${moduleName}”。请先在模组档案确认正确档案。`, "同名模组需要确认");
-        return false;
-    }
-    const linkedModule = linkedIds.length ? moduleById(linkedIds[0]) : sameNameModules[0] || null;
-    const created = normalizeRunRecord({ id: uid(), moduleId: (linkedModule === null || linkedModule === void 0 ? void 0 : linkedModule.id) || "", moduleName: (linkedModule === null || linkedModule === void 0 ? void 0 : linkedModule.name) || moduleName, tableName: "", kp: "", startDate: "", endDate: "", logUrl: "", plIds: [], createdAt: Date.now(), updatedAt: Date.now() });
+    const source = options.inheritFromRecordId ? runRecords.find(r => String(r.id) === String(options.inheritFromRecordId)) : null;
+    const inheritedKp = inheritRecordKp(source);
+    const created = normalizeRunRecord({
+        id: uid(), moduleId: linkedModule?.id || "", moduleName: linkedModule?.name || moduleName, tableName: "",
+        kp: inheritedKp.kp, kpProfileId: inheritedKp.kpProfileId, startDate: "", endDate: "", logUrl: "", plIds: [],
+        createdAt: Date.now(), updatedAt: Date.now()
+    });
     runRecords.push(created);
-    selectedModuleName = (linkedModule === null || linkedModule === void 0 ? void 0 : linkedModule.name) || moduleName;
+    selectedModuleName = linkedModule?.name || moduleName;
     if (!saveState()) {
         runRecords = runRecords.filter(r => r.id !== created.id);
         return false;
     }
+    if (options.editImmediately !== false) {
+        if (mobileMedia.matches) recordEditingIds.clear();
+        recordEditingIds.add(String(created.id));
+        setRunRecordCollapsed(created.id, false, false);
+    }
     renderRunRecords({ preservePageScroll: true, centerSelected: true });
+    if (options.scroll !== false) scrollRecordCardIntoView(created.id);
     setPlanUndo({ type: "remove-created-record", recordId: created.id, label: "已新增一桌" });
-    showToast(linkedModule ? "已新增并关联现有模组" : "已新增一桌；当前未关联模组档案");
-    return true;
+    if (source && (inheritedKp.kp || inheritedKp.kpProfileId))
+        showToast("已新增下一桌并沿用上一桌 KP；其他内容保持空白");
+    else
+        showToast(linkedModule ? "已新增一桌并进入编辑" : "已新增一桌；当前未关联模组档案");
+    return created.id;
 }
 async function renameModule(moduleName) {
     const sameNameModules = modulesByNormalizedName(moduleName);
@@ -19670,12 +19835,42 @@ function syncBehaviorSettingsUI() {
     if (els.interfaceLanguageSetting)
         els.interfaceLanguageSetting.value = ui.locale;
 }
+function moduleRatingSettingsValidation(source = settingsDraft) {
+    const ms = normalizeModuleArchiveSettings((source && source.moduleArchive) || settings.moduleArchive);
+    if (!ms.ratingSystems.length) return { valid: false, message: "请至少保留一个模组评分体系。" };
+    const systemNames = ms.ratingSystems.map(s => String(s.name || "").trim());
+    if (systemNames.some(n => !n)) return { valid: false, message: "模组评分体系名称不能为空。" };
+    if (systemNames.some((n, i) => systemNames.findIndex(x => x === n) !== i)) return { valid: false, message: "模组评分体系名称不能重复。" };
+    for (const sys of ms.ratingSystems) {
+        if (!Array.isArray(sys.criteria) || !sys.criteria.length) return { valid: false, message: `“${sys.name}”至少需要一个评分项。` };
+        const names = sys.criteria.map(c => String(c.name || "").trim());
+        if (names.some(n => !n)) return { valid: false, message: `“${sys.name}”存在空白评分项名称。` };
+        if (names.some((n, i) => names.findIndex(x => x === n) !== i)) return { valid: false, message: `“${sys.name}”的评分项名称不能重复。` };
+        if (sys.criteria.reduce((sum, c) => sum + Math.max(0, Number(c.weight) || 0), 0) <= 0) return { valid: false, message: `“${sys.name}”的评分项总权重需要大于 0。` };
+    }
+    return { valid: true, message: "" };
+}
+function moduleRatingSystemCardHTML(sys, index, total) {
+    const totalWeight = sys.criteria.reduce((sum, c) => sum + Math.max(0, Number(c.weight) || 0), 0);
+    return `<section class="module-rating-system-card" data-module-rating-system-id="${escapeHTML(sys.id)}">
+      <header><label><span>体系名称</span><input class="setting-input" data-module-rating-system-name="${escapeHTML(sys.id)}" value="${escapeHTML(sys.name)}"></label><div class="module-rating-system-head-actions"><span>${sys.criteria.length} 项 · 权重 ${fmtWeight(totalWeight)}</span><button class="btn small" type="button" data-module-rating-system-clone="${escapeHTML(sys.id)}">复制</button>${total > 1 ? `<button class="btn small danger" type="button" data-module-rating-system-delete="${escapeHTML(sys.id)}">删除</button>` : ""}</div></header>
+      <div class="module-rating-criteria-list">${sys.criteria.map((c, ci) => `<div class="module-rating-criterion-row" data-module-rating-criterion-id="${escapeHTML(c.id)}"><label class="criterion-name"><span>评分项</span><input class="setting-input" data-module-rating-criterion-name="${escapeHTML(sys.id)}:${escapeHTML(c.id)}" value="${escapeHTML(c.name)}"></label><label class="criterion-weight"><span>权重</span><input class="setting-input" type="number" min="0" step="1" data-module-rating-criterion-weight="${escapeHTML(sys.id)}:${escapeHTML(c.id)}" value="${escapeHTML(String(c.weight))}"></label><label class="criterion-desc"><span>说明</span><input class="setting-input" data-module-rating-criterion-desc="${escapeHTML(sys.id)}:${escapeHTML(c.id)}" value="${escapeHTML(c.desc || "")}" placeholder="这个评分项主要看什么"></label>${sys.criteria.length > 1 ? `<button class="btn small danger criterion-delete" type="button" data-module-rating-criterion-delete="${escapeHTML(sys.id)}:${escapeHTML(c.id)}">删除</button>` : `<span></span>`}</div>`).join("")}</div>
+      <footer><button class="btn small" type="button" data-module-rating-criterion-add="${escapeHTML(sys.id)}">＋ 新增评分项</button></footer>
+    </section>`;
+}
+function renderModuleRatingSettingsEditor() {
+    if (!settingsDraft || !els.moduleRatingDefaultSelect || !els.moduleRatingSystemsList) return;
+    settingsDraft.moduleArchive = normalizeModuleArchiveSettings(settingsDraft.moduleArchive);
+    const ms = settingsDraft.moduleArchive;
+    els.moduleRatingDefaultSelect.innerHTML = ms.ratingSystems.map(s => `<option value="${escapeHTML(s.id)}" ${s.id === ms.defaultRatingSystemId ? "selected" : ""}>${escapeHTML(s.name)}</option>`).join("");
+    els.moduleRatingSystemsList.innerHTML = ms.ratingSystems.map((sys, i) => moduleRatingSystemCardHTML(sys, i, ms.ratingSystems.length)).join("");
+}
 function renderModuleRatingSettingsSummary() {
-    if (!els.moduleRatingSystemSummary)
-        return;
+    if (!els.moduleRatingSystemSummary) return;
     const ms = normalizeModuleArchiveSettings((settingsDraft === null || settingsDraft === void 0 ? void 0 : settingsDraft.moduleArchive) || settings.moduleArchive);
     const sys = ms.ratingSystems.find(s => s.id === ms.defaultRatingSystemId) || ms.ratingSystems[0];
     els.moduleRatingSystemSummary.textContent = sys ? `${sys.name} · ${sys.criteria.length} 个评分项` : "未设置";
+    if (settingsDraft) renderModuleRatingSettingsEditor();
 }
 document.querySelectorAll(".settings-rating-panel details.settings-collapsible").forEach(details => {
     const updateCollapseHint = () => {
@@ -19741,7 +19936,8 @@ function updateSettingsFooterState() {
     const names = settingsDraft.fields.map(f => f.label.trim());
     const emptyName = names.some(n => !n);
     const duplicateName = names.some((n, i) => n && names.findIndex(x => x === n) !== i);
-    const valid = weightOk && !emptyName && !duplicateName;
+    const moduleValidation = moduleRatingSettingsValidation(settingsDraft);
+    const valid = weightOk && !emptyName && !duplicateName && moduleValidation.valid;
     const dirty = hasUnsavedSettings();
     els.weightTotal.textContent = `总权重 ${sum.toFixed(2).replace(/\.00$/, '')}%`;
     els.weightTotal.classList.toggle("bad", !weightOk);
@@ -19753,6 +19949,8 @@ function updateSettingsFooterState() {
         els.settingsWarning.textContent = "评分字段名称不能为空。";
     else if (duplicateName)
         els.settingsWarning.textContent = "评分字段名称不能重复。";
+    else if (!moduleValidation.valid)
+        els.settingsWarning.textContent = moduleValidation.message;
     else if (dirty)
         els.settingsWarning.textContent = "设置有未保存修改。";
     else
@@ -19802,6 +20000,11 @@ function saveSettings() {
     const duplicates = names.some((n, i) => names.findIndex(x => x === n) !== i);
     if (duplicates) {
         appNotice("评分字段名称不能重复，请修改后保存。");
+        return;
+    }
+    const moduleValidation = moduleRatingSettingsValidation(settingsDraft);
+    if (!moduleValidation.valid) {
+        appNotice(moduleValidation.message);
         return;
     }
     const previousSettings = settings;
@@ -20597,21 +20800,26 @@ catch (err) {
 } }
 function nativeModuleCardHTML(m, compact = false) {
     const stat = moduleSideStats(m.id), runs = moduleRunCount(m), score = moduleComputedScore(m), last = moduleLastRunDate(m), duplicateCount = modulesByNormalizedName(m.name).length;
+    const selected = moduleBatchSelectedIds.has(m.id);
     const tags = [
         duplicateCount > 1 && `同名档案 ${duplicateCount}`,
         m.location && `地点 ${m.location}`, m.era && `时代 ${m.era}`, m.players && `${m.players}`,
         m.hoSystem === "has" ? "有 HO" : m.hoSystem === "none" ? "无 HO" : "HO 未设置",
-        m.duration && m.duration, m.nature && m.nature
+        m.duration && m.duration, m.nature && m.nature, m.reKp === "是" ? "愿意再带" : m.reKp === "否" ? "不再带" : m.reKp === "看情况" ? "再带看情况" : ""
     ].filter(Boolean);
+    const batchControl = moduleBatchMode ? `<button type="button" class="native-module-batch-check ${selected ? "selected" : ""}" aria-pressed="${selected ? "true" : "false"}" data-native-module-select="${escapeHTML(m.id)}"><span>${selected ? "✓" : ""}</span><b>${selected ? "已选" : "选择"}</b></button>` : "";
+    const moreMenu = `<details class="native-module-more"><summary class="btn small" aria-label="${escapeHTML(m.name)}更多操作">•••</summary><div class="native-module-more-menu"><button type="button" data-native-module-recruit="${escapeHTML(m.id)}">复制招募</button>${duplicateCount > 1 ? `<button type="button" data-native-module-merge="${escapeHTML(m.id)}">合并同名</button>` : ""}<button type="button" data-native-module-duplicate="${escapeHTML(m.id)}">复制模组</button><button type="button" class="danger" data-native-module-delete="${escapeHTML(m.id)}">删除</button></div></details>`;
     if (compact) {
-        return `<article class="native-module-row" data-native-module-id="${escapeHTML(m.id)}">
+        return `<article class="native-module-row ${selected ? "batch-selected" : ""}" data-native-module-id="${escapeHTML(m.id)}">
+      ${batchControl}
       <div class="native-module-row-main"><strong>${escapeHTML(m.name)}</strong><span>${escapeHTML(m.author || "作者未填写")}</span></div>
       <div class="native-module-row-tags">${tags.slice(0, 4).map(t => `<span>${escapeHTML(t)}</span>`).join("")}</div>
       <div class="native-module-row-stats"><span>${runs}桌</span><span>KP ${stat.kp}</span><span>PL ${stat.pl}</span><strong>${score === null ? "—" : score.toFixed(1)}</strong></div>
-      <div class="native-module-actions"><button type="button" class="btn small" data-native-module-records="${escapeHTML(m.id)}">记录</button>${duplicateCount > 1 ? `<button type="button" class="btn small" data-native-module-merge="${escapeHTML(m.id)}">合并</button>` : ""}<button type="button" class="btn small" data-native-module-edit="${escapeHTML(m.id)}">编辑</button></div>
+      <div class="native-module-actions ${moduleBatchMode ? "batch-hidden-actions" : ""}"><button type="button" class="btn small" data-native-module-records="${escapeHTML(m.id)}">记录</button><button type="button" class="btn small" data-native-module-edit="${escapeHTML(m.id)}">编辑</button>${moreMenu}</div>
     </article>`;
     }
-    return `<article class="native-module-card" data-native-module-id="${escapeHTML(m.id)}">
+    return `<article class="native-module-card ${selected ? "batch-selected" : ""}" data-native-module-id="${escapeHTML(m.id)}">
+    ${batchControl}
     <div class="native-module-card-head">
       <div><h3>${escapeHTML(m.name)}</h3><span>${escapeHTML(m.author || "作者未填写")}</span></div>
       <div class="native-module-score"><span>评分</span><strong>${score === null ? "—" : score.toFixed(1)}</strong></div>
@@ -20619,12 +20827,10 @@ function nativeModuleCardHTML(m, compact = false) {
     <div class="native-module-tags">${tags.map(t => `<span class="${/HO/.test(t) ? "ho-tag" : ""}">${escapeHTML(t)}</span>`).join("")}</div>
     <div class="native-module-runline"><span><strong>${runs}</strong> 桌经历</span><span>KP ${stat.kp}</span><span>PL ${stat.pl}</span>${last ? `<span>最近 ${escapeHTML(compactRecordDate(last))}</span>` : ""}</div>
     <div class="native-module-note">${escapeHTML(m.notes || "暂无备注")}</div>
-    <div class="native-module-card-actions">
+    <div class="native-module-card-actions ${moduleBatchMode ? "batch-hidden-actions" : ""}">
       <button type="button" class="btn small" data-native-module-records="${escapeHTML(m.id)}">跑团记录</button>
-      <button type="button" class="btn small" data-native-module-recruit="${escapeHTML(m.id)}">复制招募</button>
-      ${duplicateCount > 1 ? `<button type="button" class="btn small" data-native-module-merge="${escapeHTML(m.id)}">合并同名</button>` : ""}
       <button type="button" class="btn small" data-native-module-edit="${escapeHTML(m.id)}">编辑</button>
-      <button type="button" class="btn small danger" data-native-module-delete="${escapeHTML(m.id)}">删除</button>
+      ${moreMenu}
     </div>
   </article>`;
 }
@@ -20677,6 +20883,11 @@ function renderNativeModules() {
     const compact = normalizeUiSettings(settings.ui).moduleLayout === "compact";
     els.moduleNativeGrid.classList.toggle("compact", compact);
     const visibleRows = rows.slice(0, moduleRenderLimit);
+    moduleBatchVisibleIds = visibleRows.map(m => m.id);
+    if (els.moduleBatchBar) els.moduleBatchBar.hidden = !moduleBatchMode;
+    if (els.moduleBatchCount) els.moduleBatchCount.textContent = `已选择 ${moduleBatchSelectedIds.size} 个模组`;
+    if (els.moduleBatchDelete) els.moduleBatchDelete.disabled = moduleBatchSelectedIds.size === 0;
+    if (els.moduleBatchClear) els.moduleBatchClear.disabled = moduleBatchSelectedIds.size === 0;
     const moduleHasStructuredFilters = Boolean(moduleNativeHo || moduleNativeLocation);
     els.moduleNativeGrid.innerHTML = rows.length ? visibleRows.map(m => nativeModuleCardHTML(m, compact)).join("") + (rows.length > visibleRows.length ? `<div class="load-more-row"><button type="button" class="btn" data-load-more-modules>显示更多（${visibleRows.length}/${rows.length}）</button></div>` : "") : `<div class="empty native-empty"><strong>${modules.length ? "无匹配模组" : "暂无模组档案"}</strong><span>${modules.length ? "请调整搜索或筛选条件。" : "点击“新建模组”创建档案。"}</span>${modules.length ? `<div class="empty-actions">${moduleNativeQuery ? `<button type="button" class="btn small" data-empty-clear-search="moduleNativeSearch">清除搜索</button>` : ""}${moduleHasStructuredFilters ? `<button type="button" class="btn small" data-reset-module-filters>清除筛选</button>` : ""}<button class="btn primary small" type="button" data-native-empty-create>＋ 新建模组</button></div>` : `<button class="btn primary small" type="button" data-native-empty-create>＋ 新建模组</button>`}</div>`;
     applySearchHighlights(els.moduleNativeGrid, moduleNativeQuery);
@@ -20703,6 +20914,54 @@ async function copyTextCompat(text) {
         return false;
     }
 }
+function nativeModuleRatingScoreFromDraft(rating) {
+    const ms = normalizeModuleArchiveSettings(settings.moduleArchive), r = normalizeModuleRating(rating, ms);
+    if (r.manualScore !== null) return Number(r.manualScore);
+    const sys = ms.ratingSystems.find(s => s.id === r.ratingSystemId) || ms.ratingSystems[0];
+    if (!sys) return null;
+    const rows = sys.criteria.map(c => ({ w: Math.max(0, Number(c.weight) || 0), s: Number(r.scores && r.scores[c.id]) })).filter(x => Number.isFinite(x.s) && x.w > 0);
+    const tw = rows.reduce((sum, x) => sum + x.w, 0);
+    return rows.length && tw > 0 ? rows.reduce((sum, x) => sum + x.s * x.w, 0) / tw : null;
+}
+function nativeModuleRatingSectionHTML(m) {
+    const ms = normalizeModuleArchiveSettings(settings.moduleArchive), rating = normalizeModuleRating(m.rating, ms);
+    const sys = ms.ratingSystems.find(s => s.id === rating.ratingSystemId) || ms.ratingSystems[0];
+    const preview = nativeModuleRatingScoreFromDraft(rating);
+    return `<details class="wide native-module-rating-details" data-collapse-key="native-module:${escapeHTML((nativeModuleDraft && nativeModuleDraft.id) || nativeModuleEditingId || 'new')}:rating">
+      <summary><span>模组评分</span><strong>${preview === null ? "未评分" : preview.toFixed(1)}</strong></summary>
+      <div class="native-module-rating-body">
+        <div class="native-module-rating-top">
+          <label><span class="field-label">评分体系</span><select class="text-input" data-native-module-rating-system>${ms.ratingSystems.map(s => `<option value="${escapeHTML(s.id)}" ${s.id === rating.ratingSystemId ? "selected" : ""}>${escapeHTML(s.name)}</option>`).join("")}</select></label>
+          <label><span class="field-label">手动总分（可选）</span><input class="text-input" type="number" min="0" max="10" step="0.1" data-native-module-rating-manual value="${rating.manualScore === null ? "" : escapeHTML(String(rating.manualScore))}" placeholder="留空则按评分项计算"></label>
+        </div>
+        <div class="native-module-rating-criteria" data-native-rating-criteria>${sys ? sys.criteria.map(c => `<label class="native-module-rating-row"><span><strong>${escapeHTML(c.name)}</strong>${c.desc ? `<small>${escapeHTML(c.desc)}</small>` : ""}</span><em>权重 ${fmtWeight(c.weight)}</em><input class="text-input" type="number" min="0" max="10" step="0.1" data-native-module-rating-score="${escapeHTML(c.id)}" value="${rating.scores && rating.scores[c.id] !== undefined && rating.scores[c.id] !== null ? escapeHTML(String(rating.scores[c.id])) : ""}" placeholder="0–10"></label>`).join("") : ""}</div>
+        <div class="native-module-rating-result"><span>当前评分</span><strong data-native-rating-preview>${preview === null ? "—" : preview.toFixed(1)}</strong><small>${rating.manualScore !== null ? "当前使用手动总分" : "根据已填写评分项与权重自动计算"}</small></div>
+      </div>
+    </details>`;
+}
+function syncNativeModuleRatingFromForm() {
+    if (!nativeModuleDraft || !els.nativeModuleEditorContent) return;
+    const ms = normalizeModuleArchiveSettings(settings.moduleArchive);
+    const current = normalizeModuleRating(nativeModuleDraft.rating, ms);
+    const sys = els.nativeModuleEditorContent.querySelector("[data-native-module-rating-system]");
+    if (sys) current.ratingSystemId = ms.ratingSystems.some(s => s.id === sys.value) ? sys.value : ms.defaultRatingSystemId;
+    const manual = els.nativeModuleEditorContent.querySelector("[data-native-module-rating-manual]");
+    if (manual) current.manualScore = String(manual.value || "").trim() === "" ? null : Math.max(0, Math.min(10, Number(manual.value) || 0));
+    els.nativeModuleEditorContent.querySelectorAll("[data-native-module-rating-score]").forEach(input => {
+        const raw = String(input.value || "").trim();
+        if (!current.scores) current.scores = {};
+        if (raw === "") delete current.scores[input.dataset.nativeModuleRatingScore];
+        else current.scores[input.dataset.nativeModuleRatingScore] = Math.max(0, Math.min(10, Number(raw) || 0));
+    });
+    nativeModuleDraft.rating = current;
+}
+function refreshNativeModuleRatingPreview() {
+    if (!nativeModuleDraft || !els.nativeModuleEditorContent) return;
+    const score = nativeModuleRatingScoreFromDraft(nativeModuleDraft.rating), out = els.nativeModuleEditorContent.querySelector("[data-native-rating-preview]");
+    if (out) out.textContent = score === null ? "—" : score.toFixed(1);
+    const hint = els.nativeModuleEditorContent.querySelector(".native-module-rating-result small");
+    if (hint) hint.textContent = normalizeModuleRating(nativeModuleDraft.rating, settings.moduleArchive).manualScore !== null ? "当前使用手动总分" : "根据已填写评分项与权重自动计算";
+}
 function nativeModuleEditorFormHTML(m) {
     const ho = normalizeModuleHoSystem(m.hoSystem);
     return `<div class="native-module-editor-grid">
@@ -20714,6 +20973,7 @@ function nativeModuleEditorFormHTML(m) {
     <label><span class="field-label">人数</span><input class="text-input" data-native-module-field="players" value="${escapeHTML(m.players)}" placeholder="输入人数要求（可选）"></label>
     <label><span class="field-label">时长</span><input class="text-input" data-native-module-field="duration" value="${escapeHTML(m.duration)}" placeholder="输入预计时长（可选）"></label>
     <label><span class="field-label">性质</span><input class="text-input" data-native-module-field="nature" value="${escapeHTML(m.nature)}" placeholder="输入模组性质（可选）"></label>
+    <label><span class="field-label">再带意愿</span><select class="text-input" data-native-module-field="reKp"><option value="" ${!m.reKp ? "selected" : ""}>未设置</option><option value="是" ${m.reKp === "是" ? "selected" : ""}>愿意再带</option><option value="看情况" ${m.reKp === "看情况" ? "selected" : ""}>看情况</option><option value="否" ${m.reKp === "否" ? "selected" : ""}>不再带</option></select></label>
 
     <div class="wide native-module-ho-setting">
       <span class="field-label">HO 位</span>
@@ -20739,10 +20999,7 @@ function nativeModuleEditorFormHTML(m) {
       </div>
     </details>
 
-    <div class="wide native-module-advanced-callout">
-      <div><strong>高级评分与 Excel</strong><span>评分体系、详细评分、Excel 导出及完整模组工具均在此维护。</span></div>
-      <button type="button" class="btn small" data-open-native-advanced>打开高级工具</button>
-    </div>
+    ${nativeModuleRatingSectionHTML(m)}
   </div>`;
 }
 function openNativeModuleEditor(id = "") {
@@ -20782,6 +21039,7 @@ function syncNativeModuleDraftFromForm() {
     els.nativeModuleEditorContent.querySelectorAll("[data-native-module-field]").forEach(el => {
         nativeModuleDraft[el.dataset.nativeModuleField] = el.value.trim();
     });
+    syncNativeModuleRatingFromForm();
 }
 function saveNativeModuleEditor() {
     if (!nativeModuleDraft)
@@ -20843,38 +21101,85 @@ function saveNativeModuleEditor() {
 function createNativeModule() {
     openNativeModuleEditor();
 }
-function openModuleAdvancedEditor(moduleId = "") {
-    if (shareModeBlock("高级工具"))
-        return false;
-    els.moduleAdvancedBackdrop.hidden = false;
-    document.body.classList.add("module-advanced-open");
-    syncModalPageScrollLock();
-    renderModuleArchiveFrame(true);
-    if (moduleId) {
-        let tries = 0;
-        const tryEdit = () => {
-            var _a, _b;
-            tries++;
-            try {
-                const app = (_b = (_a = els.moduleArchiveFrame) === null || _a === void 0 ? void 0 : _a.contentWindow) === null || _b === void 0 ? void 0 : _b.App;
-                if (app === null || app === void 0 ? void 0 : app.edit) {
-                    app.edit(moduleId);
-                    return;
-                }
-            }
-            catch (err) { }
-            if (tries < 30)
-                setTimeout(tryEdit, 80);
-        };
-        setTimeout(tryEdit, 60);
-    }
-}
 function closeModuleAdvancedEditor() {
+    if (!els.moduleAdvancedBackdrop) return;
     els.moduleAdvancedBackdrop.hidden = true;
     document.body.classList.remove("module-advanced-open");
     syncModalPageScrollLock();
     renderNativeModules();
 }
+function moduleBackendApp() {
+    try { return els.moduleArchiveFrame && els.moduleArchiveFrame.contentWindow && els.moduleArchiveFrame.contentWindow.App; }
+    catch (err) { return null; }
+}
+function warmModuleToolsBackend(force = false) {
+    if (!els.moduleArchiveFrame) return;
+    if (!force && els.moduleArchiveFrame.dataset.loaded === "1") return;
+    els.moduleArchiveFrame.dataset.loaded = "1";
+    els.moduleArchiveFrame.src = `${MODULE_ARCHIVE_EXTERNAL_URL}?backend=1&v=${encodeURIComponent(APP_UI_VERSION)}`;
+}
+async function waitModuleBackendApp() {
+    warmModuleToolsBackend(false);
+    for (let i = 0; i < 50; i++) {
+        const app = moduleBackendApp();
+        if (app) return app;
+        await new Promise(r => setTimeout(r, 50));
+    }
+    return null;
+}
+async function runModuleExcelTool(mode) {
+    if (shareModeBlock(mode === "import" ? "导入 Excel" : mode === "portable" ? "导出便携 HTML" : "导出 Excel")) return false;
+    const app = await waitModuleBackendApp();
+    if (!app) { appNotice("模组导入导出工具未能加载。请关闭后重试。", "模组工具"); return false; }
+    if (mode === "export") {
+        const ok = await appConfirm("导出的 Excel 可能包含 KP、同桌玩家、HO、感想和备注等私人内容。发送给别人前请先检查文件内容。", { title: "导出前检查隐私？", confirmText: "继续导出" });
+        if (!ok) return false;
+        try { await app.refresh?.(); await app.exportExcelRaw?.(); showToast("Excel 已开始导出"); return true; }
+        catch (err) { console.error(err); appNotice(`Excel 导出失败：${err.message || err}`); return false; }
+    }
+    if (mode === "portable") {
+        const ok = await appConfirm("便携 HTML 会把模组档案及其中的 KP、同桌玩家、HO、感想、备注等内容直接嵌入文件。它适合私人备份或离线携带，请不要上传到公开网站。", { title: "导出包含私人数据的便携 HTML？", confirmText: "继续导出" });
+        if (!ok) return false;
+        try { await app.refresh?.(); await app.exportPortableRaw?.(); showToast("便携 HTML 已开始导出"); return true; }
+        catch (err) { console.error(err); appNotice(`便携 HTML 导出失败：${err.message || err}`); return false; }
+    }
+    return false;
+}
+async function importModuleExcelFile(file) {
+    if (!file || shareModeBlock("导入 Excel")) return false;
+    els.moduleAdvancedBackdrop.hidden = false;
+    document.body.classList.add("module-advanced-open");
+    syncModalPageScrollLock();
+    const app = await waitModuleBackendApp();
+    if (!app) { closeModuleAdvancedEditor(); appNotice("Excel 导入工具未能加载。请重试。", "Excel 导入"); return false; }
+    try {
+        await app.refresh?.();
+        if (typeof app.importExcelFile !== "function") throw new Error("当前兼容工具版本不支持直接读取文件");
+        await app.importExcelFile(file);
+        return true;
+    } catch (err) {
+        console.error(err);
+        closeModuleAdvancedEditor();
+        appNotice(`Excel 导入失败：${err.message || err}`);
+        return false;
+    }
+}
+function openModuleAdvancedEditor() {
+    return handleModuleToolAction("excel-import");
+}
+window.__moduleExcelBackendDone = function(){
+    closeModuleAdvancedEditor();
+    moduleFrameDirty = true;
+    renderNativeModules(); renderRunPlans(); renderRunRecords();
+    showToast("Excel 导入已完成");
+};
+window.__moduleExcelBackendCancel = function(){
+    closeModuleAdvancedEditor();
+};
+window.__moduleExcelBackendError = function(message){
+    closeModuleAdvancedEditor();
+    appNotice(`Excel 导入失败：${message || "无法读取文件"}`, "Excel 导入");
+};
 function openNativeModuleRecords(id) {
     const m = moduleById(id);
     if (!m)
@@ -21270,7 +21575,7 @@ function renderModuleArchiveFrame(force = false) {
     moduleFrameDirty = false;
     moduleBridgeSessionId = "";
     if (els.moduleArchiveFrame.dataset.loaded !== "1") {
-        els.moduleArchiveFrame.src = MODULE_ARCHIVE_EXTERNAL_URL;
+        els.moduleArchiveFrame.src = `${MODULE_ARCHIVE_EXTERNAL_URL}?backend=1&v=${encodeURIComponent(APP_UI_VERSION)}`;
         els.moduleArchiveFrame.dataset.loaded = "1";
     }
     else {
@@ -21278,7 +21583,7 @@ function renderModuleArchiveFrame(force = false) {
             (_a = els.moduleArchiveFrame.contentWindow) === null || _a === void 0 ? void 0 : _a.location.reload();
         }
         catch (err) {
-            els.moduleArchiveFrame.src = MODULE_ARCHIVE_EXTERNAL_URL;
+            els.moduleArchiveFrame.src = `${MODULE_ARCHIVE_EXTERNAL_URL}?backend=1&v=${encodeURIComponent(APP_UI_VERSION)}`;
         }
     }
 }
@@ -21786,6 +22091,54 @@ async function deleteModuleRecords(moduleName) { const moduleKey = normalizedEnt
     return;
 } renderRunRecords(); renderProfiles(); }
 ;
+function setModuleBatchMode(enabled) {
+    moduleBatchMode = Boolean(enabled);
+    if (!moduleBatchMode) moduleBatchSelectedIds.clear();
+    renderNativeModules();
+    if (moduleBatchMode && els.moduleBatchBar) requestAnimationFrame(() => els.moduleBatchBar.scrollIntoView({ block: "nearest", behavior: preferredScrollBehavior() }));
+}
+function toggleModuleBatchSelection(id) {
+    if (!moduleBatchMode) return;
+    if (moduleBatchSelectedIds.has(id)) moduleBatchSelectedIds.delete(id); else moduleBatchSelectedIds.add(id);
+    renderNativeModules();
+}
+function moduleDeleteBlockReason(id) {
+    const m = moduleById(id); if (!m) return "模组不存在";
+    const intro = normalizeSelfIntro(selfProfileFrom()?.selfIntro), introLinked = [...(intro.pl.wantModules || []), ...(intro.kp.canHostModules || [])].some(r => r.moduleId === id);
+    if (introLinked) return "仍关联个人偏好";
+    if (runRecords.some(r => r.moduleId === id) || runPlans.some(p => p.moduleId === id)) return "仍关联跑团记录或开团计划";
+    return "";
+}
+async function deleteSelectedModules() {
+    const ids = [...moduleBatchSelectedIds].filter(id => moduleById(id));
+    if (!ids.length) { showToast("请先选择模组"); return false; }
+    const removable = ids.filter(id => !moduleDeleteBlockReason(id)), blocked = ids.filter(id => moduleDeleteBlockReason(id));
+    if (!removable.length) { appNotice(`已选择的 ${ids.length} 个模组都仍有关联内容，暂不能删除。请先处理跑团记录、开团计划或个人偏好中的关联。`, "无法批量删除"); return false; }
+    const preview = removable.slice(0, 6).map(id => moduleById(id)?.name).filter(Boolean).join("、");
+    const message = `将 ${removable.length} 个模组移入回收站吗？${preview ? `\n\n${preview}${removable.length > 6 ? "……" : ""}` : ""}${blocked.length ? `\n\n另有 ${blocked.length} 个模组因仍有关联内容会保留。` : ""}`;
+    if (!await appConfirm(message, { title: "批量删除模组？", confirmText: "移入回收站", danger: true })) return false;
+    const payload = removable.map(id => clone(moduleById(id))).filter(Boolean), entry = addTrashEntry("moduleBatch", `批量删除 · ${payload.length} 个模组`, payload);
+    if (!entry) return false;
+    const before = modules;
+    modules = modules.filter(m => !removable.includes(m.id));
+    if (!saveState()) { modules = before; removeTrashEntry(entry.id); return false; }
+    removable.forEach(id => moduleBatchSelectedIds.delete(id));
+    if (!moduleBatchSelectedIds.size) moduleBatchMode = false;
+    moduleFrameDirty = true;
+    renderNativeModules(); renderTrashBin();
+    showToast(blocked.length ? `已删除 ${removable.length} 个；${blocked.length} 个有关联内容已保留` : `已删除 ${removable.length} 个模组`);
+    return true;
+}
+function duplicateNativeModule(id) {
+    if (shareModeBlock("复制模组")) return false;
+    const m = moduleById(id); if (!m) return false;
+    const base = `${m.name} 副本`; let name = base, i = 2;
+    while (moduleByNormalizedName(name)) name = `${base} ${i++}`;
+    const next = normalizeRichModule({ ...clone(m), id: uid(), name, createdAt: Date.now(), updatedAt: Date.now() }, settings.moduleArchive);
+    modules.push(next);
+    if (!saveState()) { modules = modules.filter(x => x.id !== next.id); return false; }
+    moduleFrameDirty = true; renderNativeModules(); openNativeModuleEditor(next.id); showToast("已创建模组副本"); return true;
+}
 async function deleteNativeModule(id) { var _a; const m = moduleById(id); if (!m)
     return; const intro = normalizeSelfIntro((_a = selfProfileFrom()) === null || _a === void 0 ? void 0 : _a.selfIntro), introLinked = [...(intro.pl.wantModules || []), ...(intro.kp.canHostModules || [])].some(r => r.moduleId === id); if (introLinked) {
     appNotice("该模组仍在“个人偏好”的想跑模组或可带模组列表中。请先从对应列表移除，再删除模组档案。", "无法删除");
@@ -22918,7 +23271,7 @@ function focusSettingsSearchResult(key, q) { activateSettingsPanel(key); const p
     return; const candidates = [...panel.querySelectorAll("h3,strong,label,summary,button")], target = candidates.find(el => searchTextMatches(el.textContent || "", q)) || panel; requestAnimationFrame(() => { const group = target.closest("details.data-safety-group,details.settings-collapsible"); if (group)
     group.open = true; target.scrollIntoView({ block: "center", behavior: "smooth" }); target.classList.add("settings-search-flash"); setTimeout(() => target.classList.remove("settings-search-flash"), 1400); }); document.getElementById("settingsSearchResults").hidden = true; }
 /* 分享模式 */
-const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#periodicScheduleBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-merge],[data-record-edit],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-select-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
+const SHARE_MUTATION_SELECTOR = '#newBtn,#blacklistBtn,#profileStatusActionBtn,#newNativeModuleBtn,#openModuleAdvancedBtn,#newPlanBtn,#periodicScheduleBtn,#createModuleRecordBtn,#globalCreateBtn,[data-quick-create],[data-action="edit"],[data-action="delete"],[data-action="runs"],[data-action="ho-organizer"],[data-action="add-blacklist"],[data-action="remove-blacklist"],[data-editor-add-blacklist-pl],[data-editor-blacklist-kp],[data-native-module-edit],[data-native-module-delete],[data-native-module-duplicate],[data-native-module-select],[data-module-tool="excel-import"],[data-module-tool="batch"],[data-native-module-merge],[data-record-edit],[data-record-done-next],[data-return-record-plan],[data-change-record-module],[data-add-table],[data-delete-record],[data-delete-module],[data-rename-module],[data-open-plan-editor],[data-drag-plan],[data-open-profile],[data-editor-open-profile],[data-ho-open-kind],[data-intro-add-module],[data-intro-select-module],[data-intro-remove-module],#selfIntroSaveBtn,#settingsBtn,[data-open-settings]';
 function updateShareModeUI() { document.body.classList.toggle("share-mode", shareModeEnabled); const btn = document.getElementById("shareModeBtn"); if (btn) {
     btn.textContent = shareModeEnabled ? "退" : "分";
     btn.setAttribute("aria-pressed", shareModeEnabled ? "true" : "false");
@@ -24149,6 +24502,38 @@ els.cardLayout.addEventListener("click", () => setProfileLayout("cards"));
 els.compactLayout.addEventListener("click", () => setProfileLayout("compact"));
 (_b = els.collapseAllProfiles) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => setCurrentProfileCardsCollapsed(true));
 (_c = els.expandAllProfiles) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => setCurrentProfileCardsCollapsed(false));
+async function handleModuleToolAction(action) {
+    if (!action) return false;
+    if (els.moduleToolbarMore) els.moduleToolbarMore.open = false;
+    if (action === "excel-import") {
+        if (shareModeBlock("导入 Excel")) return false;
+        if (!els.moduleExcelInput) { appNotice("Excel 文件选择器未能加载。", "Excel 导入"); return false; }
+        els.moduleExcelInput.value = "";
+        els.moduleExcelInput.click();
+        return true;
+    }
+    if (action === "excel-export") return runModuleExcelTool("export");
+    if (action === "portable") return runModuleExcelTool("portable");
+    if (action === "batch") { setModuleBatchMode(true); return true; }
+    if (action === "rating") {
+        openSettings(); activateSettingsPanel("rating");
+        const details = document.getElementById("moduleRatingSettingsDetails"); if (details) details.open = true;
+        requestAnimationFrame(() => details?.scrollIntoView({ block: "start", behavior: preferredScrollBehavior() }));
+        return true;
+    }
+    if (action === "backup") {
+        openSettings(); activateSettingsPanel("data");
+        const details = document.querySelector('[data-collapse-key="settings:data:recovery"]'); if (details) details.open = true;
+        requestAnimationFrame(() => details?.scrollIntoView({ block: "start", behavior: preferredScrollBehavior() }));
+        return true;
+    }
+    return false;
+}
+document.addEventListener("click", e => {
+    const tool = e.target.closest("[data-module-tool]");
+    if (!tool) return;
+    e.preventDefault(); void handleModuleToolAction(tool.dataset.moduleTool);
+});
 els.profilesViewBtn.addEventListener("click", () => switchView("profiles"));
 els.selfIntroViewBtn.addEventListener("click", () => switchView("selfIntro"));
 (_d = els.statsViewBtn) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => switchView("stats"));
@@ -24156,7 +24541,19 @@ els.modulesViewBtn.addEventListener("click", () => switchView("modules"));
 els.plansViewBtn.addEventListener("click", () => switchView("plans"));
 els.recordsViewBtn.addEventListener("click", () => switchView("records"));
 els.newNativeModule.addEventListener("click", createNativeModule);
-els.openModuleAdvanced.addEventListener("click", () => openModuleAdvancedEditor());
+els.openModuleAdvanced?.addEventListener("click", () => handleModuleToolAction("excel-import"));
+els.moduleExcelInput?.addEventListener("change", async () => {
+    const file = els.moduleExcelInput.files?.[0] || null;
+    if (!file) return;
+    await importModuleExcelFile(file);
+    els.moduleExcelInput.value = "";
+});
+els.moduleToolbarMore?.addEventListener("click", e => e.stopPropagation());
+document.addEventListener("click", e => {
+    if (els.moduleToolbarMore && !e.target.closest("#moduleToolbarMore")) els.moduleToolbarMore.open = false;
+    const currentModuleMore = e.target.closest(".native-module-more");
+    document.querySelectorAll(".native-module-more[open]").forEach(menu => { if (menu !== currentModuleMore) menu.open = false; });
+});
 els.closeModuleAdvanced.addEventListener("click", closeModuleAdvancedEditor);
 els.moduleAdvancedBackdrop.addEventListener("click", e => { if (e.target === els.moduleAdvancedBackdrop)
     closeModuleAdvancedEditor(); });
@@ -24175,11 +24572,21 @@ els.nativeModuleEditorContent.addEventListener("click", async (e) => {
         scheduleEditorDraft("module");
         return;
     }
-    if (e.target.closest("[data-open-native-advanced]")) {
-        const id = nativeModuleEditingId;
-        if (await closeNativeModuleEditor(true) !== false)
-            openModuleAdvancedEditor(id);
+    const ratingDetails = e.target.closest(".native-module-rating-details");
+    if (ratingDetails) refreshNativeModuleRatingPreview();
+});
+els.nativeModuleEditorContent.addEventListener("change", e => {
+    if (!nativeModuleDraft) return;
+    if (e.target.matches("[data-native-module-rating-system]")) {
+        syncNativeModuleDraftFromForm();
+        nativeModuleDraft.rating.ratingSystemId = e.target.value;
+        els.nativeModuleEditorContent.innerHTML = nativeModuleEditorFormHTML(nativeModuleDraft);
+        updateAllEditorStateIndicators(); scheduleEditorDraft("module");
     }
+});
+els.nativeModuleEditorContent.addEventListener("input", e => {
+    if (!nativeModuleDraft || !e.target.matches("[data-native-module-rating-manual],[data-native-module-rating-score]")) return;
+    syncNativeModuleRatingFromForm(); refreshNativeModuleRatingPreview(); updateAllEditorStateIndicators(); scheduleEditorDraft("module");
 });
 els.moduleNativeSearch.addEventListener("input", () => { moduleRenderLimit = MODULE_RENDER_BATCH; debouncedModuleRender(); });
 els.moduleNativeHoFilter.addEventListener("change", renderNativeModules);
@@ -24187,12 +24594,18 @@ els.moduleNativeLocationFilter.addEventListener("change", renderNativeModules);
 els.moduleNativeSort.addEventListener("change", renderNativeModules);
 els.moduleCardsLayout.addEventListener("click", () => setModuleLayoutMode("cards"));
 els.moduleCompactLayout.addEventListener("click", () => setModuleLayoutMode("compact"));
+els.moduleBatchSelectVisible?.addEventListener("click", () => { moduleBatchVisibleIds.forEach(id => moduleBatchSelectedIds.add(id)); renderNativeModules(); });
+els.moduleBatchClear?.addEventListener("click", () => { moduleBatchSelectedIds.clear(); renderNativeModules(); });
+els.moduleBatchDelete?.addEventListener("click", () => void deleteSelectedModules());
+els.moduleBatchDone?.addEventListener("click", () => setModuleBatchMode(false));
 els.moduleNativeGrid.addEventListener("click", async (e) => {
     const create = e.target.closest("[data-native-empty-create]");
     if (create) {
         createNativeModule();
         return;
     }
+    const select = e.target.closest("[data-native-module-select]");
+    if (select) { toggleModuleBatchSelection(select.dataset.nativeModuleSelect); return; }
     const records = e.target.closest("[data-native-module-records]");
     if (records) {
         openNativeModuleRecords(records.dataset.nativeModuleRecords);
@@ -24213,13 +24626,15 @@ els.moduleNativeGrid.addEventListener("click", async (e) => {
         mergeDuplicateModules(merge.dataset.nativeModuleMerge);
         return;
     }
+    const duplicate = e.target.closest("[data-native-module-duplicate]");
+    if (duplicate) { duplicateNativeModule(duplicate.dataset.nativeModuleDuplicate); return; }
     const recruit = e.target.closest("[data-native-module-recruit]");
     if (recruit) {
         const m = moduleById(recruit.dataset.nativeModuleRecruit);
         if (!m)
             return;
         const ok = await copyTextCompat(nativeModuleRecruitmentText(m));
-        showToast(ok ? "招募信息已复制" : "复制失败，请进入高级工具查看");
+        showToast(ok ? "招募信息已复制" : "复制失败，请稍后重试");
     }
 });
 if (els.plansView) els.plansView.addEventListener("click", e => {
@@ -24652,6 +25067,25 @@ els.planEditorContent.addEventListener("click", async (e) => {
     }
 });
 els.plansView.addEventListener("click", e => {
+    const quickPick = e.target.closest("[data-mobile-quick-plan]");
+    if (quickPick) {
+        if (shareModeBlock("安排开团计划")) return;
+        plannerPickedPlanId = quickPick.dataset.mobileQuickPlan || null;
+        if (mobileMedia.matches) setPlannerMobileSection("calendar", { persist: false, scroll: false });
+        renderRunPlans();
+        showToast("已选计划，直接点击日历时段即可安排");
+        return;
+    }
+    if (e.target.closest("[data-mobile-open-plan-queue]")) {
+        setPlannerMobileSection("queue", { persist: false, scroll: false });
+        requestAnimationFrame(() => els.planBoard?.scrollIntoView({ block: "start", behavior: preferredScrollBehavior() }));
+        return;
+    }
+    if (e.target.closest("[data-pick-next-plan]")) {
+        const nextId = plannerNextQuickPlanId(plannerPickedPlanId);
+        if (nextId) { plannerPickedPlanId = nextId; renderRunPlans(); showToast("已切换到下一计划"); }
+        return;
+    }
     const unschedule = e.target.closest("[data-unschedule-event]");
     if (unschedule) {
         e.stopPropagation();
@@ -24693,6 +25127,8 @@ els.plansView.addEventListener("click", e => {
     const day = e.target.closest("[data-calendar-day]");
     if (day) {
         setPlannerSelectedDate(day.dataset.calendarDay);
+        if (mobileMedia.matches && plannerPickedPlanId && plannerViewMode === "month")
+            setPlannerViewMode("three", false);
         return;
     }
     const event = e.target.closest("[data-week-event-plan]");
@@ -25087,20 +25523,27 @@ els.recordsBoard.addEventListener("click", e => {
         return;
     const editMode = e.target.closest("[data-record-edit]");
     if (editMode) {
-        recordEditingIds.add(recordId);
-        setRunRecordCollapsed(recordId, false, false);
-        renderRunRecords({ preservePageScroll: true, centerSelected: false });
+        activateRecordEditing(recordId, { scroll: false });
+        return;
+    }
+    const doneNextMode = e.target.closest("[data-record-done-next]");
+    if (doneNextMode) {
+        if (!flushRecordBeforeEditorMove(recordId)) return;
+        recordEditingIds.delete(recordId);
+        delete runRecordTransientCollapseState[recordId];
+        const nextId = String(doneNextMode.dataset.recordNextId || "");
+        if (nextId && runRecords.some(r => String(r.id) === nextId)) {
+            activateRecordEditing(nextId, { scroll: true });
+            showToast("已进入下一桌编辑");
+        }
+        else {
+            addTableToModule(rec.moduleName, { moduleId: rec.moduleId || "", inheritFromRecordId: recordId, editImmediately: true, scroll: true });
+        }
         return;
     }
     const doneMode = e.target.closest("[data-record-done]");
     if (doneMode) {
-        if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId) {
-            flushRecordInputSave();
-            if ((recordInputPending === null || recordInputPending === void 0 ? void 0 : recordInputPending.recordId) === recordId) {
-                showToast("当前记录尚未保存，已保持编辑状态");
-                return;
-            }
-        }
+        if (!flushRecordBeforeEditorMove(recordId)) return;
         recordEditingIds.delete(recordId);
         delete runRecordTransientCollapseState[recordId];
         renderRunRecords({ preservePageScroll: true, centerSelected: false });
@@ -25613,10 +26056,46 @@ els.globalCreate.addEventListener("click", e => { e.stopPropagation(); toggleQui
         updateSettingsFooterState();
     });
 });
-(_q = els.openModuleAdvancedSettings) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
-    closeSettings(true);
-    switchView("modules");
-    openModuleAdvancedEditor();
+els.moduleRatingDefaultSelect?.addEventListener("change", e => {
+    if (!settingsDraft) return;
+    settingsDraft.moduleArchive = normalizeModuleArchiveSettings(settingsDraft.moduleArchive);
+    settingsDraft.moduleArchive.defaultRatingSystemId = e.target.value;
+    renderModuleRatingSettingsSummary(); updateSettingsFooterState();
+});
+els.addModuleRatingSystem?.addEventListener("click", () => {
+    if (!settingsDraft) return;
+    settingsDraft.moduleArchive = normalizeModuleArchiveSettings(settingsDraft.moduleArchive);
+    const id = `module_sys_${uid()}`;
+    settingsDraft.moduleArchive.ratingSystems.push({ id, name: "新评分体系", criteria: [{ id: `module_c_${uid()}`, name: "评分项", weight: 100, desc: "" }] });
+    settingsDraft.moduleArchive.defaultRatingSystemId = id;
+    renderModuleRatingSettingsSummary(); updateSettingsFooterState();
+    requestAnimationFrame(() => els.moduleRatingSystemsList?.querySelector(`[data-module-rating-system-id="${CSS.escape(id)}"]`)?.scrollIntoView({ block: "nearest", behavior: preferredScrollBehavior() }));
+});
+els.moduleRatingSystemsList?.addEventListener("input", e => {
+    if (!settingsDraft) return;
+    const ms = settingsDraft.moduleArchive = normalizeModuleArchiveSettings(settingsDraft.moduleArchive);
+    const sysName = e.target.dataset.moduleRatingSystemName;
+    if (sysName) { const sys = ms.ratingSystems.find(s => s.id === sysName); if (sys) sys.name = e.target.value; }
+    const parsePair = raw => { const i = String(raw || "").indexOf(":"); return i < 0 ? ["",""] : [raw.slice(0,i), raw.slice(i+1)]; };
+    for (const [key, field] of [["moduleRatingCriterionName","name"],["moduleRatingCriterionWeight","weight"],["moduleRatingCriterionDesc","desc"]]) {
+        const raw = e.target.dataset[key]; if (!raw) continue; const [sid,cid] = parsePair(raw), sys = ms.ratingSystems.find(s => s.id === sid), c = sys?.criteria.find(c => c.id === cid); if (!c) continue;
+        c[field] = field === "weight" ? Math.max(0, Number(e.target.value) || 0) : e.target.value;
+    }
+    const sys = ms.ratingSystems.find(s => s.id === ms.defaultRatingSystemId) || ms.ratingSystems[0];
+    if (els.moduleRatingSystemSummary) els.moduleRatingSystemSummary.textContent = sys ? `${sys.name} · ${sys.criteria.length} 个评分项` : "未设置";
+    updateSettingsFooterState();
+});
+els.moduleRatingSystemsList?.addEventListener("click", async e => {
+    if (!settingsDraft) return;
+    const ms = settingsDraft.moduleArchive = normalizeModuleArchiveSettings(settingsDraft.moduleArchive);
+    const cloneBtn = e.target.closest("[data-module-rating-system-clone]");
+    if (cloneBtn) { const src = ms.ratingSystems.find(s => s.id === cloneBtn.dataset.moduleRatingSystemClone); if (!src) return; const cp = clone(src); cp.id = `module_sys_${uid()}`; cp.name = `${src.name} 副本`; cp.criteria = cp.criteria.map(c => ({ ...c, id: `module_c_${uid()}` })); ms.ratingSystems.push(cp); ms.defaultRatingSystemId = cp.id; renderModuleRatingSettingsSummary(); updateSettingsFooterState(); return; }
+    const delSys = e.target.closest("[data-module-rating-system-delete]");
+    if (delSys) { const id = delSys.dataset.moduleRatingSystemDelete, sys = ms.ratingSystems.find(s => s.id === id); if (!sys || ms.ratingSystems.length <= 1) return; if (!await appConfirm(`删除评分体系“${sys.name}”？已有模组使用该体系时会自动回退到默认体系；原评分项数据仍保存在档案中。`, { title: "删除评分体系？", confirmText: "删除", danger: true })) return; ms.ratingSystems = ms.ratingSystems.filter(s => s.id !== id); if (ms.defaultRatingSystemId === id) ms.defaultRatingSystemId = ms.ratingSystems[0].id; renderModuleRatingSettingsSummary(); updateSettingsFooterState(); return; }
+    const addCrit = e.target.closest("[data-module-rating-criterion-add]");
+    if (addCrit) { const sys = ms.ratingSystems.find(s => s.id === addCrit.dataset.moduleRatingCriterionAdd); if (!sys) return; sys.criteria.push({ id: `module_c_${uid()}`, name: "新评分项", weight: 0, desc: "" }); renderModuleRatingSettingsSummary(); updateSettingsFooterState(); return; }
+    const delCrit = e.target.closest("[data-module-rating-criterion-delete]");
+    if (delCrit) { const raw = delCrit.dataset.moduleRatingCriterionDelete, i = raw.indexOf(":"), sid = raw.slice(0,i), cid = raw.slice(i+1), sys = ms.ratingSystems.find(s => s.id === sid); if (!sys || sys.criteria.length <= 1) return; sys.criteria = sys.criteria.filter(c => c.id !== cid); renderModuleRatingSettingsSummary(); updateSettingsFooterState(); }
 });
 els.sort.addEventListener("change", () => { settings.sortMode = els.sort.value; saveState(); renderProfiles(); });
 els.grid.addEventListener("click", e => { const scoreToggle = e.target.closest("[data-toggle-compact-scores]"); if (scoreToggle) {
@@ -26614,7 +27093,7 @@ initV806SearchUX();
       var text=uxButtonText(btn);
       btn.classList.remove("ux-action-primary","ux-action-secondary","ux-action-state","ux-action-danger");
       if(btn.classList.contains("danger")||/删除|永久|清空|放弃修改/.test(text)) btn.classList.add("ux-action-danger");
-      else if(btn.classList.contains("primary")||/^(保存|确认|完成编辑|编辑此桌|开始导入|创建|导出图片|立即导出|确认排期|下一步)/.test(text)||/^＋\s*(新建|添加)/.test(text)) btn.classList.add("ux-action-primary");
+      else if(btn.classList.contains("primary")||/^(保存|确认|完成|编辑此桌|开始导入|创建|导出图片|立即导出|确认排期|下一步)/.test(text)||/^＋\s*(新建|添加)/.test(text)) btn.classList.add("ux-action-primary");
       else if(/归档|退回计划|转为计划|更换.*模组|撤回|恢复.*状态|安全重编号/.test(text)) btn.classList.add("ux-action-state");
       else btn.classList.add("ux-action-secondary");
     });
@@ -26656,7 +27135,7 @@ initV806SearchUX();
       syncPlannerViewButtons();
       return;
     }
-    plannerViewMode="three";uxStorePlannerView("three");document.body.dataset.plannerView="three";
+    plannerViewMode="three";if(persist)uxStorePlannerView("three");document.body.dataset.plannerView="three";
     if(persist){
       settings.ui=normalizeUiSettings(Object.assign({},settings.ui,{plannerView:"week"}));
       saveState();
@@ -26671,7 +27150,8 @@ initV806SearchUX();
     var count=isThree?3:7,today=localISODate(new Date()),start=parseLocalISODate(startIso),end=new Date(start);end.setDate(start.getDate()+count-1);
     var weekLabel=start.getMonth()+1+"月"+start.getDate()+"日 – "+(end.getMonth()+1)+"月"+end.getDate()+"日"+(isThree?" · 3日视图":"");
     var picked=runPlans.find(function(p){return p.id===plannerPickedPlanId;});
-    var pickedHtml=picked?'<div class="calendar-picked"><span><b>安排模式</b> · <strong>'+escapeHTML(plannerPlanLabel(picked))+'</strong><small>点击日历空时段可连续安排</small></span><div class="calendar-picked-actions"><button type="button" data-finish-plan-pick>结束安排</button></div></div>':"";
+    var nextQuick=picked?plannerNextQuickPlanId(picked.id):"";
+    var pickedHtml=picked?'<div class="calendar-picked"><span><b>安排模式</b> · <strong>'+escapeHTML(plannerPlanLabel(picked))+'</strong><small>点击空时段连续安排；手机可直接切到下一计划</small></span><div class="calendar-picked-actions">'+(nextQuick?'<button class="mobile-only" type="button" data-pick-next-plan>下一计划</button>':'')+'<button type="button" data-finish-plan-pick>结束安排</button></div></div>':"";
     var days=Array.from({length:count},function(_,i){var iso=addLocalDays(startIso,i),d=parseLocalISODate(iso);return{iso:iso,d:d,label:isThree?uxDayLabel(iso):["周一","周二","周三","周四","周五","周六","周日"][i]};});
     var maxOcc=Math.max.apply(null,[0].concat(days.reduce(function(out,row){return out.concat(PLAN_DAYPARTS.map(function(part){return calendarSlotsForDate(row.iso).filter(function(x){return slotDaypart(x.slot)===part.key;}).length;}));},[])));
     var densitySetting=normalizeUiSettings(settings.ui).plannerDensity;
@@ -26807,8 +27287,14 @@ initV806SearchUX();
         <section class="mobile-sheet-group"><strong>筛选</strong>${mobileProxySelect("moduleNativeHoFilter","HO 设置")}${mobileProxySelect("moduleNativeLocationFilter","地点")}</section>
         <section class="mobile-sheet-group"><strong>排序与显示</strong>${mobileProxySelect("moduleNativeSort","排序")}
           <div class="mobile-sheet-actions">${mobileProxyButton("moduleCardsLayoutBtn","卡片视图")}${mobileProxyButton("moduleCompactLayoutBtn","简表视图")}</div>
-        </section>
-        <section class="mobile-sheet-group"><strong>其他</strong><div class="mobile-sheet-actions one">${mobileProxyButton("openModuleAdvancedBtn","模组高级工具")}</div></section>`);
+        </section>`);
+      return;
+    }
+    if(kind==="moduleTools"){
+      showMobilePageSheet("模组工具",`
+        <section class="mobile-sheet-group"><strong>导入与导出</strong><small>Excel 用于批量整理；便携 HTML 会把模组档案直接嵌入文件，请按私人备份保管。</small><div class="mobile-sheet-actions"><button type="button" data-mobile-module-tool="excel-import">导入 Excel</button><button type="button" data-mobile-module-tool="excel-export">导出 Excel</button></div><div class="mobile-sheet-actions one"><button type="button" data-mobile-module-tool="portable">导出便携 HTML</button></div></section>
+        <section class="mobile-sheet-group"><strong>管理</strong><div class="mobile-sheet-actions"><button type="button" data-mobile-module-tool="rating">评分体系</button><button type="button" data-mobile-module-tool="batch">批量管理</button></div></section>
+        <section class="mobile-sheet-group"><strong>数据</strong><div class="mobile-sheet-actions one"><button type="button" data-mobile-module-tool="backup">数据与备份</button></div></section>`);
       return;
     }
     if(kind==="records"){
@@ -26904,6 +27390,8 @@ initV806SearchUX();
     if(open&&typeof mobileMedia!=="undefined"&&mobileMedia.matches){ e.preventDefault(); e.stopPropagation(); openMobilePageSheet(open.dataset.mobilePageSheet); return; }
     if(e.target.closest("[data-mobile-page-sheet-close]")){ e.preventDefault(); closeMobilePageSheet(); return; }
     if(e.target.closest("[data-mobile-tools-close]")){ e.preventDefault(); toggleMobileTools(false); return; }
+    const moduleTool=e.target.closest("[data-mobile-module-tool]");
+    if(moduleTool){ const action=moduleTool.dataset.mobileModuleTool; closeMobilePageSheet(); if(action==="excel-import"){ void handleModuleToolAction(action); } else { setTimeout(()=>void handleModuleToolAction(action),0); } return; }
     const proxy=e.target.closest("[data-mobile-proxy-click]");
     if(proxy){ const src=document.getElementById(proxy.dataset.mobileProxyClick); closeMobilePageSheet(); setTimeout(()=>src?.click(),0); return; }
     const recMod=e.target.closest("[data-mobile-record-module]");
