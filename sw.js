@@ -1,5 +1,5 @@
 const CACHE_PREFIX="tomato-pl-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.11.5`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.11.7`;
 const RUNTIME_DOWNLOAD_CACHE="tomato-pl-runtime-downloads-v1";
 const APP_SHELL=["./","./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 
@@ -22,7 +22,7 @@ self.addEventListener("install",event=>{
 self.addEventListener("activate",event=>{
   event.waitUntil(
     caches.keys()
-      .then(keys=>Promise.all(keys.filter(key=>key.startsWith(CACHE_PREFIX)&&key!==CACHE_NAME).map(key=>caches.delete(key))))
+      .then(keys=>Promise.all(keys.filter(key=>key.startsWith(CACHE_PREFIX)&&key!==CACHE_NAME&&key!==RUNTIME_DOWNLOAD_CACHE).map(key=>caches.delete(key))))
       .then(()=>self.clients.claim())
   );
 });
@@ -37,9 +37,7 @@ self.addEventListener("fetch",event=>{
       const cache=await caches.open(RUNTIME_DOWNLOAD_CACHE);
       const response=await cache.match(event.request.url);
       if(response){
-        const copy=response.clone();
-        try{await cache.delete(event.request.url)}catch(err){}
-        return copy;
+        return response;
       }
       return new Response("Download expired",{status:404,statusText:"Download expired",headers:{"Content-Type":"text/plain; charset=utf-8","Cache-Control":"no-store"}});
     })());
