@@ -1,5 +1,5 @@
 const CACHE_PREFIX="tomato-pl-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.11.22`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.11.24`;
 const RUNTIME_DOWNLOAD_CACHE="tomato-pl-runtime-downloads-v1";
 const APP_SHELL=["./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 
