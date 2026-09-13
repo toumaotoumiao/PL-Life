@@ -1751,7 +1751,11 @@ async function putdb(){
 }
 function meaningfulLegacyRun(r){
   if(!r||typeof r!=='object')return false;
-  return ['date','role','thoughts','actualDuration','kp','participants','ho','notes'].some(k=>txt(r[k])!=='');
+  if(['date','role','thoughts','actualDuration','kp','participants','ho','notes'].some(k=>txt(r[k])!==''))return true;
+  const c=r._central;
+  if(!c||typeof c!=='object')return false;
+  if(['endDate','legacyDuration','logUrl','tableName'].some(k=>txt(c[k])!=='')||((Array.isArray(c.logUrls)?c.logUrls:[]).some(x=>txt(x)!=='')))return true;
+  return Array.isArray(c.sessionSlots)&&c.sessionSlots.some(x=>txt(x?.date)!=='');
 }
 function repair(){
   state.version=19;
