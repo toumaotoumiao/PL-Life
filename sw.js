@@ -1,7 +1,7 @@
 const CACHE_PREFIX="tomato-pl-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.11.17`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.11.22`;
 const RUNTIME_DOWNLOAD_CACHE="tomato-pl-runtime-downloads-v1";
-const APP_SHELL=["./","./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
+const APP_SHELL=["./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 
 self.addEventListener("install",event=>{
   event.waitUntil((async()=>{
@@ -45,6 +45,9 @@ self.addEventListener("fetch",event=>{
   }
 
   const isFreshProgramRequest=event.request.mode==="navigate" || /\/(?:index|module-tools)\.html$/.test(url.pathname) || url.pathname.endsWith("/");
+  const programCacheKey=isFreshProgramRequest
+    ? (url.pathname.endsWith("/") ? new URL("index.html",url.href).href : `${url.origin}${url.pathname}`)
+    : event.request;
   event.respondWith((async()=>{
     try{
       const response=isFreshProgramRequest
@@ -52,7 +55,7 @@ self.addEventListener("fetch",event=>{
         : await fetch(event.request);
       if(response&&response.ok){
         const copy=response.clone();
-        caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy)).catch(()=>{});
+        caches.open(CACHE_NAME).then(cache=>cache.put(programCacheKey,copy)).catch(()=>{});
         return response;
       }
       const cached=await caches.match(event.request,{ignoreSearch:isFreshProgramRequest});
