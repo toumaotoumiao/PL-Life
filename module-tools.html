@@ -1020,7 +1020,7 @@ html[data-theme]{
 </style>
 </head><body><div class="app"><header class="top"><div class="brand"><div class="brand-copy"><h1>模组高级工具</h1><div class="sub">管理模组资料、评分、招募与批量工具 · 跑团记录由主页面统一维护</div><div id="savestate" class="save-state" aria-live="polite">正在读取档案…</div></div></div></header><details class="notice notice-compact" data-collapse-key="module-tools:help"><summary><span><b>本地保存 · 支持离线</b><small>修改后自动保存</small></span><span class="notice-more">使用说明</span></summary><div class="notice-body"><b>数据保存</b><br>模组档案保存在当前浏览器，修改后自动保存。本工具不提供云同步。<br><br><b>隐私与备份</b><br>档案可能包含个人资料。清理浏览器数据、更换设备或使用隐私模式可能导致数据丢失；完整备份可用于数据恢复。<br><br><b>功能</b><br>编辑模组资料、评分与招募；跑团记录请在主页面维护。批量整理可使用 Excel。请定期导出 <b>完整备份</b>。</div></details><section class="stats" id="stats" data-hscroll-key="stats"></section><section class="filter-shell" id="filterShell">
   <div class="filter-main">
-    <div class="search filter-search"><span>⌕</span><input class="control" id="q" placeholder="搜索模组名称、作者、地点、时代、性质或备注"></div>
+    <div class="search filter-search"><span>⌕</span><input class="control" id="q" placeholder="搜索模组、作者、地点、时代" aria-label="搜索模组名称、作者、地点、时代、性质或备注"></div>
     <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterPanel"><span>筛选</span><span class="filter-count" id="filterCount" hidden>0</span><span class="filter-chev">⌄</span></button>
     <div class="sortbox"><span class="sortlabel">排序</span><select class="sortselect" id="sort" aria-label="排序字段"><option value="updated">最近编辑</option><option value="title">模组名称</option><option value="author">作者</option><option value="location">地点</option><option value="era">时代</option><option value="players">人数</option><option value="duration">时长</option><option value="nature">性质</option><option value="plCount">PL 侧次数</option><option value="kpCount">KP 侧次数</option><option value="sideTotal">总次数</option><option value="runs">跑团记录数</option><option value="rating">评分</option><option value="reKp">再带意愿</option></select></div>
     <button class="sortdir compact" id="sortDir" type="button" title="切换排序方向"><span class="arrow">↓</span><span class="dirtext">降序</span></button>
@@ -2040,17 +2040,46 @@ function commit(){$$('.mapsel').forEach(x=>{pending.map[+x.dataset.i].target=x.v
 function importDate(v){if(v==null||v==='')return'';if(typeof v==='number'&&v>20000&&v<80000)return new Date((v-25569)*86400000).toISOString().slice(0,10);const d=new Date(String(v));return isNaN(d)?String(v):d.toISOString().slice(0,10)}
 
 function delim(text,d=','){const rows=[];let row=[],cell='',i=0,q=false;while(i<text.length){const c=text[i];if(q){if(c==='"'&&text[i+1]==='"'){cell+='"';i+=2;continue}if(c==='"'){q=false;i++;continue}cell+=c;i++;continue}if(c==='"'){q=true;i++;continue}if(c===d){row.push(cell);cell='';i++;continue}if(c==='\n'){row.push(cell.replace(/\r$/,''));rows.push(row);row=[];cell='';i++;continue}cell+=c;i++}if(cell!==''||row.length){row.push(cell.replace(/\r$/,''));rows.push(row)}return rows}
-async function xlsxRead(buf){const z=await unzip(buf),dec=new TextDecoder(),xml=n=>z[n]?dec.decode(z[n]):'',p=new DOMParser(),w=xml('xl/workbook.xml');if(!w)throw Error('XLSX 中缺少 workbook.xml');const wd=p.parseFromString(w,'application/xml'),rd=p.parseFromString(xml('xl/_rels/workbook.xml.rels'),'application/xml'),rel={};[...rd.getElementsByTagNameNS('*','Relationship')].forEach(r=>rel[r.getAttribute('Id')]=r.getAttribute('Target'));const shared=[],sx=xml('xl/sharedStrings.xml');if(sx){const sd=p.parseFromString(sx,'application/xml');[...sd.getElementsByTagNameNS('*','si')].forEach(si=>shared.push([...si.getElementsByTagNameNS('*','t')].map(t=>t.textContent).join('')))}const out=[];for(const n of [...wd.getElementsByTagNameNS('*','sheet')]){const name=n.getAttribute('name')||'Sheet',rid=n.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships','id')||n.getAttribute('r:id'),t=resolve('xl/workbook.xml',rel[rid]||'');if(z[t])out.push({name,rows:sheetRows(xml(t),shared,p)})}return out}
+async function xlsxRead(buf){const z=await unzip(buf),dec=new TextDecoder(),xml=n=>z[n]?dec.decode(z[n]):'',p=new DOMParser(),w=xml('xl/workbook.xml');if(!w)throw Error('XLSX 中缺少 workbook.xml');const wd=p.parseFromString(w,'application/xml'),rd=p.parseFromString(xml('xl/_rels/workbook.xml.rels'),'application/xml'),rel={};[...rd.getElementsByTagNameNS('*','Relationship')].forEach(r=>rel[r.getAttribute('Id')]=r.getAttribute('Target'));const shared=[],sx=xml('xl/sharedStrings.xml');if(sx){const sd=p.parseFromString(sx,'application/xml');[...sd.getElementsByTagNameNS('*','si')].forEach(si=>shared.push([...si.getElementsByTagNameNS('*','t')].map(t=>t.textContent).join('')))}const out=[];for(const n of [...wd.getElementsByTagNameNS('*','sheet')]){const name=n.getAttribute('name')||'Sheet',rid=n.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships','id')||n.getAttribute('r:id'),t=resolve('xl/workbook.xml',rel[rid]||'');if(!t||!z[t])throw Error('XLSX 工作表文件缺失：'+name);if(out.some(sh=>sh.name===name))throw Error('XLSX 工作表名称重复：'+name);out.push({name,rows:sheetRows(xml(t),shared,p)})}if(!out.length)throw Error('XLSX 未找到任何工作表');return out}
 
 function resolve(base,t){if(t.startsWith('/'))return t.slice(1);const a=base.split('/');a.pop();t.split('/').forEach(x=>{if(x==='..')a.pop();else if(x!=='.')a.push(x)});return a.join('/')}
 
-function sheetRows(text,shared,p){const d=p.parseFromString(text,'application/xml'),rows=[];[...d.getElementsByTagNameNS('*','row')].forEach((rn,ri)=>{const r=Math.max(0,+rn.getAttribute('r')-1||ri),a=rows[r]||[];[...rn.getElementsByTagNameNS('*','c')].forEach(c=>{const ref=c.getAttribute('r')||'A',letters=ref.match(/[A-Z]+/i)?.[0]||'A',col=colidx(letters),t=c.getAttribute('t')||'';let v='';if(t==='inlineStr')v=[...c.getElementsByTagNameNS('*','t')].map(x=>x.textContent).join('');else{const raw=c.getElementsByTagNameNS('*','v')[0]?.textContent??'';if(t==='s')v=shared[+raw]??'';else if(t==='b')v=raw==='1';else if(t==='str'||t==='e')v=raw;else{const n=Number(raw);v=raw!==''&&Number.isFinite(n)?n:raw}}a[col]=v});rows[r]=a});return rows}
+function sheetRows(text,shared,p){const d=p.parseFromString(text,'application/xml'),rows=[];if(d.getElementsByTagName('parsererror').length)throw Error('XLSX 工作表 XML 损坏');[...d.getElementsByTagNameNS('*','row')].forEach((rn,ri)=>{const r=Math.max(0,+rn.getAttribute('r')-1||ri),a=rows[r]||[];[...rn.getElementsByTagNameNS('*','c')].forEach(c=>{const ref=c.getAttribute('r')||'A',letters=ref.match(/[A-Z]+/i)?.[0]||'A',col=colidx(letters),t=c.getAttribute('t')||'';let v='';if(t==='inlineStr')v=[...c.getElementsByTagNameNS('*','t')].map(x=>x.textContent).join('');else{const raw=c.getElementsByTagNameNS('*','v')[0]?.textContent??'';if(t==='s')v=shared[+raw]??'';else if(t==='b')v=raw==='1';else if(t==='str'||t==='e')v=raw;else{const n=Number(raw);v=raw!==''&&Number.isFinite(n)?n:raw}}a[col]=v});rows[r]=a});return rows}
 
 function colidx(s){let n=0;for(const c of s.toUpperCase())n=n*26+c.charCodeAt(0)-64;return n-1}
 
-async function unzip(buf){const u=new Uint8Array(buf),v=new DataView(buf);let eocd=-1;for(let i=u.length-22;i>=Math.max(0,u.length-66000);i--)if(v.getUint32(i,true)===0x06054b50){eocd=i;break}if(eocd<0)throw Error('这不是有效的 XLSX/ZIP 文件');const count=v.getUint16(eocd+10,true),off=v.getUint32(eocd+16,true),td=new TextDecoder();let pos=off;const out={};for(let i=0;i<count;i++){if(v.getUint32(pos,true)!==0x02014b50)throw Error('XLSX ZIP 目录损坏');const method=v.getUint16(pos+10,true),size=v.getUint32(pos+20,true),nl=v.getUint16(pos+28,true),el=v.getUint16(pos+30,true),cl=v.getUint16(pos+32,true),lo=v.getUint32(pos+42,true),name=td.decode(u.slice(pos+46,pos+46+nl)),ln=v.getUint16(lo+26,true),le=v.getUint16(lo+28,true),start=lo+30+ln+le,comp=u.slice(start,start+size);let data;if(method===0)data=comp;else if(method===8)data=await inflate(comp);else throw Error('暂不支持 ZIP 压缩方式 '+method);out[name]=data;pos+=46+nl+el+cl}return out}
-
-async function inflate(bytes){if(typeof DecompressionStream==='undefined')throw Error('当前浏览器无法读取 XLSX，请使用新版 Chrome 或 Edge。');const ds=new DecompressionStream('deflate-raw');return new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(ds)).arrayBuffer())}
+async function unzip(buf){
+  const u=new Uint8Array(buf),v=new DataView(u.buffer,u.byteOffset,u.byteLength);
+  if(u.length>16*1024*1024)throw Error('Excel 文件超过 16MB 安全限制');
+  let eocd=-1;
+  for(let i=u.length-22;i>=Math.max(0,u.length-66000);i--)if(v.getUint32(i,true)===0x06054b50){eocd=i;break}
+  if(eocd<0)throw Error('这不是有效的 XLSX/ZIP 文件');
+  const count=v.getUint16(eocd+10,true),off=v.getUint32(eocd+16,true),td=new TextDecoder();
+  if(count>3000||off>=u.length||off+count*46>u.length)throw Error('Excel ZIP 目录超出安全限制');
+  let pos=off,total=0;const out=Object.create(null);
+  for(let i=0;i<count;i++){
+    if(pos+46>u.length||v.getUint32(pos,true)!==0x02014b50)throw Error('XLSX ZIP 目录损坏');
+    const method=v.getUint16(pos+10,true),compressed=v.getUint32(pos+20,true),expanded=v.getUint32(pos+24,true),nl=v.getUint16(pos+28,true),el=v.getUint16(pos+30,true),cl=v.getUint16(pos+32,true),lo=v.getUint32(pos+42,true);
+    if(pos+46+nl+el+cl>u.length||lo+30>u.length||v.getUint32(lo,true)!==0x04034b50)throw Error('XLSX ZIP 文件索引越界');
+    const name=td.decode(u.subarray(pos+46,pos+46+nl));
+    if(!name||name.startsWith('/')||name.includes('..')||Object.prototype.hasOwnProperty.call(out,name))throw Error('XLSX ZIP 路径异常或重复');
+    const ln=v.getUint16(lo+26,true),le=v.getUint16(lo+28,true),start=lo+30+ln+le;
+    if(start+compressed>u.length||expanded>24*1024*1024||total+expanded>96*1024*1024||compressed>16*1024*1024)throw Error('Excel 解压资源超出安全限制');
+    if(compressed&&expanded/compressed>1000&&expanded>2*1024*1024)throw Error('Excel ZIP 压缩比异常');
+    const comp=u.subarray(start,start+compressed);
+    let data;if(method===0)data=comp.slice();else if(method===8)data=await inflate(comp,expanded);else throw Error('暂不支持 ZIP 压缩方式 '+method);
+    if(data.length!==expanded)throw Error('Excel 解压后文件大小不符：'+name);
+    total+=data.length;out[name]=data;pos+=46+nl+el+cl;
+  }
+  return out;
+}
+async function inflate(bytes,limit){
+  if(typeof DecompressionStream==='undefined')throw Error('当前浏览器无法读取 XLSX，请使用新版 Chrome 或 Edge。');
+  const ds=new DecompressionStream('deflate-raw'),reader=new Blob([bytes]).stream().pipeThrough(ds).getReader(),chunks=[];let total=0;
+  try{while(true){const {done,value}=await reader.read();if(done)break;total+=value.length;if(total>limit||total>24*1024*1024){await reader.cancel();throw Error('Excel 解压输出超出声明大小或安全限制');}chunks.push(value);}}
+  finally{reader.releaseLock();}
+  const out=new Uint8Array(total);let offset=0;for(const chunk of chunks){out.set(chunk,offset);offset+=chunk.length;}return out;
+}
 
 /* ---------- 12. Excel 序列化与便携备份 ---------- */
 function exportData(){const h=['名字','作者','来源','地点','时代','人数','长短','性质','规则','推荐技能','车卡要求','推荐职业','LOST 概率','模组背景 / 简介','招募备注','PL 侧次数','KP 侧次数','是否愿意再次带团','当时作为pl/kp侧','感想','评分（十分制；小数点后一位）','备注','跑团日期','实际持续时间','KP','同桌/玩家','HO/角色','备注','评价体系','评价明细'],rows=[];state.modules.forEach(m=>{const rt=m.rating||erating(),sy=sys(rt.ratingSystemId),detail=sy?sy.criteria.map(c=>rt.scores?.[c.id]!==undefined?`${c.name}:${rt.scores[c.id]}`:'').filter(Boolean).join('；'):'',total=mscore(m);((m.runs||[]).length?m.runs:[null]).forEach(r=>rows.push([m.title,m.author,m.source,m.location,m.era,m.players,m.duration,m.nature,m.rules||'',m.recommendedSkills||'',m.cardRequirements||'',m.recommendedOccupations||'',m.lostRate||'',m.background||'',m.recruitmentNotes||'',Math.max(0,+m.plCount||0),Math.max(0,+m.kpCount||0),m.reKp||'',r?.role||'',r?.thoughts||'',total??'',m.notes,r?.date||'',r?.actualDuration||'',r?.kp||'',r?.participants||'',r?.ho||'',r?.notes||'',sy?.name||'',detail]))});return{h,rows}}
