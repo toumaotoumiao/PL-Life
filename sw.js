@@ -1,5 +1,5 @@
 const CACHE_PREFIX="pl-life-prod-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.12.102`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.12.103`;
 const RUNTIME_DOWNLOAD_CACHE="pl-life-prod-runtime-downloads-v1";
 const APP_SHELL=["./index.html","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./data-migration-transaction.js","./data-migration-guard.js","./backup-restore-preflight.js","./data-heritage.js","./data-heritage-review.js","./data-heritage-apply.js","./data-heritage-batch.js","./query-core.js","./relation-index.js","./field-adapters.js","./query-state.js","./query-engine.js","./pc-query-bridge.js","./profile-query-bridge.js","./module-query-bridge.js","./plan-query-bridge.js","./record-query-bridge.js","./stats-query-bridge.js","./record-group.js"];
 
