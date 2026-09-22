@@ -5,7 +5,10 @@
 })(typeof globalThis==='object'?globalThis:null,function(engine,adapters,state){
  'use strict';if(!engine||!adapters||!state)throw new Error('个人统计查询依赖缺失');
  const text=x=>String(x==null?'':x).trim(),array=x=>Array.isArray(x)?x:[];
- const isDate=s=>/^\d{4}-\d{2}-\d{2}$/.test(s);
+ const isDate=s=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(text(s));if(!m)return false;
+  const y=Number(m[1]),mo=Number(m[2]),d=Number(m[3]);if(y<1||mo<1||mo>12||d<1)return false;
+  const leap=y%4===0&&(y%100!==0||y%400===0);
+  return d<=[31,leap?29:28,31,30,31,30,31,31,30,31,30,31][mo-1];};
  function resolveBounds({range='all',start='',end='',now}={}){
   if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(text(now)))throw new Error('统计查询需要本地时间');
   if(!['all','year','12m','custom'].includes(range))throw new Error('统计范围无效');

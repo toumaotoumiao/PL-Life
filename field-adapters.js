@@ -10,7 +10,10 @@
  const farr=v=>freeze([...v]);
  const has=v=>v!==null&&v!==undefined&&String(v).trim()!=='';
  const object=v=>v&&typeof v==='object'&&!Array.isArray(v)?v:{};
- const date=v=>/^\d{4}-\d{2}-\d{2}$/.test(t(v))?t(v):'';
+ const date=v=>{const s=t(v),m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s);if(!m)return'';
+  const y=Number(m[1]),mo=Number(m[2]),d=Number(m[3]);if(y<1||mo<1||mo>12||d<1)return'';
+  const leap=y%4===0&&(y%100!==0||y%400===0);
+  return d<=[31,leap?29:28,31,30,31,30,31,31,30,31,30,31][mo-1]?s:'';};
  const number=v=>has(v)&&Number.isFinite(Number(v))?Number(v):null;
  function scorePresent(scores){return Object.values(object(scores)).some(v=>number(v)!==null)}
  function validLogs(r){
@@ -95,14 +98,14 @@
   const read=()=>{
    const records=source.records.map(r=>{
     const links=idx.recordPcLinks(r.id),start=date(r.startDate),end=date(r.endDate),logs=validLogs(r),plIds=farr([...new Set(arr(r.plIds).map(id))]),kpId=id(r.kpProfileId),resolution=idx.resolveModule(r);
-    const statDate=start||arr(r.sessionSlots).map(s=>date(s?.date)).filter(Boolean).sort()[0]||'';
+    const statDate=start||arr(r.sessionSlots).map(s=>date(s?.date)).filter(Boolean).sort()[0]||end||'';
     const ass=arr(r.participantAssignments),pcNames=farr([...new Set([...ass.map(a=>t(a.pcName)),t(r.kpc?.pcName)].filter(Boolean))]);
     const missingPc=plIds.some(pid=>!ass.some(a=>id(a.plId)===pid&&(t(a.pcName)||t(a.pcId))))||ass.some(a=>!t(a.pcName)&&!t(a.pcId));
     const hasPc=ass.some(a=>has(a.pcName)||has(a.pcId))||Boolean(r.kpc?.enabled&&(has(r.kpc.pcName)||has(r.kpc.pcId)));
     const validHo=a=>Boolean(a&&t(a.hoMode)!=='none'&&(t(a.hoNumber)&&Number(a.hoNumber)>0||t(a.hoCustom)));
     const ho=ass.some(validHo)||(r.kpc?.enabled&&validHo(r.kpc))||false;
     const isKp=Boolean(selfId&&(kpId===selfId||(!kpId&&['我','本人','自己'].includes(t(r.kp)))));
-    const isPl=Boolean(selfId&&(plIds.includes(selfId)||ass.some(a=>id(a.plId)===selfId)));
+    const isPl=Boolean(selfId&&plIds.includes(selfId)); // formal PL roster, not an orphaned PC assignment
     const both=isKp&&isPl;
     const role=both?'both':isKp?'kp':isPl?'pl':'other';
     const roleFlags=farr([...(isKp?['kp']:[]),...(isPl?['pl']:[]),...(!isKp&&!isPl?['other']:[])]);
