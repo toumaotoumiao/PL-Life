@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PL 正式代码隔离验收 · 完整备份及设备迁移</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;color:#21342d;background:#f7faf8}body{max-width:820px;margin:35px auto;padding:0 16px;line-height:1.7}main{padding:24px;background:white;border:1px solid #d5e5da;border-radius:16px}h1{font-size:22px;margin:0 0 12px}button{background:#dcefe2;border:1px solid #7aab89;border-radius:10px;padding:10px 17px;cursor:pointer;font:inherit}button:disabled{opacity:.45}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eff4f1;padding:16px;border-radius:10px;min-height:130px;font:13px/1.6 ui-monospace,monospace}iframe{display:none}small{color:#526459}#alert{color:#9b3030}
+</style></head><body><main><h1>完整备份与换设备迁移 · 隔离验收</h1>
+<p>本实验使用同一包中的真实网站代码、全新本机随机端口和<strong>虚构附件</strong>，检查正式 ZIP 的生成、回读、合成恢复和拒绝坏文件。不会选择、读取或上传私人备份。不会修改 GitHub Pages 网站。</p>
+<p id="alert">请只用此包的启动按钮打开。检测到当前端口已存在存档时，测试自动停止，不会尝试清理它。</p>
+<button id="run" type="button">运行正式代码隔离测试</button>
+<button id="export" type="button" disabled>导出脱敏测试报告</button>
+<pre id="status">等待开始。</pre>
+<small>这是合成数据的真实浏览器集成测试；不包含真正断电、其他设备或全部历史版本验收。失败时请保留报告，切勿为了测试清空原站数据。</small>
+<iframe id="app" title="独立虚构数据测试站" sandbox="allow-scripts allow-same-origin allow-downloads"></iframe>
+</main>
+<script>
+'use strict';
+const status=document.getElementById('status'),runButton=document.getElementById('run'),exportButton=document.getElementById('export');
+const report={lab:'stage2-real-site-synthetic-integration',version:9,siteVersion:null,siteIdentityVerified:false,tests:[],environment:{secure:!!isSecureContext,indexedDB:typeof indexedDB!=='undefined',webLocks:!!navigator.locks},scope:'synthetic-origin-only'};
+const log=s=>{status.textContent+=s+'\n'};
+const insist=(condition,message)=>{if(!condition)throw Error(message)};
+const failureCodes={'隔离端口及空白存储预检':'ORIGIN_PREFLIGHT','实际网站完整加载与恢复接口存在':'SITE_LOAD_OR_BRIDGE','创建虚构未关联图片、缩略图及 Excel':'SYNTHETIC_FIXTURE','正式 ZIP 导出、校验与附件字节往返':'ZIP_ROUNDTRIP','正式主档案先写入合成差异':'SYNTHETIC_SAVE','实际完整 ZIP 恢复及主档案、附件回读':'ZIP_RESTORE','损坏 ZIP 被拒绝，原档案保持不变':'BROKEN_ZIP_HANDLING','确认期间其他标签页更新被拒绝且新数据保留':'CONCURRENT_SOURCE_PROTECTION','换设备 ZIP 只读核验、坏文件取消选择及零写入':'DEVICE_MIGRATION_INSPECTION','迁移向导恢复已核验 ZIP、附件回读及完成后锁定':'DEVICE_MIGRATION_RESTORE'};
+function test(name,fn){return Promise.resolve().then(fn).then(()=>{report.tests.push({name,passed:true});log('PASS '+name)}).catch(err=>{const code=failureCodes[name]||'TEST_FAILED';const row={name,passed:false,errorCode:code};if(err?.safeDiagnostic)row.diagnostic=err.safeDiagnostic;report.tests.push(row);log('FAIL '+name+'：'+String(err?.message||err).slice(0,210));throw err})}
+const withTimeout=(p,ms,label)=>Promise.race([p,new Promise((_,reject)=>setTimeout(()=>reject(Error(label+'超时')),ms))]);
+async function freshOrigin(){
+ insist(location.hostname==='127.0.0.1'&&location.protocol==='http:','测试必须从本机随机端口运行');
+ insist(!localStorage.length,'当前端口已有本机数据；为保护它，本实验停止。请重新运行启动器以获取另一个随机端口');
+ if(indexedDB.databases){const dbs=await indexedDB.databases();insist(dbs.length===0,'当前端口已有数据库；为保护现有数据，本实验停止')}
+ const keys=await caches.keys();insist(keys.length===0,'当前端口已有离线缓存；本实验停止');
+ const registrations=await navigator.serviceWorker?.getRegistrations?.()||[];insist(registrations.length===0,'当前端口已有 Service Worker；本实验停止');
+}
+let app=null,bridge=null;
+// Fetch only fixed, bundled engineering and site assets. A stale package or cached
+// app must FAIL, rather than reporting seven greens for a different release.
+async function verifySiteIdentity(){
+ insist(isSecureContext&&crypto?.subtle,'需要本机安全上下文与 SHA-256 才能验证站点版本');
+ const identityResponse=await fetch('./stage2-site-identity.json',{cache:'no-store'});
+ insist(identityResponse.ok,'工程包缺少对应版本的文件身份清单');
+ const identity=await identityResponse.json();
+ insist(identity.format==='pl-stage2-synthetic-site-identity'&&identity.version===1&&
+   /^\d+\.\d+\.\d+\.\d+$/.test(identity.siteVersion),'站点身份清单格式异常');
+ const names=['index.html','data-migration-transaction.js','sw.js'];
+ const hashes=identity.sha256;
+ insist(hashes&&Object.keys(hashes).length===names.length,'站点文件身份清单不完整');
+ for(const name of names){
+  insist(/^[a-f0-9]{64}$/.test(hashes[name]||''),'站点文件哈希格式异常');
+  const response=await fetch('./'+name,{cache:'no-store'});
+  insist(response.ok,'无法核对站点源码文件');
+  const actual=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await response.arrayBuffer())),
+     b=>b.toString(16).padStart(2,'0')).join('');
+  insist(actual===hashes[name],'站点代码和当前工程包不一致：'+name);
+ }
+ return identity.siteVersion;
+}
+async function loadRealSite(){
+ const expectedVersion=await verifySiteIdentity();
+ const frame=document.getElementById('app');
+ await withTimeout(new Promise((resolve,reject)=>{frame.onload=()=>resolve();frame.onerror=()=>reject(Error('正式站点加载失败'));frame.src='./index.html?stage2Synthetic='+Date.now()}),90000,'加载网站');
+ app=frame.contentWindow;
+ insist(app&&app.location.origin===location.origin,'测试窗口不在独立本机来源');
+ // The real site CSP intentionally forbids eval(). Load an engineering-only, same-origin
+ // classic script instead. The shipping index.html and all site assets are unchanged.
+ await withTimeout(new Promise((resolve,reject)=>{
+  const script=frame.contentDocument.createElement('script');
+  script.src='./stage2-real-site-bridge.js';
+  script.onload=resolve;script.onerror=()=>reject(Error('测试桥接脚本加载失败'));
+  frame.contentDocument.head.appendChild(script);
+ }),25000,'测试桥接加载');
+ bridge=app.__plStage2SyntheticBridge;
+ insist(bridge&&typeof bridge.run==='function','测试桥接未成功初始化');
+ const info=bridge.status();
+ report.siteVersion=String(info.version||'')||null;
+ insist(report.siteVersion===expectedVersion,'当前网站版本与工程包不一致，请使用同一个最新版工程包启动');
+ report.siteIdentityVerified=true;
+ insist(!info.protected,'测试站进入保护模式，无法进行集成验证');
+ insist(info.zip==='function'&&info.parse==='function'&&info.restore==='function','正式网站 ZIP 功能缺失');
+}
+async function invoke(action){return withTimeout(bridge.run(action),90000,'正式网站操作')}
+async function runAll(){
+ report.tests.length=0;report.siteVersion=null;report.siteIdentityVerified=false;exportButton.disabled=true;status.textContent='此测试仅针对当前随机端口的虚构资料。\n';
+ try{
+  await test('隔离端口及空白存储预检',freshOrigin);
+  await test('实际网站完整加载与恢复接口存在',loadRealSite);
+  await test('创建虚构未关联图片、缩略图及 Excel',async()=>{
+   const result=await invoke('fixtures');
+   insist(result[0]===1&&result[1]===1,'虚构文件写入/回读不一致');
+  });
+  await test('正式 ZIP 导出、校验与附件字节往返',async()=>{
+   const data=await invoke('export');
+   insist(data.verified&&data.bytes>200&&data.mode==='complete'&&data.unlinkedMedia===1&&data.unlinkedBooks===1,'完整 ZIP 内容或备份范围错误');
+   insist(JSON.stringify(data.image)==='[137,80,78,71,13,10,26,10]'&&JSON.stringify(data.thumb)==='[1,2,3,4]'&&data.note==='synthetic-only'&&JSON.stringify(data.book)==='[80,75,3,4,5,6]','原件、缩略图或元数据没有无损恢复');
+  });
+  await test('正式主档案先写入合成差异',async()=>{
+   const result=await invoke('mutate');
+   insist(result.changed&&result.stored,'正式档案未产生可验证的合成差异');
+  });
+  await test('实际完整 ZIP 恢复及主档案、附件回读',async()=>{
+   const result=await invoke('restore');
+   const failures=['ok','original','stored','image','thumb','book'].filter(key=>result[key]!==true);if(result.marker)failures.push('marker');
+   if(failures.length){const e=Error('恢复检查未通过（'+result.issue+'；'+failures.join('、')+'）');e.safeDiagnostic={issue:result.issue,stage:result.stage,failedChecks:failures,sectionChecks:result.sectionChecks};throw e;}
+  });
+  let migrationInspectionPassed=false;
+  try{await test('换设备 ZIP 只读核验、坏文件取消选择及零写入',async()=>{
+   const r=await invoke('migration-inspect');
+   const checks=['valid','enabled','details','corruptRejected','staleCleared','reverified','noArchiveWrite','noAttachmentWrite'];
+   const failedChecks=checks.filter(k=>r[k]!==true);
+   if(failedChecks.length||r.failureStage!=='NONE'){
+     const error=Error('迁移核验专项未通过（'+(r.failureStage||'UNKNOWN')+'；'+failedChecks.join('、')+'）');
+     error.safeDiagnostic={stage:['NONE','BASELINE','VALID_INSPECTION','CORRUPT_INSPECTION','REINSPECTION','READBACK'].includes(r.failureStage)?r.failureStage:'UNKNOWN',failedChecks};
+     throw error;
+   }
+  });
+  migrationInspectionPassed=true;
+  }catch(_){log('设备迁移专项失败，已跳过依赖它的恢复测试；继续检查独立安全项目。')}
+  if(migrationInspectionPassed)await test('迁移向导恢复已核验 ZIP、附件回读及完成后锁定',async()=>{
+   const r=await invoke('migration-restore');
+   insist(['modified','success','original','stored','image','thumb','book','reset'].every(k=>r[k]===true),'迁移向导恢复或附件回读不完整');
+  });
+  if(!migrationInspectionPassed)report.tests.push({name:'迁移向导恢复已核验 ZIP、附件回读及完成后锁定',passed:false,errorCode:'PREREQUISITE_FAILED'});
+  await test('损坏 ZIP 被拒绝，原档案保持不变',async()=>{
+   const result=await invoke('bad-zip');
+   insist(result.refused&&result.same,'损坏文件没有被安全拒绝');
+  });
+  await test('确认期间其他标签页更新被拒绝且新数据保留',async()=>{
+   const result=await invoke('source-drift');
+   insist(result.injected&&result.refused&&result.newerPreserved&&result.mediaPreserved&&result.workbookPreserved&&result.noMarker,
+     '恢复确认期间的并发变更保护未通过');
+  });
+  await test('同源原位升级后档案、关联、附件及升级保护核对',async()=>{
+    const staged=await invoke('prepare-same-origin-upgrade');
+    insist(staged.prepared===true,'旧版虚构档案未准备完成');
+    // Reload the shipping website at the SAME origin to exercise its actual startup path.
+    await loadRealSite();
+    const result=await invoke('verify-same-origin-upgrade');
+    const checkNames=['stored','memory','source','version','attachments','noMarker','unprotected'];
+    const failedChecks=checkNames.filter(name=>result[name]!==true);
+    if(failedChecks.length){
+      const error=Error('同源升级核对未通过（'+failedChecks.join('、')+'）');
+      error.safeDiagnostic={failedChecks};
+      throw error;
+    }
+  });
+ }catch(_){log('测试暂停：已保留本隔离端口中的虚构数据供诊断；关闭命令窗口即可停止本地服务。')}
+ finally{exportButton.disabled=report.tests.length===0;log('本轮 '+report.tests.filter(x=>x.passed).length+'/'+report.tests.length+' 通过。正式网站全部写入路径、跨浏览器和真实断电仍需独立验收。')}
+}
+let busy=false;runButton.onclick=async()=>{if(busy)return;busy=true;runButton.disabled=true;try{await runAll()}finally{busy=false;runButton.disabled=false}};
+exportButton.onclick=()=>{if(!report.tests.length)return;const payload=JSON.stringify(report,null,2);const link=document.createElement('a'),url=URL.createObjectURL(new Blob([payload],{type:'application/json'}));link.href=url;link.download='stage3_device_migration_synthetic_results.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1500)};
+</script></body></html>

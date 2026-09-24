@@ -1,0 +1,126 @@
+name: PL synthetic browser regression
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.webmanifest'
+      - 'site/**'
+      - '.github/pl-ci/**'
+      - '.github/workflows/pl-browser-synthetic.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.webmanifest'
+      - 'site/**'
+      - '.github/pl-ci/**'
+      - '.github/workflows/pl-browser-synthetic.yml'
+permissions:
+  contents: read
+jobs:
+  chromium-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Check existing-data startup order before browser run
+        run: node --test .github/pl-ci/round76-startup-status-order.test.cjs
+      - name: Check table lifecycle and Log note compatibility
+        run: node --test .github/pl-ci/round71-lifecycle-log-ux.test.cjs
+      - name: Check Log-only notes, record filtering and failed-save UI recovery
+        run: node --test .github/pl-ci/round72-log-status-regression.test.cjs
+      - name: Check CoC7 blank editions, ambiguity handling and partial export
+        run: node --test .github/pl-ci/round73-coc7-variant-fidelity.test.cjs
+      - name: Check filled-card family layout, purposeful extraction and original-workbook export
+        run: node --test .github/pl-ci/round74-filled-card-family-regression.test.cjs
+      - name: Check WPS UTF-16 XML, formula-cache boundaries and exact background text
+        run: node --test .github/pl-ci/round75-xml-formula-regression.test.cjs
+      - name: Verify same-origin version probe respects restrictive CSP
+        run: node --test .github/pl-ci/round77-csp-version-probe.test.cjs
+      - name: Guard PC filter and mobile More against ambiguous selectors
+        run: node --test .github/pl-ci/round79-pc-filter-reachability.test.cjs
+      - name: Guard PNG exports and version-label consistency
+        run: node --test .github/pl-ci/round81-png-export-compat.test.cjs
+      - name: Guard current release version, showcase and cache contract
+        run: node --test .github/pl-ci/round92-current-release-contract.test.cjs
+      - name: Guard privacy preflight resume ordering and rerendered export targets
+        run: node --test .github/pl-ci/round93-privacy-export-resume.test.cjs
+      - name: Guard calendar 2.0 module labels and planner/statistics separation
+        run: node --test .github/pl-ci/round94-calendar-separation.test.cjs
+      - name: Guard recap 2.0 logs, integrated history and organizer export
+        run: node --test .github/pl-ci/round95-recap2-contract.test.cjs
+      - name: Guard PC and module archive-image export 2.0
+        run: node --test .github/pl-ci/round96-pc-module-export2-contract.test.cjs
+      - name: Guard public-name persistence and shared density 2.0
+        run: node --test .github/pl-ci/round97-public-name-density-contract.test.cjs
+      - name: Guard organizer free-lane layout, insertion and locks
+        run: node --test .github/pl-ci/round98-organizer-free-layout.test.cjs
+      - name: Guard PC export runtime boundary and dismissible compatibility errors
+        run: node --test .github/pl-ci/round99-pc-export-runtime-boundary.test.cjs
+      - name: Guard whole-site public image export convergence and retired PC routes
+        run: node --test .github/pl-ci/round100-public-image-export-convergence.test.cjs
+      - name: Guard full calendar readability and retire low-value public stats
+        run: node --test .github/pl-ci/round101-calendar-readability-cleanup.test.cjs
+      - name: Guard production and test environment storage isolation
+        run: node --test .github/pl-ci/round102-environment-isolation.test.cjs
+      - name: Guard integrated recap readable preview layout and pagination
+        run: node --test .github/pl-ci/round103-records-recap-preview-layout.test.cjs
+      - name: Guard PC complete-archive continuous background and stable layout geometry
+        run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
+      - name: Guard calendar role color semantics without K/P glyph clutter
+        run: node --test .github/pl-ci/round105-calendar-role-color-contract.test.cjs
+      - name: Guard inline export privacy controls without blocking preflight
+        run: node --test .github/pl-ci/round106-inline-export-privacy.test.cjs
+      - name: Guard final export preview privacy state and return-to-editor flow
+        run: node --test .github/pl-ci/round107-final-preview-return-contract.test.cjs
+      - name: Verify note-only Log and verified-save failure isolation
+        run: node --test .github/pl-ci/round82-log-save-root-cause.test.cjs
+      - name: Audit whole-site verified-save boundaries and legacy Log integrity
+        run: node --test .github/pl-ci/round83-save-path-audit.test.cjs
+      - name: Verify settings navigation, unified import and preserved backup controls
+        run: node --test .github/pl-ci/round88-settings-information-architecture.test.cjs
+      - name: Guard delayed first-run onboarding against open editors and Settings
+        run: node --test .github/pl-ci/round89-onboarding-focus.test.cjs
+      - name: Guard first-use dismissal against stale browser history and unexpected Settings closure
+        run: node --test .github/pl-ci/round90-guide-history.test.cjs
+      - name: Guard Settings sidebar sizing and browser geometry acceptance
+        run: node --test .github/pl-ci/round91-settings-nav-width.test.cjs
+      - name: Install pinned test-only browser runner
+        run: npm install --no-save --no-audit --no-fund --prefix .github/pl-ci playwright@1.55.0
+      - name: Install Chromium and OS dependencies
+        run: .github/pl-ci/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify production and test isolation in a real browser
+        run: node .github/pl-ci/round102-environment-isolation-browser.cjs
+      - name: Check seven page mobile control contracts
+        run: node --test .github/pl-ci/round78-interface-contract.test.cjs
+      - name: Run isolated real-browser checks
+        run: node .github/pl-ci/run-browser-ci.cjs
+      - name: Guard browser audit against hidden-nav and onboarding false positives
+        run: node --test .github/pl-ci/round80-audit-coverage.test.cjs
+      - name: Check cross-view modal visibility and Log test coverage
+        run: node --test .github/pl-ci/round85-modal-visibility.test.cjs
+      - name: Guard all seven page structures and populated record width in Chromium
+        run: node .github/pl-ci/round87-view-flow-browser-audit.cjs
+      - name: Open settings, switch all sections and reach the unified import in Chromium
+        run: node .github/pl-ci/round88-settings-live-browser.cjs
+      - name: Type Log notes on both pages, save and reload in Chromium
+        run: node .github/pl-ci/round82-log-live-browser.cjs
+      - name: Audit mobile and desktop action visibility in Chromium
+        run: node .github/pl-ci/round78-ui-browser-audit.cjs
+      - name: Guard filter layout flow and tablet action reachability
+        run: node --test .github/pl-ci/round84-layout-contract.test.cjs
+      - name: Audit populated synthetic cards, filter expansion and UI entry geometry
+        run: node .github/pl-ci/round84-layout-flow-browser-audit.cjs
+      - name: Upload synthetic-only metadata report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pl-synthetic-browser-result
+          path: ${{ runner.temp }}/pl-synthetic-report/
+          if-no-files-found: warn
+          retention-days: 14
