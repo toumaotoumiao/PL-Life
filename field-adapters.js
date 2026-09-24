@@ -1,4 +1,4 @@
-/* PL收集梦想生活 · 字段适配器 v0.2.0。只读投影；不存储隐私联系人原文。 */
+/* PL收集梦想生活 · 字段适配器 v0.2.1。只读投影；不存储隐私联系人原文。 */
 (function(root,factory){
  'use strict';const api=factory(typeof module==='object'&&module.exports?require('./query-core.js'):root.PLQueryCore,
  typeof module==='object'&&module.exports?require('./relation-index.js'):root.PLRelationIndex);
@@ -70,7 +70,7 @@
   return freeze({id:r=>r.id,fields:freeze(f),search:freeze(search.map(([field,weight])=>freeze({get:r=>r[field],weight})))});
  }
  const schemas=freeze({
-  profiles:querySchema({name:'text',displayName:'text',blacklisted:'text',relation:'text',recordCount:'number',runBands:'text',dataFlags:'text',contactFilled:'text',rated:'text',updatedAt:'number'},[['name',0],['displayName',0],['directIndex',1],['relatedIndex',5]]),
+  profiles:querySchema({name:'text',displayName:'text',publicName:'text',blacklisted:'text',relation:'text',recordCount:'number',runBands:'text',dataFlags:'text',contactFilled:'text',rated:'text',updatedAt:'number'},[['name',0],['displayName',0],['publicName',0],['directIndex',1],['relatedIndex',5]]),
   pcs:querySchema({name:'text',ownerId:'text',ownerState:'text',status:'text',era:'text',tags:'text',relation:'text',moduleKeys:'text',recordCount:'number',planCount:'number',totalCount:'number',latestDate:'date',updatedAt:'number',scoreZero:'number'},[['name',0],['alias',1],['ownerName',2],['era',3],['occupation',3],['tags',4],['moduleNames',5],['hoNames',5],['notes',8],['skillNames',6],['searchIndex',10]]),
   modules:querySchema({name:'text',era:'text',location:'text',hoSystem:'text',recordCount:'number',kpCount:'number',plCount:'number',score:'number',rated:'text',playersRange:'range',durationRange:'range',updatedAt:'number',createdAt:'number',firstRunDate:'number',lastRunDate:'number',firstPlanDate:'number',lastPlanDate:'number'},[['name',0],['author',2],['location',3],['era',3],['searchIndex',7]]),
   plans:querySchema({name:'text',moduleId:'text',kpId:'text',plIds:'text',role:'text',status:'text',scheduled:'text',participantCount:'number',nextDate:'date',updatedAt:'number'},[['tableName',0],['name',1],['peopleNames',2],['pcNames',3],['logLabels',7],['searchIndex',9]]),
@@ -165,13 +165,13 @@
     const recordCount=recordIds.length,runBands=farr(recordCount?['has',...(recordCount>=2?['multi']:[]),...(recordCount>=5?['frequent']:[])]:['none']);
     const related=recordIds.map(rid=>recordsMap.get(rid)).filter(Boolean);
     const relatedText=related.flatMap(r=>[r?.moduleName,r?.tableName,r?.startDate,r?.endDate,r?.kp,r?.logUrl,r?.sharedHoNote,...arr(r?.logEntries).flatMap(e=>[e?.url,e?.label,e?.note]),...arr(r?.logUrls),...arr(r?.logLabels),...arr(r?.participantAssignments).filter(a=>id(a?.plId)===pid).flatMap(a=>[a?.pcName,a?.hoCustom,a?.hoNumber])]);
-    const directText=[p.name,display(p),p.contact,p.profileRemark,p.birthDate,p.startDate,p.gender,p.usualRpLength,p.rpLengthMin,p.rpLengthMax,...Object.values(object(p.notes)),...(p.blacklist?.active?[p.blacklist.reason,...arr(p.blacklist.history).flatMap(x=>[x?.reason,x?.addedAt,x?.removedAt])]:[])];
+    const directText=[p.name,display(p),p.publicName,p.contact,p.profileRemark,p.birthDate,p.startDate,p.gender,p.usualRpLength,p.rpLengthMin,p.rpLengthMax,...Object.values(object(p.notes)),...(p.blacklist?.active?[p.blacklist.reason,...arr(p.blacklist.history).flatMap(x=>[x?.reason,x?.addedAt,x?.removedAt])]:[])];
     const directIndex=searchIndexer?String(searchIndexer(directText)):directText.map(t).join(' ');
     // 同一个 PL 的大量桌次可能重复包含日期、KP 和模组名。
     // 搜索索引只需保留每段独立文本一次；避免拼接几十万字后重复进行拼音转换。
     const uniqueRelatedText=[...new Set(relatedText.filter(v=>v!==null&&v!==undefined&&v!==false).map(t))];
     const relatedIndex=searchIndexer?String(searchIndexer(uniqueRelatedText)):uniqueRelatedText.join(' ');
-    return freeze({id:pid,name:t(p.name),displayName:display(p),remark:t(p.profileRemark),blacklisted:p.blacklist?.active?'yes':'no',relation,
+    return freeze({id:pid,name:t(p.name),displayName:display(p),publicName:t(p.publicName),remark:t(p.profileRemark),blacklisted:p.blacklist?.active?'yes':'no',relation,
      recordCount,runBands,dataFlags,planCount:new Set(plans.map(x=>x.entityId)).size,contactFilled:has(p.contact)?'yes':'no',rated:rated?'yes':'no',moduleNames,directIndex,relatedIndex,updatedAt:number(p.updatedAt)});
    });
    const planRowsMap=new Map(plans.map(r=>[r.id,r])),originalPlansMap=new Map(source.plans.map(p=>[id(p.id),p]));

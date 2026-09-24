@@ -1,4 +1,4 @@
-/* PL收集梦想生活 · 跑团记录查询桥接层 v0.7.0。纯计算；原始桌次只读。 */
+/* PL收集梦想生活 · 跑团记录查询桥接层 v0.7.1。纯计算；原始桌次只读。 */
 (function(root,factory){'use strict';const node=typeof module==='object'&&module.exports;
  const api=factory(node?require('./query-engine.js'):root.PLQueryEngine,node?require('./query-state.js'):root.PLQueryState,node?require('./field-adapters.js'):root.PLFieldAdapters);
  if(node)module.exports=api;else if(root)root.PLRecordQueryBridge=api;
@@ -13,7 +13,7 @@
   // Only include fields needed by record projection and relation diagnostics.
   // PC original Excel attachments can be very large; never hash them on every search keystroke.
   const fields={
-   profiles:p=>[p?.id,p?.name,p?.displayName],
+   profiles:p=>[p?.id,p?.name,p?.displayName,p?.publicName],
    modules:m=>[m?.id,m?.name,m?.title],
    pcs:p=>[p?.id,p?.ownerPlId],
    plans:p=>[p?.id,p?.moduleId,p?.moduleName,p?.kpProfileId,p?.plIds,

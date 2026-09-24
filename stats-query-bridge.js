@@ -1,4 +1,4 @@
-/* PL收集梦想生活 · 个人统计查询桥接 v0.8.0 · 全部统计基于同一归档桌次集合。 */
+/* PL收集梦想生活 · 个人统计查询桥接 v0.8.1 · 全部统计基于同一归档桌次集合。 */
 (function(root,factory){'use strict';const node=typeof module==='object'&&module.exports;
  const api=factory(node?require('./query-engine.js'):root.PLQueryEngine,node?require('./field-adapters.js'):root.PLFieldAdapters,node?require('./query-state.js'):root.PLQueryState);
  if(node)module.exports=api;else if(root)root.PLStatsQueryBridge=api;
@@ -30,7 +30,7 @@
    const rows=array(data[type]);add(type);add(rows.length);
    for(const r of rows){
     const v=type==='records'?[r.id,r.moduleId,r.moduleName,r.tableName,r.kpProfileId,r.kp,r.plIds,r.participantAssignments,r.kpc,r.startDate,r.endDate,r.sessionSlots,r.logEntries,r.logUrls,r.logUrl,r.logLabels]:
-      type==='profiles'?[r.id,r.name,r.displayName]:type==='modules'?[r.id,r.name,r.title]:
+      type==='profiles'?[r.id,r.name,r.displayName,r.publicName]:type==='modules'?[r.id,r.name,r.title]:
       type==='pcs'?[r.id,r.ownerPlId]:[r.id,r.moduleId,r.moduleName,r.kpProfileId,r.plIds,r.participantAssignments,r.kpc,r.timeSlots];
     add(JSON.stringify(v));
    }
@@ -59,5 +59,5 @@
   }
   return Object.freeze({query,buildCount:()=>builds,invalidate:()=>{previous='';}});
  }
- return Object.freeze({create,resolveBounds,signature,version:'0.8.0'});
+ return Object.freeze({create,resolveBounds,signature,version:'0.8.1'});
 });

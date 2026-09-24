@@ -1,4 +1,4 @@
-/* PL收集梦想生活 · PC 查询桥接层 v0.2.1。
+/* PL收集梦想生活 · PC 查询桥接层 v0.2.2。
  * 映射现有页面控件值到版本化查询状态；只读运行，不触碰 DOM / 存储。
  * 页面传入同一轮数据快照；不把查询结果写入原始对象。
  */
@@ -20,7 +20,7 @@
    for(const row of rows){
     add(row?.id);add(row?.updatedAt);add(row?.name);add(row?.moduleId);add(row?.moduleName);
     if(type==='pcs'){add(row?.ownerPlId);add(row?.ownerNameSnapshot);add(row?.status);add(row?.alias);add(row?.era);add(row?.occupation);add(row?.gender);add(row?.residence);add(row?.birthplace);add(row?.notes);add(arr(row?.tags).join('\x1f'));for(const skill of arr(row?.skills))add(skill?.name);for(const snap of arr(row?.snapshots)){add(snap?.moduleName);add(snap?.tableName);add(snap?.date);add(snap?.note);}}
-    if(type==='profiles'){add(row?.displayName);add(row?.blacklist?.active);}
+    if(type==='profiles'){add(row?.displayName);add(row?.publicName);add(row?.blacklist?.active);}
     if(type==='modules'){add(row?.era);add(row?.location);}
     if(type==='plans'||type==='records'){
      add(row?.kpProfileId);add(row?.startDate);add(row?.endDate);add(arr(row?.plIds).join('\x1f'));

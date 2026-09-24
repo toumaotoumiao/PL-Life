@@ -1,10 +1,10 @@
-/* PL收集梦想生活 · 数据版本与启动保护（schema 25）。
+/* PL收集梦想生活 · 数据版本与启动保护（schema 26）。
    This module only inspects; it never writes or removes stored user data. */
 (function (root) {
   'use strict';
   var FORMAT = 'tomato-pl-archive';
   var MIN_SCHEMA = 9;
-  var MAX_SCHEMA = 25;
+  var MAX_SCHEMA = 26;
   var KEY = 'trpg_pl_profile_archive_v1';
   var GUARD_KEY = 'tomato_pl_upgrade_guard_v1';
   function plain(value) { return value !== null && typeof value === 'object' && !Array.isArray(value); }
