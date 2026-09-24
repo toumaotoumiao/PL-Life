@@ -78,6 +78,8 @@ jobs:
         run: node --test .github/pl-ci/round106-inline-export-privacy.test.cjs
       - name: Guard final export preview privacy state and return-to-editor flow
         run: node --test .github/pl-ci/round107-final-preview-return-contract.test.cjs
+      - name: Guard module export measured spacing and long-text containment
+        run: node --test .github/pl-ci/round108-module-export-spacing-contract.test.cjs
       - name: Verify note-only Log and verified-save failure isolation
         run: node --test .github/pl-ci/round82-log-save-root-cause.test.cjs
       - name: Audit whole-site verified-save boundaries and legacy Log integrity

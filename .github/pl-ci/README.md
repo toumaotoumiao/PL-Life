@@ -76,3 +76,10 @@ The CI suite is a long-lived release guard, not a snapshot of one historical ver
 - `round107-final-preview-return-contract.test.cjs` protects the final confirmation layer: it must state the current privacy snapshot, keep X/backdrop as plain dismiss actions, and expose `返回调整` only when the source export editor supplies a safe return callback.
 - Planner year, detailed availability, preference, statistics, PL/KP organizer, single-table recap, integrated recap, PC dossier and module dossier must return to the same editing context rather than forcing users to navigate back from scratch.
 - On narrow screens a one-page final preview uses two action columns; multi-page output keeps the ZIP + PNG + return/close three-action layout. Privacy-state/feedback/footer rows must remain explicit so mobile browsers do not create accidental implicit-grid placement.
+
+
+## Module dossier spacing maintenance
+
+- `round108-module-export-spacing-contract.test.cjs` protects the module integrated dossier against the text/border collision shown by long recruitment notes: panel height must be derived from real Canvas wrapping, not rough character-count estimates.
+- Module profile text, recruitment fields, ratings and table-history blocks reserve explicit top/bottom padding and an inter-block gap; the standalone recruitment page also sizes its canvas from measured content.
+- Keep the PC complete-archive measured spacing model intact when changing shared entity-export helpers. Presentation spacing fixes remain read-only and must not mutate module/PC archives or backup schemas.

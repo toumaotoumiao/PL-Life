@@ -7,17 +7,19 @@ const root=path.resolve(__dirname,'../..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 
 test('integrated recap desktop composer gives the 1080px preview enough room',()=>{
-  assert.match(html,/\.records-recap-modal\{width:min\(1480px,calc\(100vw - 24px\)\)/);
-  assert.match(html,/grid-template-columns:minmax\(280px,330px\) minmax\(0,1fr\)/);
+  assert.match(html,/\.records-recap-modal\{width:min\(1540px,calc\(100vw - 24px\)\)/);
+  assert.match(html,/grid-template-columns:minmax\(300px,340px\) minmax\(0,1fr\)/);
+  assert.match(html,/\.records-recap-preview-pane\{[^}]*grid-template-rows:auto minmax\(0,1fr\)/);
   assert.match(html,/\.records-recap-preview-page\{[^}]*max-width:1080px/);
   assert.match(html,/\.records-recap-preview-page canvas\{[^}]*width:min\(100%,1080px\)/);
 });
 
-test('real-time recap preview shows one page at a time with navigation',()=>{
-  for(const id of ['recordsRecapPrev','recordsRecapNext','recordsRecapPageIndicator']) assert(html.includes(`id="${id}"`),`${id} missing`);
-  assert.match(html,/function renderPreviewPage\(\)[\s\S]*?previewCanvases\[previewPageIndex\]/);
-  assert.doesNotMatch(html,/canvases\.forEach\(\(c,i\)=>\{const page=document\.createElement\('div'\);page\.className='records-recap-preview-page'/);
-  assert.match(html,/previewPageIndex=Math\.min\(previewPageIndex,Math\.max\(0,canvases\.length-1\)\);renderPreviewPage\(\)/);
+test('real-time recap preview now shows all pages in a continuous scroll stack',()=>{
+  assert(html.includes('id="recordsRecapPageIndicator"'),'recordsRecapPageIndicator missing');
+  assert.doesNotMatch(html,/id="recordsRecapPrev"|id="recordsRecapNext"/);
+  assert.match(html,/function renderPreviewPages\(\)[\s\S]*?previewCanvases\.forEach\(\(canvas,i\)=>\{/);
+  assert(html.includes('if(indicator)indicator.textContent=`共 ${total} 张`;'));
+  assert.match(html,/previewCanvases=canvases;renderPreviewPages\(\);/);
 });
 
 test('recap preview has a focus mode and old compact default migrates to standard',()=>{

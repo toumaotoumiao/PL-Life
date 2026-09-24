@@ -38,7 +38,11 @@ test('organizer export exposes free columns, spans, locks and style-specific per
   for(const token of [
     'tomato_pl_organizer_export_free_layout_v2',
     'hoOrganizerFreeLaneCount',
-    "style==='wide'?3:2",
+    'hoOrganizerColumnStyleKey',
+    "return key==='three'?3:key==='two'?2:1",
+    'data-ho-composer-style="one"',
+    'data-ho-composer-style="two"',
+    'data-ho-composer-style="three"',
     'data-ho-layout-lane',
     'data-ho-layout-span',
     'data-ho-layout-lock',
@@ -49,8 +53,10 @@ test('organizer export exposes free columns, spans, locks and style-specific per
     'packFreeLanes',
     'insertIntoFreeLane'
   ]) assert.ok(html.includes(token),`missing ${token}`);
-  assert.match(html,/pl:\{wide:null,long:null\},kp:\{wide:null,long:null\}/);
-  assert.match(html,/if\(style==='long'\)return\{lane:0,span:lanes,locked:false\}/);
+  assert.match(html,/pl:\{one:null,two:null,three:null\},kp:\{one:null,two:null,three:null\}/);
+  assert.match(html,/if\(lanes===1\)return\{lane:0,span:1,locked:false\}/);
+  assert.ok(html.includes('modeSrc.one??modeSrc.long'));
+  assert.ok(html.includes('modeSrc.three??modeSrc.wide'));
 });
 
 test('automatic layout preserves explicit locks and manual layout controls remain fallbacks',()=>{
