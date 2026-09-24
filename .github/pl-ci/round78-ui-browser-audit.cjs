@@ -24,12 +24,14 @@ async function verifyInlineExportPrivacy(page){
   const dialog=page.locator('#actionDialogBackdrop');
   if(await dialog.isVisible()) throw new Error('privacy-preflight-unexpectedly-blocking');
   const toggle=page.locator('#selfIntroExportPanel [data-export-inline-privacy-toggle]');
-  if(!await toggle.isVisible()) throw new Error('privacy-inline-control-missing');
+  const switchLabel=page.locator('#selfIntroExportPanel .export-inline-privacy-switch');
+  if(!await toggle.isVisible()||!await switchLabel.isVisible()) throw new Error('privacy-inline-control-missing');
   const before=await toggle.isChecked();
-  await toggle.click({timeout:5000});
+  await switchLabel.click({timeout:5000});
   const after=await toggle.isChecked();
   if(before===after) throw new Error('privacy-inline-control-did-not-toggle');
-  await toggle.click({timeout:5000});
+  await switchLabel.click({timeout:5000});
+  if(await toggle.isChecked()!==before) throw new Error('privacy-inline-control-did-not-restore');
   return {shown:true,toggled:true};
 }
 async function inspect(page,view,width){
