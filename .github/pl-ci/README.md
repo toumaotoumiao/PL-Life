@@ -83,3 +83,6 @@ The CI suite is a long-lived release guard, not a snapshot of one historical ver
 - `round108-module-export-spacing-contract.test.cjs` protects the module integrated dossier against the text/border collision shown by long recruitment notes: panel height must be derived from real Canvas wrapping, not rough character-count estimates.
 - Module profile text, recruitment fields, ratings and table-history blocks reserve explicit top/bottom padding and an inter-block gap; the standalone recruitment page also sizes its canvas from measured content.
 - Keep the PC complete-archive measured spacing model intact when changing shared entity-export helpers. Presentation spacing fixes remain read-only and must not mutate module/PC archives or backup schemas.
+- `round111-records-recap-gutter-contract.test.cjs` keeps the integrated recap header, body and footer on one horizontal gutter baseline, with deliberate mobile gutter reduction instead of edge-to-edge content.
+
+- Round112: 单桌回顾高度计算运行级回归，禁止 `return218` / `return92` / `return180` 等数字返回值粘连为未定义变量，并执行 summary / schedule / cast / logs / reflection / fallback 全分支。

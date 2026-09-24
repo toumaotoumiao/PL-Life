@@ -7,7 +7,7 @@ const root=path.resolve(__dirname,'../..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 
 test('integrated recap desktop composer gives the 1080px preview enough room',()=>{
-  assert.match(html,/\.records-recap-modal\{width:min\(1540px,calc\(100vw - 24px\)\)/);
+  assert.match(html,/\.records-recap-modal\{[^}]*width:min\(1540px,calc\(100vw - 24px\)\)/);
   assert.match(html,/grid-template-columns:minmax\(300px,340px\) minmax\(0,1fr\)/);
   assert.match(html,/\.records-recap-preview-pane\{[^}]*grid-template-rows:auto minmax\(0,1fr\)/);
   assert.match(html,/\.records-recap-preview-page\{[^}]*max-width:1080px/);

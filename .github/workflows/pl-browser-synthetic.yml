@@ -70,6 +70,12 @@ jobs:
         run: node --test .github/pl-ci/round102-environment-isolation.test.cjs
       - name: Guard integrated recap readable continuous-preview layout
         run: node --test .github/pl-ci/round103-records-recap-preview-layout.test.cjs
+      - name: Guard integrated recap modal gutters and aligned content baseline
+        run: node --test .github/pl-ci/round111-records-recap-gutter-contract.test.cjs
+      - name: Guard single-record recap numeric height returns at runtime
+        run: node --test .github/pl-ci/round112-single-record-showcase-height-runtime.test.cjs
+      - name: Guard optional module table-history export
+        run: node --test .github/pl-ci/round113-module-history-optional.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
         run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
       - name: Guard calendar role color semantics without K/P glyph clutter
