@@ -76,6 +76,10 @@ jobs:
         run: node --test .github/pl-ci/round112-single-record-showcase-height-runtime.test.cjs
       - name: Guard optional module table-history export
         run: node --test .github/pl-ci/round113-module-history-optional.test.cjs
+      - name: Guard three-option export switch layout
+        run: node --test .github/pl-ci/round114-three-option-switch-layout.test.cjs
+      - name: Guard statistics export preset runtime helpers
+        run: node --test .github/pl-ci/round115-stats-export-preset-runtime.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
         run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
       - name: Guard calendar role color semantics without K/P glyph clutter
