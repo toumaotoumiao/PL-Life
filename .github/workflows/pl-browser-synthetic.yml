@@ -68,7 +68,7 @@ jobs:
         run: node --test .github/pl-ci/round101-calendar-readability-cleanup.test.cjs
       - name: Guard production and test environment storage isolation
         run: node --test .github/pl-ci/round102-environment-isolation.test.cjs
-      - name: Guard integrated recap readable preview layout and pagination
+      - name: Guard integrated recap readable continuous-preview layout
         run: node --test .github/pl-ci/round103-records-recap-preview-layout.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
         run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
@@ -80,6 +80,8 @@ jobs:
         run: node --test .github/pl-ci/round107-final-preview-return-contract.test.cjs
       - name: Guard module export measured spacing and long-text containment
         run: node --test .github/pl-ci/round108-module-export-spacing-contract.test.cjs
+      - name: Guard personal-statistics footprint partial/full display toggle
+        run: node --test .github/pl-ci/round110-stats-footprint-toggle.test.cjs
       - name: Verify note-only Log and verified-save failure isolation
         run: node --test .github/pl-ci/round82-log-save-root-cause.test.cjs
       - name: Audit whole-site verified-save boundaries and legacy Log integrity
@@ -97,7 +99,11 @@ jobs:
       - name: Install Chromium and OS dependencies
         run: .github/pl-ci/node_modules/.bin/playwright install --with-deps chromium
       - name: Verify production and test isolation in a real browser
-        run: node .github/pl-ci/round102-environment-isolation-browser.cjs
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          set -o pipefail
+          node .github/pl-ci/round102-environment-isolation-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round102-environment-isolation-browser.log"
       - name: Check seven page mobile control contracts
         run: node --test .github/pl-ci/round78-interface-contract.test.cjs
       - name: Run isolated real-browser checks

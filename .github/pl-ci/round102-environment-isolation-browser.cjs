@@ -15,7 +15,7 @@ function copyApp(){
  (async()=>{localStorage.setItem('trpg_pl_profile_archive_v1',JSON.stringify({format:'tomato-pl-archive',schemaVersion:26,app:{uiVersion:'8.1.12.160'},data:{profiles:[],modules:[],runs:[],pcs:[]}}));
  const db=await new Promise((res,rej)=>{const r=indexedDB.open('tomato_pl_pc_media_v1',1);r.onupgradeneeded=()=>r.result.createObjectStore('media',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
  await new Promise((res,rej)=>{const tx=db.transaction('media','readwrite');tx.objectStore('media').put({id:'prod-image',value:'PROD'});tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});db.close();
- const c=await caches.open('pl-life-prod-v8.1.12.142');await c.put('./marker',new Response('PROD-CACHE'));document.body.textContent='SEEDED';})();
+ const c=await caches.open('pl-life-prod-v8.1.12.142');await c.put(new URL('/PL-Life/__round102_prod_cache_marker__',location.origin).href,new Response('PROD-CACHE'));document.body.textContent='SEEDED';})();
  </script></body>`);
 }
 function serve(){return new Promise(resolve=>{const server=http.createServer((req,res)=>{let pathname=decodeURIComponent(new URL(req.url,'http://x').pathname);if(pathname.endsWith('/'))pathname+='index.html';const file=path.normalize(path.join(tmp,pathname));if(!file.startsWith(tmp)||!fs.existsSync(file)||!fs.statSync(file).isFile()){res.statusCode=404;res.end('not found');return;}const ext=path.extname(file);const type=ext==='.js'?'text/javascript':ext==='.html'?'text/html':ext==='.webmanifest'?'application/manifest+json':ext==='.png'?'image/png':'application/octet-stream';res.setHeader('Content-Type',type);res.end(fs.readFileSync(file));});server.listen(0,'127.0.0.1',()=>resolve(server));});}
@@ -34,7 +34,7 @@ function serve(){return new Promise(resolve=>{const server=http.createServer((re
    await new Promise((resolve,reject)=>{const q=indexedDB.open('pl-life-test__tomato_pl_pc_media_v1');q.onsuccess=()=>{const db=q.result,tx=db.transaction('media','readwrite');tx.objectStore('media').put({id:'prod-image',value:'TEST'});tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>reject(tx.error)};q.onerror=()=>reject(q.error)});
    const prodAfter=await read('tomato_pl_pc_media_v1'),testAfter=await read('pl-life-test__tomato_pl_pc_media_v1');
    await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;await new Promise(r=>setTimeout(r,250));
-   const keys=await caches.keys(),prodCache=await caches.open('pl-life-prod-v8.1.12.142'),marker=await prodCache.match('./marker');
+   const keys=await caches.keys(),prodCache=await caches.open('pl-life-prod-v8.1.12.142'),marker=await prodCache.match(new URL('/PL-Life/__round102_prod_cache_marker__',location.origin).href);
    return {rawBefore,copied,rawAfter:env.rawLocalStorageGet('trpg_pl_profile_archive_v1'),testRaw:env.rawLocalStorageGet('pl-life-test::trpg_pl_profile_archive_v1'),prodBefore,testBefore,prodAfter,testAfter,keys,prodMarker:marker?await marker.text():null,channel:env.channelName('tomato_pl_sync_v1')};
   });
   assert.equal(r.rawBefore,r.copied);assert.equal(r.rawAfter,r.rawBefore);assert.equal(r.testRaw,'TEST-ONLY');
