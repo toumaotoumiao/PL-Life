@@ -17,9 +17,9 @@ test('integrated recap desktop composer gives the 1080px preview enough room',()
 test('real-time recap preview now shows all pages in a continuous scroll stack',()=>{
   assert(html.includes('id="recordsRecapPageIndicator"'),'recordsRecapPageIndicator missing');
   assert.doesNotMatch(html,/id="recordsRecapPrev"|id="recordsRecapNext"/);
-  assert.match(html,/function renderPreviewPages\(\)[\s\S]*?previewCanvases\.forEach\(\(canvas,i\)=>\{/);
-  assert(html.includes('if(indicator)indicator.textContent=`共 ${total} 张`;'));
-  assert.match(html,/previewCanvases=canvases;renderPreviewPages\(\);/);
+  assert.match(html,/function renderPreviewPages\(\)[\s\S]*?PLExportLivePreview\.render\(\{stage:preview,paged:\(\)=>previewCanvases,continuous:\(\)=>buildContinuousRecapCanvas\(\)/);
+  assert.match(html,/if\(indicator\)indicator\.textContent=result\.ok\?/);
+  assert.match(html,/previewCanvases=canvases;const live=renderPreviewPages\(\);/);
 });
 
 test('recap preview has a focus mode and old compact default migrates to standard',()=>{

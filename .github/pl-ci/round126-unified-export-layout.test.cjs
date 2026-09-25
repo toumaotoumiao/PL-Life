@@ -51,10 +51,10 @@ test('Round126 source and final controls share the same format selection indepen
  for(const id of ['selfIntroExportPanel','statsExportPanel','plannerYearShowcasePanel','recordShowcaseBackdrop','entityShowcaseBackdrop','recordsRecapBackdrop','hoExportComposerPanel'])assert(html.includes('"'+id+'"'));
  assert.match(html,/data-export-inline-layout="pages"/);assert.match(html,/data-export-inline-layout="long"/);
  assert.match(html,/data-ux-export-layout="pages"/);assert.match(html,/data-ux-export-layout="long"/);
- assert.match(html,/storeUnifiedExportLayout\(layout\);syncInlineExportLayoutControls\(\)/);
+ assert.match(html,/storeUnifiedExportLayout\(layout\);[\s\S]*?syncInlineExportLayoutControls\(\)/);
  assert.match(html,/exportLayout:storedUnifiedExportLayout\(\)/);
  assert.match(html,/exportLayoutObserver\.observe\(document\.body/);
- assert.match(html,/设置区仍按原分页预览，最终预览查看合并效果/);
+ assert.match(html,/summary\.textContent=layout==="long"\?"单张长图"/);
  assert.match(html,/导出形式/);
  assert.doesNotMatch(html,/density==="long"/);
 });

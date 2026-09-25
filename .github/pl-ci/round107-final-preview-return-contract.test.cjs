@@ -14,7 +14,7 @@ test('final export preview states the privacy snapshot before download',()=>{
   assert.match(html,/exportLayout:storedUnifiedExportLayout\(\)/);
   assert.match(html,/<strong>隐私导出已开启<\/strong>/);
   assert.match(html,/<strong>隐私导出已关闭<\/strong>/);
-  assert.match(html,/日期、时段等你主动保留的展示内容仍会出现在图片中/);
+  assert.match(html,/人物匿名；日期与时段以当前选择为准/);
 });
 
 test('cancel becomes return-to-editor while close and backdrop remain plain dismiss actions',()=>{

@@ -106,6 +106,32 @@ jobs:
         run: node --test .github/pl-ci/round127-module-card-metadata.test.cjs
       - name: Guard semantic continuous PNG without repeated archive headers
         run: node --test .github/pl-ci/round128-continuous-export-semantic.test.cjs
+      - name: Round129 source/final export live preview parity
+        run: node --test .github/pl-ci/round129-source-export-live-sync.test.cjs
+      - name: Round130 whole-site visual comfort and touch-target contract
+        run: node --test .github/pl-ci/round130-visual-comfort-contract.test.cjs
+      - name: Round131 PL, PC and module list typography and wrap
+        run: node --test .github/pl-ci/round131-main-list-polish.test.cjs
+      - name: Round132 plan and record visual comfort
+        run: node --test .github/pl-ci/round132-plan-record-visual.test.cjs
+      - name: Round133 preference stats settings visual contract
+        run: node --test .github/pl-ci/round133-preference-stats-settings-comfort.test.cjs
+      - name: Round134 export and public preview visual closeout
+        run: node --test .github/pl-ci/round134-export-visual-closeout.test.cjs
+      - name: Round135 real page acceptance and mobile search workbench
+        run: node --test .github/pl-ci/round135-real-page-acceptance.test.cjs
+      - name: Round136 stats exporter and mobile editor flow runtime contract
+        run: node --test .github/pl-ci/round136-editor-export-flow.test.cjs
+      - name: Round137 guard statistics exporter internal data and failure feedback
+        run: node --test .github/pl-ci/round137-stats-preview-runtime.test.cjs
+      - name: Round138 objective product copy
+        run: node --test .github/pl-ci/round138-objective-copy.test.cjs
+      - name: Round139 statistics panel disclosure contract
+        run: node --test .github/pl-ci/round139-stats-panel-collapse.test.cjs
+      - name: Round140 statistics scoped identity and extent contract
+        run: node --test .github/pl-ci/round140-stats-panel-scope.test.cjs
+      - name: Round141 PC export compact two-column layout
+        run: node --test .github/pl-ci/round141-pc-archive-two-column.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
         run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
       - name: Guard calendar role color semantics without K/P glyph clutter
@@ -136,6 +162,32 @@ jobs:
         run: .github/pl-ci/node_modules/.bin/playwright install --with-deps chromium
       - name: Round126 real Chromium export layout and continuous PNG
         run: node .github/pl-ci/round126-unified-export-layout-browser.cjs
+      - name: Round129 Chromium live-preview mode and recovery
+        run: node .github/pl-ci/round129-source-export-live-sync-browser.cjs
+      - name: Round130 Chromium visual comfort geometry
+        run: node .github/pl-ci/round130-visual-comfort-browser.cjs
+      - name: Round131 Chromium PL, PC and module card layout
+        run: node .github/pl-ci/round131-main-list-polish-browser.cjs
+      - name: Round132 Chromium plan and record visual comfort
+        run: node .github/pl-ci/round132-plan-record-visual-browser.cjs
+      - name: Round133 preference stats settings browser geometry
+        run: node .github/pl-ci/round133-preference-stats-settings-browser.cjs
+      - name: Round134 final export preview and gallery browser geometry
+        run: node .github/pl-ci/round134-export-visual-closeout-browser.cjs
+      - name: Round135 mobile workbench and current Settings version browser geometry
+        run: node .github/pl-ci/round135-real-page-acceptance-browser.cjs
+      - name: Round136 Chromium stats exporter and mobile editor flow
+        run: node .github/pl-ci/round136-editor-export-flow-browser.cjs
+      - name: Round137 actual statistics export and final long PNG flow
+        run: node .github/pl-ci/round137-stats-preview-runtime-browser.cjs
+      - name: Round138 actual whole-page objective copy acceptance
+        run: node .github/pl-ci/round138-objective-copy-browser.cjs
+      - name: Round139 Chromium six statistics panel disclosure flow
+        run: node .github/pl-ci/round139-stats-panel-collapse-browser.cjs
+      - name: Round140 Chromium statistics identity and full list flow
+        run: node .github/pl-ci/round140-stats-panel-scope-browser.cjs
+      - name: Round141 Chromium PC full archive two-column geometry
+        run: node .github/pl-ci/round141-pc-archive-two-column-browser.cjs
       - name: Round124 real Chromium preference and stats export touch geometry
         run: node .github/pl-ci/round124-preference-stats-browser.cjs
       - name: Verify production and test isolation in a real browser
