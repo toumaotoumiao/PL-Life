@@ -130,6 +130,10 @@ jobs:
         run: node --test .github/pl-ci/round139-stats-panel-collapse.test.cjs
       - name: Round140 statistics scoped identity and extent contract
         run: node --test .github/pl-ci/round140-stats-panel-scope.test.cjs
+      - name: Round144 single-record count label and current release description
+        run: node --test .github/pl-ci/round144-record-count-label-release.test.cjs
+      - name: Round143 planner agenda continuity and measured white background
+        run: node --test .github/pl-ci/round143-planner-agenda-continuity.test.cjs
       - name: Round142 preview touch target and CI diagnostics contract
         run: node --test .github/pl-ci/round142-export-preview-ci-regression.test.cjs
       - name: Round141 PC export compact two-column layout
@@ -198,6 +202,10 @@ jobs:
         run: node .github/pl-ci/round139-stats-panel-collapse-browser.cjs
       - name: Round140 Chromium statistics identity and full list flow
         run: node .github/pl-ci/round140-stats-panel-scope-browser.cjs
+      - name: Round143 Chromium planner agenda continuity and white surface
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: node .github/pl-ci/round143-planner-agenda-continuity-browser.cjs
       - name: Round141 Chromium PC full archive two-column geometry
         run: node .github/pl-ci/round141-pc-archive-two-column-browser.cjs
       - name: Round124 real Chromium preference and stats export touch geometry
