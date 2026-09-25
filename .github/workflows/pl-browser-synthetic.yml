@@ -102,6 +102,10 @@ jobs:
         run: node --test .github/pl-ci/round125-final-export-closeout.test.cjs
       - name: Guard unified export format and full-length PNG runtime
         run: node --test .github/pl-ci/round126-unified-export-layout.test.cjs
+      - name: Guard module card full metadata without redundant disclosure
+        run: node --test .github/pl-ci/round127-module-card-metadata.test.cjs
+      - name: Guard semantic continuous PNG without repeated archive headers
+        run: node --test .github/pl-ci/round128-continuous-export-semantic.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
         run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
       - name: Guard calendar role color semantics without K/P glyph clutter

@@ -13,7 +13,7 @@ function sliceBetween(a,b){
 }
 
 test('integrated module dossier measures real wrapped text before assigning panel height',()=>{
-  const body=sliceBetween('function moduleCompleteBlocks(m,state){','function moduleCompleteCanvases(m,state){');
+  const body=sliceBetween('function moduleCompleteBlocks(m,state,continuous=false){','function moduleCompleteCanvases(m,state){');
   assert.match(body,/pcArchiveTextLines\(measure,String\(text\|\|''\),contentW,999,bodyFont\)/);
   assert.match(body,/headerH\+top\+Math\.max\(0,contentH\)\+bottom/);
   assert.match(body,/contentTop:top,gapAfter:metrics\.blockGap/);
@@ -21,7 +21,7 @@ test('integrated module dossier measures real wrapped text before assigning pane
 });
 
 test('all integrated module blocks reserve top, bottom and inter-block whitespace',()=>{
-  const body=sliceBetween('function moduleCompleteBlocks(m,state){','async function buildModulePages(m,state){');
+  const body=sliceBetween('function moduleCompleteBlocks(m,state,continuous=false){','async function buildModulePages(m,state){');
   for(const token of [
     'compact:{top:8,bottom:12,blockGap:14',
     'standard:{top:10,bottom:14,blockGap:16',
