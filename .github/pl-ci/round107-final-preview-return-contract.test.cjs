@@ -10,7 +10,8 @@ const workflow=fs.readFileSync(path.join(root,'.github/workflows/pl-browser-synt
 test('final export preview states the privacy snapshot before download',()=>{
   assert.match(html,/id="uxExportPreviewPrivacyState"[^>]*role="status"/);
   assert.match(html,/privacyEnabled=Boolean\(privacyMaskEnabled\)/);
-  assert.match(html,/uxPendingExport=\{canvases,filenames,filename:Array\.isArray\(filename\)\?filenames\[0\]:filename,title,success,returnToEditor,privacyEnabled\}/);
+  assert.match(html,/uxPendingExport=\{sourceCanvases:canvases,canvases,filenames,filename:Array\.isArray\(filename\)\?filenames\[0\]:filename,title,success,returnToEditor,privacyEnabled,/);
+  assert.match(html,/exportLayout:storedUnifiedExportLayout\(\)/);
   assert.match(html,/<strong>隐私导出已开启<\/strong>/);
   assert.match(html,/<strong>隐私导出已关闭<\/strong>/);
   assert.match(html,/日期、时段等你主动保留的展示内容仍会出现在图片中/);
@@ -42,8 +43,8 @@ test('all principal image composers register a return path to the source editor'
 test('mobile final preview uses two actions for one page and three for multi-page',()=>{
   assert.match(html,/\.ux-export-preview-foot \.right\{[^}]*grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
   assert.match(html,/\.ux-export-preview-modal\.is-single-page \.ux-export-preview-foot \.right\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)\}/);
-  assert.match(html,/modal\.classList\.toggle\("is-single-page",!multi\)/);
-  assert.match(html,/modal\.classList\.toggle\("is-multi-page",multi\)/);
+  assert.match(html,/modal\.classList\.toggle\("is-single-page",!renderedMulti\)/);
+  assert.match(html,/modal\.classList\.toggle\("is-multi-page",renderedMulti\)/);
 });
 
 test('Round107 final-preview contract is part of GitHub Actions',()=>{

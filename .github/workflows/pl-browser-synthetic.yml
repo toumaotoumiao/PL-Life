@@ -80,6 +80,28 @@ jobs:
         run: node --test .github/pl-ci/round114-three-option-switch-layout.test.cjs
       - name: Guard statistics export preset runtime helpers
         run: node --test .github/pl-ci/round115-stats-export-preset-runtime.test.cjs
+      - name: Guard export UI reduction and unified visual hierarchy
+        run: node --test .github/pl-ci/round116-export-ui-reduction-contract.test.cjs
+      - name: Guard unified main-page query workbench reduction
+        run: node --test .github/pl-ci/round117-main-query-workbench-reduction.test.cjs
+      - name: Guard main content card reduction
+        run: node --test .github/pl-ci/round118-main-content-card-reduction.test.cjs
+      - name: Guard editor hierarchy reduction
+        run: node --test .github/pl-ci/round119-editor-hierarchy-reduction.test.cjs
+      - name: Guard final UI reduction closeout rules
+        run: node --test .github/pl-ci/round120-ui-closeout.test.cjs
+      - name: Guard formal visual acceptance polish
+        run: node --test .github/pl-ci/round121-formal-visual-acceptance.test.cjs
+      - name: Round122 main list navigation acceptance
+        run: node --test .github/pl-ci/round122-main-list-navigation-acceptance.test.cjs
+      - name: Round123 plan and record acceptance
+        run: node --test .github/pl-ci/round123-plan-record-acceptance.test.cjs
+      - name: Round124 preference and statistics disclosure plus mobile exports
+        run: node --test .github/pl-ci/round124-preference-stats-acceptance.test.cjs
+      - name: Round125 final image export closeout and half-column canvas safety
+        run: node --test .github/pl-ci/round125-final-export-closeout.test.cjs
+      - name: Guard unified export format and full-length PNG runtime
+        run: node --test .github/pl-ci/round126-unified-export-layout.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
         run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
       - name: Guard calendar role color semantics without K/P glyph clutter
@@ -108,6 +130,10 @@ jobs:
         run: npm install --no-save --no-audit --no-fund --prefix .github/pl-ci playwright@1.55.0
       - name: Install Chromium and OS dependencies
         run: .github/pl-ci/node_modules/.bin/playwright install --with-deps chromium
+      - name: Round126 real Chromium export layout and continuous PNG
+        run: node .github/pl-ci/round126-unified-export-layout-browser.cjs
+      - name: Round124 real Chromium preference and stats export touch geometry
+        run: node .github/pl-ci/round124-preference-stats-browser.cjs
       - name: Verify production and test isolation in a real browser
         shell: bash
         run: |

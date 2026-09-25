@@ -1,18 +1,21 @@
-# PL-Life-Test
-PL收集梦想生活测试站
+# PL-Life
 
-## 测试站与正式站隔离
+PL收集梦想生活 · 正式站
+
+https://toumaotoumiao.github.io/PL-Life/
+
+## 正式站与测试站数据隔离
 
 `/PL-Life/` 与 `/PL-Life-Test/` 同属 `toumaotoumiao.github.io` 这一浏览器 origin，不能仅靠路径区分 localStorage、IndexedDB、Cache Storage 或 BroadcastChannel。
 
-从 v8.1.12.161 起，测试站必须使用独立运行命名空间：
+从 v8.1.12.161 起，测试站使用独立运行命名空间，正式站沿用正式命名空间。正式站升级必须完整上传所有运行文件（包括 `sw.js`、查询桥接脚本和 `manifest.webmanifest`），不要把测试站文件与正式站文件混合发布。
 
-- localStorage / sessionStorage: `pl-life-test::...`
-- IndexedDB: `pl-life-test__...`
-- program cache: `pl-life-test-*`
-- runtime download cache: `pl-life-test-runtime-downloads-v1`
-- BroadcastChannel: `pl-life-test::...`
+浏览器本地档案不会因为覆盖 GitHub 程序文件而自动上传到服务器。重要档案仍应定期制作完整 ZIP 备份。
 
-首次升级只复制旧共享数据到测试命名空间，不删除、覆盖旧正式站存储。外部自动备份文件夹授权不继承到测试站。
+## 图片导出形式（v8.1.12.189）
 
-维护时不得把测试站缓存前缀改回 `pl-life-prod-*`，也不得让测试站保存重新写入旧共享主档案 key。
+在个人偏好、个人统计、全年排期、PL/KP 跑团整理、单桌回顾、整合回顾、PC/模组档案等导出设置面板，均可选“自动分页”或“单张长图”。此选项和信息密度、隐私开关彼此独立，最终预览中仍可切换。详细时段等没有独立导出设置面板的功能，直接在统一最终预览里选择。
+
+单张长图将原分页按顺序拼接为一张 PNG，不重新编排既有卡片；大图受浏览器画布限制，超限时保留原页预览并提示改回自动分页。偏好只保存在当前站点对应的浏览器本地存储，不涉及正式档案和备份数据。
+
+发布时，完整仓库包请解压后将 `index.html`、`sw.js`、`.github` 等**包内根目录内容**上传至仓库根目录；仅运行文件包不包含 CI 配置。不要把压缩包当成一个子目录上传。
