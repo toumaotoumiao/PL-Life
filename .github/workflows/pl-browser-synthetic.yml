@@ -130,6 +130,8 @@ jobs:
         run: node --test .github/pl-ci/round139-stats-panel-collapse.test.cjs
       - name: Round140 statistics scoped identity and extent contract
         run: node --test .github/pl-ci/round140-stats-panel-scope.test.cjs
+      - name: Round142 preview touch target and CI diagnostics contract
+        run: node --test .github/pl-ci/round142-export-preview-ci-regression.test.cjs
       - name: Round141 PC export compact two-column layout
         run: node --test .github/pl-ci/round141-pc-archive-two-column.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
@@ -160,6 +162,11 @@ jobs:
         run: npm install --no-save --no-audit --no-fund --prefix .github/pl-ci playwright@1.55.0
       - name: Install Chromium and OS dependencies
         run: .github/pl-ci/node_modules/.bin/playwright install --with-deps chromium
+      - name: Prepare browser diagnostics directory
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          printf 'Commit: %s\nWorkflow: %s\n' "$GITHUB_SHA" "$GITHUB_WORKFLOW" > "$RUNNER_TEMP/pl-synthetic-report/run-context.txt"
       - name: Round126 real Chromium export layout and continuous PNG
         run: node .github/pl-ci/round126-unified-export-layout-browser.cjs
       - name: Round129 Chromium live-preview mode and recovery
@@ -173,7 +180,12 @@ jobs:
       - name: Round133 preference stats settings browser geometry
         run: node .github/pl-ci/round133-preference-stats-settings-browser.cjs
       - name: Round134 final export preview and gallery browser geometry
-        run: node .github/pl-ci/round134-export-visual-closeout-browser.cjs
+        id: round134_browser
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" node .github/pl-ci/round134-export-visual-closeout-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round134-export-visual-closeout-browser.log"
       - name: Round135 mobile workbench and current Settings version browser geometry
         run: node .github/pl-ci/round135-real-page-acceptance-browser.cjs
       - name: Round136 Chromium stats exporter and mobile editor flow
@@ -216,11 +228,19 @@ jobs:
         run: node --test .github/pl-ci/round84-layout-contract.test.cjs
       - name: Audit populated synthetic cards, filter expansion and UI entry geometry
         run: node .github/pl-ci/round84-layout-flow-browser-audit.cjs
+      - name: Enforce Round134 result after subsequent browser checks
+        if: always()
+        shell: bash
+        run: |
+          if [ "${{ steps.round134_browser.outcome }}" != "success" ]; then
+            echo "Round134 failed; diagnostics are attached in pl-synthetic-browser-result."
+            exit 1
+          fi
       - name: Upload synthetic-only metadata report
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: pl-synthetic-browser-result
           path: ${{ runner.temp }}/pl-synthetic-report/
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 14

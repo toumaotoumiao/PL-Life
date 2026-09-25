@@ -1,6 +1,6 @@
 const IS_TEST_SCOPE=/\/PL-Life-Test(?:\/|$)/i.test(new URL(self.registration.scope).pathname);
 const CACHE_PREFIX=IS_TEST_SCOPE?"pl-life-test-":"pl-life-prod-";
-const CACHE_NAME=`${CACHE_PREFIX}v8.1.12.205`;
+const CACHE_NAME=`${CACHE_PREFIX}v8.1.12.206`;
 const RUNTIME_DOWNLOAD_CACHE=IS_TEST_SCOPE?"pl-life-test-runtime-downloads-v1":"pl-life-prod-runtime-downloads-v1";
 const APP_SHELL=["./index.html","./runtime-environment.js","./module-tools.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./data-migration-transaction.js","./data-migration-guard.js","./backup-restore-preflight.js","./data-heritage.js","./data-heritage-review.js","./data-heritage-apply.js","./data-heritage-batch.js","./query-core.js","./relation-index.js","./field-adapters.js","./query-state.js","./query-engine.js","./pc-query-bridge.js","./profile-query-bridge.js","./module-query-bridge.js","./plan-query-bridge.js","./record-query-bridge.js","./run-event.js","./showcase-core.js","./stats-query-bridge.js","./record-group.js"];
 
