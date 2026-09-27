@@ -36,7 +36,7 @@
       pcNames=[...new Set(assignments.map(pcText).filter(Boolean))],hos=[...new Set(assignments.map(hoText).filter(Boolean))];
     return {
       runId:text(entity&&entity.id),moduleId:text(entity&&entity.moduleId),moduleName:text(entity&&entity.moduleName)||'未命名模组',tableName:text(entity&&entity.tableName),
-      source:kind,archived:kind==='record',status:text(entity&&entity.tableStatus),roles,role:roleName(roles),pcName:pcNames[0]||'',ho:hos[0]||'',pcNames,hos
+      ruleMeta:entity&&entity.ruleMeta||null,source:kind,archived:kind==='record',status:text(entity&&entity.tableStatus),roles,role:roleName(roles),pcName:pcNames[0]||'',ho:hos[0]||'',pcNames,hos
     };
   }
   function slotEvents(entity,kind,selfId,roleResolver){

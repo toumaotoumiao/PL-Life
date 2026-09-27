@@ -10,7 +10,7 @@ const workflow=fs.readFileSync(path.join(root,'.github/workflows/pl-browser-synt
 test('final export preview states the privacy snapshot before download',()=>{
   assert.match(html,/id="uxExportPreviewPrivacyState"[^>]*role="status"/);
   assert.match(html,/privacyEnabled=Boolean\(privacyMaskEnabled\)/);
-  assert.match(html,/uxPendingExport=\{sourceCanvases:canvases,canvases,filenames,filename:Array\.isArray\(filename\)\?filenames\[0\]:filename,title,success,returnToEditor,privacyEnabled,/);
+  assert.match(html,/uxPendingExport=\{previewSize:uxExportPreviewSizeMode,sourceCanvases:canvases,canvases,filenames,filename:Array\.isArray\(filename\)\?filenames\[0\]:filename,title,success,returnToEditor,privacyEnabled,/);
   assert.match(html,/exportLayout:storedUnifiedExportLayout\(\)/);
   assert.match(html,/<strong>隐私导出已开启<\/strong>/);
   assert.match(html,/<strong>隐私导出已关闭<\/strong>/);

@@ -18,7 +18,7 @@
   for(const type of ['profiles','pcs','modules','plans','records']){
    const rows=arr(data[type]);add(type);add(rows.length);
    for(const row of rows){
-    add(row?.id);add(row?.updatedAt);add(row?.name);add(row?.moduleId);add(row?.moduleName);
+    add(row?.id);add(row?.updatedAt);add(row?.name);add(row?.moduleId);add(row?.moduleName);add(JSON.stringify(row?.ruleMeta||null));
     if(type==='pcs'){add(row?.ownerPlId);add(row?.ownerNameSnapshot);add(row?.status);add(row?.alias);add(row?.era);add(row?.occupation);add(row?.gender);add(row?.residence);add(row?.birthplace);add(row?.notes);add(arr(row?.tags).join('\x1f'));for(const skill of arr(row?.skills))add(skill?.name);for(const snap of arr(row?.snapshots)){add(snap?.moduleName);add(snap?.tableName);add(snap?.date);add(snap?.note);}}
     if(type==='profiles'){add(row?.displayName);add(row?.publicName);add(row?.blacklist?.active);}
     if(type==='modules'){add(row?.era);add(row?.location);}

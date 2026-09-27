@@ -29,21 +29,22 @@
   for(const type of ['records','profiles','modules','pcs','plans']){
    const rows=array(data[type]);add(type);add(rows.length);
    for(const r of rows){
-    const v=type==='records'?[r.id,r.moduleId,r.moduleName,r.tableName,r.kpProfileId,r.kp,r.plIds,r.participantAssignments,r.kpc,r.startDate,r.endDate,r.sessionSlots,r.logEntries,r.logUrls,r.logUrl,r.logLabels]:
+    const v=type==='records'?[r.id,r.moduleId,r.moduleName,r.tableName,r.kpProfileId,r.kp,r.plIds,r.participantAssignments,r.kpc,r.startDate,r.endDate,r.sessionSlots,r.logEntries,r.logUrls,r.logUrl,r.logLabels,r.ruleMeta]:
       type==='profiles'?[r.id,r.name,r.displayName,r.publicName]:type==='modules'?[r.id,r.name,r.title]:
-      type==='pcs'?[r.id,r.ownerPlId]:[r.id,r.moduleId,r.moduleName,r.kpProfileId,r.plIds,r.participantAssignments,r.kpc,r.timeSlots];
+      type==='pcs'?[r.id,r.ownerPlId]:[r.id,r.moduleId,r.moduleName,r.kpProfileId,r.plIds,r.participantAssignments,r.kpc,r.timeSlots,r.ruleMeta];
     add(JSON.stringify(v));
    }
   }return h.toString(16);
  }
  function create({searchIndexer}={}){
   let svc=null,previous='',revision=0,builds=0;
-  function query({data={},selfId='',now,settings={},range='all',start='',end='',role='all'}={}){
+  function query({data={},selfId='',now,settings={},range='all',start='',end='',role='all',ruleFamily='',ruleSystem='',ruleEdition=''}={}){
    if(!['all','kp','pl'].includes(role))throw new Error('统计身份无效');
    const bounds=resolveBounds({range,start,end,now}),sig=signature(data,selfId);
    if(!svc){svc=engine.create({data,selfId,now,settings,revision:++revision,searchIndexer});previous=sig;builds++;}
    else if(sig!==previous){svc.replaceData(data,++revision,{now,selfId,settings});previous=sig;builds++;}
    const filters={roleFlags:{op:'in',values:role==='all'?['kp','pl']:[role]}};
+   for(const [key,value] of [['ruleFamilyId',ruleFamily],['ruleSystemId',ruleSystem],['ruleEditionId',ruleEdition]])if(text(value))filters[key]={op:'eq',value:text(value)};
    if(bounds.start||bounds.end)filters.statDate={op:'dateRange',min:bounds.start,max:bounds.end};
    const normalized=state.normalize({search:'',filters,sort:{field:'statDate',direction:'asc'}},'records',adapters.schemas.records,{unknown:'reject'});
    if(normalized.unresolved.length)throw new Error('统计查询条件无法识别');
@@ -55,7 +56,7 @@
    const pl=result.ids.filter(id=>projections.get(id).roleFlags.includes('pl')).length;
    return Object.freeze({ids:Object.freeze([...result.ids]),rawRows:Object.freeze(rawRows),count:result.ids.length,total:array(data.records).length,
     personalTotal:svc.snapshot('records').filter(r=>r.roleFlags.some(x=>x==='kp'||x==='pl')).length,kpCount:kp,plCount:pl,
-    bounds,role,revision:svc.revision(),diagnostics:svc.diagnostics()});
+    bounds,role,ruleFamily,ruleSystem,ruleEdition,revision:svc.revision(),diagnostics:svc.diagnostics()});
   }
   return Object.freeze({query,buildCount:()=>builds,invalidate:()=>{previous='';}});
  }

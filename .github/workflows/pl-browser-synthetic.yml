@@ -66,6 +66,30 @@ jobs:
         run: node --test .github/pl-ci/round100-public-image-export-convergence.test.cjs
       - name: Guard full calendar readability and retire low-value public stats
         run: node --test .github/pl-ci/round101-calendar-readability-cleanup.test.cjs
+      - name: Round152 multi-rule module identity and export/restore compatibility
+        run: node --test .github/pl-ci/round152-multirule-relation-export.test.cjs
+      - name: Round153 same-title different-rule cross-view stable-ID safeguards
+        run: node --test .github/pl-ci/round153-multirule-crossview-id.test.cjs
+      - name: Round154 stable-ID destructive operations and stale-link safety
+        run: node --test .github/pl-ci/round154-multirule-destructive-id.test.cjs
+      - name: Round155 exact statistics-to-record stable group navigation
+        run: node --test .github/pl-ci/round155-stats-module-id-navigation.test.cjs
+      - name: Round156 visual acceptance release contract
+        run: node --test .github/pl-ci/round156-visual-contract.test.cjs
+      - name: Round157 actual-runtime visual regression contract
+        run: node --test .github/pl-ci/round157-runtime-visual.test.cjs
+      - name: Round158 toolbar and rule chooser layout contract
+        run: node --test .github/pl-ci/round158-toolbar-rule-runtime.test.cjs
+      - name: Round159 statistics export sorting and multipage drag contract
+        run: node --test .github/pl-ci/round159-stats-export-interaction.test.cjs
+      - name: Round160 PC Excel rule/edition template routing
+        run: node --test .github/pl-ci/round160-pc-excel-rule-router.test.cjs
+      - name: Round161 statistics native-pixel inspection and final image contract
+        run: node --test .github/pl-ci/round161-stats-preview-inspection.test.cjs
+      - name: Round162 modal history cleanup and browser Back regression
+        run: node --test .github/pl-ci/round162-modal-history-race.test.cjs
+      - name: Round164 unified final image inspection contract
+        run: node --test .github/pl-ci/round164-unified-final-inspection.test.cjs
       - name: Guard production and test environment storage isolation
         run: node --test .github/pl-ci/round102-environment-isolation.test.cjs
       - name: Guard integrated recap readable continuous-preview layout
@@ -130,14 +154,30 @@ jobs:
         run: node --test .github/pl-ci/round139-stats-panel-collapse.test.cjs
       - name: Round140 statistics scoped identity and extent contract
         run: node --test .github/pl-ci/round140-stats-panel-scope.test.cjs
-      - name: Round144 single-record count label and current release description
-        run: node --test .github/pl-ci/round144-record-count-label-release.test.cjs
       - name: Round143 planner agenda continuity and measured white background
         run: node --test .github/pl-ci/round143-planner-agenda-continuity.test.cjs
       - name: Round142 preview touch target and CI diagnostics contract
         run: node --test .github/pl-ci/round142-export-preview-ci-regression.test.cjs
       - name: Round141 PC export compact two-column layout
         run: node --test .github/pl-ci/round141-pc-archive-two-column.test.cjs
+      - name: Round145 multi-rule PC and unified query regression
+        run: node --test .github/pl-ci/round145-multirule-stage2.test.cjs
+      - name: Round146 per-table rule snapshot round trip
+        run: node --test .github/pl-ci/round146-table-rule-snapshot.test.cjs
+      - name: Round147 rule taxonomy filtering and statistics without new preference fields
+        run: node --test .github/pl-ci/round147-rule-filter-stats.test.cjs
+      - name: Round148 multi-rule PC archival template and preservation regression
+        run: node --test .github/pl-ci/round148-multirule-pc-templates.test.cjs
+      - name: Round149 multi-rule historical restore and duplicate-cleanup safety
+        run: node --test .github/pl-ci/round149-multirule-restore-guard.test.cjs
+      - name: Round150 frozen-source and saved-archive recovery evidence
+        run: node --test .github/pl-ci/round150-multirule-restore-evidence.test.cjs
+      - name: Round150 transaction commit rollback and crash-journal runtime
+        run: node --test .github/pl-ci/round150-transaction-runtime.test.cjs
+      - name: Round166 full-app recovery reload and second ZIP acceptance contract
+        run: node --test .github/pl-ci/round166-fullapp-reload-roundtrip.test.cjs
+      - name: Round151 native IndexedDB restoration test source contract
+        run: node --test .github/pl-ci/round151-native-storage-roundtrip.test.cjs
       - name: Guard PC complete-archive continuous background and stable layout geometry
         run: node --test .github/pl-ci/round104-pc-archive-layout-contract.test.cjs
       - name: Guard calendar role color semantics without K/P glyph clutter
@@ -171,6 +211,94 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
           printf 'Commit: %s\nWorkflow: %s\n' "$GITHUB_SHA" "$GITHUB_WORKFLOW" > "$RUNNER_TEMP/pl-synthetic-report/run-context.txt"
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install pinned visual-check runner
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+      - name: Round156 full-page visual structural acceptance
+        id: round156_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round156-visual-acceptance.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round156-visual-acceptance.log"
+      - name: Round157 real application renderer visual acceptance
+        id: round157_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round157-runtime-visual.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round157-runtime-visual.log"
+      - name: Round158 actual-toolbar and rule picker visual acceptance
+        id: round158_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round158-toolbar-rule-runtime.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round158-toolbar-rule-runtime.log"
+      - name: Round159 statistics composer interactive paged/long preview
+        id: round159_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round159-stats-export-interaction-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round159-stats-composer-browser.log"
+      - name: Round160 PC Excel rule-aware real-browser acceptance
+        id: round160_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round160-pc-excel-rule-router-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round160-pc-excel-browser.log"
+      - name: Round161 statistics source and final image geometry acceptance
+        id: round161_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round161-stats-preview-inspection-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round161-stats-preview-inspection.log"
+      - name: Round162 delayed modal cleanup and real browser Back
+        id: round162_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round162-modal-history-race-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round162-modal-history.log"
+      - name: Round164 unified final preview at native pixel size
+        id: round164_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round164-unified-final-inspection-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round164-final-inspection.log"
+      - name: Round165 specialized PC rule row order and preservation contract
+        run: node --test .github/pl-ci/round165-rule-row-order.test.cjs
+      - name: Round165 specialized PC rule row order in actual synthetic UI
+        id: round165_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round165-rule-row-order-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round165-rule-rows.log"
       - name: Round126 real Chromium export layout and continuous PNG
         run: node .github/pl-ci/round126-unified-export-layout-browser.cjs
       - name: Round129 Chromium live-preview mode and recovery
@@ -207,7 +335,66 @@ jobs:
           PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
         run: node .github/pl-ci/round143-planner-agenda-continuity-browser.cjs
       - name: Round141 Chromium PC full archive two-column geometry
-        run: node .github/pl-ci/round141-pc-archive-two-column-browser.cjs
+        id: round141_browser
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          node .github/pl-ci/round141-pc-archive-two-column-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round141-pc-archive-two-column-browser.log"
+      - name: Round148 Chromium multi-rule PC template geometry and preservation
+        id: round148_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/round148-multirule-pc-templates-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round148-multirule-pc-templates-browser.log"
+      - name: Round153 Chromium same-title rule card usability
+        id: round153_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/round153-multirule-crossview-id-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round153-multirule-crossview-id-browser.log"
+      - name: Round155 Chromium stats-to-record exact group navigation
+        id: round155_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/round155-stats-module-id-navigation-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round155-stats-module-id-navigation-browser.log"
+      - name: Round154 Chromium same-title rule group labels and responsive layout
+        id: round154_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/round154-multirule-group-label-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round154-multirule-group-label-browser.log"
+      - name: Round149 Chromium historical and current complete ZIP binary fidelity
+        id: round149_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/round149-multirule-zip-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round149-multirule-zip-browser.log"
+      - name: Round151 native Chromium restore reload and complete ZIP re-export
+        id: round151_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/round151-native-storage-roundtrip-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round151-native-storage-roundtrip-browser.log"
       - name: Round124 real Chromium preference and stats export touch geometry
         run: node .github/pl-ci/round124-preference-stats-browser.cjs
       - name: Verify production and test isolation in a real browser
@@ -236,14 +423,35 @@ jobs:
         run: node --test .github/pl-ci/round84-layout-contract.test.cjs
       - name: Audit populated synthetic cards, filter expansion and UI entry geometry
         run: node .github/pl-ci/round84-layout-flow-browser-audit.cjs
-      - name: Enforce Round134 result after subsequent browser checks
+      - name: Enforce critical browser results after subsequent checks
         if: always()
         shell: bash
         run: |
-          if [ "${{ steps.round134_browser.outcome }}" != "success" ]; then
-            echo "Round134 failed; diagnostics are attached in pl-synthetic-browser-result."
-            exit 1
-          fi
+          failed=0
+          for check in \
+            "Round134:${{ steps.round134_browser.outcome }}" \
+            "Round141:${{ steps.round141_browser.outcome }}" \
+            "Round148:${{ steps.round148_browser.outcome }}" \
+            "Round153:${{ steps.round153_browser.outcome }}" \
+            "Round154:${{ steps.round154_browser.outcome }}" \
+            "Round155:${{ steps.round155_browser.outcome }}" \
+            "Round149:${{ steps.round149_browser.outcome }}" \
+            "Round151:${{ steps.round151_browser.outcome }}" \
+            "Round156:${{ steps.round156_browser.outcome }}" \
+            "Round157:${{ steps.round157_browser.outcome }}" \
+            "Round158:${{ steps.round158_browser.outcome }}" \
+            "Round159:${{ steps.round159_browser.outcome }}" \
+            "Round160:${{ steps.round160_browser.outcome }}" \
+            "Round161:${{ steps.round161_browser.outcome }}" \
+            "Round162:${{ steps.round162_browser.outcome }}" \
+            "Round164:${{ steps.round164_browser.outcome }}" \
+            "Round165:${{ steps.round165_browser.outcome }}"; do
+            if [ "${check#*:}" != "success" ]; then
+              echo "${check%%:*} failed; see its log in pl-synthetic-browser-result."
+              failed=1
+            fi
+          done
+          exit "$failed"
       - name: Upload synthetic-only metadata report
         if: always()
         uses: actions/upload-artifact@v7

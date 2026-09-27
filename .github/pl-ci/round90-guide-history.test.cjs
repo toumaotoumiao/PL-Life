@@ -14,7 +14,7 @@ function makeContext({modal='onboardingBackdrop',successor='',guideIsOpen=false}
  const history={state:{tag:'tomato-pl-v8',view:'profiles',modal},
   back(){events.push('back');},
   replaceState(next){events.push('replace');this.state=next;}};
- const context={history,HISTORY_STATE_TAG:'tomato-pl-v8',currentView:'profiles',location:{href:'http://localhost/index.html'},
+ const context={history,HISTORY_STATE_TAG:'tomato-pl-v8',pendingInternalModalHistoryBack:0,currentView:'profiles',location:{href:'http://localhost/index.html'},
   historySurfaceIsOpen:id=>id==='onboardingBackdrop'&&guideIsOpen,
   topOpenHistorySurfaceId:()=>successor,
   setTimeout:fn=>{scheduled.push(fn);return scheduled.length;}};
@@ -38,6 +38,12 @@ test('guide dismissal never replaces an already-current Settings history entry',
 test('other modal back-navigation keeps its established behavior',()=>{
  const env=makeContext({modal:'planEditorBackdrop'});env.context.consumeSurfaceHistory('planEditorBackdrop');env.run();
  assert.deepEqual(env.events,['back']);
+});
+test('a newly opened dialog takes over stale closed-dialog history without a queued Back',()=>{
+ const env=makeContext({modal:'planEditorBackdrop',successor:'pcEditorBackdrop'});
+ env.context.consumeSurfaceHistory('planEditorBackdrop');env.run();
+ assert.deepEqual(env.events,['replace']);assert.equal(env.history.state.modal,'pcEditorBackdrop');
+ assert.equal(env.context.pendingInternalModalHistoryBack,0);
 });
 test('the guide still open must never alter navigation history',()=>{
  const env=makeContext({guideIsOpen:true});env.context.consumeSurfaceHistory('onboardingBackdrop');env.run();

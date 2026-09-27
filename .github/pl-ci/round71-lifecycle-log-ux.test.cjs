@@ -90,6 +90,6 @@ test('同类 Log 备注在搜索、PL 足迹和模组桥接中也保留',()=>{
  assert.deepEqual(Array.from(c.filledLogLabels(record)),['备团备注']);
  assert.match(html,/normalizeLogRows\(p, true\)\.some\(row => row\.url \|\| row\.label\)/);
  assert.match(html,/Log：\$\{readonlyLogLinksHTML\(r\)\}/);
- assert.match(html,/tableStatus: normalizeTableStatus\(r\.tableStatus, "record"\), sessionSlots:/);
+ assert.match(html,/tableStatus: normalizeTableStatus\(r\.tableStatus, "record"\), ruleMeta: clone\(r\.ruleMeta\), sessionSlots:/);
  assert.match(html,/base\.tableStatus = normalizeTableStatus\(run\._central\.tableStatus \|\| base\.tableStatus/);
 });

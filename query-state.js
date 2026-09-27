@@ -84,7 +84,7 @@
   if(legacy.owner==='__unlinked__')set('ownerState','unlinked');else set('ownerId',legacy.owner);
   set('status',legacy.status);set('relation',legacy.relation);
   // 老版关系 linked 以任何计划/记录为准，新版字段仍应由关系计数明确计算。
-  set('moduleKeys',legacy.module);set('tags',legacy.tag);
+  set('moduleKeys',legacy.module);set('tags',legacy.tag);set('ruleFamilyId',legacy.ruleFamily);set('ruleSystemId',legacy.ruleSystem);set('ruleEditionId',legacy.ruleEdition);
   const sortMap={name:{field:'name',direction:'asc'},runs:{field:'totalCount',direction:'desc'},recent:{field:'latestDate',direction:'desc'},updated:{field:'updatedAt',direction:'desc'}};
   return normalize({search:legacy.search||'',filters,sort:sortMap[legacy.sort]||sortMap.updated},'pcs',schema);
  }

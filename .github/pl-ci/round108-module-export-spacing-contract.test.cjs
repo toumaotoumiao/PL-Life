@@ -36,10 +36,12 @@ test('all integrated module blocks reserve top, bottom and inter-block whitespac
   assert.match(body,/ctx\.save\(\)[\s\S]*?b\.draw\([\s\S]*?ctx\.restore\(\)/);
 });
 
-test('standalone recruitment page measures text first and sizes canvas dynamically',()=>{
+test('standalone recruitment page shares measured blocks with continuous export and sizes canvas dynamically',()=>{
+  const blocks=sliceBetween('function moduleRecruitBlocks(m){','function moduleRecruitCanvas(m){');
   const body=sliceBetween('function moduleRecruitCanvas(m){','function moduleRatingCanvas(m){');
-  assert.match(body,/pcArchiveTextLines\(measure,String\(value\),w-44,10,font\)/);
-  assert.match(body,/h:58\+topPad\+safeLines\.length\*lineH\+bottomPad/);
+  assert.match(blocks,/pcArchiveTextLines\(measure,String\(value\),968,10,font\)/);
+  assert.match(blocks,/h:58\+topPad\+safeLines\.length\*lineH\+bottomPad/);
+  assert.match(body,/blocks=moduleRecruitBlocks\(m\)/);
   assert.match(body,/const H=Math\.max\(760,190\+bodyH\+48\)/);
   assert.doesNotMatch(body,/H=1180/,'recruitment canvas must not stay at a fixed height');
 });

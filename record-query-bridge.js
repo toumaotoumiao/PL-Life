@@ -28,6 +28,7 @@
   if(!roles.includes(str(legacy.role)||'all')||!logs.includes(str(legacy.log))||!dates.includes(str(legacy.date))||!assignments.includes(str(legacy.assignment))||!sorts.includes(str(legacy.sort)||'default'))throw new Error('未知跑团记录筛选或排序选项');
   const filters={},eq=(field,value)=>{if(value!==''&&value!=null)filters[field]={op:'eq',value}};
   if(legacy.role&&legacy.role!=='all')eq('roleFlags',str(legacy.role));
+  eq('ruleFamilyId',str(legacy.ruleFamily));eq('ruleSystemId',str(legacy.ruleSystem));eq('ruleEditionId',str(legacy.ruleEdition));
   if(legacy.log==='has')filters.logCount={op:'range',min:1,max:''};
   if(legacy.log==='none')eq('logCount',0);
   if(legacy.log==='multi')filters.logCount={op:'range',min:2,max:''};

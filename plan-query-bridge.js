@@ -20,6 +20,7 @@
   for(const [key,allowed] of Object.entries({role:['','kp','pl','both','other'],schedule:['','scheduled','unscheduled','active','overdue'],people:['','solo','small','large']})){if(!allowed.includes(str(legacy[key])))throw new Error('未知计划筛选选项：'+key);}
   const filters={},set=(k,v)=>{if(str(v))filters[k]={op:'eq',value:str(v)}};
   set('role',legacy.role);
+  set('ruleFamilyId',legacy.ruleFamily);set('ruleSystemId',legacy.ruleSystem);set('ruleEditionId',legacy.ruleEdition);
   if(legacy.schedule==='scheduled')set('scheduled','yes');
   else if(legacy.schedule==='unscheduled')set('scheduled','no');
   else if(['active','overdue'].includes(legacy.schedule))set('status',legacy.schedule);

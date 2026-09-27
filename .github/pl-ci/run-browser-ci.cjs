@@ -56,7 +56,7 @@ const server = http.createServer((req,res)=>{
     const safe={lab:report.lab,version:report.version,siteVersion:report.siteVersion,siteIdentityVerified:report.siteIdentityVerified,tests:(report.tests||[]).map(t=>({name:t.name,passed:t.passed,errorCode:t.errorCode,diagnostic:t.diagnostic})),environment:report.environment,scope:report.scope};
     const dest=path.join(out,'synthetic-results.json');
     fs.writeFileSync(dest, JSON.stringify(safe,null,2)+'\n');
-    const success=report.siteVersion===version&&report.siteIdentityVerified===true&&report.tests.length===11&&report.tests.every(t=>t.passed===true)&&report.environment.secure&&report.environment.indexedDB&&report.environment.webLocks&&report.scope==='synthetic-origin-only';
+    const success=report.siteVersion===version&&report.siteIdentityVerified===true&&report.tests.length===13&&report.tests.every(t=>t.passed===true)&&report.environment.secure&&report.environment.indexedDB&&report.environment.webLocks&&report.scope==='synthetic-origin-only';
     console.log('VERSION',version,'SYNTHETIC_CHROMIUM',report.tests.filter(t=>t.passed).length+'/'+report.tests.length,success?'PASS':'FAIL');
     if(!success){console.log('Failed checks:',report.tests.filter(t=>!t.passed).map(t=>({name:t.name,errorCode:t.errorCode,diagnostic:t.diagnostic})));process.exitCode=1;}
     if(pageErrors.length) console.log('Browser errors (truncated):',pageErrors.slice(0,3));

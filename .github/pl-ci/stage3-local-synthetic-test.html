@@ -84,6 +84,10 @@ async function runAll(){
    const result=await invoke('fixtures');
    insist(result[0]===1&&result[1]===1,'虚构文件写入/回读不一致');
   });
+  await test('建立同名异规则模组及专属 PC 的虚构档案',async()=>{
+    const r=await invoke('seed-rule-fixtures');
+    insist(['pc','unknown','distinct','plan','record'].every(k=>r[k]===true),'虚构多规则资料保存失败');
+  });
   await test('正式 ZIP 导出、校验与附件字节往返',async()=>{
    const data=await invoke('export');
    insist(data.verified&&data.bytes>200&&data.mode==='complete'&&data.unlinkedMedia===1&&data.unlinkedBooks===1,'完整 ZIP 内容或备份范围错误');
@@ -97,6 +101,14 @@ async function runAll(){
    const result=await invoke('restore');
    const failures=['ok','original','stored','image','thumb','book'].filter(key=>result[key]!==true);if(result.marker)failures.push('marker');
    if(failures.length){const e=Error('恢复检查未通过（'+result.issue+'；'+failures.join('、')+'）');e.safeDiagnostic={issue:result.issue,stage:result.stage,failedChecks:failures,sectionChecks:result.sectionChecks};throw e;}
+  });
+  await test('完整恢复后重新打开、原生存储回读及二次完整 ZIP 对照',async()=>{
+    const staged=await invoke('checkpoint-reload');
+    insist(staged.ready&&staged.distinctModules&&staged.templatePresent,'恢复前的固定证据不完整');
+    await loadRealSite();
+    const r=await invoke('verify-reload-reexport');
+    const failed=Object.entries(r).filter(([,ok])=>ok!==true).map(([k])=>k);
+    if(failed.length){const error=Error('恢复后重开与二次 ZIP 不一致（'+failed.join('、')+'）');error.safeDiagnostic={failedChecks:failed};throw error;}
   });
   let migrationInspectionPassed=false;
   try{await test('换设备 ZIP 只读核验、坏文件取消选择及零写入',async()=>{

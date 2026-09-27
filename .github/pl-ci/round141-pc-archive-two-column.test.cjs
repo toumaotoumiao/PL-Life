@@ -6,7 +6,7 @@ const block=extract('  function pcArchiveTextLines(ctx,text,maxW,maxLines=999', 
 function fixture(density='compact',count=14){
  const panels=[],drawn=[],ctx={font:'',fillStyle:'',strokeStyle:'',textAlign:'left',measureText(text){return{width:Array.from(String(text)).length*6.5};},fillText(value,x,y){drawn.push({value:String(value),x,y});},beginPath(){},moveTo(){},lineTo(){},stroke(){},save(){},restore(){}};
  const data={str:50,con:55,siz:75,dex:80,app:50,int:70,pow:50,edu:70,luck:70,hp:13,hpMax:13,san:50,sanMax:50,mp:10,mpMax:10,armor:0,db:'+1D4',build:1,mov:8};
- const scope={document:{createElement:()=>({getContext:()=>ctx})},PC_BACKGROUND_KEYS:[],privacyMaskEnabled:false,canvasWrapLines:(context,text,maxW)=>{
+ const scope={pcRuleIsCoc:()=>true,document:{createElement:()=>({getContext:()=>ctx})},PC_BACKGROUND_KEYS:[],privacyMaskEnabled:false,canvasWrapLines:(context,text,maxW)=>{
   const out=[];let line='';for(const char of Array.from(String(text))){if(line&&context.measureText(line+char).width>maxW){out.push(line);line='';}line+=char;}if(line||!out.length)out.push(line);return out;
  },canvasFillRound:()=>{},canvasTextFit:(_,s)=>String(s),pcCardTimeText:()=>'',pcStatusLabel:()=>'',pcTimelineRows:()=>[],entityPcSnapshots:()=>[],entityPcSnapshotHasData:()=>false,
  theme:()=>({surface:'#fff',surface2:'#eee',line:'#ccc',muted:'#777',ink:'#222',text2:'#444',accent:'#486'}),
@@ -54,4 +54,14 @@ test('Round141 same paired block is drawn in paged and semantic continuous expor
  assert.match(continuous,/kind==='pc'&&b\.kind==='stats-skills-pair'/);
  assert.match(continuous,/b\.drawPanel\(ctx,x,y,w,t\)/);
  assert.match(html,/const APP_UI_VERSION = "8\.1\.12\.\d+"/);
+});
+
+test('Round141 browser geometry fixture uses real multi-rule gate with explicit CoC7 metadata',()=>{
+ const browser=fs.readFileSync(path.join(__dirname,'round141-pc-archive-two-column-browser.cjs'),'utf8');
+ assert.match(browser,/const isCocSource=sourceBetween\('function pcRuleIsCoc\(pc\)\{',/);
+ assert.match(browser,/const normalizeMetaSource=sourceBetween\('function normalizeModuleRuleMeta/);
+ assert.match(browser,/ruleMeta:\{familyId:'brp',systemId:'coc',editionId:'7e'/);
+ assert.match(browser,/await page\.addScriptTag\(\{content:stubCode\+/);
+ assert.match(browser,/\+normalizeMetaSource\+/);
+ assert.match(browser,/\+isCocSource\+/);
 });

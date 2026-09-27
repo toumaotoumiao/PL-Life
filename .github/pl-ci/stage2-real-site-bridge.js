@@ -52,6 +52,35 @@
           await pcMediaTxDone(tx);
           return [(await pcMediaAllRows()).length, (await pcWorkbookAllRows()).length];
         }
+        case 'seed-rule-fixtures': {
+          // Only this disposable localhost origin. No real filenames, backups or identities.
+          const owner=selfProfileId(),validOwners=new Set(profiles.map(row=>String(row.id)));
+          if(!owner||!validOwners.has(String(owner))||pcs.some(row=>row.id==='__stage3_insane_pc'))throw Error('synthetic fixture source is not clean');
+          const moduleName='合成同名不同规则模组';
+          const insane={familyId:'saikoro-fiction',systemId:'insane',editionId:'',source:'user-selected',confirmed:true};
+          const brp={familyId:'brp',systemId:'brp-generic',editionId:'',source:'user-selected',confirmed:true};
+          const pc=normalizePcArchive({id:'__stage3_insane_pc',name:'合成 Insane PC',ownerPlId:owner,ruleMeta:insane,
+            ruleData:{traits:[{label:'历史通用字段',value:'保留'}],skills:[],resources:[],futureGeneric:{flag:1}},
+            ruleSheets:{insane:{traits:[{label:'生命力',value:'6',futureRow:{retained:true}}],skills:[{label:'特技',value:'静观'}],resources:[],future:{keep:true}},
+              shinobigami:{traits:[{label:'流派',value:'保留旧模板'}],skills:[],resources:[]},'future-system':{unknown:['保留']}},
+            coc:{san:41},excelEdits:[{sheet:'旧卡',ref:'B2',value:'不可丢失'}]},validOwners);
+          pcs.push(pc);
+          modules.push(normalizeRichModule({id:'__stage3_mod_insane',name:moduleName,ruleMeta:insane},settings.moduleArchive));
+          modules.push(normalizeRichModule({id:'__stage3_mod_brp',name:moduleName,ruleMeta:brp},settings.moduleArchive));
+          runPlans.push(normalizeRunPlan({id:'__stage3_plan',moduleId:'__stage3_mod_brp',moduleName,ruleMeta:brp,
+            tableName:'合成计划',plIds:[owner]},validOwners));
+          runRecords.push(normalizeRunRecord({id:'__stage3_record',moduleId:'__stage3_mod_insane',moduleName,ruleMeta:insane,
+            tableName:'合成记录',plIds:[owner],runNotes:'仅供隔离核验的 Log'},validOwners));
+          if(!saveState())throw Error('failed to persist synthetic rule fixture');
+          const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
+          const canonical=saved?.data,record=canonical?.runs?.find(x=>x.id==='__stage3_record');
+          const planned=canonical?.runs?.find(x=>x.id==='__stage3_plan');
+          const modulesFound=(canonical?.modules||[]).filter(x=>x.name===moduleName);
+          const savedPc=canonical?.pcs?.find(x=>x.id===pc.id);
+          return {pc:!!savedPc,unknown:!!savedPc?.ruleSheets?.insane?.future?.keep&&!!savedPc?.ruleSheets?.['future-system'],
+            distinct:modulesFound.length===2&&modulesFound[0].id!==modulesFound[1].id,
+            plan:!!planned&&planned.moduleId==='__stage3_mod_brp',record:!!record&&record.moduleId==='__stage3_mod_insane'};
+        }
         case 'export': {
           window.__stage2SyntheticZip = await buildUnifiedCompleteBackupBlob();
           const file = new File([window.__stage2SyntheticZip.blob], 'stage2_synthetic.zip', {type:'application/zip'});
@@ -132,6 +161,59 @@
                compareArchiveSections(window.__stage2SyntheticBeforeArchive,restoredArchive):null,
               stored,image,thumb,book,marker,issue,stage};
           } finally {appConfirm = priorConfirm;}
+        }
+        case 'checkpoint-reload': {
+          const current=buildCanonicalArchive(true),saved=localStorage.getItem(STORAGE_KEY);
+          if(!window.__stage2SyntheticBackupCore||archiveCore(current)!==window.__stage2SyntheticBackupCore||
+              !saved||archiveCore(JSON.parse(saved))!==archiveCore(current))throw Error('synthetic restored source does not match frozen ZIP');
+          const digest=async text=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))),
+            b=>b.toString(16).padStart(2,'0')).join('');
+          const core=await digest(archiveCore(current));
+          const rules=await digest(completeBackupRuleEvidence({pcs,modules,runPlans,runRecords}));
+          sessionStorage.setItem('__pl_stage3_restore_core_sha',core);
+          sessionStorage.setItem('__pl_stage3_restore_rules_sha',rules);
+          return {ready:true,distinctModules:current.data.modules.filter(m=>m.name==='合成同名不同规则模组').length===2,
+            templatePresent:!!current.data.pcs.find(pc=>pc.id==='__stage3_insane_pc')};
+        }
+        case 'verify-reload-reexport': {
+          const digest=async text=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))),
+            b=>b.toString(16).padStart(2,'0')).join('');
+          const expectedCore=sessionStorage.getItem('__pl_stage3_restore_core_sha');
+          const expectedRules=sessionStorage.getItem('__pl_stage3_restore_rules_sha');
+          if(!expectedCore||!expectedRules)throw Error('missing synthetic checkpoint after full app reload');
+          const current=buildCanonicalArchive(true),raw=localStorage.getItem(STORAGE_KEY),persisted=raw?JSON.parse(raw):null;
+          const coreSha=await digest(archiveCore(current));
+          const rulesSha=await digest(completeBackupRuleEvidence({pcs,modules,runPlans,runRecords}));
+          const rows=await pcMediaAllRows(),workbooks=await pcWorkbookAllRows();
+          const media=rows.find(x=>x.id==='__stage2_synthetic_image');
+          const excel=workbooks.find(x=>x.pcId==='__stage2_synthetic_workbook');
+          const zip=await buildUnifiedCompleteBackupBlob();
+          const file=new File([zip.blob],'synthetic-second.zip',{type:'application/zip'});
+          const verified=await verifyCompleteBackupZipFile(file),prepared=await parseUnifiedCompleteBackupFile(file);
+          const sourceSha=await digest(archiveCore(prepared.raw));
+          const p=prepared.raw.data.pcs.find(pc=>pc.id==='__stage3_insane_pc');
+          const mods=prepared.raw.data.modules.filter(m=>m.name==='合成同名不同规则模组');
+          const plan=prepared.raw.data.runs.find(x=>x.id==='__stage3_plan');
+          const record=prepared.raw.data.runs.find(x=>x.id==='__stage3_record');
+          const marker=!!PLDataMigrationTransaction.getMarker(localStorage);
+          const result={memory:coreSha===expectedCore,stored:!!persisted&&(await digest(archiveCore(persisted)))===expectedCore,
+            rules:rulesSha===expectedRules,reexport:!!verified&&sourceSha===expectedCore,
+            template:!!p?.ruleSheets?.insane?.future?.keep&&!!p.ruleSheets['future-system']&&p.coc?.san===41&&p.excelEdits?.[0]?.value==='不可丢失',
+            modules:mods.length===2&&mods[0].id!==mods[1].id&&plan?.moduleId==='__stage3_mod_brp'&&record?.moduleId==='__stage3_mod_insane',
+            image:JSON.stringify(await bytes(media?.blob))==='[137,80,78,71,13,10,26,10]',
+            thumb:JSON.stringify(await bytes(media?.thumbBlob))==='[1,2,3,4]',
+            book:JSON.stringify(await bytes(excel?.blob))==='[80,75,3,4,5,6]',
+            zipImage:JSON.stringify(await bytes(prepared.rows.find(x=>x.id==='__stage2_synthetic_image')?.blob))==='[137,80,78,71,13,10,26,10]',
+            zipThumb:JSON.stringify(await bytes(prepared.rows.find(x=>x.id==='__stage2_synthetic_image')?.thumbBlob))==='[1,2,3,4]',
+            zipBook:JSON.stringify(await bytes(prepared.workbookRows.find(x=>x.pcId==='__stage2_synthetic_workbook')?.blob))==='[80,75,3,4,5,6]',
+            noMarker:!marker,unprotected:!migrationReadOnly};
+          // Keep subsequent independent migration, malformed ZIP and concurrent-write tests runnable.
+          window.__stage2SyntheticZip=zip;
+          window.__stage2SyntheticBackupCore=archiveCore(prepared.raw);
+          window.__stage2SyntheticBackupArchive=prepared.raw;
+          sessionStorage.removeItem('__pl_stage3_restore_core_sha');
+          sessionStorage.removeItem('__pl_stage3_restore_rules_sha');
+          return result;
         }
         case 'source-drift': {
           // Simulate an uncooperative old tab writing a NEWER archive while

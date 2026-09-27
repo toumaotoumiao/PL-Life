@@ -33,17 +33,17 @@ test('execute module-card renderer: four extra tags are visible without opening 
   const escapeHTML=value=>String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const ctx={moduleBatchSelectedIds:new Set(),moduleBatchMode:false,
     moduleSideStats:()=>({kp:2,pl:3}),moduleRunCount:()=>5,
-    moduleComputedScore:()=>null,moduleLastRunDate:()=>'',modulesByNormalizedName:()=>[{}],
-    escapeHTML,compactRecordDate:value=>value};
+    moduleComputedScore:()=>null,moduleLastRunDate:()=>'',sameRuleNamedModules:()=>[{}],
+    escapeHTML,compactRecordDate:value=>value,moduleRuleDisplay:()=>"CoC · 第七版"};
   vm.runInNewContext(snippet+'\nthis.render=nativeModuleCardHTML;',ctx);
-  const record={id:'demo',name:'测试模组',author:'测试作者',location:'日本',era:'现代',players:'1人',hoSystem:'has',duration:'4-6小时',nature:'文字团',reKp:'是',notes:''};
+  const record={id:'demo',ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e'},name:'测试模组',author:'测试作者',location:'日本',era:'现代',players:'1人',hoSystem:'has',duration:'4-6小时',nature:'文字团',reKp:'是',notes:''};
   const card=ctx.render(record,false),compact=ctx.render(record,true);
-  for(const value of ['地点 日本','时代 现代','1人','有 HO','4-6小时','文字团','愿意再带']){
+  for(const value of ['规则 CoC · 第七版','地点 日本','时代 现代','1人','有 HO','4-6小时','文字团','愿意再带']){
     assert(card.includes('>'+value+'</span>'),`card should show ${value}`);
   }
   assert(!card.includes('更多资料'));
   assert(!card.includes('native-module-extra-tags'));
-  assert.equal((card.match(/<span class="(?:ho-tag)?">/g)||[]).length,7);
+  assert.equal((card.match(/<span class="(?:ho-tag)?">/g)||[]).length,8);
   assert.equal((compact.match(/class="native-module-row-tags"/g)||[]).length,1);
   const compactTags=(compact.match(/class="native-module-row-tags">([\s\S]*?)<\/div>/)||[])[1]||'';
   assert.equal((compactTags.match(/<span>/g)||[]).length,3);

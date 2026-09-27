@@ -22,6 +22,15 @@ test('Round142: CI writes real failure screenshots and geometry before upload; l
  assert.match(workflow,/Prepare browser diagnostics directory/);
  assert.match(workflow,/round134-export-visual-closeout-browser\.log/);
 });
+test('Round218: critical multi-rule browser tests all log and finish even when an earlier test fails',()=>{
+ for(const n of [141,148,149,151]){
+   assert.match(workflow,new RegExp(`id: round${n}_browser\\n\\s+continue-on-error: true`));
+   assert.ok(workflow.includes(`round${n}-`),`Round${n} diagnostic log missing`);
+   assert.ok(workflow.includes(`steps.round${n}_browser.outcome`),`Round${n} final status not enforced`);
+ }
+ assert.match(workflow,/failed=0/);
+ assert.match(workflow,/exit "\$failed"/);
+});
 test('Round142: current version is synchronized without changing stored user schema',()=>{
  assert.match(html,/const APP_UI_VERSION = "8\.1\.12\.\d+";/);
  const version=html.match(/const APP_UI_VERSION = "([^"]+)";/)?.[1];

@@ -69,12 +69,17 @@
   const f={};for(const [key,type] of Object.entries(fields))f[key]={get:r=>r[key],type};
   return freeze({id:r=>r.id,fields:freeze(f),search:freeze(search.map(([field,weight])=>freeze({get:r=>r[field],weight})))});
  }
+ function ruleDimensions(entity,defaultLegacy=false){
+  const meta=entity?.ruleMeta;
+  if(meta&&typeof meta==='object')return {ruleFamilyId:t(meta.familyId),ruleSystemId:t(meta.systemId),ruleEditionId:t(meta.editionId)};
+  return defaultLegacy?{ruleFamilyId:'brp',ruleSystemId:'coc',ruleEditionId:'7e'}:{ruleFamilyId:'',ruleSystemId:'',ruleEditionId:''};
+ }
  const schemas=freeze({
   profiles:querySchema({name:'text',displayName:'text',publicName:'text',blacklisted:'text',relation:'text',recordCount:'number',runBands:'text',dataFlags:'text',contactFilled:'text',rated:'text',updatedAt:'number'},[['name',0],['displayName',0],['publicName',0],['directIndex',1],['relatedIndex',5]]),
-  pcs:querySchema({name:'text',ownerId:'text',ownerState:'text',status:'text',era:'text',tags:'text',relation:'text',moduleKeys:'text',recordCount:'number',planCount:'number',totalCount:'number',latestDate:'date',updatedAt:'number',scoreZero:'number'},[['name',0],['alias',1],['ownerName',2],['era',3],['occupation',3],['tags',4],['moduleNames',5],['hoNames',5],['notes',8],['skillNames',6],['searchIndex',10]]),
-  modules:querySchema({name:'text',era:'text',location:'text',hoSystem:'text',recordCount:'number',kpCount:'number',plCount:'number',score:'number',rated:'text',playersRange:'range',durationRange:'range',updatedAt:'number',createdAt:'number',firstRunDate:'number',lastRunDate:'number',firstPlanDate:'number',lastPlanDate:'number'},[['name',0],['author',2],['location',3],['era',3],['searchIndex',7]]),
-  plans:querySchema({name:'text',moduleId:'text',kpId:'text',plIds:'text',role:'text',status:'text',scheduled:'text',participantCount:'number',nextDate:'date',updatedAt:'number'},[['tableName',0],['name',1],['peopleNames',2],['pcNames',3],['logLabels',7],['searchIndex',9]]),
-  records:querySchema({name:'text',moduleId:'text',kpId:'text',plIds:'text',role:'text',roleFlags:'text',pcFlags:'text',logCount:'number',dateState:'text',pcState:'text',hoState:'text',startDate:'date',endDate:'date',statDate:'date',createdAt:'number',updatedAt:'number'},[['tableName',0],['name',1],['peopleNames',2],['pcNames',3],['logLabels',7],['searchIndex',8]]),
+  pcs:querySchema({name:'text',ownerId:'text',ownerState:'text',status:'text',era:'text',tags:'text',relation:'text',moduleKeys:'text',recordCount:'number',planCount:'number',totalCount:'number',latestDate:'date',updatedAt:'number',scoreZero:'number',ruleFamilyId:'text',ruleSystemId:'text',ruleEditionId:'text'},[['name',0],['alias',1],['ownerName',2],['era',3],['occupation',3],['tags',4],['moduleNames',5],['hoNames',5],['notes',8],['skillNames',6],['searchIndex',10]]),
+  modules:querySchema({name:'text',era:'text',location:'text',hoSystem:'text',recordCount:'number',kpCount:'number',plCount:'number',score:'number',rated:'text',playersRange:'range',durationRange:'range',updatedAt:'number',createdAt:'number',firstRunDate:'number',lastRunDate:'number',firstPlanDate:'number',lastPlanDate:'number',ruleFamilyId:'text',ruleSystemId:'text',ruleEditionId:'text'},[['name',0],['author',2],['location',3],['era',3],['searchIndex',7]]),
+  plans:querySchema({ruleFamilyId:'text',ruleSystemId:'text',ruleEditionId:'text',name:'text',moduleId:'text',kpId:'text',plIds:'text',role:'text',status:'text',scheduled:'text',participantCount:'number',nextDate:'date',updatedAt:'number'},[['tableName',0],['name',1],['peopleNames',2],['pcNames',3],['logLabels',7],['searchIndex',9]]),
+  records:querySchema({ruleFamilyId:'text',ruleSystemId:'text',ruleEditionId:'text',name:'text',moduleId:'text',kpId:'text',plIds:'text',role:'text',roleFlags:'text',pcFlags:'text',logCount:'number',dateState:'text',pcState:'text',hoState:'text',startDate:'date',endDate:'date',statDate:'date',createdAt:'number',updatedAt:'number'},[['tableName',0],['name',1],['peopleNames',2],['pcNames',3],['logLabels',7],['searchIndex',8]]),
   moduleTools:querySchema({name:'text',author:'text',era:'text',location:'text',hoSystem:'text',reKp:'text',nature:'text',plCount:'number',kpCount:'number',runCount:'number',score:'number',playersRange:'range',durationRange:'range',updatedAt:'number'},[['name',0],['author',2],['searchExtras',7]])
  });
  function build(data={},options={}){
@@ -111,10 +116,11 @@
     const roleFlags=farr([...(isKp?['kp']:[]),...(isPl?['pl']:[]),...(!isKp&&!isPl?['other']:[])]);
     const pcFlags=farr([...(hasPc?['has']:[]),...(missingPc?['missing']:[]),...(!hasPc?['none']:[])]);
     const logLabels=farr([...arr(r.logEntries).map(x=>t(x?.label||x?.note)),...arr(r.logLabels)].filter(Boolean));
-    const searchParts=[r.tableName,r.moduleName,r.kp,pname(kpId),...plIds.map(pname),...ass.map(a=>pname(id(a.plId))),...pcNames,r.startDate,r.endDate,r.actualDuration,r.thoughts,r.runNotes,r.notes,r.sharedHoNote,r.logUrl,...arr(r.logUrls),...arr(r.logEntries).flatMap(x=>[x?.url,x?.label,x?.note]),...arr(r.sessionSlots).flatMap(s=>[s?.date,s?.daypart]),...ass.flatMap(a=>[a?.hoNumber,a?.hoCustom]),r.kpc?.hoCustom];
+    const rule=ruleDimensions(r);if(!r.ruleMeta)rule.ruleFamilyId='unrecorded';
+    const searchParts=[r.ruleMeta?.familyId,r.ruleMeta?.systemId,r.ruleMeta?.editionId,r.ruleMeta?.customName,r.ruleMeta?.customEdition,r.tableName,r.moduleName,r.kp,pname(kpId),...plIds.map(pname),...ass.map(a=>pname(id(a.plId))),...pcNames,r.startDate,r.endDate,r.actualDuration,r.thoughts,r.runNotes,r.notes,r.sharedHoNote,r.logUrl,...arr(r.logUrls),...arr(r.logEntries).flatMap(x=>[x?.url,x?.label,x?.note]),...arr(r.sessionSlots).flatMap(s=>[s?.date,s?.daypart]),...ass.flatMap(a=>[a?.hoNumber,a?.hoCustom]),r.kpc?.hoCustom];
     const searchIndex=searchIndexer?String(searchIndexer(searchParts)):searchParts.map(t).join(' ');
     return freeze({id:id(r.id),name:t(r.moduleName)||t(mmap.get(resolution.id)?.name),tableName:t(r.tableName),moduleId:resolution.id,moduleResolution:resolution.status,kpId,plIds,role,
-     peopleNames:farr([pname(kpId),t(r.kp),...plIds.map(pname),...ass.map(a=>pname(id(a.plId)))].filter(Boolean)),pcNames,logCount:logs,logLabels,searchIndex,roleFlags,pcFlags,
+     ...rule,peopleNames:farr([pname(kpId),t(r.kp),...plIds.map(pname),...ass.map(a=>pname(id(a.plId)))].filter(Boolean)),pcNames,logCount:logs,logLabels,searchIndex,roleFlags,pcFlags,
      dateState:!start&&!end?'undated':start&&end?'complete':'partial',pcState:missingPc?'missing':hasPc?'has':'none',hoState:ho?'has':'none',startDate:start,endDate:end,statDate,createdAt:number(r.createdAt),updatedAt:number(r.updatedAt),linkedPcIds:farr(links.map(x=>x.pcId))});
    });
    const plans=source.plans.map(p=>{
@@ -122,10 +128,11 @@
     const slots=arr(p.timeSlots).map(s=>({date:date(s?.date),part:({morning:0,afternoon:1,evening:2})[t(s?.daypart)]??2})).filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date)||a.part-b.part);
     const active=slots.find(s=>s.date===today&&s.part===part),future=slots.find(s=>s.date>today||s.date===today&&s.part>part);
     const status=!slots.length?'unscheduled':active?'active':future?'upcoming':'overdue';
+    const rule=ruleDimensions(p);if(!p.ruleMeta)rule.ruleFamilyId='unrecorded';
     const both=Boolean(selfId&&kpId===selfId&&plIds.includes(selfId)),role=both?'both':selfId&&kpId===selfId?'kp':selfId&&plIds.includes(selfId)?'pl':'other';
-    return freeze({id:id(p.id),name:t(p.moduleName)||t(mmap.get(resolution.id)?.name),tableName:t(p.tableName),moduleId:resolution.id,moduleResolution:resolution.status,kpId,plIds,role,status,scheduled:slots.length?'yes':'no',participantCount:plIds.length,
+    return freeze({id:id(p.id),...rule,name:t(p.moduleName)||t(mmap.get(resolution.id)?.name),tableName:t(p.tableName),moduleId:resolution.id,moduleResolution:resolution.status,kpId,plIds,role,status,scheduled:slots.length?'yes':'no',participantCount:plIds.length,
      nextDate:active?.date||future?.date||'',nextPart:active?.part??future?.part??null,updatedAt:number(p.updatedAt),peopleNames:farr([pname(kpId),t(p.kp),...plIds.map(pname)].filter(Boolean)),pcNames:farr(arr(p.participantAssignments).map(a=>t(a.pcName)).filter(Boolean)),
-     logLabels:farr(arr(p.logLabels).map(t).filter(Boolean)),searchIndex:searchIndexer?String(searchIndexer([p.tableName,p.moduleName,p.kp,p.sharedHoNote,p.logUrl,p.logLabels,p.logUrls,arr(p.logEntries).flatMap(e=>[e?.label,e?.note,e?.url]),arr(p.timeSlots).flatMap(slot=>[slot?.date,slot?.daypart,slot?.startTime,slot?.endTime]),arr(p.participantAssignments).flatMap(a=>[a?.pcName,a?.hoCustom,a?.hoNumber]),p.kpc?.pcName])):''});
+     logLabels:farr(arr(p.logLabels).map(t).filter(Boolean)),searchIndex:searchIndexer?String(searchIndexer([p.tableName,p.moduleName,p.kp,p.sharedHoNote,p.logUrl,p.logLabels,p.logUrls,arr(p.logEntries).flatMap(e=>[e?.label,e?.note,e?.url]),arr(p.timeSlots).flatMap(slot=>[slot?.date,slot?.daypart,slot?.startTime,slot?.endTime]),arr(p.participantAssignments).flatMap(a=>[a?.pcName,a?.hoCustom,a?.hoNumber]),p.kpc?.pcName,p.ruleMeta?.familyId,p.ruleMeta?.systemId,p.ruleMeta?.editionId,p.ruleMeta?.customName,p.ruleMeta?.customEdition])):''});
    });
    const pcs=source.pcs.map(pc=>{
     const links=idx.pcLinks(pc.id),recs=links.filter(x=>x.kind==='record'),plans=links.filter(x=>x.kind==='plan'),dates=[];
@@ -135,20 +142,23 @@
     }
     const ownerId=id(pc.ownerPlId),owner=pmap.get(ownerId),name=owner?display(owner):t(pc.ownerNameSnapshot)||'未关联 PL';
     const moduleNames=farr([...new Set(links.map(l=>t(mmap.get(l.moduleId)?.name)||l.moduleName).filter(Boolean))]);
-    const tagRows=farr(arr(pc.tags).map(t).filter(Boolean)),status=t(pc.status)==='retired'?'archived':t(pc.status)||'active';
+    const rule=ruleDimensions(pc,true),tagRows=farr(arr(pc.tags).map(t).filter(Boolean)),status=t(pc.status)==='retired'?'archived':t(pc.status)||'active';
     const hoNames=farr(links.flatMap(l=>{
      const entity=(l.kind==='record'?recordsMap:plansMap).get(l.entityId);
      return arr(entity?.participantAssignments).filter(a=>id(a.pcId)===id(pc.id)).flatMap(a=>[t(a.hoCustom),t(a.hoNumber)]).filter(Boolean);
     }));
-    const skillNames=farr(arr(pc.skills).map(s=>t(s.name)).filter(Boolean));
+    const special=['brp-generic','insane','shinobigami'].includes(pc.ruleMeta?.systemId);
+    const selectedSheet=special?(pc.ruleSheets?.[pc.ruleMeta?.systemId]||{}):pc.ruleData;
+    const legacyCoc=pc.ruleMeta?.systemId==='coc'&&pc.ruleMeta?.editionId==='7e';
+    const skillNames=farr([...(legacyCoc?arr(pc.skills).map(s=>t(s.name)):[]),...arr(selectedSheet?.skills).map(s=>t(s.label))].filter(Boolean));
     const snapshotTexts=arr(pc.snapshots).flatMap(s=>[s?.moduleName,s?.tableName,s?.date,s?.note]).map(t).filter(Boolean);
     const hoSearch=farr(links.flatMap(l=>{
      const entity=(l.kind==='record'?recordsMap:plansMap).get(l.entityId);
      const ass=[...arr(entity?.participantAssignments).filter(a=>id(a.pcId)===id(pc.id)),...(entity?.kpc?.enabled&&id(entity.kpc.pcId)===id(pc.id)?[entity.kpc]:[])];
      return ass.map(a=>a.hoMode==='none'?'无 HO':a.hoMode==='number'?(a.hoNumber?'HO'+a.hoNumber:'HO未选'):a.hoMode==='custom'?(t(a.hoCustom)||'自定义HO'):'').filter(Boolean);
     }));
-    const searchIndex=searchIndexer?String(searchIndexer([pc.name,pc.alias,name,pc.era,pc.occupation,pc.gender,pc.residence,pc.birthplace,status,({active:'使用中',dead:'死亡',archived:'封存'})[status]||'',pc.tags,moduleNames,hoSearch,pc.notes,skillNames,snapshotTexts])):'';
-    return freeze({id:id(pc.id),name:t(pc.name),alias:t(pc.alias),ownerId,ownerName:name,ownerState:!ownerId?'unlinked':owner?'linked':'missing',status,era:t(pc.era),occupation:t(pc.occupation),gender:t(pc.gender),residence:t(pc.residence),birthplace:t(pc.birthplace),
+    const searchIndex=searchIndexer?String(searchIndexer([pc.ruleMeta?.customName,pc.ruleMeta?.customEdition,pc.ruleMeta?.familyId,pc.ruleMeta?.systemId,pc.name,pc.alias,name,pc.era,pc.occupation,pc.gender,pc.residence,pc.birthplace,status,({active:'使用中',dead:'死亡',archived:'封存'})[status]||'',pc.tags,moduleNames,hoSearch,pc.notes,skillNames,...['traits','skills','resources'].flatMap(k=>arr(selectedSheet?.[k]).flatMap(x=>[x.label,x.value])),snapshotTexts])):'';
+    return freeze({id:id(pc.id),name:t(pc.name),alias:t(pc.alias),...rule,ownerId,ownerName:name,ownerState:!ownerId?'unlinked':owner?'linked':'missing',status,era:t(pc.era),occupation:t(pc.occupation),gender:t(pc.gender),residence:t(pc.residence),birthplace:t(pc.birthplace),
      tags:tagRows,notes:t(pc.notes),skillNames,hoNames,moduleNames,moduleKeys:farr([...new Set([...links.map(l=>l.moduleId||(l.moduleStatus==='missing-id'?'':'name:'+norm(l.moduleName))).filter(Boolean),...links.filter(l=>l.moduleStatus==='legacy-unique'&&l.moduleName).map(l=>'name:'+norm(l.moduleName))])]),searchIndex,relation:farr([...recs.length?['records']:[],...plans.length?['plans']:[],...links.length?['linked']:['unlinked']]),
      recordCount:recs.length,planCount:plans.length,totalCount:links.length,latestDate:dates.sort().at(-1)||'',updatedAt:number(pc.updatedAt),scoreZero:number(pc.coc?.san)});
    });
@@ -182,8 +192,8 @@
     const modulePlans=idx.modulePlans(m.id).map(pid=>planRowsMap.get(pid)).filter(Boolean);
     const planDates=modulePlans.flatMap(p=>arr(originalPlansMap.get(p.id)?.timeSlots).map(slot=>date(slot?.date)).filter(Boolean));
     const runDates=own.map(r=>r.startDate).filter(Boolean);
-    const extra=[m.name,m.title,m.author,m.source,m.location,m.era,m.nature,m.notes,m.rules,m.players,m.duration,m.recommendedSkills,m.cardRequirements,m.recommendedOccupations,m.lostRate,m.background,m.recruitmentNotes,m.reKp];
-    return freeze({id:id(m.id),name:t(m.name||m.title),author:t(m.author),era:t(m.era),location:t(m.location),hoSystem:hoStatus(m.hoSystem),recordCount:mids.length,
+    const rule=ruleDimensions(m,true),extra=[m.ruleMeta?.familyId,m.ruleMeta?.systemId,m.ruleMeta?.editionId,m.ruleMeta?.customName,m.ruleMeta?.customEdition,m.name,m.title,m.author,m.source,m.location,m.era,m.nature,m.notes,m.rules,m.players,m.duration,m.recommendedSkills,m.cardRequirements,m.recommendedOccupations,m.lostRate,m.background,m.recruitmentNotes,m.reKp];
+    return freeze({id:id(m.id),name:t(m.name||m.title),...rule,author:t(m.author),era:t(m.era),location:t(m.location),hoSystem:hoStatus(m.hoSystem),recordCount:mids.length,
      kpCount:own.filter(r=>r.kpId===selfId&&Boolean(selfId)).length,plCount:own.filter(r=>Boolean(selfId)&&r.plIds.includes(selfId)).length,score,rated:score===null?'no':'yes',
      playersRange:parseRange(m.players,'players'),durationRange:parseRange(m.duration,'duration'),notes:t(m.notes),searchIndex:searchIndexer?String(searchIndexer(extra)):extra.map(t).join(' '),
      updatedAt:timeNumber(m.updatedAt),createdAt:timeNumber(m.createdAt),firstRunDate:extrema(runDates,'first'),lastRunDate:extrema(runDates,'last'),firstPlanDate:extrema(planDates,'first'),lastPlanDate:extrema(planDates,'last')});

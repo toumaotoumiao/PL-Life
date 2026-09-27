@@ -17,7 +17,7 @@
  const compareName=(a,b)=>String(a||'').localeCompare(String(b||''),'zh-CN',{numeric:true,sensitivity:'base'});
  function archiveState(legacy){
   const filters={},set=(key,value)=>{if(value)filters[key]={op:'eq',value:str(value)}};
-  set('era',legacy.era);set('location',legacy.location);set('rated',legacy.rating==='rated'?'yes':legacy.rating==='unrated'?'no':'');
+  set('era',legacy.era);set('location',legacy.location);set('ruleFamilyId',legacy.ruleFamily);set('ruleSystemId',legacy.ruleSystem);set('ruleEditionId',legacy.ruleEdition);set('rated',legacy.rating==='rated'?'yes':legacy.rating==='unrated'?'no':'');
   if(legacy.ho&&legacy.ho!=='unset')set('hoSystem',legacy.ho);
   if(legacy.run==='has')filters.recordCount={op:'range',min:1,max:''};
   if(legacy.run==='none')filters.recordCount={op:'range',min:0,max:0};
