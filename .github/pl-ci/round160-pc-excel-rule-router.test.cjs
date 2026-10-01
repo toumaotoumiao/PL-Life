@@ -2,7 +2,8 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'../..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
 const extract=(a,b)=>{const start=html.indexOf(a),end=html.indexOf(b,start);assert(start>=0&&end>start,`${a} segment missing`);return html.slice(start,end);};
-const code=[extract('const TRPG_RULE_FAMILIES=Object.freeze(', 'let { profiles, settings, runRecords, runPlans, modules, pcs } = loadState();'),extract('function defaultModuleRuleMeta(', 'function normalizeModuleRating('),extract('function pcRuleIsCoc(', 'function pcGenericRuleEditorHTML(')].join('\n');
+const harness=`let pcWorkbookPending=null,pcDraft=null; async function pcWorkbookGet(){return null;} function pcRuleTemplateKey(pc){const id=String(pc?.ruleMeta?.systemId||'');if(id==='dnd'){const edition=String(pc?.ruleMeta?.editionId||'');return ['5e-2014','5e-2024'].includes(edition)?'dnd:'+edition:'';}return id;}`;
+const code=[harness,extract('const TRPG_RULE_FAMILIES=Object.freeze(', 'let { profiles, settings, runRecords, runPlans, modules, pcs } = loadState();'),extract('function defaultModuleRuleMeta(', 'function normalizeModuleRating('),extract('function pcRuleIsCoc(', 'function pcGenericRuleEditorHTML(')].join('\n');
 const ui={};for(const id of ['pcFooterExportExcelBtn','pcFooterExcelExportStatus'])ui[id]={hidden:true,disabled:false,textContent:'',dataset:{},title:''};
 const api=new Function('document',code+'\nreturn {pcExcelExportAvailability,syncPcExcelExportUi,PC_EXCEL_EXPORT_ADAPTERS,pcRuleIsCoc};')({getElementById:id=>ui[id]||null});
 const rule=(familyId,systemId,editionId='',confirmed=true,extra={})=>({ruleMeta:{familyId,systemId,editionId,confirmed,source:confirmed?'user-selected':'legacy-pc-default',...extra},name:'合成PC',id:'synthetic'});
@@ -23,11 +24,12 @@ test('unconfirmed legacy default and incomplete rule/edition cannot masquerade a
  assert.equal(api.pcExcelExportAvailability(rule('brp','','')).status,'rule-required');
  assert.equal(api.pcExcelExportAvailability(rule('custom','custom','',true,{customName:''})).status,'rule-required');
 });
-test('export menu always explains current rule and keeps image export intact',()=>{
+test('export menu always explains current rule and keeps image export intact',async()=>{
  for(const [pc,expected] of [[rule('brp','coc','7e'),'ready'],[rule('brp','coc','6e'),'developing'],[rule('saikoro-fiction','insane'),'developing'],[rule('d20-osr','dnd','5e-2014'),'ready'],[rule('brp','coc','7e',false),'unconfirmed']]){
   const data=structuredClone(pc),state=api.syncPcExcelExportUi(pc),btn=ui.pcFooterExportExcelBtn,note=ui.pcFooterExcelExportStatus;
   assert.equal(state.status,expected);assert.equal(btn.disabled,expected!=='ready');assert.equal(btn.hidden,false);
   assert.equal(note.hidden,expected==='ready');assert.deepEqual(pc,data,'rendering never alters PC or Excel source');
+  await Promise.resolve();
  }
  assert.match(html,/id="pcFooterExportImageBtn"/);assert.match(html,/id="pcFooterExcelExportStatus" role="status"/);
  assert.match(html,/data-pc-confirm-rule/);assert.match(html,/pcDraft\.ruleMeta=\{\.\.\.m,confirmed:true,source:'user-confirmed'\}/);

@@ -1,0 +1,7 @@
+{
+  "version": "8.1.12.274",
+  "checks": 14,
+  "passed": 14,
+  "failures": [],
+  "mode": "real app DOM + isolated synthetic HO records; no user data"
+}

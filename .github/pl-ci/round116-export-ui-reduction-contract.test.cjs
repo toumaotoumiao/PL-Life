@@ -39,7 +39,9 @@ test('reset stays a weak action while export remains the primary action',()=>{
 test('high-frequency export copy is shortened without removing safety-relevant privacy text',()=>{
   assert(html.includes('<strong>导出个人统计</strong>'));
   assert(html.includes('<strong>全年排期展示</strong>'));
-  assert(html.includes('按当前筛选、年份或全部记录生成连续回顾。'));
-  assert(html.includes('选择列数、内容状态与分组布局。'));
-  assert(html.includes('隐私导出'));
+  assert(html.includes('<strong>回顾范围</strong>'));
+  assert(html.includes('<strong>列布局</strong>'));
+  assert(!html.includes('按当前筛选、年份或全部记录生成连续回顾。'));
+  assert(!html.includes('控制公开内容'));
+  assert(html.includes('隐私导出：'));
 });

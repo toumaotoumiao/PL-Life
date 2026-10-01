@@ -50,7 +50,7 @@ test('all public people-oriented image exports expose public/name/anonymous/hidd
   assert.match(html,/function modulePersonName\([\s\S]*?showcaseProfileName/);
   assert.match(html,/function recordShowcaseName\([\s\S]*?showcaseProfileName/);
   assert.match(html,/function statsExportPersonLabel\([\s\S]*?showcaseProfileName/);
-  assert(html.includes('publicProfileName(profile) · PL 参团')||html.includes('`${publicProfileName(profile)} · PL 参团`'));
+  assert.match(html,/drawUnifiedExportHeader\(ctx,baseW,theme,\{eyebrow:'PL',title:`\$\{publicProfileName\(profile\)\}`/);
 });
 
 test('density 2.0 exposes compact standard relaxed and shares a core density profile',()=>{

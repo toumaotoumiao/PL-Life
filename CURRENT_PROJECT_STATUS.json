@@ -2,16 +2,16 @@
   "format": "pl-life-current-project-status",
   "statusVersion": 1,
   "sourceOfTruth": true,
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-02",
   "current": {
-    "stage": 92,
-    "appVersion": "8.1.12.270",
+    "stage": 96,
+    "appVersion": "8.1.12.274",
     "schemaVersion": 26,
     "branchState": "release-candidate",
     "focus": [
-      "PL／HO 跑团整理图片导出自由分栏",
-      "两列／三列跨列拖拽与非均分布局",
-      "维持唯一当前项目状态源"
+      "全站图片导出第二轮文案减法",
+      "统一最终预览隐私状态为简短标签",
+      "修复 v272 历史记录与运行时/离线缓存版本一致性"
     ]
   },
   "statusPolicy": {
@@ -39,10 +39,10 @@
   },
   "currentVersionAcceptance": {
     "automated": {
-      "state": "passed-local-stage92",
+      "state": "passed-stage96",
       "node": {
-        "passed": 956,
-        "total": 956
+        "passed": 964,
+        "total": 964
       },
       "imageExportRegression": {
         "state": "covered-by-full-node-and-targeted-browser-regressions",
@@ -88,27 +88,76 @@
       "round267StaticContract": {
         "passed": 4,
         "total": 4
+      },
+      "round264DndTemplateBrowser": {
+        "passed": 11,
+        "total": 11,
+        "scope": "D&D 已核实模板六属性回填与工作簿保真"
+      },
+      "round268DndTemplateBindStatic": {
+        "passed": 4,
+        "total": 4
+      },
+      "round268DndTemplateBindBrowser": {
+        "passed": 8,
+        "total": 8,
+        "scope": "未绑定时设置模板；保存后直接导出；版次切换重新设置",
+        "storageHarness": "isolated-memory-workbook-stub",
+        "note": "当前执行环境阻止 localhost 原生 IndexedDB 浏览器导航；原生附件/完整 ZIP 持久化继续由既有存储与恢复回归覆盖，不将本项冒充原生 IndexedDB 真机证明。"
+      },
+      "baselineInheritedFrom": "Stage93 full regression + Stage96 full Node/browser regression",
+      "targetedStaticChecksStage95": {
+        "passed": 10,
+        "total": 10,
+        "items": [
+          "APP_UI_VERSION 升级到 v8.1.12.273",
+          "版本显示统一到 v8.1.12.273",
+          "PL 导出头部眉题从‘PL · 玩家侧’简化为‘PL’",
+          "KP 导出头部眉题从‘KP · 带团侧’简化为‘KP’",
+          "PL 导出标题去掉‘· PL’后缀",
+          "KP 导出标题去掉‘· KP’后缀",
+          "跑团整理预览标题改为统一‘跑团整理 · 导出预览’",
+          "跑团整理预览说明去掉‘当前编排：’等赘述",
+          "分栏摘要去掉‘独立列瀑布’等说明性文案",
+          "跨列区域提示缩短为简短标签"
+        ]
+      },
+      "round269ExportCopyReduction": {
+        "passed": 4,
+        "total": 4,
+        "state": "pass",
+        "scope": "全站图片导出文案减法、必要隐私风险保留、版本一致性与历史连续性"
+      },
+      "round164UnifiedFinalPreviewBrowser": {
+        "passed": 22,
+        "total": 22,
+        "viewports": [
+          375,
+          1280
+        ],
+        "scope": "最终预览适应宽度/原尺寸、分页/长图、页面不横向溢出"
       }
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "generalBaselineInherited": true,
       "pending": [
-        "v8.1.12.266-v8.1.12.270 手机端规则选择器当前版本针对性复核",
-        "v8.1.12.270 图片导出源预览与 PL／HO 两列非均分拖拽的手机、桌面视觉/触控针对性复核",
-        "Stage90 D&D 真实用户模板在当前版本 Excel/WPS 中的针对性打开与回填复核"
+        "v8.1.12.274 跑团整理图片导出继续精简后的桌面/手机视觉复核",
+        "v8.1.12.270-v8.1.12.274 图片导出源预览与 PL／HO 两列非均分拖拽的手机、桌面视觉/触控针对性复核",
+        "v8.1.12.271-v8.1.12.274 D&D 首次设置模板 → 保存 PC → 后续直接导出的 Windows 浏览器针对性复核",
+        "Stage90/93 D&D 真实用户模板在当前版本 Excel/WPS 中的打开、六属性回填与重复直接导出复核"
       ]
     },
     "release": {
       "state": "candidate-not-yet-confirmed-live",
       "productionPackage": "built-locally-after-preflight-pass",
-      "productionSite": "not-verified-as-v8.1.12.270",
-      "testSite": "not-verified-as-v8.1.12.270",
+      "productionSite": "not-verified-as-v8.1.12.274",
+      "testSite": "not-verified-as-v8.1.12.274",
       "artifactNames": [
-        "Stage92_完整候选工程.zip",
-        "Stage92_正式仓库完整同步包.zip",
-        "Stage92_测试仓库完整同步包.zip",
-        "Stage92_测试证据与SHA256.zip"
+        "Stage96_完整候选工程.zip",
+        "Stage96_正式仓库完整同步包.zip",
+        "Stage96_测试仓库完整同步包.zip",
+        "Stage96_测试证据与SHA256.zip"
       ]
     }
   },
@@ -128,10 +177,10 @@
       "release": "stable-maintenance"
     },
     "imageExport": {
-      "scopeProgressPercent": 93,
+      "scopeProgressPercent": 96,
       "stage91Scope": "source-preview-unification",
-      "code": "complete-for-stage92-scope",
-      "automatedTests": "passed-stage92",
+      "code": "complete-for-stage96-scope",
+      "automatedTests": "964/964 Node + Round269 4/4 + Round265 14/14 + Round267 14/14 + Round161 32/32 + Round164 22/22",
       "realDevice": "targeted-check-pending",
       "release": "candidate",
       "completedCapabilities": [
@@ -143,13 +192,20 @@
         "导出能力清单",
         "PL／HO 两列/三列非均分布局",
         "分组跨列直接拖拽",
-        "自动分页与单张长图预览保留拖拽层"
+        "自动分页与单张长图预览保留拖拽层",
+        "跑团整理导出标题区减法精简",
+        "七类主要图片导出设置文案第二轮统一减法",
+        "统一最终预览隐私状态简化",
+        "必要 Log 地址公开风险提示保留"
       ],
       "remaining": [
-        "当前版本手机与桌面视觉/触控针对性复核，重点确认 5/1、4/2、6/0 跨列拖拽",
-        "继续做导出信息密度和减法审计，不新增重复入口"
+        "当前版本真实桌面与手机视觉/触控复核",
+        "继续检查导出成品的信息密度与留白，不新增重复说明"
       ],
-      "stage92Scope": "ho-kp-free-column-drag"
+      "stage92Scope": "ho-kp-free-column-drag",
+      "stage94Scope": "organizer-copy-reduction-and-header-compaction",
+      "stage95Scope": "organizer-copy-reduction-second-pass",
+      "stage96Scope": "all-major-image-export-copy-reduction-and-version-consistency"
     },
     "multiRule": {
       "scopeProgressPercent": 80,
@@ -160,14 +216,24 @@
     },
     "dndTemplateFill": {
       "scopeProgressPercent": 50,
-      "code": "six-abilities-complete",
-      "automatedTests": "accepted-stage90",
-      "realDevice": "current-template-targeted-check-pending",
-      "release": "partial",
+      "code": "six-abilities-complete; template-bind-direct-export-complete",
+      "automatedTests": "passed-stage93",
+      "realDevice": "current-template-and-direct-export-targeted-check-pending",
+      "release": "partial-candidate",
       "remaining": [
         "身份与战斗输入格映射",
         "技能与装备映射",
-        "更完整模板往返"
+        "更完整模板往返",
+        "v8.1.12.271 Windows + Excel/WPS 真实模板直接导出针对性复核"
+      ],
+      "stage93Scope": "per-pc-template-bind-and-direct-export",
+      "completedCapabilities": [
+        "六属性安全模板回填",
+        "未绑定模板时明确显示‘设置 D&D 角色卡模板’",
+        "模板按 PC 与 D&D 版次保存为本机附件",
+        "保存 PC 后后续导出直接复用模板，不再每次弹文件选择",
+        "切换版次或模板缺失时重新要求设置",
+        "用户原始模板不内置公开仓库"
       ]
     }
   },
@@ -181,9 +247,10 @@
     "hoExportComposerPanel": "PL／KP 跑团整理"
   },
   "knownOpenItems": [
-    "v8.1.12.270 图片导出需要一次真实手机与桌面视觉/触控针对性复核，重点确认 PL／HO 两列 5/1 等非均分布局",
-    "手机规则选择器在 v266-v270 分支仍保留当前版本针对性复核项",
-    "D&D 模板回填仍只覆盖六属性，不应描述为完整 D&D 角色卡自动填写"
+    "v8.1.12.274 图片导出第二轮精简后仍需要一次桌面与手机真实视觉/触控复核",
+    "v8.1.12.271-v8.1.12.274 D&D 首次模板设置、保存后直接导出需要一次 Windows 浏览器与 Excel/WPS 真实模板针对性复核",
+    "手机规则选择器在 v266-v274 分支仍保留当前版本针对性复核项",
+    "D&D 模板回填仍只覆盖六属性；Stage93 只完善模板绑定/导出交互，不应描述为完整 D&D 角色卡自动填写"
   ],
   "doNotInferCurrentStatusFrom": [
     "STAGE*.md",

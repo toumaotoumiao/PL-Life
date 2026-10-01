@@ -563,6 +563,10 @@ jobs:
         run: node --test .github/pl-ci/round266-current-status-source.test.cjs
       - name: Round267 HO free-column drag contract
         run: node --test .github/pl-ci/round267-ho-free-column-drag.test.cjs
+      - name: Round268 D&D template bind and direct-export contract
+        run: node --test .github/pl-ci/round268-dnd-template-bind.test.cjs
+      - name: Round269 image-export copy reduction contract
+        run: node --test .github/pl-ci/round269-export-copy-reduction.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
@@ -575,6 +579,10 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round267-ho-free-column-drag-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round267-browser.log"
+      - name: Round268 D&D template bind and direct-export browser
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round268-dnd-template-bind-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round268-browser.log"
       - name: Round263 production release package preflight
         run: |
           node --test .github/pl-ci/round263-production-release-preflight.test.cjs

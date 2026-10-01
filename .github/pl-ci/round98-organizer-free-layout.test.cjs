@@ -48,8 +48,9 @@ test('organizer export exposes free columns, spans, locks and style-specific per
     'data-ho-layout-lock',
     'data-ho-layout-auto="balance"',
     'data-ho-layout-auto="compact"',
-    '独立列瀑布',
-    '拖到某列空白处会移入该列',
+    'ho-free-lane-dropzone',
+    'data-ho-lane-editor',
+    'ho-preview-lane-guide',
     'packFreeLanes',
     'insertIntoFreeLane'
   ]) assert.ok(html.includes(token),`missing ${token}`);

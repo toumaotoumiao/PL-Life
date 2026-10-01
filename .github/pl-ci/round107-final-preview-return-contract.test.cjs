@@ -12,9 +12,8 @@ test('final export preview states the privacy snapshot before download',()=>{
   assert.match(html,/privacyEnabled=Boolean\(privacyMaskEnabled\)/);
   assert.match(html,/uxPendingExport=\{previewSize:uxExportPreviewSizeMode,sourceCanvases:canvases,canvases,filenames,filename:Array\.isArray\(filename\)\?filenames\[0\]:filename,title,success,returnToEditor,privacyEnabled,/);
   assert.match(html,/exportLayout:storedUnifiedExportLayout\(\)/);
-  assert.match(html,/<strong>隐私导出已开启<\/strong>/);
-  assert.match(html,/<strong>隐私导出已关闭<\/strong>/);
-  assert.match(html,/人物匿名；日期与时段以当前选择为准/);
+  assert.match(html,/<strong>隐私导出：开启<\/strong>/);
+  assert.match(html,/<strong>隐私导出：关闭<\/strong>/);
 });
 
 test('cancel becomes return-to-editor while close and backdrop remain plain dismiss actions',()=>{

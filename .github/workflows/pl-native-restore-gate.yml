@@ -109,7 +109,8 @@ jobs:
             .github/pl-ci/round264-dnd-template-export.test.cjs \
             .github/pl-ci/round265-unified-export-source-preview.test.cjs \
             .github/pl-ci/round266-current-status-source.test.cjs \
-            .github/pl-ci/round267-ho-free-column-drag.test.cjs
+            .github/pl-ci/round267-ho-free-column-drag.test.cjs \
+            .github/pl-ci/round268-dnd-template-bind.test.cjs
       - name: Verify production release package preflight
         run: python .github/pl-ci/build-production-release.py --check-only
       - name: Verify privacy-local D&D comparison using temporary fictional sheets

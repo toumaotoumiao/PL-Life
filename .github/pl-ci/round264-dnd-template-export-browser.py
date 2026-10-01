@@ -46,7 +46,7 @@ with sync_playwright() as p:
   for k,v in result.items():record(k,v)
   # UI uses the real character-card label and legacy standalone verifier is hidden.
   page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');document.getElementById('onboardingBackdrop').hidden=true;document.getElementById('appRoot')?.removeAttribute('inert');const pc=makeBlankPc(selfProfileId());pc.id='round264-ui';pc.ruleMeta={familyId:'d20-osr',systemId:'dnd',editionId:'5e-2024',confirmed:true,source:'user-selected'};pcs.push(pc);openPcEditor(pc.id);document.querySelector('.pc-foot-more-v72').open=true;document.querySelector('.pc-footer-export-menu').open=true;}''')
-  ui=page.evaluate('''()=>{const b=document.getElementById('pcFooterExportExcelBtn'),v=document.getElementById('pcFooterVerifyDndXlsxBtn'),i=document.getElementById('pcFooterDndTemplateInput');return {label:b.textContent==='导出 D&D 角色 Excel 卡',ready:!b.disabled&&b.dataset.pcExcelExportState==='ready',legacy:v.hidden===true,input:i&&i.type==='file'}}''')
+  ui=page.evaluate('''()=>{const b=document.getElementById('pcFooterExportExcelBtn'),v=document.getElementById('pcFooterVerifyDndXlsxBtn'),i=document.getElementById('pcFooterDndTemplateInput');return {label:b.textContent==='设置 D&D 角色卡模板',ready:!b.disabled&&b.dataset.pcExcelExportState==='ready',legacy:v.hidden===true,input:i&&i.type==='file'}}''')
   for k,v in ui.items():record('ui:'+k,v)
  finally:browser.close()
 report={'version':re.search(r'const APP_UI_VERSION = "([0-9.]+)";',html).group(1),'checks':len(checks),'passed':sum(x['pass'] for x in checks),'failures':[x for x in checks if not x['pass']],'mode':'synthetic D&D 21-sheet OOXML template fill; no user workbook'}

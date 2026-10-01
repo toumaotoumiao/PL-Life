@@ -15,13 +15,13 @@ test('Round242 rejects unconfirmed, incorrect edition, invalid XML and long text
  const p=pc();p.ruleMeta.confirmed=false;assert.throws(()=>rows(p),/确认/);p.ruleMeta.confirmed=true;p.ruleMeta.editionId='';assert.throws(()=>rows(p),/确认/);p.ruleMeta.editionId='5e-2024';p.sheet.resources[1].value='a\u0000b';assert.throws(()=>rows(p),/无损/);p.sheet.resources[1].value='x'.repeat(32761);assert.throws(()=>rows(p),/超长/);
 });
 test('Round242 standalone XLSX remains internal while primary D&D export uses template fill',()=>{
- assert.match(html,/id:'dnd-template',label:'导出 D&D 角色 Excel 卡'/);
+ assert.match(html,/id:'dnd-template',label:'D&D 角色 Excel 卡'/);
  assert.doesNotMatch(html,/id:'dnd-manual',label:'导出 D&D 已填规则数据 XLSX'/);
  assert.match(src,/pcRuleCurrentData\(pc\)/);
  assert.doesNotMatch(src,/pcExcelPatchKaguraRows|pcWorkbookPut|pcDndStructurePreviewFile|pcDndAbilityCandidates/);
  assert.match(src,/pcExcelReadXlsx\(await blob.arrayBuffer\(\)\)/);
  assert.match(src,/t="inlineStr"/);
- assert.match(html,/if\(route.status==='ready'&&route.adapterId==='dnd-template'\)return pcRequestDndTemplateExport\(pc\)/);
+ assert.match(html,/if\(route.status==='ready'&&route.adapterId==='dnd-template'\)return pcExportDndCharacterCard\(pc\)/);
  assert.match(html,/if\(verifyButton\)verifyButton.hidden=true/);
 });
 test('Round245 rejects a filled rule row without its original field name instead of inventing export identity',()=>{

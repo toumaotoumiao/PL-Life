@@ -6,13 +6,13 @@ const root=path.resolve(__dirname,'../..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 
 test('D&D primary Excel route is a real template-filled character card, not the standalone data sheet',()=>{
-  assert.match(html,/'dnd:5e-2014':Object\.freeze\(\{id:'dnd-template',label:'导出 D&D 角色 Excel 卡'\}\)/);
-  assert.match(html,/'dnd:5e-2024':Object\.freeze\(\{id:'dnd-template',label:'导出 D&D 角色 Excel 卡'\}\)/);
-  assert.match(html,/if\(route\.status==='ready'&&route\.adapterId==='dnd-template'\)return pcRequestDndTemplateExport\(pc\)/);
+  assert.match(html,/'dnd:5e-2014':Object\.freeze\(\{id:'dnd-template',label:'D&D 角色 Excel 卡'\}\)/);
+  assert.match(html,/'dnd:5e-2024':Object\.freeze\(\{id:'dnd-template',label:'D&D 角色 Excel 卡'\}\)/);
+  assert.match(html,/if\(route\.status==='ready'&&route\.adapterId==='dnd-template'\)return pcExportDndCharacterCard\(pc\)/);
   assert.doesNotMatch(html,/adapterId==='dnd-manual'\)return pcExportDndRuleWorkbook\(pc\)/);
 });
 
-test('template export requires user-selected XLSX and preserves the source workbook package',()=>{
+test('first-time template setup uses a user-selected XLSX and preserves the source workbook package',()=>{
   assert.match(html,/id="pcFooterDndTemplateInput"[^>]+type="file"[^>]+accept="\.xlsx/);
   assert.match(html,/async function pcBuildDndTemplateWorkbook\(file,pc\)/);
   assert.match(html,/const raw=await file\.arrayBuffer\(\),sheets=await pcExcelReadXlsx\(raw\)/);

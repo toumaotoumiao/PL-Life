@@ -25,8 +25,8 @@ test('organizer editor exposes direct cross-column drag and empty-lane drop zone
     'v270-ho-free-lane-drag-js',
     'data-ho-row-drag',
     'hoLaneDrop',
-    '拖动分组可跨列，列数不强制均分',
-    '两列／三列只规定画布列数，不要求均分',
+    'ho-free-lane-dropzone',
+    'ho-preview-lane-guide',
     'decorateHoOrganizerPreviewPages',
     'PLHoOrganizerLaneDistribution'
   ]) assert.ok(html.includes(token),`missing ${token}`);
@@ -39,8 +39,9 @@ test('paged and long organizer source previews keep drag overlays',()=>{
   assert.match(html,/hoPreviewDropTarget\(clientX,clientY\)/);
 });
 
-test('release metadata advanced without changing schema',()=>{
-  assert.match(html,/const APP_UI_VERSION = "8\.1\.12\.270"/);
+test('release metadata never regresses while the v270 HO change remains in history',()=>{
+  const current=html.match(/const APP_UI_VERSION = "8\.1\.12\.(\d+)"/)?.[1];
+  assert.ok(Number(current)>=270,`current patch ${current} must not regress below v270`);
   assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
   assert.match(html,/v8\.1\.12\.270<\/strong><span class="version-log-copy">修复 PL／HO 跑团整理图片导出/);
 });

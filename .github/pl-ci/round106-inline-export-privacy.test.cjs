@@ -19,8 +19,8 @@ test('all current public image composers share an inline privacy switch',()=>{
   for(const id of ['statsExportNowBtn','selfIntroExportNowBtn','plannerYearShowcaseNow','hoExportComposerNow','recordShowcaseExport','recordsRecapExport','entityShowcaseExport']) assert(m[1].includes('#'+id),id+' missing');
   assert.match(html,/export-inline-privacy-row/);
   assert.match(html,/data-export-inline-privacy-toggle/);
-  assert.match(html,/隐私导出已开启/);
-  assert.match(html,/隐私导出已关闭/);
+  assert.match(html,/隐私导出：开启/);
+  assert.match(html,/隐私导出：关闭/);
 });
 
 test('inline privacy changes are display-only and redraw open previews',()=>{

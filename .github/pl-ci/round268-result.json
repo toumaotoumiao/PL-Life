@@ -1,0 +1,7 @@
+{
+  "version": "8.1.12.271",
+  "checks": 8,
+  "passed": 8,
+  "failures": [],
+  "mode": "synthetic D&D template bind + saved direct export with isolated in-memory workbook stub; no user workbook"
+}

@@ -21,8 +21,8 @@ test('PC primary archive export is image-first and old public HTML/package/card 
   for(const id of ['pcFooterExportFullBtn','pcFooterExportPackageBtn','pcFooterExportCardBtn']){
     assert(!footer.includes(`id="${id}"`),`${id} should not remain in the primary PC export menu`);
   }
-  assert(footer.includes('简版／标准／完整档案'));
-  assert(footer.includes('HTML 与独立档案压缩包不再作为主导出格式'));
+  assert(!footer.includes('HTML 与独立档案压缩包不再作为主导出格式'));
+  for(const preset of ['simple','standard','complete']) assert(html.includes(`data-entity-pc-preset="${preset}"`));
   assert.match(html,/pcFooterExportImageBtn[\s\S]*?PLPCShowcaseOpenDraft/);
 });
 
