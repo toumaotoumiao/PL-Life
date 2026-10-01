@@ -6,10 +6,11 @@ const code=[extract('const TRPG_RULE_FAMILIES=Object.freeze(', 'let { profiles, 
 const ui={};for(const id of ['pcFooterExportExcelBtn','pcFooterExcelExportStatus'])ui[id]={hidden:true,disabled:false,textContent:'',dataset:{},title:''};
 const api=new Function('document',code+'\nreturn {pcExcelExportAvailability,syncPcExcelExportUi,PC_EXCEL_EXPORT_ADAPTERS,pcRuleIsCoc};')({getElementById:id=>ui[id]||null});
 const rule=(familyId,systemId,editionId='',confirmed=true,extra={})=>({ruleMeta:{familyId,systemId,editionId,confirmed,source:confirmed?'user-selected':'legacy-pc-default',...extra},name:'合成PC',id:'synthetic'});
-test('only an explicitly confirmed CoC7 has an implemented Excel adapter',()=>{
- assert.deepEqual(Object.keys(api.PC_EXCEL_EXPORT_ADAPTERS),['coc:7e']);
+test('only confirmed CoC7 and D&D template-filled character-card adapters are executable',()=>{
+ assert.deepEqual(Object.keys(api.PC_EXCEL_EXPORT_ADAPTERS),['coc:7e','dnd:5e-2014','dnd:5e-2024']);
+ for(const edition of ['5e-2014','5e-2024']){const x=api.pcExcelExportAvailability(rule('d20-osr','dnd',edition));assert.equal(x.status,'ready');assert.equal(x.adapterId,'dnd-template');assert.match(x.label,/角色 Excel 卡/);}
  assert.equal(api.pcExcelExportAvailability(rule('brp','coc','7e')).status,'ready');
- for(const pc of [rule('brp','coc','6e'),rule('brp','brp-generic'),rule('saikoro-fiction','insane'),rule('saikoro-fiction','shinobigami'),rule('d20-osr','dnd','5e-2024'),rule('custom','custom','',true,{customName:'私制TRPG'})]){
+ for(const pc of [rule('brp','coc','6e'),rule('brp','brp-generic'),rule('saikoro-fiction','insane'),rule('saikoro-fiction','shinobigami'),rule('custom','custom','',true,{customName:'私制TRPG'})]){
   const s=api.pcExcelExportAvailability(pc);assert.equal(s.status,'developing',JSON.stringify(pc));assert.match(s.label,/开发中/);assert.equal(s.adapterId,undefined);
  }
 });
@@ -17,11 +18,13 @@ test('unconfirmed legacy default and incomplete rule/edition cannot masquerade a
  assert.equal(api.pcExcelExportAvailability(rule('brp','coc','7e',false)).status,'unconfirmed');
  assert.equal(api.pcExcelExportAvailability({name:'旧角色'}).status,'unconfirmed');
  assert.equal(api.pcExcelExportAvailability(rule('brp','coc','')).status,'edition-required');
+ assert.equal(api.pcExcelExportAvailability(rule('d20-osr','dnd','')).status,'edition-required');
+ assert.equal(api.pcExcelExportAvailability(rule('d20-osr','dnd','5e-2024',false)).status,'unconfirmed');
  assert.equal(api.pcExcelExportAvailability(rule('brp','','')).status,'rule-required');
  assert.equal(api.pcExcelExportAvailability(rule('custom','custom','',true,{customName:''})).status,'rule-required');
 });
 test('export menu always explains current rule and keeps image export intact',()=>{
- for(const [pc,expected] of [[rule('brp','coc','7e'),'ready'],[rule('brp','coc','6e'),'developing'],[rule('saikoro-fiction','insane'),'developing'],[rule('brp','coc','7e',false),'unconfirmed']]){
+ for(const [pc,expected] of [[rule('brp','coc','7e'),'ready'],[rule('brp','coc','6e'),'developing'],[rule('saikoro-fiction','insane'),'developing'],[rule('d20-osr','dnd','5e-2014'),'ready'],[rule('brp','coc','7e',false),'unconfirmed']]){
   const data=structuredClone(pc),state=api.syncPcExcelExportUi(pc),btn=ui.pcFooterExportExcelBtn,note=ui.pcFooterExcelExportStatus;
   assert.equal(state.status,expected);assert.equal(btn.disabled,expected!=='ready');assert.equal(btn.hidden,false);
   assert.equal(note.hidden,expected==='ready');assert.deepEqual(pc,data,'rendering never alters PC or Excel source');
@@ -31,7 +34,7 @@ test('export menu always explains current rule and keeps image export intact',()
 });
 test('the executable export path rechecks the router, never downloads for other rules',()=>{
  const body=extract('async function pcExportExcelCard(', '/* ---------- PC CoC7 Excel 导入：');
- assert.match(body,/pcExcelExportAvailability\(pc\)/);assert.match(body,/route\.status!=='ready'\|\|route\.adapterId!=='coc7'/);
+ assert.match(body,/pcExcelExportAvailability\(pc\)/);assert.match(body,/route.adapterId==='dnd-template'/);assert.match(body,/route\.status!=='ready'\|\|route\.adapterId!=='coc7'/);
  assert.match(body,/pc=clone\(pc\)/);assert.match(body,/pcExcelValidateExport\(zip,files\)/);
  assert.match(html,/if\(pcExcelExportAvailability\(pcDraft\)\.status!=='ready'\)return/);
  assert.match(html,/syncPcExcelExportUi\(pcDraft\)/);

@@ -40,7 +40,7 @@ async function hashBytes(bytes){
   if(!root.crypto?.subtle)fail('无法读取 SHA-256，已保留原始事务日志');
   return Array.from(new Uint8Array(await root.crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
 }
-async function evidenceRows(rows,keyField){
+async function evidenceRows(rows,keyField,version){
   if(!Array.isArray(rows))fail('附件证据清单格式异常');
   const seen=new Set(),result=[];
   for(const row of rows){
@@ -53,22 +53,36 @@ async function evidenceRows(rows,keyField){
     if(typeof metaText!=='string')fail('附件元数据无法编码');
     const thumb=row.thumbBlob;
     if(thumb&&typeof thumb.arrayBuffer!=='function')fail('缩略图无法校验');
-    result.push({key,meta:await hashBytes(new TextEncoder().encode(metaText)),
+    const evidence={key,meta:await hashBytes(new TextEncoder().encode(metaText)),
       blob:await hashBytes(await row.blob.arrayBuffer()),
-      thumb:thumb?await hashBytes(await thumb.arrayBuffer()):null});
+      thumb:thumb?await hashBytes(await thumb.arrayBuffer()):null};
+    // Blob.type is not an enumerable row field, and equal bytes do not imply
+    // equal MIME. Version 1 journals lack this evidence; new journals must keep it.
+    if(version===2){
+      if(typeof row.blob.type!=='string'||(thumb&&typeof thumb.type!=='string'))
+        fail('附件原件或缩略图 MIME 无法验证');
+      evidence.blobType=row.blob.type;
+      evidence.thumbType=thumb?thumb.type:null;
+    }
+    result.push(evidence);
   }
   result.sort((x,y)=>x.key<y.key?-1:x.key>y.key?1:0);
   return result;
 }
-async function buildEvidence(media,workbooks){return {version:1,
-  media:await evidenceRows(media,'id'),workbooks:await evidenceRows(workbooks,'pcId')};}
+async function buildEvidence(media,workbooks,version=2){
+  if(version!==1&&version!==2)fail('事务附件证据版本无法识别，已保留日志');
+  return {version,media:await evidenceRows(media,'id',version),
+    workbooks:await evidenceRows(workbooks,'pcId',version)};
+}
 async function verifyTargetEvidence(db,expected){
-  if(!expected||expected.version!==1||!Array.isArray(expected.media)||!Array.isArray(expected.workbooks))
+  if(!expected||(expected.version!==1&&expected.version!==2)||!Array.isArray(expected.media)||!Array.isArray(expected.workbooks))
     fail('候选附件缺少完整证据，已保留事务日志');
   const tx=db.transaction([MEDIA,WORKBOOKS],'readonly'),p=done(tx);
   const a=req(tx.objectStore(MEDIA).getAll()),b=req(tx.objectStore(WORKBOOKS).getAll());
   const [media,workbooks]=await Promise.all([a,b]);await p;
-  const actual=await buildEvidence(media,workbooks);
+  // Existing v1 journals are checked against the original v1 shape; never
+  // reinterpret missing legacy MIME evidence as a new v2 guarantee.
+  const actual=await buildEvidence(media,workbooks,expected.version);
   if(JSON.stringify(actual)!==JSON.stringify(expected))fail('已提交附件与事务证据不一致，禁止清理保护日志');
   return true;
 }
@@ -125,7 +139,7 @@ function restoreRaw(storage,raw){
   if(raw===null)storage.removeItem(ARCHIVE_KEY);else storage.setItem(ARCHIVE_KEY,raw);
   if(storage.getItem(ARCHIVE_KEY)!==raw)fail('恢复前主档案回读不一致，请勿清除浏览器数据');
 }
-async function finalize(storage,db,marker,expectedArchiveRaw,settlement){
+async function finalize(storage,db,marker,expectedArchiveRaw,settlement,expectedEvidence=null){
   if(settlement!=='target'&&settlement!=='original')fail('恢复结算方向无效');
   // Hashing yields to the event loop. Never adopt a third-party write as the
   // destination hash, or erase the original journal while source drift exists.
@@ -136,6 +150,16 @@ async function finalize(storage,db,marker,expectedArchiveRaw,settlement){
   writeMarker(storage,{...marker,phase:'settled',targetHash,settlement});
   if(storage.getItem(ARCHIVE_KEY)!==expectedArchiveRaw)
     fail('清理恢复日志前主档案变化；保留原始恢复日志');
+  // The first read-back occurs before settlement. Both a successful restore
+  // AND an unsuccessful restore that rolls back to the originals must recheck
+  // the precise bytes, MIME and future metadata immediately before journal
+  // cleanup. Otherwise an older tab's last-minute write can be mislabeled
+  // "rolled back" and the only binary recovery copy would be discarded.
+  if(!expectedEvidence)fail('结算缺少最终附件证据，保留恢复日志');
+  await verifyTargetEvidence(db,expectedEvidence);
+  assertOwner(storage,marker);
+  if(storage.getItem(ARCHIVE_KEY)!==expectedArchiveRaw)
+    fail('最终附件复核期间主档案变化；保留原始恢复日志');
   await discardJournal(db);
   // If an uncooperative old tab writes during IDB cleanup, retain the marker:
   // restart recovery must reject a mismatched archive rather than report success.
@@ -162,8 +186,11 @@ async function rollback(storage,db,marker,journal,verifyOriginal){
     const tx=db.transaction([MEDIA,WORKBOOKS],'readonly'),completed=done(tx);
     const mediaReq=req(tx.objectStore(MEDIA).getAll()),bookReq=req(tx.objectStore(WORKBOOKS).getAll());
     const [media,books]=await Promise.all([mediaReq,bookReq]);await completed;
-    const current=await buildEvidence(media,books);
-    const original=await buildEvidence(journal.originalMedia,journal.originalWorkbooks);
+    // A stored v1 target must be compared in its own format; strict v2
+    // transactions also detect same-byte MIME drift before any rollback.
+    const evidenceVersion=journal.targetEvidence.version;
+    const current=await buildEvidence(media,books,evidenceVersion);
+    const original=await buildEvidence(journal.originalMedia,journal.originalWorkbooks,evidenceVersion);
     const acceptable=(a,b,c)=>JSON.stringify(a)===JSON.stringify(b)||JSON.stringify(a)===JSON.stringify(c);
     if(!acceptable(current.media,original.media,journal.targetEvidence.media)||
        !acceptable(current.workbooks,original.workbooks,journal.targetEvidence.workbooks))
@@ -178,7 +205,10 @@ async function rollback(storage,db,marker,journal,verifyOriginal){
     fail('回滚附件后主档案发生并发更新；保留原档案与恢复日志');
   restoreRaw(storage,journal.beforeRaw);
   if(await sha(storage.getItem(ARCHIVE_KEY))!==marker.beforeHash)fail('恢复前主档案校验失败，已保持事务保护');
-  await finalize(storage,db,marker,journal.beforeRaw,'original');
+  // Original rows from the durable journal, not a fresh read of potentially
+  // modified stores, are the only acceptable rollback settlement evidence.
+  const originalEvidence=await buildEvidence(journal.originalMedia,journal.originalWorkbooks);
+  await finalize(storage,db,marker,journal.beforeRaw,'original',originalEvidence);
   return {status:'rolled-back',id:marker.id};
 }
 async function recover(options){
@@ -222,6 +252,12 @@ async function recover(options){
       if(JSON.stringify(actual)!==JSON.stringify(original))
         fail('回滚后的附件与日志原件不一致，停止清理保护日志');
       await verifyOriginal(journal.originalMedia,journal.originalWorkbooks);
+      // verifyOriginal may yield. Recheck the native stores after it returns:
+      // never clear the journal while a late old-tab edit went unnoticed.
+      await verifyTargetEvidence(db,original);
+      assertOwner(storage,marker);
+      if(storage.getItem(ARCHIVE_KEY)!==journal.beforeRaw)
+        fail('回滚最终核验期间主档案变化；保留原始恢复日志');
       await discardJournal(db);storage.removeItem(KEY);
       if(getMarker(storage))fail('已回滚数据但无法清理恢复标记');
       return {status:'rolled-back',id:marker.id};
@@ -258,6 +294,14 @@ async function run(options){
     db=await openDb();
     assertOwner(storage,marker);
     await swapWithJournal(db,marker,beforeRaw,mediaRows,workbookRows,targetEvidence);
+    // An older tab may write media/workbooks without writing localStorage.
+    // The originals captured in the SAME atomic swap are the authoritative
+    // source; compare them with the user's approved preflight generation.
+    if(typeof options.verifySource==='function'){
+      const journal=await readJournal(db);
+      if(!journal||journal.transactionId!==marker.id)fail('恢复事务的原件日志缺失，停止档案提交');
+      await options.verifySource(journal.originalMedia,journal.originalWorkbooks);
+    }
     await verifyTarget(mediaRows,workbookRows);
     await verifyTargetEvidence(db,targetEvidence);
     assertOwner(storage,marker);
@@ -287,7 +331,7 @@ async function run(options){
       fail('候选档案核验后发生并发更新；已保留恢复日志');
     marker={...marker,candidateHash};
     writeMarker(storage,marker);
-    await finalize(storage,db,marker,current,'target');
+    await finalize(storage,db,marker,current,'target',targetEvidence);
     return {status:'committed',id:marker.id};
   }catch(error){
     committing=false;activeId=null;

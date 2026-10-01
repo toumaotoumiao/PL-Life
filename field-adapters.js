@@ -148,7 +148,12 @@
      return arr(entity?.participantAssignments).filter(a=>id(a.pcId)===id(pc.id)).flatMap(a=>[t(a.hoCustom),t(a.hoNumber)]).filter(Boolean);
     }));
     const special=['brp-generic','insane','shinobigami'].includes(pc.ruleMeta?.systemId);
-    const selectedSheet=special?(pc.ruleSheets?.[pc.ruleMeta?.systemId]||{}):pc.ruleData;
+    // Stage66: the D&D 2014 and 2024 sheets are distinct. Search only the
+    // current edition, with an exact-scope fallback for older generic D&D PCs.
+    const isDnd=pc.ruleMeta?.systemId==='dnd',edition=t(pc.ruleMeta?.editionId);
+    const dndTemplateKey=['5e-2014','5e-2024'].includes(edition)?'dnd:'+edition:'';
+    const legacyDndKey='generic:v1:'+JSON.stringify([t(pc.ruleMeta?.familyId),t(pc.ruleMeta?.systemId),edition,t(pc.ruleMeta?.customName),t(pc.ruleMeta?.customEdition)]);
+    const selectedSheet=isDnd?(pc.ruleSheets?.[dndTemplateKey]||pc.ruleSheets?.[legacyDndKey]||(pc.ruleSheets?.__genericScopedV1?{}:pc.ruleData)):special?(pc.ruleSheets?.[pc.ruleMeta?.systemId]||{}):pc.ruleData;
     const legacyCoc=pc.ruleMeta?.systemId==='coc'&&pc.ruleMeta?.editionId==='7e';
     const skillNames=farr([...(legacyCoc?arr(pc.skills).map(s=>t(s.name)):[]),...arr(selectedSheet?.skills).map(s=>t(s.label))].filter(Boolean));
     const snapshotTexts=arr(pc.snapshots).flatMap(s=>[s?.moduleName,s?.tableName,s?.date,s?.note]).map(t).filter(Boolean);

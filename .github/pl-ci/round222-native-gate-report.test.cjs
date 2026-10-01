@@ -1,0 +1,9 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'../..');
+const workflow=fs.readFileSync(path.join(root,'.github/workflows/pl-native-restore-gate.yml'),'utf8');
+const script=fs.readFileSync(path.join(root,'.github/pl-ci/round187-native-fullapp-restore-browser.py'),'utf8');
+test('Round222 independent native gate reports PASS or failure source and type without embedding archive content',()=>{for(const t of ["data.get('browser_source','unknown')","data.get('failure',{}).get('type','none')",'last phase:','checks passed:','failure type:','if status!=\'PASS\' or actual_commit!=expected_commit or actual_version!=expected_version:'])assert.ok(workflow.includes(t),t);assert.doesNotMatch(workflow,/line\s*\+=\s*.*get\(['"]message/);});
+test('Round222 missing browser result is a failure, not an inferred pass',()=>{assert.match(workflow,/status,phase,count='NOT_RUN','before-browser-result',0/);assert.match(workflow,/source,reason='unknown','no-result-file'/);assert.match(workflow,/raise SystemExit\(1\)/);});
+test('Round222 local managed-policy denial is separate from application FAIL and cannot be skipped',()=>{assert.match(script,/report\['status'\]='BLOCKED' if 'ERR_BLOCKED_BY_ADMINISTRATOR' in message else 'FAIL'/);assert.match(script,/if report\['status'\]!='PASS':raise SystemExit\(1\)/);assert.match(workflow,/PL_NATIVE_BROWSER_MODE: bundled/);assert.doesNotMatch(script,/--disable-policy|--no-managed-policy/);});
+test('Round222 native gate evidence and test repository remain synthetic only',()=>{assert.match(workflow,/synthetic-only/);assert.match(workflow,/if-no-files-found: error/);assert.match(workflow,/round221-dnd5-strict-anchor\.test\.cjs/);assert.doesNotMatch(script,/toumaotoumiao\.github\.io|PL收集梦想生活_完整备份_20\d\d/);});

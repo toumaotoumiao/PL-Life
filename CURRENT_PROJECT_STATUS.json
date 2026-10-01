@@ -1,0 +1,193 @@
+{
+  "format": "pl-life-current-project-status",
+  "statusVersion": 1,
+  "sourceOfTruth": true,
+  "updatedAt": "2026-10-01",
+  "current": {
+    "stage": 92,
+    "appVersion": "8.1.12.270",
+    "schemaVersion": 26,
+    "branchState": "release-candidate",
+    "focus": [
+      "PL／HO 跑团整理图片导出自由分栏",
+      "两列／三列跨列拖拽与非均分布局",
+      "维持唯一当前项目状态源"
+    ]
+  },
+  "statusPolicy": {
+    "authoritativeFile": "CURRENT_PROJECT_STATUS.json",
+    "historicalStageReports": "immutable_snapshots_not_current_status",
+    "rule": "判断当前版本、完成度、真实设备验收、发布状态和未闭环事项时只以本文件为准；STAGE*.md 仅用于追溯当时状态。",
+    "updateRule": "每次改变产品版本、验收结论、发布状态或主要工作流完成度时同步更新本文件。"
+  },
+  "acceptedBaselines": {
+    "dataRecoveryAndMigration": {
+      "state": "accepted",
+      "acceptedThrough": "8.1.12.265",
+      "scope": "完整 ZIP、历史迁移、恢复后刷新、二次导出与数据保护总体验收",
+      "note": "Stage85/86 后续在 PL19 中完成总体验收；旧 Stage86 报告中的 0% 仅代表报告生成时尚未执行真实设备步骤。"
+    },
+    "realDeviceGeneral": {
+      "state": "accepted",
+      "acceptedThrough": "8.1.12.265",
+      "windows": "accepted",
+      "mobile": "accepted",
+      "excelWps": "accepted",
+      "source": "PL19 manual acceptance",
+      "note": "后续 UI 或 Excel 变更仍需针对变更范围追加当前版本验收，不能自动继承为当前版本全量真机通过。"
+    }
+  },
+  "currentVersionAcceptance": {
+    "automated": {
+      "state": "passed-local-stage92",
+      "node": {
+        "passed": 956,
+        "total": 956
+      },
+      "imageExportRegression": {
+        "state": "covered-by-full-node-and-targeted-browser-regressions",
+        "stage91BaselinePassed": 123,
+        "stage91BaselineTotal": 123
+      },
+      "round265SourcePreviewBrowser": {
+        "passed": 14,
+        "total": 14,
+        "viewports": [
+          390,
+          1280
+        ]
+      },
+      "round161StatsSourceFinalBrowser": {
+        "passed": 32,
+        "total": 32,
+        "viewports": [
+          375,
+          1280
+        ]
+      },
+      "productionPreflight": "pass",
+      "workflowYaml": {
+        "passed": 2,
+        "total": 2
+      },
+      "round267HoFreeColumnBrowser": {
+        "passed": 14,
+        "total": 14,
+        "viewports": [
+          390,
+          1280
+        ],
+        "verifiedLayouts": [
+          "3/3 default",
+          "5/1 pointer drag",
+          "6/0 selector fallback"
+        ],
+        "pagedPreview": true,
+        "mobileTouchTargetPx": 44
+      },
+      "round267StaticContract": {
+        "passed": 4,
+        "total": 4
+      }
+    },
+    "realDevice": {
+      "state": "targeted-checks-pending",
+      "generalBaselineInherited": true,
+      "pending": [
+        "v8.1.12.266-v8.1.12.270 手机端规则选择器当前版本针对性复核",
+        "v8.1.12.270 图片导出源预览与 PL／HO 两列非均分拖拽的手机、桌面视觉/触控针对性复核",
+        "Stage90 D&D 真实用户模板在当前版本 Excel/WPS 中的针对性打开与回填复核"
+      ]
+    },
+    "release": {
+      "state": "candidate-not-yet-confirmed-live",
+      "productionPackage": "built-locally-after-preflight-pass",
+      "productionSite": "not-verified-as-v8.1.12.270",
+      "testSite": "not-verified-as-v8.1.12.270",
+      "artifactNames": [
+        "Stage92_完整候选工程.zip",
+        "Stage92_正式仓库完整同步包.zip",
+        "Stage92_测试仓库完整同步包.zip",
+        "Stage92_测试证据与SHA256.zip"
+      ]
+    }
+  },
+  "workstreams": {
+    "coreProduct": {
+      "scopeProgressPercent": 100,
+      "code": "complete",
+      "automatedTests": "accepted-baseline",
+      "realDevice": "accepted-baseline",
+      "release": "stable-maintenance"
+    },
+    "backupRecoveryMigration": {
+      "scopeProgressPercent": 100,
+      "code": "complete",
+      "automatedTests": "accepted-baseline",
+      "realDevice": "accepted",
+      "release": "stable-maintenance"
+    },
+    "imageExport": {
+      "scopeProgressPercent": 93,
+      "stage91Scope": "source-preview-unification",
+      "code": "complete-for-stage92-scope",
+      "automatedTests": "passed-stage92",
+      "realDevice": "targeted-check-pending",
+      "release": "candidate",
+      "completedCapabilities": [
+        "隐私导出",
+        "自动分页与单张长图",
+        "实时预览",
+        "最终统一预览",
+        "源预览适应宽度与原尺寸查看",
+        "导出能力清单",
+        "PL／HO 两列/三列非均分布局",
+        "分组跨列直接拖拽",
+        "自动分页与单张长图预览保留拖拽层"
+      ],
+      "remaining": [
+        "当前版本手机与桌面视觉/触控针对性复核，重点确认 5/1、4/2、6/0 跨列拖拽",
+        "继续做导出信息密度和减法审计，不新增重复入口"
+      ],
+      "stage92Scope": "ho-kp-free-column-drag"
+    },
+    "multiRule": {
+      "scopeProgressPercent": 80,
+      "code": "active",
+      "automatedTests": "broad-coverage",
+      "realDevice": "partial-current-version",
+      "release": "active"
+    },
+    "dndTemplateFill": {
+      "scopeProgressPercent": 50,
+      "code": "six-abilities-complete",
+      "automatedTests": "accepted-stage90",
+      "realDevice": "current-template-targeted-check-pending",
+      "release": "partial",
+      "remaining": [
+        "身份与战斗输入格映射",
+        "技能与装备映射",
+        "更完整模板往返"
+      ]
+    }
+  },
+  "imageExportCapabilityRegistry": {
+    "selfIntroExportPanel": "个人偏好",
+    "statsExportPanel": "个人统计",
+    "plannerYearShowcasePanel": "全年排期",
+    "recordShowcaseBackdrop": "单桌回顾",
+    "entityShowcaseBackdrop": "PC／模组档案",
+    "recordsRecapBackdrop": "跑团记录整合回顾",
+    "hoExportComposerPanel": "PL／KP 跑团整理"
+  },
+  "knownOpenItems": [
+    "v8.1.12.270 图片导出需要一次真实手机与桌面视觉/触控针对性复核，重点确认 PL／HO 两列 5/1 等非均分布局",
+    "手机规则选择器在 v266-v270 分支仍保留当前版本针对性复核项",
+    "D&D 模板回填仍只覆盖六属性，不应描述为完整 D&D 角色卡自动填写"
+  ],
+  "doNotInferCurrentStatusFrom": [
+    "STAGE*.md",
+    "旧版进度百分比",
+    "单个历史验收报告"
+  ]
+}

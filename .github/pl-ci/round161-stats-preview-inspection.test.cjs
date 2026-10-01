@@ -23,7 +23,7 @@ test("real browser checks source and final image drawing with isolated data",()=
  assert.match(ci,/Round161:\$\{\{ steps\.round161_browser\.outcome \}\}/);
 });
 test("current release and cache aligned; previous version remains one history entry",()=>{
- const v=html.match(/const APP_UI_VERSION = "([\d.]+)";/)[1];assert.equal(v,"8.1.12.231");assert.ok(sw.includes("v"+v));
+ const v=html.match(/const APP_UI_VERSION = "([\d.]+)";/)[1];assert.match(v,/^\d+(?:\.\d+){3}$/);assert.ok(sw.includes("v"+v));
  for(const r of ["227","228"])assert.equal((html.match(new RegExp('<strong class="version-log-version">v8\\.1\\.12\\.'+r+'</strong>','g'))||[]).length,1);
  assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
 });

@@ -40,6 +40,6 @@ test('editor wiring and stylesheet expose actual 44px controls and preserve focu
  assert.match(workflow,/round165-rule-row-order-browser\.py/);assert.match(workflow,/Round165:\$\{\{ steps\.round165_browser\.outcome \}\}/);
 });
 test('current cache, readme, schema and historic versions are synchronized',()=>{
- const v=html.match(/const APP_UI_VERSION = "([\d.]+)";/)?.[1];assert.equal(v,'8.1.12.231');assert.match(sw,/v8\.1\.12\.231/);assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
+ const v=html.match(/const APP_UI_VERSION = "([\d.]+)";/)?.[1];assert.match(v,/^\d+(?:\.\d+){3}$/);assert.ok(sw.includes(`CACHE_NAME=\`${"${CACHE_PREFIX}"}v${v}\``));assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
  for(const n of ['229','230'])assert.equal((html.match(new RegExp('<strong class="version-log-version">v8\\.1\\.12\\.'+n+'</strong>','g'))||[]).length,1);
 });

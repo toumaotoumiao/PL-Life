@@ -15,7 +15,7 @@ checks=[];failures=[];screenshots=[]
 def check(cond,label,data=None):
  checks.append(label)
  if not cond:failures.append({'check':label,'data':data})
-fixtures=[('coc7','brp','coc','7e',True,'ready'),('coc6','brp','coc','6e',True,'developing'),('brp','brp','brp-generic','',True,'developing'),('insane','saikoro-fiction','insane','',True,'developing'),('shinobigami','saikoro-fiction','shinobigami','',True,'developing'),('legacy','brp','coc','7e',False,'unconfirmed'),('coc-no-edition','brp','coc','',True,'edition-required')]
+fixtures=[('coc7','brp','coc','7e',True,'ready'),('coc6','brp','coc','6e',True,'developing'),('brp','brp','brp-generic','',True,'developing'),('insane','saikoro-fiction','insane','',True,'developing'),('shinobigami','saikoro-fiction','shinobigami','',True,'developing'),('dnd-2014','d20-osr','dnd','5e-2014',True,'ready'),('dnd-2024','d20-osr','dnd','5e-2024',True,'ready'),('legacy','brp','coc','7e',False,'unconfirmed'),('coc-no-edition','brp','coc','',True,'edition-required')]
 with sync_playwright() as p:
  opts={'headless':True,'args':['--no-sandbox']}
  if os.environ.get('PL_CI_CHROMIUM_EXECUTABLE'):opts['executable_path']=os.environ['PL_CI_CHROMIUM_EXECUTABLE']
@@ -59,12 +59,12 @@ with sync_playwright() as p:
      ret=page.evaluate('''async()=>await pcExportExcelCard(pcDraft)''')
      after=page.evaluate('JSON.stringify(pcDraft)')
      check(ret is False and before==after,f'{width} blocked API has no PC mutation')
-    if status=='ready' and width==375:
+    if status=='ready' and id=='coc7' and width==375:
      page.evaluate('''()=>{window.__testDownload=null;downloadBlobFile=function(blob,name){window.__testDownload={size:blob.size,name};};}''')
      ok=page.evaluate('''async()=>await pcExportExcelCard(pcDraft)''')
      download=page.evaluate('window.__testDownload')
      check(ok is True and download and download['size']>1000 and download['name'].endswith('_CoC七版角色卡.xlsx'),f'{width} verified CoC7 produces actual XLSX',download)
-    if id in ('coc7','coc6','insane','legacy'):
+    if id in ('coc7','coc6','insane','legacy','dnd-2014','dnd-2024'):
      name=f'pc-excel-{id}-{width}.png';page.screenshot(path=str(output/name),full_page=False);screenshots.append(name)
     page.evaluate('async()=>await closePcEditor({force:true})')
    check(not errors,f'{width} no uncaught browser exception',errors[:5])

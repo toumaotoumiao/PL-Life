@@ -1,0 +1,185 @@
+name: PL isolated native ZIP restore gate
+
+# Test-repository push and manual release gate. No Pages deployment, no write and no private backup.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - index.html
+      - sw.js
+      - site/**
+      - .github/pl-ci/**
+      - .github/workflows/pl-native-restore-gate.yml
+permissions:
+  contents: read
+concurrency:
+  group: pl-native-restore-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  native-complete-restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Prepare synthetic-only evidence directory
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          mkdir -p "$REPORT_DIR"
+          printf 'Commit: %s\nRef: %s\n' "$GITHUB_SHA" "$GITHUB_REF" > "$REPORT_DIR/run-context.txt"
+      - name: Check full-app native gate contract and recovery guards
+        run: |
+          node --test .github/pl-ci/round187-native-fullapp-restore.test.cjs \
+            .github/pl-ci/round189-complete-zip-attachment-fidelity.test.cjs \
+            .github/pl-ci/round190-legacy-snapshot-attachment-guard.test.cjs \
+            .github/pl-ci/round191-restore-mime-evidence.test.cjs \
+            .github/pl-ci/round192-source-attachment-race.test.cjs \
+            .github/pl-ci/round193-postcommit-attachment-drift.test.cjs \
+            .github/pl-ci/round195-rollback-final-evidence.test.cjs \
+            .github/pl-ci/round197-rule-data-safety.test.cjs \
+            .github/pl-ci/round198-native-browser-source.test.cjs \
+            .github/pl-ci/round199-rejected-zip-attachment-guard.test.cjs \
+            .github/pl-ci/round200-insane-edition-source-contract.test.cjs \
+            .github/pl-ci/round201-insane-readonly-preview.test.cjs \
+            .github/pl-ci/round202-insane-blank-comparison.test.cjs \
+            .github/pl-ci/round203-insane-supplement-readonly.test.cjs \
+            .github/pl-ci/round204-insane-exact-diff-privacy.test.cjs \
+            .github/pl-ci/round205-insane-blank-baseline-authenticity.test.cjs \
+            .github/pl-ci/round206-insane-controlled-draft-import.test.cjs \
+            .github/pl-ci/round207-insane-undo-save-readback.test.cjs \
+            .github/pl-ci/round208-insane-specialty-mapping-preflight.test.cjs \
+            .github/pl-ci/round209-insane-specialty-controlled-draft.test.cjs \
+            .github/pl-ci/round210-insane-ability-name-preflight.test.cjs \
+            .github/pl-ci/round211-insane-ability-controlled-draft.test.cjs \
+            .github/pl-ci/round212-insane-item-count-preflight.test.cjs \
+            .github/pl-ci/round213-insane-item-controlled-draft.test.cjs \
+            .github/pl-ci/round214-insane-save-race-fidelity.test.cjs \
+            .github/pl-ci/round215-insane-editor-provenance.test.cjs \
+            .github/pl-ci/round216-insane-batch-review.test.cjs \
+            .github/pl-ci/round217-dnd5-private-structure.test.cjs \
+            .github/pl-ci/round218-dnd5-ability-candidates.test.cjs \
+            .github/pl-ci/round219-dnd5-manual-draft.test.cjs \
+            .github/pl-ci/round220-dnd5-source-outline.test.cjs \
+            .github/pl-ci/round221-dnd5-strict-anchor.test.cjs \
+            .github/pl-ci/round222-native-gate-report.test.cjs \
+            .github/pl-ci/round224-dnd5-ability-anchor-guard.test.cjs \
+            .github/pl-ci/round225-native-rejected-reload.test.cjs \
+            .github/pl-ci/round226-dnd-private-formula-topology.test.cjs \
+            .github/pl-ci/round227-native-incomplete-attachment.test.cjs \
+            .github/pl-ci/round228-missing-attachment-preflight.test.cjs \
+            .github/pl-ci/round229-gallery-reference-preflight.test.cjs \
+            .github/pl-ci/round230-dnd-merge-topology-contract.test.cjs \
+            .github/pl-ci/round231-restore-identifier-preflight.test.cjs \
+            .github/pl-ci/round232-dnd-ambiguous-geometry.test.cjs \
+            .github/pl-ci/round233-native-result-provenance.test.cjs \
+            .github/pl-ci/round234-release-history-continuity.test.cjs \
+            .github/pl-ci/round235-linked-metadata-identifier.test.cjs \
+            .github/pl-ci/round236-release-record-audit.test.cjs \
+            .github/pl-ci/round238-dnd-manual-identity.test.cjs \
+            .github/pl-ci/round239-orphan-identity.test.cjs \
+            .github/pl-ci/round240-dnd-card-summary.test.cjs \
+            .github/pl-ci/round241-orphan-source-id.test.cjs \
+            .github/pl-ci/round242-dnd-standalone-xlsx.test.cjs \
+            .github/pl-ci/round243-linked-workbook-key.test.cjs \
+            .github/pl-ci/round244-original-media-reference.test.cjs \
+            .github/pl-ci/round246-storage-map-collision.test.cjs \
+            .github/pl-ci/round247-dnd-readonly-verify.test.cjs \
+            .github/pl-ci/round248-native-dnd-retention.test.cjs \
+            .github/pl-ci/round249-dnd-worksheet-order.test.cjs \
+            .github/pl-ci/round250-native-attachment-map-fidelity.test.cjs \
+            .github/pl-ci/round252-dnd-grid-contract.test.cjs \
+            .github/pl-ci/round253-dnd-office-resave-contract.test.cjs \
+            .github/pl-ci/round254-native-archive-evidence-hash.test.cjs \
+            .github/pl-ci/round255-dnd-sparse-office-grid.test.cjs \
+            .github/pl-ci/round256-native-attachment-evidence-hash.test.cjs \
+            .github/pl-ci/round257-native-diagnostic-and-gate-separation.test.cjs \
+            .github/pl-ci/round258-startup-run-key-order.test.cjs \
+            .github/pl-ci/round259-native-workflow-continuation.test.cjs \
+            .github/pl-ci/round260-startup-settings-decoupling.test.cjs \
+            .github/pl-ci/round261-mobile-rule-popover-anchor.test.cjs \
+            .github/pl-ci/round262-mobile-rule-popover-dismiss.test.cjs \
+            .github/pl-ci/round263-production-release-preflight.test.cjs \
+            .github/pl-ci/round264-dnd-template-export.test.cjs \
+            .github/pl-ci/round265-unified-export-source-preview.test.cjs \
+            .github/pl-ci/round266-current-status-source.test.cjs \
+            .github/pl-ci/round267-ho-free-column-drag.test.cjs
+      - name: Verify production release package preflight
+        run: python .github/pl-ci/build-production-release.py --check-only
+      - name: Verify privacy-local D&D comparison using temporary fictional sheets
+        run: python .github/pl-ci/round223-dnd5-private-diff-test.py
+      - name: Test native-result evidence attestation (fictional reports only)
+        run: python .github/pl-ci/round251-native-result-attestation-test.py
+      - name: Install isolated browser test dependency
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+      - name: Install Playwright Chromium and required libraries
+        run: python -m playwright install --with-deps chromium
+      - name: Execute real app ZIP -> native IndexedDB -> reload -> second ZIP
+        id: native_restore
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round187-native-fullapp-restore-browser.py 2>&1 | tee "$PL_SYNTHETIC_REPORT_DIR/round187-console.log"
+      - name: Publish truthful result in run summary
+        if: always()
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          python - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          root=Path(os.environ['PL_SYNTHETIC_REPORT_DIR'])
+          target=root/'round187-evidence'/'round187-result.json'
+          expected_commit=os.environ['GITHUB_SHA']
+          source=Path('index.html').read_text(encoding='utf-8')
+          match=re.search(r'const APP_UI_VERSION\s*=\s*["\']([^"\']+)["\']',source)
+          expected_version=match.group(1) if match else 'missing-app-version'
+          actual_commit=actual_version=None
+          if target.exists():
+              data=json.loads(target.read_text(encoding='utf-8'))
+              status=data.get('status','UNKNOWN')
+              actual_commit=data.get('commit')
+              actual_version=data.get('app_version')
+              phase=data.get('phase','unknown')
+              count=data.get('passed',0)
+              source=data.get('browser_source','unknown')
+              reason=data.get('failure',{}).get('type','none')
+          else:
+              status,phase,count='NOT_RUN','before-browser-result',0
+              source,reason='unknown','no-result-file'
+          line=f'Round187: **{status}** | last phase: `{phase}` | checks passed: {count} | browser: `{source}` | failure type: `{reason}`. '
+          line+=f'Checkout identity: `{actual_commit==expected_commit}`, application version: `{actual_version==expected_version}`. '
+          line+='Only PASS satisfies the native recovery release gate. This is not mobile device acceptance.\n'
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as out:
+              out.write('## PL full-app native restore (synthetic records only)\n\n'+line)
+          print(line.strip())
+          if status!='PASS' or actual_commit!=expected_commit or actual_version!=expected_version:
+              raise SystemExit(1)
+          PY
+      - name: Attest native result coverage and checkout identity
+        if: always()
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          python .github/pl-ci/round251-native-result-attestation.py \
+            "$PL_SYNTHETIC_REPORT_DIR/round187-evidence/round187-result.json" \
+            --commit "$GITHUB_SHA" --require-bundled
+      - name: Upload synthetic-only failure or success evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pl-round187-native-restore-evidence
+          path: ${{ runner.temp }}/pl-native-restore-evidence/
+          if-no-files-found: error
+          retention-days: 14

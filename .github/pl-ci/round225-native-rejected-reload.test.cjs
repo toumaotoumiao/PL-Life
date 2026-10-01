@@ -1,0 +1,10 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'../..');
+const native=fs.readFileSync(path.join(root,'.github/pl-ci/round187-native-fullapp-restore-browser.py'),'utf8');
+const full=fs.readFileSync(path.join(root,'.github/workflows/pl-browser-synthetic.yml'),'utf8');
+const independent=fs.readFileSync(path.join(root,'.github/workflows/pl-native-restore-gate.yml'),'utf8');
+test('Round225 fresh origin must have no native attachment records before seeding',()=>{assert.match(native,/fresh-native-attachment-stores/);assert.match(native,/\(await pcMediaAllRows\(\)\)\.length===0/);assert.match(native,/\(await pcWorkbookAllRows\(\)\)\.length===0/);});
+test('Round225 corrupt archive rejection is verified once again after actual browser reload',()=>{const before=native.indexOf("check('corrupt-'+name,bool(passed))"),reload=native.indexOf("post_rejection = evaluate(page",before),success=native.indexOf("report['status']='PASS'",reload);assert.ok(before>=0&&reload>before&&success>reload);for(const check of ['archive:','media:','thumbnails:','workbook:','unlinked:','noMarker:'])assert.ok(native.slice(reload,success).includes(check),check);assert.match(native,/check\('post-rejected-reload-'\+name,bool\(passed\)\)/);});
+test('Round225 blocked external requests cannot be treated as an offline native pass',()=>{assert.match(native,/check\('no-external-network-attempts',report\['external_requests_blocked'\]==0\)/);assert.match(native,/context\.route\('\*\*\/\*', isolate_requests\)/);assert.match(native,/if report\['status'\]!='PASS':raise SystemExit\(1\)/);});
+test('Round225 both workflows contain mandatory native result and version-independent test contracts',()=>{for(const script of [full,independent])assert.match(script,/round225-native-rejected-reload\.test\.cjs/);assert.match(full,/Round187:\$\{\{ steps\.round187_browser\.outcome \}\}/);assert.match(independent,/if status!='PASS' or actual_commit!=expected_commit or actual_version!=expected_version:/);});

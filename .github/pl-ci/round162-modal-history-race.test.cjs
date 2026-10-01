@@ -14,7 +14,7 @@ test('browser contract recreates queued Back and checks PC and plan plus real Ba
  assert.match(workflow,/Round162:\$\{\{ steps\.round162_browser\.outcome \}\}/);
 });
 test('release version, schema, and CoC7 rule gate still present',()=>{
- const version=html.match(/const APP_UI_VERSION = "([\d.]+)";/)?.[1];assert.equal(version,'8.1.12.231');
+ const version=html.match(/const APP_UI_VERSION = "([\d.]+)";/)?.[1];assert.match(version,/^\d+(?:\.\d+){3}$/);
  assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
  assert.match(html,/function syncPcExcelExportUi\(/);
 });

@@ -1,0 +1,17 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'../..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const begin=html.indexOf('/* Stage61 specialty mapping preflight start.'),end=html.indexOf('/* Stage61 specialty mapping preflight end */',begin);
+assert.ok(begin>0&&end>begin);const source=html.slice(begin,end);
+const pcRuleCurrentData=p=>p.ruleSheets?.insane||{skills:[]},escapeHTML=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+const api=new Function('pcRuleCurrentData','escapeHTML',source+'\nreturn {check:pcInsaneSpecialityPreflight,html:pcInsaneSpecialityPreflightHTML};')(pcRuleCurrentData,escapeHTML);
+const pc=(skills=[])=>({id:'synthetic',ruleMeta:{systemId:'insane',editionId:'2013-original',confirmed:true},ruleSheets:{insane:{skills}}});
+const row=(v,ref='B29',r='I3')=>({value:v,ref,state:'changed',match:r?{domain:['I','K','M','O','Q','S'].indexOf(r[0])+1,row:Number(r.slice(1)),ref:r}:null});
+const supplement=(...rows)=>({comparison:true,groups:{specialties:rows}});
+test('Round208 refuses unverified baseline or other rules',()=>{assert.deepEqual(api.check({comparison:false,groups:{specialties:[row('已填')]}},pc()),[]);assert.deepEqual(api.check(supplement(row('已填')),{ruleMeta:{systemId:'coc'},ruleSheets:{insane:{skills:[]}}}),[]);});
+test('Round208 maps only selected input slots, preserves grid provenance',()=>{const result=api.check(supplement(row('艺术','B29','I3'),row('追踪','C29','K4')),pc());assert.equal(result.length,2);assert.equal(result[0].status,'来源位置已核对');assert.equal(result[0].ref,'B29');assert.equal(result[0].gridRef,'I3');assert.equal(result[1].status,'来源位置已核对');assert.doesNotMatch(JSON.stringify(result),/P40|privateNote/);});
+test('Round208 duplicate grid reference and ambiguous names are not silently imported',()=>{const result=api.check(supplement(row('艺术','B29','I3'),row('虚构别名','C29','I3'),row('未知','D29',null)),pc());assert.equal(result[0].status,'待人工核对');assert.equal(result[1].status,'待人工核对');assert.match(result[0].reason,/重复特技|同一位置/);assert.match(result[1].reason,/重复特技|同一位置/);assert.equal(result[2].status,'待人工核对');});
+test('Round208 existing PC fields are protected, even where label matches',()=>{const result=api.check(supplement(row('艺术')),pc([{label:'艺术',value:'已有值',future:{keep:true}}]));assert.equal(result[0].status,'已有同名字段');assert.match(result[0].reason,/不能自动覆盖/);});
+test('Round208 refuses control characters, out-of-range and formula source',()=>{for(const input of [row('坏\n字段'),row('长'.repeat(120)),row('正常','P40'),{...row('公式'),state:'formula'},row('错格','B29','I30')]){const r=api.check(supplement(input),pc());assert.equal(r[0].status,'待人工核对');}});
+test('Round208 escaped read-only presentation and no formal PC writes',()=>{const item=row('<img src=x onerror=alert(1)>');const out=api.html(api.check(supplement(item),pc()));assert.match(out,/&lt;img/);assert.doesNotMatch(out,/<img src=x/);assert.doesNotMatch(source,/saveState\s*\(|pcWorkbookPut\s*\(|pcDraft\s*=/);assert.match(html,/pcInsaneSpecialityPreflightHTML\(specialtyPreflight\)/);});
+test('Round208 inherited CI and native release safety',()=>{for(const wf of ['pl-browser-synthetic.yml','pl-native-restore-gate.yml'])assert.match(fs.readFileSync(path.join(root,'.github/workflows',wf),'utf8'),/round208-insane-specialty-mapping-preflight\.test\.cjs/);assert.match(html,/const APP_UI_VERSION = "8\.1\.12\.\d+"/);});

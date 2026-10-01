@@ -215,7 +215,7 @@ jobs:
         with:
           python-version: '3.13'
       - name: Install pinned visual-check runner
-        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0 beautifulsoup4==4.13.4
       - name: Round156 full-page visual structural acceptance
         id: round156_browser
         continue-on-error: true
@@ -287,7 +287,7 @@ jobs:
           PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
         run: |
           set -o pipefail
-          python .github/pl-ci/round164-unified-final-inspection-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round164-final-inspection.log"
+          PYTHONUNBUFFERED=1 timeout --signal=KILL 90s python .github/pl-ci/round164-unified-final-inspection-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round164-final-inspection.log"
       - name: Round165 specialized PC rule row order and preservation contract
         run: node --test .github/pl-ci/round165-rule-row-order.test.cjs
       - name: Round165 specialized PC rule row order in actual synthetic UI
@@ -299,6 +299,507 @@ jobs:
         run: |
           set -o pipefail
           python .github/pl-ci/round165-rule-row-order-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round165-rule-rows.log"
+      - name: Stage24-28 rule editor, long-note and unnamed-field safety contracts
+        run: node --test .github/pl-ci/round170-stage-rebuild.test.cjs .github/pl-ci/round171-rule-sync.test.cjs .github/pl-ci/round172-long-reading-export.test.cjs .github/pl-ci/round173-rule-reading-search.test.cjs .github/pl-ci/round174-unnamed-rule-fields.test.cjs
+      - name: Stage24 reconstructed rule reading and export in Chromium
+        id: round170_browser
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round170-rule-detail-reconstruction-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round170-rule-reading.log"
+      - name: Stage25 rule input count, filter and focus in Chromium
+        id: round171_browser
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round171-rule-sync-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round171-rule-sync.log"
+      - name: Stage26 long rule-note reading and export fail-closed in Chromium
+        id: round172_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round172-long-reading-export-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round172-long-reading-export.log"
+      - name: Stage27 rule overview search and read-only filtering in Chromium
+        id: round173_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round173-rule-reading-search-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round173-rule-reading-search.log"
+      - name: Stage28 unnamed rule field fidelity in Chromium
+        id: round174_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round174-unnamed-rule-fields-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round174-unnamed-fields.log"
+      - name: Stage29 rule card summary, full export and header count contract
+        run: node --test .github/pl-ci/round175-rule-card-summary.test.cjs
+      - name: Stage29 rule card summary actual Chromium canvas
+        id: round175_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round175-rule-card-summary-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round175-rule-card.log"
+      - name: Stage30 unnamed rule field save and readback contract
+        run: node --test .github/pl-ci/round176-unnamed-save-fidelity.test.cjs
+      - name: Stage30 unnamed rule field save and readback in Chromium
+        id: round176_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round176-unnamed-save-fidelity-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round176-unnamed-save-fidelity.log"
+      - name: Stage31 independent generic rule sheet and legacy data contract
+        run: node --test .github/pl-ci/round177-generic-rule-isolation.test.cjs
+      - name: Stage31 actual Chromium generic rule editing and rule switch
+        id: round177_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round177-generic-rule-isolation-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round177-generic-rule-isolation.log"
+      - name: Stage32 custom rule rename collision and explicit switch contract
+        run: node --test .github/pl-ci/round178-rule-rename-safety.test.cjs
+      - name: Stage32 actual Chromium rule rename and safe explicit switch
+        id: round178_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round178-rule-rename-safety-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round178-rule-rename-safety.log"
+      - name: Stage33 rule field delete and inline undo contract
+        run: node --test .github/pl-ci/round179-rule-field-undo.test.cjs
+      - name: Stage33 real Chromium rule field delete and inline undo
+        id: round179_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round179-rule-field-undo-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round179-rule-field-undo.log"
+      - name: Stage34 PC rule and shared-media read-only preflight
+        run: node --test .github/pl-ci/round180-pc-backup-preflight.test.cjs
+      - name: Round181 all-field restore evidence including future extensions
+        run: node --test .github/pl-ci/round181-full-evidence.test.cjs
+      - name: Round182 PL and settings complete restore evidence
+        run: node --test .github/pl-ci/round182-profile-settings-evidence.test.cjs
+      - name: Round183 future PC fields preserved in normalization
+        run: node --test .github/pl-ci/round183-pc-unknown-fields.test.cjs
+      - name: Round184 module unknown fields survive canonical roundtrip
+        run: node --test .github/pl-ci/round184-module-future-fields.test.cjs
+      - name: Round185 plan and record future fields preserve complete roundtrip
+        run: node --test .github/pl-ci/round185-run-future-fields.test.cjs
+      - name: Round186 PL, preferences and settings future-field contract
+        run: node --test .github/pl-ci/round186-pl-settings-future-fields.test.cjs
+      - name: Round188 PC nested future-field save and rehydrate contract
+        run: node --test .github/pl-ci/round188-pc-nested-future-fields.test.cjs
+      - name: Round190 legacy snapshot original fidelity guard
+        run: node --test .github/pl-ci/round190-legacy-snapshot-attachment-guard.test.cjs
+      - name: Round191 original and thumbnail MIME restore evidence, legacy journal compatibility
+        run: node --test .github/pl-ci/round191-restore-mime-evidence.test.cjs
+      - name: Round189 linked and unlinked original attachment fidelity
+        run: node --test .github/pl-ci/round189-complete-zip-attachment-fidelity.test.cjs
+      - name: Round192 concurrent source attachment generation guard
+        run: node --test .github/pl-ci/round192-source-attachment-race.test.cjs
+      - name: Round193 post-commit attachment drift cannot clear rollback journal
+        run: node --test .github/pl-ci/round193-postcommit-attachment-drift.test.cjs
+      - name: Round195 final original-attachment evidence for rollback and restart
+        run: node --test .github/pl-ci/round195-rollback-final-evidence.test.cjs
+      - name: Round194 native recovery release gate and Windows portability
+        run: node --test .github/pl-ci/round194-native-gate-portability.test.cjs
+      - name: Round196 isolated manual native restore release gate contract
+        run: node --test .github/pl-ci/round196-standalone-native-gate.test.cjs
+      - name: Round197 multi-rule data and template key safety
+        run: node --test .github/pl-ci/round197-rule-data-safety.test.cjs
+      - name: Round198 real native browser executable selection and evidence
+        run: node --test .github/pl-ci/round198-native-browser-source.test.cjs
+      - name: Round199 rejected ZIP native attachments contract
+        run: node --test .github/pl-ci/round199-rejected-zip-attachment-guard.test.cjs
+      - name: Round200 Insane edition identity and user reference fidelity
+        run: node --test .github/pl-ci/round200-insane-edition-source-contract.test.cjs
+      - name: Guard Insane Excel read-only preview and source mapping
+        run: node --test .github/pl-ci/round201-insane-readonly-preview.test.cjs
+      - name: Check Insane opt-in blank-card comparison
+        run: node --test .github/pl-ci/round202-insane-blank-comparison.test.cjs
+      - name: Round203 Insane supplementary source preview
+        run: node --test .github/pl-ci/round203-insane-supplement-readonly.test.cjs
+      - name: Round204 Insane exact difference and private notes
+        run: node --test .github/pl-ci/round204-insane-exact-diff-privacy.test.cjs
+      - name: Round205 Insane blank baseline authenticity
+        run: node --test .github/pl-ci/round205-insane-blank-baseline-authenticity.test.cjs
+      - name: Round206 Insane opt-in controlled draft import
+        run: node --test .github/pl-ci/round206-insane-controlled-draft-import.test.cjs
+      - name: Round207 Insane import undo and save readback
+        run: node --test .github/pl-ci/round207-insane-undo-save-readback.test.cjs
+      - name: Round208 Insane selected specialty mapping preflight
+        run: node --test .github/pl-ci/round208-insane-specialty-mapping-preflight.test.cjs
+      - name: Round209 Insane speciality controlled draft
+        run: node --test .github/pl-ci/round209-insane-specialty-controlled-draft.test.cjs
+      - name: Round210 Insane ability source-only preflight
+        run: node --test .github/pl-ci/round210-insane-ability-name-preflight.test.cjs
+      - name: Round211 Insane ability controlled draft
+        run: node --test .github/pl-ci/round211-insane-ability-controlled-draft.test.cjs
+      - name: Round212 Insane item count preflight
+        run: node --test .github/pl-ci/round212-insane-item-count-preflight.test.cjs
+      - name: Round213 Insane item count controlled draft
+        run: node --test .github/pl-ci/round213-insane-item-controlled-draft.test.cjs
+      - name: Round214 Insane save race and nested fidelity
+        run: node --test .github/pl-ci/round214-insane-save-race-fidelity.test.cjs
+      - name: Round215 Insane editor provenance
+        run: node --test .github/pl-ci/round215-insane-editor-provenance.test.cjs
+      - name: Round216 Insane combined draft review
+        run: node --test .github/pl-ci/round216-insane-batch-review.test.cjs
+      - name: Round217 D&D 5e private structural preview and version-safe archive
+        run: node --test .github/pl-ci/round217-dnd5-private-structure.test.cjs
+      - name: Round218 D&D 5e local numeric candidates and privacy
+        run: node --test .github/pl-ci/round218-dnd5-ability-candidates.test.cjs
+      - name: Round219 DND manually confirmed draft
+        run: node --test .github/pl-ci/round219-dnd5-manual-draft.test.cjs
+      - name: Round220 DND identity/combat source outline and privacy
+        run: node --test .github/pl-ci/round220-dnd5-source-outline.test.cjs
+      - name: Round221 D&D strict source-label match and input isolation
+        run: node --test .github/pl-ci/round221-dnd5-strict-anchor.test.cjs
+      - name: Round222 native release-gate summary contract
+        run: node --test .github/pl-ci/round222-native-gate-report.test.cjs
+      - name: Round224 D&D six-ability exact label safety
+        run: node --test .github/pl-ci/round224-dnd5-ability-anchor-guard.test.cjs
+      - name: Round225 rejected restore reload and native storage safety
+        run: node --test .github/pl-ci/round225-native-rejected-reload.test.cjs
+      - name: Round226 D&D private comparison topology contract
+        run: node --test .github/pl-ci/round226-dnd-private-formula-topology.test.cjs
+      - name: Round227 native incomplete attachment safety contract
+        run: node --test .github/pl-ci/round227-native-incomplete-attachment.test.cjs
+      - name: Round228 functional incomplete attachment preflight
+        run: node --test .github/pl-ci/round228-missing-attachment-preflight.test.cjs
+      - name: Round229 preflight rejects malformed gallery references without silent loss
+        run: node --test .github/pl-ci/round229-gallery-reference-preflight.test.cjs
+      - name: Round230 D&D merged-geometry privacy and CI contract
+        run: node --test .github/pl-ci/round230-dnd-merge-topology-contract.test.cjs
+      - name: Round231 typed identifiers in backup preflight
+        run: node --test .github/pl-ci/round231-restore-identifier-preflight.test.cjs
+      - name: Round232 malformed XLSX geometry safety contract
+        run: node --test .github/pl-ci/round232-dnd-ambiguous-geometry.test.cjs
+      - name: Round233 native recovery result commit and version provenance
+        run: node --test .github/pl-ci/round233-native-result-provenance.test.cjs
+      - name: Round234 immutable release history and current version
+        run: node --test .github/pl-ci/round234-release-history-continuity.test.cjs
+      - name: Round235 linked attachment metadata typed identifiers
+        run: node --test .github/pl-ci/round235-linked-metadata-identifier.test.cjs
+      - name: Round236 historic duplicate release record continuity
+        run: node --test .github/pl-ci/round236-release-record-audit.test.cjs
+      - name: Round237 complete split visual evidence verification
+        run: python .github/pl-ci/round237-visual-matrix-merge-test.py
+      - name: Round238 D&D 2014 and 2024 manual identity and combat fields
+        run: node --test .github/pl-ci/round238-dnd-manual-identity.test.cjs
+      - name: Round239 restore orphan typed metadata fidelity
+        run: node --test .github/pl-ci/round239-orphan-identity.test.cjs
+      - name: Round240 D&D public card and compact list summary
+        run: node --test .github/pl-ci/round240-dnd-card-summary.test.cjs
+      - name: Round241 orphan source ID type safety
+        run: node --test .github/pl-ci/round241-orphan-source-id.test.cjs
+      - name: Round242 D&D filled-rule standalone XLSX safety
+        run: node --test .github/pl-ci/round242-dnd-standalone-xlsx.test.cjs
+      - name: Round243 linked workbook typed identifiers
+        run: node --test .github/pl-ci/round243-linked-workbook-key.test.cjs
+      - name: Round244 original PC media reference safety
+        run: node --test .github/pl-ci/round244-original-media-reference.test.cjs
+      - name: Round246 attachment inventory collision guard
+        run: node --test .github/pl-ci/round246-storage-map-collision.test.cjs
+      - name: Round247 DND XLSX read-only comparison and UI scope
+        run: node --test .github/pl-ci/round247-dnd-readonly-verify.test.cjs
+      - name: Round248 DND native recovery edition coverage
+        run: node --test .github/pl-ci/round248-native-dnd-retention.test.cjs
+      - name: Round249 D&D worksheet reorder and duplicate-field identity
+        run: node --test .github/pl-ci/round249-dnd-worksheet-order.test.cjs
+      - name: Round250 native attachment inventory and recovery reference fidelity
+        run: node --test .github/pl-ci/round250-native-attachment-map-fidelity.test.cjs
+      - name: Round252 D&D XLSX worksheet integrity contract
+        run: node --test .github/pl-ci/round252-dnd-grid-contract.test.cjs
+      - name: Round253 D&D Office/WPS safe re-save contract
+        run: node --test .github/pl-ci/round253-dnd-office-resave-contract.test.cjs
+      - name: Round254 native archive evidence hash contract
+        run: node --test .github/pl-ci/round254-native-archive-evidence-hash.test.cjs
+      - name: Round255 D&D sparse Office grid contract
+        run: node --test .github/pl-ci/round255-dnd-sparse-office-grid.test.cjs
+      - name: Round256 native attachment evidence hash contract
+        run: node --test .github/pl-ci/round256-native-attachment-evidence-hash.test.cjs
+      - name: Round257 native diagnostic and independent-gate separation
+        run: node --test .github/pl-ci/round257-native-diagnostic-and-gate-separation.test.cjs
+      - name: Round258 startup archive dependency order
+        run: node --test .github/pl-ci/round258-startup-run-key-order.test.cjs
+      - name: Round259 native workflow continuation contract
+        run: node --test .github/pl-ci/round259-native-workflow-continuation.test.cjs
+      - name: Round260 startup settings decoupling contract
+        run: node --test .github/pl-ci/round260-startup-settings-decoupling.test.cjs
+      - name: Round261 mobile rule popover anchor contract
+        run: node --test .github/pl-ci/round261-mobile-rule-popover-anchor.test.cjs
+      - name: Round262 mobile rule popover dismissal contract
+        run: node --test .github/pl-ci/round262-mobile-rule-popover-dismiss.test.cjs
+      - name: Round264 D&D template-filled character-card contract
+        run: node --test .github/pl-ci/round264-dnd-template-export.test.cjs
+      - name: Round265 unified image-export source-preview contract
+        run: node --test .github/pl-ci/round265-unified-export-source-preview.test.cjs
+      - name: Round266 canonical current-project status contract
+        run: node --test .github/pl-ci/round266-current-status-source.test.cjs
+      - name: Round267 HO free-column drag contract
+        run: node --test .github/pl-ci/round267-ho-free-column-drag.test.cjs
+      - name: Round264 D&D template-filled character-card browser
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round264-dnd-template-export-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round264-browser.log"
+      - name: Round265 unified image-export source-preview browser
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round265-unified-export-source-preview-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round265-browser.log"
+      - name: Round267 HO free-column drag browser
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round267-ho-free-column-drag-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round267-browser.log"
+      - name: Round263 production release package preflight
+        run: |
+          node --test .github/pl-ci/round263-production-release-preflight.test.cjs
+          python .github/pl-ci/build-production-release.py --check-only
+      - name: Round251 native release evidence attestation fixtures
+        run: python .github/pl-ci/round251-native-result-attestation-test.py
+      - name: Round223 private offline D&D difference audit synthetic contract
+        run: python .github/pl-ci/round223-dnd5-private-diff-test.py
+      - name: Round187 native full-app ZIP restore source contract
+        run: node --test .github/pl-ci/round187-native-fullapp-restore.test.cjs
+      - name: Round187 real app ZIP to native IDB, reload and second ZIP
+        id: round187_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round187-native-fullapp-restore-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round187-native-fullapp-restore.log"
+      - name: Round206 Insane controlled-draft isolated Chromium and responsive layout
+        id: round206_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round206-insane-controlled-draft-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round206-browser.log"
+      - name: Round209 Insane speciality draft isolated Chromium
+        id: round209_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round209-insane-specialty-draft-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round209-browser.log"
+      - name: Round211 Insane ability draft isolated Chromium
+        id: round211_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round211-insane-ability-draft-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round211-browser.log"
+      - name: Round213 Insane item-count draft isolated Chromium
+        id: round213_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round213-insane-item-draft-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round213-browser.log"
+      - name: Round216 Insane combined import isolated Chromium
+        id: round216_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round216-insane-batch-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round216-browser.log"
+      - name: Round217 D&D 5e private structure browser layout
+        id: round217_browser
+        if: always()
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" python .github/pl-ci/round217-dnd5-private-structure-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round217-browser.log"
+      - name: Round218 D&D 5e masked candidate preview browser
+        id: round218_browser
+        if: always()
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" python .github/pl-ci/round218-dnd5-ability-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round218-browser.log"
+      - name: Round219 DND eight-width manual opt-in privacy browser
+        id: round219_browser
+        if: always()
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round219-dnd5-manual-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round219-browser.log"
+      - name: Round220 DND source outline privacy and eight-width browser
+        id: round220_browser
+        if: always()
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round220-dnd5-source-outline-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round220-browser.log"
+      - name: Round221 strict D&D source-label browser audit
+        id: round221_browser
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round221-dnd5-strict-anchor-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round221-browser.log"
+      - name: Round238 D&D manual identity and combat two-edition browser check
+        id: round238_browser
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round238-dnd-manual-fields-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round238-browser.log"
+      - name: Round240 full-app D&D manual edit, canonical save, reload and export
+        id: round240_browser
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round240-dnd-manual-roundtrip-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round240-browser.log"
+      - name: Round242 D&D standalone XLSX actual browser export and round-trip
+        id: round242_browser
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round242-dnd-xlsx-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round242-browser.log"
+      - name: Round245 independent synthetic XLSX ZIP and XML verification
+        id: round245_independent
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round245-independent-dnd-xlsx-test.py "$RUNNER_TEMP/pl-synthetic-report/round242-fiction-workbook.xlsx" 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round245-independent.log"
+          python .github/pl-ci/round245-independent-dnd-xlsx.py "$RUNNER_TEMP/pl-synthetic-report/round242-fiction-workbook.xlsx" --report "$RUNNER_TEMP/pl-synthetic-report/round245-result.json" 2>&1 | tee -a "$RUNNER_TEMP/pl-synthetic-report/round245-independent.log"
+      - name: Round207 Insane undo and mobile isolated Chromium
+        id: round207_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+          PL_NATIVE_BROWSER_MODE: bundled
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round207-insane-undo-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round207-browser.log"
+      - name: Round188 actual-app PC nested future-field save and rehydrate
+        id: round188_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round188-pc-nested-future-fields-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round188-pc-nested-future-fields.log"
+      - name: Round186 actual-app PL and settings save and rehydrate
+        id: round186_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round186-pl-settings-future-fields-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round186-pl-settings-future-fields.log"
+      - name: Round185 actual-app plan and record save and rehydrate
+        id: round185_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round185-run-future-fields-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round185-run-future-fields.log"
+      - name: Round184 actual-app module save and rehydrate
+        id: round184_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round184-module-future-fields-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round184-module-future-fields.log"
+      - name: Round183 actual-app PC future fields save and rehydrate
+        id: round183_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round183-pc-unknown-fields-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round183-pc-unknown-fields.log"
+      - name: Stage34 PC backup preflight and exact record navigation in Chromium
+        id: round180_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round180-pc-backup-preflight-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round180-pc-backup-preflight.log"
+      - name: Round181 actual-app save/re-hydrate all-field evidence in Chromium
+        id: round181_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          PYTHONUNBUFFERED=1 timeout --signal=KILL 90s python .github/pl-ci/round181-full-evidence-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round181-full-evidence.log"
+      - name: Round182 actual-app profile and settings evidence in Chromium
+        id: round182_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round182-profile-settings-evidence-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round182-profile-settings-evidence.log"
       - name: Round126 real Chromium export layout and continuous PNG
         run: node .github/pl-ci/round126-unified-export-layout-browser.cjs
       - name: Round129 Chromium live-preview mode and recovery
@@ -428,6 +929,7 @@ jobs:
         shell: bash
         run: |
           failed=0
+          echo "Round187:${{ steps.round187_browser.outcome }} (informational in synthetic regression; mandatory release enforcement is PL isolated native ZIP restore gate)"
           for check in \
             "Round134:${{ steps.round134_browser.outcome }}" \
             "Round141:${{ steps.round141_browser.outcome }}" \
@@ -445,7 +947,40 @@ jobs:
             "Round161:${{ steps.round161_browser.outcome }}" \
             "Round162:${{ steps.round162_browser.outcome }}" \
             "Round164:${{ steps.round164_browser.outcome }}" \
-            "Round165:${{ steps.round165_browser.outcome }}"; do
+            "Round165:${{ steps.round165_browser.outcome }}" \
+            "Round170:${{ steps.round170_browser.outcome }}" \
+            "Round171:${{ steps.round171_browser.outcome }}" \
+            "Round172:${{ steps.round172_browser.outcome }}" \
+            "Round173:${{ steps.round173_browser.outcome }}" \
+            "Round174:${{ steps.round174_browser.outcome }}" \
+            "Round175:${{ steps.round175_browser.outcome }}" \
+            "Round176:${{ steps.round176_browser.outcome }}" \
+            "Round177:${{ steps.round177_browser.outcome }}" \
+            "Round178:${{ steps.round178_browser.outcome }}" \
+            "Round179:${{ steps.round179_browser.outcome }}" \
+            "Round180:${{ steps.round180_browser.outcome }}" \
+            "Round181:${{ steps.round181_browser.outcome }}" \
+            "Round182:${{ steps.round182_browser.outcome }}" \
+            "Round183:${{ steps.round183_browser.outcome }}" \
+            "Round184:${{ steps.round184_browser.outcome }}" \
+            "Round185:${{ steps.round185_browser.outcome }}" \
+            "Round186:${{ steps.round186_browser.outcome }}" \
+            "Round188:${{ steps.round188_browser.outcome }}" \
+            "Round206:${{ steps.round206_browser.outcome }}" \
+            "Round207:${{ steps.round207_browser.outcome }}" \
+            "Round209:${{ steps.round209_browser.outcome }}" \
+            "Round211:${{ steps.round211_browser.outcome }}" \
+            "Round213:${{ steps.round213_browser.outcome }}" \
+            "Round216:${{ steps.round216_browser.outcome }}" \
+            "Round217:${{ steps.round217_browser.outcome }}" \
+            "Round218:${{ steps.round218_browser.outcome }}" \
+            "Round219:${{ steps.round219_browser.outcome }}" \
+            "Round220:${{ steps.round220_browser.outcome }}" \
+            "Round221:${{ steps.round221_browser.outcome }}" \
+            "Round238:${{ steps.round238_browser.outcome }}" \
+            "Round240:${{ steps.round240_browser.outcome }}" \
+            "Round242:${{ steps.round242_browser.outcome }}" \
+            "Round245:${{ steps.round245_independent.outcome }}"; do
             if [ "${check#*:}" != "success" ]; then
               echo "${check%%:*} failed; see its log in pl-synthetic-browser-result."
               failed=1

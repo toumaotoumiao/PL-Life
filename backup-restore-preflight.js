@@ -3,6 +3,9 @@
 (function(root){'use strict';
 function fail(message){throw new Error('备份恢复前检查未通过：'+message+'。当前档案未被覆盖');}
 function object(value){return value!==null&&typeof value==='object'&&!Array.isArray(value);}
+// Historical IDs may be strings or positive integer numbers. Never coerce objects,
+// booleans, NaN or fractional numbers into apparently valid relationship keys.
+function identifier(value){return (typeof value==='string'&&value.trim().length>0)||(typeof value==='number'&&Number.isSafeInteger(value)&&value>0);}
 function name(value,prefix){return typeof value==='string'&&value.startsWith(prefix)&&value.length>prefix.length&&value.split('/').every(x=>x&&x!=='.'&&x!=='..')&&!value.includes('\\');}
 function audit(manifest,archive,files){
  if(!object(manifest)||!object(archive)||!object(archive.data)||!object(files))fail('文件清单或档案结构无效');
@@ -13,23 +16,30 @@ function audit(manifest,archive,files){
  if(!Number.isSafeInteger(manifest.mediaCount)||manifest.mediaCount!==media.length)fail('图片数量与清单不一致');
  const pcMap=new Map(),owners=new Map(),excel=new Set(),paths=new Set();
  for(const pc of pcs){
-  if(!object(pc)||!pc.id||pcMap.has(String(pc.id)))fail('PC 档案编号重复或无效');
+  if(!object(pc)||!identifier(pc.id)||pcMap.has(String(pc.id)))fail('PC 档案编号重复或无效');
   const id=String(pc.id);pcMap.set(id,pc);if(pc.excelSource)excel.add(id);
-  const refs=[pc.avatarMediaId,...(Array.isArray(pc.galleryMediaIds)?pc.galleryMediaIds:[])];
-  for(const ref of refs){if(!ref)continue;const key=String(ref);if(owners.has(key)&&owners.get(key)!==id)fail('同一张图片被多个 PC 档案引用');owners.set(key,id);}
+  // An invalid gallery cannot be interpreted as an empty gallery: that would silently
+  // erase the source references while reporting an apparently complete backup.
+  if(pc.galleryMediaIds!=null&&!Array.isArray(pc.galleryMediaIds))fail('PC 图库引用格式无效');
+  const refs=[pc.avatarMediaId,...(pc.galleryMediaIds||[])];
+  for(const ref of refs){
+   if(ref===undefined||ref===null||ref==='')continue;
+   if(!identifier(ref))fail('PC 图片引用编号无效');
+   const key=String(ref);if(owners.has(key)&&owners.get(key)!==id)fail('同一张图片被多个 PC 档案引用');owners.set(key,id);
+  }
  }
  const archivePath=manifest.archivePath||'archive.json';
  if(archivePath!=='archive.json'||!files[archivePath]||!files['manifest.json'])fail('档案文件路径异常');
  paths.add(archivePath);paths.add('manifest.json');
  const images=new Set(),sheets=new Set();
  for(const item of media){
-  if(!object(item)||!item.id||!item.pcId||!name(item.path,'media/')||!files[item.path]||paths.has(item.path))fail('图片清单存在无效或重复的文件路径');
+  if(!object(item)||!identifier(item.id)||!identifier(item.pcId)||!name(item.path,'media/')||!files[item.path]||paths.has(item.path))fail('图片清单存在无效或重复的文件路径');
   const id=String(item.id),pcId=String(item.pcId);
   if(images.has(id)||!owners.has(id)||owners.get(id)!==pcId||!pcMap.has(pcId))fail('图片编号与 PC 所属关系不一致');
   if(typeof item.type!=='string'||!/^image\/[a-z0-9.+-]+$/.test(item.type))fail('图片文件类型未被支持');
   images.add(id);paths.add(item.path);
   if(item.metadata!==undefined){
-   if(!object(item.metadata)||String(item.metadata.id)!==id||String(item.metadata.pcId)!==pcId||!item.metadataSha256||!item.sha256)fail('关联图片原始元数据不完整');
+   if(!object(item.metadata)||!identifier(item.metadata.id)||!identifier(item.metadata.pcId)||String(item.metadata.id)!==id||String(item.metadata.pcId)!==pcId||!item.metadataSha256||!item.sha256)fail('关联图片原始元数据不完整');
    if(item.thumbPath){
     if(!name(item.thumbPath,'media-thumbnails/')||!files[item.thumbPath]||paths.has(item.thumbPath)||!item.thumbSha256)fail('关联图片缩略图丢失或路径重复');
     paths.add(item.thumbPath);
@@ -38,7 +48,7 @@ function audit(manifest,archive,files){
  }
  if(images.size!==owners.size)fail('完整备份缺少被档案引用的图片');
  for(const item of workbooks){
-  if(!object(item)||!item.pcId||!name(item.path,'workbooks/')||!files[item.path]||paths.has(item.path))fail('原始 Excel 清单存在无效或重复的文件路径');
+  if(!object(item)||!identifier(item.pcId)||!name(item.path,'workbooks/')||!files[item.path]||paths.has(item.path))fail('原始 Excel 清单存在无效或重复的文件路径');
   const pcId=String(item.pcId);
   if(sheets.has(pcId)||!pcMap.has(pcId)||!excel.has(pcId))fail('原始 Excel 与 PC 的关联不一致');
   // Workbook-store metadata and PC import-source metadata are two distinct historical fields.
@@ -50,7 +60,7 @@ function audit(manifest,archive,files){
   if(sourceKind&&!['fixed','generic','xlsx','csv','tsv'].includes(sourceKind))fail('原始 Excel 来源类型无法识别');
   if(['fixed','generic','xlsx'].includes(sourceKind)&&!item.path.toLowerCase().endsWith('.xlsx'))fail('原始 Excel 来源类型与文件后缀不一致');
   if(['csv','tsv'].includes(sourceKind)&&!item.path.toLowerCase().endsWith('.'+sourceKind))fail('原始 Excel 来源类型与文件后缀不一致');
-  if(item.metadata!==undefined&&(!object(item.metadata)||String(item.metadata.pcId)!==pcId||!item.metadataSha256||!item.sha256))fail('关联 Excel 原始元数据不完整');
+  if(item.metadata!==undefined&&(!object(item.metadata)||!identifier(item.metadata.pcId)||String(item.metadata.pcId)!==pcId||!item.metadataSha256||!item.sha256))fail('关联 Excel 原始元数据不完整');
   sheets.add(pcId);paths.add(item.path);
  }
  if(manifest.backupMode==='complete'&&sheets.size!==excel.size)fail('完整备份缺少 PC 已保留的原始 Excel');
@@ -62,7 +72,7 @@ function audit(manifest,archive,files){
   for(const [kind,items,seen,original] of [['media',unlinked.media,unlinkedMediaIds,images],['workbook',unlinked.workbooks,unlinkedBookIds,sheets]]){
    for(const item of items){
     if(!object(item)||typeof item.id!=='string'||!item.id||seen.has(item.id)||original.has(item.id)||!object(item.metadata)||!name(item.path,`unlinked/${kind}/`)||!files[item.path]||paths.has(item.path))fail('历史附件文件清单不一致');
-    if(String(item.metadata[kind==='media'?'id':'pcId'])!==item.id)fail('历史附件编号与元数据不一致');
+    if(!identifier(item.metadata[kind==='media'?'id':'pcId'])||String(item.metadata[kind==='media'?'id':'pcId'])!==item.id)fail('历史附件编号与元数据不一致');
     // All unlinked entries were introduced with byte and metadata hashes.
     // Reject missing evidence at the same preflight gate used by both verify
     // and restore, rather than accepting a manifest that cannot be restored.

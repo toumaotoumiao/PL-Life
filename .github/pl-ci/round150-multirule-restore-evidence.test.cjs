@@ -38,7 +38,7 @@ test('Round150 source evidence detects original module rules and independent his
 });
 test('Round150 restore validates frozen source BEFORE write and against persisted re-hydration AFTER save',()=>{
  assert.match(html,/const sourceRuleEvidence=completeBackupRuleEvidence\(incoming\)/);
- assert.match(html,/commitArchive:\s*async\(\)=>\{[\s\S]*?completeBackupRuleEvidence\(\{pcs,modules,runPlans,runRecords\}\)!==sourceRuleEvidence[\s\S]*?if\(!saveState\(\)\)/);
+ assert.match(html,/commitArchive:\s*async\(\)=>\{[\s\S]*?completeBackupRuleEvidence\(\{settings,profiles,pcs,modules,runPlans,runRecords\}\)!==sourceRuleEvidence[\s\S]*?if\(!saveState\(\)\)/);
  assert.match(html,/verifyArchive:\s*async text=>\{[\s\S]*?const persisted=ensureSelfProfileAndLinks\(hydrateCanonicalArchive\(rawSaved\)\);[\s\S]*?completeBackupRuleEvidence\(persisted\)!==sourceRuleEvidence/);
  assert.match(html,/await PLDataMigrationTransaction\.run\(/);
 });

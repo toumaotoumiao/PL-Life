@@ -12,7 +12,7 @@ const sort=x=>Array.from(x).sort();
 test('first-stage taxonomy initializes before restoring legacy module archives',()=>{
  assert.ok(html.indexOf('const TRPG_RULE_FAMILY_MAP=')<html.indexOf('let { profiles, settings, runRecords, runPlans, modules, pcs } = loadState();'));
  assert.ok(html.includes("source:'legacy-unmatched'"));
- assert.ok(html.includes("ruleMeta: raw?.ruleMeta ? normalizeModuleRuleMeta"));
+ assert.match(html,/ruleMeta: raw\?\.ruleMeta \? pcPreserveUnknownJsonProps\(raw\.ruleMeta,normalizeModuleRuleMeta\(raw\.ruleMeta/);
 });
 test('PC and module use identical source taxonomy and shared family/system/version filters',()=>{
  for(const p of ['pc','module'])for(const suffix of ['Family','System','Edition'])assert.match(html,new RegExp(`id="${p}Rule${suffix}Filter"`));
@@ -36,11 +36,13 @@ test('read-only bridges filter exact rules and editions, and preserve old CoC7 f
 });
 test('generic PC data saves independently and old CoC7 data stays intact in normalization',()=>{
  assert.match(html,/ruleData: normalizePcRuleData\(raw\?\.ruleData\)/);
- assert.match(html,/coc:normalizePcCoc\(raw&&raw\.coc\)/);
+ assert.match(html,/coc:pcPreserveUnknownJsonProps\(raw\?\.coc,normalizePcCoc\(raw&&raw\.coc\)\)/);
  assert.match(html,/excelEdits:migratedTime\.excelEdits/);
  assert.match(html,/function pcGenericArchiveBlocks\(pc,state/);
  assert.match(html,/if\(!pcRuleIsCoc\(pc\)\)return pcGenericArchiveBlocks/);
- assert.match(html,/if\(!pcRuleIsCoc\(pc\)\)return pcFullArchiveImageCanvases/);
+ assert.match(html,/if\(!pcRuleIsCoc\(pc\)\)return buildPcRuleShowcaseCardCanvas\(pc,state\)/);
+ assert.match(html,/function pcFullArchiveImageCanvases\(pc,state\)/);
+ assert.match(html,/function pcGenericArchiveBlocks\(pc,state/);
  assert.match(html,/if\(!pcRuleIsCoc\(pcDraft\)\)\{appNotice\('PC 档案 → Excel 导入/);
  assert.match(html,/route\.status!=='ready'\|\|route\.adapterId!=='coc7'/); // CoC7 export is guarded by the current confirmed rule/edition route
  assert.match(html,/if\(!pcRuleIsCoc\(pc\)\)return html;let rows=/);

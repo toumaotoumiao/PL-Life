@@ -1,0 +1,26 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'../..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const a=html.indexOf('const PC_DND_STRUCTURE_LAYOUTS=Object.freeze({'),b=html.indexOf('async function pcDndStructurePreviewFile(',a);
+assert.ok(a>0&&b>a,'D&D source-backed readonly section exists');
+function cell(sheet,ref){const m=/^([A-Z]+)(\d+)$/.exec(ref);let col=0;for(const c of m[1])col=col*26+c.charCodeAt(0)-64;return sheet?.rows?.[+m[2]-1]?.[col-1]??'';}
+const api=new Function('pcInsaneSheetCell',html.slice(a,b)+'return {read:pcDndStructurePreviewFromSheets,render:pcDndStructurePreviewHTML,anchors:PC_DND_SOURCE_ANCHORS,layout:PC_DND_STRUCTURE_LAYOUTS,outline:pcDndSourceOutlineFromSheets};')(cell);
+const labels=['力量','敏捷','体质','智力','感知','魅力'];
+function put(rows,ref,value){const m=/^([A-Z]+)(\d+)$/.exec(ref);let col=0;for(const c of m[1])col=col*26+c.charCodeAt(0)-64;(rows[+m[2]-1]??=[])[col-1]=value;}
+function sheets(id){const profile=api.layout[id],data=Array.from({length:profile.sheetCount},(_,i)=>({name:'PRIVATE_SHEET_NOT_FOR_UI',rows:[]}));
+ profile.refs.forEach((ref,i)=>put(data[1].rows,ref,labels[i]));
+ profile.candidateRefs.forEach((ref,i)=>put(data[1].rows,ref,10+i));
+ for(let i=0;i<data.length;i++)Object.defineProperty(data[i].rows,'formulaRefs',{value:new Set(i===1?profile.companionFormulas:[])});
+ const generic={'背景':'背景','种族／物种':'种族','阵营':'阵营','等级':'等级','熟练加值':'熟练加值','先攻':'先攻','生命值':'生命值'};
+ for(const anchor of api.anchors[id])put(data[anchor.sheet].rows,anchor.ref,generic[anchor.label]);
+ put(data[0].rows,'A1','PRIVATE_USER_CHARACTER_NEVER_RENDER');
+ put(data[1].rows,'A40','PRIVATE_USER_BACKGROUND_NEVER_RENDER');return data;}
+test('Round220 both distinct layouts expose seven static label positions, no values',()=>{for(const id of ['layout-21','layout-8']){const m=api.read(sheets(id));assert.equal(m.sourceOutline.length,7);assert.equal(m.sourceOutline.filter(x=>x.status==='label-match').length,7);assert.ok(m.sourceOutline.every(x=>/^\d+:[A-Z]+\d+$/.test(x.source)));assert.equal(m.readOnly,true);}});
+test('Round220 private workbook strings, sheet names and numeric values never leak into source outline',()=>{for(const id of ['layout-21','layout-8']){const wb=sheets(id);const outline=api.outline(wb,id),render=api.render(api.read(wb));for(const bad of ['PRIVATE_USER_CHARACTER','PRIVATE_USER_BACKGROUND','PRIVATE_SHEET_NOT_FOR_UI']){assert.equal(JSON.stringify(outline).includes(bad),false);assert.equal(render.includes(bad),false);}assert.equal(outline.some(x=>Object.keys(x).some(k=>/raw|value|formula|name|file/i.test(k))),false);}});
+test('Round220 not-confirmed or formula-backed static anchors fail closed without guessing nearby input',()=>{const wb=sheets('layout-8'),a=api.anchors['layout-8'][0];put(wb[a.sheet].rows,a.ref,'UNRELATED_PRIVATE_TEXT');assert.equal(api.read(wb).sourceOutline[0].status,'unverified');put(wb[a.sheet].rows,a.ref,'背景');wb[a.sheet].rows.formulaRefs.add(a.ref);assert.equal(api.read(wb).sourceOutline[0].status,'unverified');});
+test('Round220 source outline is visibly separate from six pickable attributes',()=>{const m=api.read(sheets('layout-8')),view=api.render(m,true);assert.equal((view.match(/data-pc-dnd-pick=/g)||[]).length,6);assert.equal((view.match(/pc-dnd-outline-row/g)||[]).length,7);assert.match(view,/仅核对固定标签/);assert.match(view,/输入格未核对/);assert.match(view,/<details class="pc-dnd-outline"\s*>/);});
+test('Round220 wrong formula fingerprint still rejects full template before field markers are trusted',()=>{const wb=sheets('layout-21');wb[1].rows.formulaRefs.delete('F12');assert.throws(()=>api.read(wb),/公式结构/);});
+test('Round220 previous manual six-value writer remains independently scoped, no identity/combat writes',()=>{const x=html.indexOf('function pcDndManualDraftPlan('),y=html.indexOf('async function pcDndManualApplyFromPreview(',x);assert.ok(x>0&&y>x);const plan=html.slice(x,y);assert.doesNotMatch(plan,/sourceOutline|pcDndSourceOutlineFromSheets/);assert.match(plan,/PC_DND_SIX_LABELS/);assert.doesNotMatch(plan,/pcWorkbookPut\(|saveState\(/);});
+test('Round220 source preview is not a rule edition detector or full character importer',()=>{assert.match(html,/editionInferred:false/);assert.match(html,/sourceOutline,readOnly:true/);assert.doesNotMatch(html.slice(a,b),/file\.name|saveState\(|pcWorkbookPut\(/);});
+test('Round220 responsive source outline has 44px touch target and bounded label wrapping',()=>{assert.match(html,/#pcDndPreviewBackdrop \.pc-dnd-outline summary\{min-height:44px/);assert.match(html,/#pcDndPreviewBackdrop \.pc-dnd-outline-row span\{overflow-wrap:anywhere/);});
+test('Round220 current version/cache, both CI entry points and private-file exclusions',()=>{const version=html.match(/const APP_UI_VERSION = "([^"]+)"/)?.[1];assert.ok(version&&fs.readFileSync(path.join(root,'sw.js'),'utf8').includes(version));for(const name of ['pl-browser-synthetic.yml','pl-native-restore-gate.yml'])assert.match(fs.readFileSync(path.join(root,'.github/workflows',name),'utf8'),/round220-dnd5-source-outline\.test\.cjs/);assert.ok(!fs.readdirSync(root).some(x=>/\.xlsx$|\.pdf$/i.test(x)));});

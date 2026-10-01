@@ -22,7 +22,9 @@ test('PL list defaults to four rated items while preserving explicit expand-all 
 });
 
 test('PC list keeps only five provided core values and leaves detail archive untouched',()=>{
-  assert.match(html,/pcCoreStats\(pc\)\.filter\(\(\[,v\]\)=>pcStatProvided\(v\)\)\.slice\(0,5\)/);
+  assert.match(html,/function pcCardStats\(pc,max\)/);
+  assert.match(html,/function pcCardHTML\(pc\)[\s\S]*?const stats=pcCardStats\(pc,5\)/);
+  assert.match(html,/function pcCompactRowHTML\(pc\)[\s\S]*?const stats=pcCardStats\(pc,3\)/);
   assert.match(html,/#pcsView \.pc-core-stat\{[^}]*border:0!important/);
 });
 

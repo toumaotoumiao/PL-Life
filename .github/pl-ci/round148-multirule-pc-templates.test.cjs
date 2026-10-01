@@ -8,7 +8,8 @@ const api=new Function('clone','moduleRuleDisplay','escapeHTML',`${html.slice(a,
 const pc=(systemId='coc',editionId='7e')=>({ruleMeta:{familyId:systemId==='coc'?'brp':'saikoro-fiction',systemId,editionId},ruleData:{traits:[],skills:[],resources:[]},ruleSheets:{},coc:{str:65,hp:12,san:63},excelEdits:[{sheet:'角色卡',ref:'A1',value:'旧数据'}],background:{description:'人物历史'}});
 test('officially distinct BRP, Insane and Shinobigami templates contain only core archival fields',()=>{
  const keys=Object.keys(api.PC_RULE_SHEET_TEMPLATES).sort();
- assert.deepEqual(keys,['brp-generic','insane','shinobigami']);
+ for(const key of ['brp-generic','insane','shinobigami'])assert.ok(keys.includes(key),key);
+ assert.ok(keys.includes('dnd:5e-2014')&&keys.includes('dnd:5e-2024'));
  assert.deepEqual(api.PC_RULE_SHEET_TEMPLATES.insane.defaults.traits,['生命力','正气度']);
  assert.deepEqual(api.PC_RULE_SHEET_TEMPLATES.shinobigami.defaults.traits,['流派','阶级','生命力']);
  for(const template of Object.values(api.PC_RULE_SHEET_TEMPLATES)){
@@ -69,12 +70,13 @@ test('normalization, input handlers, export and search use current template, not
   'ruleSheets: normalizePcRuleSheets(raw?.ruleSheets)',
   'pcRuleEditableData(pcDraft)[key][index][genericField]=e.target.value',
   'pcRuleEditableData(pcDraft)[key].push({label:',
-  'pcRuleEditableData(pcDraft)[key].splice(index,1)',
+  'rows.splice(index,1)',
+  'pcRuleRememberDeleted(pcDraft,key,index,rows[index])',
   'const genericData=pcRuleCurrentData(pc)',
   'const rd=pcRuleCurrentData(pc),tpl=PC_RULE_SHEET_TEMPLATES',
   "if(!pcRuleIsCoc(pc))return pcGenericArchiveBlocks(pc,state,innerWidth)",
   '...ruleSearchTerms(pc.ruleMeta)',
-  "const selectedSheet=special?(pc.ruleSheets?.[pc.ruleMeta?.systemId]||{}):pc.ruleData"
+  "const selectedSheet=isDnd?"
  ])assert.ok((html+fs.readFileSync(path.join(root,'field-adapters.js'),'utf8')).includes(needle),needle);
  assert.match(html,/sheet=clone\(pcRuleCurrentData\(pcDraft\)\)/);
  assert.match(html,/本次没有复制任何字段/);

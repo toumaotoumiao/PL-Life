@@ -1,0 +1,125 @@
+{
+  "profileVersion": 1,
+  "purpose": "Read-only mapping and test evidence; NOT a complete rulebook or a production Excel adapter",
+  "template": "insane",
+  "editionInference": "manual-only",
+  "officialEditionOptions": [
+    {
+      "id": "2013-original",
+      "label": "旧版（2013）"
+    },
+    {
+      "id": "2025-revised",
+      "label": "新版（2025）"
+    }
+  ],
+  "inputSources": [
+    {
+      "id": "community-xlsx",
+      "file": "inSANe大判空白卡V2.0数据（自动卡）.xlsx",
+      "type": "xlsx",
+      "classification": "community compiled; contains mixed supplement data; precise official edition unconfirmed",
+      "sheets": [
+        "角色表",
+        "性格表",
+        "职业表",
+        "技能表",
+        "过去表",
+        "骰子&CCF快捷导入",
+        "图表"
+      ],
+      "sha256": "890167e38cf883e1e284985412a35d3b0e03b64457c9358cbc839fdf7b3c4304",
+      "sizeBytes": 155342
+    },
+    {
+      "id": "community-pdf",
+      "file": "【新ins】角色卡汉化.pdf",
+      "type": "pdf",
+      "pages": 2,
+      "classification": "Chinese sheet; edition unconfirmed by filename",
+      "sha256": "d95e15bed98b963752894dfd155627ef3839fb70972efc6befcf5b20889c7f78",
+      "sizeBytes": 18533256
+    }
+  ],
+  "commonCoreFields": [
+    "姓名",
+    "年龄",
+    "性别",
+    "职业",
+    "生命力",
+    "正气度",
+    "特技",
+    "好奇心",
+    "恐怖心",
+    "能力",
+    "道具"
+  ],
+  "xlsxMainCellHints": {
+    "name": "角色表!B20",
+    "age": "角色表!B21",
+    "gender": "角色表!E21",
+    "occupation": "角色表!B26",
+    "life": "角色表!E22",
+    "sanity": "角色表!E23",
+    "achievement": "角色表!E24",
+    "abilities": "角色表!H17:H37",
+    "specialities": "角色表!B29:E30",
+    "specialityGrid": "角色表!I2:T12",
+    "items": "角色表!E32,E34,E36",
+    "history": "角色表!H40:O48",
+    "itemUsage": "角色表!D32,D34,D36",
+    "privateHistoryNotes": "角色表!P40:P48 (presence only; never display text)"
+  },
+  "pdfPageHints": {
+    "1": [
+      "基本信息",
+      "特技表",
+      "生命力/正气度",
+      "好奇心/恐怖心",
+      "能力列表",
+      "道具/情报"
+    ],
+    "2": [
+      "世界观",
+      "住所",
+      "日常",
+      "重视",
+      "外表",
+      "相关人物",
+      "事件经历",
+      "模组经历/感想/成长"
+    ]
+  },
+  "importPolicy": [
+    "Only explicit user content, never evaluate formulas as entered values",
+    "Do not import internal calculation / lookup / CCF helper tables as PC fields",
+    "Do not auto-assign 2013/2025 edition by source filename",
+    "Keep original workbook as external reference; do not distribute source in website ZIP",
+    "Secrets, missions, handouts require private controls; do not publish in public PC sheet",
+    "Unknown/mismatched schema stops automatic Excel import; preserve original"
+  ],
+  "readOnlyPreview": {
+    "status": "source-layout-only",
+    "editionInference": "none",
+    "formulaValues": "ignored",
+    "defaultValues": "shown-but-not-classified-as-user-data",
+    "writesToPc": false,
+    "mainSheet": "角色表",
+    "otherSheets": "excluded",
+    "supplement": {
+      "status": "read-only optional groups",
+      "specialities": "B29:E30 selections; matching grid coordinates only, never bulk list",
+      "abilities": "H17:H37 names only, cached formula effects ignored",
+      "items": "D/E32,34,36 usage and quantities",
+      "history": "H/K/L/O40:48 visible only in editor; P40:48 note content hidden",
+      "blankComparison": "reject grid/label mismatch; no automatic merge"
+    },
+    "blankBaselineGuard": {
+      "status": "implemented-for-known-community-layout",
+      "scope": "recognized-editable-cells-only",
+      "populatedSecondCard": "reject",
+      "otherSheetsBlankness": "not-verified",
+      "privateNotes": "no-value-in-error"
+    }
+  }
+}

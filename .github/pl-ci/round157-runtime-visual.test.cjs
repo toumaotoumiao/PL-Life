@@ -27,3 +27,5 @@ test('release metadata and current schema compatible',()=>{
  assert.match(version||'',/^8\.1\.12\.\d+$/);assert.ok(sw.includes('v'+version));assert.equal((html.match(new RegExp(`<strong class=\"version-log-version\">v${version.replaceAll('.','\\.')}<\/strong>`,'g'))||[]).length,1);
  assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
 });
+
+test('Round237 split visual runs require an explicit complete version-consistent matrix',()=>{const merger=fs.readFileSync(path.join(__dirname,'round237-visual-matrix-merge.py'),'utf8');assert.match(runner,/PL_VISUAL_WIDTHS/);assert.match(merger,/visual matrix incomplete or mixed application versions/);assert.match(merger,/referenced screenshot missing/);assert.match(workflow,/round237-visual-matrix-merge-test\.py/);});

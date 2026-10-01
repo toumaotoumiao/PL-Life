@@ -22,6 +22,6 @@ test('actual browser checks multi page, long, mobile width and canvas pixel immu
  assert.match(workflow,/Round164:\$\{\{ steps\.round164_browser\.outcome \}\}/);
 });
 test('version and cache remain synchronous; old version preserved',()=>{
- const v=html.match(/const APP_UI_VERSION = "([\d.]+)";/)?.[1];assert.equal(v,'8.1.12.231');assert.ok(sw.includes('v'+v));assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
+ const v=html.match(/const APP_UI_VERSION = "([\d.]+)";/)?.[1];assert.match(v,/^\d+(?:\.\d+){3}$/);assert.ok(sw.includes('v'+v));assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
  for(const n of ['228','229'])assert.equal((html.match(new RegExp('<strong class="version-log-version">v8\\.1\\.12\\.'+n+'</strong>','g'))||[]).length,1);
 });

@@ -169,7 +169,7 @@
           const digest=async text=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))),
             b=>b.toString(16).padStart(2,'0')).join('');
           const core=await digest(archiveCore(current));
-          const rules=await digest(completeBackupRuleEvidence({pcs,modules,runPlans,runRecords}));
+          const rules=await digest(completeBackupRuleEvidence({settings,profiles,pcs,modules,runPlans,runRecords}));
           sessionStorage.setItem('__pl_stage3_restore_core_sha',core);
           sessionStorage.setItem('__pl_stage3_restore_rules_sha',rules);
           return {ready:true,distinctModules:current.data.modules.filter(m=>m.name==='合成同名不同规则模组').length===2,
@@ -183,7 +183,7 @@
           if(!expectedCore||!expectedRules)throw Error('missing synthetic checkpoint after full app reload');
           const current=buildCanonicalArchive(true),raw=localStorage.getItem(STORAGE_KEY),persisted=raw?JSON.parse(raw):null;
           const coreSha=await digest(archiveCore(current));
-          const rulesSha=await digest(completeBackupRuleEvidence({pcs,modules,runPlans,runRecords}));
+          const rulesSha=await digest(completeBackupRuleEvidence({settings,profiles,pcs,modules,runPlans,runRecords}));
           const rows=await pcMediaAllRows(),workbooks=await pcWorkbookAllRows();
           const media=rows.find(x=>x.id==='__stage2_synthetic_image');
           const excel=workbooks.find(x=>x.pcId==='__stage2_synthetic_workbook');

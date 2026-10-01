@@ -34,6 +34,15 @@ SEED='''()=>{
 
 VIEW_MAP={'profiles':'profilesView','pcs':'pcsView','modules':'modulesView','plans':'plansView','records':'recordsView','selfIntro':'selfIntroView','stats':'statsView'}
 WIDTHS=[320,375,390,430,768,1024,1280,1440]
+# Optional deterministic partitions let resource-constrained local environments
+# execute the unchanged full acceptance matrix without long screenshot stalls.
+ALL_WIDTHS=tuple(WIDTHS)
+requested=os.environ.get('PL_VISUAL_WIDTHS','')
+if requested:
+    selected=[int(v.strip()) for v in requested.split(',') if v.strip()]
+    if not selected or len(set(selected))!=len(selected) or any(v not in ALL_WIDTHS for v in selected):
+        raise ValueError('Invalid PL_VISUAL_WIDTHS: must be distinct supported viewport widths')
+    WIDTHS=selected
 BREAKER=[760,761,900,901,1100,1101]
 failures=[]; checks=0;screenshots=[];profiles={}
 

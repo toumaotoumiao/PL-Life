@@ -12,6 +12,8 @@ function runtime(){
   vm.createContext(ctx);
   vm.runInContext(section('function normalizeLogRows(', '\nfunction isoDatePart('),ctx);
   vm.runInContext(section('/* 桌次状态属于存档启动依赖', '/* ---------- 02. 自定义字段默认评价模板'),ctx);
+  ctx.clone=x=>JSON.parse(JSON.stringify(x));
+  vm.runInContext(section('function pcPreserveUnknownJsonProps(', 'function normalizePcArchive('),ctx);
   vm.runInContext(section('/* 第71轮：桌次的生命周期', 'function normalizeRunPlan('),ctx);
   vm.runInContext(section('function assertRunLogInputPreserved()', 'function assertPcCollectionInputPreserved('),ctx);
   return ctx;

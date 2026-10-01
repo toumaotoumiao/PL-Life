@@ -17,7 +17,7 @@ test('rule taxonomy uses the agreed real rule families and does not invent theme
 test('new modules default to confirmed CoC seventh edition while legacy rules are inferred without erasing raw text',()=>{
   assert.match(html,/defaultModuleRuleMeta\(source='new-default'\)[\s\S]*familyId:'brp',systemId:'coc',editionId:'7e'/);
   assert.match(html,/ruleMeta: defaultModuleRuleMeta\('new-default'\)/);
-  assert.match(html,/ruleMeta: normalizeModuleRuleMeta\([\s\S]*raw === null \|\| raw === void 0 \? void 0 : raw\.ruleMeta/);
+  assert.match(html,/ruleMeta: pcPreserveUnknownJsonProps\(raw\?\.ruleMeta, normalizeModuleRuleMeta\([\s\S]*raw === null \|\| raw === void 0 \? void 0 : raw\.ruleMeta/);
   assert.match(html,/rules: String\(/,'legacy rules text must remain in the archive');
 });
 

@@ -45,9 +45,10 @@ test('actual canonical hydration projects rule sheets without false loss after r
   pcPromoteLegacyCardTime:r=>({cardTime:r?.cardTime||{},excelEdits:r?.excelEdits||[]}),normalizePcCoc:r=>r||{},normalizePcSkills:r=>r||[],normalizePcWeapons:r=>r||[],normalizePcBackground:r=>r||{},normalizePcStoredSnapshots:r=>r||[],
   PLDataMigrationGuard:{requireReadable:()=>{}},isCanonicalArchive:()=>true,assertCanonicalIntegrity:()=>{},normalizeSettings:r=>r,
   runtimeProfileFromCanonical:r=>r,canonicalProfileFromRuntime:r=>r,normalizeCanonicalModule:r=>r,normalizeRunPlan:r=>r,normalizeRunRecord:r=>r,
-  BACKUP_FORMAT:'synthetic',PLDataHeritage:{capture:(raw,projection)=>{x.projection=projection;return {entries:[]};}}
+  BACKUP_FORMAT:'synthetic',settings:{moduleArchive:{}},normalizeRichModule:r=>r,pcPreserveUnknownJsonProps:(raw,canonical,excluded)=>Object.assign(canonical,Object.fromEntries(Object.entries(raw||{}).filter(([key])=>!Object.prototype.hasOwnProperty.call(canonical,key)&&!excluded?.has(key)&&!['__proto__','constructor','prototype'].includes(key)).map(([key,v])=>[key,clone(v)]))),PLDataHeritage:{capture:(raw,projection)=>{x.projection=projection;return {entries:[]};}}
  };vm.createContext(x);
  vm.runInContext(html.slice(start('function normalizePcRuleData('),start('function pcValidateArchiveInput(')),x);
+ vm.runInContext(html.slice(start('function canonicalModuleFromRuntime('),start('function canonicalRunFromRuntime(')),x);
  vm.runInContext(html.slice(start('function hydrateCanonicalArchive('),start('function isSelfProfile(')),x);
  const p=legacyPc();p.ruleMeta={familyId:'saikoro-fiction',systemId:'insane',editionId:'',source:'user-selected'};
  p.ruleSheets={insane:{traits:[{label:'生命力',value:'6',future:'flag'}],skills:[],resources:[],future:{v:2}},'unrecognized-future':{store:{critical:1}}};

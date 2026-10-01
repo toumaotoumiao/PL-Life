@@ -1,0 +1,14 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const root=path.resolve(__dirname,'../..'),src=fs.readFileSync(path.join(root,'backup-restore-preflight.js'),'utf8');
+const box={};vm.createContext(box);vm.runInContext(src,box);const audit=box.PLBackupRestorePreflight.audit;
+function fixture(){return {archive:{data:{pcs:[{id:'fiction',avatarMediaId:'photo',galleryMediaIds:[],excelSource:{kind:'fixed'}}]}},manifest:{backupMode:'complete',mediaCount:1,media:[{id:'photo',pcId:'fiction',path:'media/a.png',type:'image/png',sha256:'x',metadataSha256:'y',metadata:{id:'photo',pcId:'fiction'}}],workbooks:[{pcId:'fiction',kind:'fixed',path:'workbooks/a.xlsx',sha256:'x',metadataSha256:'y',metadata:{pcId:'fiction'}}]},files:{'archive.json':new Uint8Array(1),'manifest.json':new Uint8Array(1),'media/a.png':new Uint8Array(1),'workbooks/a.xlsx':new Uint8Array(1)}}}
+test('Round235 valid ID and legacy safe positive integer metadata remain accepted',()=>{let f=fixture();assert.equal(audit(f.manifest,f.archive,f.files).pcCount,1);f=fixture();f.archive.data.pcs[0].id=12;f.archive.data.pcs[0].avatarMediaId=23;f.manifest.media[0].id=23;f.manifest.media[0].metadata.id=23;f.manifest.media[0].pcId=12;f.manifest.media[0].metadata.pcId=12;f.manifest.workbooks[0].pcId=12;f.manifest.workbooks[0].metadata.pcId=12;assert.equal(audit(f.manifest,f.archive,f.files).mediaCount,1)});
+for (const [label,mutate] of [
+ ['image metadata id object',f=>{f.manifest.media[0].id='[object Object]';f.manifest.media[0].metadata.id={};f.archive.data.pcs[0].avatarMediaId='[object Object]'}],
+ ['image metadata owner object',f=>{f.manifest.media[0].pcId='[object Object]';f.manifest.media[0].metadata.pcId={};f.archive.data.pcs[0].id='[object Object]';f.manifest.workbooks[0].pcId='[object Object]';f.manifest.workbooks[0].metadata.pcId='[object Object]'}],
+ ['workbook metadata owner object',f=>{f.archive.data.pcs[0].id='[object Object]';f.manifest.media[0].pcId='[object Object]';f.manifest.media[0].metadata.pcId='[object Object]';f.manifest.workbooks[0].pcId='[object Object]';f.manifest.workbooks[0].metadata.pcId={}}],
+ ['image metadata boolean owner',f=>{f.manifest.media[0].metadata.pcId=true;f.manifest.media[0].pcId='true';f.archive.data.pcs[0].id='true';f.manifest.workbooks[0].pcId='true';f.manifest.workbooks[0].metadata.pcId='true'}]
+])test('Round235 rejects '+label+' before any restoration writes',()=>{let f=fixture();mutate(f);assert.throws(()=>audit(f.manifest,f.archive,f.files),/未被覆盖/)});
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+test('Round235 production exporter and restored metadata both refuse string coercion of objects',()=>{assert.match(html,/typeof metadata\.id==='string'/);assert.match(html,/typeof meta\.pcId==='number'/);});
