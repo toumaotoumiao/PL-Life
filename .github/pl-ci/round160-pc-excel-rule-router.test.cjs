@@ -5,7 +5,7 @@ const extract=(a,b)=>{const start=html.indexOf(a),end=html.indexOf(b,start);asse
 const harness=`let pcWorkbookPending=null,pcDraft=null; async function pcWorkbookGet(){return null;} function pcRuleTemplateKey(pc){const id=String(pc?.ruleMeta?.systemId||'');if(id==='dnd'){const edition=String(pc?.ruleMeta?.editionId||'');return ['5e-2014','5e-2024'].includes(edition)?'dnd:'+edition:'';}return id;}`;
 const code=[harness,extract('const TRPG_RULE_FAMILIES=Object.freeze(', 'let { profiles, settings, runRecords, runPlans, modules, pcs } = loadState();'),extract('function defaultModuleRuleMeta(', 'function normalizeModuleRating('),extract('function pcRuleIsCoc(', 'function pcGenericRuleEditorHTML(')].join('\n');
 const ui={};for(const id of ['pcFooterExportExcelBtn','pcFooterExcelExportStatus'])ui[id]={hidden:true,disabled:false,textContent:'',dataset:{},title:''};
-const api=new Function('document',code+'\nreturn {pcExcelExportAvailability,syncPcExcelExportUi,PC_EXCEL_EXPORT_ADAPTERS,pcRuleIsCoc};')({getElementById:id=>ui[id]||null});
+const api=new Function('document',code+'\nreturn {pcExcelExportAvailability,syncPcExcelExportUi,PC_EXCEL_EXPORT_ADAPTERS,pcRuleIsCoc};')({getElementById:id=>ui[id]||null,querySelector:()=>null});
 const rule=(familyId,systemId,editionId='',confirmed=true,extra={})=>({ruleMeta:{familyId,systemId,editionId,confirmed,source:confirmed?'user-selected':'legacy-pc-default',...extra},name:'合成PC',id:'synthetic'});
 test('only confirmed CoC7 and D&D template-filled character-card adapters are executable',()=>{
  assert.deepEqual(Object.keys(api.PC_EXCEL_EXPORT_ADAPTERS),['coc:7e','dnd:5e-2014','dnd:5e-2024']);

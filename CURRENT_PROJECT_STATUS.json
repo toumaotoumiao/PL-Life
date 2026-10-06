@@ -2,16 +2,16 @@
   "format": "pl-life-current-project-status",
   "statusVersion": 1,
   "sourceOfTruth": true,
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-07",
   "current": {
-    "stage": 96,
-    "appVersion": "8.1.12.274",
+    "stage": 114,
+    "appVersion": "8.1.12.292",
     "schemaVersion": 26,
     "branchState": "release-candidate",
     "focus": [
-      "全站图片导出第二轮文案减法",
-      "统一最终预览隐私状态为简短标签",
-      "修复 v272 历史记录与运行时/离线缓存版本一致性"
+      "修复 GitHub Actions synthetic Chromium 的 Round141 假失败",
+      "Round141 隔离 PC 完整档案导出夹具同步当前 moduleRuleDisplay 生产依赖",
+      "保持 Stage113 开团计划默认具体时间产品逻辑不变"
     ]
   },
   "statusPolicy": {
@@ -39,10 +39,11 @@
   },
   "currentVersionAcceptance": {
     "automated": {
-      "state": "passed-stage96",
+      "state": "stage114-local-regression-passed-github-synthetic-rerun-pending",
       "node": {
-        "passed": 964,
-        "total": 964
+        "state": "pass",
+        "passed": 1036,
+        "total": 1036
       },
       "imageExportRegression": {
         "state": "covered-by-full-node-and-targeted-browser-regressions",
@@ -67,6 +68,7 @@
       },
       "productionPreflight": "pass",
       "workflowYaml": {
+        "state": "pass",
         "passed": 2,
         "total": 2
       },
@@ -105,7 +107,7 @@
         "storageHarness": "isolated-memory-workbook-stub",
         "note": "当前执行环境阻止 localhost 原生 IndexedDB 浏览器导航；原生附件/完整 ZIP 持久化继续由既有存储与恢复回归覆盖，不将本项冒充原生 IndexedDB 真机证明。"
       },
-      "baselineInheritedFrom": "Stage93 full regression + Stage96 full Node/browser regression",
+      "baselineInheritedFrom": "Stage113 full Node 1036/1036 + Round285 Chromium 72/72；Stage114 仅修复 Round141 synthetic fixture 依赖并重新回归",
       "targetedStaticChecksStage95": {
         "passed": 10,
         "total": 10,
@@ -136,38 +138,534 @@
           1280
         ],
         "scope": "最终预览适应宽度/原尺寸、分页/长图、页面不横向溢出"
+      },
+      "targetedStaticChecksStage97": {
+        "state": "pass",
+        "passed": 6,
+        "total": 6,
+        "items": [
+          "统一导出头部支持无眉题紧凑模式",
+          "PL／KP 跑团整理成品去掉最后的身份眉题并收紧头部",
+          "年度排期总标题区移除重复图例",
+          "整合回顾移除重复范围说明和“高密度回顾”标签",
+          "PC 图库与空经历删除程序说明",
+          "长图最终预览说明缩短"
+        ]
+      },
+      "round270ExportOutputDensityStatic": {
+        "passed": 6,
+        "total": 6,
+        "state": "pass",
+        "scope": "导出成品头部压缩、年度排期重复说明移除、整合回顾数据优先、PC 成品说明减法"
+      },
+      "round270ExportOutputDensityBrowser": {
+        "passed": 8,
+        "total": 8,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "无眉题紧凑头部高度、正常头部安全高度与版本运行时一致性"
+      },
+      "targetedStaticChecksStage98": {
+        "passed": 6,
+        "total": 6,
+        "state": "pass",
+        "scope": "年度排期头部空白、PC／模组动态高度、单桌回顾紧凑布局、PL／KP 卡片测量一致、整合回顾密度联动、版本一致性"
+      },
+      "round271ExportInternalDensityBrowser": {
+        "passed": 8,
+        "total": 8,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "PL／KP 分组头与条目、单桌回顾面板和概览高度的绘制/测量一致性"
+      },
+      "targetedStaticChecksStage99": {
+        "state": "pass",
+        "passed": 6,
+        "total": 6,
+        "scope": "长 PC/HO、长 Log、稀疏画布、连续长图头部与版本一致性"
+      },
+      "round272ExportExtremeContentBrowser": {
+        "state": "pass",
+        "passed": 12,
+        "total": 12,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "长 PC/HO 与 Log 完整换行、稀疏/极端内容几何、页面横向溢出与运行时版本"
+      },
+      "round242DndResponsiveContract": {
+        "state": "pass",
+        "passed": 82,
+        "total": 82,
+        "viewports": [
+          320,
+          375,
+          390,
+          430,
+          768,
+          1024,
+          1280,
+          1440
+        ],
+        "scope": "同一 D&D PC 在未绑定模板时验证“设置 D&D 角色卡模板”，绑定同版合成模板元数据后验证“导出 D&D 角色 Excel 卡”；legacy standalone diagnostic XLSX 继续只读回归"
+      },
+      "historicalSyntheticBrowserV274": {
+        "state": "reviewed",
+        "source": "pl-synthetic-browser-result (14).zip",
+        "appVersion": "8.1.12.274",
+        "conclusion": "主体浏览器与原生恢复证据有效；Round242 的 8 个 export-button-ready 失败属于 Stage93 后产品语义变更导致的旧契约假红，不作为产品故障。",
+        "nativeRestoreRound187": "pass"
+      },
+      "stage100TargetedBrowser": {
+        "state": "pass",
+        "passed": 211,
+        "total": 211,
+        "scope": "Round242/264/268 D&D + Stage99 图片导出关键浏览器回归（161/164/265/267/270/271/272）"
+      },
+      "round273DndIdentityMapStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "D&D 七项身份/战斗模板坐标映射、安全拒绝、保存与直接导出契约"
+      },
+      "round273DndIdentityMapBrowser": {
+        "state": "pass",
+        "passed": 16,
+        "total": 16,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "合成 21-sheet 模板：六属性+七项人工映射字段共 13 项回填；公式/标签/重复/不存在格拒绝；映射元数据备份序列化保持"
+      },
+      "stage101TargetedBrowser": {
+        "state": "pass",
+        "passed": 227,
+        "total": 227,
+        "scope": "D&D Round242/264/268/273 共117项 + 图片导出关键 Round161/164/265/267/270/271/272 共110项"
+      },
+      "round274DndMapWorkflowStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "D&D 模板字段映射实时状态、正式安全校验复用、规则页完成度、键盘/下一项流程契约"
+      },
+      "round274DndMapWorkflowBrowser": {
+        "state": "pass",
+        "passed": 18,
+        "total": 18,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "2/7→7/7 映射进度、PC 已填/可导出拆分、危险坐标即时提示、坐标规范化、下一项未完成、保存后规则页完成度刷新、44px 触控"
+      },
+      "stage102TargetedBrowser": {
+        "state": "pass",
+        "passed": 245,
+        "total": 245,
+        "scope": "D&D Round242/264/268/273/274 共135项 + 图片导出 Round161/164/265/267/270/271/272 共110项"
+      },
+      "round275DndMapBatchProfileStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "D&D 分组映射、批量坐标、同版配置复用与设置持久化契约"
+      },
+      "round275DndMapBatchProfileBrowser": {
+        "state": "pass",
+        "passed": 20,
+        "total": 20,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "身份3项/战斗4项分组、批量7/7、同版配置复用、危险配置当前模板重新校验、44px触控"
+      },
+      "stage103TargetedBrowser": {
+        "state": "pass",
+        "passed": 265,
+        "total": 265,
+        "scope": "D&D Round242/264/268/273/274/275 共155项 + 图片导出 Round161/164/265/267/270/271/272 共110项"
+      },
+      "round276DndExtendedMapStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "D&D 技能/装备扩展字段候选、保护区、v2 profile 与兼容性契约"
+      },
+      "round276DndExtendedMapBrowser": {
+        "state": "pass",
+        "passed": 26,
+        "total": 26,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "搜索/批量扩展映射、保护区拒绝、v2 配置、真实合成 XLSX 技能/装备写入回读与跨 PC 复用"
+      },
+      "stage104TargetedBrowser": {
+        "state": "pass",
+        "passed": 291,
+        "total": 291,
+        "scope": "D&D Round242/264/268/273/274/275/276 共181项 + 图片导出 Round161/164/265/267/270/271/272 共110项"
+      },
+      "stage104DndTargetedBrowser": {
+        "state": "pass",
+        "passed": 181,
+        "total": 181,
+        "scope": "D&D 模板设置、六属性、七项身份/战斗、分组/批量/复用、技能/装备扩展映射"
+      },
+      "round277DndLargeMapStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "大量扩展候选容量、状态/分组筛选、拼音搜索、当前结果批量选择契约"
+      },
+      "round277DndLargeMapBrowser": {
+        "state": "pass",
+        "passed": 20,
+        "total": 20,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "160技能+重名字段+装备的大量映射管理、拼音/冲突/分组/状态筛选和批量选择"
+      },
+      "stage105DndTargetedBrowser": {
+        "state": "pass",
+        "passed": 201,
+        "total": 201,
+        "scope": "Round242/264/268/273/274/275/276/277 D&D current-version browser regression"
+      },
+      "stage105TargetedBrowser": {
+        "state": "pass",
+        "passed": 311,
+        "total": 311,
+        "scope": "D&D 201/201 + image-export regression 110/110"
+      },
+      "round278DndSequenceStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "连续坐标候选控件、当前筛选已加入字段范围、向下/向右步长与不自动保存契约"
+      },
+      "round278DndSequenceBrowser": {
+        "state": "pass",
+        "passed": 20,
+        "total": 20,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "从首个映射取起点、纵向/横向步长、公式格与不存在格继续阻断、候选不自动保存"
+      },
+      "stage106TargetedBrowser": {
+        "state": "pass",
+        "passed": 331,
+        "total": 331,
+        "scope": "D&D 221/221 + image-export regression 110/110"
+      },
+      "stage106DndTargetedBrowser": {
+        "state": "pass",
+        "passed": 221,
+        "total": 221,
+        "scope": "Round242/264/268/273/274/275/276/277/278"
+      },
+      "imageExportTargetedBrowserStage106": {
+        "state": "pass",
+        "passed": 110,
+        "total": 110,
+        "scope": "Round161/164/265/267/270/271/272"
+      },
+      "round279DndGridSequenceStatic": {
+        "passed": 4,
+        "total": 4,
+        "state": "pass",
+        "scope": "二维坐标候选：分列/分行模式、每组项数、换组步长与安全校验"
+      },
+      "round279DndGridSequenceBrowser": {
+        "passed": 20,
+        "total": 20,
+        "state": "pass",
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "二维候选列优先/行优先、公式格阻断、44px 控件与无页面横向溢出"
+      },
+      "dndTargetedBrowserStage107": {
+        "passed": 241,
+        "total": 241,
+        "state": "pass",
+        "scope": "Round242/264/268/273/274/275/276/277/278/279"
+      },
+      "imageExportTargetedBrowserStage107": {
+        "passed": 110,
+        "total": 110,
+        "state": "pass",
+        "scope": "Round161/164/265/267/270/271/272"
+      },
+      "targetedChromiumStage107": {
+        "passed": 351,
+        "total": 351,
+        "state": "pass"
+      },
+      "round280DndSpecialSequenceStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "蛇形与显式多区块模式、区块总数一致性与安全校验契约"
+      },
+      "round280DndSpecialSequenceBrowser": {
+        "state": "pass",
+        "passed": 26,
+        "total": 26,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "蛇形完整/不完整尾组、多区块独立起点/跨工作表、区块总数拒绝、44px触控与不自动保存"
+      },
+      "stage108DndTargetedBrowser": {
+        "state": "pass",
+        "passed": 267,
+        "total": 267,
+        "scope": "Round242/264/268/273/274/275/276/277/278/279/280 D&D current-version browser regression"
+      },
+      "stage108ImageExportTargetedBrowser": {
+        "state": "pass",
+        "passed": 110,
+        "total": 110,
+        "scope": "Round161/164/265/267/270/271/272 image-export regression"
+      },
+      "stage108TargetedBrowser": {
+        "state": "pass",
+        "passed": 377,
+        "total": 377,
+        "scope": "D&D 267 + image export 110"
+      },
+      "round281DndMapReviewStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "D&D 映射复核台、会话级复核指纹、最终正式校验不绕过、PC 子弹窗模态生命周期契约"
+      },
+      "round281DndMapReviewBrowser": {
+        "state": "pass",
+        "passed": 22,
+        "total": 22,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "集中复核摘要/筛选/逐项复核/坐标变化失效/定位原输入/不回显PC值/会话级状态/子弹窗焦点层级"
+      },
+      "stage109DndTargetedBrowser": {
+        "state": "pass",
+        "passed": 289,
+        "total": 289,
+        "scope": "Round242/264/268/273/274/275/276/277/278/279/280/281 D&D current-version browser regression"
+      },
+      "stage109ImageExportTargetedBrowser": {
+        "state": "pass",
+        "passed": 110,
+        "total": 110,
+        "scope": "Round161/164/265/267/270/271/272 image-export regression"
+      },
+      "stage109TargetedBrowser": {
+        "state": "pass",
+        "passed": 399,
+        "total": 399,
+        "scope": "D&D 289 + image export 110"
+      },
+      "round282DndExportPreflightStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "D&D 导出前覆盖汇总、阻断项、统一入口、保护区与确认前不下载契约"
+      },
+      "round282DndExportPreflightBrowser": {
+        "state": "pass",
+        "passed": 22,
+        "total": 22,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "安全/阻断预检查、modal/inert、确认前无下载、首次绑定统一检查、identity-only XLSX 写入"
+      },
+      "stage110DndTargetedBrowser": {
+        "state": "pass",
+        "passed": 311,
+        "total": 311,
+        "scope": "Round242/264/268/273/274/275/276/277/278/279/280/281/282 D&D current-version browser regression"
+      },
+      "stage110ImageExportTargetedBrowser": {
+        "state": "pass",
+        "passed": 110,
+        "total": 110,
+        "scope": "Round161/164/265/267/270/271/272 image-export regression"
+      },
+      "stage110TargetedBrowser": {
+        "state": "pass",
+        "passed": 421,
+        "total": 421,
+        "scope": "D&D 311 + image export 110"
+      },
+      "round283DndPostBuildStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4
+      },
+      "round283DndPostBuildBrowser": {
+        "state": "pass",
+        "passed": 16,
+        "total": 16,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "计划写入回读、非目标 package 部件保真、计划外单元格篡改与回读不一致拒绝"
+      },
+      "dndTargetedChromium": {
+        "state": "pass",
+        "passed": 327,
+        "total": 327,
+        "scope": "Round242/264/268/273–283 current-version D&D chain"
+      },
+      "imageExportTargetedChromium": {
+        "state": "pass",
+        "passed": 110,
+        "total": 110,
+        "scope": "Round161/164/265/267/270/271/272"
+      },
+      "targetedChromiumTotal": {
+        "state": "pass",
+        "passed": 437,
+        "total": 437
+      },
+      "round284DndAcceptanceEvidenceStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "匿名验收证据结构、导出成功后记录、会话级保存、模态生命周期"
+      },
+      "round284DndAcceptanceEvidenceBrowser": {
+        "state": "pass",
+        "passed": 16,
+        "total": 16,
+        "viewports": [
+          390,
+          1280
+        ],
+        "scope": "匿名隐私、人工四项复核、JSON 下载、模态层级与触控尺寸"
+      },
+      "stage112DndTargetedBrowser": {
+        "state": "pass",
+        "passed": 343,
+        "total": 343,
+        "scope": "Round242/264/268/273/274/275/276/277/278/279/280/281/282/283/284 D&D current-version browser regression"
+      },
+      "stage112ImageExportTargetedBrowser": {
+        "state": "pass",
+        "passed": 110,
+        "total": 110,
+        "scope": "Round161/164/265/267/270/271/272 image-export regression"
+      },
+      "stage112TargetedBrowser": {
+        "state": "pass",
+        "passed": 453,
+        "total": 453,
+        "scope": "D&D 343 + image export 110"
+      },
+      "round285PlanDefaultTimeStatic": {
+        "state": "pass",
+        "passed": 6,
+        "total": 6,
+        "scope": "计划默认具体时间、手动新安排继承、移动不重置、单次覆盖、一键周期排期联动与版本历史"
+      },
+      "round285PlanDefaultTimeBrowser": {
+        "state": "pass",
+        "passed": 72,
+        "total": 72,
+        "viewports": [
+          320,
+          375,
+          390,
+          430,
+          768,
+          1024,
+          1280,
+          1440
+        ],
+        "scope": "Stage113 计划默认具体时间功能在 Stage114 版本更新后重新回归，无产品逻辑变化"
+      },
+      "round141PcArchiveBrowserHotfix": {
+        "state": "local-system-chromium-pass-github-actions-rerun-pending",
+        "viewports": [
+          320,
+          390,
+          1440
+        ],
+        "densities": [
+          "compact",
+          "standard",
+          "relaxed"
+        ],
+        "geometryCasesPassed": 9,
+        "longContinuationViewportsPassed": 3,
+        "scope": "PC 完整档案双栏导出隔离 Chromium 夹具直接注入当前生产 moduleRuleDisplay；长技能续页继续覆盖",
+        "rootCause": "测试夹具依赖漂移；产品运行时本身存在 moduleRuleDisplay，不是用户页面或导出运行时故障"
+      },
+      "userReturnedSyntheticV291": {
+        "state": "reviewed",
+        "source": "pl-synthetic-browser-result (15).zip",
+        "siteVersion": "8.1.12.291",
+        "nativeSyntheticIntegrationPassed": 13,
+        "nativeSyntheticIntegrationTotal": 13,
+        "blockingFailure": "Round141 isolated Chromium fixture ReferenceError: moduleRuleDisplay is not defined",
+        "conclusion": "CI fixture dependency drift; Stage113 product runtime not implicated"
       }
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "generalBaselineInherited": true,
       "pending": [
-        "v8.1.12.274 跑团整理图片导出继续精简后的桌面/手机视觉复核",
-        "v8.1.12.270-v8.1.12.274 图片导出源预览与 PL／HO 两列非均分拖拽的手机、桌面视觉/触控针对性复核",
-        "v8.1.12.271-v8.1.12.274 D&D 首次设置模板 → 保存 PC → 后续直接导出的 Windows 浏览器针对性复核",
-        "Stage90/93 D&D 真实用户模板在当前版本 Excel/WPS 中的打开、六属性回填与重复直接导出复核"
+        "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
+        "v8.1.12.290 真实 D&D 模板：完成 Excel/WPS 四项人工复核并下载匿名验收 JSON",
+        "v8.1.12.288 D&D 导出前检查在真实模板上的 Windows 浏览器与 Excel/WPS 针对性复核",
+        "真实 D&D 模板大量技能/装备映射保存、重开、跨 PC 配置复用与 Excel/WPS 导出复核",
+        "v8.1.12.270-v8.1.12.288 图片导出极端内容与 HO 5/1 手机触控针对性复核"
       ]
     },
     "release": {
-      "state": "candidate-not-yet-confirmed-live",
+      "state": "candidate-local-gates-pass-github-synthetic-rerun-pending",
       "productionPackage": "built-locally-after-preflight-pass",
-      "productionSite": "not-verified-as-v8.1.12.274",
-      "testSite": "not-verified-as-v8.1.12.274",
+      "productionSite": "not-verified-as-v8.1.12.292",
+      "testSite": "not-verified-as-v8.1.12.292",
       "artifactNames": [
-        "Stage96_完整候选工程.zip",
-        "Stage96_正式仓库完整同步包.zip",
-        "Stage96_测试仓库完整同步包.zip",
-        "Stage96_测试证据与SHA256.zip"
+        "Stage114_完整候选工程.zip",
+        "Stage114_正式仓库完整同步包.zip",
+        "Stage114_测试仓库完整同步包.zip",
+        "Stage114_测试证据与SHA256.zip"
       ]
     }
   },
   "workstreams": {
     "coreProduct": {
       "scopeProgressPercent": 100,
-      "code": "complete",
-      "automatedTests": "accepted-baseline",
-      "realDevice": "accepted-baseline",
-      "release": "stable-maintenance"
+      "code": "complete-for-stage114-ci-hotfix-scope",
+      "automatedTests": "Stage114 full Node 1036/1036; Round141 local Chromium 9 geometry + 3 long-continuation viewports PASS; Round285 72/72; GitHub chromium-synthetic rerun pending",
+      "realDevice": "accepted-baseline + stage113-targeted-check-pending",
+      "release": "candidate",
+      "stage113Scope": "plan-default-exact-time-and-independent-occurrence-overrides",
+      "stage114Scope": "synthetic-round141-dependency-drift-hotfix-no-product-runtime-change"
     },
     "backupRecoveryMigration": {
       "scopeProgressPercent": 100,
@@ -177,10 +675,10 @@
       "release": "stable-maintenance"
     },
     "imageExport": {
-      "scopeProgressPercent": 96,
+      "scopeProgressPercent": 100,
       "stage91Scope": "source-preview-unification",
-      "code": "complete-for-stage96-scope",
-      "automatedTests": "964/964 Node + Round269 4/4 + Round265 14/14 + Round267 14/14 + Round161 32/32 + Round164 22/22",
+      "code": "complete-for-stage99-scope",
+      "automatedTests": "Stage111 full Node 1026/1026 + image targeted Chromium 110/110 passed",
       "realDevice": "targeted-check-pending",
       "release": "candidate",
       "completedCapabilities": [
@@ -196,16 +694,35 @@
         "跑团整理导出标题区减法精简",
         "七类主要图片导出设置文案第二轮统一减法",
         "统一最终预览隐私状态简化",
-        "必要 Log 地址公开风险提示保留"
+        "必要 Log 地址公开风险提示保留",
+        "无眉题紧凑导出头部",
+        "跑团整理成品头部收紧",
+        "年度排期顶部重复图例移除",
+        "整合回顾顶部信息压缩",
+        "PC 图库与空经历程序说明移除",
+        "年度排期消除旧头部预留空白",
+        "PC／模组完整档案按真实内容高度收缩",
+        "单桌回顾结果区去掉操作说明并收紧高度",
+        "PL／KP 分组卡与条目高度同步压缩",
+        "跑团整合回顾行距与卡片间距按密度联动",
+        "单桌回顾长 PC／HO 元信息按真实换行高度完整绘制",
+        "单桌回顾长 Log 标题与 URL 测量/绘制一致且不再限制 URL 两行",
+        "整合回顾长 Log 标题完整换行并参与真实高度测量",
+        "整合回顾单桌少数据画布取消 620px 人工空白",
+        "PC／模组完整档案稀疏内容最低高度继续收缩到 420px",
+        "PC／模组连续长图头部与分页版统一去除重复字段"
       ],
       "remaining": [
-        "当前版本真实桌面与手机视觉/触控复核",
-        "继续检查导出成品的信息密度与留白，不新增重复说明"
+        "真实手机与桌面的极端内容视觉/触控针对性验收；代码与自动化主线已在 Stage99 收口"
       ],
       "stage92Scope": "ho-kp-free-column-drag",
       "stage94Scope": "organizer-copy-reduction-and-header-compaction",
       "stage95Scope": "organizer-copy-reduction-second-pass",
-      "stage96Scope": "all-major-image-export-copy-reduction-and-version-consistency"
+      "stage96Scope": "all-major-image-export-copy-reduction-and-version-consistency",
+      "stage97Scope": "export-output-density-and-header-compaction",
+      "stage98Scope": "output-internal-density-second-pass",
+      "stage99Scope": "extreme-content-closeout",
+      "stage100Scope": "synthetic-browser-contract-maintenance-no-product-layout-change"
     },
     "multiRule": {
       "scopeProgressPercent": 80,
@@ -215,16 +732,16 @@
       "release": "active"
     },
     "dndTemplateFill": {
-      "scopeProgressPercent": 50,
-      "code": "six-abilities-complete; template-bind-direct-export-complete",
-      "automatedTests": "passed-stage93",
-      "realDevice": "current-template-and-direct-export-targeted-check-pending",
+      "scopeProgressPercent": 90,
+      "code": "six-abilities + seven identity/combat fields + scalable extended mapping + candidate helpers + review console + pre/post export verification + anonymous acceptance evidence",
+      "automatedTests": "Stage112 full Node 1030/1030; D&D Chromium 343/343; image export Chromium 110/110; Round284 4/4 + 16/16",
+      "realDevice": "anonymous-evidence-and-real-template-targeted-check-pending",
       "release": "partial-candidate",
       "remaining": [
-        "身份与战斗输入格映射",
-        "技能与装备映射",
-        "更完整模板往返",
-        "v8.1.12.271 Windows + Excel/WPS 真实模板直接导出针对性复核"
+        "真实 D&D 用户模板的大量技能/装备输入格逐项确认与 Excel/WPS 位置验收",
+        "使用 Stage112 匿名验收 JSON 完成至少一份真实 Excel 与 WPS 双环境闭环",
+        "验证集中复核台在几十项映射下的真实键盘/手机效率",
+        "Windows 浏览器保存/重开/跨 PC 配置复用真机复核"
       ],
       "stage93Scope": "per-pc-template-bind-and-direct-export",
       "completedCapabilities": [
@@ -233,8 +750,77 @@
         "模板按 PC 与 D&D 版次保存为本机附件",
         "保存 PC 后后续导出直接复用模板，不再每次弹文件选择",
         "切换版次或模板缺失时重新要求设置",
-        "用户原始模板不内置公开仓库"
-      ]
+        "用户原始模板不内置公开仓库",
+        "七项身份／战斗字段支持按当前模板人工确认输入格坐标",
+        "已确认映射随 PC 模板本机附件保存并进入完整备份元数据",
+        "直接导出时六属性与已映射身份／战斗字段一起回填",
+        "公式格、标签格、重复坐标、不存在坐标拒绝映射",
+        "不读取或保存核对过程中的其他单元格内容",
+        "模板字段映射实时显示已核对／PC 已填／本次可导出数量",
+        "公式格、标签格、重复与不存在坐标在保存前即时提示",
+        "支持回车顺序核对与“下一项未完成”定位",
+        "规则数据页显示模板字段映射完成度，未绑定模板时禁用映射入口",
+        "映射窗口不回显当前 PC 的实际字段值",
+        "身份／战斗字段按组核对",
+        "批量坐标粘贴",
+        "同版模板配置仅保存字段→坐标",
+        "复用配置在当前模板重新安全校验",
+        "技能与装备／资源字段可从当前 PC 搜索后主动加入模板映射",
+        "扩展字段必须明确指定工作表与输入格，未加入字段不改模板",
+        "扩展映射保护六属性／标签区域并拒绝公式格、重复格和不存在格",
+        "同版模板配置升级为 dnd-map-v2 并兼容旧 dnd-map-v1",
+        "导出仅写入已映射且当前 PC 有值的扩展字段",
+        "合成 XLSX 已验证察觉、隐匿与长剑扩展字段写入回读及跨 PC 配置复用",
+        "扩展映射候选与模板配置容量提升到 220，覆盖现有 PC 技能上限",
+        "技能/装备搜索复用全站拼音与首字母搜索",
+        "支持按分组、未完成、已映射、本次可导出、PC 已填写和冲突筛选",
+        "支持仅对当前筛选结果批量加入或取消映射",
+        "重名扩展字段单独标为冲突并继续禁止直接映射",
+        "筛选状态下下一项未完成只在当前可见项目中移动",
+        "连续坐标辅助仅作用于当前可见且已加入的扩展字段",
+        "支持指定工作表、起始格、向下/向右方向与步长生成坐标候选",
+        "支持从首个已映射项取起点并默认只填空白坐标",
+        "候选生成不自动保存，公式格/保护区/重复目标/不存在格继续由正式校验阻断",
+        "二维坐标规律辅助支持先向下填满后换列",
+        "二维坐标规律辅助支持先向右填满后换行",
+        "二维模式可设置每组项数、组内步长与换组步长",
+        "二维候选仍逐项进入公式格/保护区/重复目标/存在性校验",
+        "蛇形坐标候选支持换列与换行并按实际尾组反向",
+        "多区块候选支持每块独立工作表、起始格和项数",
+        "多区块项数必须与当前已加入字段数一致，避免静默错位",
+        "特殊布局候选仍逐项进入公式格/保护区/重复目标/存在性校验",
+        "集中复核台统一显示字段／工作表／坐标／校验结果／本次导出状态",
+        "支持只看待处理、未复核、本次可导出和已核对项目",
+        "合法映射可逐项或按当前筛选标记复核，坐标变化后复核指纹自动失效",
+        "复核标记仅存在当前映射窗口，不写入 PC、模板配置或完整备份",
+        "复核定位会恢复被筛选隐藏的目标、展开分组并聚焦原坐标输入",
+        "D&D 来源预览、模板映射与 Insane 预览纳入统一模态焦点生命周期",
+        "正式生成 D&D Excel 前汇总六属性、身份／战斗、技能和装备／资源覆盖",
+        "公式格、保护区、重复目标、不存在格等阻断项会禁止最终生成",
+        "首次设置模板和后续直接导出统一经过最终预检查，确认前不触发下载",
+        "固定身份／战斗映射不能覆盖六属性已保护输入格",
+        "六属性为空时允许仅写入已安全映射的身份／战斗或扩展字段",
+        "生成后的 D&D XLSX 会在下载前重新解析全部计划写入格并核对实际值",
+        "被修改工作表除计划目标格外的 XML 必须与原模板一致",
+        "样式、图片、drawing、关系等非目标 package 部件必须与原模板字节一致",
+        "计划外单元格变化、目标格结构变化或回读不一致会停止下载",
+        "成功生成 D&D Excel 后创建会话级匿名验收记录",
+        "匿名证据只记录版次/布局、覆盖数量、写前/写后检查状态，不包含 PC 名称、角色值、模板文件名或原 Excel 内容",
+        "支持记录 Excel/WPS 打开、写入位置正确、公式/图片/格式正常四项人工复核状态",
+        "匿名验收记录可下载为通用文件名 JSON；当前浏览器会话结束后不保留"
+      ],
+      "stage101Scope": "per-template-manual-identity-combat-cell-map-and-safe-fill",
+      "stage102Scope": "dnd-template-map-workflow-usability-and-live-validation",
+      "stage103Scope": "grouped-batch-reusable-template-mapping-foundation",
+      "stage104Scope": "extended-skill-resource-mapping-first-phase",
+      "stage105Scope": "large-skill-resource-mapping-management-and-conflict-filtering",
+      "stage106Scope": "sequential-coordinate-candidate-helper-for-large-mappings",
+      "stage107Scope": "two-dimensional-coordinate-candidate-helper-for-multi-column-skill-layouts",
+      "stage108Scope": "snake-and-explicit-multi-block-coordinate-candidate-helper",
+      "stage109Scope": "mapping-review-console-and-managed-submodal-focus",
+      "stage110Scope": "final-export-preflight-and-blocking-safety-gate",
+      "stage111Scope": "post-build-xlsx-readback-and-package-fidelity-verification",
+      "stage112Scope": "anonymous-real-template-acceptance-evidence-and-manual-excel-wps-review"
     }
   },
   "imageExportCapabilityRegistry": {
@@ -247,10 +833,11 @@
     "hoExportComposerPanel": "PL／KP 跑团整理"
   },
   "knownOpenItems": [
-    "v8.1.12.274 图片导出第二轮精简后仍需要一次桌面与手机真实视觉/触控复核",
-    "v8.1.12.271-v8.1.12.274 D&D 首次模板设置、保存后直接导出需要一次 Windows 浏览器与 Excel/WPS 真实模板针对性复核",
-    "手机规则选择器在 v266-v274 分支仍保留当前版本针对性复核项",
-    "D&D 模板回填仍只覆盖六属性；Stage93 只完善模板绑定/导出交互，不应描述为完整 D&D 角色卡自动填写"
+    "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
+    "v8.1.12.290 匿名验收证据链已通过合成浏览器；仍需真实 D&D 模板在 Excel/WPS 中完成四项人工复核并回传匿名 JSON",
+    "v8.1.12.289 D&D 生成后自检已通过合成工作簿，真实 Excel/WPS 模板仍需针对性复核",
+    "真实 D&D 模板大量技能/装备映射保存、重开、跨 PC 配置复用仍需真机复核",
+    "图片导出代码与自动化已收口，但极端内容和 HO 5/1 手机触控仍保留真实设备复核"
   ],
   "doNotInferCurrentStatusFrom": [
     "STAGE*.md",

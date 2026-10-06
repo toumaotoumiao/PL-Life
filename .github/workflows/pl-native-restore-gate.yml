@@ -110,7 +110,20 @@ jobs:
             .github/pl-ci/round265-unified-export-source-preview.test.cjs \
             .github/pl-ci/round266-current-status-source.test.cjs \
             .github/pl-ci/round267-ho-free-column-drag.test.cjs \
-            .github/pl-ci/round268-dnd-template-bind.test.cjs
+            .github/pl-ci/round268-dnd-template-bind.test.cjs \
+            .github/pl-ci/round273-dnd-identity-map.test.cjs \
+            .github/pl-ci/round274-dnd-map-workflow.test.cjs \
+            .github/pl-ci/round275-dnd-map-batch-profile.test.cjs \
+            .github/pl-ci/round276-dnd-extended-map.test.cjs \
+            .github/pl-ci/round277-dnd-large-map.test.cjs \
+            .github/pl-ci/round278-dnd-sequence-helper.test.cjs \
+            .github/pl-ci/round279-dnd-grid-sequence.test.cjs \
+            .github/pl-ci/round280-dnd-special-sequence.test.cjs \
+            .github/pl-ci/round281-dnd-map-review.test.cjs \
+            .github/pl-ci/round282-dnd-export-preflight.test.cjs \
+            .github/pl-ci/round283-dnd-postbuild-selfcheck.test.cjs \
+            .github/pl-ci/round284-dnd-acceptance-evidence.test.cjs \
+            .github/pl-ci/round285-plan-default-time.test.cjs
       - name: Verify production release package preflight
         run: python .github/pl-ci/build-production-release.py --check-only
       - name: Verify privacy-local D&D comparison using temporary fictional sheets

@@ -1,0 +1,7 @@
+{
+  "version": "8.1.12.282",
+  "checks": 18,
+  "passed": 18,
+  "failures": [],
+  "mode": "D&D mapping UX: progress/status/keyboard; synthetic workbook only"
+}

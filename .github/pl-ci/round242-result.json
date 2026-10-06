@@ -1,0 +1,7 @@
+{
+  "version": "8.1.12.282",
+  "checks": 82,
+  "passed": 82,
+  "failures": [],
+  "mode": "synthetic full-app JS + actual XLSX ZIP/OOXML read-back; isolated browser, no native IDB"
+}

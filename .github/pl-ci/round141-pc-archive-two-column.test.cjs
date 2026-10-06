@@ -60,8 +60,10 @@ test('Round141 browser geometry fixture uses real multi-rule gate with explicit 
  const browser=fs.readFileSync(path.join(__dirname,'round141-pc-archive-two-column-browser.cjs'),'utf8');
  assert.match(browser,/const isCocSource=sourceBetween\('function pcRuleIsCoc\(pc\)\{',/);
  assert.match(browser,/const normalizeMetaSource=sourceBetween\('function normalizeModuleRuleMeta/);
+ assert.match(browser,/const ruleDisplaySource=sourceBetween\('function moduleRuleDisplay\(meta,opts=\{\}\)\{',/);
  assert.match(browser,/ruleMeta:\{familyId:'brp',systemId:'coc',editionId:'7e'/);
  assert.match(browser,/await page\.addScriptTag\(\{content:stubCode\+/);
  assert.match(browser,/\+normalizeMetaSource\+/);
+ assert.match(browser,/\+ruleDisplaySource\+/);
  assert.match(browser,/\+isCocSource\+/);
 });

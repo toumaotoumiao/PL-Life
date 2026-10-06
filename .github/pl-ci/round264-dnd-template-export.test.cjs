@@ -14,18 +14,23 @@ test('D&D primary Excel route is a real template-filled character card, not the 
 
 test('first-time template setup uses a user-selected XLSX and preserves the source workbook package',()=>{
   assert.match(html,/id="pcFooterDndTemplateInput"[^>]+type="file"[^>]+accept="\.xlsx/);
-  assert.match(html,/async function pcBuildDndTemplateWorkbook\(file,pc\)/);
+  assert.match(html,/async function pcBuildDndTemplateWorkbook\(file,pc,\{identityCombatMap=null\}=\{\}\)/);
   assert.match(html,/const raw=await file\.arrayBuffer\(\),sheets=await pcExcelReadXlsx\(raw\)/);
   assert.match(html,/files=await pcExcelUnzip\(raw\)/);
   assert.match(html,/Object\.entries\(files\).*pcMakeExcelZipEntries/s);
   assert.match(html,/actualNames\.length!==expectedNames\.length/);
 });
 
-test('only verified six-ability coordinates are writable and unknown D&D fields remain untouched',()=>{
+test('six abilities remain fixed-coordinate writes while identity/combat requires an explicit verified map',()=>{
   assert.match(html,/const PC_DND_SIX_LABELS=Object\.freeze\(\['力量','敏捷','体质','智力','感知','魅力'\]\)/);
   assert.match(html,/changes\.set\(profile\.candidateRefs\[i\],Number\(raw\)\)/);
   assert.match(html,/if\(!\/\^\\d\+\$\/\.test\(raw\)\|\|Number\(raw\)<1\|\|Number\(raw\)>30\)/);
-  assert.match(html,/身份、战斗与装备字段的输入格尚未核实，因此本次保持原模板内容不变/);
+  assert.match(html,/identityCombatMap\?pcDndIdentityCombatPlan\(pc,sheets,plan\.layoutId,identityCombatMap\)/);
+  assert.match(html,/extraWritten:\[\]/);
+  assert.match(html,/function pcDndIdentityCombatMapValidate/);
+  assert.match(html,/function pcDndProtectedTemplateTargets\(layoutId\)/);
+  assert.match(html,/目标格 .* 属于已保护的标签／六属性区域，不能覆盖/);
+  assert.match(html,/function pcDndReusableProfilesFor\(.*?pcDndIdentityCombatMapValidate\(sheets,layoutId/s);
   assert.match(html,/目标格是公式，已停止导出以保护原表/);
   assert.match(html,/if\(profile\.kind!=='template'\)/);
   assert.match(html,/没有同版空白模板证据；为避免写错单元格/);

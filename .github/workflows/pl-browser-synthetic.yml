@@ -567,6 +567,38 @@ jobs:
         run: node --test .github/pl-ci/round268-dnd-template-bind.test.cjs
       - name: Round269 image-export copy reduction contract
         run: node --test .github/pl-ci/round269-export-copy-reduction.test.cjs
+      - name: Round270 image-export output density contract
+        run: node --test .github/pl-ci/round270-export-output-density.test.cjs
+      - name: Round271 export internal density
+        run: node --test .github/pl-ci/round271-export-internal-density.test.cjs
+      - name: Round272 export extreme-content closeout
+        run: node --test .github/pl-ci/round272-export-extreme-content.test.cjs
+      - name: Round273 D&D identity/combat template mapping contract
+        run: node --test .github/pl-ci/round273-dnd-identity-map.test.cjs
+      - name: Round274 D&D map workflow contract
+        run: node --test .github/pl-ci/round274-dnd-map-workflow.test.cjs
+      - name: Round275 D&D grouped/batch/reusable mapping contract
+        run: node --test .github/pl-ci/round275-dnd-map-batch-profile.test.cjs
+      - name: Round276 D&D extended skill/equipment mapping contract
+        run: node --test .github/pl-ci/round276-dnd-extended-map.test.cjs
+      - name: Round277 D&D large mapping management contract
+        run: node --test .github/pl-ci/round277-dnd-large-map.test.cjs
+      - name: Round278 D&D sequential coordinate helper contract
+        run: node --test .github/pl-ci/round278-dnd-sequence-helper.test.cjs
+      - name: Round279 D&D two-dimensional coordinate helper contract
+        run: node --test .github/pl-ci/round279-dnd-grid-sequence.test.cjs
+      - name: Round280 D&D snake and multi-block coordinate helper contract
+        run: node --test .github/pl-ci/round280-dnd-special-sequence.test.cjs
+      - name: Round281 D&D mapping review console contract
+        run: node --test .github/pl-ci/round281-dnd-map-review.test.cjs
+      - name: Round282 D&D final export preflight contract
+        run: node --test .github/pl-ci/round282-dnd-export-preflight.test.cjs
+      - name: Round283 D&D post-build XLSX self-check contract
+        run: node --test .github/pl-ci/round283-dnd-postbuild-selfcheck.test.cjs
+      - name: Round284 D&D anonymous acceptance evidence contract
+        run: node --test .github/pl-ci/round284-dnd-acceptance-evidence.test.cjs
+      - name: Round285 plan default exact-time contract
+        run: node --test .github/pl-ci/round285-plan-default-time.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
@@ -583,6 +615,54 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round268-dnd-template-bind-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round268-browser.log"
+      - name: Round270 image-export compact-header browser
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round270-export-output-density-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round270-browser.log"
+      - name: Round272 export extreme-content browser
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round272-export-extreme-content-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round272-browser.log"
+      - name: Round273 D&D identity/combat template mapping browser
+        run: |
+          mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round273-dnd-identity-map-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round273-browser.log"
+      - name: Round274 D&D map workflow browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round274-dnd-map-workflow-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round274-browser.log"
+      - name: Round275 D&D grouped/batch/reusable mapping browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round275-dnd-map-batch-profile-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round275-browser.log"
+      - name: Round276 D&D extended skill/equipment mapping browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round276-dnd-extended-map-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round276-browser.log"
+      - name: Round277 D&D large mapping management browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round277-dnd-large-map-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round277-browser.log"
+      - name: Round278 D&D sequential coordinate helper browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round278-dnd-sequence-helper-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round278-browser.log"
+      - name: Round279 D&D two-dimensional coordinate helper browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round279-dnd-grid-sequence-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round279-browser.log"
+      - name: Round280 D&D snake and multi-block coordinate helper browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round280-dnd-special-sequence-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round280-browser.log"
+      - name: Round281 D&D mapping review console browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round281-dnd-map-review-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round281-browser.log"
+      - name: Round282 D&D final export preflight browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round282-dnd-export-preflight-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round282-browser.log"
+      - name: Round283 D&D post-build XLSX self-check browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round283-dnd-postbuild-selfcheck-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round283-browser.log"
+      - name: Round284 D&D anonymous acceptance evidence browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round284-dnd-acceptance-evidence-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round284-browser.log"
+      - name: Round285 plan default exact-time browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round285-plan-default-time-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round285-browser.log"
       - name: Round263 production release package preflight
         run: |
           node --test .github/pl-ci/round263-production-release-preflight.test.cjs

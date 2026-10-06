@@ -22,7 +22,7 @@ test('records page exposes integrated recap and reuses the current query result'
   assert(html.includes("wrap.id='recordsRecapBackdrop'"));
   assert(html.includes("window.PLRecordsRecapOpen=open"));
   assert.match(html,/state\.range==='filtered'[\s\S]*?recordQueryArchive\(\)/);
-  assert.match(html,/PLUnifiedExportPreview\(canvases,'跑团记录 · 整合回顾 · 导出预览'/);
+  assert.match(html,/PLUnifiedExportPreview\(canvases,'跑团回顾 · 导出预览'/);
 });
 
 test('integrated recap can include PC HO Log URLs notes and exact time without rewriting archives',()=>{

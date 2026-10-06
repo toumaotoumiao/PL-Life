@@ -17,6 +17,11 @@ The CI suite is a long-lived release guard, not a snapshot of one historical ver
 - Release work is not complete until the current static tests pass and the Chromium steps have had a chance to run in GitHub Actions.
 
 
+## D&D template-aware export maintenance
+
+- Round242 must distinguish the two valid primary D&D Excel states: without a saved per-PC template the visible action is `设置 D&D 角色卡模板`; with a matching saved template it is `导出 D&D 角色 Excel 卡`. Do not hard-code the saved-template state as the only passing state.
+- Round268 remains the interaction contract for first binding, dirty-state/save handoff, direct re-export and edition mismatch. Round242 owns responsive menu/readability plus the legacy standalone diagnostic XLSX read-back.
+
 ## Browser-flow maintenance
 
 - Browser audits must follow the same visible user flow as the product. If a new privacy, safety, onboarding or confirmation preflight is introduced, the audit must operate that preflight and then continue to the target UI; do not bypass it with synthetic DOM clicks or leave it open for later view tests.
@@ -86,3 +91,11 @@ The CI suite is a long-lived release guard, not a snapshot of one historical ver
 - `round111-records-recap-gutter-contract.test.cjs` keeps the integrated recap header, body and footer on one horizontal gutter baseline, with deliberate mobile gutter reduction instead of edge-to-edge content.
 
 - Round112: 单桌回顾高度计算运行级回归，禁止 `return218` / `return92` / `return180` 等数字返回值粘连为未定义变量，并执行 summary / schedule / cast / logs / reflection / fallback 全分支。
+
+
+## D&D identity/combat template-map maintenance
+
+- `round273-dnd-identity-map.test.cjs` and `round273-dnd-identity-map-browser.py` protect the Stage101 rule: seven identity/combat fields may be written only after a user explicitly confirms the target A1 cell references for the current local D&D template.
+- Never infer a target from an adjacent label. Label cells, formula cells, duplicate targets and coordinates absent from the workbook must be rejected.
+- Store only field-to-coordinate metadata with the local PC workbook attachment. Do not copy arbitrary source cell values into mapping metadata or public evidence.
+- Direct export may combine the six previously verified ability targets with these saved confirmed mappings. A missing mapping must leave the corresponding template content untouched.

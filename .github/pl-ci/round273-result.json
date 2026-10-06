@@ -1,0 +1,7 @@
+{
+  "version": "8.1.12.282",
+  "checks": 16,
+  "passed": 16,
+  "failures": [],
+  "mode": "synthetic 21-sheet D&D template: manually confirmed coordinate mapping + safe fill; no user workbook"
+}

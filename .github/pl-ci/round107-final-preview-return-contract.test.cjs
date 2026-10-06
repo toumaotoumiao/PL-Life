@@ -34,7 +34,7 @@ test('all principal image composers register a return path to the source editor'
     /跑团整理 · 导出预览[\s\S]{0,500}returnToEditor:\(\)=>toggleHoOrganizerExportComposer\(true\)/,
     /单桌跑团回顾 · 导出预览[\s\S]{0,500}returnToEditor:\(\)=>openRecordShowcase\(r\.id\)/,
     /档案图片已导出'[\s\S]{0,260}returnToEditor:\(\)=>returnMode==='pc'\?openPc\(returnId,returnPcOverride\):openMod\(returnId\)/,
-    /跑团记录 · 整合回顾 · 导出预览[\s\S]{0,400}returnToEditor:\(\)=>open\(\)/
+    /跑团回顾 · 导出预览[\s\S]{0,400}returnToEditor:\(\)=>open\(\)/
   ];
   for(const re of required) assert.match(html,re);
 });

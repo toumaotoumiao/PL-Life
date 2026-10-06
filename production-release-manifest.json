@@ -1,7 +1,7 @@
 {
   "format": "pl-life-production-release-manifest",
   "manifestVersion": 1,
-  "appVersion": "8.1.12.274",
+  "appVersion": "8.1.12.292",
   "schemaVersion": 26,
   "rootFiles": [
     ".nojekyll",
@@ -123,6 +123,29 @@
     "STAGE93_",
     "STAGE94_",
     "STAGE95_",
-    "STAGE96_"
+    "STAGE96_",
+    "STAGE97_",
+    "STAGE98_",
+    "STAGE99_",
+    "STAGE100_",
+    "STAGE101_",
+    "STAGE102_",
+    "STAGE103_",
+    "STAGE104_",
+    "STAGE105_",
+    "STAGE106_",
+    "STAGE107_",
+    "STAGE108_",
+    "STAGE109_",
+    "STAGE110_",
+    "STAGE111_",
+    "STAGE112_",
+    "STAGE113_",
+    "STAGE114_"
+  ],
+  "excludedInternalPrefixes": [
+    "STAGE111_",
+    "STAGE112_",
+    "STAGE114_"
   ]
 }

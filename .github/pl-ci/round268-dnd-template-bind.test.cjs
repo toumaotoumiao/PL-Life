@@ -21,13 +21,13 @@ test('saved template metadata survives PC save and is edition-scoped',()=>{
   assert.match(html,/for\(const key of \['templateKey','editionId','layoutId'\]\)if\(pcWorkbookPending\[key\]\)pendingMeta\[key\]=String\(pcWorkbookPending\[key\]\)/);
   assert.match(html,/row\.kind==='dnd-template'&&String\(row\.templateKey\|\|''\)===key/);
   assert.match(html,/if\(!row\)return pcRequestDndTemplateExport\(draft\)/);
-  assert.match(html,/return pcExportDndTemplateWorkbook\(file,draft,\{bindTemplate:false\}\)/);
+  assert.match(html,/return pcDndExportCheckOpen\(file,draft,\{bindTemplate:false,identityCombatMap:row\.identityCombatMap\|\|null\}\)/);
 });
 
 test('template chooser only binds after workbook build and download succeed',()=>{
-  const build=html.indexOf('const result=await pcBuildDndTemplateWorkbook(file,draft)');
+  const build=html.indexOf('const result=await pcBuildDndTemplateWorkbook(file,draft,{identityCombatMap})');
   const download=html.indexOf("if(downloadBlobFile(result.blob,filename)!==true)throw new Error('浏览器未接受文件下载请求')",build);
   const bind=html.indexOf("pcWorkbookPending={pcId:String(draft.id||''),blob",build);
   assert.ok(build>=0&&download>build&&bind>download,'bind must happen only after successful build/download');
-  assert.match(html,/pcFooterDndTemplateInput'\)\?\.addEventListener\('change'.*pcExportDndTemplateWorkbook\(file,draft,\{bindTemplate:true\}\)/s);
+  assert.match(html,/pcFooterDndTemplateInput'\)\?\.addEventListener\('change'.*pcDndExportCheckOpen\(file,draft,\{bindTemplate:true\}\)/s);
 });

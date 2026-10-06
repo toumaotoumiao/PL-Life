@@ -21,6 +21,8 @@ test('Round242 standalone XLSX remains internal while primary D&D export uses te
  assert.doesNotMatch(src,/pcExcelPatchKaguraRows|pcWorkbookPut|pcDndStructurePreviewFile|pcDndAbilityCandidates/);
  assert.match(src,/pcExcelReadXlsx\(await blob.arrayBuffer\(\)\)/);
  assert.match(src,/t="inlineStr"/);
+ assert.match(html,/button\.textContent=ready\?'导出 D&D 角色 Excel 卡':'设置 D&D 角色卡模板'/);
+ assert.match(html,/button\.dataset\.pcDndTemplateState=ready\?'saved':'missing'/);
  assert.match(html,/if\(route.status==='ready'&&route.adapterId==='dnd-template'\)return pcExportDndCharacterCard\(pc\)/);
  assert.match(html,/if\(verifyButton\)verifyButton.hidden=true/);
 });

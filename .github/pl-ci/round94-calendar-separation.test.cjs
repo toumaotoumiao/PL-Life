@@ -61,7 +61,9 @@ test('planner annual export has separate overview, complete-calendar and agenda 
   const open=html.slice(start,end);
   assert.match(open,/buildPlannerYearShowcaseCanvases\(plannerYearShowcaseState\)/);
   assert.doesNotMatch(open,/buildStatsExportCanvases/,'planner annual export must not reuse the personal-statistics canvas pipeline');
-  assert.match(open,/排期／执行视角，不等同于个人统计年度回顾/);
+  assert.match(open,/PLUnifiedExportPreview\(canvases,`\$\{year\} \$\{mode\} · 导出预览`/);
+  assert.match(open,/longModeNote:'单张长图'/);
+  assert.doesNotMatch(open,/不等同于个人统计年度回顾/,'public export preview should not carry implementation/comparison prose');
 });
 
 test('legacy timeline preference migrates to agenda and complete calendar is accepted',()=>{

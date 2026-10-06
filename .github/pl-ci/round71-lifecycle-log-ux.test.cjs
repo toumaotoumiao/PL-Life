@@ -69,7 +69,7 @@ test('编辑事件与界面覆盖计划/记录、标题换行、统计页和筛�
 });
 test('真实规范化函数和规范档案往返保留状态与只有备注的 Log',()=>{
  const c=runtime();Object.assign(c,{
- normalizePcHoNumber:()=>0,normalizeLinkedProfileId:()=>'',normalizeParticipantAssignments:()=>[],normalizeKpc:()=>({enabled:false}),extractLegacyParticipantNames:()=>[],normalizePlanSlots:()=>[],normalizePostRunDraft:()=>null,parseLegacyRunDuration:()=>({startDate:'',endDate:'',legacyDuration:''}),normalizeDateValue:()=>'',isGenericLegacyTableLabel:()=>true,hasPostRunDraft:()=>false,
+ normalizePcHoNumber:()=>0,normalizeLinkedProfileId:()=>'',normalizeParticipantAssignments:()=>[],normalizeKpc:()=>({enabled:false}),extractLegacyParticipantNames:()=>[],normalizePlanSchedulePreset:raw=>raw&&typeof raw==='object'?raw:{startTime:'',endTime:''},normalizePlanSlots:()=>[],normalizePostRunDraft:()=>null,parseLegacyRunDuration:()=>({startDate:'',endDate:'',legacyDuration:''}),normalizeDateValue:()=>'',isGenericLegacyTableLabel:()=>true,hasPostRunDraft:()=>false,
  });
  vm.runInContext(section('function normalizeRunPlan(', '\nfunction makeBlankRunPlan('),c);
  vm.runInContext(section('function normalizeRunRecord(', '\n/* v3 及更早版本'),c);

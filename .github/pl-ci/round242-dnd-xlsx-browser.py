@@ -113,17 +113,28 @@ with sync_playwright() as p:
    for key,value in data.items():
     if key in ('edition','rows','bytes'):continue
     record(f'{edition}:{key}',value)
-  # Actual menu in both D&D editions, across the standard responsive breakpoints.
-  page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');const a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');const pc=makeBlankPc(selfProfileId());pc.id='round242-ui';pc.name='合成导出角色';pc.ruleMeta={familyId:'d20-osr',systemId:'dnd',editionId:'5e-2024',confirmed:true,source:'user-selected'};pcs.push(pc);openPcEditor(pc.id);}''')
+  # Actual menu across the standard responsive breakpoints. Stage93+ has two legitimate D&D states:
+  # no saved template => explicit setup action; matching saved template => direct export action.
+  page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');const a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');window.__round242Workbook=null;pcWorkbookGet=async id=>window.__round242Workbook&&String(window.__round242Workbook.pcId)===String(id)?window.__round242Workbook:null;const pc=makeBlankPc(selfProfileId());pc.id='round242-ui';pc.name='合成导出角色';pc.ruleMeta={familyId:'d20-osr',systemId:'dnd',editionId:'5e-2024',confirmed:true,source:'user-selected'};pcs.push(pc);openPcEditor(pc.id);}''')
+  page.wait_for_timeout(80)
   for width in [320,375,390,430,768,1024,1280,1440]:
    page.set_viewport_size({'width':width,'height':900})
    page.evaluate('''()=>{const more=document.querySelector('.pc-foot-more-v72');if(more)more.open=true;const menu=document.querySelector('.pc-footer-export-menu');if(menu)menu.open=true;}''')
-   geom=page.evaluate('''()=>{const b=document.querySelector('#pcFooterExportExcelBtn'),e=b.getBoundingClientRect();return {ready:b.dataset.pcExcelExportState==='ready'&&!b.disabled&&b.textContent.includes('角色 Excel 卡'),width:e.width,height:e.height,left:e.left,right:e.right,overflow:document.documentElement.scrollWidth-innerWidth}}''')
-   record(f'{width}:export-button-ready',geom['ready'])
+   geom=page.evaluate('''()=>{const b=document.querySelector('#pcFooterExportExcelBtn'),e=b.getBoundingClientRect();return {setup:b.dataset.pcDndTemplateState==='missing'&&b.dataset.pcExcelExportState==='ready'&&!b.disabled&&b.textContent.includes('设置 D&D 角色卡模板'),width:e.width,height:e.height,left:e.left,right:e.right,overflow:document.documentElement.scrollWidth-innerWidth}}''')
+   record(f'{width}:template-setup-ready',geom['setup'])
    record(f'{width}:export-button-readable',geom['width']>80 and geom['height']>=40 and geom['left']>=-2 and geom['right']<=width+2 and geom['overflow']<=3)
    verify=page.evaluate('''()=>{const b=document.getElementById('pcFooterVerifyDndXlsxBtn'),r=b.getBoundingClientRect();return {hidden:b.hidden,width:r.width,height:r.height}}''')
    record(f'{width}:legacy-verify-hidden',verify['hidden'] and verify['width']==0 and verify['height']==0)
-   if width in [320,390,1280]:page.screenshot(path=str(out/f'round242-export-{width}.png'),full_page=False)
+   if width in [320,390,1280]:page.screenshot(path=str(out/f'round242-setup-{width}.png'),full_page=False)
+  # Simulate the per-PC saved attachment metadata only; no user workbook is used.
+  page.evaluate('''async()=>{window.__round242Workbook={pcId:'round242-ui',blob:new Blob(['fictional-template']),fileName:'fictional-template.xlsx',kind:'dnd-template',templateKey:'dnd:5e-2024',editionId:'2024',layoutId:'fictional'};syncPcExcelExportUi(pcDraft);await new Promise(r=>setTimeout(r,80));}''')
+  for width in [320,375,390,430,768,1024,1280,1440]:
+   page.set_viewport_size({'width':width,'height':900})
+   page.evaluate('''()=>{const more=document.querySelector('.pc-foot-more-v72');if(more)more.open=true;const menu=document.querySelector('.pc-footer-export-menu');if(menu)menu.open=true;}''')
+   geom=page.evaluate('''()=>{const b=document.querySelector('#pcFooterExportExcelBtn'),e=b.getBoundingClientRect();return {ready:b.dataset.pcDndTemplateState==='saved'&&b.dataset.pcExcelExportState==='ready'&&!b.disabled&&b.textContent.includes('导出 D&D 角色 Excel 卡'),width:e.width,height:e.height,left:e.left,right:e.right,overflow:document.documentElement.scrollWidth-innerWidth}}''')
+   record(f'{width}:saved-template-export-ready',geom['ready'])
+   record(f'{width}:saved-export-readable',geom['width']>80 and geom['height']>=40 and geom['left']>=-2 and geom['right']<=width+2 and geom['overflow']<=3)
+   if width in [320,390,1280]:page.screenshot(path=str(out/f'round242-saved-{width}.png'),full_page=False)
   # Standalone XLSX remains an internal compatibility path; it is no longer exposed as the primary D&D export UI.
   record('standalone:legacy-verifier-hidden',page.evaluate("()=>document.getElementById('pcFooterVerifyDndXlsxBtn').hidden===true"))
   hidden=page.evaluate('''()=>{const old=pcDraft.ruleMeta;pcDraft.ruleMeta={familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true};syncPcExcelExportUi(pcDraft);const b=document.getElementById('pcFooterVerifyDndXlsxBtn');const r=b.getBoundingClientRect(),hidden=b.hidden;pcDraft.ruleMeta=old;syncPcExcelExportUi(pcDraft);return {hidden,width:r.width,height:r.height}}''')

@@ -12,14 +12,14 @@ test('Round125 single-record overview dynamically accounts for all six cards in 
  const rects=[];
  const c={Math,recordShowcaseMeasureLines:()=>2,
  canvasFillRound(_ctx,x,y,w,h){rects.push({x,y,w,h});},
- drawRecordShowcasePanelBase(_ctx,x,y){return y+76;},
+ drawRecordShowcasePanelBase(_ctx,x,y){return y+58;},
  canvasTextFit(_ctx,t){return String(t)}
  };
  vm.createContext(c);vm.runInContext(h+'\n'+draw+'\nthis.height=recordShowcaseBlockHeight;this.paint=drawRecordShowcaseSummary;',c);
  const ctx={fillStyle:'',font:'',fillText(){}};
  const theme={muted:'#777',ink:'#000',surface2:'#eee',line:'#bbb'};
  const data={role:'KP',status:'已结团',date:'2026-09-01',r:{actualDuration:'4h'},plCount:4,logs:[]};
- for(const [width,expected,columns] of [[500,284,2],[1012,218,3]]){
+ for(const [width,expected,columns] of [[500,264,2],[1012,198,3]]){
   rects.length=0;const measured=c.height('summary',width,data);
   assert.equal(measured,expected);
   c.paint(ctx,20,30,width,measured,theme,data);
