@@ -2,16 +2,16 @@
   "format": "pl-life-current-project-status",
   "statusVersion": 1,
   "sourceOfTruth": true,
-  "updatedAt": "2026-10-07",
+  "updatedAt": "2026-10-07T13:55:00+08:00",
   "current": {
-    "stage": 114,
-    "appVersion": "8.1.12.292",
+    "stage": 115,
+    "appVersion": "8.1.12.293",
     "schemaVersion": 26,
     "branchState": "release-candidate",
     "focus": [
-      "修复 GitHub Actions synthetic Chromium 的 Round141 假失败",
-      "Round141 隔离 PC 完整档案导出夹具同步当前 moduleRuleDisplay 生产依赖",
-      "保持 Stage113 开团计划默认具体时间产品逻辑不变"
+      "开团计划周历增加单次安排具体小时快速编辑浮层",
+      "桌面鼠标悬浮快速查看/修改；点击时间固定打开，触屏可直接点击时间入口",
+      "单次保存、套用计划默认、清除具体小时均只修改当前安排，不改变计划默认时间或其他场次"
     ]
   },
   "statusPolicy": {
@@ -39,11 +39,11 @@
   },
   "currentVersionAcceptance": {
     "automated": {
-      "state": "stage114-local-regression-passed-github-synthetic-rerun-pending",
+      "state": "stage115-local-regression-passed-github-synthetic-rerun-pending",
       "node": {
         "state": "pass",
-        "passed": 1036,
-        "total": 1036
+        "passed": 1041,
+        "total": 1041
       },
       "imageExportRegression": {
         "state": "covered-by-full-node-and-targeted-browser-regressions",
@@ -107,7 +107,7 @@
         "storageHarness": "isolated-memory-workbook-stub",
         "note": "当前执行环境阻止 localhost 原生 IndexedDB 浏览器导航；原生附件/完整 ZIP 持久化继续由既有存储与恢复回归覆盖，不将本项冒充原生 IndexedDB 真机证明。"
       },
-      "baselineInheritedFrom": "Stage113 full Node 1036/1036 + Round285 Chromium 72/72；Stage114 仅修复 Round141 synthetic fixture 依赖并重新回归",
+      "baselineInheritedFrom": "Stage114 full Node 1036/1036 + Round141 local Chromium hotfix；Stage115 新增 Round286，并重新回归 Round285 72/72",
       "targetedStaticChecksStage95": {
         "passed": 10,
         "total": 10,
@@ -588,7 +588,7 @@
         "state": "pass",
         "passed": 6,
         "total": 6,
-        "scope": "计划默认具体时间、手动新安排继承、移动不重置、单次覆盖、一键周期排期联动与版本历史"
+        "scope": "计划默认具体时间、手动新安排继承、移动不重置、单次覆盖、一键周期排期联动与版本历史；Stage115 版本更新后重新回归"
       },
       "round285PlanDefaultTimeBrowser": {
         "state": "pass",
@@ -604,7 +604,7 @@
           1280,
           1440
         ],
-        "scope": "Stage113 计划默认具体时间功能在 Stage114 版本更新后重新回归，无产品逻辑变化"
+        "scope": "Stage113 默认具体时间主逻辑在 Stage115 快速编辑加入后重新回归，72/72"
       },
       "round141PcArchiveBrowserHotfix": {
         "state": "local-system-chromium-pass-github-actions-rerun-pending",
@@ -631,12 +631,35 @@
         "nativeSyntheticIntegrationTotal": 13,
         "blockingFailure": "Round141 isolated Chromium fixture ReferenceError: moduleRuleDisplay is not defined",
         "conclusion": "CI fixture dependency drift; Stage113 product runtime not implicated"
+      },
+      "round286PlanHoverTimeStatic": {
+        "state": "pass",
+        "passed": 5,
+        "total": 5,
+        "scope": "单次时间浮层、悬浮/点击入口、只改当前 occurrence、默认/清除、安全边界与拖拽/分享模式隔离"
+      },
+      "round286PlanHoverTimeBrowser": {
+        "state": "pass",
+        "passed": 64,
+        "total": 64,
+        "viewports": [
+          320,
+          375,
+          390,
+          430,
+          768,
+          1024,
+          1280,
+          1440
+        ],
+        "scope": "悬浮打开、点击时间固定打开、单次保存、计划默认不被改、套用默认、清除小时、视口内定位与即时日历刷新"
       }
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "generalBaselineInherited": true,
       "pending": [
+        "v8.1.12.293 开团计划单次时间快速编辑：真实桌面悬浮、点击时间固定打开、滚动跟随与手机点击时间入口复核",
         "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
         "v8.1.12.290 真实 D&D 模板：完成 Excel/WPS 四项人工复核并下载匿名验收 JSON",
         "v8.1.12.288 D&D 导出前检查在真实模板上的 Windows 浏览器与 Excel/WPS 针对性复核",
@@ -647,25 +670,26 @@
     "release": {
       "state": "candidate-local-gates-pass-github-synthetic-rerun-pending",
       "productionPackage": "built-locally-after-preflight-pass",
-      "productionSite": "not-verified-as-v8.1.12.292",
-      "testSite": "not-verified-as-v8.1.12.292",
+      "productionSite": "not-verified-as-v8.1.12.293",
+      "testSite": "not-verified-as-v8.1.12.293",
       "artifactNames": [
-        "Stage114_完整候选工程.zip",
-        "Stage114_正式仓库完整同步包.zip",
-        "Stage114_测试仓库完整同步包.zip",
-        "Stage114_测试证据与SHA256.zip"
+        "Stage115_完整候选工程.zip",
+        "Stage115_正式仓库完整同步包.zip",
+        "Stage115_测试仓库完整同步包.zip",
+        "Stage115_测试证据与SHA256.zip"
       ]
     }
   },
   "workstreams": {
     "coreProduct": {
       "scopeProgressPercent": 100,
-      "code": "complete-for-stage114-ci-hotfix-scope",
-      "automatedTests": "Stage114 full Node 1036/1036; Round141 local Chromium 9 geometry + 3 long-continuation viewports PASS; Round285 72/72; GitHub chromium-synthetic rerun pending",
-      "realDevice": "accepted-baseline + stage113-targeted-check-pending",
+      "code": "complete-for-stage115-quick-occurrence-time-scope",
+      "automatedTests": "Stage115 full Node 1041/1041; Round285 72/72; Round286 64/64; GitHub chromium-synthetic rerun pending",
+      "realDevice": "accepted-baseline + stage113/stage115-targeted-planner-checks-pending",
       "release": "candidate",
       "stage113Scope": "plan-default-exact-time-and-independent-occurrence-overrides",
-      "stage114Scope": "synthetic-round141-dependency-drift-hotfix-no-product-runtime-change"
+      "stage114Scope": "synthetic-round141-dependency-drift-hotfix-no-product-runtime-change",
+      "stage115Scope": "calendar-occurrence-hover-click-quick-exact-time-editor"
     },
     "backupRecoveryMigration": {
       "scopeProgressPercent": 100,
@@ -833,6 +857,7 @@
     "hoExportComposerPanel": "PL／KP 跑团整理"
   },
   "knownOpenItems": [
+    "v8.1.12.293 开团计划单次时间快速编辑：真实桌面悬浮/滚动跟随与手机点击时间入口针对性复核",
     "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
     "v8.1.12.290 匿名验收证据链已通过合成浏览器；仍需真实 D&D 模板在 Excel/WPS 中完成四项人工复核并回传匿名 JSON",
     "v8.1.12.289 D&D 生成后自检已通过合成工作簿，真实 Excel/WPS 模板仍需针对性复核",

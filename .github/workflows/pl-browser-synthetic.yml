@@ -599,6 +599,8 @@ jobs:
         run: node --test .github/pl-ci/round284-dnd-acceptance-evidence.test.cjs
       - name: Round285 plan default exact-time contract
         run: node --test .github/pl-ci/round285-plan-default-time.test.cjs
+      - name: Round286 planner hover exact-time editor contract
+        run: node --test .github/pl-ci/round286-plan-hover-time.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
@@ -663,6 +665,9 @@ jobs:
       - name: Round285 plan default exact-time browser
         run: |
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round285-plan-default-time-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round285-browser.log"
+      - name: Round286 planner hover exact-time editor browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round286-plan-hover-time-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round286-browser.log"
       - name: Round263 production release package preflight
         run: |
           node --test .github/pl-ci/round263-production-release-preflight.test.cjs

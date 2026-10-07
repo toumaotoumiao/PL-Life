@@ -1,5 +1,5 @@
 {
-  "appVersion": "8.1.12.292",
+  "appVersion": "8.1.12.293",
   "files": {
     ".github/pl-ci/README.md": "2b677ce98231eb5ab19ee752c0996f7a946ba873cda856d08d5e0b9e8712730d",
     ".github/pl-ci/ROUND130_VISUAL_AUDIT.md": "2292c9b433387ea214430d119809a212037f84f4e110e4e626f7565ea540e6f9",
@@ -323,6 +323,8 @@
     ".github/pl-ci/round284-dnd-acceptance-evidence.test.cjs": "14d19a224d9719bb0a21189ff161d685b4a058b1f007a43b3b7cf248522d943d",
     ".github/pl-ci/round285-plan-default-time-browser.py": "c4b73b69f96ef5eae2c0d6a84ea772fa679c22076b218da3ec8c1cca54fac1fa",
     ".github/pl-ci/round285-plan-default-time.test.cjs": "eb79e562afe05b2d8a32754c5231d724dce0e170151c5e93bf00d79736999117",
+    ".github/pl-ci/round286-plan-hover-time-browser.py": "c476324e47209fd31aaf30a80c2350a019f9fd70a5296346cdfab329d60e4720",
+    ".github/pl-ci/round286-plan-hover-time.test.cjs": "a7a6b0dedbe9be23f156ddb115ae734333d3d3b82a16b07c22230a1142d9c838",
     ".github/pl-ci/round71-lifecycle-log-ux.test.cjs": "c5c08f5ac0721ad94b13ba2946b17377baa1741d22efe564b333f661e5a9aa09",
     ".github/pl-ci/round72-log-status-regression.test.cjs": "ae6eb694fef01fc1f1cb6444eedf614da01477bc6744d0d71791e982deab0d0e",
     ".github/pl-ci/round73-coc7-variant-fidelity.test.cjs": "b3760c1739ee81c37657978f30729618d3d9bd412033d925881b6ecf09a9cad3",
@@ -372,12 +374,12 @@
     ".github/pl-ci/visual-evidence/round164-final-inspection/native-1280.png": "db6f0077594ad5e0c78e4855ca97b80d83b20093a0de984634fa893bc004cdeb",
     ".github/pl-ci/visual-evidence/round164-final-inspection/native-375.png": "b0b4ab0e3d4fdb48b3a47f49e0517cc96b5aea1004cb66f5c25f40419e24e394",
     ".github/pl-ci/visual-evidence/round164-final-inspection/round164-final-inspection.json": "7c8d435fcccacbc3c38c14f70534d3df2440554d8770c0838a439d158bda586c",
-    ".github/workflows/pl-browser-synthetic.yml": "a366c401acc3194de301a867b1a2b45bb99705c250ddb5b2ecb21342108013d2",
+    ".github/workflows/pl-browser-synthetic.yml": "4bec9336a6e84e073cff3b0a888daaf41e2e8f58377fc18febe351e3e4474169",
     ".github/workflows/pl-native-restore-gate.yml": "a6df7a6d795cedcedb22566bfeca85b698b90dd852efac83ac9100bf434ff287",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "CURRENT_PROJECT_STATUS.json": "fd9e41cb2c957aa842879889c4b712addaebdf1811df38ba8cdf2ffaf19f768b",
+    "CURRENT_PROJECT_STATUS.json": "c07ae4ae85f1f0c9d24053e51352b3c95ee604c91722ff32e4f3d2126c63e171",
     "PRODUCTION_RELEASE_GUIDE.md": "3ed52f40c21afe9625ed036893d4a97e9bc64ab3bbb1c01aeeaaf1d383b0f015",
-    "README.md": "eaa66dd212213f589729e968f48152dd769a9509d339a9acf4073585e73bdc3a",
+    "README.md": "574b299b714c6412135c4a8dc171a8b60587623102e1d911d4a8e556f6aa0867",
     "RUN_STAGE48_NATIVE_RECOVERY.cmd": "a059b5ad447aafe81be0b8ea4ed7da240987a108389ef2ddb9efb58d629128d8",
     "STAGE48_NATIVE_RECOVERY_WINDOWS.md": "d7a16e54bed2232b2d875be5d025da32dd3c62bd389650ece8754175ffe73c85",
     "backup-restore-preflight.js": "24a5a04a3670e1aa644943b19974b248a3dcfef3ba995dd0319c561b8af22212",
@@ -390,13 +392,13 @@
     "field-adapters.js": "da63e7fe31dfc2c7d60a1f9fee89b086f536aa2e08c6a9f981570cf75c70f104",
     "icon-192.png": "3d46c12b419c558a3c59aea313b6c479df2a1c88c93ca696d6985310872b24d7",
     "icon-512.png": "223fe2f59ceb16cb943b907a05685aba8e456e658b3e3c0356efacc0a3997294",
-    "index.html": "88eef97af3f5b5f3d62e4bf8760fe5de2eca7357d20f9958a8fc20728fd3d7f2",
+    "index.html": "f5ac7ddd76c8adcc838d36938aec87995479f711faa1275108bfedaf0de97675",
     "manifest.webmanifest": "eb8fc852d053083469143fdbb5a4ed372a9c18a6b4f9dec21a21a0b4839b915d",
     "module-query-bridge.js": "9c150642b979e6786867a63b76d2f0b508b04bff197d7f40b386713edd320469",
     "module-tools.html": "eac390a8633d0400222bcb8711325cf98313c970ceaa4e0c5443d452d6560cad",
     "pc-query-bridge.js": "a3b70a3a852a3a15916c0222c6c1643dde3b01389cab1c1e70ac381a2814eaae",
     "plan-query-bridge.js": "d149fe706f289a2d1af5869f3fbe82413d5ee5fd78834745c4ffe93fde356f93",
-    "production-release-manifest.json": "8d167ff87901c56109ade3cb2135f00ccc66ad03fbb52c0d235bef0784afa812",
+    "production-release-manifest.json": "b02906e441d995a21fe75ae6bf6800b3350c926c0baaeab24f21952a3185a272",
     "profile-query-bridge.js": "2f542602ebf1a9a22f47e19f56cc0cecf7edd718c9410605e34f0a67c01a55a4",
     "query-core.js": "ef27972b87cf298a53c0c0b8dc68fa7d872433e264e0404f4cc48e04e724843b",
     "query-engine.js": "3f812d89e50a2d3fdd09975842bd22403e0784685bddf1e93eda77f12e053c5a",
@@ -408,6 +410,6 @@
     "runtime-environment.js": "0230d50609d5d45eee157659bca47e4dc371c8861c8a27d3eb85a0334a721045",
     "showcase-core.js": "47c86bde6e801281bb643a55a60e4023887edfc12f36121bd49a1d09fb778548",
     "stats-query-bridge.js": "a92cd30e1bdccc00e347b7aedad10f0f8853fc46b0e154b57066f9091cff5157",
-    "sw.js": "8b2b90bc03c940cf0e4684b2d50a0db1890ecf6db24432451daf8b7b25d99e8c"
+    "sw.js": "ffe6dd81fc863aa55169a90e9c2c102a0fe7b527f038f3ce09f134220db92622"
   }
 }
