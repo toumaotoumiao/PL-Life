@@ -609,6 +609,8 @@ jobs:
         run: node --test .github/pl-ci/round289-settings-diagnostic-report.test.cjs
       - name: Round290 migration closeout static checks
         run: node --test .github/pl-ci/round290-migration-closeout.test.cjs
+      - name: Round291 migration stale-selection safety contract
+        run: node --test .github/pl-ci/round291-migration-stale-selection.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"

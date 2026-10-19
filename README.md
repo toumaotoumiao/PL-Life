@@ -1,6 +1,6 @@
 # PL收集梦想生活
 
-当前产品版本：v8.1.12.298 / schema26。
+当前产品版本：v8.1.12.299 / schema26。
 
 `CURRENT_PROJECT_STATUS.json` 是唯一的当前项目状态源；历史 `STAGE*.md` 仅表示当时的时间点快照。
 

@@ -47,8 +47,8 @@ test('migration restore failures provide direct diagnostic and retry actions',()
   assert.match(body,/storage-diagnostic\.html/);
   assert.match(body,/label:'重新选择备份'/);
 });
-test('Stage120 version is consistent',()=>{
-  assert.equal(current.stage,120);
-  assert.equal(current.appVersion,'8.1.12.298');
-  assert.match(index,/const APP_UI_VERSION = "8\.1\.12\.298";/);
+test('current project status and runtime version stay consistent',()=>{
+  assert.ok(Number(current.stage)>=120);
+  assert.match(String(current.appVersion),/^8\.1\.12\.\d+$/);
+  assert.ok(index.includes(`const APP_UI_VERSION = "${current.appVersion}";`));
 });

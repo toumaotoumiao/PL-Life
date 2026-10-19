@@ -51,12 +51,15 @@ test('issue report is session-scoped and sanitizes common local identifiers',()=
 });
 
 test('restore action is revealed only after ZIP inspection passes',()=>{
-  const resetStart=index.indexOf('function resetDeviceMigrationSelection');
+  const clearStart=index.indexOf('function clearDeviceMigrationVerifiedSelection');
+  const resetStart=index.indexOf('function resetDeviceMigrationSelection',clearStart);
   const inspectStart=index.indexOf('async function inspectDeviceMigrationInput',resetStart);
   const diagStart=index.indexOf('async function deviceMigrationAnonymousDiagnosticText',inspectStart);
+  const clear=index.slice(clearStart,resetStart);
   const reset=index.slice(resetStart,inspectStart);
   const inspect=index.slice(inspectStart,diagStart);
-  assert.match(reset,/restore\.hidden=true/);
+  assert.match(clear,/restore\.hidden=true/);
+  assert.match(reset,/clearDeviceMigrationVerifiedSelection\(\)/);
   assert.match(inspect,/restore\.hidden=false/);
   assert.match(inspect,/restore\.textContent='恢复这份备份'/);
 });

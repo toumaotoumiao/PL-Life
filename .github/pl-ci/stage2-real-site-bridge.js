@@ -265,11 +265,12 @@
             result.valid=await inspectDeviceMigrationInput(file);
             result.enabled=document.getElementById('deviceMigrationRestoreBtn')?.disabled===false;
             const summary=document.getElementById('deviceMigrationInspectStatus')?.textContent||'';
-            result.details=summary.includes('只读核验')&&summary.includes('关联图片 0')&&summary.includes('关联原始 Excel 0')&&summary.includes('未关联图片 1')&&summary.includes('未关联原始 Excel 1');
+            result.details=summary.includes('synthetic-transfer.zip')&&summary.includes('核验完成')&&summary.includes('可恢复')&&summary.includes('PL')&&summary.includes('PC')&&summary.includes('图片')&&summary.includes('Excel');
             phase='CORRUPT_INSPECTION';
             const corrupt=new File([new Uint8Array([80,75,0,0,1])],'synthetic-broken.zip',{type:'application/zip'});
             result.corruptRejected=(await inspectDeviceMigrationInput(corrupt))===false;
-            result.staleCleared=document.getElementById('deviceMigrationRestoreBtn')?.disabled===true;
+            const restoreAfterBad=document.getElementById('deviceMigrationRestoreBtn');
+            result.staleCleared=deviceMigrationVerifiedFile===null&&restoreAfterBad?.disabled===true&&restoreAfterBad?.hidden===true&&document.getElementById('deviceMigrationInspectBtn')?.textContent==='选择备份';
             phase='REINSPECTION';
             result.reverified=await inspectDeviceMigrationInput(file);
             phase='READBACK';

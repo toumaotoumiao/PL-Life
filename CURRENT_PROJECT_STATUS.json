@@ -2,16 +2,16 @@
   "format": "pl-life-current-project-status",
   "statusVersion": 1,
   "sourceOfTruth": true,
-  "updatedAt": "2026-10-19",
+  "updatedAt": "2026-10-20",
   "current": {
-    "stage": 120,
-    "appVersion": "8.1.12.298",
+    "stage": 121,
+    "appVersion": "8.1.12.299",
     "schemaVersion": 26,
     "branchState": "release-candidate",
     "focus": [
-      "完成导入与迁移主流程收口：单主操作、核验结果状态卡、历史核对导出入口下沉",
-      "恢复错误现场直达本机存储检查与重新选择备份，问题详情和下载报告记录完整问题路径",
-      "高级工具拆分旧版兼容、历史恢复与其他导出，并继续清理面向用户的技术型说明"
+      "修复换设备备份连续核验状态：新文件核验失败时立即清除上一份文件的恢复资格",
+      "同步真实 Chromium 合成迁移测试到当前核验结果卡，保留零写入与附件回读保护",
+      "继续以用户端错误报告和本机存储检查定位私人备份恢复问题，无需收集用户 ZIP"
     ]
   },
   "statusPolicy": {
@@ -39,11 +39,11 @@
   },
   "currentVersionAcceptance": {
     "automated": {
-      "state": "stage120-local-gates-pass-github-round290-browser-pending",
+      "state": "stage121-local-gates-pass-github-synthetic-recheck-pending",
       "node": {
         "state": "pass",
-        "passed": 1063,
-        "total": 1063
+        "passed": 1067,
+        "total": 1067
       },
       "imageExportRegression": {
         "state": "covered-by-full-node-and-targeted-browser-regressions",
@@ -688,7 +688,12 @@
           "passed": 6,
           "total": 6
         },
-        "githubBrowser": "pending-current-version"
+        "githubBrowser": {
+          "state": "pass",
+          "passed": 14,
+          "total": 14,
+          "source": "user-returned pl-synthetic-browser-result (17).zip / v8.1.12.298"
+        }
       },
       "round288MigrationReadonlyDiagnostic": {
         "static": {
@@ -711,18 +716,38 @@
         },
         "browser": {
           "state": "pending-github",
-          "localEnvironment": "ERR_BLOCKED_BY_ADMINISTRATOR before page navigation",
+          "reason": "v8.1.12.298 workflow stopped at isolated synthetic integration before Round290; local environment blocks localhost with ERR_BLOCKED_BY_ADMINISTRATOR",
           "viewports": [
             390,
             1280
           ]
         }
+      },
+      "round291MigrationStaleSelection": {
+        "static": {
+          "state": "pass",
+          "passed": 4,
+          "total": 4
+        },
+        "githubBrowserIntegration": "pending-current-version",
+        "scope": "有效完整备份 → 损坏/精简替换时清除旧恢复资格；隔离浏览器桥接按当前状态卡核验"
+      },
+      "userReturnedSyntheticV298": {
+        "state": "reviewed-failure-root-cause-fixed-in-stage121",
+        "source": "pl-synthetic-browser-result (17).zip",
+        "siteVersion": "8.1.12.298",
+        "nativeRestoreGate": "pass-from-user-screenshot",
+        "syntheticIntegrationPassed": 11,
+        "syntheticIntegrationTotal": 13,
+        "blockingFailure": "设备迁移专项：details + staleCleared；恢复专项因前置失败被跳过",
+        "rootCause": "details 为 Stage120 状态卡改版后的测试契约漂移；staleCleared 为真实 UI 状态缺陷，重新选择坏 ZIP 后旧恢复按钮未立即隐藏/禁用。"
       }
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "generalBaselineInherited": true,
       "pending": [
+        "v8.1.12.299 换设备连续核验：有效完整备份后再选损坏/精简文件，旧恢复按钮必须立即消失；GitHub synthetic 复跑后再做真机复核",
         "v8.1.12.298 导入与迁移界面收口：真实桌面/手机核验结果卡、历史核对导出、错误现场诊断按钮和 TXT 错误报告下载复核",
         "v8.1.12.296 私人备份恢复诊断：受影响用户仅需打开独立本机存储诊断并复制匿名结构信息；无需提供 ZIP；真实故障设备结果待回传",
         "v8.1.12.293 开团计划单次时间快速编辑：真实桌面悬浮、点击时间固定打开、滚动跟随与手机点击时间入口复核",
@@ -734,15 +759,15 @@
       ]
     },
     "release": {
-      "state": "stage120-local-gates-pass-packages-ready",
+      "state": "stage121-local-gates-pass-packages-ready",
       "productionPackage": "ready",
       "productionSite": "not-deployed",
       "testSite": "not-deployed",
       "artifactNames": [
-        "Stage120_完整候选工程.zip",
-        "Stage120_正式仓库完整同步包.zip",
-        "Stage120_测试仓库完整同步包.zip",
-        "Stage120_测试证据与SHA256.zip"
+        "Stage121_完整候选工程.zip",
+        "Stage121_正式仓库完整同步包.zip",
+        "Stage121_测试仓库完整同步包.zip",
+        "Stage121_测试证据与SHA256.zip"
       ],
       "testPackage": "ready",
       "candidatePackage": "ready",
@@ -967,6 +992,8 @@
     "Stage118 正式/测试/完整候选 ZIP 已通过 CRC；SHA-256 随测试证据包交付。",
     "Stage120：导入与迁移剩余收口，增加核验结果卡、错误现场诊断直达、历史核对导出入口下沉和高级工具拆分；schema26 与完整 ZIP 格式不变。",
     "Stage120 本地 Full Node 1063/1063 PASS；Round289+290 静态 13/13 PASS；Production preflight PASS；Actions YAML 2/2 PASS。Round290 Chromium 本地在页面导航前被 ERR_BLOCKED_BY_ADMINISTRATOR 拦截，已接入 GitHub。",
-    "Stage120 正式/测试/完整候选/测试证据四类交付包已准备；正式站与测试站仍需部署后确认。"
+    "Stage120 正式/测试/完整候选/测试证据四类交付包已准备；正式站与测试站仍需部署后确认。",
+    "v8.1.12.299：根据用户回传 v298 synthetic artifact 定位到迁移核验测试契约漂移与旧恢复资格未清除两个问题；Stage121 修复后等待 GitHub 复跑。",
+    "v8.1.12.299 本地 Full Node 1067/1067、Round289-291 静态 17/17、Production preflight、2/2 Actions YAML 通过；真实 Chromium 集成等待 GitHub 复跑。"
   ]
 }
