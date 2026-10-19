@@ -5,7 +5,7 @@ function block(name,next){const start=html.indexOf(`function ${name}`);assert.no
 test('calendar occurrence quick-time editor is present without a schema bump',()=>{
   for(const token of ['planner-quick-time-popover','data-quick-time-start','data-quick-time-end','data-quick-time-save','data-quick-time-default','data-quick-time-clear'])assert.ok(html.includes(token),token);
   assert.ok(html.includes('const DATA_SCHEMA_VERSION = 26;'));
-  assert.ok(html.includes('const APP_UI_VERSION = "8.1.12.293";'));
+  assert.ok(html.includes(`const APP_UI_VERSION = "${status.current.appVersion}";`));
 });
 
 test('desktop hover and direct time click both open the quick editor',()=>{

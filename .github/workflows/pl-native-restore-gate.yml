@@ -123,7 +123,8 @@ jobs:
             .github/pl-ci/round282-dnd-export-preflight.test.cjs \
             .github/pl-ci/round283-dnd-postbuild-selfcheck.test.cjs \
             .github/pl-ci/round284-dnd-acceptance-evidence.test.cjs \
-            .github/pl-ci/round285-plan-default-time.test.cjs
+            .github/pl-ci/round285-plan-default-time.test.cjs \
+            .github/pl-ci/round288-migration-readonly-diagnostic.test.cjs
       - name: Verify production release package preflight
         run: python .github/pl-ci/build-production-release.py --check-only
       - name: Verify privacy-local D&D comparison using temporary fictional sheets

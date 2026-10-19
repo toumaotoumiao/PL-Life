@@ -601,6 +601,10 @@ jobs:
         run: node --test .github/pl-ci/round285-plan-default-time.test.cjs
       - name: Round286 planner hover exact-time editor contract
         run: node --test .github/pl-ci/round286-plan-hover-time.test.cjs
+      - name: Round287 private-backup IndexedDB diagnostic contract
+        run: node --test .github/pl-ci/round287-private-backup-idb-diagnostics.test.cjs
+      - name: Round288 migration read-only diagnostic separation contract
+        run: node --test .github/pl-ci/round288-migration-readonly-diagnostic.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
@@ -668,6 +672,12 @@ jobs:
       - name: Round286 planner hover exact-time editor browser
         run: |
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round286-plan-hover-time-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round286-browser.log"
+      - name: Round287 legacy IndexedDB upgrade and anonymous diagnostic browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round287-idb-upgrade-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round287-browser.log"
+      - name: Round288 standalone read-only storage diagnostic browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round288-migration-readonly-diagnostic-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round288-browser.log"
       - name: Round263 production release package preflight
         run: |
           node --test .github/pl-ci/round263-production-release-preflight.test.cjs

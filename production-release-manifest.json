@@ -1,7 +1,7 @@
 {
   "format": "pl-life-production-release-manifest",
   "manifestVersion": 1,
-  "appVersion": "8.1.12.293",
+  "appVersion": "8.1.12.295",
   "schemaVersion": 26,
   "rootFiles": [
     ".nojekyll",
@@ -38,6 +38,7 @@
     "runtime-environment.js",
     "showcase-core.js",
     "stats-query-bridge.js",
+    "storage-diagnostic.html",
     "sw.js"
   ],
   "includeDirectories": [
@@ -142,12 +143,16 @@
     "STAGE112_",
     "STAGE113_",
     "STAGE114_",
-    "STAGE115_"
+    "STAGE115_",
+    "STAGE116_",
+    "STAGE117_"
   ],
   "excludedInternalPrefixes": [
     "STAGE111_",
     "STAGE112_",
     "STAGE114_",
-    "STAGE115_"
+    "STAGE115_",
+    "STAGE116_",
+    "STAGE117_"
   ]
 }

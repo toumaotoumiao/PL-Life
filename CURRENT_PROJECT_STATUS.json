@@ -2,16 +2,16 @@
   "format": "pl-life-current-project-status",
   "statusVersion": 1,
   "sourceOfTruth": true,
-  "updatedAt": "2026-10-07T13:55:00+08:00",
+  "updatedAt": "2026-10-19",
   "current": {
-    "stage": 115,
-    "appVersion": "8.1.12.293",
+    "stage": 117,
+    "appVersion": "8.1.12.295",
     "schemaVersion": 26,
     "branchState": "release-candidate",
     "focus": [
-      "开团计划周历增加单次安排具体小时快速编辑浮层",
-      "桌面鼠标悬浮快速查看/修改；点击时间固定打开，触屏可直接点击时间入口",
-      "单次保存、套用计划默认、清除具体小时均只修改当前安排，不改变计划默认时间或其他场次"
+      "换设备迁移的 ZIP 只读核验与恢复入口彻底分离，避免只读检查误进入恢复流程",
+      "新增独立本机存储诊断页：仅读取 IndexedDB 版本/仓库/索引结构，不读取记录内容、不升级、不删除、不写入",
+      "恢复条件检查失败显示明确阶段与匿名技术详情，不要求用户提供私人备份"
     ]
   },
   "statusPolicy": {
@@ -39,11 +39,11 @@
   },
   "currentVersionAcceptance": {
     "automated": {
-      "state": "stage115-local-regression-passed-github-synthetic-rerun-pending",
+      "state": "stage117-full-node-and-round288-static-pass-browser-pending-github",
       "node": {
         "state": "pass",
-        "passed": 1041,
-        "total": 1041
+        "passed": 1049,
+        "total": 1049
       },
       "imageExportRegression": {
         "state": "covered-by-full-node-and-targeted-browser-regressions",
@@ -107,7 +107,7 @@
         "storageHarness": "isolated-memory-workbook-stub",
         "note": "当前执行环境阻止 localhost 原生 IndexedDB 浏览器导航；原生附件/完整 ZIP 持久化继续由既有存储与恢复回归覆盖，不将本项冒充原生 IndexedDB 真机证明。"
       },
-      "baselineInheritedFrom": "Stage114 full Node 1036/1036 + Round141 local Chromium hotfix；Stage115 新增 Round286，并重新回归 Round285 72/72",
+      "baselineInheritedFrom": "Stage116 已有历史基线；Stage117 已重新完成 Full Node 1049/1049，并通过 Round288 static 4/4。Round288/287 浏览器原生 IndexedDB 检查等待 GitHub 在线环境。",
       "targetedStaticChecksStage95": {
         "passed": 10,
         "total": 10,
@@ -653,12 +653,37 @@
           1440
         ],
         "scope": "悬浮打开、点击时间固定打开、单次保存、计划默认不被改、套用默认、清除小时、视口内定位与即时日历刷新"
+      },
+      "round287PrivateBackupDiagnosticStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "恢复阶段标记、IndexedDB 旧/新版本与对象仓库匿名诊断、技术详情隐私边界"
+      },
+      "round287LegacyIdbUpgradeBrowser": {
+        "state": "pending-github",
+        "passed": 0,
+        "total": 6,
+        "scope": "合成旧 PC 附件库 v2→v3、恢复点库 v1→v2、旧行保留与匿名诊断不泄露种子私密值",
+        "note": "当前执行环境阻止 Playwright 访问 localhost（ERR_BLOCKED_BY_ADMINISTRATOR），未冒充浏览器通过；已接入 chromium-synthetic，待 GitHub 在线运行。"
+      },
+      "round288MigrationReadonlyDiagnosticStatic": {
+        "state": "pass",
+        "passed": 4,
+        "total": 4,
+        "scope": "ZIP只读核验/恢复入口隔离、独立诊断页无写入契约、版本与离线缓存纳入"
+      },
+      "round288MigrationReadonlyDiagnosticBrowser": {
+        "state": "pending-github",
+        "scope": "虚构旧版 PC 附件库 v2、恢复点库 v1；诊断页不得升级版本/改变仓库/读取记录值",
+        "localAttempt": "blocked-by-environment-localhost-policy"
       }
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "generalBaselineInherited": true,
       "pending": [
+        "v8.1.12.295 私人备份恢复诊断：受影响用户仅需打开独立本机存储诊断并复制匿名结构信息；无需提供 ZIP；真实故障设备结果待回传",
         "v8.1.12.293 开团计划单次时间快速编辑：真实桌面悬浮、点击时间固定打开、滚动跟随与手机点击时间入口复核",
         "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
         "v8.1.12.290 真实 D&D 模板：完成 Excel/WPS 四项人工复核并下载匿名验收 JSON",
@@ -668,15 +693,15 @@
       ]
     },
     "release": {
-      "state": "candidate-local-gates-pass-github-synthetic-rerun-pending",
+      "state": "candidate-local-gates-pass-github-round287-round288-browser-pending",
       "productionPackage": "built-locally-after-preflight-pass",
-      "productionSite": "not-verified-as-v8.1.12.293",
-      "testSite": "not-verified-as-v8.1.12.293",
+      "productionSite": "not-verified-as-v8.1.12.295",
+      "testSite": "not-verified-as-v8.1.12.295",
       "artifactNames": [
-        "Stage115_完整候选工程.zip",
-        "Stage115_正式仓库完整同步包.zip",
-        "Stage115_测试仓库完整同步包.zip",
-        "Stage115_测试证据与SHA256.zip"
+        "Stage117_完整候选工程.zip",
+        "Stage117_正式仓库完整同步包.zip",
+        "Stage117_测试仓库完整同步包.zip",
+        "Stage117_测试证据与SHA256.zip"
       ]
     }
   },
@@ -857,6 +882,7 @@
     "hoExportComposerPanel": "PL／KP 跑团整理"
   },
   "knownOpenItems": [
+    "v8.1.12.295 私人备份恢复诊断：Stage117 Full Node 1049/1049、Round288 static 4/4、本地发布预检通过；Round287/288 原生 IndexedDB 浏览器回归已接入 GitHub，当前本地环境因管理员策略阻止 localhost，等待测试仓库在线结果与受影响设备匿名诊断",
     "v8.1.12.293 开团计划单次时间快速编辑：真实桌面悬浮/滚动跟随与手机点击时间入口针对性复核",
     "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
     "v8.1.12.290 匿名验收证据链已通过合成浏览器；仍需真实 D&D 模板在 Excel/WPS 中完成四项人工复核并回传匿名 JSON",
