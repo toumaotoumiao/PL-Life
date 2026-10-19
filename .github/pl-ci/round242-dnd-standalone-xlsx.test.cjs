@@ -31,3 +31,11 @@ test('Round245 rejects a filled rule row without its original field name instead
  assert.throws(()=>rows(p),/缺少字段名/);
  assert.equal(p.sheet.resources.at(-1).label,'');
 });
+
+test('Round242 responsive browser audit settles production media-query listeners before opening mobile menus',()=>{
+ const browser=fs.readFileSync(path.resolve(__dirname,'round242-dnd-xlsx-browser.py'),'utf8');
+ assert.match(browser,/def settle_viewport\(page,width\):/);
+ assert.match(browser,/requestAnimationFrame\(\(\)=>requestAnimationFrame\(resolve\)\)/);
+ assert.match(browser,/pcSyncFooterMoreV73/);
+ assert.match(browser,/settle_viewport\(page,width\)/);
+});

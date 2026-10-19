@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import json, os, threading
+import json, os, threading, re
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 
@@ -48,7 +48,7 @@ try:
     browser.close()
 finally:
   server.shutdown();server.server_close()
-report={'version':'8.1.12.295','checks':len(checks),'passed':sum(x['pass'] for x in checks),'failures':[x for x in checks if not x['pass']],'mode':'standalone readonly IndexedDB structure diagnostic; fictional rows only'}
+index_text=(root/'index.html').read_text('utf8');version_match=re.search(r'const APP_UI_VERSION = [\"\']([^\"\']+)',index_text);report={'version':version_match.group(1) if version_match else 'unknown','checks':len(checks),'passed':sum(x['pass'] for x in checks),'failures':[x for x in checks if not x['pass']],'mode':'standalone readonly IndexedDB structure diagnostic; fictional rows only'}
 (out/'round288-result.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n','utf8')
 print('ROUND288',report['passed'],'/',report['checks'],'failures',len(report['failures']))
 if report['failures']:

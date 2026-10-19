@@ -12,10 +12,10 @@
 <body>
 <main class="page">
 <section class="card">
-<div class="eyebrow">PL收集梦想生活 · v8.1.12.295 · schema26</div>
+<div class="eyebrow">PL收集梦想生活 · v8.1.12.298 · schema26</div>
 <h1 class="title">本机存储诊断</h1>
-<p class="copy">这个页面只检查 IndexedDB 的数据库版本、对象仓库与索引结构。它不会读取任何档案记录内容，不会创建、升级、删除或写入数据库，也不需要选择备份 ZIP。</p>
-<div class="notice"><strong>适合恢复失败时使用：</strong>把下方“匿名诊断”复制给制作者即可。无需提供 PL、PC、Log、图片、Excel 或完整备份。</div>
+<p class="copy">检查范围：IndexedDB 数据库版本、对象仓库与索引结构。检查过程使用只读方式，反馈内容不包含档案记录。</p>
+<div class="notice"><strong>恢复失败时可运行此检查：</strong>反馈时复制下方“匿名诊断”。报告内容为数据库结构与运行状态。</div>
 <div class="actions"><button class="btn primary" id="run" type="button">重新检查</button><button class="btn" id="copy" type="button">复制匿名诊断</button><button class="btn" id="back" type="button">返回 PL</button></div>
 <div class="status" id="status" role="status" aria-live="polite">正在检查…</div>
 <pre class="result" id="result">正在检查…</pre>
@@ -24,7 +24,7 @@
 </main>
 <script>
 (()=>{'use strict';
-const APP_VERSION='8.1.12.295',SCHEMA=26;
+const APP_VERSION='8.1.12.298',SCHEMA=26;
 const isTest=/\/PL-Life-Test(?:\/|$)/i.test(location.pathname),prefix=isTest?'pl-life-test__':'';
 const targets=[
  {label:'PC附件库',base:'tomato_pl_pc_media_v1',target:3},
@@ -66,7 +66,7 @@ async function run(){
  try{
   if(!('indexedDB' in window)){last=`PL收集梦想生活 · 匿名本机存储诊断\n程序版本：v${APP_VERSION}\n数据结构：schema${SCHEMA}\nIndexedDB：浏览器不支持`;result.textContent=last;status.textContent='当前浏览器不支持 IndexedDB。';return;}
   if(typeof indexedDB.databases!=='function'){
-    last=[`PL收集梦想生活 · 匿名本机存储诊断`,`程序版本：v${APP_VERSION}`,`数据结构：schema${SCHEMA}`,`运行环境：${isTest?'测试站':'正式站'}`,'IndexedDB：浏览器未提供无侵入数据库枚举','为避免误创建数据库，本诊断页已停止继续打开任何数据库。'].join('\n');
+    last=[`PL收集梦想生活 · 匿名本机存储诊断`,`程序版本：v${APP_VERSION}`,`数据结构：schema${SCHEMA}`,`运行环境：${isTest?'测试站':'正式站'}`,'IndexedDB：浏览器未提供无侵入数据库枚举','当前浏览器未提供数据库枚举接口，检查在数据库打开前结束。'].join('\n');
     result.textContent=last;status.textContent='浏览器不支持无侵入数据库枚举，已停止，未修改数据。';return;
   }
   let list=[];try{list=await indexedDB.databases();}catch(err){throw new Error('数据库列表读取失败：'+String(err?.name||err));}
@@ -91,7 +91,7 @@ async function run(){
   }
   lines.push('隐私说明：未读取记录内容、未创建/升级/删除/写入数据库、未读取备份 ZIP。');
   last=lines.join('\n');result.textContent=last;status.textContent='检查完成。可以只复制这段匿名诊断。';copy.disabled=false;
- }catch(err){last=`PL收集梦想生活 · 匿名本机存储诊断\n程序版本：v${APP_VERSION}\n诊断异常：${String(err?.name||'Error')}: ${String(err?.message||err).slice(0,500)}\n隐私说明：未读取记录内容。`;result.textContent=last;status.textContent='诊断未完成，但没有修改数据库。';copy.disabled=false;}
+ }catch(err){last=`PL收集梦想生活 · 匿名本机存储诊断\n程序版本：v${APP_VERSION}\n诊断异常：${String(err?.name||'Error')}: ${String(err?.message||err).slice(0,500)}\n隐私说明：未读取记录内容。`;result.textContent=last;status.textContent='诊断未完成。数据库结构保持检查前状态。';copy.disabled=false;}
  finally{runBtn.disabled=false;}
 }
 async function copy(){

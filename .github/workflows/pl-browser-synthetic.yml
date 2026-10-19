@@ -605,6 +605,10 @@ jobs:
         run: node --test .github/pl-ci/round287-private-backup-idb-diagnostics.test.cjs
       - name: Round288 migration read-only diagnostic separation contract
         run: node --test .github/pl-ci/round288-migration-readonly-diagnostic.test.cjs
+      - name: Round289 settings and error-report contract
+        run: node --test .github/pl-ci/round289-settings-diagnostic-report.test.cjs
+      - name: Round290 migration closeout static checks
+        run: node --test .github/pl-ci/round290-migration-closeout.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
@@ -678,6 +682,9 @@ jobs:
       - name: Round288 standalone read-only storage diagnostic browser
         run: |
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round288-migration-readonly-diagnostic-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round288-browser.log"
+      - name: Round289 settings and error-report browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round289-settings-diagnostic-report-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round289-browser.log"
       - name: Round263 production release package preflight
         run: |
           node --test .github/pl-ci/round263-production-release-preflight.test.cjs
@@ -1027,6 +1034,9 @@ jobs:
         run: node --test .github/pl-ci/round84-layout-contract.test.cjs
       - name: Audit populated synthetic cards, filter expansion and UI entry geometry
         run: node .github/pl-ci/round84-layout-flow-browser-audit.cjs
+      - name: Round290 migration closeout in Chromium
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round290-migration-closeout-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round290-browser.log"
       - name: Enforce critical browser results after subsequent checks
         if: always()
         shell: bash

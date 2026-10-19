@@ -14,6 +14,16 @@ shim='''<script>(function(){const a=new Map(),b=new Map();function st(m){return{
 html=html.replace('<head>','<head>'+shim,1)
 checks=[]
 def record(label,ok):checks.append({'test':label,'pass':bool(ok)})
+def settle_viewport(page,width):
+ page.set_viewport_size({'width':width,'height':900})
+ # A desktop→mobile resize dispatches the production matchMedia change listener
+ # asynchronously. Let that listener settle before the test deliberately opens
+ # the mobile More/export menus, otherwise CI can close them after our click and
+ # report a one-frame false overflow/readability failure.
+ page.evaluate("""()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))""")
+ page.wait_for_timeout(20)
+ page.evaluate("""()=>{if(typeof pcSyncFooterMoreV73==='function')pcSyncFooterMoreV73();const more=document.querySelector('.pc-foot-more-v72');if(more)more.open=true;const menu=document.querySelector('.pc-footer-export-menu');if(menu)menu.open=true;}""")
+ page.evaluate("""()=>new Promise(resolve=>requestAnimationFrame(resolve))""")
 with sync_playwright() as p:
  executable=os.environ.get('PL_TEST_CHROMIUM_PATH') or os.environ.get('PL_CI_CHROMIUM_EXECUTABLE') or ('/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None)
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
@@ -118,22 +128,20 @@ with sync_playwright() as p:
   page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');const a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');window.__round242Workbook=null;pcWorkbookGet=async id=>window.__round242Workbook&&String(window.__round242Workbook.pcId)===String(id)?window.__round242Workbook:null;const pc=makeBlankPc(selfProfileId());pc.id='round242-ui';pc.name='合成导出角色';pc.ruleMeta={familyId:'d20-osr',systemId:'dnd',editionId:'5e-2024',confirmed:true,source:'user-selected'};pcs.push(pc);openPcEditor(pc.id);}''')
   page.wait_for_timeout(80)
   for width in [320,375,390,430,768,1024,1280,1440]:
-   page.set_viewport_size({'width':width,'height':900})
-   page.evaluate('''()=>{const more=document.querySelector('.pc-foot-more-v72');if(more)more.open=true;const menu=document.querySelector('.pc-footer-export-menu');if(menu)menu.open=true;}''')
-   geom=page.evaluate('''()=>{const b=document.querySelector('#pcFooterExportExcelBtn'),e=b.getBoundingClientRect();return {setup:b.dataset.pcDndTemplateState==='missing'&&b.dataset.pcExcelExportState==='ready'&&!b.disabled&&b.textContent.includes('设置 D&D 角色卡模板'),width:e.width,height:e.height,left:e.left,right:e.right,overflow:document.documentElement.scrollWidth-innerWidth}}''')
+   settle_viewport(page,width)
+   geom=page.evaluate('''()=>{const b=document.querySelector('#pcFooterExportExcelBtn'),e=b.getBoundingClientRect();return {setup:b.dataset.pcDndTemplateState==='missing'&&b.dataset.pcExcelExportState==='ready'&&!b.disabled&&b.textContent.includes('设置 D&D 角色卡模板'),moreOpen:!!document.querySelector('.pc-foot-more-v72')?.open,exportOpen:!!document.querySelector('.pc-footer-export-menu')?.open,width:e.width,height:e.height,left:e.left,right:e.right,overflow:document.documentElement.scrollWidth-innerWidth}}''')
    record(f'{width}:template-setup-ready',geom['setup'])
-   record(f'{width}:export-button-readable',geom['width']>80 and geom['height']>=40 and geom['left']>=-2 and geom['right']<=width+2 and geom['overflow']<=3)
+   record(f'{width}:export-button-readable',geom['moreOpen'] and geom['exportOpen'] and geom['width']>80 and geom['height']>=40 and geom['left']>=-2 and geom['right']<=width+2 and geom['overflow']<=3)
    verify=page.evaluate('''()=>{const b=document.getElementById('pcFooterVerifyDndXlsxBtn'),r=b.getBoundingClientRect();return {hidden:b.hidden,width:r.width,height:r.height}}''')
    record(f'{width}:legacy-verify-hidden',verify['hidden'] and verify['width']==0 and verify['height']==0)
    if width in [320,390,1280]:page.screenshot(path=str(out/f'round242-setup-{width}.png'),full_page=False)
   # Simulate the per-PC saved attachment metadata only; no user workbook is used.
   page.evaluate('''async()=>{window.__round242Workbook={pcId:'round242-ui',blob:new Blob(['fictional-template']),fileName:'fictional-template.xlsx',kind:'dnd-template',templateKey:'dnd:5e-2024',editionId:'2024',layoutId:'fictional'};syncPcExcelExportUi(pcDraft);await new Promise(r=>setTimeout(r,80));}''')
   for width in [320,375,390,430,768,1024,1280,1440]:
-   page.set_viewport_size({'width':width,'height':900})
-   page.evaluate('''()=>{const more=document.querySelector('.pc-foot-more-v72');if(more)more.open=true;const menu=document.querySelector('.pc-footer-export-menu');if(menu)menu.open=true;}''')
-   geom=page.evaluate('''()=>{const b=document.querySelector('#pcFooterExportExcelBtn'),e=b.getBoundingClientRect();return {ready:b.dataset.pcDndTemplateState==='saved'&&b.dataset.pcExcelExportState==='ready'&&!b.disabled&&b.textContent.includes('导出 D&D 角色 Excel 卡'),width:e.width,height:e.height,left:e.left,right:e.right,overflow:document.documentElement.scrollWidth-innerWidth}}''')
+   settle_viewport(page,width)
+   geom=page.evaluate('''()=>{const b=document.querySelector('#pcFooterExportExcelBtn'),e=b.getBoundingClientRect();return {ready:b.dataset.pcDndTemplateState==='saved'&&b.dataset.pcExcelExportState==='ready'&&!b.disabled&&b.textContent.includes('导出 D&D 角色 Excel 卡'),moreOpen:!!document.querySelector('.pc-foot-more-v72')?.open,exportOpen:!!document.querySelector('.pc-footer-export-menu')?.open,width:e.width,height:e.height,left:e.left,right:e.right,overflow:document.documentElement.scrollWidth-innerWidth}}''')
    record(f'{width}:saved-template-export-ready',geom['ready'])
-   record(f'{width}:saved-export-readable',geom['width']>80 and geom['height']>=40 and geom['left']>=-2 and geom['right']<=width+2 and geom['overflow']<=3)
+   record(f'{width}:saved-export-readable',geom['moreOpen'] and geom['exportOpen'] and geom['width']>80 and geom['height']>=40 and geom['left']>=-2 and geom['right']<=width+2 and geom['overflow']<=3)
    if width in [320,390,1280]:page.screenshot(path=str(out/f'round242-saved-{width}.png'),full_page=False)
   # Standalone XLSX remains an internal compatibility path; it is no longer exposed as the primary D&D export UI.
   record('standalone:legacy-verifier-hidden',page.evaluate("()=>document.getElementById('pcFooterVerifyDndXlsxBtn').hidden===true"))

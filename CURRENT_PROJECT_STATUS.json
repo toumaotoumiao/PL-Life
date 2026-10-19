@@ -4,14 +4,14 @@
   "sourceOfTruth": true,
   "updatedAt": "2026-10-19",
   "current": {
-    "stage": 117,
-    "appVersion": "8.1.12.295",
+    "stage": 120,
+    "appVersion": "8.1.12.298",
     "schemaVersion": 26,
     "branchState": "release-candidate",
     "focus": [
-      "换设备迁移的 ZIP 只读核验与恢复入口彻底分离，避免只读检查误进入恢复流程",
-      "新增独立本机存储诊断页：仅读取 IndexedDB 版本/仓库/索引结构，不读取记录内容、不升级、不删除、不写入",
-      "恢复条件检查失败显示明确阶段与匿名技术详情，不要求用户提供私人备份"
+      "完成导入与迁移主流程收口：单主操作、核验结果状态卡、历史核对导出入口下沉",
+      "恢复错误现场直达本机存储检查与重新选择备份，问题详情和下载报告记录完整问题路径",
+      "高级工具拆分旧版兼容、历史恢复与其他导出，并继续清理面向用户的技术型说明"
     ]
   },
   "statusPolicy": {
@@ -39,11 +39,11 @@
   },
   "currentVersionAcceptance": {
     "automated": {
-      "state": "stage117-full-node-and-round288-static-pass-browser-pending-github",
+      "state": "stage120-local-gates-pass-github-round290-browser-pending",
       "node": {
         "state": "pass",
-        "passed": 1049,
-        "total": 1049
+        "passed": 1063,
+        "total": 1063
       },
       "imageExportRegression": {
         "state": "covered-by-full-node-and-targeted-browser-regressions",
@@ -107,7 +107,7 @@
         "storageHarness": "isolated-memory-workbook-stub",
         "note": "当前执行环境阻止 localhost 原生 IndexedDB 浏览器导航；原生附件/完整 ZIP 持久化继续由既有存储与恢复回归覆盖，不将本项冒充原生 IndexedDB 真机证明。"
       },
-      "baselineInheritedFrom": "Stage116 已有历史基线；Stage117 已重新完成 Full Node 1049/1049，并通过 Round288 static 4/4。Round288/287 浏览器原生 IndexedDB 检查等待 GitHub 在线环境。",
+      "baselineInheritedFrom": "Stage119 Full Node 1056/1056 PASS；Stage120 Full Node 1063/1063 PASS；Round289+290 静态 13/13 PASS；Production preflight 与 Actions YAML 通过。Round290 Chromium 因本地管理员策略阻止页面导航，等待 GitHub 在线执行。",
       "targetedStaticChecksStage95": {
         "passed": 10,
         "total": 10,
@@ -199,7 +199,7 @@
         "scope": "长 PC/HO 与 Log 完整换行、稀疏/极端内容几何、页面横向溢出与运行时版本"
       },
       "round242DndResponsiveContract": {
-        "state": "pass",
+        "state": "local-pass-github-rerun-pending",
         "passed": 82,
         "total": 82,
         "viewports": [
@@ -212,7 +212,9 @@
           1280,
           1440
         ],
-        "scope": "同一 D&D PC 在未绑定模板时验证“设置 D&D 角色卡模板”，绑定同版合成模板元数据后验证“导出 D&D 角色 Excel 卡”；legacy standalone diagnostic XLSX 继续只读回归"
+        "scope": "D&D 模板未绑定/已绑定两态导出入口；Stage118 在每次视口切换后等待 production matchMedia 监听稳定，再展开移动端 More/export 菜单，消除 1440→320 首帧竞态假红",
+        "userReturnedV295Failure": "320:saved-export-readable only; Round242 81/82",
+        "localEvidence": "Stage118 local isolated Chromium 82/82 after viewport-settle fix"
       },
       "historicalSyntheticBrowserV274": {
         "state": "reviewed",
@@ -607,7 +609,7 @@
         "scope": "Stage113 默认具体时间主逻辑在 Stage115 快速编辑加入后重新回归，72/72"
       },
       "round141PcArchiveBrowserHotfix": {
-        "state": "local-system-chromium-pass-github-actions-rerun-pending",
+        "state": "github-pass-in-user-returned-v295",
         "viewports": [
           320,
           390,
@@ -661,11 +663,11 @@
         "scope": "恢复阶段标记、IndexedDB 旧/新版本与对象仓库匿名诊断、技术详情隐私边界"
       },
       "round287LegacyIdbUpgradeBrowser": {
-        "state": "pending-github",
-        "passed": 0,
+        "state": "pass",
+        "passed": 6,
         "total": 6,
         "scope": "合成旧 PC 附件库 v2→v3、恢复点库 v1→v2、旧行保留与匿名诊断不泄露种子私密值",
-        "note": "当前执行环境阻止 Playwright 访问 localhost（ERR_BLOCKED_BY_ADMINISTRATOR），未冒充浏览器通过；已接入 chromium-synthetic，待 GitHub 在线运行。"
+        "source": "user-returned pl-synthetic-browser-result (16).zip / v8.1.12.295"
       },
       "round288MigrationReadonlyDiagnosticStatic": {
         "state": "pass",
@@ -674,16 +676,55 @@
         "scope": "ZIP只读核验/恢复入口隔离、独立诊断页无写入契约、版本与离线缓存纳入"
       },
       "round288MigrationReadonlyDiagnosticBrowser": {
-        "state": "pending-github",
+        "state": "pass",
+        "passed": 6,
+        "total": 6,
         "scope": "虚构旧版 PC 附件库 v2、恢复点库 v1；诊断页不得升级版本/改变仓库/读取记录值",
-        "localAttempt": "blocked-by-environment-localhost-policy"
+        "source": "user-returned pl-synthetic-browser-result (16).zip / v8.1.12.295"
+      },
+      "round289SettingsDiagnosticReport": {
+        "static": {
+          "state": "pass",
+          "passed": 6,
+          "total": 6
+        },
+        "githubBrowser": "pending-current-version"
+      },
+      "round288MigrationReadonlyDiagnostic": {
+        "static": {
+          "state": "pass",
+          "passed": 4,
+          "total": 4
+        },
+        "githubBrowserBaseline": {
+          "state": "pass",
+          "passed": 6,
+          "total": 6,
+          "source": "Stage117 GitHub artifact"
+        }
+      },
+      "round290MigrationCloseout": {
+        "static": {
+          "state": "pass",
+          "passed": 7,
+          "total": 7
+        },
+        "browser": {
+          "state": "pending-github",
+          "localEnvironment": "ERR_BLOCKED_BY_ADMINISTRATOR before page navigation",
+          "viewports": [
+            390,
+            1280
+          ]
+        }
       }
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "generalBaselineInherited": true,
       "pending": [
-        "v8.1.12.295 私人备份恢复诊断：受影响用户仅需打开独立本机存储诊断并复制匿名结构信息；无需提供 ZIP；真实故障设备结果待回传",
+        "v8.1.12.298 导入与迁移界面收口：真实桌面/手机核验结果卡、历史核对导出、错误现场诊断按钮和 TXT 错误报告下载复核",
+        "v8.1.12.296 私人备份恢复诊断：受影响用户仅需打开独立本机存储诊断并复制匿名结构信息；无需提供 ZIP；真实故障设备结果待回传",
         "v8.1.12.293 开团计划单次时间快速编辑：真实桌面悬浮、点击时间固定打开、滚动跟随与手机点击时间入口复核",
         "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
         "v8.1.12.290 真实 D&D 模板：完成 Excel/WPS 四项人工复核并下载匿名验收 JSON",
@@ -693,16 +734,19 @@
       ]
     },
     "release": {
-      "state": "candidate-local-gates-pass-github-round287-round288-browser-pending",
-      "productionPackage": "built-locally-after-preflight-pass",
-      "productionSite": "not-verified-as-v8.1.12.295",
-      "testSite": "not-verified-as-v8.1.12.295",
+      "state": "stage120-local-gates-pass-packages-ready",
+      "productionPackage": "ready",
+      "productionSite": "not-deployed",
+      "testSite": "not-deployed",
       "artifactNames": [
-        "Stage117_完整候选工程.zip",
-        "Stage117_正式仓库完整同步包.zip",
-        "Stage117_测试仓库完整同步包.zip",
-        "Stage117_测试证据与SHA256.zip"
-      ]
+        "Stage120_完整候选工程.zip",
+        "Stage120_正式仓库完整同步包.zip",
+        "Stage120_测试仓库完整同步包.zip",
+        "Stage120_测试证据与SHA256.zip"
+      ],
+      "testPackage": "ready",
+      "candidatePackage": "ready",
+      "evidencePackage": "ready"
     }
   },
   "workstreams": {
@@ -870,6 +914,27 @@
       "stage110Scope": "final-export-preflight-and-blocking-safety-gate",
       "stage111Scope": "post-build-xlsx-readback-and-package-fidelity-verification",
       "stage112Scope": "anonymous-real-template-acceptance-evidence-and-manual-excel-wps-review"
+    },
+    "settingsMigrationUX": {
+      "scopeProgressPercent": 95,
+      "code": "complete-for-stage120-scope",
+      "automatedTests": "Full Node 1063/1063; Round289+290 static 13/13; production preflight pass; GitHub Round290 Chromium pending",
+      "realDevice": "targeted-check-pending",
+      "release": "candidate",
+      "completedCapabilities": [
+        "主流程单一主操作",
+        "备份核验结果卡",
+        "核验失败分类状态",
+        "历史核对导出入口下沉",
+        "旧版兼容/历史恢复/其他导出拆分",
+        "问题详情显示执行阶段",
+        "错误报告包含完整问题路径",
+        "恢复错误现场直达本机存储检查与重新选择备份"
+      ],
+      "remaining": [
+        "GitHub Round290 Chromium 在线验收",
+        "真实设备视觉与报告下载验收"
+      ]
     }
   },
   "imageExportCapabilityRegistry": {
@@ -882,7 +947,7 @@
     "hoExportComposerPanel": "PL／KP 跑团整理"
   },
   "knownOpenItems": [
-    "v8.1.12.295 私人备份恢复诊断：Stage117 Full Node 1049/1049、Round288 static 4/4、本地发布预检通过；Round287/288 原生 IndexedDB 浏览器回归已接入 GitHub，当前本地环境因管理员策略阻止 localhost，等待测试仓库在线结果与受影响设备匿名诊断",
+    "v8.1.12.298 导入与迁移收口：本地 Full Node 1063/1063、Round289+290 静态 13/13、发布预检与 Actions YAML 已通过；Round290 Chromium 因本地管理员策略阻止 localhost，等待 GitHub 在线验收与真实桌面/手机针对性复核。",
     "v8.1.12.293 开团计划单次时间快速编辑：真实桌面悬浮/滚动跟随与手机点击时间入口针对性复核",
     "v8.1.12.291 开团计划默认具体时间：真实手机/桌面拖入周历、单次时间修改与“应用到已有安排”触控复核",
     "v8.1.12.290 匿名验收证据链已通过合成浏览器；仍需真实 D&D 模板在 Excel/WPS 中完成四项人工复核并回传匿名 JSON",
@@ -894,5 +959,14 @@
     "STAGE*.md",
     "旧版进度百分比",
     "单个历史验收报告"
+  ],
+  "currentNotes": [
+    "2026-10-19 用户回传 GitHub v8.1.12.295 synthetic artifact：Round287 6/6 PASS、Round288 6/6 PASS；Round141 已通过；唯一失败 Round242 81/82，320:saved-export-readable。",
+    "本地复现分析确认 Round242 从 1440px 切换到 320px 时，生产 pcSyncFooterMoreV73 的 matchMedia change 与测试强制展开 details 存在异步竞态；产品 D&D 导出逻辑本身未报错。",
+    "Stage118 本地：Full Node 1050/1050 PASS；Round242 Chromium 82/82 PASS；Round242 static 5/5 PASS；Production preflight PASS；Actions YAML 2/2 PASS。Round288 本地 localhost 仍被 ERR_BLOCKED_BY_ADMINISTRATOR，但用户回传 GitHub v295 证据已证明 Round288 6/6 PASS。",
+    "Stage118 正式/测试/完整候选 ZIP 已通过 CRC；SHA-256 随测试证据包交付。",
+    "Stage120：导入与迁移剩余收口，增加核验结果卡、错误现场诊断直达、历史核对导出入口下沉和高级工具拆分；schema26 与完整 ZIP 格式不变。",
+    "Stage120 本地 Full Node 1063/1063 PASS；Round289+290 静态 13/13 PASS；Production preflight PASS；Actions YAML 2/2 PASS。Round290 Chromium 本地在页面导航前被 ERR_BLOCKED_BY_ADMINISTRATOR 拦截，已接入 GitHub。",
+    "Stage120 正式/测试/完整候选/测试证据四类交付包已准备；正式站与测试站仍需部署后确认。"
   ]
 }
