@@ -12,7 +12,7 @@ const grouping=require(path.join(root,'record-group.js'));
 function deleteHarness(records,override={}){
  const messages=[],trash=[],state={save:0,notice:0,touched:0,afterConfirm:null};
  const context={
-   runRecords:records,modules,selectedModuleName:'',selectedRecordGroupKey:'',
+   runRecords:records,modules,profiles:[],renderTrashBin:()=>{},showUndoDelete:()=>{},selectedModuleName:'',selectedRecordGroupKey:'',
    groupedRunRecordsForDisplay(){return grouping.group(context.runRecords,modules).map(g=>[g.label,g.records,0,g.records.length,null,g.key,g.name,g.moduleId,g.ambiguous]);},
    normalizedEntityNameKey:norm,showContextIssue:x=>{messages.push(x);state.notice++},
    appConfirm:async()=>{if(state.afterConfirm)state.afterConfirm();return true},

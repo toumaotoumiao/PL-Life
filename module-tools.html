@@ -5,18 +5,18 @@
 
 /* ===== 模组工具样式 · 原样式层：base-foundation（保持原层叠顺序） ===== */
 :root{
-  --bg:#f3f3ef;
-  --paper:#fbfbf8;
+  --bg:#f4f6f4;
+  --paper:#fbfcfb;
   --paper-strong:#ffffff;
-  --paper-soft:#f6f6f2;
-  --ink:#242a27;
-  --ink-soft:#4e5954;
-  --muted:#68726d;
-  --line:#dcded8;
-  --line-strong:#cbd0c9;
-  --accent:#415c53;
-  --accent-deep:#30483f;
-  --accent-soft:#e8eeea;
+  --paper-soft:#f4f7f5;
+  --ink:#27332d;
+  --ink-soft:#46564e;
+  --muted:#66736c;
+  --line:#d8e0da;
+  --line-strong:#c8d4cc;
+  --accent:#4e7e62;
+  --accent-deep:#365f49;
+  --accent-soft:#e9f1eb;
   --gold:#f1ede3;
   --red:#935454;
   --red-soft:#faf1f0;
@@ -47,7 +47,7 @@ a{color:var(--accent-deep);text-underline-offset:3px}
 .brand-copy{min-width:0}
 .brand h1{margin:0;font-size:clamp(34px,2.35vw,42px);line-height:1.08;font-weight:790;letter-spacing:-.048em;color:#202724}
 .sub{margin-top:7px;color:var(--muted);font-size:12px;letter-spacing:.018em}
-.save-state{display:inline-flex;align-items:center;gap:6px;margin-top:9px;color:#7c8781;font-size:9px;line-height:1.2;white-space:nowrap}
+.save-state{display:inline-flex;align-items:center;gap:6px;margin-top:9px;color:#6f7c75;font-size:12px;line-height:1.2;white-space:nowrap}
 .save-state:before{content:"";width:6px;height:6px;border-radius:50%;background:#7ea08e}
 
 /* Buttons / controls */
@@ -57,7 +57,7 @@ a{color:var(--accent-deep);text-underline-offset:3px}
 .btn:active{transform:translateY(1px)}
 .btn.primary{border-color:var(--accent);background:var(--accent);color:#fff;box-shadow:0 5px 14px rgba(49,75,65,.14)}
 .btn.primary:hover{background:var(--accent-deep);border-color:var(--accent-deep)}
-.btn.small{min-height:32px;padding:5px 9px;font-size:11px}
+.btn.small{min-height:34px;padding:5px 9px;font-size:12px}
 .btn.danger{border-color:#dfc6c4;background:#fffafa;color:var(--red)}
 .btn.danger:hover{background:#fbefee;border-color:#cfaaa7}
 .control{width:100%;min-height:42px;padding:9px 11px;border:1px solid var(--line-strong);border-radius:10px;outline:0;background:#fdfdfa;color:var(--ink);box-shadow:inset 0 1px 1px rgba(37,48,43,.025)}
@@ -73,12 +73,21 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .notice-compact>summary::-webkit-details-marker{display:none}
 .notice-compact>summary>span:first-child{display:flex;align-items:baseline;gap:12px;min-width:0}
 .notice-compact>summary b{font-size:13px;font-weight:760;letter-spacing:.01em}
-.notice-compact small{font-size:10px;color:var(--muted);font-weight:500}
-.notice-more{display:inline-flex;align-items:center;gap:6px;color:#68746f;font-size:10px;font-weight:650;white-space:nowrap}
+.notice-compact small{font-size:12px;color:var(--muted);font-weight:500}
+.notice-more{display:inline-flex;align-items:center;gap:6px;color:#68746f;font-size:12px;font-weight:650;white-space:nowrap}
 .notice-more:after{content:"⌄";font-size:14px;transition:transform .18s ease}
 .notice-compact[open] .notice-more:after{transform:rotate(180deg)}
 .notice-body{padding:3px 14px 15px;border-top:1px solid #e7e9e4;color:#515b56;line-height:1.82}
 .notice-body b{color:#313b36;font-size:12px}
+
+.aux-work-status{display:block;margin-top:5px;color:var(--muted);font-size:12px;line-height:1.5;min-height:18px}
+.aux-work-status[hidden]{display:none}
+/* Stage138: show a persistent, readable error state instead of an editable empty archive. */
+.aux-readonly-warning{margin:12px 0;padding:12px 15px;border:1px solid #caa89a;border-radius:12px;background:#fff7f1;color:#693e2f;font-size:13px;line-height:1.65}
+.btn:disabled,.control:disabled{cursor:not-allowed;opacity:.62;transform:none}
+.aux-issue summary{cursor:pointer;min-height:36px}
+@media(prefers-reduced-motion:reduce){.btn,.control,.filter-toggle,.sortbox,.sortdir{transition:none!important}}
+@media(max-width:520px){.aux-issue button{min-height:44px}.aux-readonly-warning{font-size:13px}}
 
 /* Statistics: one composed information band */
 .stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:0 0 16px;border:1px solid var(--line);border-radius:16px;background:rgba(251,251,248,.90);box-shadow:var(--shadow-xs);overflow:hidden}
@@ -1017,8 +1026,24 @@ html[data-theme]{
   .toastz{bottom:calc(102px + env(safe-area-inset-bottom))!important;right:58px!important}
 }
 /* ===== 模组工具样式 · 样式入口结束 ===== */
+
+/* Stage133: on-demand issue details. No sticky overlay and no personal data in exports. */
+.aux-issue{border:1px solid var(--line-strong);border-left:3px solid var(--red);border-radius:var(--radius-md);background:var(--paper);margin:14px 0;padding:12px 14px;box-shadow:var(--shadow-xs)}
+.aux-issue[hidden]{display:none}.aux-issue-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.aux-issue strong{font-size:14px}.aux-issue p{font-size:13px;line-height:1.6;margin:4px 0 0;color:var(--ink-soft)}
+.aux-issue-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.aux-issue-actions .btn{min-height:40px;font-size:13px}
+.aux-issue details{margin-top:8px;font-size:12px;color:var(--muted)}
+.aux-issue pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.55;margin:6px 0 0;max-height:250px;overflow:auto}
+/* Stage136 auxiliary navigation follows the same visible exit and touch targets. */
+.aux-back-home{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;min-height:44px;min-width:90px;text-decoration:none;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);padding:8px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:700}
+.aux-back-home:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:430px){.top{flex-wrap:wrap}.aux-back-home{margin-left:auto;min-height:44px}.aux-issue-actions .btn{min-height:44px}}
 </style>
-</head><body><div class="app"><header class="top"><div class="brand"><div class="brand-copy"><h1>模组高级工具</h1><div class="sub">模组资料与批量工具</div><div id="savestate" class="save-state" aria-live="polite">正在读取档案…</div></div></div></header><details class="notice notice-compact" data-collapse-key="module-tools:help"><summary><span><b>本地保存 · 支持离线</b><small>修改后自动保存</small></span><span class="notice-more">使用说明</span></summary><div class="notice-body"><b>数据保存</b><br>模组档案保存在当前浏览器，修改后自动保存。本工具不提供云同步。<br><br><b>隐私与备份</b><br>档案可能包含个人资料。清理浏览器数据、更换设备或使用隐私模式可能导致数据丢失；完整备份可用于数据恢复。<br><br><b>功能</b><br>编辑模组资料、评分与招募；跑团记录请在主页面维护。批量整理可使用 Excel。请定期导出 <b>完整备份</b>。</div></details><section class="stats" id="stats" data-hscroll-key="stats"></section><section class="filter-shell" id="filterShell">
+</head><body><div class="app"><header class="top"><div class="brand"><div class="brand-copy"><h1>模组高级工具</h1><div class="sub">模组资料与批量工具</div><div id="savestate" class="save-state" aria-live="polite">正在读取档案…</div><div id="auxWorkStatus" class="aux-work-status" role="status" aria-live="polite" hidden></div></div></div><a class="aux-back-home btn" href="./index.html" aria-label="返回 PL 档案主页">返回 PL</a></header><details class="notice notice-compact" data-collapse-key="module-tools:help"><summary><span><b>本地保存 · 支持离线</b><small>修改后自动保存</small></span><span class="notice-more">使用说明</span></summary><div class="notice-body"><b>数据保存</b><br>模组档案保存在当前浏览器，修改后自动保存。本工具不提供云同步。<br><br><b>隐私与备份</b><br>档案可能包含个人资料。清理浏览器数据、更换设备或使用隐私模式可能导致数据丢失；完整备份可用于数据恢复。<br><br><b>功能</b><br>编辑模组资料、评分与招募；跑团记录请在主页面维护。批量整理可使用 Excel。请定期导出 <b>完整备份</b>。</div></details><p id="auxReadOnlyNotice" class="aux-readonly-warning" role="alert" hidden></p><section class="aux-issue" id="auxIssuePanel" hidden role="region" aria-live="polite" aria-label="最近操作问题">
+<div class="aux-issue-head"><div><strong id="auxIssueTitle">操作未完成</strong><p id="auxIssueSummary"></p></div><button class="btn small" id="auxIssueDismiss" type="button">关闭</button></div>
+<div class="aux-issue-actions"><button class="btn" id="auxIssueCopy" type="button">复制匿名报告</button><button class="btn" id="auxIssueDownload" type="button">下载匿名报告</button></div>
+<details><summary>技术详情</summary><pre id="auxIssueDetails"></pre></details>
+</section><section class="stats" id="stats" data-hscroll-key="stats"></section><section class="filter-shell" id="filterShell">
   <div class="filter-main">
     <div class="search filter-search"><span>⌕</span><input class="control" id="q" placeholder="搜索模组、作者、地点、时代" aria-label="搜索模组名称、作者、地点、时代、性质或备注"></div>
     <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterPanel"><span>筛选</span><span class="filter-count" id="filterCount" hidden>0</span><span class="filter-chev">⌄</span></button>
@@ -1060,6 +1085,7 @@ html[data-theme]{
 <script src="./query-state.js"></script>
 <script src="./query-engine.js"></script>
 <script src="./module-query-bridge.js"></script>
+<script src="./aux-issue-report.js"></script>
 <script id="moduleToolRuntime">
 /* ===== 模组工具代码结构索引 =====
    01. 国际化与文本迁移
@@ -1746,14 +1772,21 @@ function initModuleCollapseUX(){mtLoadCollapseState();mtApplyDetails(document);i
 
 /* ---------- 04. IndexedDB 读写与自动保存 ---------- */
 async function getdb(){
-  if(parent&&parent.UnifiedTRPGBridge)return cp(parent.UnifiedTRPGBridge.getModuleState());
-  return null;
+  // A standalone launch has no canonical main-app bridge. Never present an empty
+  // archive as if it were a successfully loaded (or writable) profile.
+  if(!(parent&&parent.UnifiedTRPGBridge&&typeof parent.UnifiedTRPGBridge.getModuleState==='function'))
+    throw new Error('UnifiedArchiveBridgeUnavailable');
+  const data=await parent.UnifiedTRPGBridge.getModuleState();
+  if(!data||!Array.isArray(data.modules))throw new Error('UnifiedArchiveReadInvalid');
+  return cp(data);
 }
 async function putdb(){
-  if(parent&&parent.UnifiedTRPGBridge){
-    const next=await parent.UnifiedTRPGBridge.saveModuleState(cp(state));
-    if(next){state=cp(next);repair();applyTheme(state.settings.theme);view=state.settings.view||view;sortDir=state.settings.sortDir||sortDir;}
-  }
+  if(!(parent&&parent.UnifiedTRPGBridge&&typeof parent.UnifiedTRPGBridge.saveModuleState==='function'))
+    throw new Error('UnifiedArchiveBridgeUnavailable');
+  const next=await parent.UnifiedTRPGBridge.saveModuleState(cp(state));
+  if(!next||!Array.isArray(next.modules))throw new Error('UnifiedArchiveSaveUnconfirmed');
+  state=cp(next);repair();applyTheme(state.settings.theme);
+  view=state.settings.view||view;sortDir=state.settings.sortDir||sortDir;
 }
 function meaningfulLegacyRun(r){
   if(!r||typeof r!=='object')return false;
@@ -1798,12 +1831,55 @@ function repair(){
     m.runs=m.runs.filter(meaningfulLegacyRun);
   });
 }
-async function load(){try{const x=await getdb();if(x)state=x;else{const em=$('#embeddedBackup');if(em){state=JSON.parse(em.textContent);await putdb()}}}catch(err){console.error(err);state=fresh()}repair();applyTheme(state.settings.theme);view=state.settings.view||'card';sortDir=state.settings.sortDir||'desc'}
+async function load(){
+  // Never fall through into editable blank state when the canonical archive
+  // cannot be read: that could overwrite real data on the next autosave.
+  const x=await getdb();
+  state=x;repair();applyTheme(state.settings.theme);
+  view=state.settings.view||'card';sortDir=state.settings.sortDir||'desc';
+}
 
-async function save(){mtI18nInvalidate();clearTimeout(timer);state.meta.updatedAt=now();$('#savestate').textContent='正在保存…';try{await putdb();$('#savestate').textContent='已保存 · '+new Date().toLocaleTimeString(mtI18nLocale||undefined,{hour:'2-digit',minute:'2-digit'})}catch(err){console.error(err);$('#savestate').textContent='保存失败，已恢复到上次成功保存状态';try{const latest=await getdb();if(latest){state=cp(latest);repair();applyTheme(state.settings.theme);render()}}catch(reloadErr){console.error('保存失败后的状态恢复也失败',reloadErr)}toast('本地保存失败；已尽量恢复到上次成功保存状态，请先导出完整备份','err')}}
+async function save(){mtI18nInvalidate();clearTimeout(timer);state.meta.updatedAt=now();$('#savestate').textContent='正在保存…';try{await putdb();$('#savestate').textContent='已保存 · '+new Date().toLocaleTimeString(mtI18nLocale||undefined,{hour:'2-digit',minute:'2-digit'});clearAuxIssue('MODULE-SAVE-FAIL')}catch(err){console.error(err);let restored=false;try{const latest=await getdb();if(latest){state=cp(latest);repair();applyTheme(state.settings.theme);render();restored=true}}catch(reloadErr){console.error('保存失败后的状态恢复也失败',reloadErr)}$('#savestate').textContent=restored?'保存失败 · 已回读上次档案':'保存失败 · 本机状态待核对';const stateText=restored?'当前页面已回读上次保存的档案，本次编辑可能未保存':'无法确认磁盘与当前页面数据是否一致';showAuxIssue({code:'MODULE-SAVE-FAIL',title:'模组资料保存失败',area:'模组高级工具',action:'自动保存模组',phase:'写入后回读',state:stateText,next:'先检查主站档案与完整备份，避免反复修改或刷新',error:err});toast('模组保存未完成，查看上方问题详情','err')}}
 
 function qs(){clearTimeout(timer);timer=setTimeout(()=>save(),300)}
 
+let latestAuxIssue='',latestAuxIssueCode='';
+function clearAuxIssue(code){
+  if(code&&latestAuxIssueCode!==code)return;
+  latestAuxIssue='';latestAuxIssueCode='';
+  const panel=document.getElementById('auxIssuePanel');
+  if(panel)panel.hidden=true;
+}
+function lockAuxiliaryToolAfterLoadFailure(error){
+  const status=document.getElementById('savestate');
+  if(status)status.textContent='无法读取主档案 · 当前工具已锁定编辑';
+  showAuxIssue({code:'MODULE-INITIAL-LOAD',title:'模组档案读取失败',area:'模组高级工具',
+    action:'打开模组档案',phase:'初次读取',state:'无法确认主档案状态；本页面禁止修改和导入',
+    next:'返回 PL 主站检查档案状态与备份；确认恢复后重新打开本工具',error});
+  const page=document.querySelector('.app')||document.body;
+  page.querySelectorAll('button,input,select,textarea').forEach(button=>{
+    if(button.closest('#auxIssuePanel')||button.id==='auxIssueDismiss')return;
+    PlAuxIssueReport.setDisabled(button,true,'主档案尚未读取成功，为避免覆盖已锁定编辑');
+  });
+  const notice=document.getElementById('auxReadOnlyNotice');
+  if(notice){notice.hidden=false;notice.textContent='主档案读取失败。本工具已停止编辑与导入；请返回 PL 主页检查数据。';}
+}
+function showAuxIssue({code,title,area,action,phase,state,next,error}={}){
+  const panel=document.getElementById('auxIssuePanel');if(!panel||!window.PlAuxIssueReport)return;
+  latestAuxIssueCode=code||'AUX-UNKNOWN';
+  latestAuxIssue=PlAuxIssueReport.report({code,area,action,phase,state,next,error});
+  document.getElementById('auxIssueTitle').textContent=title||'操作未完成';
+  document.getElementById('auxIssueSummary').textContent=(state||'状态待确认')+'。'+(next||'请检查当前数据');
+  document.getElementById('auxIssueDetails').textContent=latestAuxIssue;
+  panel.hidden=false;
+}
+function initAuxIssueControls(){
+ const dismiss=document.getElementById('auxIssueDismiss');if(!dismiss||dismiss.dataset.ready)return;dismiss.dataset.ready='1';
+ dismiss.onclick=()=>{document.getElementById('auxIssuePanel').hidden=true;};
+ document.getElementById('auxIssueCopy').onclick=async()=>{const ok=await PlAuxIssueReport.copy(latestAuxIssue);toast(ok?'匿名报告已复制':'复制失败，请展开技术详情手动复制',ok?'ok':'warn');};
+ document.getElementById('auxIssueDownload').onclick=()=>{if(latestAuxIssue)PlAuxIssueReport.download(latestAuxIssue);};
+}
+initAuxIssueControls();
 function toast(t,c=''){const d=document.createElement('div');d.className='toast '+c;d.textContent=t;$('#toasts').append(d);setTimeout(()=>d.remove(),3200)}
 
 function appConfirm(message,{title='请确认',confirmText='确认',danger=true}={}){return new Promise(resolve=>{const layer=document.createElement('div');layer.className='modal-bg app-confirm-layer';layer.style.zIndex='420';layer.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="appConfirmTitle"><div class="mh"><div><h2 id="appConfirmTitle">${e(title)}</h2><p>${e(message)}</p></div><button class="x app-confirm-close" type="button" aria-label="取消">×</button></div><div class="mf"><div></div><div class="inline"><button class="btn app-confirm-cancel" type="button">取消</button><button class="btn ${danger?'danger':'primary'} app-confirm-ok" type="button">${e(confirmText)}</button></div></div></div>`;let done=false;const finish=value=>{if(done)return;done=true;document.removeEventListener('keydown',onKey,true);layer.remove();resolve(value)},onKey=ev=>{if(ev.key==='Escape'){ev.preventDefault();ev.stopImmediatePropagation();finish(false)}};document.addEventListener('keydown',onKey,true);layer.querySelector('.app-confirm-close').onclick=()=>finish(false);layer.querySelector('.app-confirm-cancel').onclick=()=>finish(false);layer.querySelector('.app-confirm-ok').onclick=()=>finish(true);layer.onclick=ev=>{if(ev.target===layer)finish(false)};document.body.appendChild(layer);setTimeout(()=>layer.querySelector('.app-confirm-ok')?.focus(),0)})}
@@ -1906,7 +1982,7 @@ function list(){
  const result=moduleToolQueryRuntime.query({rows:state.modules,legacy,now:new Date().toISOString().slice(0,16),settings:{moduleArchive:{ratingSystems:state.settings.ratingSystems}}});
  return result.rawRows;
 }
-function modules(){let a;try{a=list()}catch(err){console.error('模组高级工具查询失败',err);$('#count').textContent='查询未完成';$('#content').innerHTML=`<div class="empty" role="alert"><h3>查询暂不可用</h3><p>${e(String(err?.message||err))}。原始数据未因查询修改，请核对完整网站文件。</p></div>`;return;}syncFilterUI();$('#count').textContent=`显示 ${a.length} / ${state.modules.length} 个模组`;if(!a.length){$('#content').innerHTML=`<div class="empty"><h3>${state.modules.length?'无匹配结果':'暂无模组档案'}</h3><p>${state.modules.length?'请调整关键词或清除筛选。':'新建模组，或导入 Excel / 完整备份。'}</p><div class="empty-actions">${state.modules.length?'<button type="button" class="btn" data-module-ui-action="clearFilters">清空筛选</button>':'<button type="button" class="btn primary" data-module-ui-action="new">＋ 新建模组</button><button type="button" class="btn" data-module-ui-action="settings">导入 Excel</button>'}</div></div>`;return}$('#content').innerHTML=view==='card'?`<div class="cards">${a.map(card).join('')}</div>`:table(a);if(view==='table')requestAnimationFrame(enhanceTable)}
+function modules(){let a;try{a=list()}catch(err){console.error('模组高级工具查询失败',err);showAuxIssue({code:'MODULE-QUERY-FAIL',title:'模组列表读取失败',area:'模组高级工具',action:'筛选模组',phase:'读取查询结果',state:'列表未能显示，本次查询未修改原有模组',next:'尝试清除筛选；仍失败时核对本机档案备份',error:err});$('#count').textContent='查询未完成';$('#content').innerHTML=`<div class="empty" role="alert"><h3>查询暂不可用</h3><p>${e(String(err?.message||err))}。原始数据未因查询修改，请核对完整网站文件。</p></div>`;return;}syncFilterUI();$('#count').textContent=`显示 ${a.length} / ${state.modules.length} 个模组`;if(!a.length){$('#content').innerHTML=`<div class="empty"><h3>${state.modules.length?'无匹配结果':'暂无模组档案'}</h3><p>${state.modules.length?'请调整关键词或清除筛选。':'新建模组，或导入 Excel / 完整备份。'}</p><div class="empty-actions">${state.modules.length?'<button type="button" class="btn" data-module-ui-action="clearFilters">清空筛选</button>':'<button type="button" class="btn primary" data-module-ui-action="new">＋ 新建模组</button><button type="button" class="btn" data-module-ui-action="settings">导入 Excel</button>'}</div></div>`;return}$('#content').innerHTML=view==='card'?`<div class="cards">${a.map(card).join('')}</div>`:table(a);if(view==='table')requestAnimationFrame(enhanceTable)}
 
 function card(m){const sc=mscore(m);return`<article class="card"><div class="card-head"><div><div class="title">${e(m.title||'未命名模组')}</div><div class="author">${m.author?'作者：'+e(m.author):'作者未填写'}</div>${isurl(m.source)?`<a class="link" href="${e(safeurl(m.source))}" target="_blank" rel="noopener noreferrer">打开来源 ↗</a>`:m.source?`<div class="link">来源：${e(m.source)}</div>`:''}</div><div class="score"><b>${sc==null?'—':sc.toFixed(1)}</b></div></div><div class="tags">${[m.location&&'地点：'+m.location,m.era&&'时代：'+m.era,playerText(m.players),moduleHoSystemText(m),m.duration,m.nature].filter(Boolean).map(x=>`<span class="tag ${/HO 位$/.test(x)?'ho-system':''}">${e(x)}</span>`).join('')}<span class="tag role">PL 侧次数：${Math.max(0,+m.plCount||0)}</span><span class="tag role">KP 侧次数：${Math.max(0,+m.kpCount||0)}</span></div><div class="run"><div class="runline">档案备注</div><div class="thought ${m.notes?'':'muted'}">${e(m.notes||'暂无备注')}</div></div><div class="foot"><button type="button" class="icon action-text" data-module-action="manageRuns" data-module-id="${e(m.id)}">${(m.runs||[]).length} 条关联记录${m.notes?' · 有备注':''}</button><span><button type="button" class="icon action-text" data-module-action="recruit" data-module-id="${e(m.id)}">招募</button><button type="button" class="icon action-text" data-module-action="copy" data-module-id="${e(m.id)}">复制</button><button type="button" class="icon action-text delete" data-module-action="remove" data-module-id="${e(m.id)}">删除</button><button type="button" class="icon action-text" data-module-action="edit" data-module-id="${e(m.id)}">编辑</button></span></div></article>`}
 
@@ -2016,19 +2092,52 @@ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=
 
 function exportJSON(){const snap=cp(state);snap.meta.updatedAt=now();dl(new Blob([JSON.stringify(snap,null,2)],{type:'application/json;charset=utf-8'}),dname('模组跑团档案库_完整备份','json'));toast('完整备份已导出','ok')}
 
-async function importJSON(f){const before=cp(state);try{if((f.size||0)>MAX_FILE_BYTES)throw Error('导入文件过大，最大允许 16 MB');const o=JSON.parse(await f.text());if(!Array.isArray(o.modules)||!o.settings)throw Error('文件结构不正确');if(!await appPhraseConfirm(`备份包含 ${o.modules.length} 个模组。当前模组资料和高级工具设置将被替换；主页面会在写入前执行保护。`,'覆盖',{title:'恢复完整备份',confirmText:'确认替换'}))return;state=o;repair();applyTheme(state.settings.theme);await putdb();close();render();toast('完整备份已恢复','ok')}catch(err){console.error(err);state=before;repair();applyTheme(state.settings.theme);render();toast('导入失败，已恢复导入前状态：'+err.message,'err')}}
-
+async function importJSON(f){
+  const before=cp(state);let startedWrite=false,confirmedWrite=false;
+  try{
+    if((f.size||0)>MAX_FILE_BYTES)throw Error('导入文件过大，最大允许 16 MB');
+    const o=JSON.parse(await f.text());
+    if(!Array.isArray(o.modules)||!o.settings)throw Error('文件结构不正确');
+    if(!await appPhraseConfirm(`备份包含 ${o.modules.length} 个模组。当前模组资料和高级工具设置将被替换；主页面会在写入前执行保护。`,'覆盖',{title:'恢复完整备份',confirmText:'确认替换'}))return;
+    state=o;repair();applyTheme(state.settings.theme);
+    startedWrite=true;await putdb();confirmedWrite=true;
+    close();render();clearAuxIssue('MODULE-BACKUP-IMPORT');toast('完整备份已恢复','ok');
+  }catch(err){
+    console.error(err);
+    let recovered=false;
+    if(startedWrite){
+      try{const latest=await getdb();state=latest;recovered=true;}catch(_){}
+    }else{state=before;recovered=true;}
+    if(recovered){repair();applyTheme(state.settings.theme);render();}
+    const persisted=confirmedWrite?'数据已写入；但后续显示失败':
+      startedWrite?(recovered?'已回读主档案，导入是否完整仍需核对':'写入结果无法确认，不能宣称已回滚'):
+      '写入尚未开始，原档案未被本次导入改动';
+    $('#savestate').textContent=confirmedWrite?'已提交 · 显示异常':'导入失败 · '+(recovered?'已核对本机状态':'本机状态待核对');
+    showAuxIssue({code:'MODULE-BACKUP-IMPORT',title:'模组完整备份导入未完成',
+      area:'模组高级工具',action:'导入完整备份',phase:startedWrite?'写入与回读':'文件预检',
+      state:persisted,next:'请回到 PL 主页逐项核对模组与最近的完整备份，确认之前不要再次覆盖',error:err});
+    toast('模组备份导入未完成，请查看问题详情','err');
+  }
+}
 async function clearall(){
   if(!await appConfirm('重置高级工具设置，并清理无关联模组。执行前创建恢复点。',{title:'重置模组数据',confirmText:'继续'}))return;
   if(!await appPhraseConfirm('这是高风险批量操作。确认后会清理可安全删除的模组并重置评分体系等模组设置。','永久清空',{title:'最终确认',confirmText:'确认重置'}))return;
   const before=cp(state);
   try{
-    if(parent&&parent.UnifiedTRPGBridge){
-      const next=await parent.UnifiedTRPGBridge.clearModuleArchive();
-      state=cp(next||fresh());
-    }else state=fresh();
-    repair();applyTheme(state.settings.theme);close();render();$('#savestate').textContent='已重置模组数据';toast('模组数据已安全重置','warn')
-  }catch(err){console.error(err);state=before;repair();applyTheme(state.settings.theme);render();toast('重置失败，已恢复重置前状态：'+(err.message||err),'err')}
+    if(!(parent&&parent.UnifiedTRPGBridge&&typeof parent.UnifiedTRPGBridge.clearModuleArchive==='function'))
+      throw new Error('UnifiedArchiveResetUnavailable');
+    const next=await parent.UnifiedTRPGBridge.clearModuleArchive();
+    const confirmed=next&&Array.isArray(next.modules)?next:await getdb();
+    if(!confirmed||!Array.isArray(confirmed.modules))throw new Error('UnifiedArchiveResetUnconfirmed');
+    state=cp(confirmed);
+    repair();applyTheme(state.settings.theme);close();render();
+    $('#savestate').textContent='已重置模组数据';clearAuxIssue('MODULE-RESET-FAIL');
+    toast('模组数据已安全重置','warn')
+  }catch(err){console.error(err);state=before;repair();applyTheme(state.settings.theme);render();
+    showAuxIssue({code:'MODULE-RESET-FAIL',title:'模组数据重置失败',area:'模组高级工具',action:'批量重置',
+      phase:'写入或恢复',state:'页面已恢复原数据副本；实际保存状态需核对',
+      next:'返回主站检查模组列表和完整备份，不要连续重复执行重置',error:err});
+    toast('重置未完成，请核对数据并查看问题详情','err')}
 }const targets=[['','— 忽略此列 —'],['__note','附加到模组备注'],['title','模组：名称'],['author','模组：作者'],['source','模组：来源'],['location','模组：地点'],['era','模组：时代'],['settingLegacy','模组：地点 / 时代（自动拆分）'],['players','模组：人数'],['duration','模组：预计时长'],['nature','模组：性质'],['rules','招募：规则'],['recommendedSkills','招募：推荐技能'],['cardRequirements','招募：车卡要求'],['recommendedOccupations','招募：推荐职业'],['lostRate','招募：LOST 概率'],['background','招募：模组背景 / 简介'],['recruitmentNotes','招募：招募备注'],['plCount','模组：PL 侧次数'],['kpCount','模组：KP 侧次数'],['reKp','模组：是否愿意再次带团'],['notes','模组：备注'],['role','经历：当时作为 PL / KP 侧'],['thoughts','经历：感想'],['manualScore','模组：评分（十分制）'],['date','经历：跑团日期'],['actualDuration','经历：实际持续时间'],['kp','经历：KP 是谁'],['participants','经历：PL / PC'],['ho','经历：HO 分配'],['runNotes','经历：备注']];const aliases={title:['名字','名称','模组名','模组名称','剧本名','剧本名称','module','name'],author:['作者','模组作者','作者名','author'],source:['来源（发布平台）','来源(发布平台)','来源/发布平台','来源','发布平台','链接','网址','source','url'],location:['地点','地区','国家','城市','舞台地点','发生地点','location','place'],era:['时代','年代','时期','背景时代','舞台时代','era','period'],settingLegacy:['地点/时代','时代/地点','地点时代','时代地点','setting'],players:['人数','玩家人数','推荐人数','参与人数','人数要求','pl人数','players'],duration:['长短','时长','预计时长','模组时长','官方时长','游戏时长','所需时间','duration'],nature:['性质','类型','标签','tag','tags','风格','分类','模组类型','type'],rules:['规则','跑团规则','使用规则','系统','rule','rules'],recommendedSkills:['推荐技能','建议技能','重要技能','技能推荐'],cardRequirements:['车卡要求','人物卡要求','角色卡要求','作卡要求','卡要求'],recommendedOccupations:['推荐职业','建议职业','职业推荐'],lostRate:['lost概率','lost率','迷失概率','失踪概率','lost'],background:['模组背景 / 简介','模组背景/简介','模组背景','背景','公开背景','背景介绍','故事背景','导入背景','简介','模组简介','剧本简介','剧情简介','故事简介','公开简介','背景简介'],recruitmentNotes:['招募备注','招募注意','招募注意事项','募集备注','募集注意','募集注意事项','开团备注','招募说明'],plCount:['pl侧次数','pl次数','pl游玩次数','作为pl次数','玩家侧次数'],kpCount:['kp侧次数','kp次数','kp带团次数','作为kp次数','主持次数'],reKp:['是否愿意再次带团','是否愿意再带团','是否想再次作为kp带团','是否想再次作为kp','再次作为kp','是否再带','再带意愿','再带团意愿','想再次作为kp','重带意愿','再次带团','是否再次带团','愿意再次带团'],role:['当时作为pl/kp侧','当时作为pl／kp侧','作为pl/kp','作为kp/pl','pl/kp','kp/pl','身份','侧别','游玩身份','role'],thoughts:['跑后感想','感想','跑后感','游玩感想','体验','评价','简评','review'],manualScore:['评分（十分制；小数点后一位）','评分(十分制;小数点后一位)','评分（十分制）','评分','总评分','综合评分','分数','score','rating'],notes:['备注','其他','note','notes','memo'],date:['跑团日期','游玩日期','日期','date'],actualDuration:['实际持续时间','实际时长','实跑时长','跑团时长'],kp:['kp是谁','带的kp是谁','带团kp','主持人','kp'],participants:['同桌','同桌玩家','玩家','pl名单','参与者','成员'],ho:['ho','角色位','秘密位','handout'],runNotes:['本次备注','跑团备注','本桌备注','经历备注']};
 /* ---------- 11. Excel / CSV 导入与字段映射 ---------- */
 function nh(s){return String(s??'').normalize('NFKC').toLowerCase().replace(/[\s_\-—–()（）【】\[\]{}：:；;，,.。、“”'"`~!@#$%^&*+=|\\/<>?？]/g,'')}
@@ -2044,7 +2153,23 @@ function header(rows){let z={i:0,s:-1};for(let i=0;i<Math.min(15,rows.length);i+
 function mappings(force=false){const sh=pending.sheets[pending.si],hs=sh.rows[pending.hi]||[];if(force||!pending.map.length)pending.map=hs.map(h=>({header:String(h??''),...best(h)}));else pending.map=hs.map((h,i)=>pending.map[i]||({header:String(h??''),...best(h)}))}
 
 async function refreshFromUnifiedParent(){try{const latest=await getdb();if(latest){state=latest;repair();view=state.settings.view||view;sortDir=state.settings.sortDir||sortDir;return true}}catch(err){console.warn("刷新统一模组档案失败",err)}return false}
-async function handleExcel(f){if(!f)return;try{if((f.size||0)>MAX_FILE_BYTES)throw Error('导入文件过大，最大允许 16 MB');const n=f.name.toLowerCase();let sheets;if(n.endsWith('.csv')||n.endsWith('.tsv'))sheets=[{name:'数据',rows:delim(await f.text(),n.endsWith('.tsv')?'\t':',')}];else if(n.endsWith('.xlsx'))sheets=await xlsxRead(await f.arrayBuffer());else if(n.endsWith('.xls'))throw Error('暂不支持 .xls。请另存为 .xlsx 或 CSV 后导入。');else throw Error('请选择 .xlsx、.csv 或 .tsv 文件');if(!sheets.length)throw Error('未找到可读取的工作表');pending={name:f.name,sheets,si:0,hi:header(sheets[0].rows),map:[],policy:'merge'};mappings(true);importModal()}catch(err){console.error(err);toast('Excel 导入失败：'+err.message,'err');try{parent&&parent.__moduleExcelBackendError&&parent.__moduleExcelBackendError(err.message)}catch(_){}}$('#excel').value=''}
+let auxExcelBusy=false;
+function setAuxWorkStatus(text){
+  const node=document.getElementById('auxWorkStatus');if(!node)return;
+  node.hidden=!text;node.textContent=text||'';
+}
+async function handleExcel(f){
+  if(!f||auxExcelBusy)return;
+  auxExcelBusy=true;setAuxWorkStatus('正在读取 Excel / CSV…');
+  const fileInput=document.getElementById('excel');
+  PlAuxIssueReport.setDisabled(fileInput,true,'正在读取文件，请稍后');
+  try{if((f.size||0)>MAX_FILE_BYTES)throw Error('导入文件过大，最大允许 16 MB');const n=f.name.toLowerCase();let sheets;if(n.endsWith('.csv')||n.endsWith('.tsv'))sheets=[{name:'数据',rows:delim(await f.text(),n.endsWith('.tsv')?'\t':',')}];else if(n.endsWith('.xlsx'))sheets=await xlsxRead(await f.arrayBuffer());else if(n.endsWith('.xls'))throw Error('暂不支持 .xls。请另存为 .xlsx 或 CSV 后导入。');else throw Error('请选择 .xlsx、.csv 或 .tsv 文件');if(!sheets.length)throw Error('未找到可读取的工作表');pending={name:f.name,sheets,si:0,hi:header(sheets[0].rows),map:[],policy:'merge'};setAuxWorkStatus(`已读取 ${sheets.length} 个工作表，等待核对字段映射。`);mappings(true);importModal()}catch(err){console.error(err);showAuxIssue({code:'MODULE-EXCEL-IMPORT',title:'模组 Excel 导入失败',area:'模组高级工具',action:'读取 Excel',phase:'读取或识别文件',state:'本次 Excel 尚未提交到模组档案',next:'检查表格格式及文件大小后重选文件',error:err});toast('Excel 读取失败，请查看问题详情','err');try{parent&&parent.__moduleExcelBackendError&&parent.__moduleExcelBackendError('读取失败，请检查匿名错误报告')}catch(_){}
+  }finally{
+    auxExcelBusy=false;PlAuxIssueReport.setDisabled(fileInput,false);
+    if(!pending)setAuxWorkStatus('Excel 读取失败，未提交模组档案。');
+    if(fileInput)fileInput.value='';
+  }
+}
 
 function importModal(){modal('导入 Excel','已读取：'+pending.name+'。请确认字段映射后开始导入。','<div id="imeditor"></div>',{wide:true,save:'开始导入',onsave:commit,oncancel:()=>{close();try{parent&&parent.__moduleExcelBackendCancel&&parent.__moduleExcelBackendCancel()}catch(_){}}});rimport()}
 
@@ -2101,7 +2226,7 @@ async function inflate(bytes,limit){
 /* ---------- 12. Excel 序列化与便携备份 ---------- */
 function exportData(){const h=['名字','作者','来源','地点','时代','人数','长短','性质','规则','推荐技能','车卡要求','推荐职业','LOST 概率','模组背景 / 简介','招募备注','PL 侧次数','KP 侧次数','是否愿意再次带团','当时作为pl/kp侧','感想','评分（十分制；小数点后一位）','备注','跑团日期','实际持续时间','KP','同桌/玩家','HO/角色','备注','评价体系','评价明细'],rows=[];state.modules.forEach(m=>{const rt=m.rating||erating(),sy=sys(rt.ratingSystemId),detail=sy?sy.criteria.map(c=>rt.scores?.[c.id]!==undefined?`${c.name}:${rt.scores[c.id]}`:'').filter(Boolean).join('；'):'',total=mscore(m);((m.runs||[]).length?m.runs:[null]).forEach(r=>rows.push([m.title,m.author,m.source,m.location,m.era,m.players,m.duration,m.nature,m.rules||'',m.recommendedSkills||'',m.cardRequirements||'',m.recommendedOccupations||'',m.lostRate||'',m.background||'',m.recruitmentNotes||'',Math.max(0,+m.plCount||0),Math.max(0,+m.kpCount||0),m.reKp||'',r?.role||'',r?.thoughts||'',total??'',m.notes,r?.date||'',r?.actualDuration||'',r?.kp||'',r?.participants||'',r?.ho||'',r?.notes||'',sy?.name||'',detail]))});return{h,rows}}
 
-function exportXLSX(){try{const d=exportData();dl(makeXlsx(d.h,d.rows),dname('模组跑团档案','xlsx'));toast('Excel 文件已导出','ok')}catch(err){console.error(err);toast('Excel 导出失败：'+err.message,'err')}}
+function exportXLSX(){try{const d=exportData();dl(makeXlsx(d.h,d.rows),dname('模组跑团档案','xlsx'));toast('Excel 文件已导出','ok')}catch(err){console.error(err);showAuxIssue({code:'MODULE-EXCEL-EXPORT',title:'模组 Excel 导出失败',area:'模组高级工具',action:'导出 Excel',phase:'生成文件',state:'原始模组档案未因这次导出改动',next:'核对当前导出选项后重试',error:err});toast('Excel 导出失败，请查看问题详情','err')}}
 
 function xesc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[m]))}
 
@@ -2141,7 +2266,14 @@ function openUnifiedRuns(moduleId){
 function insertGuardedPaste(el,text){const start=Number.isFinite(el.selectionStart)?el.selectionStart:el.value.length,end=Number.isFinite(el.selectionEnd)?el.selectionEnd:start;el.value=el.value.slice(0,start)+text+el.value.slice(end);const pos=start+text.length;try{el.setSelectionRange(pos,pos)}catch(_){}el.dispatchEvent(new Event('input',{bubbles:true}))}
 document.addEventListener('paste',async ev=>{const el=ev.target;if(!(el instanceof HTMLInputElement||el instanceof HTMLTextAreaElement)||el.disabled||el.readOnly)return;const text=ev.clipboardData?.getData('text')||'',limit=el instanceof HTMLTextAreaElement?100000:10000;if(text.length<=limit)return;ev.preventDefault();if(await appConfirm(`这次粘贴包含约 ${text.length.toLocaleString(mtI18nLocale||undefined)} 个字符，明显超过普通${el instanceof HTMLTextAreaElement?'长文本':'单行输入'}内容。\n\n这通常发生在误把整段 Log、网页源码或大段文档粘贴到当前字段。继续粘贴不会自动截断。`,{title:'粘贴内容非常长，继续吗？',confirmText:'仍然粘贴',danger:false}))insertGuardedPaste(el,text)},true);
 const originalExportXLSX=exportXLSX;exportXLSX=async function(){let ack=false;try{ack=sessionStorage.getItem('tomato_module_xlsx_privacy_ack_v1')==='1'}catch(_){}if(!ack){const ok=await appConfirm('导出的 XLSX 可能包含 KP、同桌玩家、HO、感想和备注等私人内容。\n\n如果准备发送给别人，请先确认文件里没有不希望公开的信息。',{title:'导出前检查隐私？',confirmText:'继续导出',danger:false});if(!ok)return false;try{sessionStorage.setItem('tomato_module_xlsx_privacy_ack_v1','1')}catch(_){}}return originalExportXLSX()};
-window.App={edit,copy:copyMod,remove:removeModule,recruit:recruitModule,manageRuns:openUnifiedRuns,refresh:async()=>{const ok=await refreshFromUnifiedParent();if(ok){render();mtI18nApply()}return ok},importExcel:()=>{$('#excel')?.click();return true},importExcelFile:async file=>{await refreshFromUnifiedParent();return handleExcel(file)},exportExcelRaw:async()=>{await refreshFromUnifiedParent();return originalExportXLSX()},exportPortableRaw:async()=>{await refreshFromUnifiedParent();return portable()}};(async()=>{await load();initModuleCollapseUX();mtI18nInvalidate();bind();render();initHorizontalScrollHints();$('#savestate').textContent=state.modules.length?`已连接统一档案 · ${state.modules.length} 个模组`:'已连接统一档案 · 暂无模组';mtI18nApply()})()})();
+window.App={edit,copy:copyMod,remove:removeModule,recruit:recruitModule,manageRuns:openUnifiedRuns,refresh:async()=>{const ok=await refreshFromUnifiedParent();if(ok){render();mtI18nApply()}return ok},importExcel:()=>{$('#excel')?.click();return true},importExcelFile:async file=>{await refreshFromUnifiedParent();return handleExcel(file)},exportExcelRaw:async()=>{await refreshFromUnifiedParent();return originalExportXLSX()},exportPortableRaw:async()=>{await refreshFromUnifiedParent();return portable()}};(async()=>{
+  try{
+    await load();initModuleCollapseUX();mtI18nInvalidate();bind();render();
+    initHorizontalScrollHints();$('#savestate').textContent=state.modules.length?
+    `已连接统一档案 · ${state.modules.length} 个模组`:'已连接统一档案 · 暂无模组';
+    mtI18nApply();
+  }catch(err){lockAuxiliaryToolAfterLoadFailure(err);}
+})()})();
 </script>
 <script id="moduleToolEnhancements">
 /* 模组工具运行增强：把历次追加的运行增强脚本收敛到单一入口，执行顺序保持不变。 */

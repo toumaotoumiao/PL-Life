@@ -7,13 +7,14 @@ const vm=require('node:vm');
 const html=fs.readFileSync(path.join(__dirname,'../..','index.html'),'utf8');
 const render=(html.match(/function nativeModuleCardHTML\([\s\S]*?\/\* v8\.1\.11\.82/)||[])[0]||'';
 
-test('module card renders every nonempty metadata tag without another fold',()=>{
+test('module card retains all nonempty metadata, default three visible and remainder expandable',()=>{
   assert(render,'native module renderer exists');
   assert.match(render,/const tags = \[/);
   assert.match(render,/\]\.filter\(Boolean\)/);
-  assert.match(render,/const metaHTML=`<div class="native-module-tags">\$\{tags\.map\(t =>/);
+  assert.match(render,/const primaryTags=tags\.slice\(0,3\),extraTags=tags\.slice\(3\)/);
+  assert.match(render,/const tagHTML=items=>items\.map\(t=>/);
   assert.doesNotMatch(render,/<details class="native-module-extra-tags">/);
-  assert.doesNotMatch(render,/更多资料 ·/);
+  assert.match(render,/更多资料 · \$\{extraTags\.length\} 项/);
   assert.match(render,/escapeHTML\(t\)/);
 });
 test('compact row remains short, without affecting card metadata',()=>{
@@ -28,7 +29,7 @@ test('note is still optional and expandable; archive schema remains intact',()=>
   assert.match(guard,/MAX_SCHEMA\s*=\s*26/);
 });
 
-test('execute module-card renderer: four extra tags are visible without opening details',()=>{
+test('execute module-card renderer: all metadata retained, only three initially visible',()=>{
   const snippet=render.replace(/\/\* v8\.1\.11\.82[\s\S]*$/,'');
   const escapeHTML=value=>String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const ctx={moduleBatchSelectedIds:new Set(),moduleBatchMode:false,
@@ -41,9 +42,12 @@ test('execute module-card renderer: four extra tags are visible without opening 
   for(const value of ['规则 CoC · 第七版','地点 日本','时代 现代','1人','有 HO','4-6小时','文字团','愿意再带']){
     assert(card.includes('>'+value+'</span>'),`card should show ${value}`);
   }
-  assert(!card.includes('更多资料'));
+  assert(card.includes('更多资料 · 5 项'));
+  const primary=(card.match(/<div class="native-module-tags">([\s\S]*?)<\/div>/)||[])[1]||'';
+  assert.equal((primary.match(/<span class="(?:ho-tag)?">/g)||[]).length,3);
   assert(!card.includes('native-module-extra-tags'));
   assert.equal((card.match(/<span class="(?:ho-tag)?">/g)||[]).length,8);
+  assert.match(card,/<details class="card-extra-facts native-module-extra"/);
   assert.equal((compact.match(/class="native-module-row-tags"/g)||[]).length,1);
   const compactTags=(compact.match(/class="native-module-row-tags">([\s\S]*?)<\/div>/)||[])[1]||'';
   assert.equal((compactTags.match(/<span>/g)||[]).length,3);

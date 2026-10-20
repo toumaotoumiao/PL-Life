@@ -1,7 +1,7 @@
 {
   "format": "pl-life-production-release-manifest",
   "manifestVersion": 1,
-  "appVersion": "8.1.12.304",
+  "appVersion": "8.1.12.319",
   "schemaVersion": 26,
   "rootFiles": [
     ".nojekyll",
@@ -11,6 +11,7 @@
     "STAGE48_NATIVE_RECOVERY_WINDOWS.md",
     "PRODUCTION_RELEASE_GUIDE.md",
     "production-release-manifest.json",
+    "aux-issue-report.js",
     "backup-restore-preflight.js",
     "data-heritage-apply.js",
     "data-heritage-batch.js",
@@ -154,7 +155,22 @@
     "STAGE123_",
     "STAGE124_",
     "STAGE125_",
-    "STAGE126_"
+    "STAGE126_",
+    "STAGE127_",
+    "STAGE128_",
+    "STAGE129_",
+    "STAGE130_",
+    "STAGE131_",
+    "STAGE132_",
+    "STAGE133_",
+    "STAGE134_",
+    "STAGE135_",
+    "STAGE136_",
+    "STAGE137_",
+    "STAGE138_",
+    "STAGE139_",
+    "STAGE140_",
+    "STAGE141_"
   ],
   "excludedInternalPrefixes": [
     "STAGE111_",
@@ -167,6 +183,10 @@
     "STAGE120_",
     "STAGE121_",
     "STAGE122_",
-    "STAGE123_"
+    "STAGE123_",
+    "STAGE127_",
+    "STAGE128_",
+    "STAGE129_",
+    "STAGE140_"
   ]
 }

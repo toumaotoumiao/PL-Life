@@ -8,7 +8,7 @@ function sandbox(){const context={
   moduleRuleDisplay:r=>(r.systemId||r.familyId)+'/'+(r.editionId||''),moduleById:id=>context.modules.find(m=>m.id===id),modules:[],
   nativeModuleRulePopoverHTML:()=>'<div data-native-module-rule-family>切换规则只改变适用字段的显示，不删除已填写的 CoC / 招募资料。</div>',
   escapeHTML:x=>String(x).replaceAll('<','&lt;'),CSS:{escape:x=>x},document:{querySelector:()=>null},
-  normalizeLogRows:()=>[],normalizeParticipantAssignments:()=>[],normalizeKpc:()=>({}),normalizePlanSlots:()=>[],normalizeTableStatus:()=>'',hasPostRunDraft:()=>false,normalizePostRunDraft:()=>({}),
+  normalizeLogRows:()=>[],normalizeParticipantAssignments:()=>[],normalizeExternalParticipants:raw=>Array.isArray(raw)?raw:[],normalizeKpc:()=>({}),normalizePlanSlots:()=>[],normalizeTableStatus:()=>'',hasPostRunDraft:()=>false,normalizePostRunDraft:()=>({}),
   uid:()=> 'id-1',clone:x=>JSON.parse(JSON.stringify(x)),mutateRunPlan:()=>true,mutateRunRecord:()=>true,
   planInputPending:null,recordInputPending:null,runPlans:[],runRecords:[],
   };vm.createContext(context);for(const name of ['RUN_CANONICAL_ONLY_KEYS','RUN_RUNTIME_ONLY_KEYS','RUN_DRAFT_KNOWN_KEYS'])vm.runInContext(extractConst(name),context);vm.runInContext(extract('pcPreserveUnknownJsonProps','function normalizePcArchive('),context);vm.runInContext(extract('normalizeRunRuleSnapshot','function normalizeRunPlan('),context);return context;}

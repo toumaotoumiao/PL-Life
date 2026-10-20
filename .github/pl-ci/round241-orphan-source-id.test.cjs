@@ -19,8 +19,9 @@ test('Round241 identical source ID policy is used at export, read-back and prese
  assert.match(segment,/referencedBooks\.has\(backupAttachmentKey\(row\?\.pcId/);
  assert.match(segment,/backupAttachmentKey\(meta\[kind==='media'\?'id':'pcId'\]/);
  const preserve=source.slice(source.indexOf('async function preserveLocalUnlinkedForZip('),source.indexOf('async function ',source.indexOf('async function preserveLocalUnlinkedForZip(')+10));
- assert.match(preserve,/backupAttachmentKey\(row\?\.id/);
- assert.match(preserve,/backupAttachmentKey\(row\?\.pcId/);
+ assert.match(preserve,/backupAttachmentKey\(row\?\.\[field\]/);
+ assert.match(preserve,/\['media',localMedia,currentMedia,incomingRefs,nextMedia,allMedia,'id'\]/);
+ assert.match(preserve,/\['workbook',localBooks,currentBooks,incomingBooks,nextBooks,allBooks,'pcId'\]/);
 });
 const endBuild=source.indexOf('async function readVerifiedUnlinkedAttachmentRows(',end);
 assert.ok(endBuild>end);

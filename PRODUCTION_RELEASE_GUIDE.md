@@ -14,6 +14,11 @@
 - 不要把测试仓库、历史内部报告、真实备份、角色 Excel 或验收 artifact 上传到正式仓库。
 - 正式站与测试站继续依赖 `runtime-environment.js` 按路径隔离存储。
 
+## Stage140 发布决定（强制）
+**暂停正式部署。** 本工程 Node/预检通过，当前候选尚无 PL-Life-Test 同版本浏览器与手机/平板真实验收证据；不能依据历史 Stage 日志或隔离静态截图发布。
+测试站部署新包后，在 GitHub Actions 手动运行 `Stage140 test-site read-only acceptance`，读取 `stage140-test-site-acceptance` JSON；并运行原有浏览器 synthetic/native ZIP restore gate。其后用可丢弃的测试档案完成 ZIP 与附件恢复，最后核对真实设备与导出预览。
+以 `STAGE140_RELEASE_GATE.json`（候选工程）为阻断清单。正式站保持不变，直到所有阻断解除。
+
 ## 发布前
 1. 测试站当前提交的 Synthetic 与 Native ZIP restore gate 必须通过。
 2. 手机规则菜单针对性确认通过：面板位于触发按钮下方，同按钮、点击外部和 Esc 均可关闭。

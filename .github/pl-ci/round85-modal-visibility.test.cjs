@@ -42,7 +42,7 @@ test('opening a record editor must locate the actual row and expand default-coll
  assert(otherAdds.length>=3);
  for(const match of otherAdds){
    const follow=html.slice(match.index,match.index+215);
-   assert.match(follow,/setRunRecordCollapsed\([^;]*false, false\)/,'editing must expand the targeted record: '+match[0]);
+   assert.match(follow,/setRunRecordCollapsed\([^;]*false\s*,\s*false\)/,'editing must expand the targeted record: '+match[0]);
  }
  assert.match(script,/if\(!recordDetailReveal\('round82-record'\)\)/);
  assert.match(script,/if\(!activateRecordEditing\('round82-record'\)\)/);

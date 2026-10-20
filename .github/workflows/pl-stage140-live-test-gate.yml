@@ -1,0 +1,28 @@
+name: Stage140 test-site read-only acceptance
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-site-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated Chromium runner
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Run current candidate against deployed TEST site only
+        run: python .github/pl-ci/stage140-live-site-audit.py --output stage140-live-site-result.json
+      - name: Upload read-only acceptance summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage140-test-site-acceptance
+          path: stage140-live-site-result.json
+          if-no-files-found: warn
+          retention-days: 14

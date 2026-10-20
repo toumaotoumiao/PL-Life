@@ -1,41 +1,65 @@
 {
   "format": "pl-life-current-project-status",
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-21",
   "current": {
-    "stage": 126,
-    "appVersion": "8.1.12.304",
+    "stage": 141,
+    "appVersion": "8.1.12.319",
     "schemaVersion": 26,
-    "focus": "全站色彩系统：灰度层级 + 主色色阶 + 低饱和中性色 + 统一语义色"
+    "focus": "P0 存档恢复：本机未关联原始 Excel/图片与 ZIP 档案编号冲突的安全保留和回滚测试"
   },
   "currentVersionAcceptance": {
     "code": {
-      "status": "complete",
-      "colorSystemContract": "6/6 PASS",
-      "targetedContracts": "36/36 PASS",
-      "fullNode": "1084/1090 PASS; 6 remaining failures are inherited Stage125 baseline functional-test debt; Stage125 baseline was 1068/1084 with 16 failures"
+      "status": "stage141-emergency-backup-restore-candidate",
+      "nielsenP1Contract": "Stage140 release atomicity and acceptance-gate checks added; previous Stage139 tests retained",
+      "nielsenP0Contract": "10/10 PASS",
+      "colorContract": "6/6 PASS",
+      "productionPreflight": "PASS (Stage141 v8.1.12.319 / schema26)",
+      "fullNode": "1251/1251 PASS (Stage140 1242 + Stage141 9 new; previous tests retained)",
+      "currentStatusContract": "Stage141 8.1.12.319; backups 9 ZIP + 3 JSON readable; legacy unversioned recovery protections unchanged"
     },
     "browser": {
-      "local": "not accepted: local Chromium file smoke timed out before usable page evidence",
-      "github": "pending deployment run"
+      "local": "Stage141 actual localhost Chromium blocked by ERR_BLOCKED_BY_ADMINISTRATOR; actual restore 0 confirmed",
+      "github": "Stage141 新修复尚未部署至测试站"
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "pending": [
-        "desktop theme visual check",
-        "mobile theme visual check"
+        "320/375/390/430/768/1024/1280/1440px 全站三主题实际布局",
+        "模组整组删除成功、保存失败与批量回收恢复冲突提示",
+        "模组工具返回入口与本机存储检查运行状态",
+        "PC 原始 Excel/图片删除以及外部备份核验真实设备操作"
       ]
     },
     "release": {
-      "status": "candidate-built",
+      "status": "hold-production-not-deployed-pending-test-site-and-real-device",
       "artifactNames": [
-        "Stage126_正式仓库完整同步包.zip",
-        "Stage126_测试仓库完整同步包.zip",
-        "Stage126_完整候选工程.zip",
-        "Stage126_测试证据与SHA256.zip"
+        "Stage141_正式仓库完整同步包.zip",
+        "Stage141_测试仓库完整同步包.zip",
+        "Stage141_完整候选工程.zip",
+        "Stage141_故障核查与SHA256.zip"
       ]
     }
   },
   "workstreams": {
+    "nielsenUsability": {
+      "settingsActionModel": 100,
+      "backupTerminology": 100,
+      "versionProgressiveDisclosure": 100,
+      "planSaveSemantics": 100,
+      "typographyReadability": 95,
+      "auxiliaryPageConsistency": 95,
+      "privacyShareClarity": 100,
+      "desktopQuickRail": 100,
+      "associationStateRecognition": 100,
+      "longTaskFeedback": 90,
+      "disabledReason": 92,
+      "deleteUndoModel": 99,
+      "cardInformationReduction": 95,
+      "githubBrowser": 0,
+      "realDevice": 0,
+      "calendarCompactReadability": 95,
+      "helpReduction": 95
+    },
     "colorSystem": {
       "code": 100,
       "staticContract": 100,
@@ -53,14 +77,51 @@
       "userIssueRetest": "pending after deployment"
     },
     "imageExport": {
-      "automatedTests": "baseline-passed",
+      "automatedTests": "included in Full Node 1147/1147 PASS; no Stage132 renderer/data-contract modification",
       "realDevice": "targeted-check-pending"
     }
   },
   "notes": [
     "历史 STAGE*.md 仅表示当时快照。",
-    "Stage126 不改变布局和数据结构；本轮只调整色彩 Token、主题预览与语义映射。",
-    "主色与灰阶由统一色阶派生；成功、警告、错误使用跨浅色主题一致的低饱和语义色。"
+    "Stage128 不改变 schema26；本轮继续 Nielsen P1，可用性改动不重写现有档案数据。",
+    "长任务反馈本轮先覆盖完整备份恢复链路；批量 Excel、深度检查等其余长任务继续下一批接入。",
+    "禁用原因本轮先覆盖迁移恢复与两类图片导出关键动作；全站其余 disabled 控件继续统一。",
+    "Stage129 批量 Excel 写入后的回读失败不再误清理已持久化档案与附件，允许人工检查。",
+    "Stage129 长任务状态覆盖批量 PC Excel 识别/保存/回读核对和档案完整性检查，仍待覆盖其他批量工具。",
+    "Stage130 PC/模组卡片的次要标签移入可展开区域；原始数据和导出逻辑不变。",
+    "Stage130 PL/模组/计划/记录撤销提示延后至保存成功，撤销失败时保留可重试入口；PC 含附件删除仍使用恢复点，不假装有无损撤销。",
+    "Stage130 跑团记录删除 saveState 失败时，关联 PL 的 updatedAt 同步回滚，原有档案未修改。",
+    "Stage131 PL紧凑卡、计划列表、跑团记录头部追加次要事实折叠；原始字段和导出规则未删改。",
+    "Stage131 PC删除前验证已关联图片原件；附件受恢复点保护时保留并明示；清理成功需回读，失败时尝试恢复并报告无法核实的环节。",
+    "Stage132 批量清理孤立图片/Excel 需先核验由用户选择的完整 ZIP；逐项比对原件 SHA-256、MIME、缩略图与完整元数据；30 分钟会话授权不写入存储，目标文件变化立即拒绝。",
+    "Stage132 清理对象仅限无主、未关联且不受历史恢复点保护的附件；版本化恢复点的历史原件不实施危险强制清理。",
+    "Stage132 PC 删除前额外核验快照 id 及附件版本清单 version=1，不能只凭创建函数未抛错就继续。",
+    "Stage132 缺少真机 Chromium 视觉验收，代码通过不等于线上已发布。",
+    "Stage133 独立模组工具与本机存储检查添加同格式匿名错误报告，报告不含原始异常消息和用户文件内容；未改档案结构。",
+    "Stage133 模组自动保存失败区分可回读与不能确认磁盘状态；持续显示已保存提示仅发生在实际 putdb 成功后。",
+    "Stage133 1157/1157 Node tests pass, 10 new Round303. Chromium file navigation blocked; isolated HTML 390/1280 layout smoke is not real-site acceptance.",
+    "Stage134 数据与备份保留备份/迁移原语与外部 ZIP 格式不变；普通入口集中导出/核验/恢复，旧格式导入与存储空间详情折叠。",
+    "Stage134 备份导出、精简导出、回读核验及手动空间统计显示真实阶段；失败通过 finally 解除工作锁，未验证的 ZIP 不获得恢复资格。",
+    "Stage134 3/3 planned sub-results delivered; attempted headless Chromium 390px file:/// screenshot timed out, not a visual pass. Stage135 fixed third-quarter scope documented in STAGE134_REPORT.md.",
+    "Stage135 首页帮助三步工作流 + 单独备份安全提醒；原来的四步固定展示契约更新为内容不丢失。",
+    "Stage135 PL 紧凑卡的个人资料和备注统一折叠，保留隐私掩码与原始资料/导出字段；无内容不渲染空折叠。",
+    "Stage135 紧凑月历按钮最小高度 38px、日期字号 12px、焦点可见、辅助读屏显示日期和桌数，视觉真机未验收。",
+    "Stage135 745 DOM IDs without duplicates, tinycss2 Stage135 style parsed; Chromium actual 390 screenshot attempted but timed out; no valid visual acceptance evidence.",
+    "Stage136 group-record delete rollback includes related PL timestamps; undo appears after main save, and group restore conflicts are atomic rather than partial.",
+    "Stage136 auxiliary tools include visible return route and 3-stage read-only storage check; no schema/ZIP/export change.",
+    "Four-round plan closes as a scheduled work-package sequence, not as 20/20 code-completion assertion; remaining items are explicitly carried into release acceptance backlog.",
+    "Stage136: 1184/1184 Node pass, 19/19 inline JS syntax pass, 0 duplicate HTML IDs across 3 pages, CSS parser shows no top-level errors. Chromium 390px timed out.",
+    "Stage137 修复最终 prepareTrashRestore(moduleRecords) 在冲突时部分恢复并丢失原回收入口；批量模组数据内部先预检。",
+    "Stage137 完整 ZIP 恢复在创建安全恢复点后核验返回值有效且 attachmentVersions.version=1；无主图片/Excel 清理拒绝使用其他标签页修改前的旧确认结果。",
+    "Stage137 Node 1193/1193 PASS; 3 pages inline syntax, DOM IDs and CSS parsed without errors; release preflight and ZIP evidence documented in STAGE137_REPORT.md.",
+    "Stage138 辅助工具首次读取统一档案失败时禁止进入空白可编辑状态，并保留匿名报错与返回入口。",
+    "Stage138 模组备份导入区分未写入、保存状态待核对和已确认提交；重置操作需父页面确认并回读保存内容。",
+    "Stage138 存储诊断超时、重复检查及结果部分失败有独立反馈；同类禁用原因统一；不修改 schema26。",
+    "Stage138: 1213/1213 Node 全量 PASS（Stage137 1193 + 本轮新增 20）；3 组隔离 DOM Chromium 排版未横向溢出，但没有真实站点/设备验收结果。",
+    "Stage139 八档断点作用域 CSS 及长中英文防溢出；月历逐日早中晚数量可读、周/月选择状态 aria；补充资料摘要有类型说明；帮助提醒本机数据备份，原始数据、导出及 schema26 未修改。实际跨端与真机验收单列。",
+    "Stage139 Node 1226/1226 PASS, 13 new targeted tests, 19/19 inline JS, 24 static DOM viewport/theme checks no document horizontal overflow; not a live-page or multi-data visual acceptance.",
+    "Stage140 修复已持久化的回收站恢复遇到页面刷新/回收清理故障时错误回滚内存、提示假失败；新增 16 项故障注入/发布门契约，保留 1226 项旧测试。",
+    "Stage140 提供仅可针对 PL-Life-Test 运行的只读 Chromium 8×3 网格验收脚本与 GitHub workflow_dispatch 工作流；无用户档案采集/截图；本次本地真实测试站运行失败，0/24 组，不可标记为通过。"
   ],
   "sourceOfTruth": true,
   "statusPolicy": {
@@ -77,5 +138,217 @@
       "state": "accepted",
       "note": "existing accepted general real-device baseline; current release still needs targeted checks"
     }
+  },
+  "nielsen20Audit": {
+    "scope": "code-completion estimates only; each item requires targeted real-device release validation",
+    "completeCode": 9,
+    "partialCode": 11,
+    "notStarted": 0,
+    "items": [
+      {
+        "no": 1,
+        "name": "设置底部操作按页面变化",
+        "codePct": 100
+      },
+      {
+        "no": 2,
+        "name": "数据与备份页面精简",
+        "codePct": 92
+      },
+      {
+        "no": 3,
+        "name": "版本记录简化",
+        "codePct": 100
+      },
+      {
+        "no": 4,
+        "name": "字体可读性整改",
+        "codePct": 95
+      },
+      {
+        "no": 5,
+        "name": "备份术语统一",
+        "codePct": 100
+      },
+      {
+        "no": 6,
+        "name": "开团计划保存语义",
+        "codePct": 100
+      },
+      {
+        "no": 7,
+        "name": "辅助页面设计系统",
+        "codePct": 95
+      },
+      {
+        "no": 8,
+        "name": "存储诊断用户化",
+        "codePct": 100
+      },
+      {
+        "no": 9,
+        "name": "全站错误报告统一",
+        "codePct": 95
+      },
+      {
+        "no": 10,
+        "name": "隐私与分享关系",
+        "codePct": 100
+      },
+      {
+        "no": 11,
+        "name": "长任务进度反馈",
+        "codePct": 90
+      },
+      {
+        "no": 12,
+        "name": "桌面快捷栏减负",
+        "codePct": 100
+      },
+      {
+        "no": 13,
+        "name": "档案关联状态标记",
+        "codePct": 100
+      },
+      {
+        "no": 14,
+        "name": "删除与撤销统一",
+        "codePct": 99
+      },
+      {
+        "no": 15,
+        "name": "禁用按钮原因",
+        "codePct": 92
+      },
+      {
+        "no": 16,
+        "name": "模组高级工具统一",
+        "codePct": 95
+      },
+      {
+        "no": 17,
+        "name": "卡片信息减量",
+        "codePct": 95
+      },
+      {
+        "no": 18,
+        "name": "首页/全局帮助精简",
+        "codePct": 95
+      },
+      {
+        "no": 19,
+        "name": "紧凑日历字体可读性",
+        "codePct": 95
+      },
+      {
+        "no": 20,
+        "name": "隐藏未开放语言选项",
+        "codePct": 100
+      }
+    ],
+    "currentBrowserAndRealDeviceAccepted": false
+  },
+  "fourRoundCloseout": {
+    "stageRange": [
+      133,
+      134,
+      135,
+      136
+    ],
+    "purpose": "四轮完成 Nielsen 20 项尚未完成的工程整改，不以自动化通过冒充真实设备和发布验收",
+    "rounds": [
+      {
+        "stage": 133,
+        "quarter": "1/4",
+        "scope": [
+          "7 辅助页面设计系统",
+          "9 错误报告统一",
+          "16 模组高级工具统一",
+          "15 禁用原因在辅助页补齐"
+        ],
+        "status": "current scope implemented; Node full regression passed; real browser and real-device pending"
+      },
+      {
+        "stage": 134,
+        "quarter": "2/4",
+        "scope": [
+          "2 数据与备份页面减法",
+          "11 长任务进度反馈全流程",
+          "15 全站禁用原因扩展"
+        ],
+        "status": "code scope delivered (3/3); Round304 11/11 and full Node 1168/1168 PASS; Chromium and real device pending"
+      },
+      {
+        "stage": 135,
+        "quarter": "3/4",
+        "scope": [
+          "4 全站字体可读性",
+          "17 卡片信息层级",
+          "18 全局帮助",
+          "19 紧凑日历"
+        ],
+        "status": "code scope implemented across all four tasks; Node full 1177/1177 PASS; actual browser/real-device pending. Conservative targets 90/90/90/85, not previous 95/95/95/90 goals."
+      },
+      {
+        "stage": 136,
+        "quarter": "4/4",
+        "scope": [
+          "14 删除撤销最后收口",
+          "7/9/16 辅助页残余",
+          "20 项全站回归与未通过清单",
+          "发布前浏览器/真机证据核对"
+        ],
+        "status": "Stage136 code-scope changes delivered; remaining 11 items acknowledged incomplete pending code/visual verification; no GitHub/real-device acceptance claim."
+      }
+    ],
+    "acceptanceBoundary": "四轮目标是完成代码和本地可执行自动化；GitHub Chromium/真机/发布需对应真实证据才能验收，未通过不改写为完成"
+  },
+  "releaseCloseout137to140": {
+    "goal": "四轮风险与发布门收口，轮次 100% 不等于代码 20/20 或真机已验收",
+    "rounds": [
+      {
+        "stage": 137,
+        "quarter": "1/4",
+        "scope": "删除恢复最终入口、完整备份恢复、无主附件清理三条安全链路",
+        "status": "implemented; Node checks passed in Stage137; real-device pending"
+      },
+      {
+        "stage": 138,
+        "quarter": "2/4",
+        "scope": "辅助工具、错误报告、禁用原因一致性及真实可执行行为",
+        "status": "expanded-code-and-node-complete; isolated layouts 3/3; GitHub and real-device pending"
+      },
+      {
+        "stage": 139,
+        "quarter": "3/4",
+        "scope": "PL PC 模组 计划 记录 字体/卡片/日历/帮助，8 断点和 3 主题",
+        "status": "Stage139 6 work packages implemented; 13 new tests, 1226/1226 Node pass; 24/24 static isolated DOM viewport/theme checks no document overflow; functional browser/real device pending."
+      },
+      {
+        "stage": 140,
+        "quarter": "4/4",
+        "scope": "20 项发布终审、GitHub Chromium、真机关键路径和正式部署决策",
+        "status": "Stage140 engineering and preflight delivered: 16 new tests; total Node 1242/1242, 24 static layout cases; live TEST site runner BLOCKED (0 actual cases); 4/4 work packages reviewed with release gate HOLD."
+      }
+    ],
+    "acceptanceBoundary": "Four implementation rounds close; do not infer production acceptance. Block until TEST site GitHub gate, real data safety test under disposable isolated data, device screenshots and user signoff."
+  },
+  "releaseGateStage140": {
+    "decision": "DO_NOT_PUBLISH_YET",
+    "engineeredCandidate": true,
+    "testSiteDeployed": "unverified",
+    "testSiteChromiumPassed": false,
+    "realDevicePassed": false,
+    "nativeRestoreEvidenceForStage140": false,
+    "backupRestoreAndImageExportOnCurrentSite": false,
+    "reason": "Read-only actual TEST-site browser attempt BLOCKED before navigation. No Stage140 live site/native restore/real phone evidence; formal site release prohibited."
+  },
+  "emergencyRestore141": {
+    "faultCode": "BACKUP-IMPORT-INCOMPLETE",
+    "rootCause": "preserveLocalUnlinkedForZip aborts when locally unlinked workbook has same pcId as incoming linked workbook",
+    "solution": "retain conflicting local orphan as separate unlinked attachment key; retain legacy recovery snapshot protection",
+    "userBackupIntegrity": "9 backup ZIP CRC PASS, 3 JSON parse PASS, 9 ZIP manifests and stored attachments SHA256/CRC PASS (not end-to-end browser restoration)",
+    "actualBrowserImport": "pending",
+    "productionRelease": "blocked"
   }
 }

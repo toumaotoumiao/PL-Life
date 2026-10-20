@@ -39,9 +39,11 @@ test('one primary import, ZIP/JSON/HTML/encrypted formats and verified restore p
  assert.match(html,/async function restoreUnifiedCompleteBackup\(file\)/);
  assert.match(html,/async function inspectWorkspacePreviewFromInput\(file\)/);
 });
-test('backup primary has 2 visible actions, secondary tools tucked away',()=>{
+test('backup primary has 3 visible actions, legacy import and other tools tucked away',()=>{
  const body=html.slice(html.indexOf('id="backupPrimaryActions"'),html.indexOf('data-collapse-key="settings:data:backup-more-options"'));
- assert.match(body,/id="exportBtn"/);assert.match(body,/id="importBtn"/);
+ assert.match(body,/id="exportBtn"/);assert.match(body,/id="verifySavedBackupBtn"/);assert.match(body,/id="restoreFromBackupBtn"/);
+ assert(!body.includes('id="importBtn"'),'legacy import must remain in collapsed section');
+ assert.match(html,/data-collapse-key="settings:data:backup-more-options"[\s\S]*?id="importBtn"/);
  assert(!body.includes('id="exportEncryptedBtn"'),'encrypted tool leaked into main actions');
  assert(!body.includes('id="importLegacyModuleBtn"'),'legacy module leaked into main actions');
  assert.match(html,/data-settings-panel="advanced"/);

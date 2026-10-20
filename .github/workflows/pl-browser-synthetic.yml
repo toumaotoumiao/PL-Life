@@ -28,6 +28,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
+      - name: Stage140 restored-record commit boundary and explicit release hold
+        run: node --test .github/pl-ci/round310-stage140-release-atomicity.test.cjs
       - name: Check existing-data startup order before browser run
         run: node --test .github/pl-ci/round76-startup-status-order.test.cjs
       - name: Check table lifecycle and Log note compatibility
@@ -619,6 +621,34 @@ jobs:
         run: node --test .github/pl-ci/round294-person-name-modes.test.cjs
       - name: Round295 full association-search contract
         run: node --test .github/pl-ci/round295-search-association-audit.test.cjs
+      - name: Round296 color system contract
+        run: node --test .github/pl-ci/round296-color-system.test.cjs
+      - name: Round297 Nielsen usability contract
+        run: node --test .github/pl-ci/round297-nielsen-usability.test.cjs
+      - name: Round298 Nielsen P1 usability contract
+        run: node --test .github/pl-ci/round298-nielsen-p1-usability.test.cjs
+      - name: Round299 Nielsen P1 long-task and bulk Excel post-commit safety
+        run: node --test .github/pl-ci/round299-nielsen-safety.test.cjs
+      - name: Round300 Nielsen card density, help and safe undo lifecycle
+        run: node --test .github/pl-ci/round300-nielsen-card-delete-help.test.cjs
+      - name: Round301 Nielsen archive card disclosure and PC deletion safety
+        run: node --test .github/pl-ci/round301-nielsen-archive-cards.test.cjs
+      - name: Round303 auxiliary error reporting and offline asset contract
+        run: node --test .github/pl-ci/round303-auxiliary-error-report.test.cjs
+      - name: Stage134 Nielsen backup workflow
+        run: node --test .github/pl-ci/round304-nielsen-backup-workflow.test.cjs
+      - name: Stage135 Nielsen readability, cards, help and compact calendar contract
+        run: node --test .github/pl-ci/round305-nielsen-readability.test.cjs
+      - name: Stage139 cross-device readability and calendar interaction
+      - name: Stage141 emergency ZIP orphan collision runtime
+        run: node --test .github/pl-ci/round311-stage141-backup-orphan-collision.test.cjs
+        run: node --test .github/pl-ci/round309-stage139-cross-device.test.cjs
+      - name: Stage138 expanded auxiliary safe-state and diagnostics
+        run: node --test .github/pl-ci/round308-stage138-expanded-auxiliary.test.cjs
+      - name: Stage137 final recovery and cleanup fault injection
+        run: node --test .github/pl-ci/round307-stage137-highrisk-fault-injection.test.cjs
+      - name: Round302 external backup validation and orphan attachment cleanup protection
+        run: node --test .github/pl-ci/round302-nielsen-attachment-cleanup.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"

@@ -16,7 +16,7 @@ test('invalid replacement backup clears the previously verified recovery target'
 test('clear helper disables and hides recovery while returning file selection to neutral state',()=>{
   const body=between('function clearDeviceMigrationVerifiedSelection()','function resetDeviceMigrationSelection');
   assert.match(body,/deviceMigrationVerifiedFile=null/);
-  assert.match(body,/restore\.disabled=true/);
+  assert.match(body,/setDisabledReason\(restore,true,'请先选择并核验一份完整备份'\)/);
   assert.match(body,/restore\.hidden=true/);
   assert.match(body,/inspect\.textContent='选择备份'/);
 });

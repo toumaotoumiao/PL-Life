@@ -32,7 +32,7 @@ function recordContext({brpAlready=false,selected=false}={}){
   moduleFrameDirty:false,mobileMedia:{matches:false},recordEditingIds:new Set(),setRunRecordCollapsed:()=>{},
   renderRunRecords:()=>{},scrollRecordCardIntoView:()=>{},renderNativeModules:()=>{},renderProfiles:()=>{},setPlanUndo:()=>{},showToast:()=>{},
   appConfirm:async()=>true,normalizeRichModule:x=>x,settings:{moduleArchive:{}},clone:x=>structuredClone(x),
-  },between('async function createFirstRunRecord() {','function addTableToModule(moduleName'));
+  },between('async function createFirstRunRecord(mode="auto") {','function addTableToModule(moduleName'));
  return {ctx,mods,records,stats:()=>({createdByAdd,confirmed})};
 }
 test('the first-record entry selects the actual BRP ID instead of a same-title old CoC desk',async()=>{

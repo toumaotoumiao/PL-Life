@@ -19,10 +19,11 @@ test('Round131 main card typography, wrap and tap zones are in one scoped visual
   assert.match(styles,/\.native-module-tags>span\{font-size:11px!important/);
   assert.match(styles,/#profilesView \.score-badge \.score-label\{display:block!important/);
 });
-test('Round131 only changes presentation, keeps full module tags and all data contracts',()=>{
+test('Round131 presentation tokens remain safe; later card collapse preserves full metadata',()=>{
   assert.doesNotMatch(styles,/<(?:script|button|input|select)|\blocalStorage\b|\bindexedDB\b|addEventListener|function\s/);
   const render=(html.match(/function nativeModuleCardHTML\([\s\S]*?\/\* v8\.1\.11\.82/)||[])[0]||'';
-  assert.match(render,/const metaHTML=`<div class="native-module-tags">\$\{tags\.map\(t =>/);
+  assert.match(render,/const primaryTags=tags\.slice\(0,3\),extraTags=tags\.slice\(3\)/);
+  assert.match(render,/extraTags\.length\?`<details class="card-extra-facts native-module-extra"/);
   assert.doesNotMatch(render,/<details class="native-module-extra-tags">/);
   assert.match(html,/const APP_UI_VERSION = "8\.1\.12\.\d+";/);
   assert.match(fs.readFileSync(path.join(root,'data-migration-guard.js'),'utf8'),/MAX_SCHEMA\s*=\s*26/);

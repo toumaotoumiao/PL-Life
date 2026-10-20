@@ -3,48 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light">
-<title>PL 本机存储诊断</title>
+<meta name="color-scheme" content="light dark">
+<title>PL 本机存储检查</title>
 <style>
-:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#22352c;background:#f5f7f5}*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:20px}.page{width:min(760px,100%);margin:0 auto}.card{background:#fff;border:1px solid #dce3de;border-radius:18px;padding:20px;box-shadow:0 14px 38px #20392b12}.eyebrow{font-size:12px;color:#6f7d76;margin-bottom:5px}.title{font-size:24px;line-height:1.2;margin:0 0 8px}.copy{margin:0;color:#5f6c66;line-height:1.65}.notice{margin:16px 0;padding:12px 14px;border-radius:12px;background:#eef5f0;border:1px solid #d1e1d6;font-size:13px;line-height:1.6}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.btn{appearance:none;border:1px solid #cfd8d2;background:#fff;color:#2b4537;border-radius:11px;min-height:42px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer}.btn.primary{background:#365f49;border-color:#365f49;color:#fff}.btn:disabled{opacity:.55;cursor:not-allowed}.status{font-size:13px;color:#5f6c66}.result{white-space:pre-wrap;word-break:break-word;background:#f7f9f8;border:1px solid #dde4df;border-radius:12px;padding:14px;min-height:170px;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;color:#33443b}.footer{margin-top:12px;font-size:12px;color:#7b8781}@media(max-width:520px){body{padding:12px}.card{padding:16px}.title{font-size:21px}.actions{display:grid;grid-template-columns:1fr}.btn{width:100%}}
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#27332d;background:#f4f6f4;--primary:#4e7e62;--primary-strong:#365f49;--surface:#ffffff;--surface-soft:#f5f7f5;--line:#d8e0da;--muted:#66736c;--focus:0 0 0 3px rgba(78,126,98,.18)}*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:20px}.page{width:min(760px,100%);margin:0 auto}.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 14px 38px #20392b12}.eyebrow{font-size:12px;color:#6f7d76;margin-bottom:5px}.title{font-size:24px;line-height:1.2;margin:0 0 8px}.copy{margin:0;color:var(--muted);line-height:1.65}.notice{margin:16px 0;padding:12px 14px;border-radius:12px;background:#edf4ef;border:1px solid #cdded2;font-size:13px;line-height:1.6}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.btn{appearance:none;border:1px solid #cbd7cf;background:#fff;color:#294137;border-radius:11px;min-height:42px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer}.btn.primary{background:var(--primary-strong);border-color:var(--primary-strong);color:#fff}.btn:disabled{opacity:.55;cursor:not-allowed}.btn:focus-visible{outline:0;box-shadow:var(--focus)}.status{font-size:13px;color:#5f6c66}.result{white-space:pre-wrap;word-break:break-word;background:#f7f9f8;border:1px solid #dde4df;border-radius:12px;padding:14px;min-height:170px;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;color:#33443b}.footer{margin-top:12px;font-size:12px;color:#7b8781}@media(max-width:520px){body{padding:12px}.card{padding:16px}.title{font-size:21px}.actions{display:grid;grid-template-columns:1fr}.btn{width:100%}}
+
+/* Same surface, focus and accessibility foundation as other auxiliary tools. */
+:root{--ui-caption:12px;--ui-small:13px;--ui-body:14px}
+button,input{font-size:var(--ui-body)} .status{line-height:1.6;min-height:24px}
+.btn{touch-action:manipulation;min-width:88px} .result{font-size:var(--ui-caption)}
+@media(prefers-color-scheme:dark){:root{color:#e8eeea;background:#202722;--surface:#2c352e;--surface-soft:#253028;--line:#526256;--muted:#c0d0c4;--primary:#8dbc9c;--primary-strong:#426a52;--focus:0 0 0 3px #81b39570} .btn{background:#313f35;color:#f1f5ef;border-color:#617263}.btn.primary{background:#426a52;color:#fff}.result{background:#212b24;color:#e7f0e9;border-color:#526256}.notice{background:#2d4234;color:#d8e9df;border-color:#57725e}.eyebrow,.footer,.status{color:#c5d4c8}}
 </style>
 </head>
 <body>
 <main class="page">
 <section class="card">
-<div class="eyebrow">PL收集梦想生活 · v8.1.12.304 · schema26</div>
-<h1 class="title">本机存储诊断</h1>
-<p class="copy">检查范围：IndexedDB 数据库版本、对象仓库与索引结构。检查过程使用只读方式，反馈内容不包含档案记录。</p>
-<div class="notice"><strong>恢复失败时可运行此检查：</strong>反馈时复制下方“匿名诊断”。报告内容为数据库结构与运行状态。</div>
-<div class="actions"><button class="btn primary" id="run" type="button">重新检查</button><button class="btn" id="copy" type="button">复制匿名诊断</button><button class="btn" id="back" type="button">返回 PL</button></div>
-<div class="status" id="status" role="status" aria-live="polite">正在检查…</div>
+<div class="eyebrow">PL收集梦想生活 · v8.1.12.319 · schema26</div>
+<h1 class="title">本机存储检查</h1>
+<p class="copy">查看本机存储结构、版本和兼容状态。检查结果可用于定位备份恢复或附件存储问题。</p>
+<div class="notice"><strong>恢复或附件操作失败时：</strong>运行检查后复制诊断信息，报告会标出相关存储的版本与结构状态。</div>
+<div class="actions"><button class="btn primary" id="run" type="button">重新检查</button><button class="btn" id="copy" type="button" disabled aria-describedby="reportHelp">复制诊断信息</button><button class="btn" id="download" type="button" disabled aria-describedby="reportHelp">下载匿名报告</button><button class="btn" id="back" type="button">返回 PL</button></div>
+<div id="reportHelp" class="footer">检查完成后可以复制或下载匿名报告；没有检查结果时按钮不可用。</div><div class="status" id="status" role="status" aria-live="polite">正在检查…</div>
 <pre class="result" id="result">正在检查…</pre>
-<div class="footer">隐私边界：只输出程序版本、运行环境类型、数据库版本、仓库名、主键结构和索引名；不枚举记录，不读取记录值。</div>
+<div class="footer">报告内容：程序版本、运行环境和存储结构。档案内容不作为诊断报告字段。</div>
 </section>
 </main>
+<script src="./aux-issue-report.js"></script>
 <script>
 (()=>{'use strict';
-const APP_VERSION='8.1.12.303',SCHEMA=26;
+const APP_VERSION='8.1.12.319',SCHEMA=26;
 const isTest=/\/PL-Life-Test(?:\/|$)/i.test(location.pathname),prefix=isTest?'pl-life-test__':'';
 const targets=[
  {label:'PC附件库',base:'tomato_pl_pc_media_v1',target:3},
  {label:'恢复点库',base:'tomato_trpg_recovery_v1',target:2},
  {label:'冗余副本库',base:'tomato_pl_primary_mirror_v1',target:1}
 ];
-let last='';
+let last='',checkBusy=false;
+const reportBtn=document.getElementById('download');
+function setReportAvailable(ok){
+  for(const btn of [el('copy'),reportBtn]){
+    PlAuxIssueReport.setDisabled(btn,!ok,'需要先完成一次检查');
+    btn.setAttribute('aria-describedby','reportHelp');
+  }
+  el('reportHelp').textContent=ok?'检查已结束，可以复制或下载匿名报告。':'检查尚未完成，复制与下载暂不可用。';
+}
+function withDeadline(promise,ms=12000){
+  let timer;
+  return Promise.race([Promise.resolve(promise),new Promise((_,reject)=>{
+    timer=setTimeout(()=>reject(new Error('StorageCheckTimeout')),ms);
+  })]).finally(()=>clearTimeout(timer));
+}
+function wrapReport(state,phase='检查存储结构',error=null){
+ const head=PlAuxIssueReport.report({level:state==='ok'?'info':'warning',code:state==='ok'?'STORAGE-READ-OK':'STORAGE-READ-FAIL',area:'本机存储检查',action:'只读检查 PC 附件库与恢复点',phase,state:state==='ok'?'只读检查已结束，未改写本机档案':'检查未完成；本机档案未因本次检查主动写入',next:state==='ok'?'可复制报告用于排查恢复或附件问题':'检查浏览器的存储权限与其他标签页，再重新检查',error});
+ return head+'\n\n结构检查结果：\n'+last;
+}
+let reportText='';
 const el=id=>document.getElementById(id);
 function keyText(v){if(Array.isArray(v))return '['+v.join(',')+']';if(v===null)return 'out-of-line';return String(v);}
 async function inspectExisting(name){
- return await new Promise(resolve=>{
+ return await withDeadline(new Promise(resolve=>{
   const req=indexedDB.open(name);let created=false,done=false;
+  const complete=result=>{if(done)return;done=true;resolve(result);};
   req.onupgradeneeded=()=>{created=true;try{req.transaction.abort();}catch(_){}}
-  req.onerror=()=>{if(done)return;done=true;resolve(created?{missing:true}:{error:String(req.error?.name||'Error')});};
-  req.onblocked=()=>{if(done)return;done=true;resolve({blocked:true});};
+  req.onerror=()=>complete(created?{missing:true}:{error:String(req.error?.name||'Error')});
+  req.onblocked=()=>complete({blocked:true});
   req.onsuccess=()=>{
-   if(done)return;done=true;
+   if(done){try{req.result.close();}catch(_){}return;}
    const db=req.result;
    try{
-    if(created){db.close();resolve({missing:true});return;}
+    if(created){db.close();complete({missing:true});return;}
     const stores=[];
     for(const name of Array.from(db.objectStoreNames||[])){
       try{
@@ -55,21 +82,24 @@ async function inspectExisting(name){
         stores.push(`${name}{key=${keyText(store.keyPath)},auto=${store.autoIncrement?'1':'0'},index=${indexes.length?indexes.join('|'):'无'}}`);
       }catch(err){stores.push(`${name}{结构读取失败:${String(err?.name||'Error')}}`);}
     }
-    const out={version:Number(db.version)||0,stores};db.close();resolve(out);
-   }catch(err){try{db.close();}catch(_){}resolve({error:String(err?.name||'Error')});}
+    const out={version:Number(db.version)||0,stores};db.close();complete(out);
+   }catch(err){try{db.close();}catch(_){}complete({error:String(err?.name||'Error')});}
   };
- });
+ }),12000);
 }
 async function run(){
+ if(checkBusy)return;
+ checkBusy=true;setReportAvailable(false);reportText='';
  const status=el('status'),result=el('result'),copy=el('copy'),runBtn=el('run');
- runBtn.disabled=true;copy.disabled=true;status.textContent='正在只读检查数据库结构…';
+ PlAuxIssueReport.setDisabled(runBtn,true,'本机存储检查正在执行');
+ result.setAttribute('aria-busy','true');status.textContent='正在只读检查数据库结构…';
  try{
-  if(!('indexedDB' in window)){last=`PL收集梦想生活 · 匿名本机存储诊断\n程序版本：v${APP_VERSION}\n数据结构：schema${SCHEMA}\nIndexedDB：浏览器不支持`;result.textContent=last;status.textContent='当前浏览器不支持 IndexedDB。';return;}
+  if(!('indexedDB' in window)){last=`PL收集梦想生活 · 匿名本机存储诊断\n程序版本：v${APP_VERSION}\n数据结构：schema${SCHEMA}\nIndexedDB：浏览器不支持`;result.textContent=last;status.textContent='当前浏览器不支持 IndexedDB。';reportText=wrapReport('failed','浏览器能力检查');setReportAvailable(true);return;}
   if(typeof indexedDB.databases!=='function'){
     last=[`PL收集梦想生活 · 匿名本机存储诊断`,`程序版本：v${APP_VERSION}`,`数据结构：schema${SCHEMA}`,`运行环境：${isTest?'测试站':'正式站'}`,'IndexedDB：浏览器未提供无侵入数据库枚举','当前浏览器未提供数据库枚举接口，检查在数据库打开前结束。'].join('\n');
-    result.textContent=last;status.textContent='浏览器不支持无侵入数据库枚举，已停止，未修改数据。';return;
+    result.textContent=last;status.textContent='浏览器不支持无侵入数据库枚举，已停止，未修改数据。';reportText=wrapReport('failed','浏览器能力检查');setReportAvailable(true);return;
   }
-  let list=[];try{list=await indexedDB.databases();}catch(err){throw new Error('数据库列表读取失败：'+String(err?.name||err));}
+  let list=[];try{list=await withDeadline(indexedDB.databases(),12000);}catch(err){throw new Error('DatabaseEnumerationUnavailable');}
   const known=new Map((list||[]).filter(x=>x?.name).map(x=>[String(x.name),x]));
   const lines=[
     'PL收集梦想生活 · 匿名本机存储诊断',
@@ -78,27 +108,33 @@ async function run(){
     `运行环境：${isTest?'测试站':'正式站'}`,
     `数据库枚举：支持（共 ${known.size} 个；只检查 PL 目标库）`
   ];
-  for(const t of targets){
+  let partial=false;
+  for(const [index,t] of targets.entries()){
+    status.textContent=`正在检查 ${index+1}/${targets.length}：${t.label}`;
     const name=prefix+t.base;
     const listed=known.get(name);
     if(!listed){lines.push(`${t.label}：未建立；目标 v${t.target}`);continue;}
     const info=await inspectExisting(name);
-    if(info.blocked){lines.push(`${t.label}：被其他标签页占用；列表版本 v${listed.version??'未知'}；目标 v${t.target}`);continue;}
-    if(info.error){lines.push(`${t.label}：结构读取失败 ${info.error}；列表版本 v${listed.version??'未知'}；目标 v${t.target}`);continue;}
-    if(info.missing){lines.push(`${t.label}：枚举后未能只读打开；目标 v${t.target}`);continue;}
+    if(info.blocked){partial=true;lines.push(`${t.label}：被其他标签页占用；列表版本 v${listed.version??'未知'}；目标 v${t.target}`);continue;}
+    if(info.error){partial=true;lines.push(`${t.label}：结构读取失败 ${info.error}；列表版本 v${listed.version??'未知'}；目标 v${t.target}`);continue;}
+    if(info.missing){partial=true;lines.push(`${t.label}：枚举后未能只读打开；目标 v${t.target}`);continue;}
     lines.push(`${t.label}：v${info.version} → 目标 v${t.target}`);
     lines.push(`  仓库：${info.stores.length?info.stores.join('；'):'无'}`);
   }
   lines.push('隐私说明：未读取记录内容、未创建/升级/删除/写入数据库、未读取备份 ZIP。');
-  last=lines.join('\n');result.textContent=last;status.textContent='检查完成。可以只复制这段匿名诊断。';copy.disabled=false;
- }catch(err){last=`PL收集梦想生活 · 匿名本机存储诊断\n程序版本：v${APP_VERSION}\n诊断异常：${String(err?.name||'Error')}: ${String(err?.message||err).slice(0,500)}\n隐私说明：未读取记录内容。`;result.textContent=last;status.textContent='诊断未完成。数据库结构保持检查前状态。';copy.disabled=false;}
- finally{runBtn.disabled=false;}
+  last=lines.join('\n');result.textContent=last;
+  status.textContent=partial?'检查未全部完成：部分存储被占用或无法读取。可下载报告排查。':'检查完成。可以复制或下载匿名报告。';
+  reportText=wrapReport(partial?'failed':'ok',partial?'部分存储未能完成只读检查':'只读结构检查');
+  setReportAvailable(true);
+ }catch(err){last=`PL收集梦想生活 · 匿名本机存储诊断\n程序版本：v${APP_VERSION}\n诊断异常：${PlAuxIssueReport.safeType(err)}\n隐私说明：未读取记录内容。`;result.textContent=last;status.textContent='诊断未完成。数据库结构保持检查前状态。';reportText=wrapReport('failed','只读检查中断',err);setReportAvailable(true);}
+ finally{checkBusy=false;PlAuxIssueReport.setDisabled(runBtn,false);result.removeAttribute('aria-busy');}
 }
 async function copy(){
- if(!last)return;
- try{await navigator.clipboard.writeText(last);el('status').textContent='匿名诊断已复制。';}
- catch(_){const ta=document.createElement('textarea');ta.value=last;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy');}catch(_){}ta.remove();el('status').textContent=ok?'匿名诊断已复制。':'自动复制失败，请长按下方文本手动复制。';}
+ if(!reportText)return;
+ const ok=await PlAuxIssueReport.copy(reportText);
+ el('status').textContent=ok?'匿名报告已复制。':'自动复制失败，请长按下方技术结果手动复制。';
 }
+el('download').addEventListener('click',()=>{if(reportText)PlAuxIssueReport.download(reportText)});
 el('run').addEventListener('click',run);el('copy').addEventListener('click',copy);el('back').addEventListener('click',()=>{location.href='./index.html';});run();
 })();
 </script>

@@ -35,7 +35,7 @@ test('restore path requires explicit confirmation before restore preflight',()=>
 });
 
 test('standalone storage diagnostic contains no schema mutation or record enumeration',()=>{
-  assert.match(diagnostic,/检查过程使用只读方式/);
+  assert.match(diagnostic,/查看本机存储结构、版本和兼容状态/);
   assert.match(diagnostic,/indexedDB\.databases/);
   assert.match(diagnostic,/indexedDB\.open\(name\)/);
   assert.doesNotMatch(diagnostic,/createObjectStore\s*\(/);

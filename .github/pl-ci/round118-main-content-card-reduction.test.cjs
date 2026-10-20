@@ -28,9 +28,11 @@ test('PC list keeps only five provided core values and leaves detail archive unt
   assert.match(html,/#pcsView \.pc-core-stat\{[^}]*border:0!important/);
 });
 
-test('module compact list keeps three summary tags while card shows all filled metadata; long notes stay folded',()=>{
+test('module compact list and main card show three key tags, with full metadata available on expand',()=>{
   assert.match(html,/native-module-row-tags">\$\{tags\.slice\(0, 3\)/);
-  assert.match(html,/const metaHTML=`<div class="native-module-tags">\$\{tags\.map\(t =>/);
+  assert.match(html,/const primaryTags=tags\.slice\(0,3\),extraTags=tags\.slice\(3\)/);
+  assert.match(html,/const metaHTML=`<div class="native-module-tags">\$\{tagHTML\(primaryTags\)\}/);
+  assert.match(html,/extraTags\.length\?`<details class="card-extra-facts native-module-extra"/);
   assert.match(html,/const noteHTML=noteText\?`<details class="native-module-note">/);
   assert.match(html,/#modulesView details\.native-module-note>summary/);
 });

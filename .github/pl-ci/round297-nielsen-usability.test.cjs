@@ -1,0 +1,20 @@
+const fs=require('fs');
+const path=require('path');
+const assert=require('node:assert/strict');
+const test=require('node:test');
+const root=path.resolve(__dirname,'../..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const storage=fs.readFileSync(path.join(root,'storage-diagnostic.html'),'utf8');
+const moduleTools=fs.readFileSync(path.join(root,'module-tools.html'),'utf8');
+const status=JSON.parse(fs.readFileSync(path.join(root,'CURRENT_PROJECT_STATUS.json'),'utf8'));
+
+test('Stage127 first-batch contract remains while Stage128 is current',()=>{assert.ok(status.current.stage>=131);assert.equal(status.current.appVersion,JSON.parse(fs.readFileSync(path.join(root,'production-release-manifest.json'),'utf8')).appVersion);assert.equal(status.current.schemaVersion,26);assert.ok(html.includes(`const APP_UI_VERSION = "${status.current.appVersion}"`));assert.match(html,/v8\.1\.12\.305<\/strong><span class="version-log-copy">Nielsen 可用性整改第一批/)});
+test('settings footer has contextual mode helpers',()=>{assert.match(html,/function settingsPanelUsesDraft\(key\)/);assert.match(html,/function updateSettingsFooterMode\(\)/);assert.match(html,/els\.saveSettings\.hidden=!draftPanel&&!dirty/);assert.match(html,/els\.cancelSettings\.textContent=draftPanel\?"取消":"关闭"/)});
+test('backup terminology is unified in the primary settings path',()=>{assert.match(html,/id="exportBtn"[^>]*>导出完整备份<\/button>/);assert.match(html,/id="verifySavedBackupBtn"[^>]*>核验备份<\/button>/);assert.doesNotMatch(html,/id="exportBtn"[^>]*>导出全部数据<\/button>/);assert.doesNotMatch(html,/id="verifySavedBackupBtn"[^>]*>检查已保存的备份<\/button>/)});
+test('version history uses progressive disclosure',()=>{assert.match(html,/最近版本记录/);assert.match(html,/version-history-condensed:not\(\.version-history-expanded\)/);assert.match(html,/查看完整版本记录/)});
+test('plan editor distinguishes create from finish',()=>{assert.match(html,/data-editor-save-plan>\$\{isNewBlankPlan \? "创建计划" : "完成"\}<\/button>/);assert.match(html,/已保存到本机 · \$\{timeText\}/)});
+test('typography first pass raises critical help text',()=>{assert.match(html,/--ui-caption:12px/);assert.match(html,/\.settings-modal \.section-help/);assert.match(html,/\.plan-editor-help/)});
+test('privacy and share mode descriptions express separate user outcomes',()=>{assert.match(html,/隐私遮罩<\/strong><small>隐藏姓名等身份信息；编辑功能保持可用/);assert.match(html,/分享模式<\/strong><small>进入只读展示，并应用分享隐私规则/)});
+test('storage diagnostics use user-facing wording',()=>{assert.match(storage,/<h1 class="title">本机存储检查<\/h1>/);assert.match(storage,/查看本机存储结构、版本和兼容状态/);assert.match(storage,/复制诊断信息/)});
+test('auxiliary pages share the primary visual direction',()=>{assert.match(storage,/--primary:#4e7e62/);assert.match(moduleTools,/--accent:#4e7e62/);assert.match(moduleTools,/--bg:#f4f6f4/)});
+test('release note preserves Stage126 history instead of rewriting it',()=>{assert.match(html,/v8\.1\.12\.304<\/strong><span class="version-log-copy">全面核对关联型搜索/)});
