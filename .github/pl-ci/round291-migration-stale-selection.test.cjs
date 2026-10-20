@@ -28,9 +28,9 @@ test('real-browser bridge follows the current verified-file status card instead 
   assert.match(bridge,/deviceMigrationVerifiedFile===null/);
   assert.match(bridge,/restoreAfterBad\?\.hidden===true/);
 });
-test('current release metadata points to Stage121 without schema migration',()=>{
-  assert.equal(current.stage,121);
-  assert.equal(current.appVersion,'8.1.12.299');
+test('current release metadata stays aligned with the authoritative status without schema migration',()=>{
+  assert.ok(Number.isSafeInteger(current.stage)&&current.stage>=121);
+  assert.match(current.appVersion,/^8\.1\.12\.\d+$/);
   assert.equal(current.schemaVersion,26);
-  assert.ok(index.includes('const APP_UI_VERSION = "8.1.12.299";'));
+  assert.ok(index.includes(`const APP_UI_VERSION = "${current.appVersion}";`));
 });

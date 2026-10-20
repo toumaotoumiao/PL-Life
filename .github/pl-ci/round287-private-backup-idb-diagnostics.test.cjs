@@ -10,11 +10,11 @@ test('Round287 complete-backup restore reports a named stage before asking users
   assert.match(html,/恢复阶段：\$\{phase\}/);
 });
 test('Round287 IndexedDB upgrade diagnostics identify the database and legacy/current version without row content',()=>{
-  assert.match(html,/indexedDbUpgradeError\("恢复点数据库",req,ctx\)/);
-  assert.match(html,/indexedDbUpgradeError\("PC 附件数据库",req,ctx\)/);
-  assert.match(html,/oldVersion=event\.oldVersion/);
-  assert.match(html,/storesBefore=Array\.from\(db\.objectStoreNames/);
-  assert.match(html,/storesAfter=Array\.from\(db\.objectStoreNames/);
+  assert.match(html,/indexedDbUpgradeError\("恢复点数据库",\s*req,\s*ctx\)/);
+  assert.match(html,/indexedDbUpgradeError\("PC 附件数据库",\s*req,\s*ctx\)/);
+  assert.match(html,/oldVersion\s*=\s*event\.oldVersion/);
+  assert.match(html,/storesBefore\s*=\s*Array\.from\(db\.objectStoreNames/);
+  assert.match(html,/storesAfter\s*=\s*Array\.from\(db\.objectStoreNames/);
 });
 test('Round287 copied diagnostics explicitly exclude private archive content',()=>{
   assert.match(html,/匿名诊断说明：以下数据库信息只包含本机数据库版本和对象仓库名称，不包含 PL／PC 名称、Log、图片、Excel 内容或备份正文/);

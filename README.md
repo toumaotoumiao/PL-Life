@@ -1,8 +1,10 @@
 # PL收集梦想生活
 
-当前产品版本：v8.1.12.299 / schema26。
+当前产品版本：v8.1.12.300 / schema26。
 
 `CURRENT_PROJECT_STATUS.json` 是唯一的当前项目状态源；历史 `STAGE*.md` 仅表示当时的时间点快照。
+
+Stage122 针对真实用户错误报告中的“PC 附件数据库 v0 → v3 在 upgradeneeded 中止”修复全新设备建库：在浏览器可枚举现有 IndexedDB 版本时，PC 附件库按 v1 → v2 → v3 逐步建立，恢复点库按 v1 → v2 建立；每一步记录具体仓库、已完成步骤与版本变更事务异常。新增 Round292 全新浏览器 v0 建库 Chromium 发布门。schema26 与完整 ZIP 格式不变。
 
 Stage118 修复 Round242 合成 Chromium 在桌面→320px 切换时的媒体查询竞态假红；测试现在等待生产响应式监听稳定后再展开并检查 PC 导出菜单。产品 D&D 导出逻辑与数据没有因此改变。
 

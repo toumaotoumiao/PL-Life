@@ -4,14 +4,14 @@
   "sourceOfTruth": true,
   "updatedAt": "2026-10-20",
   "current": {
-    "stage": 121,
-    "appVersion": "8.1.12.299",
+    "stage": 122,
+    "appVersion": "8.1.12.300",
     "schemaVersion": 26,
     "branchState": "release-candidate",
     "focus": [
-      "修复换设备备份连续核验状态：新文件核验失败时立即清除上一份文件的恢复资格",
-      "同步真实 Chromium 合成迁移测试到当前核验结果卡，保留零写入与附件回读保护",
-      "继续以用户端错误报告和本机存储检查定位私人备份恢复问题，无需收集用户 ZIP"
+      "修复全新设备首次建立 PC 附件库：已知 v0/v1/v2 时逐版本建立至 v3，避免一次跨多版本初始化",
+      "恢复点库同步采用逐版本初始化至 v2，并记录失败步骤、已完成步骤和版本变更事务异常",
+      "新增 Round292 全新浏览器 v0 建库真实 Chromium 发布门；继续通过用户端错误报告定位私人备份问题"
     ]
   },
   "statusPolicy": {
@@ -39,11 +39,11 @@
   },
   "currentVersionAcceptance": {
     "automated": {
-      "state": "stage121-local-gates-pass-github-synthetic-recheck-pending",
+      "state": "stage122-local-static-and-node-pass-github-round292-browser-pending",
       "node": {
         "state": "pass",
-        "passed": 1067,
-        "total": 1067
+        "passed": 1073,
+        "total": 1073
       },
       "imageExportRegression": {
         "state": "covered-by-full-node-and-targeted-browser-regressions",
@@ -741,12 +741,25 @@
         "syntheticIntegrationTotal": 13,
         "blockingFailure": "设备迁移专项：details + staleCleared；恢复专项因前置失败被跳过",
         "rootCause": "details 为 Stage120 状态卡改版后的测试契约漂移；staleCleared 为真实 UI 状态缺陷，重新选择坏 ZIP 后旧恢复按钮未立即隐藏/禁用。"
+      },
+      "round292FreshIdbBootstrap": {
+        "static": {
+          "state": "pass",
+          "passed": 6,
+          "total": 6
+        },
+        "browser": {
+          "state": "pending-github",
+          "local": "blocked-before-page-by-ERR_BLOCKED_BY_ADMINISTRATOR"
+        },
+        "scope": "fresh origin PC attachment DB v0→v1→v2→v3 and recovery DB v0→v1→v2; fictional rows only"
       }
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "generalBaselineInherited": true,
       "pending": [
+        "v8.1.12.300 全新设备首次建立 PC 附件库与恢复点库：GitHub Round292 真实 Chromium v0 建库通过后，再让故障用户复测恢复条件检查并回传新错误报告或成功结果",
         "v8.1.12.299 换设备连续核验：有效完整备份后再选损坏/精简文件，旧恢复按钮必须立即消失；GitHub synthetic 复跑后再做真机复核",
         "v8.1.12.298 导入与迁移界面收口：真实桌面/手机核验结果卡、历史核对导出、错误现场诊断按钮和 TXT 错误报告下载复核",
         "v8.1.12.296 私人备份恢复诊断：受影响用户仅需打开独立本机存储诊断并复制匿名结构信息；无需提供 ZIP；真实故障设备结果待回传",
@@ -759,15 +772,15 @@
       ]
     },
     "release": {
-      "state": "stage121-local-gates-pass-packages-ready",
+      "state": "stage122-local-gates-pass-packages-ready",
       "productionPackage": "ready",
       "productionSite": "not-deployed",
       "testSite": "not-deployed",
       "artifactNames": [
-        "Stage121_完整候选工程.zip",
-        "Stage121_正式仓库完整同步包.zip",
-        "Stage121_测试仓库完整同步包.zip",
-        "Stage121_测试证据与SHA256.zip"
+        "Stage122_完整候选工程.zip",
+        "Stage122_正式仓库完整同步包.zip",
+        "Stage122_测试仓库完整同步包.zip",
+        "Stage122_测试证据与SHA256.zip"
       ],
       "testPackage": "ready",
       "candidatePackage": "ready",

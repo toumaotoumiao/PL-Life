@@ -611,6 +611,8 @@ jobs:
         run: node --test .github/pl-ci/round290-migration-closeout.test.cjs
       - name: Round291 migration stale-selection safety contract
         run: node --test .github/pl-ci/round291-migration-stale-selection.test.cjs
+      - name: Round292 fresh-device IndexedDB bootstrap contract
+        run: node --test .github/pl-ci/round292-fresh-idb-bootstrap.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
@@ -687,6 +689,9 @@ jobs:
       - name: Round289 settings and error-report browser
         run: |
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round289-settings-diagnostic-report-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round289-browser.log"
+      - name: Round292 fresh-device IndexedDB bootstrap browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round292-fresh-idb-bootstrap-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round292-browser.log"
       - name: Round263 production release package preflight
         run: |
           node --test .github/pl-ci/round263-production-release-preflight.test.cjs

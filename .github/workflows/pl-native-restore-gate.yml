@@ -124,7 +124,8 @@ jobs:
             .github/pl-ci/round283-dnd-postbuild-selfcheck.test.cjs \
             .github/pl-ci/round284-dnd-acceptance-evidence.test.cjs \
             .github/pl-ci/round285-plan-default-time.test.cjs \
-            .github/pl-ci/round288-migration-readonly-diagnostic.test.cjs
+            .github/pl-ci/round288-migration-readonly-diagnostic.test.cjs \
+            .github/pl-ci/round292-fresh-idb-bootstrap.test.cjs
       - name: Verify production release package preflight
         run: python .github/pl-ci/build-production-release.py --check-only
       - name: Verify privacy-local D&D comparison using temporary fictional sheets
@@ -135,6 +136,13 @@ jobs:
         run: python -m pip install --disable-pip-version-check playwright==1.55.0
       - name: Install Playwright Chromium and required libraries
         run: python -m playwright install --with-deps chromium
+      - name: Verify fresh-device IndexedDB v0 bootstrap in real Chromium
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round292-fresh-idb-bootstrap-browser.py 2>&1 | tee "$PL_SYNTHETIC_REPORT_DIR/round292-browser.log"
       - name: Execute real app ZIP -> native IndexedDB -> reload -> second ZIP
         id: native_restore
         shell: bash
