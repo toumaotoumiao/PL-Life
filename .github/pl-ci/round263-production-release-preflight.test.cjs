@@ -50,3 +50,28 @@ test('production release forbids private workbook/media/archive source extension
   assert.ok(forbidden.has('.mp4'));
   assert.ok(forbidden.has('.zip'));
 });
+
+
+test('all GitHub Actions workflow steps provide exactly one run or uses action',()=>{
+  const workflowDir=path.join(root,'.github/workflows');
+  for(const file of fs.readdirSync(workflowDir).filter(name=>/\.ya?ml$/.test(name))){
+    const lines=fs.readFileSync(path.join(workflowDir,file),'utf8').split(/\r?\n/);
+    let step=null;let count=0;
+    const finish=()=>{
+      if(!step)return;
+      assert.equal(count,1,`${file}:${step.line} (${step.label}) must have exactly one run or uses`);
+    };
+    for(let i=0;i<lines.length;i++){
+      const start=lines[i].match(/^      -\s+(name|run|uses|id|if):\s*(.*)$/);
+      if(start){
+        finish();step={line:i+1,label:start[2].trim()};count=(start[1]==='run'||start[1]==='uses')?1:0;
+        continue;
+      }
+      if(step){
+        const action=lines[i].match(/^        (run|uses):/);
+        if(action)count++;
+      }
+    }
+    finish();
+  }
+});

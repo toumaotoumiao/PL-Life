@@ -640,9 +640,9 @@ jobs:
       - name: Stage135 Nielsen readability, cards, help and compact calendar contract
         run: node --test .github/pl-ci/round305-nielsen-readability.test.cjs
       - name: Stage139 cross-device readability and calendar interaction
+        run: node --test .github/pl-ci/round309-stage139-cross-device.test.cjs
       - name: Stage141 emergency ZIP orphan collision runtime
         run: node --test .github/pl-ci/round311-stage141-backup-orphan-collision.test.cjs
-        run: node --test .github/pl-ci/round309-stage139-cross-device.test.cjs
       - name: Stage138 expanded auxiliary safe-state and diagnostics
         run: node --test .github/pl-ci/round308-stage138-expanded-auxiliary.test.cjs
       - name: Stage137 final recovery and cleanup fault injection
