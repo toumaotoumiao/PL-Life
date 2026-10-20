@@ -1,5 +1,5 @@
 {
-  "appVersion": "8.1.12.303",
+  "appVersion": "8.1.12.304",
   "files": {
     ".github/pl-ci/README.md": "2b677ce98231eb5ab19ee752c0996f7a946ba873cda856d08d5e0b9e8712730d",
     ".github/pl-ci/ROUND130_VISUAL_AUDIT.md": "2292c9b433387ea214430d119809a212037f84f4e110e4e626f7565ea540e6f9",
@@ -339,7 +339,8 @@
     ".github/pl-ci/round293-inline-person-create-browser.py": "aae03c65e7eeb8502e9fa2a99b5f1ab83cfa77286617ebdb4584a0fe2ccfabf6",
     ".github/pl-ci/round293-inline-person-create.test.cjs": "fe7a880832c1ded502099eeb713f0c6ec76fda65ddf005fa6b82a515e6e27ac3",
     ".github/pl-ci/round294-person-name-modes.test.cjs": "0dfd1c389e91a61d2a99c2d588154f7eb5443964f8f9bab3d91bf4dbf1e1d7e4",
-    ".github/pl-ci/round295-search-association-audit.test.cjs": "67d37f0bd40eb0a9df4fef09398acb719f6b6b8ddbdad74be829acee58f9fef6",
+    ".github/pl-ci/round295-search-association-audit.test.cjs": "12eb9f3a992236a790680a3498c485e3a487ae517201bac8d1e497f3540c8a6e",
+    ".github/pl-ci/round296-color-system.test.cjs": "7758005572c08a46f61796af89502daef13d2e72acd932ea61dc8a14d2fdcdd5",
     ".github/pl-ci/round71-lifecycle-log-ux.test.cjs": "c5c08f5ac0721ad94b13ba2946b17377baa1741d22efe564b333f661e5a9aa09",
     ".github/pl-ci/round72-log-status-regression.test.cjs": "ae6eb694fef01fc1f1cb6444eedf614da01477bc6744d0d71791e982deab0d0e",
     ".github/pl-ci/round73-coc7-variant-fidelity.test.cjs": "b3760c1739ee81c37657978f30729618d3d9bd412033d925881b6ecf09a9cad3",
@@ -392,9 +393,9 @@
     ".github/workflows/pl-browser-synthetic.yml": "4395dd541f8b2cd026d5e09b56b23ca6dacc9818208866610bd2636cbe654a4a",
     ".github/workflows/pl-native-restore-gate.yml": "31f0b3a3f1b8d3e9e8c9786312dace2e74a8820ff8410a70eec3317b8a72a19f",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "CURRENT_PROJECT_STATUS.json": "9458d181fdf3c8d88067ff7703465ac52dc012d912a3c4200653ca0e63b53835",
+    "CURRENT_PROJECT_STATUS.json": "5c5009a653d5bb4123043d4a390f02296802be29f8a4d7853b36e60f27d71e4f",
     "PRODUCTION_RELEASE_GUIDE.md": "3ed52f40c21afe9625ed036893d4a97e9bc64ab3bbb1c01aeeaaf1d383b0f015",
-    "README.md": "f958de13f5e2a2874291e04d6026ec1b68ab9ca82ad87c53b5f9e9916931e02a",
+    "README.md": "d1eae40a18c5f93d429ce14685d29bcd931044ede96df5eed1de7d8686ce9234",
     "RUN_STAGE48_NATIVE_RECOVERY.cmd": "a059b5ad447aafe81be0b8ea4ed7da240987a108389ef2ddb9efb58d629128d8",
     "STAGE48_NATIVE_RECOVERY_WINDOWS.md": "d7a16e54bed2232b2d875be5d025da32dd3c62bd389650ece8754175ffe73c85",
     "backup-restore-preflight.js": "24a5a04a3670e1aa644943b19974b248a3dcfef3ba995dd0319c561b8af22212",
@@ -407,13 +408,13 @@
     "field-adapters.js": "da63e7fe31dfc2c7d60a1f9fee89b086f536aa2e08c6a9f981570cf75c70f104",
     "icon-192.png": "3d46c12b419c558a3c59aea313b6c479df2a1c88c93ca696d6985310872b24d7",
     "icon-512.png": "223fe2f59ceb16cb943b907a05685aba8e456e658b3e3c0356efacc0a3997294",
-    "index.html": "bbeb57b3024d2b2367cd45ba8971f94d04584f693482973b3cabf98fa569e9a2",
+    "index.html": "a5dd58ee36a11b6f1e664ac77f9a97f04a263387e742f2a7d751491439a0f9e2",
     "manifest.webmanifest": "eb8fc852d053083469143fdbb5a4ed372a9c18a6b4f9dec21a21a0b4839b915d",
     "module-query-bridge.js": "9c150642b979e6786867a63b76d2f0b508b04bff197d7f40b386713edd320469",
     "module-tools.html": "eac390a8633d0400222bcb8711325cf98313c970ceaa4e0c5443d452d6560cad",
     "pc-query-bridge.js": "a3b70a3a852a3a15916c0222c6c1643dde3b01389cab1c1e70ac381a2814eaae",
     "plan-query-bridge.js": "d149fe706f289a2d1af5869f3fbe82413d5ee5fd78834745c4ffe93fde356f93",
-    "production-release-manifest.json": "a9e74b5aa92841e7e0b26b0f16345cc33d927b66e7beb96fde9c9fc47599acd7",
+    "production-release-manifest.json": "2de277fb5391f003255c9c23175f303f03fbe9fd23beed35468c5c41a7d341ca",
     "profile-query-bridge.js": "2f542602ebf1a9a22f47e19f56cc0cecf7edd718c9410605e34f0a67c01a55a4",
     "query-core.js": "ef27972b87cf298a53c0c0b8dc68fa7d872433e264e0404f4cc48e04e724843b",
     "query-engine.js": "3f812d89e50a2d3fdd09975842bd22403e0784685bddf1e93eda77f12e053c5a",
@@ -425,7 +426,7 @@
     "runtime-environment.js": "0230d50609d5d45eee157659bca47e4dc371c8861c8a27d3eb85a0334a721045",
     "showcase-core.js": "47c86bde6e801281bb643a55a60e4023887edfc12f36121bd49a1d09fb778548",
     "stats-query-bridge.js": "a92cd30e1bdccc00e347b7aedad10f0f8853fc46b0e154b57066f9091cff5157",
-    "storage-diagnostic.html": "226df7ecb2b2c1a1937364f4416ee14717761ef5c2709b2535d7b7d7e2290946",
-    "sw.js": "dc57886c4797a447c69f7a10a662b4d0b7af41221910022bf3047c05d0ca4ae9"
+    "storage-diagnostic.html": "530f1dcc8bd6fcf6ec24410d3837254c82cc3dcacd5de420c06a3b995ce6b396",
+    "sw.js": "55005eeb856905fddc1f8fc3479a7441dbea7cbacd1b1848de86bc031dbb98b6"
   }
 }

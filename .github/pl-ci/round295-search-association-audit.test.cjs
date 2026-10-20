@@ -7,10 +7,10 @@ const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const status=JSON.parse(fs.readFileSync(path.join(root,'CURRENT_PROJECT_STATUS.json'),'utf8'));
 
 test('Round295 current release is driven by unique project status',()=>{
-  assert.equal(status.current.stage,'Stage125');
-  assert.equal(status.current.appVersion,'8.1.12.303');
+  assert.ok(Number.isSafeInteger(status.current.stage) && status.current.stage>=125);
+  assert.match(status.current.appVersion,/^\d+\.\d+\.\d+\.\d+$/);
   assert.equal(status.current.schemaVersion,26);
-  assert.ok(html.includes('const APP_UI_VERSION = "8.1.12.303"'));
+  assert.ok(html.includes(`const APP_UI_VERSION = "${status.current.appVersion}"`));
 });
 
 test('Round295 module association selectors expose name-only and create actions before existing choices',()=>{

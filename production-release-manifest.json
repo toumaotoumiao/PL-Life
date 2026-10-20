@@ -1,7 +1,7 @@
 {
   "format": "pl-life-production-release-manifest",
   "manifestVersion": 1,
-  "appVersion": "8.1.12.303",
+  "appVersion": "8.1.12.304",
   "schemaVersion": 26,
   "rootFiles": [
     ".nojekyll",
@@ -151,7 +151,10 @@
     "STAGE120_",
     "STAGE121_",
     "STAGE122_",
-    "STAGE123_"
+    "STAGE123_",
+    "STAGE124_",
+    "STAGE125_",
+    "STAGE126_"
   ],
   "excludedInternalPrefixes": [
     "STAGE111_",

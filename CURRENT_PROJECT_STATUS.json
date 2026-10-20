@@ -2,35 +2,46 @@
   "format": "pl-life-current-project-status",
   "updatedAt": "2026-10-20",
   "current": {
-    "stage": "Stage125",
-    "appVersion": "8.1.12.303",
+    "stage": 126,
+    "appVersion": "8.1.12.304",
     "schemaVersion": 26,
-    "focus": "关联型搜索统一：顶部名称-only / 新建档案 / 已有档案"
+    "focus": "全站色彩系统：灰度层级 + 主色色阶 + 低饱和中性色 + 统一语义色"
   },
   "currentVersionAcceptance": {
     "code": {
       "status": "complete",
-      "searchAssociationContract": "37/37 PASS",
-      "javascriptSyntax": "14/14 PASS"
+      "colorSystemContract": "6/6 PASS",
+      "targetedContracts": "36/36 PASS",
+      "fullNode": "1084/1090 PASS; 6 remaining failures are inherited Stage125 baseline functional-test debt; Stage125 baseline was 1068/1084 with 16 failures"
     },
     "browser": {
-      "local": "not accepted: Chromium file smoke timed out before producing usable page evidence",
+      "local": "not accepted: local Chromium file smoke timed out before usable page evidence",
       "github": "pending deployment run"
     },
     "realDevice": {
-      "status": "pending"
+      "state": "targeted-checks-pending",
+      "pending": [
+        "desktop theme visual check",
+        "mobile theme visual check"
+      ]
     },
     "release": {
       "status": "candidate-built",
-      "artifactNames": {
-        "production": "Stage125_正式仓库完整同步包.zip",
-        "test": "Stage125_测试仓库完整同步包.zip",
-        "candidate": "Stage125_完整候选工程.zip",
-        "evidence": "Stage125_测试证据与SHA256.zip"
-      }
+      "artifactNames": [
+        "Stage126_正式仓库完整同步包.zip",
+        "Stage126_测试仓库完整同步包.zip",
+        "Stage126_完整候选工程.zip",
+        "Stage126_测试证据与SHA256.zip"
+      ]
     }
   },
   "workstreams": {
+    "colorSystem": {
+      "code": 100,
+      "staticContract": 100,
+      "githubBrowser": 0,
+      "realDevice": 0
+    },
     "searchAssociation": {
       "code": 100,
       "staticContract": 100,
@@ -40,11 +51,31 @@
     "freshIndexedDbRestore": {
       "code": 100,
       "userIssueRetest": "pending after deployment"
+    },
+    "imageExport": {
+      "automatedTests": "baseline-passed",
+      "realDevice": "targeted-check-pending"
     }
   },
   "notes": [
     "历史 STAGE*.md 仅表示当时快照。",
-    "筛选型搜索保持纯筛选。",
-    "关联已有桌次按稳定桌次 ID 建立关系，不提供名称占位。"
-  ]
+    "Stage126 不改变布局和数据结构；本轮只调整色彩 Token、主题预览与语义映射。",
+    "主色与灰阶由统一色阶派生；成功、警告、错误使用跨浅色主题一致的低饱和语义色。"
+  ],
+  "sourceOfTruth": true,
+  "statusPolicy": {
+    "authoritativeFile": "CURRENT_PROJECT_STATUS.json",
+    "historicalStageReports": "not_current_status"
+  },
+  "doNotInferCurrentStatusFrom": [
+    "STAGE*.md",
+    "historical reports",
+    "old release notes"
+  ],
+  "acceptedBaselines": {
+    "realDeviceGeneral": {
+      "state": "accepted",
+      "note": "existing accepted general real-device baseline; current release still needs targeted checks"
+    }
+  }
 }
