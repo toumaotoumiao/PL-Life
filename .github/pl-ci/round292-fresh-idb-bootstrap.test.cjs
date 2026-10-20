@@ -34,9 +34,8 @@ test('Round292 schema upgrades repair required media indexes while a versionchan
   assert.match(html,/indexNames\.contains\("createdAt"\)/);
 });
 test('Round292 keeps current app/schema contract aligned with the authoritative status',()=>{
-  assert.equal(status.current.stage,122);
-  assert.equal(status.current.appVersion,'8.1.12.300');
+  assert.ok(Number(status.current.stage)>=122);
   assert.equal(status.current.schemaVersion,26);
-  assert.match(html,/const APP_UI_VERSION = "8\.1\.12\.300"/);
+  assert.match(html,new RegExp(`const APP_UI_VERSION = \"${String(status.current.appVersion).replace(/\./g,'\\.')}\"`));
   assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
 });

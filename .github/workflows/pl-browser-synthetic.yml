@@ -613,6 +613,12 @@ jobs:
         run: node --test .github/pl-ci/round291-migration-stale-selection.test.cjs
       - name: Round292 fresh-device IndexedDB bootstrap contract
         run: node --test .github/pl-ci/round292-fresh-idb-bootstrap.test.cjs
+      - name: Round293 inline PL and PC create-and-link contract
+        run: node --test .github/pl-ci/round293-inline-person-create.test.cjs
+      - name: Round294 explicit name-only person association contract
+        run: node --test .github/pl-ci/round294-person-name-modes.test.cjs
+      - name: Round295 full association-search contract
+        run: node --test .github/pl-ci/round295-search-association-audit.test.cjs
       - name: Round264 D&D template-filled character-card browser
         run: |
           mkdir -p "$RUNNER_TEMP/pl-synthetic-report"
@@ -692,6 +698,9 @@ jobs:
       - name: Round292 fresh-device IndexedDB bootstrap browser
         run: |
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round292-fresh-idb-bootstrap-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round292-browser.log"
+      - name: Round293 inline PL and PC create-and-link browser
+        run: |
+          PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round293-inline-person-create-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round293-browser.log"
       - name: Round263 production release package preflight
         run: |
           node --test .github/pl-ci/round263-production-release-preflight.test.cjs
