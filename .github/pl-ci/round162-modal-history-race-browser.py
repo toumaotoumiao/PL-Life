@@ -26,7 +26,7 @@ with sync_playwright() as p:
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   try:
    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
-   page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');let a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');pcs.push(normalizePcArchive({id:'audit-pc-a',name:'测试角色 A',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));pcs.push(normalizePcArchive({id:'audit-pc-b',name:'测试角色 B',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));runPlans.push(normalizeRunPlan({id:'audit-plan-a',moduleName:'合成计划A'}));runPlans.push(normalizeRunPlan({id:'audit-plan-b',moduleName:'合成计划B'}));}''')
+   page.evaluate('''()=>{document.documentElement.dataset.round162App='1';localStorage.setItem(ONBOARDING_KEY,'1');let a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');pcs.push(normalizePcArchive({id:'audit-pc-a',name:'测试角色 A',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));pcs.push(normalizePcArchive({id:'audit-pc-b',name:'测试角色 B',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));runPlans.push(normalizeRunPlan({id:'audit-plan-a',moduleName:'合成计划A'}));runPlans.push(normalizeRunPlan({id:'audit-plan-b',moduleName:'合成计划B'}));}''')
    page.wait_for_timeout(550)
    # Force history.back to land after the next modal is already open, rather than relying on natural timing.
    page.evaluate('''()=>{window.__originalHistoryBack=history.back.bind(history);history.back=function(){setTimeout(()=>window.__originalHistoryBack(),65)};}''')
@@ -42,7 +42,9 @@ with sync_playwright() as p:
    page.evaluate('history.back=window.__originalHistoryBack')
    page.evaluate('history.back()')
    page.wait_for_timeout(300)
-   pc=page.evaluate('''()=>({hidden:document.getElementById('pcEditorBackdrop').hidden,pending:typeof pendingInternalModalHistoryBack==='number'?pendingInternalModalHistoryBack:-1})''')
+   pc=page.evaluate('''()=>({present:!!document.getElementById('pcEditorBackdrop'),hidden:document.getElementById('pcEditorBackdrop')?.hidden??null,appLoaded:document.documentElement.dataset.round162App==='1',path:location.pathname,historyState:history.state,pending:typeof pendingInternalModalHistoryBack==='number'?pendingInternalModalHistoryBack:-1})''')
+   assert_state(pc['present'] and pc['appLoaded'],f'{width} page did not navigate away from the application',pc)
+   if not pc['present'] or not pc['appLoaded']:continue
    assert_state(pc['hidden'] and pc['pending'] in (0,-1),f'{width} real browser Back dismisses PC editor',pc)
    page.evaluate('''()=>{window.__originalHistoryBack=history.back.bind(history);history.back=function(){setTimeout(()=>window.__originalHistoryBack(),65)};}''')
    page.evaluate('openPlanEditor("audit-plan-a")')

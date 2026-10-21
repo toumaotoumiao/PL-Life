@@ -92,6 +92,8 @@ jobs:
         run: node --test .github/pl-ci/round161-stats-preview-inspection.test.cjs
       - name: Round162 modal history cleanup and browser Back regression
         run: node --test .github/pl-ci/round162-modal-history-race.test.cjs
+      - name: Guard against duplicate Back after modal history was already popped
+        run: node --test .github/pl-ci/round312-modal-browser-back-guard.test.cjs
       - name: Round164 unified final image inspection contract
         run: node --test .github/pl-ci/round164-unified-final-inspection.test.cjs
       - name: Guard production and test environment storage isolation

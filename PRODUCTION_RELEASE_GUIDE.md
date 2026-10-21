@@ -15,9 +15,9 @@
 - 正式站与测试站继续依赖 `runtime-environment.js` 按路径隔离存储。
 
 ## Stage147 发布决定（强制）
-**暂停正式部署。** 本工程 Node/预检通过，当前候选尚无 PL-Life-Test 同版本浏览器与手机/平板真实验收证据；不能依据历史 Stage 日志或隔离静态截图发布。
-测试站部署新包后，在 GitHub Actions 手动运行 `Stage140 test-site read-only acceptance`，读取 `stage140-test-site-acceptance` JSON；并运行原有浏览器 synthetic/native ZIP restore gate。其后用可丢弃的测试档案完成 ZIP 与附件恢复，最后核对真实设备与导出预览。
-以 `CURRENT_PROJECT_STATUS.json` 的 release 和 browser 字段作为本轮发布阻断清单。正式站保持不变，直到所有阻断解除。
+应先核对当前正式站完整备份，并使用正式仓库候选同步包更新文件；这一操作只部署代码，不会清除浏览器本地档案。Round162 Chromium 浏览器验收须由新提交的 GitHub Actions 执行，失败应及时撤回至上次可用发布。
+用户明确选择减少测试站人工步骤，本轮优先提供正式仓库完整同步包；自动 CI 与数据安全预检仍然保留。若 Round162 继续失败，读取匿名 pl-synthetic-browser-result 诊断，不要求真实用户清库或再次恢复备份。
+以 `CURRENT_PROJECT_STATUS.json` 的 release 和 browser 字段作为本轮发布阻断清单。本轮真实 GitHub CI 结果和用户设备验收仍为待核实项，不能将打包成功表述为线上验收完成。
 
 ## 发布前
 1. 测试站当前提交的 Synthetic 与 Native ZIP restore gate 必须通过。

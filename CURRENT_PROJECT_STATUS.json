@@ -2,24 +2,24 @@
   "format": "pl-life-current-project-status",
   "updatedAt": "2026-10-21",
   "current": {
-    "stage": 147,
-    "appVersion": "8.1.12.325",
+    "stage": 148,
+    "appVersion": "8.1.12.326",
     "schemaVersion": 26,
-    "focus": "错误报告终审第 4/4 工程工作包：持久化诊断重脱敏、危险操作入口、Chromium 组件实测；整站及用户设备验收仍待完成"
+    "focus": "Round162 Chromium 返回键竞态修复：重复 history.back 防护、误离站检查；真实 GitHub CI 待核验"
   },
   "currentVersionAcceptance": {
     "code": {
-      "status": "stage147-diagnostic-hardening-candidate",
+      "status": "round162-back-guard-hotfix-candidate",
       "nielsenP1Contract": "Stage140 release atomicity and acceptance-gate checks added; previous Stage139 tests retained",
       "nielsenP0Contract": "10/10 PASS",
       "colorContract": "6/6 PASS",
-      "productionPreflight": "PASS v8.1.12.325 / schema26",
-      "fullNode": "1326/1326 PASS across 238 Node test files (run in 3 bounded groups: 714+473+139)",
-      "currentStatusContract": "Stage147 / v8.1.12.325 / schema26: 1326/1326 Node pass; isolated Chromium diagnosis widget 390/1280 pass; full-site browser, original damaged Edge and mobile pending."
+      "productionPreflight": "PASS v8.1.12.326 / schema26",
+      "fullNode": "1329/1329 PASS (390 + 429 + 510; 239 Node test files)",
+      "currentStatusContract": "Stage148 / v8.1.12.326 / schema26: 1329/1329 Node pass; Round162 actual GitHub Chromium and user device pending."
     },
     "browser": {
       "local": "Chromium 144 isolated report component click/export test PASS at 390px and 1280px; full web origin/file URL navigation blocked by administrator.",
-      "github": "not-deployed; Stage147 full-site Chromium synthetic and native ZIP gate required"
+      "github": "Previous run: Round162 2/4 failed at 375 and 1280 on missing modal DOM after Back; hotfix CI pending."
     },
     "realDevice": {
       "state": "targeted-checks-pending",
@@ -31,14 +31,12 @@
       ]
     },
     "release": {
-      "status": "hold-production-not-deployed-pending-test-site-and-real-device",
+      "status": "candidate-ready-not-deployed",
       "artifactNames": [
-        "Stage147_测试仓库完整同步包.zip",
-        "Stage147_正式仓库候选同步包.zip",
-        "Stage147_完整候选工程.zip",
-        "Stage147_测试证据与SHA256.zip"
+        "Stage148_PL-Life_v8.1.12.326_正式仓库完整同步包.zip",
+        "Stage148_源码测试与回归证据.zip"
       ],
-      "reason": "Stage147 Node PASS and isolated Chromium component PASS; no GitHub PL-Life-Test deployed full-site synthetic/native ZIP restore, no original Edge profile/phone acceptance."
+      "reason": "User requested direct formal-repository packages without manual staging; Node/preflight required; Round162 updated GitHub browser run pending."
     }
   },
   "workstreams": {
@@ -129,7 +127,9 @@
     "Stage139 八档断点作用域 CSS 及长中英文防溢出；月历逐日早中晚数量可读、周/月选择状态 aria；补充资料摘要有类型说明；帮助提醒本机数据备份，原始数据、导出及 schema26 未修改。实际跨端与真机验收单列。",
     "Stage139 Node 1226/1226 PASS, 13 new targeted tests, 19/19 inline JS, 24 static DOM viewport/theme checks no document horizontal overflow; not a live-page or multi-data visual acceptance.",
     "Stage140 修复已持久化的回收站恢复遇到页面刷新/回收清理故障时错误回滚内存、提示假失败；新增 16 项故障注入/发布门契约，保留 1226 项旧测试。",
-    "Stage140 提供仅可针对 PL-Life-Test 运行的只读 Chromium 8×3 网格验收脚本与 GitHub workflow_dispatch 工作流；无用户档案采集/截图；本次本地真实测试站运行失败，0/24 组，不可标记为通过。"
+    "Stage140 提供仅可针对 PL-Life-Test 运行的只读 Chromium 8×3 网格验收脚本与 GitHub workflow_dispatch 工作流；无用户档案采集/截图；本次本地真实测试站运行失败，0/24 组，不可标记为通过。",
+    "Stage148: 修复 Round162 用户按浏览器 Back 关闭弹窗时的重复 history.back，新增拒绝关闭时恢复 history guard、Round162 防意外离站检查；不修改资料存储 schema 或 ZIP 格式。",
+    "Stage148 回归：239个Node测试文件分为80+80+79，390+429+510=1329/1329 PASS；原 Edge Profile、GitHub实际Round162及移动真机未验收。"
   ],
   "sourceOfTruth": true,
   "statusPolicy": {

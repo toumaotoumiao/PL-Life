@@ -1,7 +1,7 @@
 /* Stage133: offline, no external dependencies or storage of sensitive details. */
 (function (global) {
   'use strict';
-  const VERSION = '8.1.12.325';
+  const VERSION = '8.1.12.326';
   const SCHEMA = 26;
   const TYPES = new Set(['TypeError','ReferenceError','SyntaxError','QuotaExceededError','AbortError','NotFoundError','DataError','InvalidStateError','SecurityError','NotReadableError','VersionError','UnknownError','Error']);
   function safeType(err) {

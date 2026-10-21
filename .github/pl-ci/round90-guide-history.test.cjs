@@ -14,7 +14,7 @@ function makeContext({modal='onboardingBackdrop',successor='',guideIsOpen=false}
  const history={state:{tag:'tomato-pl-v8',view:'profiles',modal},
   back(){events.push('back');},
   replaceState(next){events.push('replace');this.state=next;}};
- const context={history,HISTORY_STATE_TAG:'tomato-pl-v8',pendingInternalModalHistoryBack:0,currentView:'profiles',location:{href:'http://localhost/index.html'},
+ const context={history,HISTORY_STATE_TAG:'tomato-pl-v8',pendingInternalModalHistoryBack:0,systemBackClosingSurfaceId:'',currentView:'profiles',location:{href:'http://localhost/index.html'},
   historySurfaceIsOpen:id=>id==='onboardingBackdrop'&&guideIsOpen,
   topOpenHistorySurfaceId:()=>successor,
   setTimeout:fn=>{scheduled.push(fn);return scheduled.length;}};
