@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 """Real app script and renderer visual check, isolated synthetic data only. No real site or user archive. In-memory storage mock; native IndexedDB is Round151."""
 from pathlib import Path
 import re,json
@@ -60,7 +61,7 @@ with sync_playwright() as p:
       page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
       errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
       try:
-        page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+        prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
         page.evaluate('''()=>{const a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert')}''')
         page.evaluate(SEED)
         page.evaluate('theme=>{document.documentElement.dataset.theme=theme;}',theme)

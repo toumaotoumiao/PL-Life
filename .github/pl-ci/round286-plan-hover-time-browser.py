@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -24,7 +25,7 @@ with sync_playwright() as p:
  try:
   for width in (320,375,390,430,768,1024,1280,1440):
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
-   page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+   prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
    meta=page.evaluate(setup)
    event='[data-week-event-slot="round286-slot-a"]'
    page.hover(event);page.wait_for_timeout(230)

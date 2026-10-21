@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 """Real app script and renderer visual check, isolated synthetic data only. No real site or user archive. In-memory storage mock; native IndexedDB is Round151."""
 from pathlib import Path
 import re,json
@@ -83,7 +84,7 @@ with sync_playwright() as p:
         page=browser.new_page(viewport={'width':width,'height':844 if width<=760 else 900},device_scale_factor=1,service_workers='block')
         errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
         try:
-            page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+            prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
             # The onboarding wizard is unrelated to this visual smoke; no user storage is available.
             page.evaluate("{const e=document.getElementById('onboardingBackdrop');e.hidden=true;e.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert')}")
             seed=page.evaluate(SEED)

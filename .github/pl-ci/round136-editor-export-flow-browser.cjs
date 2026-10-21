@@ -1,3 +1,4 @@
+const {prepareSyntheticOrigin}=require('./synthetic-browser-origin.cjs');
 'use strict';
 // Real HTML, real app scripts, test-only in-memory storage; no production domain or user archive.
 const fs=require('node:fs'),path=require('node:path');
@@ -13,7 +14,7 @@ html=html.replace('<head>','<head>'+shim);
  for(const width of [320,390,900]){
   const page=await browser.newPage({viewport:{width,height:width===320?680:844},serviceWorkers:'block'}),errors=[];
   page.on('pageerror',e=>errors.push(String(e.message||e)));
-  await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});
+  await prepareSyntheticOrigin(page);await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});
   await page.waitForTimeout(550);
   if(await page.locator('#onboardingBackdrop').isVisible())await page.locator('#onboardingLaterBtn').click();
   const value=await page.evaluate(()=>{

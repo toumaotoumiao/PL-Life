@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -48,7 +49,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   for width in (390,1280):
-   page=browser.new_page(viewport={'width':width,'height':980},service_workers='block');page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
+   page=browser.new_page(viewport={'width':width,'height':980},service_workers='block');prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
    record(f'{width}: editor button shows saved mapping progress',r['buttonBefore']=={'text':'模板字段映射 2/7','disabled':False,'count':'2'})
    record(f'{width}: live summary separates mapping, PC filled, and exportable',r['initial']['summary']=={'verified':'2/7','filled':'4/7','exportable':'2/7'})
    record(f'{width}: dialog does not echo current PC field values',not r['initial']['privateLeak'])

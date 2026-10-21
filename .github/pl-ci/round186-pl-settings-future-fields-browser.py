@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 """Stage40 PL/settings daily save and canonical roundtrip: synthetic in-memory actual application, not native IndexedDB."""
 from pathlib import Path
 import json,os,re
@@ -19,7 +20,7 @@ with sync_playwright() as p:
   for width in (320,375,390,430,768,1024,1280,1440):
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    try:
-    page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
     page.wait_for_function("typeof settings !== 'undefined' && typeof profiles !== 'undefined' && Array.isArray(profiles)",timeout=20000)
     result=page.evaluate('''()=>{
       const intro={...defaultSelfIntro(),futureIntro:{notes:['保留',0,false]},timeSlots:['上午'],timeRanges:{上午:{start:'08:00',end:'12:00',futureRange:{tz:'Asia/Shanghai'}}},

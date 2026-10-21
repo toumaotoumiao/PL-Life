@@ -35,7 +35,8 @@ test('calendar compact mode gives 42 named date actions with early/noon/evening 
  assert.equal((rendered.match(/data-calendar-day="/g)||[]).length,42);
  assert.equal((rendered.match(/aria-pressed="/g)||[]).length,43); // 42 dates + month toggle
  assert.match(rendered,/2026-10-20，2 桌安排；早1桌，中0桌，晚1桌/);
- assert.match(rendered,/data-calendar-day="2026-10-20" aria-pressed="true" aria-current="date"/);
+ assert.match(rendered,/data-calendar-day="2026-10-20" aria-pressed="true"/);
+  assert.match(month,/iso === today \? 'aria-current="date"'/, 'today annotation follows actual date, not selected October 2026 fixture');
  assert.match(rendered,/data-month-shift="-1" aria-label="上一个月"/);
  assert.match(rendered,/data-month-shift="1" aria-label="下一个月"/);
  assert.match(rendered,/data-toggle-month-compact aria-pressed="true"/);

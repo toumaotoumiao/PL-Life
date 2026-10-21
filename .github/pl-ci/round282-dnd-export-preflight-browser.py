@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -41,7 +42,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   for width in (390,1280):
-   page=browser.new_page(viewport={'width':width,'height':1100},service_workers='block');page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
+   page=browser.new_page(viewport={'width':width,'height':1100},service_workers='block');prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
    record(f'{width}: audit counts six abilities fixed fields skills resources and one blocked formula',r['badAudit']['abilities']['ready']==6 and r['badAudit']['fixed']['mapped']==7 and r['badAudit']['fixed']['exportable']==7 and r['badAudit']['skills']['exportable']==1 and r['badAudit']['skills']['total']==2 and r['badAudit']['resources']['exportable']==1 and len(r['badAudit']['blockers'])==1)
    record(f'{width}: dangerous protected fixed target is caught before export',any('已保护' in x['text'] for x in r['protectedAudit']['blockers']))
    record(f'{width}: blocked audit disables confirmation and lists the actual mapping problem',r['blockedUi'] and not r['badAudit']['canExport'])

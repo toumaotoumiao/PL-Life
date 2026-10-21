@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json,os,re,traceback
 from playwright.sync_api import sync_playwright
@@ -23,7 +24,7 @@ with sync_playwright() as p:
             page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
             errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
             try:
-                page.set_content(html,wait_until='domcontentloaded',timeout=60000)
+                prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=60000)
                 result=page.evaluate('''()=>{
                   const t=hoExportTheme();
                   function probe(draw,h,y=20){const c=document.createElement('canvas');c.width=900;c.height=Math.ceil(h+y+40);const ctx=c.getContext('2d'),seen=[];const native=ctx.fillText.bind(ctx);ctx.fillText=(text,x,yy,...rest)=>{seen.push({text:String(text),y:Number(yy)});return native(text,x,yy,...rest)};draw(ctx);return{joined:seen.map(x=>x.text).join(''),maxY:Math.max(0,...seen.map(x=>x.y)),canvas:c};}

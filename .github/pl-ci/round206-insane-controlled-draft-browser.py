@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
@@ -36,7 +37,7 @@ with sync_playwright() as pw:
  browser=pw.chromium.launch(headless=True,executable_path=browser_path,args=['--no-sandbox'])
  for width in [320,375,390,430,768,1024,1280,1440]:
   page=browser.new_page(viewport={'width':width,'height':800})
-  page.set_content(html,wait_until='domcontentloaded')
+  prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded')
   page.add_script_tag(content=stub+'\n'+pure+'\n'+state+'\n'+click_code)
   page.evaluate('''() => {
    document.querySelector('#pcInsanePreviewBackdrop').hidden=false;

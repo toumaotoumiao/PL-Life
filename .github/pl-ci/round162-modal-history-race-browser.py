@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 """Real Chromium regression for delayed programmatic modal history cleanup and actual Back. Synthetic fixtures only."""
 from pathlib import Path
 import os,re,json,traceback
@@ -24,7 +25,7 @@ with sync_playwright() as p:
   page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   try:
-   page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+   prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
    page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');let a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');pcs.push(normalizePcArchive({id:'audit-pc-a',name:'测试角色 A',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));pcs.push(normalizePcArchive({id:'audit-pc-b',name:'测试角色 B',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));runPlans.push(normalizeRunPlan({id:'audit-plan-a',moduleName:'合成计划A'}));runPlans.push(normalizeRunPlan({id:'audit-plan-b',moduleName:'合成计划B'}));}''')
    page.wait_for_timeout(550)
    # Force history.back to land after the next modal is already open, rather than relying on natural timing.

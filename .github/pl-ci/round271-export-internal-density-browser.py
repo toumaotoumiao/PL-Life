@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json,os,re,traceback
 from playwright.sync_api import sync_playwright
@@ -21,7 +22,7 @@ with sync_playwright() as p:
             page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
             errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
             try:
-                page.set_content(html,wait_until='domcontentloaded',timeout=60000)
+                prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=60000)
                 result=page.evaluate('''()=>{
                   const t=hoExportTheme(),c=document.createElement('canvas');c.width=900;c.height=520;const ctx=c.getContext('2d');ctx.fillStyle=t.bg;ctx.fillRect(0,0,c.width,c.height);
                   const groupH=drawRunExportGroupHead(ctx,20,20,860,{title:'HO1',subtitle:'',summary:'5 条',meta:'已结团 4 · 计划 1',accent:t.accent,soft:t.surface2},t);

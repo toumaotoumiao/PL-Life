@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 """PC nested-array and card-time preservation in actual app JS, synthetic isolated memory.
 
 This is NOT a native IndexedDB / complete ZIP test; Round187 remains mandatory.
@@ -24,7 +25,7 @@ with sync_playwright() as p:
   for width in (320,375,390,430,768,1024,1280,1440):
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    try:
-    page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
     page.wait_for_function("typeof settings !== 'undefined' && typeof profiles !== 'undefined' && Array.isArray(profiles)",timeout=30000)
     result=page.evaluate(r'''()=>{
       const owners=new Set(profiles.map(x=>String(x.id))),owner=selfProfileId();

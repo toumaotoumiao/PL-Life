@@ -64,12 +64,13 @@ test('Round125 single-record preview failure really disables export while keepin
  const r={moduleName:'测试模组'};
  const ctx={document:{getElementById:id=>({recordShowcasePreview:preview,recordShowcaseExport:button,recordShowcasePreviewDiagnostics:diag})[id]||null},
  recordShowcaseRecord:()=>r,recordShowcaseLayout:()=>{throw new Error('模拟画布失败')},recordShowcaseState:{},
- APP_UI_VERSION:'8.1.12.test',console:{error(){}}};
+ APP_UI_VERSION:'8.1.12.test',plPortableKnownError:()=> 'Error',console:{error(){}}};
  vm.runInNewContext(f+'\nrenderRecordShowcasePreview();',ctx);
  assert.equal(button.disabled,true);
  assert(preview.innerHTML.includes('recordShowcaseRetry'));
  assert(preview.innerHTML.includes('本桌记录和当前展示选择没有被修改'));
- assert(diag.textContent.includes('模拟画布失败'));
+ assert(diag.textContent.includes('renderRecordShowcasePreview'));
+ assert(!diag.textContent.includes('模拟画布失败'),'shareable preview diagnostics must not expose raw exception body');
 });
 test('Round125 failed handoff keeps both source editors open; success closes only after preview opens',async()=>{
  const single=source('openRecordShowcaseFinalPreview','recordReadonlyBodyHTML').split('let recordShowcaseEscapeBound=')[0];

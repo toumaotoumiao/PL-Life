@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 """Actual app browser regression. Synthetic PCs only; no user archive or live site is opened."""
 from pathlib import Path
 import re,json,os,traceback
@@ -25,7 +26,7 @@ with sync_playwright() as p:
   page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   try:
-   page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+   prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
    # Complete optional onboarding for this synthetic fixture before opening an editor;
    # hiding its backdrop alone leaves a scheduled welcome timer active.
    page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');const a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert')}''')

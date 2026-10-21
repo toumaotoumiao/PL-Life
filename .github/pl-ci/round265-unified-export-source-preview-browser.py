@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json,os,re,traceback
 from playwright.sync_api import sync_playwright
@@ -21,7 +22,7 @@ with sync_playwright() as p:
    errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
    try:
     page.set_default_timeout(12000)
-    page.set_content(html,wait_until='domcontentloaded',timeout=60000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=60000)
     page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');const a=document.getElementById('onboardingBackdrop');if(a){a.hidden=true;a.style.setProperty('display','none','important')}document.getElementById('appRoot')?.removeAttribute('inert');const view=document.getElementById('selfIntroView');view.hidden=false;view.style.display='block';const panel=document.getElementById('selfIntroExportPanel');panel.hidden=false;panel.style.display='block';window.PLSourceExportInspection.ensure();}''')
     static=page.evaluate('''()=>({capabilityCount:Object.keys(window.PLImageExportCapabilities||{}).length,self:document.querySelectorAll('#selfIntroExportPanel [data-export-inline-preview-size]').length,planner:document.querySelectorAll('#plannerYearShowcasePanel [data-export-inline-preview-size]').length,ho:document.querySelectorAll('#hoExportComposerPanel [data-export-inline-preview-size]').length,statsOriginal:document.querySelectorAll('#statsExportSizeBtn').length,statsGeneric:document.querySelectorAll('#statsExportPanel [data-export-inline-preview-size]').length})''')
     check(f'{width} capability registry covers seven exports',static['capabilityCount']==7,static)

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -43,7 +44,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   for width in (390,1280):
-   page=browser.new_page(viewport={'width':width,'height':1100},service_workers='block');page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
+   page=browser.new_page(viewport={'width':width,'height':1100},service_workers='block');prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
    record(f'{width}: D&D mapping submodal owns focus and inerts the parent PC editor',not r['modalFocus']['mapInert'] and r['modalFocus']['editorInert'] and r['modalFocus']['top']=='pcDndMapBackdrop')
    record(f'{width}: review summary combines fixed and enabled extended mappings',r['summary'].startswith('共 10 项') and '已核对 9' in r['summary'] and '已复核 9/9' in r['summary'] and '待处理 1' in r['summary'] and '本次可导出 6' in r['summary'])
    record(f'{width}: pending filter isolates the formula-cell exception',r['pendingOne'])

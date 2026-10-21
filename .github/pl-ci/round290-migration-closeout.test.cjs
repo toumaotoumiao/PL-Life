@@ -34,7 +34,8 @@ test('advanced migration tools separate legacy, history recovery, and other expo
   assert.doesNotMatch(body,/>其他导出与历史恢复</);
 });
 test('issue report exposes an exact problem path and visible execution stage',()=>{
-  assert.match(index,/`问题路径：\$\{problemPath\}`/);
+  assert.match(index,/plPortableArea\(area\)/);
+  assert.match(index,/具体执行阶段：/);
   assert.match(index,/phase\?`阶段：\$\{phase\}`/);
   assert.match(index,/id="actionDialogContextActions"/);
   assert.match(index,/contextActions = \[\]/);

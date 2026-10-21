@@ -1,3 +1,4 @@
+const {prepareSyntheticOrigin}=require('./synthetic-browser-origin.cjs');
 'use strict';
 // Full synthetic page copy acceptance: page text and real navigation, not user archives.
 const fs=require('node:fs'),path=require('node:path');
@@ -12,7 +13,7 @@ html=html.replace('<head>','<head>'+shim);
  for(const width of [390,1440]){
   const page=await browser.newPage({viewport:{width,height:width>1000?900:844},serviceWorkers:'block'}),errors=[];
   page.on('pageerror',e=>errors.push(String(e.message||e)));
-  await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(350);
+  await prepareSyntheticOrigin(page);await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(350);
   if(await page.locator('#onboardingBackdrop').isVisible())await page.locator('#onboardingLaterBtn').click();
   const result=await page.evaluate(()=>{const rows=[],banned=['不会被错误连成','完整导出时将支持自动分页，不会丢掉','日期格直接显示模组简称与 K / P'];for(const v of ['profiles','pcs','modules','plans','records','selfIntro','stats']){switchView(v);const el=document.getElementById(v+'View'),text=el?.innerText||'';rows.push({view:v,visible:!el.hidden&&getComputedStyle(el).display!=='none',oldCopy:banned.filter(t=>text.includes(t)),overflow:document.documentElement.scrollWidth>innerWidth+2});}openSettings();const setting=document.getElementById('settingsModal');return{rows,settingsOpen:!setting.hidden,overflow:document.documentElement.scrollWidth>innerWidth+2,version:APP_UI_VERSION};});
   const issues=[];for(const row of result.rows)if(!row.visible||row.oldCopy.length||row.overflow)issues.push(row.view);if(!result.settingsOpen||result.overflow)issues.push('settings');if(errors.length)issues.push(...errors.slice(0,2));

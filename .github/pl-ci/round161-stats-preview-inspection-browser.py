@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 """Actual v228 page: inspect native-size statistics preview and final render trace.
 Only isolated synthetic fixtures; no personal data or live site."""
 from pathlib import Path
@@ -42,7 +43,7 @@ with sync_playwright() as p:
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   try:
    page.set_default_timeout(12000)
-   page.set_content(html,wait_until='domcontentloaded',timeout=60000)
+   prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=60000)
    page.evaluate('''()=>{const a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert')}''')
    page.evaluate(SEED)
    page.evaluate('''()=>{localStorage.setItem('trpg_planner_export_layout_v8188','pages');switchView('stats',{historyMode:'none',restoreScroll:false});toggleStatsExportCenter(true)}''')

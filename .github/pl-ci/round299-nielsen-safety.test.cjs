@@ -34,7 +34,7 @@ function simulateBatchCommit({saveOK=true,verifyOK=false,retainOriginal=false}={
  const source=text('async function pcBatchExcelCommit(', 'function initPcBatchExcelDrop(');
  const rows={querySelector:()=>({querySelector:(selector)=>selector.includes('pick')?{checked:true}:{value:'P1'}})};
  const entries=[{file:{name:'fixture.xlsx'},raw:new ArrayBuffer(10),parsed:{name:'TestCharacter',_excelWarnings:[],_excelAudit:{requiresOriginal:retainOriginal}},error:''}];
- let pcs=[],saveCalls=0,deleted=0,notices=[],renders=0,phases=[],storedFiles=0;
+ let pcs=[],saveCalls=0,deleted=0,notices=[],reports=[],renders=0,phases=[],storedFiles=0;
  const ctx={
   pcBatchExcelBusy:false,pcBatchExcelEntries:entries,
   pcBatchExcelElements:()=>({rows}),clone:x=>JSON.parse(JSON.stringify(x)),
@@ -48,11 +48,11 @@ function simulateBatchCommit({saveOK=true,verifyOK=false,retainOriginal=false}={
   pcWorkbookGet:async()=>null,pcWorkbookPut:async()=>{storedFiles++},pcWorkbookDelete:async()=>{deleted++;return true},
   PC_XLSX_MIME:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',Blob,
   setTimeout,saveState:()=>{saveCalls++;return saveOK},pcExcelVerifySavedPc:async()=>{if(!verifyOK)throw new Error('fixture readback failed')},
-  pcBatchExcelClose:()=>{},renderPcArchive:()=>{renders++},showToast:()=>{},appNotice:msg=>notices.push(msg),console:{error:()=>{}},
+  pcBatchExcelClose:()=>{},renderPcArchive:()=>{renders++},showToast:()=>{},appNotice:msg=>notices.push(msg),showContextIssue:info=>reports.push(info),plDiagnoseOperation:(code,details)=>({component:code,writeState:details.writeState,phase:details.phase}),plIncidentSafeAtom:x=>String(x),console:{error:()=>{}},
   appConfirm:async()=>true,JSON,Date,Array,Set,Number,String,Boolean
  };
  vm.createContext(ctx);vm.runInContext(source,ctx);
- return Promise.resolve(ctx.pcBatchExcelCommit()).then(result=>({result,pcs:ctx.pcs,saveCalls,deleted,notices,renders,phases,storedFiles}));
+ return Promise.resolve(ctx.pcBatchExcelCommit()).then(result=>({result,pcs:ctx.pcs,saveCalls,deleted,notices,reports,renders,phases,storedFiles}));
 }
 
 test('after a successful bulk save, failed readback does not remove persisted PCs or originals',async()=>{
@@ -61,7 +61,7 @@ test('after a successful bulk save, failed readback does not remove persisted PC
  assert.equal(r.pcs.length,1);
  assert.equal(r.deleted,0);
  assert.equal(r.storedFiles,1);
- assert.ok(r.notices.some(x=>x.includes('已提交保存')&&x.includes('请勿重复导入')));
+ assert.ok(r.reports.some(x=>x.incident.writeState==='committed-readback-unverified'&&x.status.includes('不能重复导入')));
  assert.ok(r.phases.some(x=>x.includes('核对已保存的 PC')));
 });
 
@@ -71,7 +71,7 @@ test('before a successful bulk save, failure leaves PC list unchanged and rolls 
  assert.equal(r.pcs.length,0);
  assert.equal(r.deleted,1);
  assert.equal(r.storedFiles,1);
- assert.ok(r.notices.some(x=>x.includes('未完成')));
+ assert.ok(r.reports.some(x=>x.incident.writeState==='commit-not-confirmed'&&x.status.includes('保存未确认')));
 });
 
 test('bulk Excel confirmed successful only after verified readback',async()=>{

@@ -65,7 +65,7 @@ test('complete ZIP backup progress only labels request as saved request, not pro
  assert.equal(marks.length,1);assert.equal(ends[0],'已请求下载，请在设备中核验文件');assert.ok(phases.some(x=>x.includes('请求保存 ZIP')));
 });
 test('complete ZIP download rejection keeps original records and reports failure, always releases lock',async()=>{
- const reports=[],ends=[];const ctx={hasUnsavedSettings:()=>false,beginBackupWorkflow:()=>true,buildUnifiedCompleteBackupBlob:async()=>({blob:new Blob(['test']),manifest:{mediaCount:0}}),Date,APP_NAME:'PL',downloadBlobFile:()=>false,markBackupDownloadRequested:()=>{throw new Error('should not mark')},formatStorageBytes:()=> '4 B',plLongTaskPhase:()=>{},showContextIssue:x=>reports.push(x),APP_UI_VERSION:'8.1.12.312',console,endBackupWorkflow:x=>ends.push(x)};
+ const reports=[],ends=[];const ctx={hasUnsavedSettings:()=>false,beginBackupWorkflow:()=>true,buildUnifiedCompleteBackupBlob:async()=>({blob:new Blob(['test']),manifest:{mediaCount:0}}),Date,APP_NAME:'PL',downloadBlobFile:()=>false,markBackupDownloadRequested:()=>{throw new Error('should not mark')},formatStorageBytes:()=> '4 B',plLongTaskPhase:()=>{},showContextIssue:x=>reports.push(x),plDiagnoseOperation:(code,details)=>({component:code,writeState:details.writeState}),plIncidentSafeAtom:x=>String(x),APP_UI_VERSION:'8.1.12.312',console,endBackupWorkflow:x=>ends.push(x)};
  vm.createContext(ctx);vm.runInContext(exportFull,ctx);
  assert.equal(await vm.runInContext('exportBackup()',ctx),false);
  assert.equal(ends[0],'导出未完成');assert.equal(reports[0].level,'warning');assert.match(reports[0].status,/没有确认发起下载/);

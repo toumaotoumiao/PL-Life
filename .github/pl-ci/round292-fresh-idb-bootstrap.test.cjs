@@ -1,17 +1,17 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'../..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),status=JSON.parse(fs.readFileSync(path.join(root,'CURRENT_PROJECT_STATUS.json'),'utf8'));
-test('Round292 fresh PC attachment DB uses progressive v0→v1→v2→v3 initialization',()=>{
-  assert.match(html,/knownVersion!==null&&knownVersion<targetVersion/);
-  assert.match(html,/for\(let version=Math\.max\(1,knownVersion\+1\);version<=targetVersion;version\+\+\)/);
-  assert.match(html,/openPcMediaDbAtVersion\(version\)/);
+test('Stage144 PC attachment database upgrades in one atomic transaction to v3',()=>{
+  assert.match(html,/return await openPcMediaDbAtVersion\(targetVersion\)/);
+  const impl=html.slice(html.indexOf('async function openPcMediaDb()'),html.indexOf('function pcMediaTxDone',html.indexOf('async function openPcMediaDb()')));
+  assert.doesNotMatch(impl,/for\s*\(let version/);
   assert.match(html,/建立 PC 图片仓库/);
   assert.match(html,/建立 PC 原始 Excel 仓库/);
   assert.match(html,/建立完整恢复事务日志仓库/);
+  assert.match(html,/knownVersion!==null&&knownVersion>targetVersion/);
 });
-test('Round292 fresh recovery DB uses progressive v0→v1→v2 initialization',()=>{
-  assert.match(html,/knownVersion !== null && knownVersion < RECOVERY_DB_VERSION/);
-  assert.match(html,/openRecoveryDbAtVersion\(version\)/);
+test('Stage144 recovery database also upgrades once while retaining all historical stores',()=>{
+  assert.match(html,/return await openRecoveryDbAtVersion\(RECOVERY_DB_VERSION\)/);
   assert.match(html,/建立恢复点仓库/);
   assert.match(html,/建立历史附件仓库/);
 });

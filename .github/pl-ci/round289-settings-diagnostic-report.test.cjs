@@ -39,7 +39,7 @@ test('warning dialog exposes structured problem details and downloadable report'
   assert.match(index,/id="actionDialogCopyReport"[^>]*>复制问题详情/);
   assert.match(index,/id="actionDialogDownloadReport"[^>]*>下载错误报告/);
   assert.match(index,/function buildIssueReport/);
-  for(const label of ['问题编号：','发生位置：','执行操作：','执行阶段：','当前状态：','建议处理：','程序版本：','数据结构：']) assert.ok(index.includes(label),`missing ${label}`);
+  for(const label of ['问题编号：','发生模块：','操作信息：','具体执行阶段：','事务提交状态：','下一步：','程序版本：','数据结构：']) assert.ok(index.includes(label),`missing ${label}`);
 });
 
 test('issue report is session-scoped and sanitizes common local identifiers',()=>{
@@ -47,7 +47,8 @@ test('issue report is session-scoped and sanitizes common local identifiers',()=
   assert.match(index,/sessionStorage\.setItem\(ISSUE_REPORT_SESSION_KEY/);
   assert.match(index,/文件名已隐藏/);
   assert.match(index,/本机路径已隐藏/);
-  assert.match(index,/隐私说明：报告会隐藏常见文件名、本机路径和网址参数/);
+  assert.match(index,/隐私说明：不导出原始异常消息、堆栈、用户姓名、文件名/);
+  assert.match(index,/报告格式：diagnostic-v2/);
 });
 
 test('restore action is revealed only after ZIP inspection passes',()=>{

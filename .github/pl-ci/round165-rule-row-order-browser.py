@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 """Full-app synthetic PC rule row UI. In-memory storage; does not assert native IndexedDB or deployed-site acceptance."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -25,7 +26,7 @@ with sync_playwright() as p:
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
    try:
-    page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
     page.evaluate('''()=>{localStorage.setItem(ONBOARDING_KEY,'1');const a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');}''')
     page.wait_for_timeout(540)
     page.evaluate('''()=>{pcs.push(normalizePcArchive({id:'row-test-insane',name:'合成 Insane 角色',ownerPlId:selfProfileId(),ruleMeta:{familyId:'saikoro-fiction',systemId:'insane',editionId:'',confirmed:true,source:'user-selected'},ruleData:{traits:[{label:'旧规则',value:'仅在编辑器'}],skills:[],resources:[]},ruleSheets:{insane:{traits:[{label:'生命力',value:'6'},{label:'正气度',value:'5'}],skills:[{label:'特技甲',value:'完成',marker:{future:'keep'}},{label:'特技乙',value:'在场'},{label:'特技丙',value:''}],resources:[],futureKey:{keep:true}},shinobigami:{traits:[{label:'流派',value:'保留'}],skills:[],resources:[]}},coc:{san:54},excelEdits:[{sheet:'角色卡',ref:'B6',value:'保留'}]}));openPcEditor('row-test-insane');pcEditorTab='coc';renderPcEditor({resetScroll:true});}''')

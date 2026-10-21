@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 """Synthetic full-app D&D edit -> canonical save -> reload -> public text + canvas blocks.
 Uses a fresh in-memory storage shim; no real workbook or user's local data."""
 from pathlib import Path
@@ -23,7 +24,7 @@ with sync_playwright() as p:
   for width in [375,1280]:
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    try:
-    page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
     result=page.evaluate('''()=>{
       const fields=['背景','种族／物种','阵营','等级','熟练加值','先攻','生命值'];
       const me=selfProfileId(),editions=['5e-2014','5e-2024'];

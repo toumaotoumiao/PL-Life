@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 """Synthetic in-memory actual-app module roundtrip. Native IndexedDB not asserted."""
 from pathlib import Path
 import json,os,re
@@ -20,7 +21,7 @@ with sync_playwright() as p:
   for width in (320,375,390,430,768,1024,1280,1440):
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    try:
-    page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
     result=page.evaluate('''()=>{
       const raw=JSON.parse(JSON.stringify({id:'round184-m',name:'  合成模组  ',rules:'Insane',
         ruleMeta:{familyId:'saikoro-fiction',systemId:'insane',confirmed:true,futureEdition:{source:'future'}},

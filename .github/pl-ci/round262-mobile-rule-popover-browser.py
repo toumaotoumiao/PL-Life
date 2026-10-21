@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os
 from playwright.sync_api import sync_playwright
@@ -30,7 +31,7 @@ with sync_playwright() as p:
     try:
         for width in (320,390,430):
             page=browser.new_page(viewport={'width':width,'height':640})
-            page.set_content(html)
+            prepare_synthetic_origin(page);page.set_content(html)
             page.add_script_tag(content=logic)
             page.click('#s1'); page.wait_for_timeout(80)
             pos=page.evaluate('''()=>{const s=s1.getBoundingClientRect(),p=m1.querySelector('.native-module-rule-popover').getBoundingClientRect();return {open:m1.open,st:s.top,sb:s.bottom,pt:p.top,ph:p.height}}''')

@@ -1,3 +1,4 @@
+from synthetic_browser_origin import prepare_synthetic_origin
 """Actual HTML + isolated synthetic canvases. No user archives, no live origin, no saved files."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -28,7 +29,7 @@ with sync_playwright() as p:
             page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
             errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
             try:
-                page.set_content(html,wait_until='domcontentloaded',timeout=60000)
+                prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=60000)
                 page.evaluate('''()=>{const b=document.getElementById('onboardingBackdrop');if(b){b.hidden=true;b.style.setProperty('display','none','important')}document.getElementById('appRoot')?.removeAttribute('inert');localStorage.setItem('trpg_planner_export_layout_v8188','pages');const make=(w,h,color)=>{const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.fillStyle=color;ctx.fillRect(0,0,w,h);ctx.fillStyle='#222';ctx.font='28px sans-serif';ctx.fillText('合成测试文字',15,40);return c};const a=make(900,1100,'#faf0dc'),b2=make(900,1500,'#e0f5ef');window.__testSources=[a,b2];window.PLUnifiedExportPreview([a,b2],'合成最终图片','测试.png','仅用于视觉验收','', {longCanvasBuilder:()=>{const c=make(900,2650,'#faf0dc');return c;}})}''')
                 fit=measure(page)
                 check(f'{width} initial fit pages',fit['mode']=='fit' and fit['pages']==2 and fit['layout']=='pages',fit)

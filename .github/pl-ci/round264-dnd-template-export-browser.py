@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json,os,re
 from playwright.sync_api import sync_playwright
@@ -17,7 +18,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   page=browser.new_page(viewport={'width':390,'height':900},service_workers='block')
-  page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+  prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
   result=page.evaluate('''async()=>{
     const esc=pcExcelXmlEscape,ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main';
     const labels=['力量','敏捷','体质','智力','感知','魅力'],rows=[12,14,16,18,20,22];

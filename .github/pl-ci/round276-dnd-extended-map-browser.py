@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -43,7 +44,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   for width in (390,1280):
-   page=browser.new_page(viewport={'width':width,'height':1100},service_workers='block');page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
+   page=browser.new_page(viewport={'width':width,'height':1100},service_workers='block');prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
    record(f'{width}: extended candidates include skills/resources and duplicate labels are flagged',r['initial']['candidateCount']==5 and r['initial']['duplicates']==2 and r['initial']['summary']=='0/5')
    record(f'{width}: extended mapping search filters by field name',r['filtered']['visible']==1 and r['filtered']['text'].startswith('显示 1/5'))
    record(f'{width}: batch entry maps fixed plus three extended fields',r['afterBatch']=={'fixed':'7/7','extra':'3/5','extraExport':'3'})

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 """Isolated real-site JS: compare fully normalized business objects before write and after canonical save/re-hydration.
 No native IndexedDB and no user's personal storage. The latter is a separate release gate."""
 from pathlib import Path
@@ -20,7 +21,7 @@ with sync_playwright() as p:
   for width in (375,1280):
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    try:
-    page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
     result=page.evaluate('''()=>{
       const me=selfProfileId(),owners=new Set(profiles.map(x=>String(x.id)));
       const pc=normalizePcArchive({id:'round181-pc',name:'虚构规则人物',ownerPlId:me,

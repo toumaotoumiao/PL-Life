@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -42,7 +43,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   for width in (390,1280):
-   page=browser.new_page(viewport={'width':width,'height':1000},service_workers='block');page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
+   page=browser.new_page(viewport={'width':width,'height':1000},service_workers='block');prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
    record(f'{width}: more than 140 extended candidates are retained',r['total']>=164 and r['lastPresent'])
    record(f'{width}: duplicate-name conflicts stay isolated',r['dupes']==2 and r['conflictVisible']==['奥秘','奥秘'])
    record(f'{width}: pinyin-initial search finds 察觉',r['pinyinVisible']==['察觉'])

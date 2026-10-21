@@ -1,3 +1,4 @@
+const {prepareSyntheticOrigin}=require('./synthetic-browser-origin.cjs');
 'use strict';
 // Actual page scripts + in-memory synthetic records. No user archive, no live domain.
 const fs=require('node:fs'),path=require('node:path');
@@ -12,7 +13,7 @@ html=html.replace('<head>','<head>'+shim);
  for(const width of [320,390,1440]){
   const page=await browser.newPage({viewport:{width,height:width>1000?900:844},serviceWorkers:'block'}),errors=[];
   page.on('pageerror',e=>errors.push(String(e.message||e)));
-  await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(350);
+  await prepareSyntheticOrigin(page);await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(350);
   if(await page.locator('#onboardingBackdrop').isVisible())await page.locator('#onboardingLaterBtn').click();
   const result=await page.evaluate(async()=>{
    const version=APP_UI_VERSION;const mod=normalizeRichModule({id:'round137-module',name:'仅用于测试的统计模组'},settings.moduleArchive);modules.push(mod);

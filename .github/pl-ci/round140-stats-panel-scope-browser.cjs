@@ -1,3 +1,4 @@
+const {prepareSyntheticOrigin}=require('./synthetic-browser-origin.cjs');
 'use strict';
 // Synthetic in-memory runs only. No production or user archives.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{chromium}=require('playwright');
@@ -11,7 +12,7 @@ html=html.replace('<head>','<head>'+shim);
  for(const width of [320,390,1440]){
   const page=await browser.newPage({viewport:{width,height:width>1000?900:844},serviceWorkers:'block'}),errors=[];
   page.on('pageerror',e=>errors.push(String(e.message||e)));
-  await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(450);
+  await prepareSyntheticOrigin(page);await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(450);
   if(await page.locator('#onboardingBackdrop').isVisible())await page.locator('#onboardingLaterBtn').click();
   await page.evaluate(()=>{
    const makeRole=i=>({kp:i<12||i>=24,pl:i>=12}),runs=Array.from({length:32},(_,i)=>({id:'test-'+i,moduleName:'synthetic-module-'+i,roles:makeRole(i),startDate:'2026-01-01'}));

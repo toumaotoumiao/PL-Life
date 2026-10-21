@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -35,7 +36,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   for width in (390,1280):
-   page=browser.new_page(viewport={'width':width,'height':1000},service_workers='block');page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
+   page=browser.new_page(viewport={'width':width,'height':1000},service_workers='block');prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
    rec(f'{width}: acceptance action is disabled before successful export and enabled after evidence is recorded',r['beforeDisabled'] and r['afterEnabled'])
    rec(f'{width}: evidence contains aggregate verification only and no PC/file sentinel content',r['privateFree'] and r['shape'])
    rec(f'{width}: acceptance review opens as managed top modal',r['modalVisible'] and r['editorInert'])

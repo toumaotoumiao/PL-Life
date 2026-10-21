@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 """Synthetic D&D XLSX browser round-trip and eight-width export-menu check.
 No user workbook or permanent native storage is opened."""
 from pathlib import Path
@@ -29,7 +30,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   page=browser.new_page(viewport={'width':375,'height':900},service_workers='block')
-  page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+  prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
   for edition in ['5e-2014','5e-2024']:
    data=page.evaluate('''async edition=>{
      const pc=makeBlankPc(selfProfileId());pc.id='round242-fiction';pc.name='合成值<&>测试';

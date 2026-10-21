@@ -28,6 +28,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
+      - name: Guard full-app Chromium tests against opaque browser origin
+        run: node --test .github/pl-ci/round312-synthetic-origin-contract.test.cjs
       - name: Stage140 restored-record commit boundary and explicit release hold
         run: node --test .github/pl-ci/round310-stage140-release-atomicity.test.cjs
       - name: Check existing-data startup order before browser run
@@ -643,6 +645,14 @@ jobs:
         run: node --test .github/pl-ci/round309-stage139-cross-device.test.cjs
       - name: Stage141 emergency ZIP orphan collision runtime
         run: node --test .github/pl-ci/round311-stage141-backup-orphan-collision.test.cjs
+      - name: Stage144 structured restore diagnostics and native storage classification
+        run: node --test .github/pl-ci/round314-stage144-incident-diagnostics.test.cjs
+      - name: Stage145 PC Excel backup and module diagnostic coverage
+        run: node --test .github/pl-ci/round315-stage145-diagnostic-coverage.test.cjs
+      - name: Stage146 privacy and transaction-state incident integrity
+        run: node --test .github/pl-ci/round316-stage146-diagnostics-integrity.test.cjs
+      - name: Stage143 device reset safety and isolation
+        run: node --test .github/pl-ci/round313-stage143-device-reset.test.cjs
       - name: Stage138 expanded auxiliary safe-state and diagnostics
         run: node --test .github/pl-ci/round308-stage138-expanded-auxiliary.test.cjs
       - name: Stage137 final recovery and cleanup fault injection

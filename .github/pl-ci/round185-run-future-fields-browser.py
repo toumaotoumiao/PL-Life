@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 """Synthetic actual-app plan/record future-field roundtrip; native IndexedDB remains a separate gate."""
 from pathlib import Path
 import json,os,re
@@ -18,7 +19,7 @@ with sync_playwright() as p:
   for width in (320,375,390,430,768,1024,1280,1440):
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    try:
-    page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+    prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
     result=page.evaluate('''()=>{
       const owner=selfProfileId(), valid=new Set(profiles.map(p=>p.id));modules.push(normalizeRichModule({id:'r185-m',name:'测试模组'},settings.moduleArchive));
       const base={id:'r185-p',moduleId:'r185-m',moduleName:'测试模组',tableName:'测试桌',kp:'合成主持人',plIds:[owner],

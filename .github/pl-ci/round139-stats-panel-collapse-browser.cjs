@@ -1,3 +1,4 @@
+const {prepareSyntheticOrigin}=require('./synthetic-browser-origin.cjs');
 'use strict';
 // This test uses synthetic in-memory stats only; no user data or live site.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
@@ -12,7 +13,7 @@ html=html.replace('<head>','<head>'+shim);
  for(const width of [320,390,1440]){
   const page=await browser.newPage({viewport:{width,height:width>1000?900:844},serviceWorkers:'block'}),errors=[];
   page.on('pageerror',e=>errors.push(String(e.message||e)));
-  await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(450);
+  await prepareSyntheticOrigin(page);await page.setContent(html,{waitUntil:'domcontentloaded',timeout:65000});await page.waitForTimeout(450);
   if(await page.locator('#onboardingBackdrop').isVisible())await page.locator('#onboardingLaterBtn').click();
   await page.evaluate(()=>{
    statsPersonalRuns=()=>[{id:'synthetic-stats-row'}];statsLastQueryResult={kpCount:0,plCount:0,personalTotal:1};

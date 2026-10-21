@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json,os,re,traceback
 from playwright.sync_api import sync_playwright
@@ -42,7 +43,7 @@ with sync_playwright() as p:
    page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
    errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
    try:
-    page.set_default_timeout(15000);page.set_content(html,wait_until='domcontentloaded',timeout=70000)
+    page.set_default_timeout(15000);prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=70000)
     seed=page.evaluate(SEED)
     check(f'{width} six HO groups default to two editable columns',len(seed['defs'])==6 and seed['counts']==[3,3],seed)
     check(f'{width} tall synthetic organizer is paginated',seed['pages']>1,seed)

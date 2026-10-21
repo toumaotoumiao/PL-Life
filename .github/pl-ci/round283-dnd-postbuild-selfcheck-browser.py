@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from synthetic_browser_origin import prepare_synthetic_origin
 from pathlib import Path
 import json, os, re
 from playwright.sync_api import sync_playwright
@@ -41,7 +42,7 @@ with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox'])
  try:
   for width in (390,1280):
-   page=browser.new_page(viewport={'width':width,'height':1000},service_workers='block');page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
+   page=browser.new_page(viewport={'width':width,'height':1000},service_workers='block');prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000);r=page.evaluate(script)
    record(f'{width}: build returns a successful post-build self-check',r['selfCheck']['verified'] and r['selfCheck']['plannedWrites']==8 and r['direct']['plannedWrites']==8)
    record(f'{width}: all planned ability/fixed/skill values re-read exactly',r['values']=={'str':'15','bg':'侍从','skill':'+5','untouched':'保持原值'})
    record(f'{width}: styles media drawings and worksheet relationships remain byte-identical',r['preserved'])
