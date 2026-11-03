@@ -1,42 +1,39 @@
 {
   "format": "pl-life-current-project-status",
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-11-03",
   "current": {
-    "stage": 148,
-    "appVersion": "8.1.12.326",
+    "stage": 152,
+    "appVersion": "8.1.12.330",
     "schemaVersion": 26,
-    "focus": "Round162 Chromium 返回键竞态修复：重复 history.back 防护、误离站检查；真实 GitHub CI 待核验"
+    "focus": "三轮搜索/筛选/创建/关联整改第3轮收口：真实 Chromium 组件测试、历史 ZIP 只读校验、PC 搜索拒绝打开的失败状态修复。正式站与全站 Chromium 尚未验收。"
   },
   "currentVersionAcceptance": {
     "code": {
-      "status": "round162-back-guard-hotfix-candidate",
-      "nielsenP1Contract": "Stage140 release atomicity and acceptance-gate checks added; previous Stage139 tests retained",
-      "nielsenP0Contract": "10/10 PASS",
-      "colorContract": "6/6 PASS",
-      "productionPreflight": "PASS v8.1.12.326 / schema26",
-      "fullNode": "1329/1329 PASS (390 + 429 + 510; 239 Node test files)",
-      "currentStatusContract": "Stage148 / v8.1.12.326 / schema26: 1329/1329 Node pass; Round162 actual GitHub Chromium and user device pending."
+      "status": "stage152-local-regression-passed",
+      "stage152": "9/9 新增 Node；243 个测试文件分四组 1371/1371 全量 Node PASS；8 断点 Chromium 隔离组件 PASS；两份历史 ZIP 只读校验 PASS",
+      "schema": "schema26 unchanged",
+      "dataCompatibility": "源 ZIP 完整性已检查；真实 IndexedDB 完整恢复、刷新与二次导出未执行"
     },
     "browser": {
-      "local": "Chromium 144 isolated report component click/export test PASS at 390px and 1280px; full web origin/file URL navigation blocked by administrator.",
-      "github": "Previous run: Round162 2/4 failed at 375 and 1280 on missing modal DOM after Back; hotfix CI pending."
+      "local": "Chromium 八断点原始搜索函数隔离组件通过；本机 HTTP 整站访问 ERR_BLOCKED_BY_ADMINISTRATOR，整站未执行",
+      "github": "Stage152 尚未推送，GitHub CI 未执行"
     },
     "realDevice": {
       "state": "targeted-checks-pending",
       "pending": [
-        "320/375/390/430/768/1024/1280/1440px 全站三主题实际布局",
-        "模组整组删除成功、保存失败与批量回收恢复冲突提示",
-        "模组工具返回入口与本机存储检查运行状态",
-        "PC 原始 Excel/图片删除以及外部备份核验真实设备操作"
+        "实际手机浏览器筛选/键盘/弹层",
+        "旧备份 ZIP 导入+刷新+二次导出对比",
+        "真实用户历史 IndexedDB 不可读配置",
+        "实际执行状态：未执行；targeted-checks-pending 仅是历史状态枚举"
       ]
     },
     "release": {
       "status": "candidate-ready-not-deployed",
       "artifactNames": [
-        "Stage148_PL-Life_v8.1.12.326_正式仓库完整同步包.zip",
-        "Stage148_源码测试与回归证据.zip"
+        "Stage152_PL-Life_v8.1.12.330_正式仓库完整同步包.zip",
+        "Stage152_验收证据与SHA256.zip"
       ],
-      "reason": "User requested direct formal-repository packages without manual staging; Node/preflight required; Round162 updated GitHub browser run pending."
+      "reason": "正常正式站部署仍需独立 GitHub 证据；源码及本地测试不能替代正式环境"
     }
   },
   "workstreams": {
@@ -129,7 +126,9 @@
     "Stage140 修复已持久化的回收站恢复遇到页面刷新/回收清理故障时错误回滚内存、提示假失败；新增 16 项故障注入/发布门契约，保留 1226 项旧测试。",
     "Stage140 提供仅可针对 PL-Life-Test 运行的只读 Chromium 8×3 网格验收脚本与 GitHub workflow_dispatch 工作流；无用户档案采集/截图；本次本地真实测试站运行失败，0/24 组，不可标记为通过。",
     "Stage148: 修复 Round162 用户按浏览器 Back 关闭弹窗时的重复 history.back，新增拒绝关闭时恢复 history guard、Round162 防意外离站检查；不修改资料存储 schema 或 ZIP 格式。",
-    "Stage148 回归：239个Node测试文件分为80+80+79，390+429+510=1329/1329 PASS；原 Edge Profile、GitHub实际Round162及移动真机未验收。"
+    "Stage148 回归：239个Node测试文件分为80+80+79，390+429+510=1329/1329 PASS；原 Edge Profile、GitHub实际Round162及移动真机未验收。",
+    "Stage149: Round162 (20) confirms browser navigation to about:blank after Back in both 375 and 1280 widths; remove delayed programmatic history.back on modal close and reuse a base history slot. No schema or backup format changes.",
+    "Stage149: 240 Node test files, 1333/1333 PASS; YAML parsed with all 342 steps having one run/uses. Browser local same-origin blocked; GitHub Round162 actual run pending."
   ],
   "sourceOfTruth": true,
   "statusPolicy": {
@@ -358,5 +357,32 @@
     "userBackupIntegrity": "9 backup ZIP CRC PASS, 3 JSON parse PASS, 9 ZIP manifests and stored attachments SHA256/CRC PASS (not end-to-end browser restoration)",
     "actualBrowserImport": "pending",
     "productionRelease": "blocked"
+  },
+  "history": [],
+  "stage150": {
+    "date": "2026-11-03",
+    "scope": "第一轮关联正确性与分享隐私整改",
+    "checks": "新增 14 项专项已通过；全量回归待执行",
+    "non_goals": [
+      "搜索跨页定位属于第二轮",
+      "正式站未直接改动",
+      "无真实用户数据修改"
+    ]
+  },
+  "stage151": {
+    "date": "2026-11-03",
+    "scope": "固定三轮整改的第2轮：全局搜索定位、筛选上下文、异步建档关联安全",
+    "checks": "新增 13/13；全量 Node 1362/1362 PASS；Chromium 390px/1280px 组件 PASS，整站未执行",
+    "non_goals": [
+      "不清除旧筛选与本机数据",
+      "不修改 ZIP 或 schema",
+      "不在本轮正式推送"
+    ]
+  },
+  "stage152": {
+    "date": "2026-11-03",
+    "scope": "三轮产品整改第3轮，历史 ZIP 只读核验、8 断点 Chromium 组件回归、发布一致性与失败态整改",
+    "checks": "9/9 新增 Node；1371/1371 全量 Node（4 组 297+367+244+463）；Chromium 8 断点隔离组件 PASS；2 份历史完整备份只读校验 PASS；19/19 inline JS 和3份 workflow 解析通过。",
+    "releaseGate": "整站真实浏览器、正式站 GitHub CI、手机真实设备尚未执行，不得宣称全部通过"
   }
 }

@@ -14,13 +14,13 @@
 - 不要把测试仓库、历史内部报告、真实备份、角色 Excel 或验收 artifact 上传到正式仓库。
 - 正式站与测试站继续依赖 `runtime-environment.js` 按路径隔离存储。
 
-## Stage147 发布决定（强制）
-应先核对当前正式站完整备份，并使用正式仓库候选同步包更新文件；这一操作只部署代码，不会清除浏览器本地档案。Round162 Chromium 浏览器验收须由新提交的 GitHub Actions 执行，失败应及时撤回至上次可用发布。
-用户明确选择减少测试站人工步骤，本轮优先提供正式仓库完整同步包；自动 CI 与数据安全预检仍然保留。若 Round162 继续失败，读取匿名 pl-synthetic-browser-result 诊断，不要求真实用户清库或再次恢复备份。
+## Stage152 发布注意事项（强制）
+应先核对当前正式站完整备份，并使用正式仓库候选同步包更新文件；这一操作只部署代码，不会清除浏览器本地档案。搜索与关联改动的浏览器验收须由新提交的 GitHub Actions 执行，失败应及时撤回至上次可用发布。
+用户明确选择减少测试站人工步骤，本轮优先提供正式仓库完整同步包；自动 CI 与数据安全预检仍然保留。若新一轮 Chromium 继续失败，读取匿名 pl-synthetic-browser-result 诊断，不要求真实用户清库或再次恢复备份。
 以 `CURRENT_PROJECT_STATUS.json` 的 release 和 browser 字段作为本轮发布阻断清单。本轮真实 GitHub CI 结果和用户设备验收仍为待核实项，不能将打包成功表述为线上验收完成。
 
 ## 发布前
-1. 测试站当前提交的 Synthetic 与 Native ZIP restore gate 必须通过。
+1. 同步的 GitHub Actions Synthetic 与 Native ZIP restore gate 必须通过；按照用户流程不要求每次手动部署测试站。
 2. 手机规则菜单针对性确认通过：面板位于触发按钮下方，同按钮、点击外部和 Esc 均可关闭。
 3. 使用 `python .github/pl-ci/build-production-release.py --check-only` 运行正式发布预检。
 

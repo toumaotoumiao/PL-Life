@@ -57,7 +57,7 @@ test('all table creation and conversion routes explicitly preserve or inherit ru
   assert.match(html,/plan\.ruleMeta\?\.source!==['"]user-selected['"]\)plan\.ruleMeta=newRunRuleFromModule\(mod\)/);
   assert.match(html,/ruleMeta:newRunRuleFromModule\(linkedModule\)/);
   assert.match(html,/ruleMeta:newRunRuleFromModule\(module\)/);
-  assert.match(html,/r\.moduleId=mod\.id;r\.moduleName=mod\.name;\/\* This archived table keeps its actual rule snapshot/);
+  assert.match(html,/r\.moduleId=mod\.id;r\.moduleLinkMode="";r\.moduleName=mod\.name;\/\* This archived table keeps its actual rule snapshot/);
   assert.doesNotMatch(html,/function normalizeRunRecord[\s\S]{0,400}ruleMeta: ?defaultModuleRuleMeta/);
 });
 test('plan and record editing expose a consistent family/system/edition selector with explicit commit',()=>{

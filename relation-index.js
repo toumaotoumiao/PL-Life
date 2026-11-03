@@ -38,6 +38,7 @@
     missing('missing-module-id',entityId,'moduleId',explicit);
     return frozen({id:'',status:'missing-id'});
    }
+   if(entity.moduleLinkMode==='name-only')return frozen({id:'',status:'name-only'});
    const name=key(entity.moduleName),candidates=byName.modules.get(name)||[];
    if(candidates.length===1)return frozen({id:candidates[0],status:'legacy-unique'});
    if(candidates.length>1){missing('ambiguous-module-name',entityId,'moduleName',id(entity.moduleName));return frozen({id:'',status:'ambiguous'});}
@@ -82,6 +83,7 @@
   function resolveModuleReadOnly(entity){
    const explicit=id(entity?.moduleId);
    if(explicit)return frozen({id:byId.modules.has(explicit)?explicit:'',status:byId.modules.has(explicit)?'id':'missing-id'});
+   if(entity?.moduleLinkMode==='name-only')return frozen({id:'',status:'name-only'});
    const ids=byName.modules.get(key(entity?.moduleName))||[];
    return frozen({id:ids.length===1?ids[0]:'',status:ids.length===1?'legacy-unique':ids.length>1?'ambiguous':key(entity?.moduleName)?'missing-name':'unlinked'});
   }

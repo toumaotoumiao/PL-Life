@@ -125,7 +125,10 @@ jobs:
             .github/pl-ci/round284-dnd-acceptance-evidence.test.cjs \
             .github/pl-ci/round285-plan-default-time.test.cjs \
             .github/pl-ci/round288-migration-readonly-diagnostic.test.cjs \
-            .github/pl-ci/round292-fresh-idb-bootstrap.test.cjs
+            .github/pl-ci/round292-fresh-idb-bootstrap.test.cjs \
+            .github/pl-ci/round312-stage150-privacy-association.test.cjs \
+            .github/pl-ci/round313-stage151-global-locator.test.cjs \
+            .github/pl-ci/round314-stage152-final-acceptance.test.cjs
       - name: Verify production release package preflight
         run: python .github/pl-ci/build-production-release.py --check-only
       - name: Verify privacy-local D&D comparison using temporary fictional sheets

@@ -1,6 +1,6 @@
 # PL收集梦想生活
 
-当前工程候选：Stage148 / v8.1.12.326 / schema26（Round162 浏览器返回键竞态修复；Node 与 GitHub 浏览器验收状态见 CURRENT_PROJECT_STATUS.json）。
+当前工程候选：Stage152 / v8.1.12.330 / schema26（三轮产品整改收口：历史存档与浏览器组件证据，正式站待验）。
 
 `CURRENT_PROJECT_STATUS.json` 是唯一的当前项目状态源；历史 `STAGE*.md` 仅表示当时的时间点快照。
 

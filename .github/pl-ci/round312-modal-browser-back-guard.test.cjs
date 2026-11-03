@@ -14,7 +14,7 @@ function simulate({refuse=false}={}) {
  const scope={
   queueMicrotask:fn=>tasks.push(fn),
   setTimeout:fn=>fn(),
-  history:{state:{tag:'pl',modal:'pcEditorBackdrop'},back:()=>backCalls++,replaceState:()=>{}},
+  history:{state:{tag:'pl',view:'pcs'},back:()=>backCalls++,replaceState:()=>{}},
   HISTORY_STATE_TAG:'pl', currentView:'pcs',
   topOpenHistorySurfaceId:()=>open?'pcEditorBackdrop':'',
   closeHistorySurfaceById:()=>{if(!refuse){open=false;scope.consumeSurfaceHistory('pcEditorBackdrop');}return true;},

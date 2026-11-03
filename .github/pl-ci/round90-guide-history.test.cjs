@@ -37,13 +37,14 @@ test('guide dismissal never replaces an already-current Settings history entry',
 });
 test('other modal back-navigation keeps its established behavior',()=>{
  const env=makeContext({modal:'planEditorBackdrop'});env.context.consumeSurfaceHistory('planEditorBackdrop');env.run();
- assert.deepEqual(env.events,['back']);
+ assert.deepEqual(env.events,['replace']);
+ assert.equal(env.history.state.modal,undefined);
 });
 test('a newly opened dialog takes over stale closed-dialog history without a queued Back',()=>{
  const env=makeContext({modal:'planEditorBackdrop',successor:'pcEditorBackdrop'});
  env.context.consumeSurfaceHistory('planEditorBackdrop');env.run();
  assert.deepEqual(env.events,['replace']);assert.equal(env.history.state.modal,'pcEditorBackdrop');
- assert.equal(env.context.pendingInternalModalHistoryBack,0);
+ assert.equal(env.context.modalHistorySlotIdle,false);
 });
 test('the guide still open must never alter navigation history',()=>{
  const env=makeContext({guideIsOpen:true});env.context.consumeSurfaceHistory('onboardingBackdrop');env.run();

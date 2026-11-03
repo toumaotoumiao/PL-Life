@@ -92,6 +92,8 @@ jobs:
         run: node --test .github/pl-ci/round161-stats-preview-inspection.test.cjs
       - name: Round162 modal history cleanup and browser Back regression
         run: node --test .github/pl-ci/round162-modal-history-race.test.cjs
+      - name: Round318 history guard slot reuse and no chained modal Back
+        run: node --test .github/pl-ci/round318-stage149-no-chained-modal-back.test.cjs
       - name: Guard against duplicate Back after modal history was already popped
         run: node --test .github/pl-ci/round312-modal-browser-back-guard.test.cjs
       - name: Round164 unified final image inspection contract
@@ -222,6 +224,11 @@ jobs:
           python-version: '3.13'
       - name: Install pinned visual-check runner
         run: python -m pip install --disable-pip-version-check playwright==1.55.0 beautifulsoup4==4.13.4
+      - name: Stage152 real Chromium isolated search and share component at eight viewports
+        shell: bash
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round314-stage152-browser-component.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/stage152-component.log"
       - name: Round156 full-page visual structural acceptance
         id: round156_browser
         continue-on-error: true
@@ -645,6 +652,10 @@ jobs:
         run: node --test .github/pl-ci/round305-nielsen-readability.test.cjs
       - name: Stage139 cross-device readability and calendar interaction
         run: node --test .github/pl-ci/round309-stage139-cross-device.test.cjs
+      - name: Stage152 search closure privacy and historic link preservation
+        run: node --test .github/pl-ci/round314-stage152-final-acceptance.test.cjs
+      - name: Stage151 global search locator and safe create-and-link
+        run: node --test .github/pl-ci/round313-stage151-global-locator.test.cjs
       - name: Stage141 emergency ZIP orphan collision runtime
         run: node --test .github/pl-ci/round311-stage141-backup-orphan-collision.test.cjs
       - name: Stage144 structured restore diagnostics and native storage classification
