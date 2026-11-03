@@ -90,11 +90,11 @@ test('原生 ZIP 门禁允许前置阶段失败，但报告不得把 NOT_RUN 宣
   assert.match(nat,/first_failed_native_step/);
   assert.match(nat,/if: always\(\)/);
 });
-test('CI 修复不改变任何用户存档数据 schema 与目标正式版本',()=>{
-  assert.equal(status.current.stage,153);
-  assert.equal(status.current.appVersion,'8.1.12.331');
+test('CI 修复保留用户存档 schema 并保持当前版本清单一致',()=>{
+  assert.ok(Number.isSafeInteger(status.current.stage)&&status.current.stage>=153);
+  assert.match(status.current.appVersion,/^8\.1\.12\.\d+$/);
   assert.equal(status.current.schemaVersion,26);
-  assert.equal(manifest.appVersion,'8.1.12.331');
+  assert.equal(manifest.appVersion,status.current.appVersion);
   assert.equal(manifest.schemaVersion,26);
 });
 

@@ -1,6 +1,6 @@
 # PL收集梦想生活
 
-当前工程候选：Stage153 / v8.1.12.331 / schema26（正式仓库 GitHub Actions CI 故障热修：固定 Ubuntu 24.04、前置失败日志、Python 依赖门禁；正式站线上待验）。
+当前工程候选：Stage154 / v8.1.12.332 / schema26（修复弹窗浏览器返回键误退出，并同步匿名错误报告与 ZIP 向导测试契约；正式站线上待验）。
 
 `CURRENT_PROJECT_STATUS.json` 是唯一的当前项目状态源；历史 `STAGE*.md` 仅表示当时的时间点快照。
 

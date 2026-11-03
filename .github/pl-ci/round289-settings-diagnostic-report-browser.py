@@ -32,13 +32,13 @@ try:
       page.wait_for_selector('#actionDialogBackdrop:not([hidden])',timeout=30000)
       page.locator('#actionDialogDiagnostics summary').click()
       report=page.locator('#actionDialogDiagnosticText').inner_text()
-      rec(f'{width}: report includes exact location and stage','发生位置：设置 → 导入与迁移 → 新设备' in report and '执行阶段：ZIP 结构核验' in report,report[:800])
-      rec(f'{width}: report masks filename','private_name.zip' not in report and '[文件名已隐藏]' in report,report[:800])
+      rec(f'{width}: report locates only trusted module and state','发生模块：设置 → [具体对象与路径已隐藏]' in report and '事务提交状态：' in report and '下一步：' in report,report[:800])
+      rec(f'{width}: report removes untrusted file and stack','private_name.zip' not in report and 'SyntheticError' not in report and 'synthetic stack' not in report and 'ZIP 结构核验' not in report,report[:800])
       rec(f'{width}: report actions visible',page.locator('#actionDialogCopyReport').is_visible() and page.locator('#actionDialogDownloadReport').is_visible())
       with page.expect_download(timeout=30000) as di:
         page.locator('#actionDialogDownloadReport').click()
       dl=di.value
-      rec(f'{width}: downloadable report filename',dl.suggested_filename.startswith('PL-Life_错误报告_ROUND289-SYNTH_'),dl.suggested_filename)
+      rec(f'{width}: downloadable report filename',dl.suggested_filename.startswith('PL-Life_错误报告_UNCLASSIFIED_'),dl.suggested_filename)
       page.screenshot(path=str(out/f'round289-error-report-{width}.png'),full_page=True)
       ctx.close()
     browser.close()

@@ -1,23 +1,24 @@
 {
   "format": "pl-life-current-project-status",
-  "updatedAt": "2026-11-03",
+  "updatedAt": "2026-11-04",
   "current": {
-    "stage": 153,
-    "appVersion": "8.1.12.331",
+    "stage": 154,
+    "appVersion": "8.1.12.332",
     "schemaVersion": 26,
-    "focus": "Stage153 两条正式仓库 GitHub Actions 失败修复：固定 Ubuntu 24.04，补齐前置失败原因留痕和依赖门禁。原始日志尚未证实上游唯一原因；不修改用户存档/schema26。"
+    "focus": "Stage154 修复浏览器返回时弹窗历史槽覆盖基础页面记录，校正匿名错误报告与完整 ZIP 向导的现行测试契约；不修改存档或 schema26。"
   },
   "currentVersionAcceptance": {
     "code": {
-      "status": "stage153-local-regression-passed",
+      "status": "stage154-local-node-regression-passed",
+      "stage154": "弹窗复用历史条目增加来源标记；匿名诊断、ZIP 核验向导更新测试断言；新增基础历史条目不被覆盖的隔离回归。全套 Node 1387/1387 PASS（2026-11-04，隔离工程）；schema26 未更改。",
       "stage153": "244 Node 测试文件，4组 352+359+347+327=1385/1385 PASS；14/14 Stage153 专项 PASS（其中2项实际运行失败证据生成脚本）；GitHub CI 两关键 workflow 添加前置完整日志/依赖门禁；schema26不变",
       "schema": "schema26 unchanged",
-      "dataCompatibility": "本轮仅调整 GitHub Actions/测试/元数据，不修改数据 schema、导入导出语义、持久化对象；用户备份未进入候选工程"
+      "dataCompatibility": "本轮修改弹窗浏览器历史状态及匿名诊断、ZIP 向导测试契约；不修改数据 schema、导入导出语义或持久化档案对象；用户备份未进入候选工程"
     },
     "browser": {
-      "local": "Stage152 八断点 Chromium 隔离搜索组件重新运行 8/8 PASS；Stage153 没有更改页面交互代码；非整站浏览器验收",
-      "github": "用户上传 Stage152 commit e8ca710 两项 workflow 均失败：浏览器项目 Round217-221 为缺 bs4、Round238/240/242 为缺 playwright、Round245 缺上游 XLSX；原生恢复仅 run-context，前置真实首个失败步骤未知。Stage153 GitHub 新提交未运行。",
-      "upstreamFailure": "尚不能确认 ubuntu 26 是失败根因；GitHub 2026-10-19 起逐步将 ubuntu-latest 迁移 ubuntu26，本轮固定 ubuntu-24.04 并完善失败日志"
+      "local": "Stage154 全套 Node 1387/1387 PASS（仅本地隔离/合成）；真实 Chromium 当前环境未执行，不能据此声称视觉或全站交互通过。Stage152 的历史八断点隔离证据不计入本轮实测。",
+      "github": "用户提供 Stage153 合成浏览器结果：Round162 返回键 2 项失败；Round289 匿名报告 6 项失败；完整 ZIP 向导沿用旧文案误判。Stage154 尚未上传 GitHub，Actions、原生 ZIP 门禁均未运行。",
+      "upstreamFailure": "Stage153 的 CI runner/依赖修复仍保留；Stage154 改动应以新版本 CI 结果复核"
     },
     "realDevice": {
       "state": "targeted-checks-pending",
@@ -31,10 +32,9 @@
     "release": {
       "status": "candidate-ready-not-deployed",
       "artifactNames": [
-        "Stage153_PL-Life_v8.1.12.331_正式仓库完整同步包.zip",
-        "Stage153_CI诊断与回归证据.zip"
+        "Stage154_PL-Life_v8.1.12.332_正式仓库完整同步包.zip"
       ],
-      "reason": "Stage152 线上 CI 真实失败；Stage153 修复已知连锁错误、固定 runner、记录第一个失败步骤，本地通过；两条 GitHub workflow 新版执行结果和完整原生恢复门禁仍待验收。"
+      "reason": "Stage154 本地 Node 1387/1387 PASS，正式仓库完整同步包具备本地发布预检条件；GitHub Actions、真实 Chromium、真实设备及正式站发布状态均待核验。"
     }
   },
   "workstreams": {

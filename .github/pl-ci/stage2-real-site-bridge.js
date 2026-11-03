@@ -265,7 +265,8 @@
             result.valid=await inspectDeviceMigrationInput(file);
             result.enabled=document.getElementById('deviceMigrationRestoreBtn')?.disabled===false;
             const summary=document.getElementById('deviceMigrationInspectStatus')?.textContent||'';
-            result.details=summary.includes('synthetic-transfer.zip')&&summary.includes('核验完成')&&summary.includes('可恢复')&&summary.includes('PL')&&summary.includes('PC')&&summary.includes('图片')&&summary.includes('Excel');
+            const restoreReady=document.getElementById('deviceMigrationRestoreBtn');
+            result.details=summary.includes('synthetic-transfer.zip')&&summary.includes('核验完成')&&summary.includes('ZIP 已核验')&&summary.includes('PL')&&summary.includes('PC')&&summary.includes('图片')&&summary.includes('Excel')&&restoreReady?.hidden===false&&restoreReady?.disabled===false&&restoreReady?.textContent?.trim()==='恢复这份备份';
             phase='CORRUPT_INSPECTION';
             const corrupt=new File([new Uint8Array([80,75,0,0,1])],'synthetic-broken.zip',{type:'application/zip'});
             result.corruptRejected=(await inspectDeviceMigrationInput(corrupt))===false;

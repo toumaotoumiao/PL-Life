@@ -23,7 +23,9 @@ test('clear helper disables and hides recovery while returning file selection to
 test('real-browser bridge follows the current verified-file status card instead of retired copy',()=>{
   assert.match(bridge,/summary\.includes\('synthetic-transfer\.zip'\)/);
   assert.match(bridge,/summary\.includes\('核验完成'\)/);
-  assert.match(bridge,/summary\.includes\('可恢复'\)/);
+  assert.match(bridge,/summary\.includes\('ZIP 已核验'\)/);
+  assert.match(bridge,/restoreReady\?\.hidden===false/);
+  assert.match(bridge,/restoreReady\?\.disabled===false/);
   assert.doesNotMatch(bridge,/summary\.includes\('只读核验'\)/);
   assert.match(bridge,/deviceMigrationVerifiedFile===null/);
   assert.match(bridge,/restoreAfterBad\?\.hidden===true/);
