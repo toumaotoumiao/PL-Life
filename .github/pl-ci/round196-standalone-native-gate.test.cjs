@@ -11,7 +11,7 @@ test('Round196 native gate runs on test-code push or manual dispatch, never depl
    assert.ok(workflow.includes('- '+file),file);
  assert.doesNotMatch(workflow,/\bpull_request:\s*\n|pages:\s*write|contents:\s*write|deploy-pages|git push|actions\/upload-pages-artifact/);
  assert.match(workflow,/contents: read/);
- assert.match(workflow,/runs-on: ubuntu-latest/);
+ assert.match(workflow,/runs-on: ubuntu-24\.04/);
  assert.match(workflow,/timeout-minutes: 20/);
 });
 test('Round196 runs existing production app with native storage and still uses pinned test browser',()=>{

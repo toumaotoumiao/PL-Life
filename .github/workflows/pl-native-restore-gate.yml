@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   native-complete-restore:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
@@ -33,9 +33,17 @@ jobs:
           REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
         run: |
           mkdir -p "$REPORT_DIR"
-          printf 'Commit: %s\nRef: %s\n' "$GITHUB_SHA" "$GITHUB_REF" > "$REPORT_DIR/run-context.txt"
+          printf 'Commit: %s\nRef: %s\nRunner: %s\n' "$GITHUB_SHA" "$GITHUB_REF" "$RUNNER_OS" > "$REPORT_DIR/run-context.txt"
+          cat /etc/os-release | grep -E '^(NAME|VERSION_ID)=' > "$REPORT_DIR/runner-image.txt"
+          node --version >> "$REPORT_DIR/runner-image.txt"
+          python --version >> "$REPORT_DIR/runner-image.txt"
       - name: Check full-app native gate contract and recovery guards
+        id: native_node_contract
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
         run: |
+          set -o pipefail
           node --test .github/pl-ci/round187-native-fullapp-restore.test.cjs \
             .github/pl-ci/round189-complete-zip-attachment-fidelity.test.cjs \
             .github/pl-ci/round190-legacy-snapshot-attachment-guard.test.cjs \
@@ -128,18 +136,50 @@ jobs:
             .github/pl-ci/round292-fresh-idb-bootstrap.test.cjs \
             .github/pl-ci/round312-stage150-privacy-association.test.cjs \
             .github/pl-ci/round313-stage151-global-locator.test.cjs \
-            .github/pl-ci/round314-stage152-final-acceptance.test.cjs
+            .github/pl-ci/round314-stage152-final-acceptance.test.cjs \
+            .github/pl-ci/round315-stage153-ci-prerequisites.test.cjs 2>&1 | tee "$REPORT_DIR/native-node-guard.log"
       - name: Verify production release package preflight
-        run: python .github/pl-ci/build-production-release.py --check-only
+        id: native_release_preflight
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          set -o pipefail
+          python .github/pl-ci/build-production-release.py --check-only 2>&1 | tee "$REPORT_DIR/release-preflight.log"
       - name: Verify privacy-local D&D comparison using temporary fictional sheets
-        run: python .github/pl-ci/round223-dnd5-private-diff-test.py
+        id: native_diff_test
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round223-dnd5-private-diff-test.py 2>&1 | tee "$REPORT_DIR/fictional-dnd-diff.log"
       - name: Test native-result evidence attestation (fictional reports only)
-        run: python .github/pl-ci/round251-native-result-attestation-test.py
+        id: native_result_fixture
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          set -o pipefail
+          python .github/pl-ci/round251-native-result-attestation-test.py 2>&1 | tee "$REPORT_DIR/native-result-fixtures.log"
       - name: Install isolated browser test dependency
-        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+        id: native_python_deps
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          set -o pipefail
+          python -m pip install --disable-pip-version-check playwright==1.55.0 2>&1 | tee "$REPORT_DIR/python-deps.log"
       - name: Install Playwright Chromium and required libraries
-        run: python -m playwright install --with-deps chromium
+        id: native_chromium_deps
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+        run: |
+          set -o pipefail
+          python -m playwright install --with-deps chromium 2>&1 | tee "$REPORT_DIR/chromium-deps.log"
       - name: Verify fresh-device IndexedDB v0 bootstrap in real Chromium
+        id: native_idb_bootstrap
         shell: bash
         env:
           PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
@@ -155,6 +195,28 @@ jobs:
         run: |
           set -o pipefail
           python .github/pl-ci/round187-native-fullapp-restore-browser.py 2>&1 | tee "$PL_SYNTHETIC_REPORT_DIR/round187-console.log"
+      - name: Record native prerequisite failures before the release verdict
+        if: always()
+        shell: bash
+        env:
+          REPORT_DIR: ${{ runner.temp }}/pl-native-restore-evidence
+          PL_CI_STEP_OUTCOMES: ${{ toJSON(steps) }}
+        run: |
+          mkdir -p "$REPORT_DIR"
+          python3 - <<'PYCI'
+          import json,os
+          from pathlib import Path
+          steps=json.loads(os.environ.get('PL_CI_STEP_OUTCOMES','{}'))
+          keys=['native_node_contract','native_release_preflight','native_diff_test','native_result_fixture',
+                'native_python_deps','native_chromium_deps','native_idb_bootstrap','native_restore']
+          lines=[f'commit={os.getenv("GITHUB_SHA","unknown")}']
+          for key in keys:
+              lines.append(f'{key}={steps.get(key,{}).get("outcome","missing")}')
+          failure=next((k for k in keys if steps.get(k,{}).get('outcome')=='failure'),'none')
+          lines.append(f'first_failed_native_step={failure}')
+          (Path(os.environ['REPORT_DIR'])/'ci-step-outcomes.txt').write_text('\n'.join(lines)+'\n',encoding='utf8')
+          print('Native CI provenance: '+' | '.join(lines))
+          PYCI
       - name: Publish truthful result in run summary
         if: always()
         shell: bash

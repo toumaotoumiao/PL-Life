@@ -2,21 +2,22 @@
   "format": "pl-life-current-project-status",
   "updatedAt": "2026-11-03",
   "current": {
-    "stage": 152,
-    "appVersion": "8.1.12.330",
+    "stage": 153,
+    "appVersion": "8.1.12.331",
     "schemaVersion": 26,
-    "focus": "三轮搜索/筛选/创建/关联整改第3轮收口：真实 Chromium 组件测试、历史 ZIP 只读校验、PC 搜索拒绝打开的失败状态修复。正式站与全站 Chromium 尚未验收。"
+    "focus": "Stage153 两条正式仓库 GitHub Actions 失败修复：固定 Ubuntu 24.04，补齐前置失败原因留痕和依赖门禁。原始日志尚未证实上游唯一原因；不修改用户存档/schema26。"
   },
   "currentVersionAcceptance": {
     "code": {
-      "status": "stage152-local-regression-passed",
-      "stage152": "9/9 新增 Node；243 个测试文件分四组 1371/1371 全量 Node PASS；8 断点 Chromium 隔离组件 PASS；两份历史 ZIP 只读校验 PASS",
+      "status": "stage153-local-regression-passed",
+      "stage153": "244 Node 测试文件，4组 352+359+347+327=1385/1385 PASS；14/14 Stage153 专项 PASS（其中2项实际运行失败证据生成脚本）；GitHub CI 两关键 workflow 添加前置完整日志/依赖门禁；schema26不变",
       "schema": "schema26 unchanged",
-      "dataCompatibility": "源 ZIP 完整性已检查；真实 IndexedDB 完整恢复、刷新与二次导出未执行"
+      "dataCompatibility": "本轮仅调整 GitHub Actions/测试/元数据，不修改数据 schema、导入导出语义、持久化对象；用户备份未进入候选工程"
     },
     "browser": {
-      "local": "Chromium 八断点原始搜索函数隔离组件通过；本机 HTTP 整站访问 ERR_BLOCKED_BY_ADMINISTRATOR，整站未执行",
-      "github": "Stage152 尚未推送，GitHub CI 未执行"
+      "local": "Stage152 八断点 Chromium 隔离搜索组件重新运行 8/8 PASS；Stage153 没有更改页面交互代码；非整站浏览器验收",
+      "github": "用户上传 Stage152 commit e8ca710 两项 workflow 均失败：浏览器项目 Round217-221 为缺 bs4、Round238/240/242 为缺 playwright、Round245 缺上游 XLSX；原生恢复仅 run-context，前置真实首个失败步骤未知。Stage153 GitHub 新提交未运行。",
+      "upstreamFailure": "尚不能确认 ubuntu 26 是失败根因；GitHub 2026-10-19 起逐步将 ubuntu-latest 迁移 ubuntu26，本轮固定 ubuntu-24.04 并完善失败日志"
     },
     "realDevice": {
       "state": "targeted-checks-pending",
@@ -30,10 +31,10 @@
     "release": {
       "status": "candidate-ready-not-deployed",
       "artifactNames": [
-        "Stage152_PL-Life_v8.1.12.330_正式仓库完整同步包.zip",
-        "Stage152_验收证据与SHA256.zip"
+        "Stage153_PL-Life_v8.1.12.331_正式仓库完整同步包.zip",
+        "Stage153_CI诊断与回归证据.zip"
       ],
-      "reason": "正常正式站部署仍需独立 GitHub 证据；源码及本地测试不能替代正式环境"
+      "reason": "Stage152 线上 CI 真实失败；Stage153 修复已知连锁错误、固定 runner、记录第一个失败步骤，本地通过；两条 GitHub workflow 新版执行结果和完整原生恢复门禁仍待验收。"
     }
   },
   "workstreams": {
@@ -384,5 +385,13 @@
     "scope": "三轮产品整改第3轮，历史 ZIP 只读核验、8 断点 Chromium 组件回归、发布一致性与失败态整改",
     "checks": "9/9 新增 Node；1371/1371 全量 Node（4 组 297+367+244+463）；Chromium 8 断点隔离组件 PASS；2 份历史完整备份只读校验 PASS；19/19 inline JS 和3份 workflow 解析通过。",
     "releaseGate": "整站真实浏览器、正式站 GitHub CI、手机真实设备尚未执行，不得宣称全部通过"
+  },
+  "stage153": {
+    "scope": "只修复 CI 运行基线、前置失败证据和依赖门禁，不新增业务功能、不变更存档格式；原正式站线上 e8ca710 的原始首个失败日志不可得。",
+    "previousArtifact": "pl-synthetic-browser-result (21).zip，9 份失败日志；pl-round187-native-restore-evidence (5).zip，仅 run-context.txt",
+    "node": "244 files / 1385 PASS / 0 FAIL / 0 SKIP",
+    "chromium": "8/8 isolated component, NOT full app",
+    "runtime": "python + GitHub steps JSON 两套假故障插入执行成功；第一个失败门禁及跳过状态均可写入 ci-step-outcomes.txt",
+    "releaseState": "local-candidate, CI upload pending"
   }
 }
