@@ -1,6 +1,6 @@
 # PL收集梦想生活
 
-当前工程候选：Stage157 / v8.1.12.335 / schema26（Round162 改用可信点击和浏览器级返回；真实 Chromium 待验，正式站线上待验）。
+当前工程候选：Stage158 / v8.1.12.336 / schema26（修复 Round88 浏览器测试未展开折叠导入入口、超时诊断不足的问题；完整 Chromium CI 待验，正式站线上待验）。
 
 `CURRENT_PROJECT_STATUS.json` 是唯一的当前项目状态源；历史 `STAGE*.md` 仅表示当时的时间点快照。
 

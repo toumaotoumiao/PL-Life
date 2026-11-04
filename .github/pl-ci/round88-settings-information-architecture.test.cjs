@@ -7,6 +7,8 @@ const path=require('node:path');
 const root=path.resolve(__dirname,'../..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
+const liveBrowser=fs.readFileSync(path.join(root,'.github/pl-ci/round88-settings-live-browser.cjs'),'utf8');
+const workflow=fs.readFileSync(path.join(root,'.github/workflows/pl-browser-synthetic.yml'),'utf8');
 const ids=['exportBtn','exportCompactBackupBtn','importBtn','importFile','verifySavedBackupBtn','verifySavedBackupFile',
 'exportWorkspacePreviewBtn','inspectWorkspacePreviewBtn','inspectWorkspacePreviewFile','exportEncryptedBtn','importEncryptedBtn',
 'encryptedImportFile','importLegacyModuleBtn','legacyModuleImportFile','deviceMigrationGuide','deviceMigrationInspectFile',
@@ -50,6 +52,19 @@ test('backup primary has 3 visible actions, legacy import and other tools tucked
  assert.match(html,/data-collapse-key="settings:advanced:encrypted"/);
  assert.match(html,/data-settings-panel="migration"/);
  assert.match(html,/data-collapse-key="settings:migration:legacy"/);
+});
+test('Round88 opens collapsed compatible imports before native file selection',()=>{
+ assert.match(liveBrowser,/details\[data-collapse-key="settings:data:backup-more-options"\]/);
+ assert.match(liveBrowser,/secondaryImport\.locator\('summary'\)\.click\(\)/);
+ assert.match(liveBrowser,/importTrigger\.waitFor\(\{state:'visible'/);
+ assert.match(liveBrowser,/Promise\.all\(\[/);
+ assert.match(liveBrowser,/page\.waitForEvent\('filechooser'/);
+ assert.match(liveBrowser,/native\.element\(\)\.getAttribute\('id'\)/);
+ assert.doesNotMatch(liveBrowser,/const chooser=page\.waitForEvent/);
+});
+test('Round88 is enforced after collecting later Chromium results',()=>{
+ assert.match(workflow,/id: round88_browser[\s\S]*?continue-on-error: true[\s\S]*?run: node \.github\/pl-ci\/round88-settings-live-browser\.cjs/);
+ assert.match(workflow,/Round88:\$\{\{ steps\.round88_browser\.outcome \}\}/);
 });
 test('version and cache are synchronized, data schema is not rewritten',()=>{
  const version=html.match(/const APP_UI_VERSION = "([0-9.]+)"/)?.[1];

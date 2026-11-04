@@ -90,9 +90,23 @@ const sections=['overview','appearance','rating','behavior','data','migration','
     checks++; failures.push(...result.map(error=>({width,name,error})));
    }
    await page.locator('#settingsModal .settings-nav [data-settings-target="data"]').click();
-   const chooser=page.waitForEvent('filechooser',{timeout:10000});
-   await page.locator('#importBtn').click();const native=await chooser;
-   if(!native||!native.element)failures.push({width,name:'data',error:'native import file chooser missing'});
+   stage='expand secondary import tools';
+   // This compatible-file import is inside a collapsed disclosure.
+   // Exercise the visible path a user takes to access it.
+   const secondaryImport=page.locator('#settingsModal details[data-collapse-key="settings:data:backup-more-options"]');
+   if(!await secondaryImport.evaluate(el=>el.open))await secondaryImport.locator('summary').click();
+   await page.waitForFunction(()=>document.querySelector('details[data-collapse-key="settings:data:backup-more-options"]')?.open===true,null,{timeout:5000});
+   const importTrigger=page.locator('#importBtn');
+   await importTrigger.waitFor({state:'visible',timeout:5000});
+   stage='open native import file chooser';
+   // Await gesture and chooser together; otherwise an orphaned timeout can
+   // hide the real click error and terminate this test without diagnostics.
+   const [native]=await Promise.all([
+     page.waitForEvent('filechooser',{timeout:10000}),
+     importTrigger.click()
+   ]);
+   if(!native||await native.element().getAttribute('id')!=='importFile')
+     failures.push({width,name:'data',error:'native chooser does not target unified importFile'});
    checks++;
    if(errors.length)failures.push({width,name:'runtime',error:errors.slice(0,3).join(' | ')});
    await context.close();activePage=null;
@@ -133,8 +147,12 @@ const sections=['overview','appearance','rating','behavior','data','migration','
          const get=id=>{const el=document.getElementById(id);return el?{hidden:el.hidden,
            inert:el.inert,display:getComputedStyle(el).display,rects:el.getClientRects().length,
            className:el.className}:null};
+         const legacyImport=document.querySelector('details[data-collapse-key="settings:data:backup-more-options"]');
+         const importBtn=document.getElementById('importBtn'),importInput=document.getElementById('importFile');
          return {url:location.pathname,version:typeof APP_UI_VERSION==='string'?APP_UI_VERSION:'unknown',
            settings:get('settingsModal'),overlay:get('overlay'),onboarding:get('onboardingBackdrop'),
+           legacyImportOpen:legacyImport?.open??null,importButtonVisible:!!importBtn?.getClientRects().length,
+           importInputDisabled:importInput?.disabled??null,importInputType:importInput?.type||'missing',
            modalHistory:history.state?.modal||'',shareMode:typeof shareModeEnabled!=='undefined'&&shareModeEnabled,
            openSettingsType:typeof openSettings,activePanel:typeof activeSettingsPanel==='string'?activeSettingsPanel:'unknown',
            startupError:document.getElementById('compatStartupError')?.textContent?.slice(0,350)||''};

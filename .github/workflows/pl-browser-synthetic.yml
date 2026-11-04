@@ -1204,6 +1204,8 @@ jobs:
       - name: Guard all seven page structures and populated record width in Chromium
         run: node .github/pl-ci/round87-view-flow-browser-audit.cjs
       - name: Open settings, switch all sections and reach the unified import in Chromium
+        id: round88_browser
+        continue-on-error: true
         run: node .github/pl-ci/round88-settings-live-browser.cjs
       - name: Type Log notes on both pages, save and reload in Chromium
         run: node .github/pl-ci/round82-log-live-browser.cjs
@@ -1236,7 +1238,7 @@ jobs:
                  f'first_guard_failure={failing[0] if failing else "none"}',
                  f'failed_pre_browser_guards={",".join(failing) or "none"}',
                  f'skipped_pre_browser_guards={",".join(skipped) or "none"}']
-          for key in ['node_browser_deps','node_chromium_deps','python_runtime','python_deps','round242_browser','round245_independent']:
+          for key in ['node_browser_deps','node_chromium_deps','python_runtime','python_deps','round88_browser','round242_browser','round245_independent']:
               lines.append(f'{key}={steps.get(key,{}).get("outcome","missing")}')
           (root/'ci-step-outcomes.txt').write_text('\n'.join(lines)+'\n',encoding='utf-8')
           print('CI prerequisite provenance: '+' | '.join(lines))
@@ -1248,6 +1250,7 @@ jobs:
           failed=0
           echo "Round187:${{ steps.round187_browser.outcome }} (informational in synthetic regression; mandatory release enforcement is PL isolated native ZIP restore gate)"
           for check in \
+            "Round88:${{ steps.round88_browser.outcome }}" \
             "Round134:${{ steps.round134_browser.outcome }}" \
             "Round141:${{ steps.round141_browser.outcome }}" \
             "Round148:${{ steps.round148_browser.outcome }}" \
