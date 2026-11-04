@@ -7,11 +7,6 @@ ROOT=Path(__file__).resolve().parents[2]
 OUT=Path(os.environ.get('PL_SYNTHETIC_REPORT_DIR',str(ROOT/'.github/pl-ci/visual-evidence')))/'round162-modal-history'
 OUT.mkdir(parents=True,exist_ok=True)
 html=(ROOT/'index.html').read_text(encoding='utf-8')
-html=re.sub(r'<meta[^>]+http-equiv=["\']Content-Security-Policy["\'][^>]*>', '',html,flags=re.I)
-def inline(m):return '<script>\n'+re.sub(r'</script','<\\/script',(ROOT/m.group(1)).read_text(encoding='utf-8'),flags=re.I)+'\n</script>'
-html=re.sub(r'<script\s+src="\./([a-zA-Z0-9_.-]+\.js)"\s*></script>',inline,html,flags=re.I)
-shim='''<script>(function(){const a=new Map(),b=new Map();function st(m){return{getItem:k=>m.has(String(k))?m.get(String(k)):null,setItem:(k,v)=>m.set(String(k),String(v)),removeItem:k=>m.delete(String(k)),clear:()=>m.clear(),key:i=>[...m.keys()][i]||null,get length(){return m.size}}};Object.defineProperty(window,'localStorage',{value:st(a),configurable:true});Object.defineProperty(window,'sessionStorage',{value:st(b),configurable:true});})();</script>'''
-html=html.replace('<head>','<head>'+shim,1)
 checks=[];fails=[];shots=[]
 def assert_state(ok,name,data=None):
  checks.append(name)
@@ -25,9 +20,17 @@ with sync_playwright() as p:
   page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   try:
-   prepare_synthetic_origin(page);page.set_content(html,wait_until='domcontentloaded',timeout=90000)
+   # Exercise a real HTTP document navigation. set_content() internally uses
+   # document.write(), which does not exercise the same session-history setup
+   # as a user opening the production entry point.
+   origin=prepare_synthetic_origin(page)
+   page.goto(origin+'/index.html',wait_until='domcontentloaded',timeout=90000)
+   page.wait_for_function('''()=>history.state?.tag===HISTORY_STATE_TAG && typeof openPcEditor==='function' && typeof closePcEditor==='function' ''',timeout=90000)
    page.evaluate('''()=>{document.documentElement.dataset.round162App='1';localStorage.setItem(ONBOARDING_KEY,'1');let a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');pcs.push(normalizePcArchive({id:'audit-pc-a',name:'测试角色 A',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));pcs.push(normalizePcArchive({id:'audit-pc-b',name:'测试角色 B',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));runPlans.push(normalizeRunPlan({id:'audit-plan-a',moduleName:'合成计划A'}));runPlans.push(normalizeRunPlan({id:'audit-plan-b',moduleName:'合成计划B'}));}''')
    page.wait_for_timeout(550)
+   baseline=page.evaluate('''()=>({origin:location.origin,path:location.pathname,historyLength:history.length,historyState:history.state})''')
+   assert_state(baseline['path']=='/index.html' and baseline['historyState'] is not None,
+     f'{width} app initializes a real same-origin history entry',baseline)
    # Force history.back to land after the next modal is already open, rather than relying on natural timing.
    page.evaluate('''()=>{window.__originalHistoryBack=history.back.bind(history);window.__round162UnexpectedBack=0;history.back=function(){window.__round162UnexpectedBack++;setTimeout(()=>window.__originalHistoryBack(),65)};}''')
    page.evaluate('openPcEditor("audit-pc-a")')
@@ -36,15 +39,15 @@ with sync_playwright() as p:
    page.wait_for_timeout(15) # pending programmatic history.back is scheduled; its event has not landed
    page.evaluate('openPcEditor("audit-pc-b")')
    page.wait_for_timeout(300)
-   state=page.evaluate('''()=>({open:!document.getElementById('pcEditorBackdrop').hidden,id:pcDraft?.id,modal:history.state?.modal,autoBack:window.__round162UnexpectedBack||0,pending:typeof pendingInternalModalHistoryBack==='number'?pendingInternalModalHistoryBack:-1})''')
+   state=page.evaluate('''()=>({open:!document.getElementById('pcEditorBackdrop').hidden,id:pcDraft?.id,modal:history.state?.modal,modalGuardCreated:history.state?.modalGuardCreated===true,historyLength:history.length,autoBack:window.__round162UnexpectedBack||0,pending:typeof pendingInternalModalHistoryBack==='number'?pendingInternalModalHistoryBack:-1})''')
    assert_state(state['open'] and state['id']=='audit-pc-b',f'{width} delayed cleanup does not dismiss next PC editor',state)
-   assert_state(state['modal']=='pcEditorBackdrop' and state['pending'] in (0,-1),f'{width} next PC retains an intact history guard',state)
+   assert_state(state['modal']=='pcEditorBackdrop' and state['modalGuardCreated'] and state['historyLength']>=2 and state['pending'] in (0,-1),f'{width} next PC retains an intact history guard',state)
    assert_state(state['autoBack']==0,f'{width} no delayed programmatic Back while switching PC editors',state)
    page.evaluate('history.back=window.__originalHistoryBack')
    page.evaluate('history.back()')
    page.wait_for_timeout(300)
    pc=page.evaluate('''()=>({present:!!document.getElementById('pcEditorBackdrop'),hidden:document.getElementById('pcEditorBackdrop')?.hidden??null,appLoaded:document.documentElement.dataset.round162App==='1',path:location.pathname,historyState:history.state,autoBack:window.__round162UnexpectedBack||0,pending:typeof pendingInternalModalHistoryBack==='number'?pendingInternalModalHistoryBack:-1})''')
-   assert_state(pc['present'] and pc['appLoaded'],f'{width} page did not navigate away from the application',pc)
+   assert_state(pc['present'] and pc['appLoaded'],f'{width} page did not navigate away from the application',{'afterBack':pc,'beforeBack':state,'baseline':baseline})
    if not pc['present'] or not pc['appLoaded']:continue
    assert_state(pc['hidden'] and pc['pending'] in (0,-1),f'{width} real browser Back dismisses PC editor',pc)
    page.evaluate('''()=>{window.__originalHistoryBack=history.back.bind(history);window.__round162UnexpectedBack=0;history.back=function(){window.__round162UnexpectedBack++;setTimeout(()=>window.__originalHistoryBack(),65)};}''')

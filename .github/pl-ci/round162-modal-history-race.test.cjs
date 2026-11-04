@@ -14,6 +14,13 @@ test('browser contract recreates queued Back and checks PC and plan plus real Ba
  assert.match(workflow,/round162-modal-history-race-browser.py/);
  assert.match(workflow,/Round162:\$\{\{ steps\.round162_browser\.outcome \}\}/);
 });
+test('real Chromium history test navigates to the actual served app and reports history state on failure',()=>{
+ assert.match(browser,/page\.goto\(origin\+'\/index\.html'/);
+ assert.match(browser,/page\.wait_for_function\(/);
+ assert.match(browser,/historyLength:history\.length/);
+ assert.match(browser,/modalGuardCreated:history\.state\?\.modalGuardCreated===true/);
+ assert.doesNotMatch(browser,/page\.set_content\(/);
+});
 test('release version, schema, and CoC7 rule gate still present',()=>{
  const version=html.match(/const APP_UI_VERSION = "([\d.]+)";/)?.[1];assert.match(version,/^\d+(?:\.\d+){3}$/);
  assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
