@@ -6,6 +6,8 @@ Playwright page.set_content() on a new page normally executes on about:blank
 which can both fail unrelated UI assertions and block click targets.
 
 Call prepare_synthetic_origin(page) immediately before page.set_content(html).
+For tests that navigate to a real index.html document and exercise Back,
+pass bootstrap=False so the test-only bootstrap URL never enters history.
 All data stays in the ephemeral Playwright context on 127.0.0.1.
 """
 from __future__ import annotations
@@ -41,14 +43,18 @@ class _Handler(SimpleHTTPRequestHandler):
         pass
 
 
-def prepare_synthetic_origin(page):
-    """Establish a storage-capable origin, preserving each test's real assertions."""
+def prepare_synthetic_origin(page, *, bootstrap=True):
+    """Serve a storage-capable origin, optionally navigating to the bootstrap."""
     global _server
     if _server is None:
         _server = ThreadingHTTPServer(("127.0.0.1", 0), _Handler)
         Thread(target=_server.serve_forever, name="synthetic-origin", daemon=True).start()
         atexit.register(_server.server_close)
     origin = f"http://127.0.0.1:{_server.server_port}"
+    if not bootstrap:
+        # Real-document history tests should open index.html as the very first
+        # navigation. A synthetic bootstrap predecessor changes Back behavior.
+        return origin
     page.goto(origin + _BOOTSTRAP, wait_until="domcontentloaded", timeout=30000)
     observed = page.evaluate("location.origin")
     if observed != origin:
