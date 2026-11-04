@@ -14,7 +14,8 @@
 - 不要把测试仓库、历史内部报告、真实备份、角色 Excel 或验收 artifact 上传到正式仓库。
 - 正式站与测试站继续依赖 `runtime-environment.js` 按路径隔离存储。
 
-## Stage156 发布注意事项（强制）
+## Stage157 发布注意事项（强制）
+Stage156 v8.1.12.334 GitHub CI 中，隔离原生 ZIP 恢复门和 Pages 部署通过；Round162 在 375px 和 1280px 下返回 about:blank。Stage157 改用可信点击及浏览器级 Back，取消测试对 history.back 的拦截；新的 Chromium CI 结果待确认。schema26 不变。
 应先核对当前正式站完整备份，并使用正式仓库候选同步包更新文件；这一操作只部署代码，不会清除浏览器本地档案。搜索与关联改动的浏览器验收须由新提交的 GitHub Actions 执行，失败应及时撤回至上次可用发布。
 用户明确选择减少测试站人工步骤，本轮优先提供正式仓库完整同步包；自动 CI 与数据安全预检仍然保留。若新一轮 Chromium 继续失败，读取匿名 pl-synthetic-browser-result 诊断，不要求真实用户清库或再次恢复备份。
 以 `CURRENT_PROJECT_STATUS.json` 的 release 和 browser 字段作为本轮发布阻断清单。本轮真实 GitHub CI 结果和用户设备验收仍为待核实项，不能将打包成功表述为线上验收完成。
@@ -37,4 +38,4 @@ Stage155 的 v8.1.12.333 Chromium 日志进一步确认：Round162 的 Back 返�
 - PL/PC/模组/计划/记录可正常打开；
 - 原有正式数据仍存在。
 
-不要在正式站重新做破坏性恢复演练；隔离原生 CI 对早期版本曾返回失败，Stage154 仍须独立验证其成功运行，未取得 PASS 前不能宣称 ZIP 恢复链通过发布门禁。
+不要在正式站重新做破坏性恢复演练；Stage156 v8.1.12.334 隔离原生 ZIP 恢复门已取得 GitHub Actions PASS。Stage157 仍须重新通过 CI，且必须对真实旧数据恢复结果单独核对，才能声明相应验收闭环。

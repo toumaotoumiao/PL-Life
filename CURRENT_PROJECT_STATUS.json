@@ -2,25 +2,26 @@
   "format": "pl-life-current-project-status",
   "updatedAt": "2026-11-04",
   "current": {
-    "stage": 156,
-    "appVersion": "8.1.12.334",
+    "stage": 157,
+    "appVersion": "8.1.12.335",
     "schemaVersion": 26,
-    "focus": "Stage156 排除 Round162 测试用 bootstrap 页面参与浏览器 Back 历史；新标签页直接导航 index.html 并保留真实 Back 和导航轨迹检查；schema26 不变。"
+    "focus": "Stage157 Round162 改用可信点击与浏览器级 Back，取消 history.back 拦截并保留 popstate 轨迹诊断；schema26 不变。"
   },
   "currentVersionAcceptance": {
     "code": {
-      "status": "stage156-local-node-regression-passed-chromium-pending",
+      "status": "stage157-local-node-regression-passed-chromium-pending",
+      "stage157": "Round162 测试利用 Playwright click 开启 PC/计划编辑器、page.go_back 执行真实浏览器返回，移除 history.back 拦截并记录 popstate。全套 Node 1389/1389 PASS、Python AST PASS、发行预检 PASS（2026-11-04）；业务代码和 schema 未修改。",
       "stage156": "Round162 真正从空白新标签页导航 index.html，不让测试专用 bootstrap 页面进入前进/返回历史；仅扩展 synthetic_browser_origin 的可选 bootstrap 参数，其他测试保留旧默认行为；新增 Navigation API 可用时的历史条目诊断。全套 Node 1389/1389 PASS（2026-11-04），含新增独立运行的无导航 helper 测试。真实 Chromium 结果待验。",
       "stage155": "将 Round162 由 set_content 改为对本地 HTTP 正式入口 index.html 的实际导航；测试添加历史基线、弹窗 guard 标记与失败现场；旧模态标记无来源标识时不再提早跳过 pushState；更新 Round312 旧套件源站校验契约。全套 Node 1388/1388 PASS（2026-11-04）；真实 Chromium 待执行。",
       "stage154": "弹窗复用历史条目增加来源标记；匿名诊断、ZIP 核验向导更新测试断言；新增基础历史条目不被覆盖的隔离回归。全套 Node 1387/1387 PASS（2026-11-04，隔离工程）；schema26 未更改。",
       "stage153": "244 Node 测试文件，4组 352+359+347+327=1385/1385 PASS；14/14 Stage153 专项 PASS（其中2项实际运行失败证据生成脚本）；GitHub CI 两关键 workflow 添加前置完整日志/依赖门禁；schema26不变",
       "schema": "schema26 unchanged",
-      "dataCompatibility": "Stage156 只修改合成浏览器测试起始导航和相应测试契约；不修改持久化逻辑、数据 schema、导入导出、附件与档案对象；用户原始备份未进入候选工程"
+      "dataCompatibility": "Stage157 只修改合成浏览器测试、相关契约和版本资料，不修改持久化逻辑、数据 schema、导入导出、附件与档案对象；用户原始备份未进入候选工程"
     },
     "browser": {
-      "local": "Stage156 完整 Node 回归 1389/1389 PASS、Python AST 和发行包预检 PASS，新增本机 loopback helper 无 bootstrap 导航运行断言。本机无可用 Chromium 二进制和 Python Playwright，真实浏览器交互不能在本机执行。",
-      "github": "用户上传 Stage155 v8.1.12.333 commit 76b82a2 的 Chromium 证据：Round162 10 checks 中 2 FAIL，375/1280px 的真实 Back 都落到测试专用 /__pl_synthetic_origin_bootstrap__.html；其余提供的 60 份 JSON 结果未见独立失败，Round289 14/14 PASS。Stage156 未部署。",
-      "upstreamFailure": "Stage155 在测试导航前仍调用 prepare_synthetic_origin(page)，把专用 bootstrap 页面压入历史；Back 会退到该页面，形成非真实用户路径。Stage156 改为不访问 bootstrap 的首次 HTTP 导航。若新版真实 Back 仍离开 index.html，则需要继续调查应用本身的历史守卫。"
+      "local": "Stage157 本机 Node 1389/1389 PASS、Python AST PASS、发行预检 PASS。本机无可用 Chromium 和 Python Playwright；真实浏览器操作未执行。",
+      "github": "Stage156 v8.1.12.334 commit 211fa73 的原生 ZIP 恢复门和 Pages 部署均 PASS；Chromium Synthetic Round162 10 项有 2 项 FAIL（375/1280px 的 Back 进入 about:blank）。Stage157 尚未提交 CI。",
+      "upstreamFailure": "Stage156 已排除测试 bootstrap 前置页。旧 Round162 用 JS 打开弹窗、拦截 history.back 并脚本调用返回，偏离真实用户操作；Stage157 改为可信点击与 page.go_back。Chromium 仍待验，尚不能排除产品历史守卫缺陷。"
     },
     "realDevice": {
       "state": "targeted-checks-pending",
@@ -34,9 +35,9 @@
     "release": {
       "status": "candidate-ready-not-deployed",
       "artifactNames": [
-        "Stage156_PL-Life_v8.1.12.334_正式仓库完整同步包.zip"
+        "Stage157_PL-Life_v8.1.12.335_正式仓库完整同步包.zip"
       ],
-      "reason": "Stage156 移除 Round162 历史栈内的测试专用 bootstrap 前置导航，保留浏览器真实返回核验；新版 GitHub Chromium、原生 ZIP 恢复门和真实设备尚未完成验收。"
+      "reason": "Stage157 修正 Chromium 测试操作方式；Stage156 ZIP 恢复门与 Pages 已通过，Stage157 Chromium、真机与发布仍待验。"
     }
   },
   "workstreams": {

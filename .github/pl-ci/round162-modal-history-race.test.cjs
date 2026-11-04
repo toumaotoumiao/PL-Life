@@ -9,8 +9,11 @@ test('programmatic close reuses a modal history slot instead of queuing Back',()
  assert.doesNotMatch(block,/history\.back\s*\(/);
  assert.match(html,/An obsolete modal marker is not permission to traverse again/);
 });
-test('browser contract recreates queued Back and checks PC and plan plus real Back',()=>{
- for(const term of ['closePcEditor({force:true})','closePlanEditor()','openPcEditor("audit-pc-b")','openPlanEditor("audit-plan-b")','real browser Back dismisses PC editor','real browser Back dismisses plan editor','delayed cleanup does not dismiss next PC editor','no delayed programmatic Back while switching PC editors','no delayed programmatic Back while switching plan editors'])assert.ok(browser.includes(term),term);
+test('browser contract uses trusted clicks and real browser Back',()=>{
+ for(const term of ['closePcEditor({force:true})','closePlanEditor()','round162-pc-b','round162-plan-b','real browser Back dismisses PC editor','real browser Back dismisses plan editor','delayed cleanup does not dismiss next PC editor','no delayed programmatic Back while switching PC editors','no delayed programmatic Back while switching plan editors'])assert.ok(browser.includes(term),term);
+ assert.match(browser,/page\.locator\('#round162-pc-a'\)\.click\(\)/);
+ assert.match(browser,/page\.go_back\(/);
+ assert.doesNotMatch(browser,/history\.back=function/);
  assert.match(workflow,/round162-modal-history-race-browser.py/);
  assert.match(workflow,/Round162:\$\{\{ steps\.round162_browser\.outcome \}\}/);
 });
