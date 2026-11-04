@@ -14,12 +14,14 @@
 - 不要把测试仓库、历史内部报告、真实备份、角色 Excel 或验收 artifact 上传到正式仓库。
 - 正式站与测试站继续依赖 `runtime-environment.js` 按路径隔离存储。
 
-## Stage155 发布注意事项（强制）
+## Stage156 发布注意事项（强制）
 应先核对当前正式站完整备份，并使用正式仓库候选同步包更新文件；这一操作只部署代码，不会清除浏览器本地档案。搜索与关联改动的浏览器验收须由新提交的 GitHub Actions 执行，失败应及时撤回至上次可用发布。
 用户明确选择减少测试站人工步骤，本轮优先提供正式仓库完整同步包；自动 CI 与数据安全预检仍然保留。若新一轮 Chromium 继续失败，读取匿名 pl-synthetic-browser-result 诊断，不要求真实用户清库或再次恢复备份。
 以 `CURRENT_PROJECT_STATUS.json` 的 release 和 browser 字段作为本轮发布阻断清单。本轮真实 GitHub CI 结果和用户设备验收仍为待核实项，不能将打包成功表述为线上验收完成。
 
 Stage154 的新版 CI 已证明 Round289 匿名报告 14/14 PASS，但 Round162 真实 Back 仍在两种屏宽下进入空白页。Stage155 将 Round162 的测试装载方式改为真实 HTTP 页面跳转，保留真实浏览器 Back 和弹窗连续切换检查，并记录返回前后的历史状态。该调整必须通过下一次真实 Chromium CI 确认，不能把测试方法变更自行计为产品修复通过。schema26 不变，不涉及用户原始数据迁移。
+
+Stage155 的 v8.1.12.333 Chromium 日志进一步确认：Round162 的 Back 返回到了仅供测试使用的 `__pl_synthetic_origin_bootstrap__.html`。Stage156 把该浏览器测试改为直接打开 `index.html`，不向浏览器历史添加测试启动页；测试仍要执行真实 Back，检查 PC 与计划连续开闭。修改仅限测试载入及版本记录，不能提前宣称产品返回键已通过。schema26 保持不变。
 
 ## 发布前
 1. 同步的 GitHub Actions Synthetic 与 Native ZIP restore gate 必须通过；按照用户流程不要求每次手动部署测试站。

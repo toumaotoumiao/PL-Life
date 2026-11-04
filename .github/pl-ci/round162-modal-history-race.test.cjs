@@ -16,6 +16,7 @@ test('browser contract recreates queued Back and checks PC and plan plus real Ba
 });
 test('real Chromium history test navigates to the actual served app and reports history state on failure',()=>{
  assert.match(browser,/page\.goto\(origin\+'\/index\.html'/);
+ assert.match(browser,/prepare_synthetic_origin\(page,bootstrap=False\)/);
  assert.match(browser,/page\.wait_for_function\(/);
  assert.match(browser,/historyLength:history\.length/);
  assert.match(browser,/modalGuardCreated:history\.state\?\.modalGuardCreated===true/);

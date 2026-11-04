@@ -20,15 +20,14 @@ with sync_playwright() as p:
   page=browser.new_page(viewport={'width':width,'height':900},service_workers='block')
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   try:
-   # Exercise a real HTTP document navigation. set_content() internally uses
-   # document.write(), which does not exercise the same session-history setup
-   # as a user opening the production entry point.
-   origin=prepare_synthetic_origin(page)
+   # Open index.html as the first real browser navigation. Both set_content()
+   # and an earlier test-only bootstrap page distort the Back destination.
+   origin=prepare_synthetic_origin(page,bootstrap=False)
    page.goto(origin+'/index.html',wait_until='domcontentloaded',timeout=90000)
    page.wait_for_function('''()=>history.state?.tag===HISTORY_STATE_TAG && typeof openPcEditor==='function' && typeof closePcEditor==='function' ''',timeout=90000)
    page.evaluate('''()=>{document.documentElement.dataset.round162App='1';localStorage.setItem(ONBOARDING_KEY,'1');let a=document.getElementById('onboardingBackdrop');a.hidden=true;a.style.setProperty('display','none','important');document.getElementById('appRoot')?.removeAttribute('inert');pcs.push(normalizePcArchive({id:'audit-pc-a',name:'测试角色 A',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));pcs.push(normalizePcArchive({id:'audit-pc-b',name:'测试角色 B',ownerPlId:selfProfileId(),ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',confirmed:true}},null));runPlans.push(normalizeRunPlan({id:'audit-plan-a',moduleName:'合成计划A'}));runPlans.push(normalizeRunPlan({id:'audit-plan-b',moduleName:'合成计划B'}));}''')
    page.wait_for_timeout(550)
-   baseline=page.evaluate('''()=>({origin:location.origin,path:location.pathname,historyLength:history.length,historyState:history.state})''')
+   baseline=page.evaluate('''()=>({origin:location.origin,path:location.pathname,historyLength:history.length,historyState:history.state,navigationEntries:typeof navigation!=='undefined'&&typeof navigation.entries==='function'?navigation.entries().map(e=>({url:e.url,index:e.index})):[]})''')
    assert_state(baseline['path']=='/index.html' and baseline['historyState'] is not None,
      f'{width} app initializes a real same-origin history entry',baseline)
    # Force history.back to land after the next modal is already open, rather than relying on natural timing.
@@ -39,9 +38,9 @@ with sync_playwright() as p:
    page.wait_for_timeout(15) # pending programmatic history.back is scheduled; its event has not landed
    page.evaluate('openPcEditor("audit-pc-b")')
    page.wait_for_timeout(300)
-   state=page.evaluate('''()=>({open:!document.getElementById('pcEditorBackdrop').hidden,id:pcDraft?.id,modal:history.state?.modal,modalGuardCreated:history.state?.modalGuardCreated===true,historyLength:history.length,autoBack:window.__round162UnexpectedBack||0,pending:typeof pendingInternalModalHistoryBack==='number'?pendingInternalModalHistoryBack:-1})''')
+   state=page.evaluate('''()=>({open:!document.getElementById('pcEditorBackdrop').hidden,id:pcDraft?.id,path:location.pathname,modal:history.state?.modal,modalGuardCreated:history.state?.modalGuardCreated===true,historyLength:history.length,navigationEntries:typeof navigation!=='undefined'&&typeof navigation.entries==='function'?navigation.entries().map(e=>({url:e.url,index:e.index})):[],autoBack:window.__round162UnexpectedBack||0,pending:typeof pendingInternalModalHistoryBack==='number'?pendingInternalModalHistoryBack:-1})''')
    assert_state(state['open'] and state['id']=='audit-pc-b',f'{width} delayed cleanup does not dismiss next PC editor',state)
-   assert_state(state['modal']=='pcEditorBackdrop' and state['modalGuardCreated'] and state['historyLength']>=2 and state['pending'] in (0,-1),f'{width} next PC retains an intact history guard',state)
+   assert_state(state['modal']=='pcEditorBackdrop' and state['modalGuardCreated'] and state['historyLength']>=baseline['historyLength']+1 and state['pending'] in (0,-1),f'{width} next PC retains an intact history guard',state)
    assert_state(state['autoBack']==0,f'{width} no delayed programmatic Back while switching PC editors',state)
    page.evaluate('history.back=window.__originalHistoryBack')
    page.evaluate('history.back()')
