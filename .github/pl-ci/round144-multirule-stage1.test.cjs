@@ -26,7 +26,7 @@ test('module editor exposes a top-right family/system/edition selector and templ
   assert.match(html,/data-native-module-rule-family/);
   assert.match(html,/data-native-module-rule-system/);
   assert.match(html,/data-native-module-rule-edition/);
-  assert.match(html,/切换规则不会删除隐藏字段/);
+  assert.match(html,/切换规则会保留已填内容/);
   assert.match(html,/const showCoc=ruleKind==='coc',showSkill=showCoc\|\|ruleKind==='brp'/);
 });
 

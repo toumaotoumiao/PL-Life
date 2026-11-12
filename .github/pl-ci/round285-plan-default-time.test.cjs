@@ -30,7 +30,7 @@ test('plan editor provides default times, per-occurrence overrides and explicit 
     'data-editor-apply-schedule-preset','data-editor-slot-start','data-editor-slot-end','data-editor-use-schedule-preset'
   ]) assert.ok(html.includes(token),token);
   assert.ok(html.includes('修改这里不会偷偷改动已经安排好的场次。'));
-  assert.ok(html.includes('每次安排仍可单独修改。'));
+  assert.ok(html.includes('每次安排可单独修改。'));
   assert.ok(html.includes('应用到已有安排'));
   assert.ok(html.includes('套用默认'));
 });

@@ -66,6 +66,12 @@ test('Round88 is enforced after collecting later Chromium results',()=>{
  assert.match(workflow,/id: round88_browser[\s\S]*?continue-on-error: true[\s\S]*?run: node \.github\/pl-ci\/round88-settings-live-browser\.cjs/);
  assert.match(workflow,/Round88:\$\{\{ steps\.round88_browser\.outcome \}\}/);
 });
+test('tablet backup action cards keep clickable minimum width and preserve restore entry',()=>{
+ assert.match(html,/@media\s*\(min-width:761px\)\s*and\s*\(max-width:1023px\)\s*\{[\s\S]*?#settingsModal #backupPrimaryActions\s*\{\s*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important/);
+ assert.match(html,/#settingsModal #backupRestoreAction\s*\{\s*grid-column:1\/-1!important/);
+ assert.match(liveBrowser,/primaryGridColumns:getComputedStyle\(group\)\.gridTemplateColumns/);
+ assert.match(liveBrowser,/settings-layout-failure-/);
+});
 test('version and cache are synchronized, data schema is not rewritten',()=>{
  const version=html.match(/const APP_UI_VERSION = "([0-9.]+)"/)?.[1];
  assert.match(version||'',/^\d+\.\d+\.\d+\.\d+$/);assert(sw.includes('v'+version));

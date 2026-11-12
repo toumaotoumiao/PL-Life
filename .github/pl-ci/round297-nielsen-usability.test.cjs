@@ -14,7 +14,7 @@ test('backup terminology is unified in the primary settings path',()=>{assert.ma
 test('version history uses progressive disclosure',()=>{assert.match(html,/最近版本记录/);assert.match(html,/version-history-condensed:not\(\.version-history-expanded\)/);assert.match(html,/查看完整版本记录/)});
 test('plan editor distinguishes create from finish',()=>{assert.match(html,/data-editor-save-plan>\$\{isNewBlankPlan \? "创建计划" : "完成"\}<\/button>/);assert.match(html,/已保存到本机 · \$\{timeText\}/)});
 test('typography first pass raises critical help text',()=>{assert.match(html,/--ui-caption:12px/);assert.match(html,/\.settings-modal \.section-help/);assert.match(html,/\.plan-editor-help/)});
-test('privacy and share mode descriptions express separate user outcomes',()=>{assert.match(html,/隐私遮罩<\/strong><small>隐藏姓名等身份信息；编辑功能保持可用/);assert.match(html,/分享模式<\/strong><small>进入只读展示，并应用分享隐私规则/)});
+test('privacy and share mode descriptions express separate user outcomes',()=>{assert.match(html,/隐私遮罩<\/strong><small>隐藏展示中的身份信息，不影响编辑/);assert.match(html,/分享模式<\/strong><small>以只读方式展示，隐藏私人资料/)});
 test('storage diagnostics use user-facing wording',()=>{assert.match(storage,/<h1 class="title">本机存储检查<\/h1>/);assert.match(storage,/查看本机存储结构、版本和兼容状态/);assert.match(storage,/复制诊断信息/)});
 test('auxiliary pages share the primary visual direction',()=>{assert.match(storage,/--primary:#4e7e62/);assert.match(moduleTools,/--accent:#4e7e62/);assert.match(moduleTools,/--bg:#f4f6f4/)});
 test('release note preserves Stage126 history instead of rewriting it',()=>{assert.match(html,/v8\.1\.12\.304<\/strong><span class="version-log-copy">全面核对关联型搜索/)});

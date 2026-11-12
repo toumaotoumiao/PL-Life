@@ -1,15 +1,22 @@
 {
   "format": "pl-life-current-project-status",
-  "updatedAt": "2026-11-04",
+  "updatedAt": "2026-11-11",
   "current": {
-    "stage": 158,
-    "appVersion": "8.1.12.336",
+    "stage": 165,
+    "appVersion": "8.1.12.343",
     "schemaVersion": 26,
-    "focus": "Stage158 修复 Round88 设置页文件选择器测试在折叠导入入口上超时，失败后继续执行下游 Chromium 检查并保留最终红灯；schema26 不变。"
+    "focus": "Stage165 全站界面文案第三轮（源码整改 3/3）：修正模组高级工具功能说明末尾残句，为设置、PC、计划、模组与导出帮助文字增加窄屏折行保护，并在 GitHub CI 中新增八屏宽、三主题、七个主页面、设置及隐私切换的 Chromium 回归。保留前三轮历史和数据安全提示；真实浏览器、手机与正式部署仍待验收，schema26 不变。"
   },
   "currentVersionAcceptance": {
     "code": {
-      "status": "stage158-local-node-regression-passed-chromium-pending",
+      "status": "stage165-ui-copy-round3-code-complete-ci-browser-pending",
+      "stage165": "完成全站中文文案三轮计划中的第三轮源码整改。修正模组高级工具残缺的功能说明；对设置、PC、计划、模组编辑与导出帮助文本增加安全折行，保留原有长文本的内容和操作语义。新增七项 Stage165 静态测试并加入 Actions 门禁；新增 320、375、390、430、768、1024、1280、1440px × mist/tomato/night 主题 × 七主页面的合成档案 Chromium 检查，同时覆盖设置关闭、隐私切换、高级工具返回。全量 Node 1429/1429 PASS、20 个内嵌脚本语法 PASS、YAML 358 步解析 PASS、v8.1.12.343/schema26 发行预检 PASS。执行环境 Chromium 启动受系统套接字权限限制，故真实视觉与交互仍待 GitHub CI。未改 schema26、存储恢复代码、备份格式、用户个人档案与历史发布记录（2026-11-11）。",
+      "stage164": "修改 index.html 中 34 组以及 module-tools.html 中 15 组应用提示，涉及导出图片、图库、Excel 导入、统计来源、计划关联、草稿与更新以及高级工具。修订语句重点为一事一句、说明已保存与未保存，下载请求不冒充落盘完成。新增 7 项专项静态测试并加入 GitHub CI，修订 6 项依赖旧字句的回归断言。全量 Node 1422/1422 PASS，HTML 内嵌 19 个脚本语法通过、Workflow YAML 356 步解析、v8.1.12.342/schema26 发行预检通过。沿用 Stage163 五宽度 Chromium 文案与溢出检查；schema26、存储格式、数据操作路径、历史版本及用户自填内容均未变动。正式站与手机仍待验收（2026-11-11）。",
+      "stage163": "修改 index.html 与 module-tools.html 应用自带说明文案，完成 2 处 PC 空页面提示修订、主界面 51+37 组短句调整，以及模组工具 6 处文案与 2 个筛选标签调整；保留旧版历史、导入模板和用户自填资料。新增 5 项 UI 文案静态测试，并同步更新 6 项依赖旧文案的测试断言。全量 Node 1415/1415 PASS；Workflow YAML 355 步解析、v8.1.12.341 发行预检均通过。未变动 schema26、实际用户数据、导入与存储执行路径。发布候选为 v8.1.12.341；真实浏览器、手机和正式部署等待验收（2026-11-11）。",
+      "stage162": "自动备份设置区将查看位置和重新选择并列。受授权的桌面目录模式使用现有只读备份清单，选择新文件夹时使用原位置作为原生 picker 起点；更换前确认旧文件保留，测试备份失败则恢复旧目标和自动备份设置。受浏览器下载管理限制的模式改用查看下载位置、修改浏览器下载目录的真实操作指引，禁止声称网页能直接启动操作系统文件管理器。自动备份完成提醒改为查看备份位置，自动下载请求保留独立重试按钮；尚未落盘的准备状态保留手动下载。新增 8 项 Node 专项（包含取消重选和失败回滚隔离模拟）以及 390/1024px 回退模式、1024px 固定目录模式的 Chromium CI。全量 Node 1410/1410 PASS（Stage161 1402/1402），真实 Chromium/真机/正式部署待执行；schema26 不变（2026-11-11）。",
+      "stage161": "模组档案菜单中 stopPropagation 阻止了 document 上统一的 data-module-tool 点击处理，现移除该冗余拦截；保持菜单外关闭和自动关闭。七项动作沿用原有处理，无档案结构或存储操作改变。新增七动作分派隔离测试及 768/1024/1440 Chromium CI 点击脚本，相关工作流失败参与最终门禁。Stage161 全量 Node 1402/1402 PASS（比 Stage160 增加 5 项）、YAML 351 步解析与发行预检通过。旧版源码 v336 正式站已复现故障；新版本 GitHub Chromium、真机及部署尚未验收（2026-11-10）。",
+      "stage160": "模组工具桌面／手机入口与五列 Canvas 渲染已实现，直接复用当前模组数据、规则、评分和跑团记录 KP／PL 统计索引。长备注跨页拆分，当前筛选／全部档案、密度与隐私备注开关、图片实时预览与统一下载流程已接入。全量 Node 1397/1397 PASS（新增专项 5/5）、Python AST 83 文件 PASS、Workflow YAML 解析 PASS、发行预检 PASS；本地 @napi-rs/canvas 合成 PNG 目视检查完成。GitHub Synthetic 新增四视口实际 Chromium 图片导出门禁，尚待执行；真实设备待验，schema26 不变（2026-11-10）。",
+      "stage159": "Stage158 GitHub Chromium Round88 共 28 个检查，1 项失败：768px 设置页 exportBtn 被判定裁切或不可触达。现将 761–1023px 三列备份操作调整为两列，恢复备份操作占完整第二行；Round88 记录按钮宽度/右缘、主内容与网格宽度、实际网格列数，失败时留合成截图。Stage159 本机全量 Node 1392/1392 PASS、Python AST 83 文件 PASS、YAML 解析及发行预检 PASS（2026-11-04）；schema26 不变。真实 Chromium 待验。",
       "stage158": "Round88 在真实页面展开其他导入与导出后触发原生文件选择器，校验目标 input；并行等待点击与 filechooser，增强匿名失败诊断；Chromium 流水线单项失败后继续采集后续测试并在最终门禁失败。全套 Node 1391/1391 PASS、Python AST 83 文件 PASS、发行预检 PASS（2026-11-04）。未修改业务数据或 schema26。",
       "stage157": "Round162 测试利用 Playwright click 开启 PC/计划编辑器、page.go_back 执行真实浏览器返回，移除 history.back 拦截并记录 popstate。全套 Node 1389/1389 PASS、Python AST PASS、发行预检 PASS（2026-11-04）；业务代码和 schema 未修改。",
       "stage156": "Round162 真正从空白新标签页导航 index.html，不让测试专用 bootstrap 页面进入前进/返回历史；仅扩展 synthetic_browser_origin 的可选 bootstrap 参数，其他测试保留旧默认行为；新增 Navigation API 可用时的历史条目诊断。全套 Node 1389/1389 PASS（2026-11-04），含新增独立运行的无导航 helper 测试。真实 Chromium 结果待验。",
@@ -17,12 +24,12 @@
       "stage154": "弹窗复用历史条目增加来源标记；匿名诊断、ZIP 核验向导更新测试断言；新增基础历史条目不被覆盖的隔离回归。全套 Node 1387/1387 PASS（2026-11-04，隔离工程）；schema26 未更改。",
       "stage153": "244 Node 测试文件，4组 352+359+347+327=1385/1385 PASS；14/14 Stage153 专项 PASS（其中2项实际运行失败证据生成脚本）；GitHub CI 两关键 workflow 添加前置完整日志/依赖门禁；schema26不变",
       "schema": "schema26 unchanged",
-      "dataCompatibility": "Stage158 只修改合成浏览器测试、CI 收集机制与版本资料，不修改持久化逻辑、数据 schema、导入导出、附件与档案对象；用户原始备份未进入候选工程"
+      "dataCompatibility": "Stage160 新增只读模组归档表图片导出。只添加一个本机图片选项偏好 localStorage 键；不回写模组、关联桌次、PC 附件、备份数据或 schema26；未使用用户私人存档。"
     },
     "browser": {
-      "local": "Stage158 全量 Node 1391/1391 PASS；Round88 定向 Node 9/9 PASS；Python AST 83 文件 PASS；发行预检 PASS。本机 Playwright Chromium 浏览器二进制缺失，未取得真实浏览器实测通过证据。",
-      "github": "Stage157 v8.1.12.335 用户提交的 GitHub Actions 证据：隔离原生 ZIP 恢复门及 Pages 部署 PASS；Round162 合成浏览器 22/22 PASS，但 chromium-synthetic 工作流 FAIL：Round88 在 .github/pl-ci/round88-settings-live-browser.cjs:93:23 等候 filechooser 超时 10000ms，下游多项跳过。Stage158 尚未上传运行。",
-      "upstreamFailure": "Round88 的 importBtn 位于默认折叠的 settings:data:backup-more-options 之内，旧脚本在未展开时直接等待 filechooser 并点击隐藏按钮，导致超时及缺失诊断。Stage158 改为实际展开后点击并保留最终强制门禁；真实 Chromium 待证实。"
+      "local": "Stage165 全量 Node 1429/1429 PASS（包含新增静态合同 7/7）；三个 HTML 共有 20 个内嵌脚本语法 PASS；Workflow YAML 358 步解析 PASS；发行预检 v8.1.12.343/schema26 PASS。执行环境 Chromium 因 socket() Operation not permitted 无法启动，八屏宽三主题视觉结果待 GitHub CI，不能写作已通过。",
+      "github": "Stage158 v8.1.12.336 commit d2ba918444ee8c86c25ece713998d191d2a81905 的用户 GitHub Actions 与 pl-synthetic-browser-result (27).zip 显示：隔离原生 ZIP 恢复门 PASS、Pages 部署 PASS；chromium-synthetic FAIL。Round88 执行了 28 项检查，唯一失败为 768px 数据与备份页 exportBtn is clipped or unreachable；后续 Chromium 步骤均已执行。Stage159 尚未运行。",
+      "upstreamFailure": "Stage158 已修好 Round88 文件选择器超时，失败转为有明确报告的 768px 设置页布局异常：#backupPrimaryActions 在侧栏占宽后仍强制三列，导致备份按钮触控宽度不足。Stage159 调整平板宽度两列并保留测试门禁，须待 GitHub Chromium 实测验证。"
     },
     "realDevice": {
       "state": "targeted-checks-pending",
@@ -36,14 +43,29 @@
     "release": {
       "status": "candidate-ready-not-deployed",
       "artifactNames": [
-        "Stage158_PL-Life_v8.1.12.336_正式仓库完整同步包.zip"
+        "Stage165_PL-Life_v8.1.12.343_正式仓库完整同步包.zip"
       ],
-      "reason": "Stage158 修正 Round88 折叠区导入测试，并确保 CI 仍标记真实失败；Stage157 的 Chromium 工作流确实失败。Stage158 GitHub Chromium、真机与正式站发布仍待验。"
+      "reason": "Stage165 已完成计划的第三轮文案与折行源码整改，尚缺本版本 GitHub Chromium 实际交互、手机真机与正式站部署证据。Stage162 备份目录操作、Stage161 模组更多操作、Stage160 图片导出和 Stage159 平板备份按钮修复仍需 Chromium 回归。网页无法直接打开系统文件管理器。"
     }
   },
   "workstreams": {
+    "interfaceCopy": {
+      "scope": "七个主页面及设置、模组高级工具中的高频系统说明；历史版本记录和用户自填数据保持原样",
+      "code": "三轮计划源码整改 3/3 完成：第一轮主页面 88 组与模组工具 6 组；第二轮新增 49 组；第三轮修正一处残句并加强设置、PC、模组、计划、导出说明的窄屏折行，不更改数据语义。",
+      "node": "全量 Node 1429/1429 PASS，其中新增第三轮静态合同 7/7；HTML 内嵌脚本 20 个语法 PASS；工作流 YAML 358 步解析 PASS；正式发行预检 PASS",
+      "githubChromium": "加入八宽度（320/375/390/430/768/1024/1280/1440px）与三主题、七主页面的实际 Chromium 检查，同时覆盖设置与隐私及高级工具，含最终失败门禁，等待 GitHub Actions；浏览器启动受本地权限阻止，真实视觉未通过验收。",
+      "realDevice": "待核对实际手机长文折行、弹窗底部及读屏",
+      "release": "Stage165 v8.1.12.343 候选未部署"
+    },
+    "externalBackupLocation": {
+      "code": "Stage162 入口与成功提示已实现，目录重新选择失败回滚原配置；schema26 不变",
+      "node": "8/8 专项隔离通过；全量 1410/1410 通过",
+      "githubChromium": "新增 390/1024px 下载回退模式与 1024px 已授权文件夹真实 UI 测试，待提交后的 GitHub Actions 验收",
+      "realDevice": "Windows Edge/Chrome、Android 下载记录与文件位置未在用户设备实测",
+      "release": "Stage162 v8.1.12.340 完整正式同步包已生成并通过 ZIP CRC，尚未部署到 GitHub Pages"
+    },
     "nielsenUsability": {
-      "settingsActionModel": 100,
+      "settingsActionModel": 95,
       "backupTerminology": 100,
       "versionProgressiveDisclosure": 100,
       "planSaveSemantics": 100,
@@ -78,8 +100,9 @@
       "userIssueRetest": "pending after deployment"
     },
     "imageExport": {
-      "automatedTests": "included in Full Node 1147/1147 PASS; no Stage132 renderer/data-contract modification",
-      "realDevice": "targeted-check-pending"
+      "automatedTests": "Stage161 全量 Node 1402/1402 PASS，包含 Stage160 五列图片专项与新增菜单事件合同 5/5；YAML、发行预检 PASS。实际 Chromium 菜单点击已加入 GitHub CI，尚无本版本 CI 结果，不得将 Node 通过计为浏览器通过。",
+      "realDevice": "targeted-check-pending",
+      "moduleArchiveImagePending": "mobile tools sheet, inline privacy switch and final PNG download"
     },
     "backupRecoveryP0": {
       "codeGuard": "post-reload auditing implemented",
@@ -90,6 +113,7 @@
     }
   },
   "notes": [
+    "Stage161：用户在正式站 v336 反映模组档案更多操作六项按钮无响应，云端 Chromium 隔离空档案场景复现评分体系不跳转；根因是菜单 stopPropagation 截断 document 事件委托。Stage161 代码已消除这段阻断，保留数据 schema26 并添加发布回归；未执行用户私人档案操作。",
     "历史 STAGE*.md 仅表示当时快照。",
     "Stage128 不改变 schema26；本轮继续 Nielsen P1，可用性改动不重写现有档案数据。",
     "长任务反馈本轮先覆盖完整备份恢复链路；批量 Excel、深度检查等其余长任务继续下一批接入。",

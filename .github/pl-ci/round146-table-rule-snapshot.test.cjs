@@ -63,7 +63,7 @@ test('all table creation and conversion routes explicitly preserve or inherit ru
 test('plan and record editing expose a consistent family/system/edition selector with explicit commit',()=>{
   assert.match(html,/runRuleSelectorHTML\(plan,"plan"\)/);assert.match(html,/runRuleSelectorHTML\(r,"record"\)/);
   assert.match(html,/runRuleChangeFromControl\("plan",planId,e\.target\)/);assert.match(html,/runRuleChangeFromControl\("record",recordId,e\.target\)/);
-  assert.match(html,/本桌规则与当前模组不同；已保留原桌规则/);
+  assert.match(html,/本桌规则与模组规则不同，原桌规则已保留/);
   assert.match(html,/#recordsView \.table-record\.is-editing:has\(\.run-rule-menu\[open\]\)/);
   const x=sandbox(),record={id:'r1',moduleId:'m1',ruleMeta:{familyId:'brp',systemId:'coc',editionId:'7e',source:'module-inherited'}};
   x.runRecords.push(record);

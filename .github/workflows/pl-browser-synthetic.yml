@@ -311,6 +311,24 @@ jobs:
       - name: Stage153 guard deterministic CI prerequisites and failure reporting
         id: ci_guard_092
         run: node --test .github/pl-ci/round315-stage153-ci-prerequisites.test.cjs
+      - name: Stage160 guard module archive five-column image content and privacy
+        id: ci_guard_093
+        run: node --test .github/pl-ci/module-archive-table-image.test.cjs
+      - name: Stage161 module toolbar event routing contract
+        id: ci_guard_094
+        run: node --test .github/pl-ci/module-toolbar-actions.test.cjs
+      - name: Stage162 browser-external backup location and notice action contract
+        id: ci_guard_095
+        run: node --test .github/pl-ci/backup-location-actions.test.cjs
+      - name: Stage163 concise Chinese UI copy and safety warning contract
+        id: ci_guard_096
+        run: node --test .github/pl-ci/stage163-ui-copy.test.cjs
+      - name: Stage164 export editing and advanced tool copy contract
+        id: ci_guard_097
+        run: node --test .github/pl-ci/stage164-copy-quality.test.cjs
+      - name: Stage165 full-width copy layout and advanced help contract
+        id: ci_guard_098
+        run: node --test .github/pl-ci/stage165-responsive-copy.test.cjs
       - name: Install pinned test-only browser runner
         id: node_browser_deps
         shell: bash
@@ -323,6 +341,51 @@ jobs:
         run: |
           set -o pipefail
           .github/pl-ci/node_modules/.bin/playwright install --with-deps chromium 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/chromium-deps.log"
+      - name: Stage160 real Chromium module archive table image at four widths
+        id: module_table_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/module-archive-table-image-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/module-table-image-browser.log"
+      - name: Stage161 real Chromium module toolbar actions
+        id: module_toolbar_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/module-toolbar-actions-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/module-toolbar-actions-browser.log"
+      - name: Stage162 real Chromium auto-backup folder and download-location actions
+        id: backup_location_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/backup-location-actions-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/backup-location-actions-browser.log"
+      - name: Stage163 real Chromium empty PC and settings copy at five widths
+        id: ui_copy_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/stage163-ui-copy-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/stage163-ui-copy-browser.log"
+      - name: Stage165 real Chromium seven sections at eight widths and three themes
+        id: responsive_copy_browser
+        continue-on-error: true
+        shell: bash
+        env:
+          PL_SYNTHETIC_REPORT_DIR: ${{ runner.temp }}/pl-synthetic-report
+        run: |
+          set -o pipefail
+          node .github/pl-ci/stage165-responsive-copy-browser.cjs 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/stage165-responsive-copy-browser.log"
       - uses: actions/setup-python@v6
         id: python_runtime
         with:
@@ -1250,6 +1313,11 @@ jobs:
           failed=0
           echo "Round187:${{ steps.round187_browser.outcome }} (informational in synthetic regression; mandatory release enforcement is PL isolated native ZIP restore gate)"
           for check in \
+            "ModuleArchiveImage:${{ steps.module_table_browser.outcome }}" \
+            "ModuleToolbarActions:${{ steps.module_toolbar_browser.outcome }}" \
+            "BackupLocationActions:${{ steps.backup_location_browser.outcome }}" \
+            "UICopyStage163:${{ steps.ui_copy_browser.outcome }}" \
+            "ResponsiveCopyStage165:${{ steps.responsive_copy_browser.outcome }}" \
             "Round88:${{ steps.round88_browser.outcome }}" \
             "Round134:${{ steps.round134_browser.outcome }}" \
             "Round141:${{ steps.round141_browser.outcome }}" \

@@ -17,7 +17,7 @@ test('D&D identity/combat template mapping is explicit and local',()=>{
     '输入格不能与标签格',
     'data-pc-dnd-map-open',
     'data-pc-dnd-map-attest',
-    '只保存字段坐标',
+    '保存字段对应位置',
     'function pcDndProtectedTemplateTargets(layoutId)'
   ]) assert.ok(html.includes(token),`missing ${token}`);
 });

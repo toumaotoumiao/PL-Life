@@ -7,7 +7,7 @@ const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 
 test('D&D export button distinguishes setup from actual export',()=>{
   assert.match(html,/button\.textContent=ready\?'导出 D&D 角色 Excel 卡':'设置 D&D 角色卡模板'/);
-  assert.match(html,/首次需要设置一份 D&D 角色卡模板；成功核对并保存 PC 后，以后直接导出/);
+  assert.match(html,/首次导出需选择并核对 D&D 角色卡模板。保存 PC 后可直接复用/);
   assert.match(html,/if\(route\.status==='ready'&&route\.adapterId==='dnd-template'\)return pcExportDndCharacterCard\(pc\)/);
 });
 

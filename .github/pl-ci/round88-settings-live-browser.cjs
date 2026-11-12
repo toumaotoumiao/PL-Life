@@ -81,13 +81,31 @@ const sections=['overview','appearance','rating','behavior','data','migration','
       if(m.scrollWidth>m.clientWidth+5)errors.push('settings modal overflows horizontally');
       if(name==='data'){
        const buttons=['exportBtn','importBtn'].map(id=>m.querySelector('#'+id));
-       for(const btn of buttons){const b=btn.getBoundingClientRect();if(b.width<120||b.height<40||b.right>innerWidth+2)errors.push(btn.id+' is clipped or unreachable');}
+       for(const btn of buttons){
+        const b=btn.getBoundingClientRect();
+        if(b.width<120||b.height<40||b.right>innerWidth+2){
+         const group=m.querySelector('#backupPrimaryActions');
+         errors.push(btn.id+' is clipped or unreachable'+JSON.stringify({
+           width:Math.round(b.width),height:Math.round(b.height),right:Math.round(b.right),
+           viewport:innerWidth,settingsMainWidth:Math.round(content.width),
+           primaryGridWidth:Math.round(group.getBoundingClientRect().width),
+           primaryGridColumns:getComputedStyle(group).gridTemplateColumns
+         }));
+        }
+       }
        const inp=m.querySelector('#importFile');for(const ext of ['.zip','.json','.html','.plbackup','.plmove'])if(!inp.accept.includes(ext))errors.push('file selector missing '+ext);
       }
       if(name==='version'&&!m.querySelector('#releaseNotesBox'))errors.push('version history missing');
       return errors;
     },name);
     checks++; failures.push(...result.map(error=>({width,name,error})));
+    if(name==='data'&&result.length){
+     // Only synthetic origin, no user files or real personal data.
+     const target=path.join(process.env.RUNNER_TEMP||os.tmpdir(),'pl-synthetic-report');
+     fs.mkdirSync(target,{recursive:true});
+     try{await page.screenshot({path:path.join(target,'settings-layout-failure-'+width+'.png'),fullPage:false,timeout:4000})}
+     catch(screenshotError){console.error('SETTINGS_LAYOUT_SCREENSHOT_UNAVAILABLE',String(screenshotError));}
+    }
    }
    await page.locator('#settingsModal .settings-nav [data-settings-target="data"]').click();
    stage='expand secondary import tools';

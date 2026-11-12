@@ -10,7 +10,7 @@ test('Round137: layout owns the statistics-data function and prevents undeclared
 test('Round137: a source-layout failure is localized and cannot leave a stale export enabled',()=>{
  const src=html.match(/function renderStatsExportCenter\(\)\{try\{[\s\S]*?\n  \}\}\nfunction positionStatsExportPanel/);assert(src,'export settings must catch runtime failures');
  assert.match(src[0],/button\.disabled=true/);assert.match(src[0],/stage\.replaceChildren\(\)/);assert.match(src[0],/PLExportLivePreview\.error/);
- assert.match(src[0],/尚未下载图片/);
+ assert.match(src[0],/图片尚未下载/);
 });
 test('Round137: index, SW and public version metadata agree without binding CI to one version',()=>{
  const app=html.match(/const APP_UI_VERSION = "([0-9.]+)";/)?.[1],cache=sw.match(/CACHE_NAME=`\$\{CACHE_PREFIX\}v([0-9.]+)`/)?.[1];

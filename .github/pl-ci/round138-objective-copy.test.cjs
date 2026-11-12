@@ -49,9 +49,9 @@ test('timeband reports count without promising an unrelated export behavior',()=
 test('public export and data safety copy retain concrete privacy and backup risks',()=>{
  assert.match(active,/公开统计图不含联系方式、黑名单与私人备注/);
  assert.match(active,/隐私导出：关闭/);
- assert.match(active,/浏览器数据或更换设备可能导致丢失/);
+ assert.match(active,/清理浏览器数据或更换设备可能导致档案丢失/);
  assert.match(active,/清除网站数据/);
- assert.match(active,/内容没有因本次临时草稿清理失败而撤销|正式保存不会因本次临时草稿清理失败而撤销/);
+ assert.match(active,/正式保存已保留。旧临时草稿清理失败/);
  assert.match(active,/statsExportState/);assert.match(active,/buildStatsContinuousCanvas/);
 });
 

@@ -103,7 +103,7 @@ test('import JSON does not assert rollback after ambiguous write and re-reads ca
   await c.importJSON({size:15,text:async()=>JSON.stringify({modules:[{id:'new'}],settings:{}})});
   assert.equal(c.state.modules[0].id,'persisted');
   const issue=calls.find(x=>x&&x.code==='MODULE-BACKUP-IMPORT');
-  assert.ok(issue);assert.match(issue.state,/已回读主档案/);
+  assert.ok(issue);assert.match(issue.state,/已读取主档案。请核对导入是否完成/);
   assert.doesNotMatch(issue.state,/内存已恢复导入前副本/);
 });
 test('import JSON read failure leaves initial state and skips storage writes',async()=>{
@@ -115,7 +115,7 @@ test('import JSON read failure leaves initial state and skips storage writes',as
   });
   await c.importJSON({size:15,text:async()=>'{invalid'});
   assert.equal(write,0);assert.equal(c.state.modules[0].id,'old');
-  assert.match(calls[0].state,/写入尚未开始/);
+  assert.match(calls[0].state,/导入尚未写入，原档案保持不变/);
 });
 test('reset must use confirmed main-app operation instead of inventing a fresh cleared archive',()=>{
   const src=code(mod,'async function clearall(){','const targets=');

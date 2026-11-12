@@ -61,6 +61,6 @@ test('the saved-rule selector explicitly switches to existing data without copyi
 test('the menu handler refuses collision with visible inline status and restores input to the actual draft',()=>{
  const handler=part("document.getElementById('pcRuleMenu')?.addEventListener('input'",'els.closeModuleAdvanced.addEventListener');
  assert.match(handler,/if\(!success\)/);assert.match(handler,/e\.target\.value=String\(pcDraft\.ruleMeta\?\.\[key\]\|\|''\)/);
- assert.match(handler,/data-pc-rule-scope-notice/);assert.match(handler,/aria-live/);assert.match(handler,/本次重命名未执行/);
+ assert.match(handler,/data-pc-rule-scope-notice/);assert.match(handler,/aria-live/);assert.match(handler,/原资料已保留，本次未重命名/);
  assert.match(html,/const PC_EXCEL_EXPORT_ADAPTERS=/);assert.match(html,/const DATA_SCHEMA_VERSION = 26/);
 });
