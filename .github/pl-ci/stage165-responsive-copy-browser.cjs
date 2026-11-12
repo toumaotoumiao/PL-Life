@@ -104,7 +104,7 @@ async function main(){
     }
   }finally{await browser.close();}
   const directory=process.env.PL_SYNTHETIC_REPORT_DIR;
-  if(directory){fs.mkdirSync(directory,{recursive:true});fs.writeFileSync(path.join(directory,'stage165-responsive-copy.json'),JSON.stringify({version:'8.1.12.343',synthetic:true,results},null,2));}
+  if(directory){fs.mkdirSync(directory,{recursive:true});fs.writeFileSync(path.join(directory,'stage165-responsive-copy.json'),JSON.stringify({version:'8.1.12.344',synthetic:true,results},null,2));}
   console.log('Stage165 rendered combinations:',results.length);
 }
 main().catch(error=>{console.error(error.stack||error);process.exitCode=1;});

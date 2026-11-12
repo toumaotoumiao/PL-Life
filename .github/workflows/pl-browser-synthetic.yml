@@ -38,6 +38,9 @@ jobs:
       - name: Guard full-app Chromium tests against opaque browser origin
         id: ci_guard_001
         run: node --test .github/pl-ci/round312-synthetic-origin-contract.test.cjs
+      - name: Stage166 synthetic HTTP navigation MIME and error-propagation contract
+        id: ci_guard_stage166_mime
+        run: node --test .github/pl-ci/stage166-synthetic-page-mime.test.cjs
       - name: Stage140 restored-record commit boundary and explicit release hold
         id: ci_guard_002
         run: node --test .github/pl-ci/round310-stage140-release-atomicity.test.cjs
@@ -1279,7 +1282,11 @@ jobs:
       - name: Audit populated synthetic cards, filter expansion and UI entry geometry
         run: node .github/pl-ci/round84-layout-flow-browser-audit.cjs
       - name: Round290 migration closeout in Chromium
+        id: round290_browser
+        continue-on-error: true
+        shell: bash
         run: |
+          set -o pipefail
           PL_SYNTHETIC_REPORT_DIR="$RUNNER_TEMP/pl-synthetic-report" PYTHONUNBUFFERED=1 python .github/pl-ci/round290-migration-closeout-browser.py 2>&1 | tee "$RUNNER_TEMP/pl-synthetic-report/round290-browser.log"
       - name: Record first CI failure and dependency/skip causes
         if: always()
@@ -1318,6 +1325,7 @@ jobs:
             "BackupLocationActions:${{ steps.backup_location_browser.outcome }}" \
             "UICopyStage163:${{ steps.ui_copy_browser.outcome }}" \
             "ResponsiveCopyStage165:${{ steps.responsive_copy_browser.outcome }}" \
+            "Round290:${{ steps.round290_browser.outcome }}" \
             "Round88:${{ steps.round88_browser.outcome }}" \
             "Round134:${{ steps.round134_browser.outcome }}" \
             "Round141:${{ steps.round141_browser.outcome }}" \

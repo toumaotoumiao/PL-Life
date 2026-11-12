@@ -30,7 +30,28 @@ try:
       rec(f'{width}: restore becomes dominant',page.locator('#deviceMigrationRestoreBtn').is_visible() and page.locator('#deviceMigrationInspectBtn').inner_text()=='更换文件')
       page.locator('#heritageReviewBtn').click();page.wait_for_selector('#heritageReviewDialog[open]',timeout=30000)
       rec(f'{width}: heritage export in dialog',page.locator('#heritageReviewDialog #heritageExportBtn').is_visible())
-      page.locator('#heritageReviewClose').click()
+      # Preserve the actual click guard. Previous CI silently lost this timeout
+      # behind `| tee`, so capture the hit target and native modal state first.
+      try:
+        page.locator('#heritageReviewClose').click(timeout=10000)
+      except Exception:
+        try:
+          details=page.evaluate("""() => {
+            const dialog=document.getElementById('heritageReviewDialog');
+            const button=document.getElementById('heritageReviewClose');
+            const rect=button?.getBoundingClientRect();
+            const hit=rect?document.elementFromPoint(rect.left+rect.width/2,rect.top+rect.height/2):null;
+            return {dialogOpen:dialog?.open,dialogModal:dialog?.matches(':modal'),
+              buttonVisible:!!button?.getClientRects().length,
+              buttonRect:rect?{x:rect.x,y:rect.y,width:rect.width,height:rect.height}:null,
+              hitTag:hit?.tagName,hitId:hit?.id,hitClass:typeof hit?.className==='string'?hit.className:'',
+              htmlClass:document.documentElement.className,bodyClass:document.body.className};
+          }""")
+          (out/f'round290-heritage-close-{width}-diagnostic.json').write_text(json.dumps(details,ensure_ascii=False,indent=2),'utf8')
+          page.screenshot(path=str(out/f'round290-heritage-close-{width}-failed.png'),full_page=True,timeout=7000)
+        except Exception:
+          pass
+        raise
       page.evaluate("showContextIssue({level:'warning',title:'迁移恢复未完成',area:'设置 → 导入与迁移 → 新设备',action:'恢复已核验备份',status:'检查停在测试阶段。',next:'下载错误报告。',diagnostics:'问题编号：ROUND290-SYNTH\\n执行阶段：预检 PC 附件数据库\\n错误类型：AbortError\\nAbortError: synthetic',contextActions:[{label:'检查本机存储',run:()=>{}},{label:'重新选择备份',run:()=>{}}]});")
       page.wait_for_selector('#actionDialogBackdrop:not([hidden])',timeout=30000)
       msg=page.locator('#actionDialogMessage').inner_text()

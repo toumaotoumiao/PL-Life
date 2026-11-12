@@ -29,10 +29,26 @@ async function prepareSyntheticOrigin(page) {
         }
         fs.readFile(full, (err, data) => {
           if (err) {res.writeHead(404);res.end();return;}
-          const type = full.endsWith(".js") ? "text/javascript; charset=utf-8" :
-            full.endsWith(".css") ? "text/css; charset=utf-8" :
-            full.endsWith(".webmanifest") ? "application/manifest+json" : "application/octet-stream";
-          res.writeHead(200, {"Content-Type":type,"Cache-Control":"no-store"});
+          // Actual page.goto() tests must receive an HTML document. The old
+          // octet-stream fallback made Chromium download index.html instead.
+          const extension=path.extname(full).toLowerCase();
+          const type={
+            '.html':'text/html; charset=utf-8',
+            '.htm':'text/html; charset=utf-8',
+            '.js':'text/javascript; charset=utf-8',
+            '.mjs':'text/javascript; charset=utf-8',
+            '.css':'text/css; charset=utf-8',
+            '.json':'application/json; charset=utf-8',
+            '.webmanifest':'application/manifest+json',
+            '.svg':'image/svg+xml',
+            '.png':'image/png',
+            '.jpg':'image/jpeg',
+            '.jpeg':'image/jpeg',
+            '.webp':'image/webp',
+            '.ico':'image/x-icon',
+            '.woff2':'font/woff2'
+          }[extension]||'application/octet-stream';
+          res.writeHead(200, {"Content-Type":type,"Cache-Control":"no-store","X-Content-Type-Options":"nosniff"});
           res.end(data);
         });
       });

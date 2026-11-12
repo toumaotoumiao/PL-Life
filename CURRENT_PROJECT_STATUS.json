@@ -1,11 +1,11 @@
 {
   "format": "pl-life-current-project-status",
-  "updatedAt": "2026-11-11",
+  "updatedAt": "2026-11-12",
   "current": {
-    "stage": 165,
-    "appVersion": "8.1.12.343",
+    "stage": 166,
+    "appVersion": "8.1.12.344",
     "schemaVersion": 26,
-    "focus": "Stage165 全站界面文案第三轮（源码整改 3/3）：修正模组高级工具功能说明末尾残句，为设置、PC、计划、模组与导出帮助文字增加窄屏折行保护，并在 GitHub CI 中新增八屏宽、三主题、七个主页面、设置及隐私切换的 Chromium 回归。保留前三轮历史和数据安全提示；真实浏览器、手机与正式部署仍待验收，schema26 不变。"
+    "focus": "Stage166 CI 根因修正：第29份 Chromium 证据（commit ddeb48ca）中四项新增浏览器检查在 page.goto(index.html) 阶段触发下载，原因是本地 HTTP 测试服务器将 .html 作为 application/octet-stream。已按扩展名返回正确 HTML 与资源 MIME，新增真实 HTTP 返回头检查，并将 Round290 隐藏的 Python 超时通过 pipefail 纳入失败门禁。业务 UI、备份、schema26 均不变；新版 GitHub Chromium 仍待验收。"
   },
   "currentVersionAcceptance": {
     "code": {
@@ -24,12 +24,13 @@
       "stage154": "弹窗复用历史条目增加来源标记；匿名诊断、ZIP 核验向导更新测试断言；新增基础历史条目不被覆盖的隔离回归。全套 Node 1387/1387 PASS（2026-11-04，隔离工程）；schema26 未更改。",
       "stage153": "244 Node 测试文件，4组 352+359+347+327=1385/1385 PASS；14/14 Stage153 专项 PASS（其中2项实际运行失败证据生成脚本）；GitHub CI 两关键 workflow 添加前置完整日志/依赖门禁；schema26不变",
       "schema": "schema26 unchanged",
-      "dataCompatibility": "Stage160 新增只读模组归档表图片导出。只添加一个本机图片选项偏好 localStorage 键；不回写模组、关联桌次、PC 附件、备份数据或 schema26；未使用用户私人存档。"
+      "dataCompatibility": "Stage160 新增只读模组归档表图片导出。只添加一个本机图片选项偏好 localStorage 键；不回写模组、关联桌次、PC 附件、备份数据或 schema26；未使用用户私人存档。",
+      "stage166": "依据用户第29份 CI 证据（commit ddeb48ca472356a566f8160d8904c413e1d8b5ac），ModuleToolbarActions、BackupLocationActions、UICopyStage163、ResponsiveCopyStage165 均在 page.goto(index.html) 抛出 Download is starting。共同根因为合成测试本地 Node HTTP 服务器将 .html 以 application/octet-stream 返回。修复 MIME 类型（HTML、JS、JSON、图片等），增加 HTTP 文档导航预检，补齐 Round290 tee 管道退出码并计入最终门禁。修复不改变应用业务数据、备份格式、schema26。Stage165 报告的其他已通过项目仍按原证据留存。新版 CI 和真实手机结果尚未执行。 Round290 若点击超时，额外保存点击目标、命中元素、dialog Modal 状态的匿名截图与诊断 JSON，避免下一轮缺少根因证据。HTTP 四项专项及全量 Node 实际 1433/1433 PASS（四组 374+360+337+362）。"
     },
     "browser": {
-      "local": "Stage165 全量 Node 1429/1429 PASS（包含新增静态合同 7/7）；三个 HTML 共有 20 个内嵌脚本语法 PASS；Workflow YAML 358 步解析 PASS；发行预检 v8.1.12.343/schema26 PASS。执行环境 Chromium 因 socket() Operation not permitted 无法启动，八屏宽三主题视觉结果待 GitHub CI，不能写作已通过。",
-      "github": "Stage158 v8.1.12.336 commit d2ba918444ee8c86c25ece713998d191d2a81905 的用户 GitHub Actions 与 pl-synthetic-browser-result (27).zip 显示：隔离原生 ZIP 恢复门 PASS、Pages 部署 PASS；chromium-synthetic FAIL。Round88 执行了 28 项检查，唯一失败为 768px 数据与备份页 exportBtn is clipped or unreachable；后续 Chromium 步骤均已执行。Stage159 尚未运行。",
-      "upstreamFailure": "Stage158 已修好 Round88 文件选择器超时，失败转为有明确报告的 768px 设置页布局异常：#backupPrimaryActions 在侧栏占宽后仍强制三列，导致备份按钮触控宽度不足。Stage159 调整平板宽度两列并保留测试门禁，须待 GitHub Chromium 实测验证。"
+      "local": "Stage166 Node 全量回归最终 1433/1433 PASS（含四项新增 HTTP MIME、流程安全及受阻脚本入口检查），发布预检通过。HTTP 服务测试实际验证 index.html、module-tools.html、storage-diagnostic.html 以 text/html 响应。当前环境 Python Chromium 对本地与 file URL 均返回 ERR_BLOCKED_BY_ADMINISTRATOR，因此不能声称 Playwright 视觉/操作通过。",
+      "github": "Stage165 v8.1.12.343 commit ddeb48ca472356a566f8160d8904c413e1d8b5ac 的第29份 CI：ModuleToolbarActions、BackupLocationActions、UICopyStage163、ResponsiveCopyStage165 四项因本地 HTTP MIME 错误，在导航 index.html 时显示 Download is starting；其余已执行项目可从原始证据逐项核对。Round290 Python 实际超时，旧工作流 tee 掩盖了退出码。Stage166 修正 MIME 和退出码门禁，新版 GitHub CI 尚未运行。",
+      "upstreamFailure": "Stage165 CI 的四项 Chromium 阻断共享一个基础设施根因：本地 synthetic-browser-origin.cjs 对 HTML 回 application/octet-stream，使 page.goto 下载文件。Stage166 依据 HTTP 内容类型修复；Round290 历史信息对话框关闭点击超时是独立待验证问题，不可标记 PASS。"
     },
     "realDevice": {
       "state": "targeted-checks-pending",
@@ -43,9 +44,9 @@
     "release": {
       "status": "candidate-ready-not-deployed",
       "artifactNames": [
-        "Stage165_PL-Life_v8.1.12.343_正式仓库完整同步包.zip"
+        "Stage166_PL-Life_v8.1.12.344_正式仓库完整同步包.zip"
       ],
-      "reason": "Stage165 已完成计划的第三轮文案与折行源码整改，尚缺本版本 GitHub Chromium 实际交互、手机真机与正式站部署证据。Stage162 备份目录操作、Stage161 模组更多操作、Stage160 图片导出和 Stage159 平板备份按钮修复仍需 Chromium 回归。网页无法直接打开系统文件管理器。"
+      "reason": "仅修复合成 Chromium 测试 HTTP MIME 与 Round290 失败记录；Node、HTTP 检查及打包需独立验收，四项真实 GitHub 浏览器测试与 Round290 需新版 CI 重新确认。正式站尚未由本轮代码推送，真机未执行。schema26 不变。"
     }
   },
   "workstreams": {
@@ -110,6 +111,13 @@
       "realBackupComparison": "待获取恢复后的 ZIP",
       "realBrowserRestore": "未验收",
       "production": "阻断"
+    },
+    "stage166CiCloseout": {
+      "code": "修正共享 synthetic HTTP 服务器的 HTML Content-Type，保留静态文件安全边界；Round290 不允许 tee 吞掉 Python 失败。",
+      "automated": "全量 Node 回归目标 1433/1433，含四项新增 HTTP MIME、管道失败门禁和四浏览器脚本入口测试。",
+      "githubChromium": "待验：四项之前因 Download is starting 被阻断的用例，以及 Round290 历史信息对话框关闭。",
+      "realDevice": "未执行",
+      "deployment": "未推送正式站"
     }
   },
   "notes": [

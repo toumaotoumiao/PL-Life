@@ -14,6 +14,10 @@
 - 不要把测试仓库、历史内部报告、真实备份、角色 Excel 或验收 artifact 上传到正式仓库。
 - 正式站与测试站继续依赖 `runtime-environment.js` 按路径隔离存储。
 
+## Stage166 发布注意事项（强制）
+第29份 GitHub Chromium 日志（提交 ddeb48ca）表明四项新浏览器脚本在 `page.goto(index.html)` 阶段触发浏览器下载，尚未执行核心业务断言。共享本机测试 HTTP 服务器此前把 `.html` 返回为 `application/octet-stream`，本轮改为 `text/html; charset=utf-8`，并补充 MIME 与资源返回检查。Stage165 的业务页面、用户档案、备份、schema26 均不改动。
+此外，Round290 的 Python 异常被 `| tee` 管道隐藏，本轮使用 bash `pipefail` 并列入最终失败门禁；对话框关闭超时仍需在 GitHub Chromium 验证，不能将其误记为已通过。提交到正式仓库后重新核对四项浏览器用例与 Round290 的真实结果。Node 检查与 ZIP 完整性不能代替浏览器验收。
+
 ## Stage165 发布注意事项（强制）
 本轮是全站中文文案及界面折行整改的第三轮源码交付。修正模组高级工具残缺的功能说明；设置、PC 编辑、计划编辑、模组编辑、导出面板等较长帮助文字新增窄屏折行保护。新增 320/375/390/430/768/1024/1280/1440px 与三种主题、七个主页面的真实 Chromium 检查，并纳入 CI 失败门禁。代码、静态测试及正式 ZIP 不等于 Chromium、手机或正式站验收。用户自填资料和 schema26 保持不变；正式覆盖前先在原站完成备份并核对下载文件。
 
